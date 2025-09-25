@@ -1,0 +1,36 @@
+id: business_0005
+name: "Sol y Saz\xF3n"
+description: Experience the vibrant flavors of Mexico and the Southwest in a warm,
+  welcoming atmosphere. From sizzling plates to refreshing cocktails, every dish is
+  a celebration of bold spices and fresh ingredients.
+rating: 1.0
+progenitor_customer: customer_0002
+menu_features:
+  Sizzling Beef Enchilada Plate: 6.18
+  Pineapple Salsa Shrimp Skewers: 13.1
+  Citrus Cilantro Rice Bowl: 8.43
+  Jalapeno Infused Tequila Sunrise: 8.66
+  Caramelized Plantain Empanadas: 7.68
+  Spiced Beef Fajita Platter: 9.76
+  Chipotle Chicken Queso: 8.24
+  Breakfast Burrito Bowl: 7.91
+  "Cheesy Jalape\xF1o Poppers": 9.91
+  Zesty Shrimp Ceviche: 10.3
+  Tostada Salad with Avocado Crema: 9.7
+  Black Bean and Quinoa Tacos: 11.15
+  Classic Margarita: 7.35
+  Creamy Avocado Quesadillas: 13.24
+  Spice-Rubbed Ribeye: 8.88
+  Mole Chocolate Cake: 4.56
+amenity_features:
+  Onsite Parking: true
+  Live Music: false
+  Takes Reservations: true
+  Private Dining: false
+  Wheelchair Accessible: true
+  Children's Menu: false
+  Outdoor Seating: false
+  Large Groups: true
+  Happy Hour: false
+  Free Wifi: true
+min_price_factor: 0.77

@@ -1,0 +1,35 @@
+id: business_0002
+name: Taco 'Bout a Fiesta
+description: Spice up your day with bold, vibrant flavors and festive twists on classic
+  Mexican and Tex-Mex favorites. From savory empanadas to refreshing aguas frescas,
+  our kitchen brings a playful celebration to every plate.
+rating: 1.0
+progenitor_customer: customer_0001
+menu_features:
+  Pineapple Jalapeno Agua Fresca: 4.09
+  Spicy Beef Nacho Platter: 8.68
+  Smoky Chipotle Beef Empanadas: 5.66
+  Loaded Nacho Fiesta: 14.53
+  Chili Lime Grilled Chicken: 12.0
+  Mango Pico de Gallo: 3.73
+  Crispy Chicken Enchiladas: 20.52
+  Shrimp and Avocado Salad: 9.48
+  Enchilada Verde Supreme: 17.63
+  Hearty Chorizo Omelette: 7.06
+  Coconut Lime Rice: 3.05
+  Beef Barbacoa Street Tacos: 9.15
+  Passionfruit Paloma: 5.94
+  Savory Pumpkin Empanadas: 9.67
+  Tequila Lime Shrimp Skewers: 5.86
+amenity_features:
+  Onsite Parking: true
+  Live Music: false
+  Takes Reservations: false
+  Private Dining: false
+  Wheelchair Accessible: false
+  Children's Menu: true
+  Outdoor Seating: true
+  Large Groups: true
+  Happy Hour: false
+  Free Wifi: true
+min_price_factor: 0.81

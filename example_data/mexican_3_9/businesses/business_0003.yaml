@@ -1,0 +1,33 @@
+id: business_0003
+name: Verde & Ember
+description: A vibrant spot for modern Mexican and Tex-Mex flavors, Verde & Ember
+  brings fresh ingredients and creative twists to classic favorites. Enjoy bold, colorful
+  dishes and house-made salsas in a lively, welcoming atmosphere.
+rating: 1.0
+progenitor_customer: customer_0001
+menu_features:
+  Verde Chicken Chimichanga: 17.48
+  Honey Lime Chicken Fajitas: 14.27
+  Hatch Green Chile Burger: 9.9
+  Spicy Black Bean Burger: 13.99
+  Savory Pumpkin Empanadas: 9.31
+  Blackened Fish Tacos: 13.87
+  Fiery Chipotle Chicken Salad: 11.41
+  Pineapple Jalapeno Agua Fresca: 5.03
+  Blue Corn Chicken Tamales: 9.87
+  Black Bean Avocado Burrito: 10.26
+  Spicy Verde Chicken Tostadas: 9.43
+  Tomatillo Verde Salsa: 4.5
+  Spicy Beef Empanadas: 11.06
+amenity_features:
+  Onsite Parking: false
+  Live Music: true
+  Takes Reservations: false
+  Private Dining: false
+  Wheelchair Accessible: true
+  Children's Menu: false
+  Outdoor Seating: false
+  Large Groups: false
+  Happy Hour: false
+  Free Wifi: false
+min_price_factor: 0.84

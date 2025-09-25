@@ -1,0 +1,34 @@
+id: business_0004
+name: Casa de Sabor
+description: Casa de Sabor is a welcoming destination for vibrant Mexican and Tex-Mex
+  flavors. Experience classic favorites and inventive specialties served in a lively,
+  inviting atmosphere.
+rating: 1.0
+progenitor_customer: customer_0002
+menu_features:
+  Three Cheese Quesadillas: 10.93
+  Loaded Nacho Skillet: 5.61
+  Zesty Chicken Fajita Bowl: 14.3
+  Classic Street Corn: 5.49
+  Sweet Corn Tamalitos: 6.38
+  Jalapeno Infused Tequila Sunrise: 8.31
+  Grilled Shrimp and Mango Salad: 11.31
+  Spicy Chocolate Mousse: 5.62
+  Smoky Beef Fajitas: 18.97
+  Ancho Chicken Quesadilla: 9.94
+  Tropical Pineapple Salsa: 2.73
+  Avocado Cilantro Salad: 6.18
+  Breakfast Chorizo Migas: 9.37
+  Crispy Carnitas Tostadas: 15.36
+amenity_features:
+  Onsite Parking: false
+  Live Music: false
+  Takes Reservations: true
+  Private Dining: false
+  Wheelchair Accessible: false
+  Children's Menu: false
+  Outdoor Seating: true
+  Large Groups: false
+  Happy Hour: false
+  Free Wifi: true
+min_price_factor: 0.84
