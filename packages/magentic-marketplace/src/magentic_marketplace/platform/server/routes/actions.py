@@ -1,0 +1,89 @@
+"""Action-related routes."""
+
+from datetime import UTC, datetime
+
+from fastapi import APIRouter, HTTPException, Request
+
+from ...database.base import DatabaseTooBusyError
+from ...database.models import ActionRow
+from ...shared.models import (
+    ActionExecutionRequest,
+    ActionExecutionResult,
+    ActionProtocol,
+    ActionProtocolResponse,
+)
+from ..auth.dependencies import get_current_agent_id
+from ..server import get_database, get_protocol
+
+router = APIRouter(prefix="/actions", tags=["actions"])
+
+
+@router.get("/protocol", response_model=ActionProtocolResponse)
+async def get_action_protocol(fastapi_request: Request):
+    """Get available action protocols."""
+    protocol = get_protocol(fastapi_request)
+    actions = [
+        action if isinstance(action, ActionProtocol) else action.to_protocol()
+        for action in protocol.get_actions()
+    ]
+    return ActionProtocolResponse(actions=actions)
+
+
+@router.post("/execute", response_model=ActionExecutionResult)
+async def execute_action(
+    request: ActionExecutionRequest, fastapi_request: Request
+) -> ActionExecutionResult:
+    """Execute an action. Requires authentication."""
+    # Validate authentication and get agent ID
+    authenticated_agent_id = await get_current_agent_id(fastapi_request)
+
+    db = get_database(fastapi_request)
+    protocol = get_protocol(fastapi_request)
+
+    # Get the full agent object from database
+    try:
+        authenticated_agent = await db.agents.get_by_id(authenticated_agent_id)
+    except DatabaseTooBusyError as e:
+        raise HTTPException(
+            status_code=429, detail=f"Database too busy: {e.message}"
+        ) from e
+
+    if not authenticated_agent:
+        raise HTTPException(
+            status_code=404, detail="Authenticated agent not found in database"
+        )
+
+    # Execute action with name, parameters, and agent object
+    # Use the database agent object with the correct ID
+    agent_with_id = authenticated_agent.data.model_copy()
+    agent_with_id.id = authenticated_agent.id  # TODO why is this necessary?
+
+    try:
+        result = await protocol.execute_action(
+            agent=agent_with_id,
+            action=request,
+            database=db,
+        )
+    except Exception as ex:
+        result = ActionExecutionResult(content=str(ex), is_error=True)
+
+    # Create database record of the action with authenticated agent ID
+    from ...database.models import ActionRowData
+
+    action_data = ActionRowData(
+        agent_id=authenticated_agent.id, request=request, result=result
+    )
+    db_action = ActionRow(
+        id="",  # TODO: why is this empty?
+        created_at=datetime.now(UTC),
+        data=action_data,
+    )
+
+    try:
+        await db.actions.create(db_action)
+    except DatabaseTooBusyError as e:
+        raise HTTPException(
+            status_code=429, detail=f"Database too busy: {e.message}"
+        ) from e
+
+    return result
