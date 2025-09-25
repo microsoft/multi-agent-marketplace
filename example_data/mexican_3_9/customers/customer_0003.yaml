@@ -1,0 +1,14 @@
+id: customer_0003
+name: Angela Ng
+request: 'I am looking for a business that serves the following menu items: 1 Southwest
+  Chicken Enchiladas, 1 Coconut Lime Tres Leches, and 1 Chargrilled Carne Asada. Additionally,
+  the establishment must accommodate large groups and offer onsite parking. Once a
+  suitable business is found, I intend to place the order as specified. Thank you
+  for your assistance.'
+menu_features:
+  Southwest Chicken Enchiladas: 13.49
+  Coconut Lime Tres Leches: 6.99
+  Chargrilled Carne Asada: 15.99
+amenity_features:
+- Large Groups
+- Onsite Parking

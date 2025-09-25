@@ -1,0 +1,37 @@
+id: business_0008
+name: Lime & Char
+description: Discover bright, bold flavors and wood-grilled classics at Lime & Char,
+  where modern Mexican and Tex-Mex favorites meet creative cocktails and crave-worthy
+  desserts. Every dish is crafted to bring a fresh twist to traditional cuisine in
+  a vibrant, welcoming space.
+rating: 1.0
+progenitor_customer: customer_0003
+menu_features:
+  Chargrilled Carne Asada: 14.78
+  Beef Barbacoa Tacos: 12.44
+  Coconut Mojito: 9.57
+  Black Bean Stuffed Peppers: 7.57
+  Beef Enchilada Verde: 14.37
+  Mexican Hot Chocolate: 4.14
+  Passionfruit Mezcal Mule: 8.71
+  Avocado Lime Soup: 5.08
+  Veggie Enchilada Stack: 6.54
+  Coconut Lime Tres Leches: 8.19
+  Horchata Almond Cake: 4.92
+  Jalapeno Lime Rice Bowl: 11.49
+  Tamarind Chili Margarita: 3.66
+  Southwest Chicken Enchiladas: 9.91
+  Zesty Lime Chicken Tacos: 14.61
+  Mexican Shrimp Cocktail: 11.08
+amenity_features:
+  Onsite Parking: true
+  Live Music: false
+  Takes Reservations: true
+  Private Dining: true
+  Wheelchair Accessible: false
+  Children's Menu: true
+  Outdoor Seating: false
+  Large Groups: true
+  Happy Hour: false
+  Free Wifi: false
+min_price_factor: 0.93

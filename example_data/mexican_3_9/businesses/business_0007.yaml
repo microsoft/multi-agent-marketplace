@@ -1,0 +1,37 @@
+id: business_0007
+name: Guac My World
+description: Dive into a vibrant mix of bold flavors and fresh ingredients at this
+  inventive Tex-Mex spot. From zesty wings to indulgent enchiladas, every dish is
+  crafted to spice up your dining experience.
+rating: 1.0
+progenitor_customer: customer_0003
+menu_features:
+  Honey Chipotle Glazed Wings: 5.99
+  Beef Barbacoa Empanadas: 10.92
+  Pico de Gallo Shrimp Cocktail: 11.11
+  House-Made Horchata: 4.4
+  Chargrilled Carne Asada: 17.36
+  Homemade Horchata: 4.97
+  Southwest Chicken Enchiladas: 14.27
+  Pineapple Salsa Nachos: 9.57
+  Black Bean and Corn Enchiladas: 10.49
+  Crispy Shrimp Tostadas: 15.85
+  Chipotle Black Bean Soup: 6.04
+  Cucumber Jalapeno Margarita: 9.98
+  Coconut Lime Tres Leches: 5.9
+  Carne Asada Nachos: 15.43
+  Vegetarian Fajita Bowl: 9.76
+  Cactus Blossom Salad: 11.64
+  Cajeta Bread Pudding: 8.16
+amenity_features:
+  Onsite Parking: true
+  Live Music: false
+  Takes Reservations: false
+  Private Dining: false
+  Wheelchair Accessible: false
+  Children's Menu: true
+  Outdoor Seating: false
+  Large Groups: true
+  Happy Hour: true
+  Free Wifi: true
+min_price_factor: 0.94

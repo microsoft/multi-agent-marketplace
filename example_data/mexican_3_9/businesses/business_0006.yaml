@@ -1,0 +1,31 @@
+id: business_0006
+name: Margarita Mesa
+description: Savor the vibrant flavors of modern Mexican and Tex-Mex cuisine in a
+  lively, welcoming space. Treat yourself to creative cocktails, fresh salsas, and
+  savory classics crafted with a bold twist.
+rating: 1.0
+progenitor_customer: customer_0002
+menu_features:
+  Horchata Latte: 5.59
+  Pineapple Salsa Nachos: 9.51
+  Adobo-Marinated Pork Carnitas: 12.47
+  Avocado Cilantro Smoothie: 3.25
+  Pineapple Habanero Margarita: 8.4
+  Raspberry Jalapeno Margarita: 8.52
+  Jalapeno Infused Tequila Sunrise: 11.3
+  Tamarind Agua Fresca: 2.89
+  Adobo Spiced Pork Tamales: 9.97
+  Crispy Chicken Empanadas: 7.24
+  Ancho Chocolate Cake: 8.01
+amenity_features:
+  Onsite Parking: false
+  Live Music: false
+  Takes Reservations: false
+  Private Dining: true
+  Wheelchair Accessible: false
+  Children's Menu: false
+  Outdoor Seating: false
+  Large Groups: true
+  Happy Hour: false
+  Free Wifi: true
+min_price_factor: 0.82

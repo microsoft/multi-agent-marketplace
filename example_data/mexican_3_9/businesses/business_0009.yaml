@@ -1,0 +1,36 @@
+id: business_0009
+name: Salsa Sunrise
+description: "Savor vibrant Mexican and Tex-Mex flavors, where zesty salsas meet fresh,\
+  \ creative cuisine. Start your day\u2014or night\u2014with a colorful array of bold,\
+  \ handcrafted dishes."
+rating: 1.0
+progenitor_customer: customer_0003
+menu_features:
+  Pico de Gallo Omelette: 4.9
+  Mango Habanero Salsa: 7.72
+  Avocado Lime Crema Burger: 14.28
+  Southwest Chicken Enchiladas: 18.1
+  Blue Corn Nachos Supreme: 12.1
+  Roasted Poblano Soup: 6.74
+  Frijoles Charros: 7.34
+  Spiced Chocolate Mole: 4.71
+  Sweet Corn Tamales: 7.84
+  Coconut Lime Tres Leches: 11.53
+  Matcha Horchata Freeze: 5.12
+  Grilled Avocado Salad: 3.08
+  Chargrilled Carne Asada: 16.54
+  Mole Chicken Tacos: 17.26
+  Vegetarian Enchilada Delight: 8.02
+  Cajun Spiced Fish Tacos: 13.58
+amenity_features:
+  Onsite Parking: true
+  Live Music: false
+  Takes Reservations: false
+  Private Dining: true
+  Wheelchair Accessible: false
+  Children's Menu: false
+  Outdoor Seating: false
+  Large Groups: false
+  Happy Hour: false
+  Free Wifi: true
+min_price_factor: 0.91
