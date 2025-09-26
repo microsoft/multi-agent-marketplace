@@ -11,7 +11,9 @@ from utils import load_businesses_from_yaml, load_customers_from_yaml, setup_log
 
 from magentic_marketplace.marketplace.agents import BusinessAgent, CustomerAgent
 from magentic_marketplace.marketplace.protocol.protocol import SimpleMarketplaceProtocol
-from magentic_marketplace.platform.database.sqlite import create_sqlite_database
+from magentic_marketplace.platform.database.sqlite.sharded_sqlite import (
+    create_sharded_sqlite_database,
+)
 from magentic_marketplace.platform.launcher import AgentLauncher, MarketplaceLauncher
 
 
@@ -33,7 +35,7 @@ async def run_marketplace_experiment(
 
     # Create the marketplace launcher
     def database_factory():
-        return create_sqlite_database(db_file)
+        return create_sharded_sqlite_database(os.path.splitext(db_file)[0], 8, 8, 8)
 
     marketplace_launcher = MarketplaceLauncher(
         protocol=SimpleMarketplaceProtocol(),
