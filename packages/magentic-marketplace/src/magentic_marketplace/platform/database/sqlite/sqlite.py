@@ -1,7 +1,10 @@
 """SQLite implementation of the database controllers using native sqlite3."""
 
 import asyncio
+import json
+import logging
 import sqlite3
+import threading
 import uuid
 from contextlib import asynccontextmanager
 from datetime import datetime
@@ -23,6 +26,67 @@ from ..base import (
 )
 from ..models import ActionRow, ActionRowData, AgentRow, LogRow
 from ..queries import AndQuery, JSONQuery, OrQuery, Query, RangeQueryParams
+
+# Global metrics tracking
+_connection_metrics = {
+    "read_requests": 0,
+    "write_requests": 0,
+    "read_semaphore_timeouts": 0,
+    "write_semaphore_timeouts": 0,
+    "read_db_errors": 0,
+    "write_db_errors": 0,
+}
+
+# Global initialization flag to avoid redundant table creation
+_initialized = False
+
+# Global metrics timer
+_metrics_timer = None
+
+logger = logging.getLogger(__name__)
+
+
+def _dump_metrics_to_file(db_path: str):
+    """Dump metrics to file."""
+    try:
+        # Extract base name without extension for metrics file
+        db_base = db_path.rsplit(".", 1)[0] if "." in db_path else db_path
+        metrics_file = f"{db_base}_metrics.json"
+        with open(metrics_file, "w") as f:
+            json.dump(_connection_metrics, f, indent=2)
+    except Exception:
+        # Silently fail to avoid issues during cleanup
+        pass
+
+
+def _start_metrics_timer(db_path: str):
+    """Start a repeating timer to dump metrics every 10 seconds."""
+    global _metrics_timer
+
+    # Only start one timer globally
+    if _metrics_timer is not None:
+        return
+
+    def dump_metrics():
+        _dump_metrics_to_file(db_path)
+        # Schedule next dump
+        global _metrics_timer
+        _metrics_timer = threading.Timer(10.0, dump_metrics)
+        _metrics_timer.daemon = True  # Dies when main thread dies
+        _metrics_timer.start()
+
+    # Start the first timer
+    _metrics_timer = threading.Timer(10.0, dump_metrics)
+    _metrics_timer.daemon = True
+    _metrics_timer.start()
+
+
+def _stop_metrics_timer():
+    """Stop the metrics timer."""
+    global _metrics_timer
+    if _metrics_timer is not None:
+        _metrics_timer.cancel()
+        _metrics_timer = None
 
 
 def _convert_query_to_sql(query: Query) -> str:
@@ -101,33 +165,67 @@ CREATE TABLE IF NOT EXISTS logs (
 
 class _BoundedSqliteConnectionMixIn:
     def __init__(
-        self, db_path: str, semaphore: asyncio.Semaphore, timeout: float = 5
+        self,
+        db_path: str,
+        read_semaphore: asyncio.Semaphore,
+        write_semaphore: asyncio.Semaphore,
+        timeout: float = 5,
     ) -> None:
         self._db_path = db_path
-        self._semaphore = semaphore
+        self._read_semaphore = read_semaphore
+        self._write_semaphore = write_semaphore
         self._timeout = timeout
         self._db: aiosqlite.Connection | None = None
 
-    @property
     @asynccontextmanager
-    async def connection(self):
+    async def _get_connection(self, is_write: bool = False):
+        # Track metrics based on operation type
+        if is_write:
+            _connection_metrics["write_requests"] += 1
+        else:
+            _connection_metrics["read_requests"] += 1
+
+        # Choose appropriate semaphore based on operation type
+        semaphore = self._write_semaphore if is_write else self._read_semaphore
+
         try:
-            await asyncio.wait_for(self._semaphore.acquire(), self._timeout)
+            await asyncio.wait_for(semaphore.acquire(), self._timeout)
         except TimeoutError as e:
+            if is_write:
+                _connection_metrics["write_semaphore_timeouts"] += 1
+            else:
+                _connection_metrics["read_semaphore_timeouts"] += 1
+            logger.warning(
+                f"Database too busy: timeout acquiring semaphore for {self._db_path} ({'write' if is_write else 'read'} operation)"
+            )
             raise DatabaseTooBusyError() from e
 
         try:
             async with aiosqlite.connect(self._db_path) as db:
                 yield db
         except (sqlite3.OperationalError, sqlite3.DatabaseError) as e:
+            if is_write:
+                _connection_metrics["write_db_errors"] += 1
+            else:
+                _connection_metrics["read_db_errors"] += 1
             # Convert SQLite errors to DatabaseTooBusyError
             if "locked" in str(e).lower() or "busy" in str(e).lower():
+                logger.warning(
+                    f"Database too busy: SQLite lock/busy error for {self._db_path} ({'write' if is_write else 'read'} operation): {e}"
+                )
                 raise DatabaseTooBusyError(f"SQLite database error: {e}") from e
             # Re-raise other SQLite errors as-is
             raise
         finally:
             # Ensure semaphore is released even if context manager setup fails
-            self._semaphore.release()
+            semaphore.release()
+
+    @property
+    @asynccontextmanager
+    async def connection(self):
+        # Default to read operation
+        async with self._get_connection(is_write=False) as db:
+            yield db
 
 
 class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn):
@@ -137,7 +235,7 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
         """Create a new agent."""
         agent_id = item.id or str(uuid.uuid4())
 
-        async with self.connection as db:
+        async with self._get_connection(is_write=True) as db:
             await db.execute(
                 "INSERT INTO agents (id, created_at, data, agent_embedding) VALUES (?, ?, ?, ?)",
                 (
@@ -272,7 +370,7 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
         sql_params.append(item_id)
         sql = f"UPDATE agents SET {', '.join(set_clauses)} WHERE id = ?"
 
-        async with self.connection as db:
+        async with self._get_connection(is_write=True) as db:
             await db.execute(sql, sql_params)
             await db.commit()
 
@@ -281,7 +379,7 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
 
     async def delete(self, item_id: str) -> bool:
         """Delete an agent."""
-        async with self.connection as db:
+        async with self._get_connection(is_write=True) as db:
             async with db.execute(
                 "DELETE FROM agents WHERE id = ?", (item_id,)
             ) as cursor:
@@ -367,7 +465,7 @@ class SQLiteActionController(ActionTableController, _BoundedSqliteConnectionMixI
         # Store the full action data (request + result) as JSON
         action_json = item.data.model_dump_json()
 
-        async with self.connection as db:
+        async with self._get_connection(is_write=True) as db:
             await db.execute(
                 "INSERT INTO actions (id, created_at, data) VALUES (?, ?, ?)",
                 (
@@ -460,7 +558,7 @@ class SQLiteActionController(ActionTableController, _BoundedSqliteConnectionMixI
         sql_params.append(item_id)
         sql = f"UPDATE actions SET {', '.join(set_clauses)} WHERE id = ?"
 
-        async with self.connection as db:
+        async with self._get_connection(is_write=True) as db:
             await db.execute(sql, sql_params)
             await db.commit()
 
@@ -469,7 +567,7 @@ class SQLiteActionController(ActionTableController, _BoundedSqliteConnectionMixI
 
     async def delete(self, item_id: str) -> bool:
         """Delete an action."""
-        async with self.connection as db:
+        async with self._get_connection(is_write=True) as db:
             async with db.execute(
                 "DELETE FROM actions WHERE id = ?", (item_id,)
             ) as cursor:
@@ -533,7 +631,7 @@ class SQLiteLogController(LogTableController, _BoundedSqliteConnectionMixIn):
         """Create a new log record."""
         log_id = item.id or str(uuid.uuid4())
 
-        async with self.connection as db:
+        async with self._get_connection(is_write=True) as db:
             await db.execute(
                 "INSERT INTO logs (id, created_at, data) VALUES (?, ?, ?)",
                 (
@@ -617,7 +715,7 @@ class SQLiteLogController(LogTableController, _BoundedSqliteConnectionMixIn):
         sql_params.append(item_id)
         sql = f"UPDATE logs SET {', '.join(set_clauses)} WHERE id = ?"
 
-        async with self.connection as db:
+        async with self._get_connection(is_write=True) as db:
             await db.execute(sql, sql_params)
             await db.commit()
 
@@ -626,7 +724,7 @@ class SQLiteLogController(LogTableController, _BoundedSqliteConnectionMixIn):
 
     async def delete(self, item_id: str) -> bool:
         """Delete a log record."""
-        async with self.connection as db:
+        async with self._get_connection(is_write=True) as db:
             async with db.execute(
                 "DELETE FROM logs WHERE id = ?", (item_id,)
             ) as cursor:
@@ -644,13 +742,34 @@ class SQLiteLogController(LogTableController, _BoundedSqliteConnectionMixIn):
 class SQLiteDatabaseController(BaseDatabaseController, _BoundedSqliteConnectionMixIn):
     """SQLite implementation of BaseDatabaseController."""
 
-    def __init__(self, db_path: str, db_timeout: float = 5):
+    def __init__(
+        self, db_path: str, db_timeout: float = 5, max_read_connections: int = 3
+    ):
         """Initialize SQLite database controller with database path."""
-        semaphore = asyncio.Semaphore(1)
-        super().__init__(db_path=db_path, semaphore=semaphore, timeout=db_timeout)
-        self._agents = SQLiteAgentController(db_path, semaphore, db_timeout)
-        self._actions = SQLiteActionController(db_path, semaphore, db_timeout)
-        self._logs = SQLiteLogController(db_path, semaphore, db_timeout)
+        # Create separate semaphores for read and write operations
+        read_semaphore = asyncio.Semaphore(max_read_connections)
+        write_semaphore = asyncio.Semaphore(
+            1
+        )  # Write operations limited to 1 to prevent conflicts
+
+        super().__init__(
+            db_path=db_path,
+            read_semaphore=read_semaphore,
+            write_semaphore=write_semaphore,
+            timeout=db_timeout,
+        )
+        self._agents = SQLiteAgentController(
+            db_path, read_semaphore, write_semaphore, db_timeout
+        )
+        self._actions = SQLiteActionController(
+            db_path, read_semaphore, write_semaphore, db_timeout
+        )
+        self._logs = SQLiteLogController(
+            db_path, read_semaphore, write_semaphore, db_timeout
+        )
+
+        # Start periodic metrics dumping
+        _start_metrics_timer(db_path)
 
     @property
     def agents(self) -> AgentTableController:
@@ -669,15 +788,30 @@ class SQLiteDatabaseController(BaseDatabaseController, _BoundedSqliteConnectionM
 
     async def execute(self, command: Any) -> Any:
         """Execute an arbitrary database command."""
-        async with self.connection as db:
+        async with self._get_connection(is_write=True) as db:
             async with db.execute(command) as cursor:
                 return cursor
 
     async def initialize(self):
         """Initialize the database tables."""
-        async with self.connection as db:
+        global _initialized
+
+        # Skip initialization if already done for this database path
+        if _initialized:
+            return
+
+        async with self._get_connection(is_write=True) as db:
             await db.executescript(CREATE_TABLES_SQL)
             await db.commit()
+
+        _initialized = True
+
+    def __del__(self):
+        """Write metrics to file when object is destroyed."""
+        # Stop the periodic timer
+        _stop_metrics_timer()
+        # Do a final dump
+        _dump_metrics_to_file(self._db_path)
 
 
 @asynccontextmanager

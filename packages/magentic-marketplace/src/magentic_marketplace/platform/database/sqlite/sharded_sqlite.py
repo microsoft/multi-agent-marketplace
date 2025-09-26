@@ -2,9 +2,11 @@
 
 import asyncio
 import hashlib
+import json
 import logging
 import os
 import sqlite3
+import threading
 import uuid
 from contextlib import asynccontextmanager
 from datetime import datetime
@@ -29,6 +31,115 @@ from ..models import ActionRow, ActionRowData, AgentRow, LogRow
 from ..queries import AndQuery, JSONQuery, OrQuery, Query, RangeQueryParams
 
 logger = logging.getLogger(__name__)
+
+# Global metrics tracking - organized by table and shard
+_connection_metrics = {
+    "global_totals": {
+        "read_requests": 0,
+        "write_requests": 0,
+        "read_semaphore_timeouts": 0,
+        "write_semaphore_timeouts": 0,
+        "read_db_errors": 0,
+        "write_db_errors": 0,
+    },
+    "by_table": {
+        # Will be populated as: "agents": {...}, "actions": {...}, "logs": {...}
+    },
+}
+
+# Global initialization flag to avoid redundant table creation
+_initialized = False
+
+# Global metrics timer
+_metrics_timer = None
+
+
+def _dump_metrics_to_file(base_path: str):
+    """Dump metrics to file."""
+    try:
+        metrics_file = f"{base_path}_sharded_metrics.json"
+        with open(metrics_file, "w") as f:
+            json.dump(_connection_metrics, f, indent=2)
+    except Exception:
+        # Silently fail to avoid issues during cleanup
+        pass
+
+
+def _start_metrics_timer(base_path: str):
+    """Start a repeating timer to dump metrics every 10 seconds."""
+    global _metrics_timer
+
+    # Only start one timer globally
+    if _metrics_timer is not None:
+        return
+
+    def dump_metrics():
+        _dump_metrics_to_file(base_path)
+        # Schedule next dump
+        global _metrics_timer
+        _metrics_timer = threading.Timer(10.0, dump_metrics)
+        _metrics_timer.daemon = True  # Dies when main thread dies
+        _metrics_timer.start()
+
+    # Start the first timer
+    _metrics_timer = threading.Timer(10.0, dump_metrics)
+    _metrics_timer.daemon = True
+    _metrics_timer.start()
+
+
+def _stop_metrics_timer():
+    """Stop the metrics timer."""
+    global _metrics_timer
+    if _metrics_timer is not None:
+        _metrics_timer.cancel()
+        _metrics_timer = None
+
+
+def _ensure_table_metrics_exist(table_name: str, num_shards: int):
+    """Ensure metrics structure exists for a table and its shards."""
+    if table_name not in _connection_metrics["by_table"]:
+        _connection_metrics["by_table"][table_name] = {
+            "table_totals": {
+                "read_requests": 0,
+                "write_requests": 0,
+                "read_semaphore_timeouts": 0,
+                "write_semaphore_timeouts": 0,
+                "read_db_errors": 0,
+                "write_db_errors": 0,
+            },
+            "by_shard": {},
+        }
+
+    # Ensure all shards exist
+    table_metrics = _connection_metrics["by_table"][table_name]
+    for shard_id in range(num_shards):
+        shard_key = f"shard_{shard_id}"
+        if shard_key not in table_metrics["by_shard"]:
+            table_metrics["by_shard"][shard_key] = {
+                "read_requests": 0,
+                "write_requests": 0,
+                "read_semaphore_timeouts": 0,
+                "write_semaphore_timeouts": 0,
+                "read_db_errors": 0,
+                "write_db_errors": 0,
+            }
+
+
+def _track_connection_metric(
+    table_name: str, shard_id: int, metric_name: str, increment: int = 1
+):
+    """Track a metric at global, table, and shard levels."""
+    # Global totals
+    _connection_metrics["global_totals"][metric_name] += increment
+
+    # Table totals
+    table_metrics = _connection_metrics["by_table"][table_name]
+    table_metrics["table_totals"][metric_name] += increment
+
+    # Shard specific
+    shard_key = f"shard_{shard_id}"
+    table_metrics["by_shard"][shard_key][metric_name] += increment
+
 
 def _convert_query_to_sql(query: Query) -> str:
     """Convert abstract JSONQuery to SQLite-specific SQL."""
@@ -103,6 +214,9 @@ class _ShardedBoundedSqliteConnectionMixIn:
         self._num_shards = num_shards
         self._timeout = timeout
 
+        # Initialize metrics structure for this table
+        _ensure_table_metrics_exist(table_name, num_shards)
+
         # Create folder structure: base_path/table_name/shard_{i}.db
         self._table_dir = Path(base_path) / table_name
         self._shard_paths = [
@@ -114,9 +228,7 @@ class _ShardedBoundedSqliteConnectionMixIn:
             asyncio.Semaphore(max_read_connections_per_shard) for _ in range(num_shards)
         ]
         # Write connections must always be limited to 1 per shard to prevent conflicts
-        self._write_semaphores = [
-            asyncio.Semaphore(1) for _ in range(num_shards)
-        ]
+        self._write_semaphores = [asyncio.Semaphore(1) for _ in range(num_shards)]
 
     def _get_shard_path(self, shard_id: int) -> str:
         """Get the database path for a specific shard."""
@@ -129,6 +241,10 @@ class _ShardedBoundedSqliteConnectionMixIn:
     @asynccontextmanager
     async def _connection_for_shard(self, shard_id: int, is_write: bool = False):
         """Get a connection to a specific shard."""
+        # Track metrics at global, table, and shard levels
+        metric_name = "write_requests" if is_write else "read_requests"
+        _track_connection_metric(self._table_name, shard_id, metric_name)
+
         semaphore = (
             self._write_semaphores[shard_id]
             if is_write
@@ -137,6 +253,11 @@ class _ShardedBoundedSqliteConnectionMixIn:
         try:
             await asyncio.wait_for(semaphore.acquire(), self._timeout)
         except TimeoutError as e:
+            # Track semaphore timeout at all levels
+            timeout_metric = (
+                "write_semaphore_timeouts" if is_write else "read_semaphore_timeouts"
+            )
+            _track_connection_metric(self._table_name, shard_id, timeout_metric)
             logger.warning(
                 f"Database too busy: timeout acquiring semaphore for {self._table_name} shard {shard_id} ({'write' if is_write else 'read'} operation)"
             )
@@ -152,6 +273,9 @@ class _ShardedBoundedSqliteConnectionMixIn:
                 await db.execute("PRAGMA synchronous=NORMAL")
                 yield db
         except (sqlite3.OperationalError, sqlite3.DatabaseError) as e:
+            # Track database error at all levels
+            db_error_metric = "write_db_errors" if is_write else "read_db_errors"
+            _track_connection_metric(self._table_name, shard_id, db_error_metric)
             # Convert SQLite errors to DatabaseTooBusyError
             if "locked" in str(e).lower() or "busy" in str(e).lower():
                 logger.warning(
@@ -858,6 +982,9 @@ class ShardedSQLiteDatabaseController(BaseDatabaseController):
             db_timeout,
         )
 
+        # Start periodic metrics dumping
+        _start_metrics_timer(base_path)
+
     @property
     def agents(self) -> AgentTableController:
         """Get the agent controller."""
@@ -886,6 +1013,12 @@ class ShardedSQLiteDatabaseController(BaseDatabaseController):
 
     async def initialize(self):
         """Initialize all database tables across all shards."""
+        global _initialized
+
+        # Skip initialization if already done
+        if _initialized:
+            return
+
         # SQL DDL for all tables - each shard will contain all three tables
         create_all_tables_sql = """
         CREATE TABLE IF NOT EXISTS agents (
@@ -932,6 +1065,8 @@ class ShardedSQLiteDatabaseController(BaseDatabaseController):
         # Run all initializations concurrently
         await asyncio.gather(*tasks)
 
+        _initialized = True
+
     async def merge_all_shards(self, target_db_path: str):
         """Merge all shards from all tables into a single SQLite database file.
 
@@ -974,6 +1109,13 @@ class ShardedSQLiteDatabaseController(BaseDatabaseController):
         await self._agents.merge_to_file(target_db_path)
         await self._actions.merge_to_file(target_db_path)
         await self._logs.merge_to_file(target_db_path)
+
+    def __del__(self):
+        """Write metrics to file when object is destroyed."""
+        # Stop the periodic timer
+        _stop_metrics_timer()
+        # Do a final dump
+        _dump_metrics_to_file(self._base_path)
 
 
 @asynccontextmanager

@@ -1,8 +1,10 @@
 """Lightweight base client with core aiohttp functionality."""
 
 import asyncio
+import json
 import logging
 import random
+import threading
 from dataclasses import dataclass, field
 from typing import Any
 from urllib.parse import urlencode, urljoin
@@ -11,6 +13,62 @@ import aiohttp
 from pydantic import BaseModel
 
 logger = logging.getLogger(__name__)
+
+# Global client metrics tracking
+_client_metrics = {
+    "total_requests": 0,
+    "total_retries": 0,
+    "fatal_errors": 0,
+    "successful_requests": 0,
+    "retries_by_status": {},
+    "retries_by_exception": {},
+}
+
+# Global metrics timer
+_client_metrics_timer = None
+
+
+def _dump_client_metrics_to_file(base_url: str):
+    """Dump client metrics to file."""
+    try:
+        # Create a safe filename from base_url
+        safe_url = base_url.replace("://", "_").replace("/", "_").replace(":", "_")
+        metrics_file = f"client_metrics_{safe_url}.json"
+        with open(metrics_file, "w") as f:
+            json.dump(_client_metrics, f, indent=2)
+    except Exception:
+        # Silently fail to avoid issues during cleanup
+        pass
+
+
+def _start_client_metrics_timer(base_url: str):
+    """Start a repeating timer to dump client metrics every 10 seconds."""
+    global _client_metrics_timer
+
+    # Only start one timer globally
+    if _client_metrics_timer is not None:
+        return
+
+    def dump_metrics():
+        _dump_client_metrics_to_file(base_url)
+        # Schedule next dump
+        global _client_metrics_timer
+        _client_metrics_timer = threading.Timer(10.0, dump_metrics)
+        _client_metrics_timer.daemon = True  # Dies when main thread dies
+        _client_metrics_timer.start()
+
+    # Start the first timer
+    _client_metrics_timer = threading.Timer(10.0, dump_metrics)
+    _client_metrics_timer.daemon = True
+    _client_metrics_timer.start()
+
+
+def _stop_client_metrics_timer():
+    """Stop the client metrics timer."""
+    global _client_metrics_timer
+    if _client_metrics_timer is not None:
+        _client_metrics_timer.cancel()
+        _client_metrics_timer = None
 
 
 @dataclass
@@ -66,6 +124,9 @@ class BaseClient:
         self._session: aiohttp.ClientSession | None = None
         self._auth_token: str | None = None
 
+        # Start periodic metrics dumping
+        _start_client_metrics_timer(self.base_url)
+
     async def __aenter__(self):
         """Async context manager entry."""
         await self.connect()
@@ -93,6 +154,13 @@ class BaseClient:
             await self._session.close()
         else:
             raise RuntimeError("Attempting to close unconnected ClientSession.")
+
+    def __del__(self):
+        """Write metrics to file when client is destroyed."""
+        # Stop the periodic timer
+        _stop_client_metrics_timer()
+        # Do a final dump
+        _dump_client_metrics_to_file(self.base_url)
 
     def _build_url(self, path: str, params: BaseModel | None = None) -> str:
         """Build a complete URL with query parameters."""
@@ -136,6 +204,9 @@ class BaseClient:
                 "Client is not connected. You must call connect before request."
             )
 
+        # Track total requests
+        _client_metrics["total_requests"] += 1
+
         url = self._build_url(path, params)
 
         # Add auth header if token is set
@@ -151,6 +222,8 @@ class BaseClient:
                     method, url, json=json_data, headers=request_headers
                 ) as response:
                     response.raise_for_status()
+                    # Track successful requests
+                    _client_metrics["successful_requests"] += 1
                     return await response.json()
             except aiohttp.ClientResponseError as e:
                 last_exception = e
@@ -160,14 +233,32 @@ class BaseClient:
                     # Is this a retry exception
                     and type(e) not in self.retry_config.retry_on_exceptions
                 ):
-                    # Not a retry status or exception, raise
+                    # Not a retry status or exception, raise immediately
+                    _client_metrics["fatal_errors"] += 1
                     raise
+
+                # Track retry by status code
+                status_key = str(e.status)
+                _client_metrics["retries_by_status"][status_key] = (
+                    _client_metrics["retries_by_status"].get(status_key, 0) + 1
+                )
+
             except Exception as e:
                 last_exception = e
                 # Is this a retry exception?
                 if type(e) not in self.retry_config.retry_on_exceptions:
-                    # Not a retry exception, raise
+                    # Not a retry exception, raise immediately
+                    _client_metrics["fatal_errors"] += 1
                     raise
+
+                # Track retry by exception type
+                exception_key = type(e).__name__
+                _client_metrics["retries_by_exception"][exception_key] = (
+                    _client_metrics["retries_by_exception"].get(exception_key, 0) + 1
+                )
+
+            # Track total retries
+            _client_metrics["total_retries"] += 1
 
             # Delay before retry
             delay = self._calculate_delay(attempt)
@@ -178,6 +269,7 @@ class BaseClient:
             await asyncio.sleep(delay)
 
         # If we make it here, retries were exceeded.
+        _client_metrics["fatal_errors"] += 1
         if last_exception:
             raise last_exception
         else:
