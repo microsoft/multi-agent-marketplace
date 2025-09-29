@@ -1,9 +1,12 @@
 """Abstract base class for LLM model clients."""
 
+import asyncio
 import time
 from abc import ABC, abstractmethod
 from collections.abc import Sequence
-from typing import Any, TypeVar, overload
+from contextlib import AbstractAsyncContextManager
+from types import TracebackType
+from typing import Any, Generic, TypeVar, overload
 
 from openai.types.chat import (
     ChatCompletionAssistantMessageParam,
@@ -14,8 +17,9 @@ from pydantic import BaseModel
 
 from magentic_marketplace.platform.logger import MarketplaceLogger
 
-from .config import LLM_PROVIDER
+from .config import BaseLLMConfig
 
+TConfig = TypeVar("TConfig", bound=BaseLLMConfig)
 TResponseModel = TypeVar("TResponseModel", bound=BaseModel)
 
 AllowedChatCompletionMessageParams = (
@@ -48,23 +52,42 @@ class LLMCallLog(BaseModel):
     response_format: Any | None
 
 
-class ProviderClient(ABC):
+class _DummySemaphore(AbstractAsyncContextManager):
+    async def __aenter__(self):
+        return self
+
+    async def __aexit__(
+        self,
+        exc_type: type[BaseException] | None,
+        exc_value: BaseException | None,
+        traceback: TracebackType | None,
+    ):
+        pass
+
+
+class ProviderClient(ABC, Generic[TConfig]):
     """Abstract base class for LLM clients.
 
     All LLM clients accept OpenAI SDK arguments and convert them to the
     appropriate format for their specific provider.
     """
 
-    def __init__(self, *, provider: LLM_PROVIDER, model: str | None = None):
-        """Create an instance of a ProviderClient with optional default model.
+    def __init__(self, config: TConfig):
+        """Create an instance of a ProviderClient.
 
         Args:
-            provider: The provider
-            model: The default model to use for create requests
+            config: The llm config model
 
         """
-        self.provider = provider
-        self.model = model
+        self.config = config
+        self.provider = config.provider
+        self.model = config.model
+        self._max_concurrency = config.max_concurrency
+        self._semaphore = (
+            asyncio.Semaphore(config.max_concurrency)
+            if config.max_concurrency is not None
+            else _DummySemaphore()
+        )
 
     @overload
     async def _generate(
@@ -189,65 +212,70 @@ class ProviderClient(ABC):
         if not model:
             raise ValueError("model required when self.model is not set.")
 
-        start_time = time.time()
-        try:
-            result = await self._generate(
-                model=model,
-                messages=messages,
-                temperature=temperature,
-                max_tokens=max_tokens,
-                reasoning_effort=reasoning_effort,
-                response_format=response_format,
-                **kwargs,
-            )
-
-            duration_ms = (time.time() - start_time) * 1000
-
-            # Log successful LLM call
-            if logger is not None:
-                response_format_data = None
-                if response_format is not None:
-                    response_format_data = response_format.model_json_schema()
-
-                log_data = LLMCallLog(
-                    success=True,
-                    provider=result[1].provider,
-                    model=result[1].model,
-                    duration_ms=duration_ms,
-                    token_count=result[1].token_count,
-                    error_message=None,
-                    prompt=messages,
-                    response=result[0].model_dump()
-                    if isinstance(result[0], BaseModel)
-                    else result[0],
-                    response_format=response_format_data,
-                )
-
-                logger.debug("LLM call succeeded", data=log_data, metadata=log_metadata)
-
-            return result
-
-        except Exception as e:
-            duration_ms = (time.time() - start_time) * 1000
-
-            # Log failed LLM call
-            if logger is not None:
-                response_format_data = None
-                if response_format is not None:
-                    response_format_data = response_format.model_json_schema()
-
-                log_data = LLMCallLog(
-                    success=False,
-                    provider=self.provider,
+        async with self._semaphore:
+            start_time = time.time()
+            try:
+                result = await self._generate(
                     model=model,
-                    duration_ms=duration_ms,
-                    token_count=0,
-                    error_message=str(e),
-                    prompt=messages,
-                    response="",
-                    response_format=response_format_data,
+                    messages=messages,
+                    temperature=temperature,
+                    max_tokens=max_tokens,
+                    reasoning_effort=reasoning_effort,
+                    response_format=response_format,
+                    **kwargs,
                 )
 
-                logger.debug("LLM call failed", data=log_data, metadata=log_metadata)
+                duration_ms = (time.time() - start_time) * 1000
 
-            raise
+                # Log successful LLM call
+                if logger is not None:
+                    response_format_data = None
+                    if response_format is not None:
+                        response_format_data = response_format.model_json_schema()
+
+                    log_data = LLMCallLog(
+                        success=True,
+                        provider=result[1].provider,
+                        model=result[1].model,
+                        duration_ms=duration_ms,
+                        token_count=result[1].token_count,
+                        error_message=None,
+                        prompt=messages,
+                        response=result[0].model_dump()
+                        if isinstance(result[0], BaseModel)
+                        else result[0],
+                        response_format=response_format_data,
+                    )
+
+                    logger.debug(
+                        "LLM call succeeded", data=log_data, metadata=log_metadata
+                    )
+
+                return result
+
+            except Exception as e:
+                duration_ms = (time.time() - start_time) * 1000
+
+                # Log failed LLM call
+                if logger is not None:
+                    response_format_data = None
+                    if response_format is not None:
+                        response_format_data = response_format.model_json_schema()
+
+                    log_data = LLMCallLog(
+                        success=False,
+                        provider=self.provider,
+                        model=model,
+                        duration_ms=duration_ms,
+                        token_count=0,
+                        error_message=str(e),
+                        prompt=messages,
+                        response="",
+                        response_format=response_format_data,
+                    )
+
+                    logger.debug(
+                        "LLM call failed", data=log_data, metadata=log_metadata
+                    )
+
+                raise
