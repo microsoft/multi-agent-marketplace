@@ -217,3 +217,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# ignore files that contain ".local" in the file name
+*.local*
+
