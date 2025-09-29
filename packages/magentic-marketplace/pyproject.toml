@@ -19,6 +19,9 @@ dependencies = [
     "python-dotenv>=1.1.1",
 ]
 
+[project.scripts]
+magentic-marketplace = "magentic_marketplace.cli:main"
+
 [project.optional-dependencies]
 rnr = [
     "sentence-transformers>=2.2.0",

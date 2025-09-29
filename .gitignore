@@ -221,3 +221,5 @@ __marimo__/
 # ignore files that contain ".local" in the file name
 *.local*
 
+# log files are json so ignore all
+*.json
