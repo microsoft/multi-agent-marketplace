@@ -3,22 +3,29 @@
 
 import argparse
 import asyncio
-import os
+import logging
 import sys
+from datetime import datetime
 from pathlib import Path
 
+from dotenv import load_dotenv
 from utils import load_businesses_from_yaml, load_customers_from_yaml, setup_logging
 
 from magentic_marketplace.marketplace.agents import BusinessAgent, CustomerAgent
 from magentic_marketplace.marketplace.protocol.protocol import SimpleMarketplaceProtocol
-from magentic_marketplace.platform.database.sqlite import create_sqlite_database
+from magentic_marketplace.platform.database import (
+    create_postgresql_database,
+)
 from magentic_marketplace.platform.launcher import AgentLauncher, MarketplaceLauncher
 
 
 async def run_marketplace_experiment(
     data_dir: Path,
-    db_file: str,
+    experiment_name: str | None = None,
     search_algorithm: str = "simple",
+    postgres_host: str = "localhost",
+    postgres_port: int = 5432,
+    postgres_password: str = "postgres",
 ):
     """Run a marketplace experiment using YAML configuration files."""
     # Load businesses and customers from YAML files
@@ -31,16 +38,25 @@ async def run_marketplace_experiment(
 
     print(f"Loaded {len(businesses)} businesses and {len(customers)} customers")
 
+    if experiment_name is None:
+        # Auto-generate schema name if not provided
+        now = datetime.now()
+        experiment_name = now.strftime(
+            f"marketplace_{len(businesses)}_businesses_{len(customers)}_customers_%Y_%m_%d_%H_%M"
+        )
+
     # Create the marketplace launcher
     def database_factory():
-        return create_sqlite_database(db_file)
+        return create_postgresql_database(
+            schema=experiment_name,
+            host=postgres_host,
+            port=postgres_port,
+            password=postgres_password,
+        )
 
     marketplace_launcher = MarketplaceLauncher(
         protocol=SimpleMarketplaceProtocol(),
         database_factory=database_factory,
-        title="Marketplace Experiment",
-        description=f"Experiment with {len(businesses)} businesses and {len(customers)} customers",
-        db_file_cleanup=db_file,
         server_log_level="warning",
     )
 
@@ -51,7 +67,7 @@ async def run_marketplace_experiment(
         # Create logger
         logger = await marketplace_launcher.create_logger("marketplace_experiment")
         logger.info(
-            f"Marketplace experiment started: businesses={len(businesses)}, customers={len(customers)}, data_dir={data_dir}",
+            f"Marketplace experiment started:\nbusinesses={len(businesses)}\ncustomers={len(customers)}\ndata_dir={data_dir}\nexperiment_name:{experiment_name}",
         )
 
         # Create agents from loaded profiles
@@ -81,6 +97,11 @@ async def run_marketplace_experiment(
 
 def main():
     """Run experiment."""
+    # Setup logging
+    setup_logging()
+
+    logger = logging.getLogger(__name__)
+
     parser = argparse.ArgumentParser(
         description="Run marketplace experiments using YAML configuration files"
     )
@@ -90,79 +111,105 @@ def main():
         help="Path to the data directory containing businesses/ and customers/ subdirectories",
     )
     parser.add_argument(
-        "--db-file",
-        type=str,
-        default="marketplace.db",
-        help="SQLite database file name (default: marketplace.db)",
-    )
-    parser.add_argument(
         "--search-algorithm",
         type=str,
         default="simple",
         help="Search algorithm for customer agents (default: simple)",
     )
     parser.add_argument(
-        "--clean-db",
-        action="store_true",
-        help="Remove existing database file before running",
+        "--experiment-name",
+        default=None,
+        help="Provide a name for this experiment. Will be used as the 'schema' name in postgres",
+    )
+    parser.add_argument(
+        "--env-file",
+        default=".env",
+        help=".env file with environment variables to load.",
+    )
+    parser.add_argument(
+        "--postgres-host",
+        default="localhost",
+        help="PostgreSQL host (default: localhost)",
+    )
+    parser.add_argument(
+        "--postgres-port",
+        type=int,
+        default=5432,
+        help="PostgreSQL port (default: 5432)",
+    )
+    parser.add_argument(
+        "--postgres-user",
+        default="postgres",
+        help="PostgreSQL user (default: postgres)",
+    )
+    parser.add_argument(
+        "--postgres-password",
+        default="postgres",
+        help="PostgreSQL password (default: postgres)",
+    )
+    parser.add_argument(
+        "--log-level",
+        default="INFO",
+        choices=["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"],
+        help="Set the logging level (default: INFO)",
     )
 
     args = parser.parse_args()
+
+    # Set logging level based on CLI argument
+    numeric_level = getattr(logging, args.log_level.upper())
+    logging.getLogger().setLevel(numeric_level)
 
     # Convert paths to Path objects
     data_dir = Path(args.data_dir)
 
     # Validate data directory structure
     if not data_dir.exists():
-        print(f"Error: Data directory does not exist: {data_dir}", file=sys.stderr)
+        logger.error(f"Data directory does not exist: {data_dir}")
         sys.exit(1)
 
     businesses_dir = data_dir / "businesses"
     customers_dir = data_dir / "customers"
 
     if not businesses_dir.exists():
-        print(
-            f"Error: Businesses directory does not exist: {businesses_dir}",
-            file=sys.stderr,
+        logger.error(
+            f"Businesses directory does not exist: {businesses_dir}",
         )
         sys.exit(1)
 
     if not customers_dir.exists():
-        print(
-            f"Error: Customers directory does not exist: {customers_dir}",
-            file=sys.stderr,
+        logger.error(
+            f"Customers directory does not exist: {customers_dir}",
         )
         sys.exit(1)
 
-    # Clean up existing database file if requested
-    if os.path.exists(args.db_file):
-        if args.clean_db:
-            os.remove(args.db_file)
-            print(f"Removed existing database file: {args.db_file}")
-        else:
-            print(
-                f"Error: Database file already exists: {args.db_file}.\nOverwrite with --clean-db, or provide different --db-file"
-            )
-            sys.exit(1)
+    # Try load .env
+    did_load_env = load_dotenv(args.env_file)
+    if did_load_env:
+        logger.info(
+            f"Loaded environment variables from env file at path: {args.env_file}"
+        )
+    else:
+        logger.warning(
+            f"No environment variables loaded from env file at path: {args.env_file}"
+        )
 
-    # Setup logging
-    setup_logging()
-
-    print("Marketplace Experiment Runner")
-    print("This experiment will:")
-    print(f"1. Load businesses from: {businesses_dir}")
-    print(f"2. Load customers from: {customers_dir}")
-    print(f"3. Create a SQLite database: {args.db_file}")
-    print("4. Start a marketplace server with simple marketplace protocol")
-    print("5. Register all business and customer agents")
-    print("6. Run the marketplace simulation")
-    print()
+    logger.info(
+        "Marketplace Experiment Runner\n"
+        "This experiment will:\n"
+        f"1. Load businesses from: {businesses_dir}\n"
+        f"2. Load customers from: {customers_dir}\n"
+        f"3. Create a Postgres database schema: {args.experiment_name}\n"
+        "4. Start a marketplace server with simple marketplace protocol\n"
+        "5. Register all business and customer agents\n"
+        "6. Run the marketplace simulation\n"
+    )
 
     # Run the experiment
     asyncio.run(
         run_marketplace_experiment(
             data_dir=data_dir,
-            db_file=args.db_file,
+            experiment_name=args.experiment_name,
             search_algorithm=args.search_algorithm,
         )
     )
