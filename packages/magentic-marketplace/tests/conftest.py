@@ -127,7 +127,6 @@ async def integration_test_setup() -> AsyncGenerator[dict[str, Any]]:
     launcher = MarketplaceLauncher(
         protocol=SimpleMarketplaceProtocol(),
         database_factory=database_factory,
-        db_file_cleanup=db_path,
         port=free_port,
     )
 

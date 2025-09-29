@@ -893,6 +893,7 @@ dependencies = [
     { name = "google-genai" },
     { name = "openai" },
     { name = "pillow" },
+    { name = "python-dotenv" },
     { name = "sqlalchemy" },
     { name = "uvicorn" },
 ]
@@ -928,6 +929,7 @@ requires-dist = [
     { name = "openai", specifier = ">=1.106.1" },
     { name = "pillow", specifier = ">=11.3.0" },
     { name = "pytest-asyncio", marker = "extra == 'rnr'", specifier = ">=1.2.0" },
+    { name = "python-dotenv", specifier = ">=1.1.1" },
     { name = "sentence-transformers", marker = "extra == 'rnr'", specifier = ">=2.2.0" },
     { name = "sqlalchemy", specifier = ">=2.0.43" },
     { name = "torch", marker = "extra == 'rnr'", specifier = ">=2.0.0" },

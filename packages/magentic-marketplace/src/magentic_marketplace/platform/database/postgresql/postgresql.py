@@ -176,9 +176,12 @@ CREATE INDEX IF NOT EXISTS logs_data_gin_idx ON logs USING GIN(data);
 class _BoundedPostgresConnectionMixIn:
     """Base class for PostgreSQL connections with bounded connection pools."""
 
-    def __init__(self, connection_pool: asyncpg.Pool, timeout: float = 5) -> None:
+    def __init__(
+        self, connection_pool: asyncpg.Pool, timeout: float = 5, schema: str = "public"
+    ) -> None:
         self._pool = connection_pool
         self._timeout = timeout
+        self._schema = schema
 
     @asynccontextmanager
     async def connection(self, is_write: bool = False):
@@ -192,6 +195,8 @@ class _BoundedPostgresConnectionMixIn:
         try:
             async with asyncio.timeout(self._timeout):
                 async with self._pool.acquire() as conn:
+                    # Set search path to use the correct schema
+                    await conn.execute(f"SET search_path TO {self._schema}")
                     _connection_metrics["successful_requests"] += 1
                     yield conn
         except TimeoutError as e:
@@ -678,12 +683,18 @@ class PostgreSQLLogController(LogTableController, _BoundedPostgresConnectionMixI
 class PostgreSQLDatabaseController(BaseDatabaseController):
     """PostgreSQL implementation of BaseDatabaseController."""
 
-    def __init__(self, connection_pool: asyncpg.Pool, db_timeout: float = 5):
+    def __init__(
+        self,
+        connection_pool: asyncpg.Pool,
+        db_timeout: float = 5,
+        schema: str = "public",
+    ):
         """Initialize PostgreSQL database controller with connection pool."""
         self._pool = connection_pool
-        self._agents = PostgreSQLAgentController(connection_pool, db_timeout)
-        self._actions = PostgreSQLActionController(connection_pool, db_timeout)
-        self._logs = PostgreSQLLogController(connection_pool, db_timeout)
+        self._schema = schema
+        self._agents = PostgreSQLAgentController(connection_pool, db_timeout, schema)
+        self._actions = PostgreSQLActionController(connection_pool, db_timeout, schema)
+        self._logs = PostgreSQLLogController(connection_pool, db_timeout, schema)
 
         # Start periodic metrics dumping
         _start_metrics_timer("postgresql_connection_pool")
@@ -706,6 +717,8 @@ class PostgreSQLDatabaseController(BaseDatabaseController):
     async def execute(self, command: Any) -> Any:
         """Execute an arbitrary database command."""
         async with self._pool.acquire() as conn:
+            # Set search path to use the correct schema
+            await conn.execute(f"SET search_path TO {self._schema}")
             return await conn.execute(command)
 
     async def initialize(self):
@@ -717,6 +730,24 @@ class PostgreSQLDatabaseController(BaseDatabaseController):
             return
 
         async with self._pool.acquire() as conn:
+            # Check if schema already exists
+            exists = await conn.fetchval(
+                "SELECT EXISTS(SELECT 1 FROM information_schema.schemata WHERE schema_name = $1)",
+                self._schema,
+            )
+
+            if exists:
+                raise ValueError(
+                    f"Schema '{self._schema}' already exists. Please use a different schema name or clean up the existing schema."
+                )
+
+            # Create the new schema
+            await conn.execute(f"CREATE SCHEMA {self._schema}")
+
+            # Set search path to use the schema
+            await conn.execute(f"SET search_path TO {self._schema}")
+
+            # Create tables in the schema
             await conn.execute(CREATE_TABLES_SQL)
 
         _initialized = True
@@ -731,6 +762,7 @@ class PostgreSQLDatabaseController(BaseDatabaseController):
 
 @asynccontextmanager
 async def create_postgresql_database(
+    schema: str,
     host: str = "localhost",
     port: int = 5432,
     database: str = "marketplace",
@@ -743,6 +775,7 @@ async def create_postgresql_database(
     """Create PostgreSQL database controller with connection pooling.
 
     Args:
+        schema: Database schema (required)
         host: PostgreSQL server host
         port: PostgreSQL server port
         database: Database name
@@ -764,7 +797,7 @@ async def create_postgresql_database(
         command_timeout=command_timeout,
     )
 
-    controller = PostgreSQLDatabaseController(pool)
+    controller = PostgreSQLDatabaseController(pool, schema=schema)
     try:
         await controller.initialize()
         yield controller

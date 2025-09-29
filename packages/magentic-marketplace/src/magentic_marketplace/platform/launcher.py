@@ -1,7 +1,6 @@
 """Marketplace launcher for coordinating server, protocol, and agents."""
 
 import asyncio
-import os
 from collections.abc import Callable, Sequence
 from contextlib import AbstractAsyncContextManager, AsyncExitStack
 from types import TracebackType
@@ -44,7 +43,6 @@ class MarketplaceLauncher:
         port: int = 8000,
         title: str = "Marketplace API",
         description: str = "A marketplace for autonomous agents",
-        db_file_cleanup: str | None = None,
         server_log_level: str = "info",
     ):
         """Initialize the marketplace launcher.
@@ -56,7 +54,6 @@ class MarketplaceLauncher:
             port: Server port
             title: API documentation title
             description: API documentation description
-            db_file_cleanup: Optional database file to clean up before starting
             server_log_level: FastAPI server log level (debug, info, warning, error, critical)
 
         """
@@ -66,7 +63,6 @@ class MarketplaceLauncher:
         self.port = port
         self.title = title
         self.description = description
-        self.db_file_cleanup = db_file_cleanup
         self.server_log_level = server_log_level
 
         self.server: MarketplaceServer | None = None
@@ -77,11 +73,6 @@ class MarketplaceLauncher:
 
     async def start_server(self) -> None:
         """Start the marketplace server."""
-        # Clean up database file if specified
-        if self.db_file_cleanup and os.path.exists(self.db_file_cleanup):
-            os.remove(self.db_file_cleanup)
-            print(f"Removed existing database file: {self.db_file_cleanup}")
-
         # Create and configure server
         self.server = MarketplaceServer(
             database_factory=self.database_factory,
