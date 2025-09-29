@@ -47,11 +47,6 @@ _connection_metrics = {
     },
 }
 
-# Cache for database controllers to avoid recreating them
-# Key is the base path for sharded SQLite databases
-_cached_controllers: dict[str, "ShardedSQLiteDatabaseController"] = {}
-_controller_locks: dict[str, asyncio.Lock] = {}
-
 # Global metrics timer
 _metrics_timer = None
 
@@ -1000,7 +995,7 @@ class ShardedSQLiteDatabaseController(BaseDatabaseController):
         db_timeout: float = 5,
         max_read_connections_per_shard: int = 3,
     ):
-        """Get a cached controller for the given base path or create a new one.
+        """Create a new controller for the given base path.
 
         Args:
             base_path: Base path for database files (without extension)
@@ -1011,34 +1006,19 @@ class ShardedSQLiteDatabaseController(BaseDatabaseController):
             max_read_connections_per_shard: Maximum concurrent read connections per shard
 
         Returns:
-            ShardedSQLiteDatabaseController instance (cached or new)
+            ShardedSQLiteDatabaseController instance
 
         """
-        global _cached_controllers, _controller_locks
-
-        # Get or create a lock for this specific base path
-        if base_path not in _controller_locks:
-            _controller_locks[base_path] = asyncio.Lock()
-
-        lock = _controller_locks[base_path]
-
-        async with lock:
-            # Return cached controller if it exists
-            if base_path in _cached_controllers:
-                return _cached_controllers[base_path]
-
-            # Create new controller and cache it
-            controller = ShardedSQLiteDatabaseController(
-                base_path,
-                agent_shards,
-                action_shards,
-                log_shards,
-                db_timeout,
-                max_read_connections_per_shard,
-            )
-            await controller.initialize()
-            _cached_controllers[base_path] = controller
-            return controller
+        controller = ShardedSQLiteDatabaseController(
+            base_path,
+            agent_shards,
+            action_shards,
+            log_shards,
+            db_timeout,
+            max_read_connections_per_shard,
+        )
+        await controller.initialize()
+        return controller
 
     @property
     def agents(self) -> AgentTableController:
@@ -1193,6 +1173,7 @@ async def create_sharded_sqlite_database(
         db_timeout=db_timeout,
         max_read_connections_per_shard=max_read_connections_per_shard,
     )
+    await controller.initialize()
     try:
         yield controller
     finally:

@@ -37,11 +37,6 @@ _connection_metrics = {
     "write_db_errors": 0,
 }
 
-# Cache for database controllers to avoid recreating them
-# Key is the database path for SQLite
-_cached_controllers: dict[str, "SQLiteDatabaseController"] = {}
-_controller_locks: dict[str, asyncio.Lock] = {}
-
 # Global metrics timer
 _metrics_timer = None
 
@@ -777,7 +772,7 @@ class SQLiteDatabaseController(BaseDatabaseController, _BoundedSqliteConnectionM
     async def from_cached(
         db_path: str, db_timeout: float = 5, max_read_connections: int = 3
     ):
-        """Get a cached controller for the given database path or create a new one.
+        """Create a new controller for the given database path.
 
         Args:
             db_path: Path to the SQLite database file
@@ -785,29 +780,12 @@ class SQLiteDatabaseController(BaseDatabaseController, _BoundedSqliteConnectionM
             max_read_connections: Maximum concurrent read connections
 
         Returns:
-            SQLiteDatabaseController instance (cached or new)
+            SQLiteDatabaseController instance
 
         """
-        global _cached_controllers, _controller_locks
-
-        # Get or create a lock for this specific database path
-        if db_path not in _controller_locks:
-            _controller_locks[db_path] = asyncio.Lock()
-
-        lock = _controller_locks[db_path]
-
-        async with lock:
-            # Return cached controller if it exists
-            if db_path in _cached_controllers:
-                return _cached_controllers[db_path]
-
-            # Create new controller and cache it
-            controller = SQLiteDatabaseController(
-                db_path, db_timeout, max_read_connections
-            )
-            await controller.initialize()
-            _cached_controllers[db_path] = controller
-            return controller
+        controller = SQLiteDatabaseController(db_path, db_timeout, max_read_connections)
+        await controller.initialize()
+        return controller
 
     @property
     def agents(self) -> AgentTableController:
@@ -848,6 +826,7 @@ class SQLiteDatabaseController(BaseDatabaseController, _BoundedSqliteConnectionM
 async def create_sqlite_database(database_path: str = "marketplace.db"):
     """Create SQLite database controller."""
     controller = SQLiteDatabaseController(database_path)
+    await controller.initialize()
     try:
         yield controller
     finally:

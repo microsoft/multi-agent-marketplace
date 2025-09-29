@@ -38,11 +38,6 @@ _connection_metrics = {
 # Global metrics timer
 _metrics_timer = None
 
-# Cache for database controllers to avoid recreating them
-# Key is the schema name for PostgreSQL databases
-_cached_controllers: dict[str, "PostgreSQLDatabaseController"] = {}
-_controller_locks: dict[str, asyncio.Lock] = {}
-
 
 def _dump_metrics_to_file(database_url: str):
     """Dump metrics to file."""
@@ -726,7 +721,7 @@ class PostgreSQLDatabaseController(BaseDatabaseController):
         command_timeout: float = 60,
         db_timeout: float = 5,
     ):
-        """Get a cached controller for the given schema or create a new one.
+        """Create a new controller for the given schema.
 
         Args:
             schema: Database schema (required)
@@ -741,38 +736,24 @@ class PostgreSQLDatabaseController(BaseDatabaseController):
             db_timeout: Database timeout in seconds
 
         Returns:
-            PostgreSQLDatabaseController instance (cached or new)
+            PostgreSQLDatabaseController instance
 
         """
-        global _cached_controllers, _controller_locks
+        # Create new connection pool and controller
+        pool = await asyncpg.create_pool(
+            host=host,
+            port=port,
+            database=database,
+            user=user,
+            password=password,
+            min_size=min_size,
+            max_size=max_size,
+            command_timeout=command_timeout,
+        )
 
-        # Get or create a lock for this specific schema
-        if schema not in _controller_locks:
-            _controller_locks[schema] = asyncio.Lock()
-
-        lock = _controller_locks[schema]
-
-        async with lock:
-            # Return cached controller if it exists
-            if schema in _cached_controllers:
-                return _cached_controllers[schema]
-
-            # Create new connection pool and controller
-            pool = await asyncpg.create_pool(
-                host=host,
-                port=port,
-                database=database,
-                user=user,
-                password=password,
-                min_size=min_size,
-                max_size=max_size,
-                command_timeout=command_timeout,
-            )
-
-            controller = PostgreSQLDatabaseController(pool, db_timeout, schema)
-            await controller.initialize()
-            _cached_controllers[schema] = controller
-            return controller
+        controller = PostgreSQLDatabaseController(pool, db_timeout, schema)
+        await controller.initialize()
+        return controller
 
     @property
     def agents(self) -> AgentTableController:
@@ -856,6 +837,7 @@ async def create_postgresql_database(
     )
 
     controller = PostgreSQLDatabaseController(pool, schema=schema)
+    await controller.initialize()
     try:
         yield controller
     finally:
