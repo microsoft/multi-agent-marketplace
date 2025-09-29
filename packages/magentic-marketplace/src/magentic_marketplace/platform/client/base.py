@@ -81,15 +81,8 @@ class RetryConfig:
     backoff_multiplier: float = 2.0
     jitter: bool = True
     jitter_size: float = 0.25
-    retry_on_status: set[int] = field(default_factory=lambda: {429})
-    retry_on_exceptions: set[type] = field(
-        default_factory=lambda: {
-            aiohttp.ClientConnectionError,
-            aiohttp.ServerTimeoutError,
-            aiohttp.ClientResponseError,
-            asyncio.TimeoutError,
-        }
-    )
+    retry_on_status: set[int] = field(default_factory=lambda: {429, 503})
+    retry_on_exceptions: set[type] = field(default_factory=set)
 
 
 class ClientError(Exception):
@@ -217,6 +210,15 @@ class BaseClient:
         last_exception: Exception | None = None
 
         for attempt in range(self.retry_config.max_attempts):
+            if attempt > 0:
+                # Delay before retry
+                delay = self._calculate_delay(attempt)
+                logger.info(
+                    f"Retrying request after {last_exception} error (attempt {attempt + 1}/{self.retry_config.max_attempts}), "
+                    f"waiting {delay:.2f}s"
+                )
+                await asyncio.sleep(delay)
+
             try:
                 async with self._session.request(
                     method, url, json=json_data, headers=request_headers
@@ -259,14 +261,6 @@ class BaseClient:
 
             # Track total retries
             _client_metrics["total_retries"] += 1
-
-            # Delay before retry
-            delay = self._calculate_delay(attempt)
-            logger.info(
-                f"Retrying request after {last_exception} error (attempt {attempt + 1}/{self.retry_config.max_attempts}), "
-                f"waiting {delay:.2f}s"
-            )
-            await asyncio.sleep(delay)
 
         # If we make it here, retries were exceeded.
         _client_metrics["fatal_errors"] += 1
