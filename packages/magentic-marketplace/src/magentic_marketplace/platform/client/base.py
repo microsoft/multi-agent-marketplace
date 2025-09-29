@@ -214,7 +214,7 @@ class BaseClient:
                 # Delay before retry
                 delay = self._calculate_delay(attempt)
                 logger.info(
-                    f"Retrying request after {last_exception} error (attempt {attempt + 1}/{self.retry_config.max_attempts}), "
+                    f"Retrying request due to {last_exception} error (attempt {attempt + 1}/{self.retry_config.max_attempts}), "
                     f"waiting {delay:.2f}s"
                 )
                 await asyncio.sleep(delay)
