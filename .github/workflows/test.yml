@@ -1,5 +1,8 @@
 name: Magentic-Marketplace Tests
 
+permissions:
+  contents: read
+
 on:
   push:
     branches: [ main ]
