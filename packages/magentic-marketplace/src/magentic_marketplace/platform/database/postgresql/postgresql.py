@@ -38,9 +38,10 @@ _connection_metrics = {
 # Global metrics timer
 _metrics_timer = None
 
-# Global initialization flag
-_initialized = False
-_init_lock = threading.Lock()
+# Cache for database controllers to avoid recreating them
+# Key is the schema name for PostgreSQL databases
+_cached_controllers = {}
+_controller_locks = {}
 
 
 def _dump_metrics_to_file(database_url: str):
@@ -712,6 +713,69 @@ class PostgreSQLDatabaseController(BaseDatabaseController):
         # Start periodic metrics dumping
         _start_metrics_timer("postgresql_connection_pool")
 
+        # Initialize the database tables synchronously
+        asyncio.create_task(self.initialize())
+
+    @staticmethod
+    async def from_cached(
+        schema: str,
+        host: str = "localhost",
+        port: int = 5432,
+        database: str = "marketplace",
+        user: str = "postgres",
+        password: str | None = None,
+        min_size: int = 50,
+        max_size: int = 50,
+        command_timeout: float = 60,
+        db_timeout: float = 5,
+    ):
+        """Get a cached controller for the given schema or create a new one.
+
+        Args:
+            schema: Database schema (required)
+            host: PostgreSQL server host
+            port: PostgreSQL server port
+            database: Database name
+            user: Database user
+            password: Database password
+            min_size: Minimum connections in pool
+            max_size: Maximum connections in pool
+            command_timeout: Command timeout in seconds
+            db_timeout: Database timeout in seconds
+
+        Returns:
+            PostgreSQLDatabaseController instance (cached or new)
+
+        """
+        global _cached_controllers, _controller_locks
+
+        # Get or create a lock for this specific schema
+        if schema not in _controller_locks:
+            _controller_locks[schema] = threading.Lock()
+
+        lock = _controller_locks[schema]
+
+        with lock:
+            # Return cached controller if it exists
+            if schema in _cached_controllers:
+                return _cached_controllers[schema]
+
+            # Create new connection pool and controller
+            pool = await asyncpg.create_pool(
+                host=host,
+                port=port,
+                database=database,
+                user=user,
+                password=password,
+                min_size=min_size,
+                max_size=max_size,
+                command_timeout=command_timeout,
+            )
+
+            controller = PostgreSQLDatabaseController(pool, db_timeout, schema)
+            _cached_controllers[schema] = controller
+            return controller
+
     @property
     def agents(self) -> AgentTableController:
         """Get the agent controller."""
@@ -734,33 +798,19 @@ class PostgreSQLDatabaseController(BaseDatabaseController):
 
     async def initialize(self):
         """Initialize the database tables."""
-        global _initialized
+        async with self._pool.acquire() as conn:
+            # Check if schema already exists
+            exists = await conn.fetchval(
+                "SELECT EXISTS(SELECT 1 FROM information_schema.schemata WHERE schema_name = $1)",
+                self._schema,
+            )
 
-        # Use lock to prevent race conditions during initialization
-        with _init_lock:
-            # Skip initialization if already done
-            if _initialized:
-                return
-
-            async with self._pool.acquire() as conn:
-                # Check if schema already exists
-                exists = await conn.fetchval(
-                    "SELECT EXISTS(SELECT 1 FROM information_schema.schemata WHERE schema_name = $1)",
-                    self._schema,
-                )
-
-                if exists:
-                    raise ValueError(
-                        f"Schema '{self._schema}' already exists. Please use a different schema name or clean up the existing schema."
-                    )
-
+            if not exists:
                 # Create the new schema
                 await conn.execute(f"CREATE SCHEMA {self._schema}")
 
-                # Create tables in the schema
-                await conn.execute(create_tables_sql(self._schema))
-
-            _initialized = True
+            # Create tables in the schema (will be skipped if they already exist due to IF NOT EXISTS)
+            await conn.execute(create_tables_sql(self._schema))
 
     def __del__(self):
         """Write metrics to file when object is destroyed."""
@@ -809,7 +859,6 @@ async def create_postgresql_database(
 
     controller = PostgreSQLDatabaseController(pool, schema=schema)
     try:
-        await controller.initialize()
         yield controller
     finally:
         await pool.close()

@@ -114,6 +114,7 @@ async def integration_test_setup() -> AsyncGenerator[dict[str, Any]]:
     # Create temporary database
     with tempfile.NamedTemporaryFile(suffix=".db", delete=False) as temp_file:
         db_path = temp_file.name
+        print(db_path)
 
     def database_factory():
         return create_sqlite_database(db_path)
