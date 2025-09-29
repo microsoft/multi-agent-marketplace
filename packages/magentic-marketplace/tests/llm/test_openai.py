@@ -12,6 +12,8 @@ from magentic_marketplace.marketplace.llm.clients.openai import (
     OpenAIConfig,
 )
 
+pytestmark = pytest.mark.skip_ci
+
 
 class ResponseModel(BaseModel):
     """Test response model for structured output."""

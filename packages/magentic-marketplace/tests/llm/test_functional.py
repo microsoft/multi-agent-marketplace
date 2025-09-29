@@ -8,6 +8,8 @@ from pydantic import BaseModel
 
 from magentic_marketplace.marketplace.llm import functional
 
+pytestmark = pytest.mark.skip_ci
+
 
 class ResponseModel(BaseModel):
     """Test response model for structured output."""
