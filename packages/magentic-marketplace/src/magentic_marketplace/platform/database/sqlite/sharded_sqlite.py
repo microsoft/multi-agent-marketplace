@@ -194,7 +194,7 @@ def _convert_query_to_sql(query: Query) -> str:
 
 def _get_shard_for_id(item_id: str, num_shards: int) -> int:
     """Get shard number for a given ID using hash-based distribution."""
-    hash_value = int(hashlib.md5(item_id.encode()).hexdigest(), 16)
+    hash_value = int(hashlib.sha256(item_id.encode()).hexdigest(), 16)
     return hash_value % num_shards
 
 
