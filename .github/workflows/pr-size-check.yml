@@ -1,0 +1,23 @@
+name: PR Size Check
+
+on:
+  pull_request:
+
+jobs:
+  pr-size-check:
+    runs-on: ubuntu-latest
+    steps:
+     - name: Checkout code
+       uses: actions/checkout@v4
+       with:
+         fetch-depth: 0  # Fetch all history so we can diff against main
+
+     - name: Fetch base branch
+       run: git fetch origin main:refs/remotes/origin/main
+
+     - name: Make script executable
+       run: chmod +x scripts/check_pr_size.sh
+
+     - name: Check PR size
+       run: scripts/check_pr_size.sh origin/main ${{ github.event.pull_request.head.sha }}
+
