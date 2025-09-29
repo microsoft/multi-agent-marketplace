@@ -330,9 +330,10 @@ class _ShardedBoundedSqliteConnectionMixIn:
         shard_results = await asyncio.gather(*tasks, return_exceptions=True)
 
         # Combine results, filtering out exceptions
-        for result in shard_results:
+        for idx, result in enumerate(shard_results):
             if isinstance(result, BaseException):
                 # Log exceptions that occurred during shard execution
+                logger.error(f"Exception occurred during execution on shard {idx}: {result}", exc_info=result)
                 continue
             all_results.extend(result)
 
