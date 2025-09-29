@@ -15,10 +15,10 @@ echo "Checking for emojis in PR changes..."
 # Check for emojis using Python for portability across macOS and Linux
 # This covers common emoji Unicode ranges
 
+TMPFILE=$(mktemp)
 HAS_EMOJIS=0
-FILES_WITH_EMOJIS=""
 
-git diff $BASE_BRANCH...$HEAD_COMMIT --name-only | while read file; do
+while read file; do
   if [ -f "$file" ]; then
     EMOJI_CHECK=$(python3 -c "
 import re
@@ -46,14 +46,16 @@ except Exception:
       echo "ERROR: Emojis found in: $file"
       echo "$EMOJI_CHECK" | head -5
       echo ""
-      HAS_EMOJIS=1
+      echo "1" > "$TMPFILE"
     fi
   fi
-done
+done < <(git diff $BASE_BRANCH...$HEAD_COMMIT --name-only)
 
-if [ "$HAS_EMOJIS" -eq 1 ]; then
+if [ -f "$TMPFILE" ] && [ "$(cat $TMPFILE 2>/dev/null)" = "1" ]; then
+  rm -f "$TMPFILE"
   echo "Please remove all emojis from code, comments, and documentation."
   exit 1
 else
+  rm -f "$TMPFILE"
   echo "PASS: No emojis found in PR changes"
 fi
