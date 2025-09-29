@@ -1,0 +1,33 @@
+id: business_0041
+name: Corn to be Wild
+description: Dive into a fiesta of bold flavors and inventive twists on classic Mexican
+  and Tex-Mex cuisine. From savory staples to sweet treats, every bite is a celebration
+  of taste and tradition.
+rating: 1.0
+progenitor_customer: customer_0014
+menu_features:
+  Black Bean & Sweet Potato Burrito: 17.0
+  Spicy Beef Empanadas: 9.67
+  Grilled Pineapple Skewers: 3.92
+  Roasted Corn Enchiladas: 13.59
+  Honey Chipotle Glazed Wings: 11.06
+  Breakfast Chorizo Tacos: 8.62
+  Pepper Jack Quesadilla: 9.43
+  Shrimp Diablo Tostadas: 15.52
+  Caramel Flan: 5.75
+  Freshly Squeezed Agua Fresca: 5.74
+  Spiced Pumpkin Churros: 7.64
+  Crispy Fish Burrito: 12.58
+  Stuffed Poblano Relleno: 13.76
+amenity_features:
+  Children's Menu: true
+  Large Groups: false
+  Live Music: true
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Onsite Parking: true
+  Happy Hour: false
+  Private Dining: false
+  Outdoor Seating: true
+  Takes Reservations: false
+min_price_factor: 0.67

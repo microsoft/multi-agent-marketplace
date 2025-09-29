@@ -1,0 +1,13 @@
+id: customer_0032
+name: Mohammed Ali
+request: 'I am looking for a business that can provide me with the following menu
+  items: 1 Blueberry Basil Margarita and 1 Maple Cinnamon Sopapillas. Additionally,
+  it is important to me that the business offers the amenities of Free Wifi and Live
+  Music. Please assist me in finding such a place, as I intend to make a purchase.
+  Thank you.'
+menu_features:
+  Blueberry Basil Margarita: 10.49
+  Maple Cinnamon Sopapillas: 6.29
+amenity_features:
+- Free Wifi
+- Live Music

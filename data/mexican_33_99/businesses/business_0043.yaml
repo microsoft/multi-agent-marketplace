@@ -1,0 +1,35 @@
+id: business_0043
+name: Chili Charm
+description: Dive into a vibrant fusion of bold, zesty flavors and fresh, colorful
+  ingredients. At Chili Charm, every dish is crafted to bring a lively spirit and
+  a taste of contemporary Mexican and Tex-Mex cuisine.
+rating: 1.0
+progenitor_customer: customer_0015
+menu_features:
+  Chili Lime Chicken Salad: 9.32
+  Black Bean Corn Salsa: 4.56
+  Roasted Vegetable Fajitas: 8.54
+  Blueberry Basil Agua Fresca: 4.51
+  Warm Churro Chips: 5.68
+  Guava Basil Mojito: 8.74
+  Sizzling Chorizo Skillet: 11.34
+  Green Chile Cheeseburger: 6.73
+  Smoky Chipotle Quesadillas: 13.11
+  Fiesta Veggie Tacos: 9.69
+  Roasted Tomato Salsa: 3.61
+  Passionfruit Mojito: 8.84
+  Zesty Lime Cheesecake: 6.15
+  Creamy Queso Dip: 6.57
+  Ancho Chile Chocolate Cake: 5.23
+amenity_features:
+  Children's Menu: true
+  Large Groups: false
+  Live Music: false
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: true
+min_price_factor: 0.95

@@ -1,0 +1,12 @@
+id: customer_0011
+name: Noah Robinson
+request: 'Please help me find a business that offers the following menu items: 1 Roasted
+  Poblano Rice Bowl, 1 Seafood Ceviche Cocktail, and 1 Habanero Lime Chicken Wings.
+  Additionally, the business must have Outdoor Seating. It''s important that all these
+  criteria are met, as I intend to place an order for these items. Thank you.'
+menu_features:
+  Roasted Poblano Rice Bowl: 10.49
+  Seafood Ceviche Cocktail: 9.99
+  Habanero Lime Chicken Wings: 12.49
+amenity_features:
+- Outdoor Seating

@@ -1,0 +1,35 @@
+id: business_0132
+name: Chili & Sunrise Cantina
+description: Experience a flavorful fusion of bold spices, zesty salsas, and vibrant
+  Tex-Mex favorites in a bright, lively setting. From sunrise-inspired bites to evening
+  classics, discover fresh, creative takes on Mexican cuisine.
+rating: 1.0
+progenitor_customer: customer_0044
+menu_features:
+  Loaded Chorizo Nachos: 7.34
+  Spicy Avocado Breakfast Wrap: 7.99
+  Verde Chicken Chimichanga: 12.74
+  Veracruz Fish Tacos: 11.84
+  Chipotle Pineapple Pork Skewers: 13.61
+  Sizzling Skillet Fajitas: 12.89
+  Pineapple Salsa Quesadilla: 9.51
+  Al Pastor Breakfast Burrito: 14.05
+  Fresh Lime Margarita: 10.0
+  Mango Chipotle Shrimp Quesadilla: 10.46
+  Pumpkin Spice Horchata: 4.16
+  Three-Cheese Empanadas: 11.75
+  Smoky Pulled Pork Sandwich: 6.46
+  Churro Bites with Chocolate Sauce: 3.48
+  Spicy Chicken Tortilla Soup: 6.94
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: true
+min_price_factor: 0.65

@@ -1,0 +1,13 @@
+id: customer_0087
+name: Aria Evans
+request: 'I am looking to place an order with a business that offers the following
+  menu items for purchase: 1 Baja Fish Taco Plate, 1 Chicken Fajita Quesadilla, and
+  1 Crispy Fish Tacos. Additionally, it is important that the business provides onsite
+  parking. Please assist in finding such a business where I can place my order. Thank
+  you.'
+menu_features:
+  Baja Fish Taco Plate: 13.49
+  Chicken Fajita Quesadilla: 12.49
+  Crispy Fish Tacos: 12.99
+amenity_features:
+- Onsite Parking

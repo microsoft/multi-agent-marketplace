@@ -1,0 +1,34 @@
+id: business_0012
+name: Salsa Sizzle
+description: Experience a vibrant twist on Mexican and Tex-Mex favorites, from sizzling
+  specialties to refreshing bites, all bursting with bold flavors and fresh ingredients.
+  Enjoy a lively and welcoming atmosphere perfect for every appetite.
+rating: 1.0
+progenitor_customer: customer_0004
+menu_features:
+  Grilled Shrimp Quesadilla: 7.03
+  Chipotle Lime Chicken Quesadilla: 14.87
+  Black Bean and Sweet Potato Empanadas: 11.38
+  Black Bean Avocado Tostadas: 6.79
+  Pineapple Salsa Nachos: 8.09
+  Sizzling Cactus Wrap: 10.37
+  Creamy Avocado Delight Salad: 13.85
+  Avocado Lime Tostadas: 8.93
+  Beef Barbacoa Nachos: 8.41
+  Shrimp Fajita Platter: 21.37
+  Chocolate Flan: 6.66
+  Mango Habanero Wings: 8.21
+  Crispy Potato Flautas: 5.17
+  Strawberry Jalapeno Mojito: 10.33
+amenity_features:
+  Children's Menu: false
+  Large Groups: true
+  Live Music: false
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Onsite Parking: false
+  Happy Hour: true
+  Private Dining: true
+  Outdoor Seating: true
+  Takes Reservations: false
+min_price_factor: 0.83

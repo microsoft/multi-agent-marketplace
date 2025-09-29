@@ -1,0 +1,37 @@
+id: business_0197
+name: Chili Lime & Co.
+description: Dive into bold, modern Mexican and Tex-Mex flavors with a zesty twist
+  at Chili Lime & Co. Enjoy vibrant small plates, fresh street bites, and creative
+  drinks in a lively, contemporary setting.
+rating: 1.0
+progenitor_customer: customer_0066
+menu_features:
+  Avocado Toastadas: 7.17
+  Roasted Poblano Avocado Smash: 11.4
+  Chili Lime Shrimp Skewers: 10.57
+  Green Chili Pork Burrito: 8.9
+  Red Chili Beef Brisket: 18.73
+  Chipotle Queso Fundido: 8.47
+  Chipotle Honey Wings: 6.45
+  Roasted Vegetable Enchiladas: 14.53
+  Zesty Lime Chicken Tortilla Soup: 6.64
+  Smoky Chipotle Chicken Fajitas: 15.89
+  Classic Street Corn: 3.83
+  Spicy Jalapeno Limeade: 4.68
+  Blueberry Jalapeno Mocktail: 6.22
+  Chile Verde Burrito: 10.98
+  Charred Tomatillo Chicken: 9.55
+  Smoky Chipotle Chicken Wrap: 9.52
+  Dulce de Leche Flan: 1.85
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.92

@@ -1,0 +1,35 @@
+id: business_0021
+name: Grill My Lime
+description: Bold flavors and fresh ingredients come together in every bite and sip
+  at Grill My Lime. Savor inventive Tex-Mex fare and creative cocktails in a vibrant,
+  welcoming atmosphere.
+rating: 1.0
+progenitor_customer: customer_0007
+menu_features:
+  Roasted Corn Enchiladas: 15.67
+  Zesty Lime Ceviche: 10.93
+  Citrus Shrimp Ceviche: 10.92
+  Strawberry Jalapeno Mojito: 9.08
+  Spicy Cucumber Margarita: 10.06
+  Tequila Sunrise Spritzer: 4.56
+  Pulled Pork Tamale Skillet: 14.16
+  Green Chile Cheeseburger: 10.74
+  Passionfruit Paloma: 9.99
+  Spicy Chipotle Quesadilla: 13.55
+  Three-Cheese Empanadas: 11.89
+  Ancho Chile Chicken Wings: 10.05
+  Zesty Lime Chicken Fajitas: 14.41
+  Ancho Chile Rellenos: 10.53
+  Avocado Lime Salad: 11.2
+amenity_features:
+  Takes Reservations: false
+  Private Dining: false
+  Large Groups: false
+  Onsite Parking: true
+  Outdoor Seating: true
+  Children's Menu: true
+  Free Wifi: false
+  Live Music: true
+  Wheelchair Accessible: false
+  Happy Hour: true
+min_price_factor: 0.7

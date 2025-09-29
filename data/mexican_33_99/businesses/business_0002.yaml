@@ -1,0 +1,33 @@
+id: business_0002
+name: Casa Piquante
+description: Casa Piquante blends bold flavors and fresh ingredients to bring you
+  vibrant Mexican and Tex-Mex classics. Enjoy a warm, inviting atmosphere and a menu
+  full of zesty drinks, savory entrees, and delicious desserts.
+rating: 1.0
+progenitor_customer: customer_0001
+menu_features:
+  Jalapeno Watermelon Sangria: 9.77
+  Spicy Pulled Pork Enchiladas: 11.06
+  Tequila Lime Shrimp Cocktail: 10.03
+  Chipotle Chicken Tacos: 15.14
+  Street-Style Carnitas: 13.97
+  Mango Jalapeno Salsa: 4.79
+  Spicy Avocado Toast: 11.79
+  Hatch Chile Queso Dip: 10.08
+  Grilled Vegetable Quesadilla: 9.91
+  Buttermilk Flan: 6.94
+  Caramelized Onion & Cheese Dip: 11.05
+  Hearty Chorizo Omelette: 13.44
+  Spicy Black Bean Burrito: 12.43
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: false
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: false
+  Outdoor Seating: true
+  Takes Reservations: false
+min_price_factor: 0.61

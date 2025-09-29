@@ -1,0 +1,35 @@
+id: business_0043
+name: Cocina Naranja
+description: "Experience vibrant Mexican and Tex-Mex flavors in a warm, inviting setting.\
+  \ From refreshing beverages to sizzling entr\xE9es and indulgent desserts, Cocina\
+  \ Naranja is where classic comfort meets creative flair."
+rating: 1.0
+progenitor_customer: customer_0015
+menu_features:
+  Pineapple Cilantro Cooler: 6.34
+  Mexican Mocha Latte: 5.07
+  Loaded Nacho Platter: 14.31
+  Savory Beef Empanadas: 7.81
+  Creamy Tomatillo Enchiladas: 15.94
+  Avocado Lime Crema Enchiladas: 10.98
+  Crispy Chicken Enchiladas: 15.55
+  Pineapple Jalapeno Salsa: 3.37
+  Chipotle Steak Fajitas: 16.65
+  Mexican Hot Chocolate: 5.45
+  Pulled Pork Tamale Skillet: 13.33
+  Blueberry Agave Salad: 9.63
+  Mexican Vanilla Flan: 7.53
+  Grilled Chicken Fajita Salad: 17.71
+  Chorizo Breakfast Burrito: 11.5
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.81

@@ -1,0 +1,33 @@
+id: business_0110
+name: El Refugio del Sabor
+description: Experience the vibrant flavors of Mexican and Tex-Mex cuisine in a welcoming
+  setting. Enjoy a diverse menu featuring zesty salsas, hearty classics, and delightful
+  desserts crafted with fresh ingredients.
+rating: 1.0
+progenitor_customer: customer_0037
+menu_features:
+  Pineapple Salsa Quesadilla: 11.82
+  Smoky Chipotle Beef Skewers: 16.95
+  Flan de Caramel: 6.68
+  Berry Sangria Punch: 8.97
+  Crispy Chicken Tortilla Soup: 5.71
+  Honey Lime Chicken Fajitas: 11.54
+  Frozen Raspberry Margarita: 7.77
+  Churro Bites with Chocolate Sauce: 4.94
+  Hatch Green Chile Burrito: 12.2
+  Chipotle Chicken Enchiladas: 16.37
+  Honey Lime Chicken Wings: 12.22
+  Ancho Chile Brownies: 4.8
+  Tropical Fruit Agua Fresca: 4.31
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.86

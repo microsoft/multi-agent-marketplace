@@ -1,0 +1,12 @@
+id: customer_0064
+name: Daniel Robinson
+request: 'Could you please find a business that serves the following items: 1 Grilled
+  Pineapple Fajitas, 1 Avocado Lime Breakfast Tostada, and 1 Southwest Caesar Salad?
+  It is essential that the business also offers Outdoor Seating. Once you find such
+  a business, I would like to place an order for these items. Thank you for your assistance.'
+menu_features:
+  Grilled Pineapple Fajitas: 13.99
+  Avocado Lime Breakfast Tostada: 8.49
+  Southwest Caesar Salad: 8.49
+amenity_features:
+- Outdoor Seating

@@ -1,0 +1,10 @@
+id: customer_0098
+name: Emma Zhao
+request: Could you please assist me in finding a business that serves a Chipotle Lime
+  Chicken Salad in a quantity of 1 and offers Happy Hour amenities? It is very important
+  that the business meets both of these criteria as I intend to place an order. Thank
+  you for your help.
+menu_features:
+  Chipotle Lime Chicken Salad: 11.5
+amenity_features:
+- Happy Hour

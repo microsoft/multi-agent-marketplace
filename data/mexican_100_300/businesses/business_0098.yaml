@@ -1,0 +1,38 @@
+id: business_0098
+name: La Plenitud Mexicana
+description: Experience vibrant, contemporary Mexican and Tex-Mex cuisine blending
+  fresh ingredients with classic culinary traditions. Enjoy creative dishes, bold
+  flavors, and a warm, inviting atmosphere at every visit.
+rating: 1.0
+progenitor_customer: customer_0033
+menu_features:
+  Roasted Veggie Tostadas: 10.01
+  Creamy Avocado Soup: 8.33
+  Zesty Avocado Smash: 6.79
+  Caramelized Plantain Burrito: 10.63
+  Mole Sauce Tamale: 11.98
+  Grilled Steak Nachos: 11.36
+  Spiced Beef Empanadas: 8.14
+  Crispy Duck Tacos: 13.05
+  Roasted Poblano Quesadillas: 14.03
+  Mole Chocolate Cake: 10.22
+  Avocado Lime Parfait: 6.61
+  Smoky Black Bean Quesadilla: 10.43
+  Roasted Red Pepper Fajitas: 14.48
+  Chili Lime Grilled Chicken: 16.11
+  Crispy Carnitas Nachos: 9.63
+  Pineapple Pork Tacos: 11.52
+  Chipotle Black Bean Burger: 9.68
+  Avocado Lime Crema Burger: 12.04
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.66

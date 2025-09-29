@@ -1,0 +1,34 @@
+id: business_0027
+name: "El Sol y Ma\xEDz Cocina"
+description: "Experience a vibrant blend of classic Mexican and Tex-Mex flavors in\
+  \ a warm and lively atmosphere. El Sol y Ma\xEDz Cocina serves up creative dishes\
+  \ inspired by fresh ingredients and authentic traditions."
+rating: 1.0
+progenitor_customer: customer_0009
+menu_features:
+  Nachos Supremo Platter: 11.28
+  Creamy Queso Dip: 5.3
+  Blue Agave Paloma: 13.76
+  Spicy Chicken Quesadilla: 12.78
+  Southwestern Breakfast Burrito: 8.72
+  Sizzling Chorizo Skillet: 15.3
+  Zesty Lime Grilled Corn: 5.12
+  Classic Beef Empanadas: 11.63
+  Street Corn Off the Cob: 2.48
+  Tangy Lime Cilantro Tacos: 6.65
+  Cucumber Cilantro Agua Fresca: 4.71
+  Black Bean and Corn Enchiladas: 10.55
+  Cinnamon Sugar Tortilla Chips: 4.45
+  Spinach and Mushroom Enchiladas: 12.32
+amenity_features:
+  Takes Reservations: false
+  Private Dining: false
+  Large Groups: true
+  Onsite Parking: true
+  Outdoor Seating: true
+  Children's Menu: false
+  Free Wifi: false
+  Live Music: false
+  Wheelchair Accessible: false
+  Happy Hour: false
+min_price_factor: 0.85

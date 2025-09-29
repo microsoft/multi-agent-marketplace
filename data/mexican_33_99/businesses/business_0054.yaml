@@ -1,0 +1,35 @@
+id: business_0054
+name: La Estrella Mexicana
+description: Savor vibrant Mexican and Tex-Mex flavors in a warm and welcoming atmosphere,
+  where traditional favorites meet contemporary twists. Enjoy a curated selection
+  of savory bites, fresh salads, and indulgent desserts inspired by the heart of Mexico.
+rating: 1.0
+progenitor_customer: customer_0018
+menu_features:
+  Adobo Spiced Pork Tamales: 9.32
+  Crispy Duck Tacos: 15.35
+  Honey-Lime Cucumber Salad: 5.82
+  Caramelized Onion and Cheese Empanadas: 9.43
+  Fiesta Black Bean Dip: 4.65
+  Chili Lime Street Corn: 2.22
+  Pineapple Salsa Nachos: 10.36
+  Morning Breakfast Burrito: 11.99
+  Red Chili Beef Empanadas: 8.27
+  Coconut Flan: 6.23
+  Pico de Gallo Nachos: 8.16
+  Blackened Fish Tacos: 16.39
+  Crispy Chicken Flautas: 11.84
+  Three-Alarm Chili Con Queso: 12.54
+  Mango Chili Margarita: 7.48
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: true
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Onsite Parking: true
+  Happy Hour: false
+  Private Dining: false
+  Outdoor Seating: false
+  Takes Reservations: true
+min_price_factor: 0.84

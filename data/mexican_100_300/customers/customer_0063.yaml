@@ -1,0 +1,11 @@
+id: customer_0063
+name: Alexander Thompson
+request: 'Could you please find a business that serves the following items: Cheesy
+  Street Corn Bites (1) and Salted Caramel Margarita (1), and also has the Wheelchair
+  Accessible amenity? It is very important that all these criteria are met. Once identified,
+  I would like to place an order for the specified items. Thank you!'
+menu_features:
+  Cheesy Street Corn Bites: 7.99
+  Salted Caramel Margarita: 9.99
+amenity_features:
+- Wheelchair Accessible

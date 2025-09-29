@@ -1,0 +1,37 @@
+id: business_0160
+name: Twist & Tostada
+description: Discover bold Mexican and Tex-Mex favorites, reimagined with vibrant
+  flavors and fresh, modern flair. From melty quesadillas to smoky empanadas and refreshing
+  handmade drinks, every bite is a new adventure.
+rating: 1.0
+progenitor_customer: customer_0054
+menu_features:
+  Chipotle Lime Chicken Quesadilla: 13.37
+  Pepper Jack Quesadilla: 9.75
+  Avocado Salsa Verde: 5.31
+  Mole-Braised Beef Burrito: 13.66
+  Watermelon Mint Agua Fresca: 5.41
+  Smoky Chipotle Beef Empanadas: 12.67
+  Black Bean Fiesta Bowl: 12.39
+  Bacon Wrapped Jalapenos: 9.5
+  Queso Fundido Dip: 8.14
+  Tequila Sunrise Cocktail: 8.84
+  Spinach and Mushroom Empanadas: 9.35
+  Pepper Jack Cornbread Muffins: 3.09
+  Mango Chipotle Chicken: 18.09
+  Beef Barbacoa Empanadas: 10.87
+  Roasted Poblano Burger: 11.84
+  Cherry Jalapeno Slushie: 8.22
+  Classic Lime Margarita: 9.3
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.76

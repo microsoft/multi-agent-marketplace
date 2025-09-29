@@ -1,0 +1,34 @@
+id: business_0270
+name: "El Sabroso Jard\xEDn"
+description: "Discover the vibrant flavors of Mexico and the Southwest in a warm,\
+  \ inviting atmosphere. El Sabroso Jard\xEDn brings fresh ingredients and creative\
+  \ twists to classic Tex-Mex favorites, served with a modern flair."
+rating: 1.0
+progenitor_customer: customer_0090
+menu_features:
+  Honey Lime Shrimp Skewers: 14.05
+  Beef Barbacoa Empanadas: 13.29
+  Horchata Iced Latte: 3.95
+  Shrimp Fajita Fiesta: 16.34
+  Sizzling Veggie Nachos: 15.92
+  Spicy Avocado Toast: 12.55
+  Crispy Carnitas Tostadas: 11.46
+  Mango Tango Tacos: 10.83
+  Grilled Steak Fajita Bowl: 19.12
+  Smoky Chipotle Enchiladas: 14.29
+  Black Bean Veggie Tacos: 9.36
+  Spicy Avocado Breakfast Wrap: 10.42
+  Street Corn Skillet: 3.31
+  Avocado Salsa Verde: 6.13
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.86

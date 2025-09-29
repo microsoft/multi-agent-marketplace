@@ -1,0 +1,36 @@
+id: business_0050
+name: Guac to the Drawing Board
+description: "Where tradition meets creative flair\u2014our kitchen serves up bold\
+  \ Mexican and Tex-Mex flavors with inventive twists. Come hungry for flavor-packed\
+  \ bites, sizzling plates, and a fresh take on classic favorites."
+rating: 1.0
+progenitor_customer: customer_0017
+menu_features:
+  Cheesy Jalapeno Poppers: 9.77
+  Smoky Chipotle Beef Tostadas: 11.66
+  Cactus Salad Bowl: 6.65
+  Chipotle Pineapple Pork Skewers: 11.4
+  Blue Corn Tortilla Soup: 5.68
+  Tres Leches French Toast: 10.62
+  Spice-Rubbed Ribeye: 19.56
+  Street Corn Nachos: 9.99
+  Creamy Avocado Quesadillas: 10.06
+  Crispy Fish Burrito: 6.95
+  Carnitas Street Tacos: 12.74
+  Shrimp Ceviche Cups: 10.96
+  Grilled Avocado Salad: 11.06
+  Avocado Cilantro Lime Salad: 7.37
+  Cactus and Black Bean Tacos: 7.52
+  Pico de Gallo Tostadas: 9.63
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: true
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Onsite Parking: true
+  Happy Hour: false
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.95

@@ -1,0 +1,12 @@
+id: customer_0003
+name: Emma Novak
+request: Could you please assist me in finding a business that offers both 'Chocolate
+  Dipped Flan' and an 'Avocado Cilantro Smoothie' (1 each) and also provides onsite
+  parking and a happy hour? It's important that the business meets all these requirements,
+  as I intend to place an order as specified. Thank you for your help!
+menu_features:
+  Chocolate Dipped Flan: 6.99
+  Avocado Cilantro Smoothie: 5.99
+amenity_features:
+- Onsite Parking
+- Happy Hour

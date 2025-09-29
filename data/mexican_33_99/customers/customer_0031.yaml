@@ -1,0 +1,9 @@
+id: customer_0031
+name: Emma Lee
+request: 'I am looking for a business that offers both a Blueberry Jalapeno Margarita
+  (quantity: 1) and has Private Dining available. Please help me locate such a business,
+  as I intend to place an order. Thank you.'
+menu_features:
+  Blueberry Jalapeno Margarita: 9.99
+amenity_features:
+- Private Dining

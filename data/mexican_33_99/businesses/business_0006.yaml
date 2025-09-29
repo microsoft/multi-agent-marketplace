@@ -1,0 +1,37 @@
+id: business_0006
+name: Holy Frijoles & Amigos
+description: A playful cantina where bold flavors and inventive twists meet tradition.
+  Enjoy a delicious fusion of classic and contemporary Mexican and Tex-Mex bites,
+  crafted for both the curious and the comfort-seekers.
+rating: 1.0
+progenitor_customer: customer_0002
+menu_features:
+  Cinnamon Dulce Nachos: 9.89
+  Three-Cheese Empanadas: 10.43
+  Tamarind Agua Fresca: 4.32
+  Carnitas Salsa Verde Tacos: 13.62
+  Cactus and Black Bean Tacos: 12.02
+  Ancho-Coffee Rubbed Steak: 24.77
+  Matcha Horchata Freeze: 5.29
+  Chipotle Chicken Quesadilla: 8.22
+  Fresh Guacamole Platter: 8.56
+  Green Chili Chicken Soup: 9.16
+  Sunrise Breakfast Burrito: 9.93
+  Spiced Avocado Toast: 8.01
+  Pineapple Habanero Salsa: 6.85
+  Agave Lime Glazed Wings: 11.04
+  Tex-Mex Breakfast Skillet: 11.66
+  Roasted Vegetable Tacos: 12.32
+  Smoky Chipotle Beef Skewers: 14.26
+amenity_features:
+  Children's Menu: false
+  Large Groups: true
+  Live Music: false
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Onsite Parking: true
+  Happy Hour: false
+  Private Dining: false
+  Outdoor Seating: false
+  Takes Reservations: true
+min_price_factor: 0.65

@@ -1,0 +1,34 @@
+id: business_0070
+name: Citrus Ember Kitchen
+description: Experience the vibrant flavors of modern Mexican and Tex-Mex cuisine
+  with a fiery twist. Our kitchen brings together fresh citrus zest, bold spices,
+  and sizzling favorites in a colorful, upbeat setting.
+rating: 1.0
+progenitor_customer: customer_0024
+menu_features:
+  Zesty Lime Chicken Tacos: 13.32
+  Mesquite Grilled Fajitas: 13.02
+  Chipotle Chicken Queso: 8.84
+  Sizzling Beef Quesadillas: 17.06
+  Honey Chipotle Glazed Ribs: 19.64
+  Beer-Battered Avocado Fries: 7.3
+  Chipotle Lime Chicken Wings: 7.67
+  Chorizo and Potato Empanadas: 6.61
+  Avocado Enchiladas: 16.09
+  Spiced Hot Chocolate Churros: 6.4
+  Roasted Vegetable Tacos: 11.97
+  Chipotle Steak Fajitas: 9.66
+  Street Corn Nachos: 13.37
+  Strawberry Lime Agua Fresca: 2.6
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.85

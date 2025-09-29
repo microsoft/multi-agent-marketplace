@@ -1,0 +1,10 @@
+id: customer_0012
+name: Maya Thompson
+request: Could you please find a business that offers a Crispy Flautas Plate and has
+  amenities like Outdoor Seating and Live Music? I would like to place an order for
+  1 Crispy Flautas Plate at such an establishment. Thank you!
+menu_features:
+  Crispy Flautas Plate: 10.99
+amenity_features:
+- Outdoor Seating
+- Live Music

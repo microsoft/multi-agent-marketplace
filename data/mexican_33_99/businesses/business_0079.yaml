@@ -1,0 +1,32 @@
+id: business_0079
+name: El Agave Azul Cantina
+description: Experience vibrant Mexican and Tex-Mex flavors crafted with fresh ingredients
+  in a warm, inviting atmosphere. From savory starters and sizzling mains to creative
+  salads and signature sips, each dish is a celebration of bold, unforgettable taste.
+rating: 1.0
+progenitor_customer: customer_0027
+menu_features:
+  Blue Agave Paloma: 11.69
+  Chorizo Stuffed Mushrooms: 10.82
+  Roasted Vegetable Tostadas: 10.3
+  Chipotle Lime Tacos: 10.95
+  Creamy Avocado Delight Salad: 14.16
+  Green Chile Enchiladas: 15.81
+  Pepper Jack Quesadilla: 14.75
+  Vegetarian Fajita Bowl: 11.18
+  Smoky Chipotle Queso: 5.83
+  Sizzling Steak Fajitas: 16.58
+  Garden Veggie Nachos: 6.95
+  Caramelized Plantain Tostones: 3.77
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: false
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Onsite Parking: true
+  Happy Hour: true
+  Private Dining: false
+  Outdoor Seating: true
+  Takes Reservations: false
+min_price_factor: 0.74

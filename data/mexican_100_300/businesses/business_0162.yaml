@@ -1,0 +1,37 @@
+id: business_0162
+name: "Jalape\xF1o & Ember"
+description: "Jalape\xF1o & Ember brings bold Mexican and Tex-Mex flavors to life\
+  \ with vibrant starters, smoky specialties, and a creative cocktail menu. Gather\
+  \ with friends and discover dishes inspired by savory, zesty, and just the right\
+  \ touch of heat."
+rating: 1.0
+progenitor_customer: customer_0054
+menu_features:
+  Cheesy Jalapeno Poppers: 4.32
+  Smoky Chipotle Beef Empanadas: 7.9
+  Classic Beef Empanadas: 11.3
+  Garlic Lime Shrimp Skewers: 8.88
+  Honey Chipotle Glazed Ribs: 12.31
+  Black Bean Corn Empanadas: 11.21
+  Raspberry Jalapeno Margarita: 6.86
+  Pepper Jack Cornbread Muffins: 4.65
+  Mole Poblano Chicken: 13.24
+  Spicy Lime Shrimp Tostadas: 11.43
+  Loaded Nacho Fries: 6.33
+  Caramelized Plantain Burrito: 13.3
+  Pepper Jack Quesadilla: 8.43
+  Zesty Lime Shrimp Ceviche: 14.22
+  Street Corn Salad: 11.02
+  Ancho Chile Coffee Rubbed Steak: 12.98
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.77

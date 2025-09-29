@@ -1,0 +1,34 @@
+id: business_0127
+name: Grill & Chilli Con Carnival
+description: Step right up for a festive twist on Mexican and Tex-Mex classics, where
+  bold flavors meet colorful creativity. Our vibrant, welcoming eatery celebrates
+  zesty bites, savory skewers, and garden-fresh salsas in every dish.
+rating: 1.0
+progenitor_customer: customer_0043
+menu_features:
+  Caramelized Onion and Goat Cheese Empanadas: 9.21
+  Smoky Chipotle Beef Skewers: 13.56
+  Spicy Chorizo Quesadilla: 12.66
+  Hatch Chile Queso Dip: 7.34
+  Spinach and Mushroom Enchiladas: 5.31
+  Al Pastor Pork Tacos: 8.4
+  Chorizo & Potato Tacos: 10.05
+  Black Bean and Corn Enchiladas: 8.14
+  Passionfruit Agua Fresca: 2.86
+  Avocado Lime Salsa: 5.8
+  Creamy Avocado Delight Salad: 11.73
+  Hatch Green Chile Quesadilla: 3.24
+  Honey Lime Shrimp Skewers: 12.23
+  Savory Beef Empanadas: 8.14
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.64

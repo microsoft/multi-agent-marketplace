@@ -1,0 +1,10 @@
+id: customer_0036
+name: Matthew Anderson
+request: Could you please find a business that serves 1 Fried Plantain Bites and also
+  offers Live Music and Private Dining? These requirements are very important to me.
+  Upon finding such a business, I intend to place an order. Thank you for your assistance.
+menu_features:
+  Fried Plantain Bites: 5.49
+amenity_features:
+- Live Music
+- Private Dining

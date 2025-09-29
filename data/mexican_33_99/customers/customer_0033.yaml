@@ -1,0 +1,10 @@
+id: customer_0033
+name: Jacob Perez
+request: Could you please help me find a business that offers 'Pico de Gallo Shrimp
+  Cocktail' in a setting with Outdoor Seating and Live Music? I would like to place
+  an order for 1 Pico de Gallo Shrimp Cocktail. Thank you!
+menu_features:
+  Pico de Gallo Shrimp Cocktail: 10.49
+amenity_features:
+- Outdoor Seating
+- Live Music

@@ -1,0 +1,37 @@
+id: business_0111
+name: "Viva Piqu\xEDn"
+description: Experience a vibrant fusion of traditional Mexican flavors and modern
+  Tex-Mex flair. Fresh ingredients, bold salsas, and inventive twists make every dish
+  a lively celebration.
+rating: 1.0
+progenitor_customer: customer_0037
+menu_features:
+  Pineapple Salsa Quesadilla: 6.14
+  Honey Lime Chicken Wings: 6.82
+  Honey Lime Grilled Salmon: 8.39
+  Passionfruit Mezcal Mule: 10.89
+  Spiced Chocolate Mole: 2.75
+  Chocolate Dusted Flan: 6.69
+  Carne Asada Breakfast Burrito: 8.72
+  Churro Bites with Chocolate Sauce: 5.0
+  Passion Fruit Margarita: 11.84
+  Loaded Veggie Queso: 3.8
+  Pineapple Salsa Tostadas: 7.8
+  Avocado Lime Chicken Salad: 11.01
+  Spicy Shrimp Ceviche: 12.71
+  Cherry Jalapeno Slushie: 7.22
+  Three-Cheese Elote: 9.78
+  Ancho Chile Beef Burrito: 11.8
+  Adobo-Marinated Pork Carnitas: 10.36
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.61

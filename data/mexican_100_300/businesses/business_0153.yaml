@@ -1,0 +1,38 @@
+id: business_0153
+name: Mesa Viva Mexicana
+description: Experience vibrant Mexican and Tex-Mex flavors in a welcoming, lively
+  atmosphere. Enjoy a creative selection of fresh street-inspired classics and modern
+  favorites, perfect for sharing and savoring.
+rating: 1.0
+progenitor_customer: customer_0051
+menu_features:
+  Roasted Corn and Poblanos: 6.74
+  Avocado Lime Quinoa Salad: 13.48
+  Black Bean and Corn Taquitos: 3.35
+  Savory Beef Empanadas: 10.52
+  Crispy Avocado Rolls: 4.66
+  Street Corn Fritters: 8.63
+  Chipotle Lime Grilled Corn: 3.14
+  Al Pastor Breakfast Burrito: 7.95
+  Black Bean & Cheese Empanadas: 11.71
+  Pulled Pork Tamale Skillet: 14.79
+  Tres Leches Cake: 6.85
+  Fresh Guacamole Platter: 8.2
+  Tequila Sunrise Sangria: 13.92
+  Classic Horchata: 4.64
+  Horchata Ice Cream Scoop: 6.16
+  Smoky Barbacoa Burrito Bowl: 9.67
+  Chipotle Chicken Nachos: 11.37
+  Sweet Plantain Empanadas: 9.74
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.79

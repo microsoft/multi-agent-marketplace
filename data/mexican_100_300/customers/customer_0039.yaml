@@ -1,0 +1,9 @@
+id: customer_0039
+name: Mia Thompson
+request: 'Please find a business that offers a Pork Carnitas Torta (quantity: 1) and
+  has Private Dining amenities. Once found, I would like to place an order for this
+  item immediately. Thank you.'
+menu_features:
+  Pork Carnitas Torta: 10.99
+amenity_features:
+- Private Dining

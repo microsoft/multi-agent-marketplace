@@ -1,0 +1,35 @@
+id: business_0007
+name: Zest & Ember
+description: Experience bold Mexican and Tex-Mex flavors in a lively, modern setting.
+  Zest & Ember serves up a vibrant array of spicy, sweet, and smoky dishes made with
+  fresh, creative ingredients.
+rating: 1.0
+progenitor_customer: customer_0003
+menu_features:
+  Cinnamon Sugar Churros: 4.73
+  Zesty Lime Shrimp Salad: 17.3
+  Beer-Battered Avocado Fries: 8.86
+  Grilled Shrimp Fajitas: 17.13
+  Chili Lime Sweet Potato Fries: 3.72
+  Spicy Black Bean Tostadas: 6.12
+  Mango Chipotle Wings: 15.43
+  Hatch Green Chile Stew: 10.69
+  Chipotle BBQ Carnitas: 14.83
+  Tomatillo Chicken Soup: 9.1
+  Spicy Chicken Tortilla Soup: 7.86
+  Spicy Lime Shrimp Tostadas: 7.85
+  Cinnamon Dulce Nachos: 7.16
+  Choco-Chili Brownie: 8.76
+  Tequila Sunrise Smoothie: 5.27
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: false
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Onsite Parking: false
+  Happy Hour: true
+  Private Dining: true
+  Outdoor Seating: true
+  Takes Reservations: false
+min_price_factor: 0.84

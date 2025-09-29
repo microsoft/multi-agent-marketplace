@@ -1,0 +1,37 @@
+id: business_0003
+name: "El Sol y Saz\xF3n"
+description: "Experience vibrant flavors and warm hospitality at El Sol y Saz\xF3\
+  n, where classic Mexican and Tex-Mex favorites are prepared with fresh ingredients\
+  \ and a modern twist. Enjoy delicious cuisine and festive drinks in a welcoming\
+  \ atmosphere."
+rating: 1.0
+progenitor_customer: customer_0001
+menu_features:
+  Pico de Gallo Shrimp Cocktail: 9.57
+  Horchata Rice Pudding: 3.64
+  Spicy Beef Taco Salad: 13.58
+  Avocado Toastadas: 10.67
+  Red Chili Braised Beef Tacos: 11.26
+  Caramelized Onion & Cheese Quesadilla: 9.65
+  Loaded Nacho Supreme: 11.3
+  Crispy Avocado Egg Rolls: 9.09
+  Avocado Lime Crema Quesadillas: 9.84
+  Ancho Chile Chocolate Cake: 7.8
+  Queso Fundido with Chorizo: 10.59
+  Three Cheese Quesadillas: 6.05
+  Citrus Shrimp Ceviche: 15.73
+  Roasted Corn and Black Bean Salad: 7.1
+  Tequila Sunrise Sangria: 8.34
+  Horchata Milkshake: 5.8
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.8

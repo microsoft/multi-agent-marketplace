@@ -1,0 +1,12 @@
+id: customer_0021
+name: Grace Hall
+request: 'Could you please help find a business that offers the following menu items:
+  Red Chili Beef Empanadas (1), Morning Breakfast Burrito (1), and Mexican Shrimp
+  Cocktail (1), and also has a Children''s Menu? It is important that the business
+  meets all of these criteria as I intend to place an order. Thank you for your assistance.'
+menu_features:
+  Red Chili Beef Empanadas: 9.49
+  Morning Breakfast Burrito: 9.99
+  Mexican Shrimp Cocktail: 12.49
+amenity_features:
+- Children's Menu

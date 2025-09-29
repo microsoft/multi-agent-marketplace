@@ -1,0 +1,37 @@
+id: business_0063
+name: Quesadilla Quarters
+description: Step into a festive spot where bold Tex-Mex flavors and classic Mexican
+  favorites shine. Enjoy a delicious array of zesty quesadillas, hearty tacos, and
+  vibrant salsas crafted with fresh ingredients and authentic flair.
+rating: 1.0
+progenitor_customer: customer_0021
+menu_features:
+  Spicy Bean and Cheese Quesadillas: 11.21
+  Ranchero Breakfast Burrito: 12.96
+  Tangy Pineapple Salsa: 7.23
+  Roasted Poblano Salsa Verde: 4.51
+  Hangover Breakfast Tacos: 10.68
+  Mexican Shrimp Cocktail: 13.72
+  Three-Alarm Chili Con Queso: 10.43
+  Red Chili Beef Empanadas: 7.04
+  Morning Breakfast Burrito: 8.53
+  Chicken Tinga Tostadas: 9.51
+  Crispy Carnitas Tostadas: 6.89
+  Roasted Vegetable Tacos: 9.75
+  Ancho Chile Beef Skewers: 12.56
+  Sweet Corn Tamale Cakes: 9.72
+  Chorizo & Potato Tacos: 6.77
+  Cilantro Lime Grilled Corn: 4.82
+  Roasted Tomato Salsa: 3.31
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: false
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.69

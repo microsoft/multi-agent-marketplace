@@ -1,0 +1,36 @@
+id: business_0030
+name: Cactus & Cielo
+description: Experience a vibrant twist on Mexican and Tex-Mex favorites with bold
+  flavors, colorful ingredients, and creative drinks. Cactus & Cielo brings you a
+  fresh, modern take on classic dishes in a lively and welcoming atmosphere.
+rating: 1.0
+progenitor_customer: customer_0010
+menu_features:
+  Smoky Chipotle Cornbread: 4.86
+  Cactus and Black Bean Tostadas: 9.95
+  Beef Barbacoa Quesadilla: 9.88
+  Crispy Avocado Rolls: 9.72
+  Chipotle Lime Chicken Burrito: 12.96
+  Pumpkin Spice Empanadas: 7.5
+  Black Bean Corn Empanadas: 6.46
+  Black Bean and Corn Tostadas: 7.53
+  Roasted Vegetable Tostadas: 12.95
+  Pineapple Cilantro Refresher: 5.21
+  Coconut Lime Agua Fresca: 3.69
+  Fresh Pineapple Salsa: 7.2
+  Fresh Guacamole Bowl: 4.93
+  Firecracker Shrimp Tacos: 17.18
+  Spicy Chicken Enchilada Bake: 20.05
+  Frozen Raspberry Margarita: 10.02
+amenity_features:
+  Children's Menu: true
+  Large Groups: false
+  Live Music: true
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: true
+  Outdoor Seating: true
+  Takes Reservations: false
+min_price_factor: 0.62

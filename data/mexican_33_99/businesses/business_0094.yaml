@@ -1,0 +1,36 @@
+id: business_0094
+name: Carnitas & Quirk
+description: A playful spin on Mexican and Tex-Mex classics, Carnitas & Quirk invites
+  you to savor bold flavors, unexpected twists, and a dash of whimsy in every bite.
+  From savory wings to sweet sopapillas, each dish brings a creative take on tradition.
+rating: 1.0
+progenitor_customer: customer_0032
+menu_features:
+  Maple Cinnamon Sopapillas: 8.41
+  Honey-Lime Cucumber Salad: 7.73
+  Spicy Avocado Toast: 14.37
+  Chipotle Honey Wings: 7.64
+  Spicy Beef Chimichanga: 18.46
+  Crispy Pork Carnitas: 15.62
+  Crispy Chicken Enchiladas: 15.29
+  Mango Pico de Gallo: 4.68
+  Black Bean Stuffed Peppers: 8.0
+  Passionfruit Agua Fresca: 3.59
+  Ancho Chile Chicken Wings: 13.96
+  Zesty Lime Shrimp Tacos: 13.83
+  Passion Fruit Agua Fresca: 3.32
+  Zesty Grilled Shrimp Skewers: 8.4
+  Chocolate Dipped Flan: 6.61
+  Blueberry Basil Margarita: 9.5
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: true
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Onsite Parking: true
+  Happy Hour: false
+  Private Dining: false
+  Outdoor Seating: false
+  Takes Reservations: true
+min_price_factor: 0.81

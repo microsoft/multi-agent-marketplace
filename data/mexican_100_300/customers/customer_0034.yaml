@@ -1,0 +1,12 @@
+id: customer_0034
+name: Andrew Rodriguez
+request: 'I would like assistance in finding a business where I can place an order
+  for the following items: 1 Matcha Horchata Freeze and 1 Caramelized Onion and Chorizo
+  Empanadas. Additionally, the business must offer a Children''s Menu and take reservations.
+  Once a suitable business is found, I intend to place this order. Thank you.'
+menu_features:
+  Matcha Horchata Freeze: 5.99
+  Caramelized Onion and Chorizo Empanadas: 8.99
+amenity_features:
+- Children's Menu
+- Takes Reservations

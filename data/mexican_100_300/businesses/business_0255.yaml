@@ -1,0 +1,37 @@
+id: business_0255
+name: Crisp & Cacao Cantina
+description: Discover a vibrant fusion of bold Mexican flavors and playful Tex-Mex
+  twists in an inviting, modern setting. From savory bites to sweet, chocolate-infused
+  treats, every dish is crafted to bring a burst of excitement to your table.
+rating: 1.0
+progenitor_customer: customer_0085
+menu_features:
+  Blue Corn Nachos Supreme: 6.87
+  Chipotle Lime Grilled Corn: 3.48
+  Flaky Beef Empanadas: 7.95
+  Honey Chipotle Glazed Wings: 12.86
+  Tropical Pineapple Salsa: 5.34
+  Honey Lime Shrimp Skewers: 6.73
+  Spicy Chocolate Lava Cake: 2.37
+  Honey Lime Grilled Shrimp: 14.13
+  Horchata Almond Cake: 5.26
+  Crispy Avocado Nachos: 7.86
+  Chocolate Dipped Churros: 6.06
+  Spicy Black Bean Burger: 11.82
+  Sizzling Veggie Quesadilla: 11.57
+  Ancho Chili Ribs: 15.14
+  Adobo Grilled Skirt Steak: 15.36
+  Pineapple Salsa Pork Street Tacos: 14.91
+  Habanero Lime Chicken Wings: 13.05
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.92

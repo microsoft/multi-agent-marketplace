@@ -1,0 +1,35 @@
+id: business_0203
+name: Bean & Blaze
+description: Bean & Blaze serves up bold, smoky flavors and fresh ingredients in a
+  vibrant, modern setting. Dive into a menu inspired by classic and contemporary Mexican
+  eats, crafted for flavor lovers and spice seekers alike.
+rating: 1.0
+progenitor_customer: customer_0068
+menu_features:
+  Smoky Black Bean Burrito: 11.1
+  Black Bean Quinoa Bowl: 15.05
+  Cilantro-Lime Shrimp Bowl: 17.19
+  Sweet Lime Agua Fresca: 4.52
+  Chili Lime Chicken Quesadilla: 5.01
+  Roasted Veggie Burrito: 10.25
+  Grilled Steak Fajita Platter: 23.13
+  Mole-Braised Beef Burrito: 10.67
+  Sizzling Beef Enchilada Plate: 12.31
+  Fresh Guacamole Platter: 6.4
+  Frozen Raspberry Margarita: 8.01
+  Roasted Red Pepper and Black Bean Soup: 5.19
+  Choco-Taco Delight: 6.24
+  Chorizo Stuffed Mushrooms: 9.14
+  Red Chili Beef Nachos: 13.12
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.73

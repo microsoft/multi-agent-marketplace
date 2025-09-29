@@ -1,0 +1,34 @@
+id: business_0032
+name: "Pi\xF1ata & Fire"
+description: "Pi\xF1ata & Fire brings bright, bold flavors and inventive twists to\
+  \ classic Mexican and Tex-Mex favorites. Enjoy vibrant street eats, refreshing cocktails,\
+  \ and decadent desserts in a lively, modern setting."
+rating: 1.0
+progenitor_customer: customer_0011
+menu_features:
+  Street Style Beef Tacos: 10.67
+  Chili Verde Pork Burrito: 16.4
+  Buttermilk Flan: 5.36
+  Pineapple Habanero Paloma: 9.28
+  Smoky Black Bean Tacos: 10.26
+  Shrimp and Avocado Salad: 9.74
+  Classic Tamale Plate: 10.28
+  Grilled Pineapple Skewers: 6.99
+  Spicy Pineapple Sangria: 7.53
+  Tequila Sunrise Slushie: 7.83
+  Crispy Shrimp Tostadas: 15.33
+  Ancho Chocolate Cake: 7.58
+  Spicy Beef Nacho Platter: 21.04
+  Mexican Chocolate Tres Leches: 10.39
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.7

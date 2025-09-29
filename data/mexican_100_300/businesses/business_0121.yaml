@@ -1,0 +1,35 @@
+id: business_0121
+name: Fire & Fruta Cantina
+description: A vibrant eatery blending bold Tex-Mex flavors with fresh tropical accents
+  in a modern, welcoming setting. Experience inventive dishes, smoky spices, and bright,
+  refreshing drinks crafted to delight your senses.
+rating: 1.0
+progenitor_customer: customer_0041
+menu_features:
+  Twice-Baked Potato Tex-Mex Style: 5.79
+  Ancho Chili Black Bean Soup: 8.79
+  Chili-Lime Grilled Corn: 3.55
+  Blackened Fish Fajitas: 13.58
+  Saffron Scented Arroz Verde: 4.85
+  Smoky BBQ Pork Tacos: 13.13
+  Chili Lime Chicken Quesadilla: 7.39
+  Spicy Corn and Poblano Soup: 10.81
+  Spicy Black Bean Tostadas: 13.49
+  Mole Chicken Empanadas: 8.53
+  Tequila Sunrise Fajitas: 9.65
+  Cajeta Bread Pudding: 3.61
+  Pineapple Salsa Tostadas: 10.26
+  Tropical Fruit Agua Fresca: 6.2
+  Classic Horchata: 2.07
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.85

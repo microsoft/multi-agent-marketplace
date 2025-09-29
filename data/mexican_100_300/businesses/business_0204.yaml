@@ -1,0 +1,35 @@
+id: business_0204
+name: Sizzle & Sugar
+description: Discover bold Mexican and Tex-Mex flavors with a playful twist on sweet
+  and savory favorites. From satisfying entrees to crave-worthy desserts, every bite
+  brings a fiesta to your table.
+rating: 1.0
+progenitor_customer: customer_0068
+menu_features:
+  Cinnamon Sugar Sopapillas: 5.63
+  Horchata Milkshake: 3.51
+  Chocolate Churro Milkshake: 5.6
+  Crispy Chicken Tortilla Soup: 4.93
+  Smoky Black Bean Salsa: 7.22
+  Honey Chipotle Glazed Ribs: 14.7
+  Blue Agave Margarita: 3.5
+  Mexican Chocolate Mousse: 5.04
+  Zesty Lime Shrimp Salad: 11.5
+  Spicy Bean and Cheese Nachos: 12.36
+  Fresh Guacamole Platter: 6.38
+  Grilled Steak Fajita Platter: 11.86
+  Tropical Pineapple Salsa: 6.73
+  Smoky Black Bean Burrito: 10.69
+  Crispy Fish Taco Duo: 7.92
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.61

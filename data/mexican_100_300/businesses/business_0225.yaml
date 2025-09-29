@@ -1,0 +1,33 @@
+id: business_0225
+name: "El Saz\xF3n del Camino"
+description: A classic destination for bold, smoky flavors and vibrant Mexican-inspired
+  cuisine. Enjoy beloved favorites from sizzling fajitas to hearty enchiladas and
+  zesty salads in a warm, festive setting.
+rating: 1.0
+progenitor_customer: customer_0075
+menu_features:
+  Smoky Beef Enchiladas: 14.06
+  Black Bean Fiesta Bowl: 9.89
+  "Spicy Jalape\xF1o Burger": 11.72
+  Zesty Lime Chicken Fajitas: 10.15
+  Blue Corn Tortilla Soup: 3.49
+  SoCo Street Nachos: 15.03
+  Savory Beef Empanadas: 10.77
+  Caramelized Onion and Cheese Empanadas: 10.11
+  Pineapple Cilantro Cooler: 3.99
+  Grilled Steak Nachos: 16.96
+  Cinnamon Dulce Nachos: 9.87
+  Tostada Salad with Avocado Crema: 7.5
+  Baja Fish Taco Salad: 9.35
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.87

@@ -1,0 +1,38 @@
+id: business_0288
+name: El Sabroso Encanto
+description: Experience the vibrant flavors of Mexico and the Southwest in a welcoming
+  setting. El Sabroso Encanto offers classic and inventive dishes crafted with fresh
+  ingredients and a touch of spice.
+rating: 1.0
+progenitor_customer: customer_0096
+menu_features:
+  Caramelized Onion & Cheese Dip: 8.61
+  Caramelized Onion Quesadilla: 11.22
+  Flan with Caramel Drizzle: 6.2
+  Mango Chipotle Shrimp Quesadilla: 7.89
+  Classic Beef Enchilada Plate: 14.3
+  Black Bean and Corn Tostadas: 5.24
+  Ancho Chicken Quesadilla: 9.22
+  Roasted Corn Esquites: 5.01
+  Cinnamon Spice Flan: 7.63
+  Tequila Sunrise Sangria: 8.72
+  Citrus Cilantro Rice Bowl: 7.64
+  Steak and Pepper Skillet: 15.94
+  Honey Lime Chicken Skewers: 10.64
+  Red Chili Beef Empanadas: 8.53
+  Crispy Avocado Bites: 7.37
+  Pineapple Salsa Pork Burrito: 11.24
+  Avocado Toastadas: 8.5
+  Horchata Cheesecake: 7.62
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.85

@@ -1,0 +1,35 @@
+id: business_0006
+name: Fiesta Flavors
+description: Fiesta Flavors is a vibrant spot serving up a creative blend of Mexican
+  and Tex-Mex cuisine, perfect for breakfast, lunch, or dinner. Enjoy bold combinations,
+  fresh ingredients, and a fun atmosphere with every visit.
+rating: 1.0
+progenitor_customer: customer_0002
+menu_features:
+  Savory Pumpkin Empanadas: 11.46
+  Carne Asada Breakfast Burrito: 11.61
+  Crispy Shrimp Tostadas: 11.14
+  Coconut Mojito: 6.92
+  Chipotle Pineapple Pork Skewers: 11.95
+  Mango Salsa Salmon: 15.08
+  Loaded Nacho Platter: 11.11
+  Spiced Chicken Fajita Bowl: 9.66
+  Beer-Battered Avocado Fries: 7.86
+  Grilled Lime Cilantro Shrimp: 12.1
+  Mango Habanero Wings: 9.68
+  Creamy Avocado Soup: 6.81
+  Agave Nectar Cocktail: 5.65
+  Morning Chorizo Scramble: 16.34
+  Carne Asada Fajitas: 12.9
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.93

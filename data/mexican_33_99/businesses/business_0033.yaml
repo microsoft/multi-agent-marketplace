@@ -1,0 +1,37 @@
+id: business_0033
+name: Habanero & Lime Cantina
+description: Dive into vibrant Mexican and Tex-Mex flavors at Habanero & Lime Cantina,
+  where zesty salsas, bold spices, and refreshing aguas frescas come together in a
+  lively, welcoming atmosphere. Enjoy a menu packed with savory classics and fresh
+  twists on tradition.
+rating: 1.0
+progenitor_customer: customer_0011
+menu_features:
+  Habanero Lime Chicken Wings: 14.82
+  Mango Agua Fresca: 3.72
+  Charred Poblano Quesadillas: 12.09
+  Jalapeno Cheese Dip: 7.48
+  Seafood Ceviche Cocktail: 10.25
+  Hatch Chile Queso Dip: 6.37
+  Roasted Poblano Rice Bowl: 10.37
+  Pineapple Cilantro Salsa: 5.09
+  Carne Asada Bowl: 18.72
+  Horchata Almond Cake: 8.46
+  Chili Lime Chicken Salad: 9.14
+  Seafood Enchilada Verde: 20.91
+  Smoky Black Bean Quesadilla: 10.26
+  Fruity Cucumber Agua Fresca: 3.72
+  Wild Berry Agua Fresca: 3.74
+  Smoky Chipotle Pulled Pork: 16.71
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: false
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Onsite Parking: true
+  Happy Hour: false
+  Private Dining: false
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.69

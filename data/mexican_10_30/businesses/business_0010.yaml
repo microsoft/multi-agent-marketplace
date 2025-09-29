@@ -1,0 +1,34 @@
+id: business_0010
+name: Nacho Bad Flavor
+description: Dive into creative Mexican and Tex-Mex eats where bold flavors meet unexpected
+  twists. Experience a fiesta of smoky, savory, and sweet creations paired with vibrant
+  cocktails.
+rating: 1.0
+progenitor_customer: customer_0004
+menu_features:
+  Pineapple BBQ Pulled Pork Nachos: 7.8
+  Guava Basil Mojito: 9.46
+  Spinach and Mushroom Enchiladas: 9.67
+  Sweet Corn Tamale Pancakes: 10.58
+  Sizzling Chorizo Empanadas: 11.51
+  Tres Leches Flan: 7.11
+  Sizzling Shrimp Fajitas: 20.96
+  Grilled Chicken Fajita Bowl: 7.29
+  Sizzling Beef Enchiladas: 17.95
+  Creamy Avocado Caesar Salad: 6.89
+  Jalapeno Pineapple Margarita: 13.14
+  Shrimp and Avocado Salad: 12.65
+  Blueberry Tequila Smash: 9.66
+  Zesty Lime Grilled Corn: 4.63
+amenity_features:
+  Takes Reservations: false
+  Private Dining: false
+  Large Groups: true
+  Onsite Parking: false
+  Outdoor Seating: true
+  Children's Menu: false
+  Free Wifi: true
+  Live Music: true
+  Wheelchair Accessible: true
+  Happy Hour: false
+min_price_factor: 0.65

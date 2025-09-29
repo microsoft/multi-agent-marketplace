@@ -1,0 +1,34 @@
+id: business_0009
+name: Zest & Sizzle
+description: Experience the vibrant flavors of modern Mexican and Tex-Mex cuisine,
+  brought to life with creative twists and fresh ingredients. From bold tacos to irresistible
+  desserts, every dish is crafted to excite your taste buds.
+rating: 1.0
+progenitor_customer: customer_0003
+menu_features:
+  Breakfast Chorizo Tacos: 7.1
+  Beef Barbacoa Empanadas: 12.17
+  Chocolate Dipped Flan: 5.83
+  Dulce de Leche Flan: 3.71
+  Zesty Shrimp Ceviche: 10.53
+  Al Pastor Pork Tacos: 10.39
+  Blackened Shrimp Fajitas: 19.9
+  Beef Enchilada Platter: 10.96
+  Smoky Lime Guacamole: 11.54
+  Street Style Beef Tacos: 12.39
+  Avocado Cilantro Smoothie: 6.46
+  Sizzling Fajita Salad: 15.05
+  Horchata Iced Coffee: 3.47
+  Peach Habanero Salsa Wings: 16.49
+amenity_features:
+  Takes Reservations: false
+  Private Dining: false
+  Large Groups: false
+  Onsite Parking: false
+  Outdoor Seating: false
+  Children's Menu: false
+  Free Wifi: true
+  Live Music: false
+  Wheelchair Accessible: false
+  Happy Hour: true
+min_price_factor: 0.85

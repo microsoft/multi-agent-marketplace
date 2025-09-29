@@ -1,0 +1,12 @@
+id: customer_0022
+name: Amelia Adams
+request: Could you please assist me in finding a business that offers Lime Cilantro
+  Shrimp Skewers, Black Bean and Corn Enchiladas, and a Spicy Avocado Breakfast Wrap,
+  each in a quantity of 1? It is important that the business takes reservations. Once
+  you find such a place, I would like to place an order. Thank you for your help.
+menu_features:
+  Lime Cilantro Shrimp Skewers: 11.99
+  Black Bean and Corn Enchiladas: 10.99
+  Spicy Avocado Breakfast Wrap: 9.49
+amenity_features:
+- Takes Reservations

@@ -1,0 +1,37 @@
+id: business_0119
+name: Smoky Lime Kitchen
+description: A vibrant spot serving up bold, fresh Mexican and Tex-Mex flavors. Experience
+  sizzling favorites, bright citrus notes, and a fusion of classic and modern dishes
+  in a lively, welcoming atmosphere.
+rating: 1.0
+progenitor_customer: customer_0040
+menu_features:
+  Smoky Chipotle Beef Tostadas: 9.76
+  Mango Avocado Salad: 11.03
+  Chipotle Chicken Tacos: 13.26
+  Honey Lime Shrimp Skewers: 8.24
+  Blood Orange Paloma: 10.53
+  Sizzling Steak Quesadilla: 12.17
+  Pineapple Salsa Quesadilla: 12.75
+  Citrus Marinated Pork Carnitas: 11.78
+  Chocolate Tamal del Cielo: 10.99
+  Sizzling Skillet Fajitas: 12.37
+  Black Bean Quinoa Bowl: 8.52
+  Roasted Poblano Pepper Burrito: 12.48
+  Veracruz Fish Tacos: 15.0
+  Sweet Corn Tamale Cakes: 4.51
+  Chipotle Chicken Enchiladas: 15.55
+  Grilled Lime Chicken Fajitas: 19.1
+  Cheesy Jalapeno Queso: 6.85
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.7

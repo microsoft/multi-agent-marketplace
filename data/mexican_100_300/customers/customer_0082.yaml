@@ -1,0 +1,12 @@
+id: customer_0082
+name: John Lewis
+request: 'Please assist me in locating a business that offers the following menu items:
+  1 Cactus and Black Bean Tacos, 1 Blue Corn Tortilla Chips, and 1 Hibiscus Iced Tea.
+  Additionally, the business must have onsite parking. Once you find such a business,
+  I intend to place this order. Thank you for your help.'
+menu_features:
+  Cactus and Black Bean Tacos: 11.49
+  Blue Corn Tortilla Chips: 4.99
+  Hibiscus Iced Tea: 3.49
+amenity_features:
+- Onsite Parking

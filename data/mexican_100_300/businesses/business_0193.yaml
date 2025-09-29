@@ -1,0 +1,36 @@
+id: business_0193
+name: Casa Esencia Grill
+description: Experience the vibrant spirit of Mexican and Tex-Mex cuisine in a warm,
+  inviting setting. Casa Esencia Grill serves up bold flavors, colorful plates, and
+  refreshing drinks inspired by regional favorites.
+rating: 1.0
+progenitor_customer: customer_0065
+menu_features:
+  Smoky BBQ Brisket Tacos: 12.32
+  Chipotle BBQ Carnitas: 11.11
+  Blue Corn Enchiladas: 7.25
+  Avocado Lime Slaw: 3.74
+  Hatch Green Chile Quesadilla: 11.17
+  Passionfruit Mojito: 10.25
+  Chili Lime Chicken Skewers: 9.22
+  Vegetarian Black Bean Burrito: 10.16
+  Spicy Shrimp Quesadilla: 8.92
+  Stuffed Poblano Pepper Bliss: 5.02
+  Mexican Mocha Latte: 3.5
+  Mole Enchiladas: 12.45
+  Crispy Avocado Tostadas: 13.93
+  Fruity Cucumber Agua Fresca: 5.0
+  Fresh Cactus Salad: 8.59
+  Chipotle Black Bean Burger: 15.31
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.64

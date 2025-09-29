@@ -1,0 +1,10 @@
+id: customer_0030
+name: David Nguyen
+request: 'Could you please find a business that offers the Beef Enchilada Platter
+  (1), and also has the following amenities: Wheelchair Accessible and Free Wifi?
+  I intend to place an order with them promptly. Thank you.'
+menu_features:
+  Beef Enchilada Platter: 13.49
+amenity_features:
+- Wheelchair Accessible
+- Free Wifi

@@ -1,0 +1,34 @@
+id: business_0062
+name: Churro & Cilantro Cantina
+description: Experience a bold fusion of classic and contemporary Mexican and Tex-Mex
+  flavors in a vibrant, welcoming atmosphere. Perfect for sharing bites, lively drinks,
+  and fresh, flavorful dishes bursting with spice and zest.
+rating: 1.0
+progenitor_customer: customer_0021
+menu_features:
+  Churro Bites with Chocolate Dip: 5.91
+  Veggie Enchilada Stack: 6.98
+  Chili Con Queso Dip: 5.24
+  Spiced Hot Chocolate Churros: 7.56
+  Crispy Beef Taquitos: 8.25
+  Ginger-Tequila Paloma: 10.06
+  Honey Chipotle Glazed Wings: 12.53
+  Cactus and Black Bean Frittata: 12.7
+  Honey Lime Chicken Fajitas: 14.19
+  Tangy Lime Cilantro Tacos: 8.68
+  Smoky Barbacoa Burrito Bowl: 18.46
+  Spicy Serrano Margarita: 7.77
+  Tamarind Glazed Pork Ribs: 12.9
+  Mexican Chocolate Cake: 10.79
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.9

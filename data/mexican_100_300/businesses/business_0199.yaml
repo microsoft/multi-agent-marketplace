@@ -1,0 +1,35 @@
+id: business_0199
+name: "Smoky Jalape\xF1o Kitchen"
+description: "Discover bold flavors and modern Mexican eats at Smoky Jalape\xF1o Kitchen,\
+  \ where every dish is a fresh twist on tradition. Enjoy vibrant salsas, zesty cocktails,\
+  \ and sizzling favorites in a lively, contemporary setting."
+rating: 1.0
+progenitor_customer: customer_0067
+menu_features:
+  Red Chili Braised Beef Tacos: 11.01
+  Carne Asada Breakfast Burrito: 6.6
+  Chipotle Lime Shrimp Salad: 14.45
+  Crispy Chicken Enchiladas: 15.72
+  Mango Jalapeno Margarita: 13.39
+  Tropical Pineapple Salsa: 5.8
+  Jalapeno Infused Tequila Sunrise: 9.8
+  Tequila Lime Chicken Wings: 12.36
+  Chili Lime Grilled Salmon: 13.72
+  Smoky Chili-Lime Wings: 13.97
+  Shrimp and Avocado Salad: 8.24
+  Chocolate Churro Milkshake: 3.48
+  Mexican Shrimp Cocktail: 7.86
+  Charred Poblano Quesadillas: 3.29
+  Carne Asada Loaded Nachos: 13.25
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.94

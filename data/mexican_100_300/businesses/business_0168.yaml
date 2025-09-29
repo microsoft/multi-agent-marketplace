@@ -1,0 +1,34 @@
+id: business_0168
+name: Piquant Palate
+description: Experience bold flavors and vibrant combinations at Piquant Palate, where
+  fresh ingredients and creative twists bring the essence of Mexican and Tex-Mex cuisine
+  to every dish. Savor a memorable dining adventure in a modern, welcoming setting.
+rating: 1.0
+progenitor_customer: customer_0056
+menu_features:
+  Zesty Shrimp Fajitas: 18.79
+  Beef Barbacoa Enchiladas: 7.82
+  Spicy Shrimp Quesadilla: 8.83
+  Churro Bites with Chocolate Dip: 5.58
+  Avocado Corn Salsa: 4.28
+  Chili Lime Grilled Chicken: 14.26
+  Spicy Beef Burrito Bowl: 12.15
+  Crispy Avocado Nachos: 16.67
+  Savory Pumpkin Empanadas: 13.08
+  Savory Black Bean Soup: 6.4
+  Fresh Lime Margarita: 4.98
+  Carne Asada Fajitas: 11.58
+  Stuffed Poblano Relleno: 5.75
+  Citrus Cilantro Chicken Salad: 13.89
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.64

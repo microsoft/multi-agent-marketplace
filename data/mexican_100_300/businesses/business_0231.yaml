@@ -1,0 +1,37 @@
+id: business_0231
+name: Asada Yourself
+description: A clever twist on classic Mexican and Tex-Mex fare, where vibrant flavors
+  and bold ingredients steal the show. Come savor fresh twists, sizzling favorites,
+  and sweet finishes in a fun, welcoming setting.
+rating: 1.0
+progenitor_customer: customer_0077
+menu_features:
+  Carne Asada Supreme: 13.81
+  Tomatillo Shrimp Cocktail: 12.29
+  Avocado Lime Grilled Salmon: 14.31
+  Mexican Chocolate Pudding: 6.44
+  Charred Tomatillo Chicken: 15.26
+  Avocado Lime Dip: 7.57
+  Churro Sundae: 8.55
+  Smoky Black Bean Soup: 3.92
+  Mexican Shrimp Cocktail: 11.23
+  Carne Asada Breakfast Burrito: 10.12
+  Three Cheese Chile Relleno: 7.12
+  Blackened Fish Tacos: 10.11
+  Stuffed Poblano Relleno: 17.65
+  Chipotle Queso Fundido: 5.86
+  Fresh Lime and Jalapeno Guacamole: 6.78
+  Sizzling Cactus Wrap: 11.68
+  Mango Habanero Chicken: 17.03
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.74

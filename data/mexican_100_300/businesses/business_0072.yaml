@@ -1,0 +1,32 @@
+id: business_0072
+name: "Grill & Thrill Jalape\xF1o"
+description: Experience a fresh twist on Mexican and Tex-Mex favorites, where bold
+  flavors meet creative drinks and vibrant salads. Perfect for those craving a sizzle
+  of spice and a splash of something special.
+rating: 1.0
+progenitor_customer: customer_0024
+menu_features:
+  Chipotle Chicken Queso: 10.9
+  Mango Habanero Margarita: 8.98
+  Slow-Cooked Barbacoa Enchiladas: 9.82
+  Cactus Salad Bowl: 8.45
+  Horchata Iced Latte: 4.26
+  Hatch Chile Enchiladas: 13.9
+  Avocado Lime Soup: 7.34
+  Flan with Caramel Drizzle: 6.29
+  Chipotle Grilled Chicken Salad: 10.43
+  Spicy Chicken Enchiladas: 17.55
+  Passion Fruit Paloma: 5.35
+  Carne Asada Nachos: 12.3
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.67

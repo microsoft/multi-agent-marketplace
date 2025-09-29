@@ -1,0 +1,14 @@
+id: customer_0095
+name: David Clark
+request: 'Please help me find a business that serves the following menu items: Sizzling
+  Cactus Wrap (1), Spicy Cucumber Margarita (1), and Tequila Sunrise Fajitas (1).
+  It is important that they also have the amenities to accommodate Large Groups and
+  take Reservations. I intend to place an order with them once these requirements
+  are met. Thank you!'
+menu_features:
+  Sizzling Cactus Wrap: 11.99
+  Spicy Cucumber Margarita: 9.49
+  Tequila Sunrise Fajitas: 16.49
+amenity_features:
+- Large Groups
+- Takes Reservations

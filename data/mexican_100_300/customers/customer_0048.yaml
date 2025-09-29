@@ -1,0 +1,12 @@
+id: customer_0048
+name: Amara Liu
+request: Could you please help me find a business that offers both Horchata Almond
+  Cake and Avocado Bacon Breakfast Tacos? I would like to order 1 of each. It is essential
+  that this place also takes reservations and features live music. Once such a business
+  is identified, I intend to place my order. Thank you for your assistance.
+menu_features:
+  Horchata Almond Cake: 5.99
+  Avocado Bacon Breakfast Tacos: 7.49
+amenity_features:
+- Takes Reservations
+- Live Music

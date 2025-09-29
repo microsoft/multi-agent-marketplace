@@ -1,0 +1,11 @@
+id: customer_0062
+name: Benjamin Lee
+request: Could you please assist me in finding a business that offers the Al Pastor
+  Tostada Crunch and the Blackberry Mint Mojito, and also has a Happy Hour? I would
+  like to place an order for one of each menu item once such a business is found.
+  Thank you for your help!
+menu_features:
+  Al Pastor Tostada Crunch: 12.19
+  Blackberry Mint Mojito: 8.49
+amenity_features:
+- Happy Hour

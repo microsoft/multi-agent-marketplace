@@ -1,0 +1,12 @@
+id: customer_0015
+name: Jackson Miller
+request: 'Could you please assist me in finding a business that offers the following
+  menu items for order: 1 Grilled Chicken Fajita Salad and 1 Mexican Vanilla Flan?
+  It is essential that the business also provides Outdoor Seating and Onsite Parking.
+  Once you find such a business, I intend to place an order. Thank you for your assistance.'
+menu_features:
+  Grilled Chicken Fajita Salad: 10.99
+  Mexican Vanilla Flan: 6.49
+amenity_features:
+- Outdoor Seating
+- Onsite Parking

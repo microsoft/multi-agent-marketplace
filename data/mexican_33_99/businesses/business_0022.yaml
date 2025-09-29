@@ -1,0 +1,35 @@
+id: business_0022
+name: Grill and Thrill
+description: Spice up your mealtime with bold flavors and fresh twists on Mexican
+  and Tex-Mex classics, from sizzling skewers to zesty margaritas. At Grill and Thrill,
+  every bite brings a fiesta of taste and a kick of fun.
+rating: 1.0
+progenitor_customer: customer_0008
+menu_features:
+  Garlic Lime Shrimp Skewers: 12.26
+  Habanero Honey Wings: 5.9
+  Avocado Lime Slaw: 4.09
+  Pulled Pork Tamale Plate: 10.46
+  Coconut Mango Rice Pudding: 6.96
+  Black Bean Corn Salsa: 3.16
+  Sizzling Steak Quesadilla: 5.69
+  Southwest Black Bean Quesadilla: 13.01
+  Classic Margarita: 8.28
+  Chili Lime Grilled Salmon: 11.24
+  Zesty Lime Shrimp Skewers: 11.4
+  Spiced Beef Fajita Platter: 11.15
+  Poblano Pepper Relleno: 8.73
+  Mango Cilantro Margarita: 10.77
+  Tender Lime Cilantro Steak Fajitas: 14.14
+amenity_features:
+  Children's Menu: true
+  Large Groups: false
+  Live Music: true
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Onsite Parking: true
+  Happy Hour: false
+  Private Dining: false
+  Outdoor Seating: true
+  Takes Reservations: true
+min_price_factor: 0.88

@@ -1,0 +1,36 @@
+id: business_0028
+name: "Pi\xF1on y Picante"
+description: "Pi\xF1on y Picante brings bold flavors and vibrant spices together in\
+  \ each dish. Enjoy an inventive blend of classic and contemporary Mexican and Tex-Mex\
+  \ favorites in a warm, inviting setting."
+rating: 1.0
+progenitor_customer: customer_0010
+menu_features:
+  Ancho Chile Coffee Rubbed Steak: 16.38
+  Spicy Black Bean Quesadilla: 7.9
+  Al Pastor Pork Tacos: 7.0
+  Caramel Flan: 7.2
+  Spicy Cilantro Shrimp Skewers: 14.63
+  Breakfast Burrito Bowl: 9.27
+  Roasted Veggie Burrito: 13.37
+  Blackberry Mint Mojito: 9.64
+  Oven-Baked Ranchero Nachos: 9.01
+  Habanero Honey Wings: 11.31
+  Jalapeno Infused Tequila Sunrise: 8.44
+  Fiery Jalapeno Queso Fundido: 8.83
+  Queso Fundido with Chorizo: 9.87
+  Garlic Lime Shrimp Skewers: 9.8
+  Jalapeno Pineapple Margarita: 10.78
+  Black Bean Avocado Burrito: 14.42
+amenity_features:
+  Takes Reservations: true
+  Private Dining: true
+  Large Groups: false
+  Onsite Parking: true
+  Outdoor Seating: true
+  Children's Menu: false
+  Free Wifi: false
+  Live Music: true
+  Wheelchair Accessible: true
+  Happy Hour: false
+min_price_factor: 0.8

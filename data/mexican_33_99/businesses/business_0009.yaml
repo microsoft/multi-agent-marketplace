@@ -1,0 +1,35 @@
+id: business_0009
+name: "Sol y Saz\xF3n"
+description: Experience the vibrant flavors of Mexico and the Southwest in a welcoming
+  setting. Our kitchen brings together fresh ingredients, bold spices, and a touch
+  of tropical flair to every dish.
+rating: 1.0
+progenitor_customer: customer_0003
+menu_features:
+  Mango Habanero Glazed Salmon: 23.74
+  Fresh Cactus Salad: 11.51
+  Pineapple Jalapeno Agua Fresca: 4.83
+  Zesty Lime Shrimp Ceviche: 11.39
+  Spicy Grilled Pineapple Margarita: 8.32
+  Spicy Black Bean Tostadas: 14.49
+  House-Made Horchata: 3.15
+  Charro Beans and Rice: 4.21
+  Avocado Lime Chicken Salad: 13.75
+  Hatch Green Chile Burrito: 12.11
+  Zesty Chicken Fajita Bowl: 14.98
+  Spicy Beef Empanadas: 8.13
+  Carne Asada Steak Plate: 13.83
+  Cajeta-filled Sopapillas: 9.93
+  Tequila Sunrise Smoothie: 11.9
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: false
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Onsite Parking: true
+  Happy Hour: true
+  Private Dining: false
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.81

@@ -1,0 +1,35 @@
+id: business_0042
+name: Chipotle & Citrus Social
+description: Experience bold, modern Mexican and Tex-Mex flavors in a vibrant, lively
+  setting. From smoky meats to refreshing cocktails and creative tacos, every dish
+  is crafted to delight your senses.
+rating: 1.0
+progenitor_customer: customer_0014
+menu_features:
+  Pineapple Chipotle Margarita: 9.43
+  Pomegranate Paloma: 9.8
+  Smoky Chipotle Pulled Pork: 17.12
+  Classic Margarita: 7.89
+  Black Bean Veggie Tacos: 8.96
+  Creamy Avocado Caesar Salad: 10.51
+  Breakfast Chorizo Tacos: 10.52
+  Creamy Avocado Smoothie: 3.8
+  Crispy Duck Tacos: 14.05
+  Beef Barbacoa Nachos: 19.12
+  Mole Enchilada Supreme: 11.26
+  Tropical Shrimp Ceviche: 12.05
+  Cheesy Jalapeno Queso: 10.38
+  Tamarind Chipotle Wings: 12.64
+  Honey Lime Grilled Salmon: 16.31
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: true
+min_price_factor: 0.9

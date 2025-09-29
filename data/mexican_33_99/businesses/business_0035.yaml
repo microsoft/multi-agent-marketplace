@@ -1,0 +1,35 @@
+id: business_0035
+name: Queso Far, Queso Good
+description: "Savor bold, comforting flavors with a twist at this vibrant Tex-Mex\
+  \ spot, where creamy dips, zesty entr\xE9es, and sweet treats promise a feast for\
+  \ every craving. Kick back with inventive drinks and enjoy a culinary journey queso\
+  \ far, it\u2019s oh so good!"
+rating: 1.0
+progenitor_customer: customer_0012
+menu_features:
+  Spicy Beef Enchiladas: 14.94
+  Creamy Queso Dip: 7.55
+  Red Chili Pork Tamale: 9.61
+  Blackened Shrimp Quesadilla: 13.49
+  Creamy Avocado Soup: 5.51
+  Maple Cinnamon Sopapillas: 8.57
+  Jalapeno Infused Tequila Sunrise: 7.17
+  Grilled Fish Tostadas: 6.26
+  Spicy Cucumber Margarita: 8.14
+  Chipotle Lime Rice: 3.71
+  Avocado Lime Tostadas: 9.55
+  Smoky Chipotle Beef Empanadas: 11.01
+  Crispy Chicken Flautas: 8.46
+  Sweet Corn Tamale Bites: 4.89
+amenity_features:
+  Children's Menu: true
+  Large Groups: true
+  Live Music: false
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: false
+  Outdoor Seating: true
+  Takes Reservations: true
+min_price_factor: 0.77

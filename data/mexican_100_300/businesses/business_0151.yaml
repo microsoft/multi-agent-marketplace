@@ -1,0 +1,37 @@
+id: business_0151
+name: "Let\u2019s Give \u2018Em Something to Taco \u2018Bout"
+description: Bold flavors and creative Tex-Mex creations come together in a vibrant,
+  laid-back setting. From smoky starters to zesty mains, every dish is crafted to
+  spice up your day.
+rating: 1.0
+progenitor_customer: customer_0051
+menu_features:
+  Tequila Sunrise Chicken Wings: 12.46
+  Black Bean and Corn Taquitos: 6.61
+  Mexican Mocha Latte: 5.8
+  Tostada Salad with Avocado Crema: 9.72
+  Grilled Pineapple Quesadillas: 10.47
+  Sizzling Fajita Platter: 12.65
+  Garlic Lime Shrimp Skewers: 11.27
+  Tequila Lime Shrimp Bowl: 13.95
+  Bacon-Wrapped Jalapeno Dogs: 6.92
+  Zesty Shrimp Ceviche: 10.11
+  Smoky Chipotle Pulled Pork: 11.6
+  Avocado Lime Quinoa Salad: 11.03
+  Fresh Guacamole Platter: 8.47
+  Black Bean Quinoa Bowl: 10.35
+  Pineapple Chipotle Salsa Dip: 7.35
+  Ancho Chile Beef Nachos: 9.93
+  Black Bean & Sweet Potato Burrito: 11.8
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.68

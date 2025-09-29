@@ -1,0 +1,34 @@
+id: business_0235
+name: Let's Get Sizzling
+description: Spice up your day with bold Mexican and Tex-Mex flavors, from sizzling
+  plates to fresh, zesty creations. Come for the street food atmosphere, stay for
+  the creative twists and sweet finishes!
+rating: 1.0
+progenitor_customer: customer_0079
+menu_features:
+  Sizzling Chorizo Empanadas: 11.8
+  Honey Lime Shrimp Skewers: 14.74
+  Street Corn Quesadilla: 7.11
+  Pina Colada Agua Fresca: 1.79
+  Crispy Taquito Sampler: 9.15
+  Chipotle Lime Chicken Quesadilla: 14.83
+  Mole Chocolate Cake: 7.49
+  Ancho Chili Grilled Chicken: 13.21
+  Chipotle Chicken Nachos: 12.57
+  Charro Beans Special: 5.23
+  Sizzling Beef Enchilada Plate: 9.5
+  Red Chili Beef Brisket: 11.88
+  Pineapple Jalapeno Slaw: 3.33
+  Honey-Lime Grilled Corn: 4.28
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.81

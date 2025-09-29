@@ -1,0 +1,31 @@
+id: business_0088
+name: Chili & Chimera
+description: "A vibrant Mexican and Tex-Mex eatery serving up an inventive lineup\
+  \ of bold, smoky, and tangy flavors. Dive into our creative combinations and house-made\
+  \ specialties you won\u2019t find anywhere else."
+rating: 1.0
+progenitor_customer: customer_0030
+menu_features:
+  Chile-Lime Roasted Corn: 6.22
+  Flaky Beef Empanadas: 5.51
+  Smoky Chipotle Burger: 10.63
+  Blue Corn Tortilla Soup: 5.53
+  Poblano Pepper Relleno: 9.2
+  Chipotle Steak Fajitas: 17.98
+  Sweet Plantain Dessert Tostadas: 7.12
+  Cajeta Bread Pudding: 6.26
+  Sweet Lime Agua Fresca: 2.88
+  Chipotle Lime Tacos: 9.96
+  Chili Lime Grilled Salmon: 17.69
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.88

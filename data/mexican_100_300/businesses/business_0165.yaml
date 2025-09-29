@@ -1,0 +1,36 @@
+id: business_0165
+name: Tostada Terrace
+description: Tostada Terrace brings a vibrant twist to classic and contemporary Mexican
+  and Tex-Mex flavors, serving up bold dishes and inventive cocktails in a lively,
+  welcoming space. Indulge in crunchy tostadas, zesty salads, flame-grilled favorites,
+  and unique desserts crafted with fresh ingredients and creative flair.
+rating: 1.0
+progenitor_customer: customer_0055
+menu_features:
+  Blueberry Basil Margarita: 14.23
+  Jalapeno-Lime Cheesecake: 5.46
+  Spicy Pineapple Mezcalita: 17.52
+  Ancho Chile Braised Pork Tostadas: 12.87
+  Spicy Lime Shrimp Tostadas: 15.53
+  Sweet Plantain Empanadas: 7.6
+  Horchata Ice Cream Scoop: 5.69
+  Honey-Lime Cucumber Salad: 6.14
+  Chargrilled Carne Asada: 18.79
+  Mexican Mocha Latte: 4.74
+  Smoky Chipotle Beef Tostadas: 12.61
+  Passion Fruit Mojito Twist: 8.9
+  Vegetarian Black Bean Burrito: 10.84
+  Spiced Beef Empanadas: 7.36
+  Classic Beef Fajitas: 13.48
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.65

@@ -1,0 +1,32 @@
+id: business_0106
+name: "El R\xEDo Picante"
+description: Experience a vibrant journey through bold Mexican and Tex-Mex flavors,
+  where every dish is crafted with fresh ingredients and a touch of spice. Enjoy a
+  lively atmosphere perfect for savoring creative salsas, zesty bites, and refreshing
+  drinks.
+rating: 1.0
+progenitor_customer: customer_0036
+menu_features:
+  Fiery Red Salsa: 4.01
+  Cajun Spiced Fish Tacos: 17.52
+  Blue Agave Paloma: 8.92
+  Crispy Fish Baja Bowl: 11.2
+  Green Chili Pork Burrito: 9.45
+  Chocolate Chipotle Mousse: 7.76
+  Caramelized Onion and Cheese Empanadas: 8.2
+  Mexican Shrimp Cocktail: 14.37
+  Fried Plantain Bites: 4.56
+  Horchata Latte: 4.72
+  Spicy Jalapeno Limeade: 2.42
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: true
+min_price_factor: 0.86

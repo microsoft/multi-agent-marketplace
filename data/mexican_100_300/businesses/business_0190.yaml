@@ -1,0 +1,33 @@
+id: business_0190
+name: "Casa Verde Lim\xF3n"
+description: Delight in the vibrant flavors of Mexico and the Southwest, where fresh
+  ingredients and creative twists come together in every dish. Enjoy a lively, welcoming
+  atmosphere perfect for brunch, lunch, or a casual night out.
+rating: 1.0
+progenitor_customer: customer_0064
+menu_features:
+  Avocado Lime Breakfast Tostada: 7.37
+  Grilled Pineapple Quesadillas: 11.75
+  Chorizo and Potato Empanadas: 9.04
+  Southwest Caesar Salad: 9.04
+  Spicy Chorizo Quesadilla: 7.21
+  Frozen Spicy Watermelon Daiquiri: 8.95
+  Tomatillo Chicken Soup: 6.13
+  Cinnamon Sugar Sopapillas: 4.78
+  Cactus and Black Bean Salad: 8.24
+  Grilled Shrimp and Mango Salad: 10.96
+  Grilled Pineapple Fajitas: 17.24
+  Grilled Vegetable Fajitas: 9.53
+  Smoky Chicken Tortilla Soup: 7.78
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.92

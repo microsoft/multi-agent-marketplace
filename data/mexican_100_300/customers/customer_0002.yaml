@@ -1,0 +1,12 @@
+id: customer_0002
+name: Lucas Hernandez
+request: I am looking for a business that offers Mango Habanero Wings and a Coconut
+  Mojito, both of which I would like to order. Additionally, the business must have
+  Happy Hour and provide Free Wifi. It is important that these requirements are met
+  before placing my order. Could you please help me find such a business? Thank you.
+menu_features:
+  Mango Habanero Wings: 9.25
+  Coconut Mojito: 8.99
+amenity_features:
+- Happy Hour
+- Free Wifi

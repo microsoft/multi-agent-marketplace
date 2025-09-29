@@ -1,0 +1,35 @@
+id: business_0036
+name: Salsa Street
+description: Discover a vibrant celebration of Tex-Mex and Mexican-inspired flavors
+  in a lively, welcoming setting. From savory empanadas to signature salsas, Salsa
+  Street brings the taste of the street market straight to your table.
+rating: 1.0
+progenitor_customer: customer_0012
+menu_features:
+  Three-Cheese Empanadas: 8.87
+  Tres Leches Cake: 2.95
+  Street Corn Off the Cob: 4.27
+  Pineapple Salsa Pork Burrito: 7.45
+  Tropical Salsa Salmon: 24.7
+  Chipotle Chicken Tacos: 3.61
+  Spicy Chicken Enchilada Bake: 9.82
+  Tangy Tomatillo Salsa: 3.99
+  Pork Carnitas Burrito: 16.01
+  Crispy Flautas Plate: 11.95
+  Ancho Chile Braised Pork Tostadas: 9.69
+  Sweet Potato Chorizo Hash: 12.65
+  Pineapple Salsa Pork Sliders: 8.72
+  Chocolate Mole Chicken: 18.21
+  Black Bean Avocado Tostadas: 10.07
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.7

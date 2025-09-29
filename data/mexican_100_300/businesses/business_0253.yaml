@@ -1,0 +1,33 @@
+id: business_0253
+name: Skillet & Cacao
+description: Skillet & Cacao offers a fresh, modern spin on classic Mexican and Tex-Mex
+  favorites, blending savory, smoky, and sweet flavors in every dish. Enjoy vibrant
+  plates and refreshing drinks in a lively, contemporary setting.
+rating: 1.0
+progenitor_customer: customer_0085
+menu_features:
+  Beef Barbacoa Enchiladas: 9.89
+  Horchata Almond Cake: 6.01
+  Carne Asada Skillet: 17.87
+  Spiced Chocolate Mole: 5.32
+  Avocado Corn Salsa: 7.5
+  Crispy Avocado Tostadas: 8.47
+  Spicy Cilantro Shrimp Skewers: 11.94
+  Chipotle Lime Chicken Bowl: 13.15
+  Grilled Lime Chicken Fajitas: 20.59
+  Honey Chipotle Glazed Wings: 9.03
+  Mango Chipotle Chicken: 10.0
+  Cajeta Bread Pudding: 6.92
+  Blueberry Basil Agua Fresca: 4.07
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.62

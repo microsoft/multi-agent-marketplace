@@ -1,0 +1,11 @@
+id: customer_0026
+name: Daniel Kim
+request: Please find a business that offers the Tex-Mex Breakfast Burrito (1) and
+  the Stuffed Poblano Delight (1) on their menu, and that also provides Onsite Parking.
+  It is important that all these criteria are met, as I intend to place an order with
+  them. Thank you.
+menu_features:
+  Tex-Mex Breakfast Burrito: 7.99
+  Stuffed Poblano Delight: 12.49
+amenity_features:
+- Onsite Parking

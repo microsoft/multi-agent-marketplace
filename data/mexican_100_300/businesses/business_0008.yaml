@@ -1,0 +1,35 @@
+id: business_0008
+name: Queso the Day
+description: "Bright, bold, and a little bit spicy\u2014Queso the Day serves up creative\
+  \ Mexican and Tex-Mex bites packed with smoky flavors, melty cheese, and plenty\
+  \ of zing. Come for the mouthwatering eats, stay for the fun twists on classic favorites."
+rating: 1.0
+progenitor_customer: customer_0003
+menu_features:
+  Crispy Chicken Empanadas: 12.07
+  Smoky BBQ Pork Tacos: 14.44
+  Roasted Vegetable Quesadilla: 5.3
+  Flaming Cheese Fundido: 11.44
+  Loaded Nacho Fiesta: 10.21
+  Roasted Poblano Cornbread: 6.92
+  "Mango Jalape\xF1o Fresca": 4.92
+  Pineapple BBQ Pulled Pork Nachos: 14.02
+  Red Chili Beef Brisket: 12.77
+  Agave Lime Glazed Wings: 9.83
+  Sweet Potato Churros: 4.0
+  Cherry Jalapeno Slushie: 6.78
+  Chipotle Lime Chicken Quesadilla: 17.48
+  Hatch Green Chile Quesadilla: 10.2
+  Red Chili Beef Empanadas: 11.03
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.79

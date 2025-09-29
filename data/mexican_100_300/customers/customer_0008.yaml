@@ -1,0 +1,11 @@
+id: customer_0008
+name: Grace Tan
+request: Could you please assist in finding a business that offers 'Chili Con Queso
+  Fundido' (1) and 'Mango Pico de Gallo' (1), as well as has Private Dining amenities?
+  It's important that the business meets all these criteria, as I intend to place
+  an order. Thank you!
+menu_features:
+  Chili Con Queso Fundido: 8.79
+  Mango Pico de Gallo: 5.49
+amenity_features:
+- Private Dining

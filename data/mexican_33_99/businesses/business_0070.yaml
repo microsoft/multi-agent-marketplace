@@ -1,0 +1,37 @@
+id: business_0070
+name: Nacho Libre & Sip
+description: Dive into bold Mexican and Tex-Mex flavors where zesty nachos, vibrant
+  salsas, and refreshing cocktails steal the spotlight. Savor grilled classics, veggie
+  delights, and sweet desserts that celebrate every bite.
+rating: 1.0
+progenitor_customer: customer_0024
+menu_features:
+  Mexican Chocolate Tres Leches: 9.47
+  Pomegranate Pisco Sour: 11.87
+  Pineapple Salsa Nachos: 11.91
+  Fresh Tomato Salsa Nachos: 8.67
+  Carne Asada Supreme: 8.99
+  Raspberry Jalapeno Margarita: 8.79
+  Beef Barbacoa Nachos: 15.85
+  Cilantro Lime Rice: 4.14
+  Spicy Chicken Enchiladas: 10.77
+  Black Bean Avocado Wrap: 6.47
+  Pico de Gallo Salsa: 6.29
+  Pico de Gallo Tostadas: 7.33
+  Black Bean Avocado Burrito: 10.19
+  Mesquite Grilled Fajitas: 7.15
+  Black Bean Veggie Tacos: 10.27
+  Black Bean Corn Salsa: 5.73
+  Herb-Roasted Corn Salad: 5.56
+amenity_features:
+  Children's Menu: true
+  Large Groups: true
+  Live Music: false
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Onsite Parking: false
+  Happy Hour: true
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.92

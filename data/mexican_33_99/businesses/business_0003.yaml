@@ -1,0 +1,37 @@
+id: business_0003
+name: La Plaza Escondida
+description: Experience the vibrant flavors of classic Mexican and Tex-Mex cuisine
+  in a welcoming, rustic setting. Savor fresh, boldly seasoned dishes and drinks thoughtfully
+  crafted to delight every palate.
+rating: 1.0
+progenitor_customer: customer_0001
+menu_features:
+  Horchata Iced Latte: 5.63
+  Sizzling Beef Enchilada Plate: 14.51
+  Hearty Chorizo Omelette: 9.38
+  Chocolate Dipped Flan: 7.11
+  Traditional Horchata Drink: 4.35
+  Spicy Lime Chicken Tacos: 10.72
+  Charred Poblano Quesadillas: 8.77
+  Mexican Hot Chocolate: 3.67
+  Caramelized Onion & Cheese Dip: 7.3
+  Spicy Verde Chicken Tostadas: 6.83
+  Spicy Pulled Pork Enchiladas: 14.24
+  Spicy Tomato Gazpacho: 4.26
+  Three-Cheese Queso Fundido: 6.16
+  Crispy Avocado Fajitas: 15.44
+  Black Bean Corn Fritters: 4.47
+  Spicy Tomatillo Salsa: 2.15
+  Street Corn Salad: 6.41
+amenity_features:
+  Children's Menu: true
+  Large Groups: false
+  Live Music: false
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Onsite Parking: true
+  Happy Hour: false
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.77

@@ -1,0 +1,37 @@
+id: business_0080
+name: Holy Guacamole & Quackers
+description: Dive into a fiesta of bold flavors and fresh twists, where zesty citrus,
+  smoky spices, and adventurous dishes like crispy duck tacos are always on the menu.
+  Experience a lively Tex-Mex escape, complete with sweet and savory delights and
+  handcrafted cocktails.
+rating: 1.0
+progenitor_customer: customer_0027
+menu_features:
+  Avocado Lime Chicken Salad: 10.64
+  Street Corn Nachos: 11.33
+  Zesty Lime Cheesecake: 7.13
+  Poblano & Cream Cheese Quesadilla: 14.32
+  Crispy Duck Tacos: 7.24
+  Chipotle Lime Tacos: 10.38
+  Roasted Poblano Cornbread: 7.69
+  Ancho Chocolate Cake: 10.08
+  Blue Agave Paloma: 11.25
+  Tequila Sunrise Fajitas: 15.46
+  Pepper Jack Cornbread Muffins: 2.97
+  Agave Nectar Cocktail: 8.45
+  Mesquite Grilled Fajitas: 13.77
+  Smoky Chipotle Pulled Pork: 20.04
+  Spicy Chicken Quesadilla: 4.84
+  Chocolate Tamal del Cielo: 6.76
+amenity_features:
+  Children's Menu: true
+  Large Groups: false
+  Live Music: false
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Onsite Parking: true
+  Happy Hour: false
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.76

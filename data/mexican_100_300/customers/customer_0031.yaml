@@ -1,0 +1,8 @@
+id: customer_0031
+name: Priya Kapoor
+request: Could you please help me find and place an order with a business that offers
+  Sweet Corn Tamalitos (1) and has Private Dining available? Thank you!
+menu_features:
+  Sweet Corn Tamalitos: 9.19
+amenity_features:
+- Private Dining

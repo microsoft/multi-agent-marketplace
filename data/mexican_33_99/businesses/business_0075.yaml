@@ -1,0 +1,33 @@
+id: business_0075
+name: Churro to the Skillet
+description: A playful fusion spot serving up bold Tex-Mex flavors and irresistible
+  sweets. From crispy delights to zesty classics, every dish is crafted to spice up
+  your day.
+rating: 1.0
+progenitor_customer: customer_0025
+menu_features:
+  Cinnamon Sugar Churros: 4.76
+  Spicy Ground Beef Empanadas: 8.7
+  Tex-Mex Breakfast Skillet: 5.06
+  Zesty Grilled Shrimp Skewers: 14.19
+  Chili Lime Street Corn: 4.88
+  Fried Plantain Bites: 7.09
+  Veggie Enchilada Stack: 17.72
+  Mango Pico de Gallo: 5.62
+  Chocolate Churro Milkshake: 6.6
+  Crispy Carnitas Tostadas: 9.01
+  Mango Tango Tacos: 10.51
+  Pulled Pork Quesadilla: 11.53
+  Green Chili Chicken Soup: 7.25
+amenity_features:
+  Children's Menu: true
+  Large Groups: false
+  Live Music: false
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: false
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.88

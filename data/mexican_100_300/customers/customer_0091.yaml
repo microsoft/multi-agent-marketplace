@@ -1,0 +1,12 @@
+id: customer_0091
+name: Kevin Lopez
+request: Could you please help me find a business that offers Mango Chipotle BBQ Ribs,
+  Chicken Fajita Quesadilla, and Crispy Avocado Fritters, each in the quantity of
+  one, and also has Happy Hour as one of their amenities? I intend to place an order
+  for these items once such a business is identified. Thank you for your assistance.
+menu_features:
+  Mango Chipotle BBQ Ribs: 15.99
+  Chicken Fajita Quesadilla: 12.49
+  Crispy Avocado Fritters: 8.49
+amenity_features:
+- Happy Hour

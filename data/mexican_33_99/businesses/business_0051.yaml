@@ -1,0 +1,32 @@
+id: business_0051
+name: Urban Cactus Kitchen
+description: Urban Cactus Kitchen brings a fresh twist to classic Mexican and Tex-Mex
+  flavors in a vibrant, contemporary setting. Savor inventive bites and handcrafted
+  drinks inspired by tradition and modern flair.
+rating: 1.0
+progenitor_customer: customer_0017
+menu_features:
+  Mexican Vanilla Flan: 7.07
+  Spicy Chicken Enchiladas: 14.27
+  Grilled Avocado Salad: 8.86
+  Chipotle Chicken Caesar Burrito: 9.72
+  Al Pastor Tostada Crunch: 12.13
+  Cheesy Jalapeno Poppers: 5.86
+  Tex-Mex Breakfast Tacos: 4.48
+  Cilantro-Lime Shrimp Bowl: 4.76
+  Frozen Mango Jalapeno Daiquiri: 9.43
+  Southwest Black Bean Quesadilla: 8.31
+  Loaded Beef Empanadas: 11.4
+  Ancho Chili Black Bean Soup: 4.13
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: true
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Onsite Parking: true
+  Happy Hour: false
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.88

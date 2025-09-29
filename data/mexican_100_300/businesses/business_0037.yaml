@@ -1,0 +1,37 @@
+id: business_0037
+name: "El Fog\xF3n del Campo"
+description: Experience the vibrant flavors of Mexican and Tex-Mex cuisine in a warm,
+  rustic setting. From sizzling grilled specialties to inventive empanadas, our kitchen
+  brings a fresh twist to beloved regional classics.
+rating: 1.0
+progenitor_customer: customer_0013
+menu_features:
+  Caramelized Onion and Goat Cheese Empanadas: 6.62
+  Smoky Chipotle Pulled Pork: 11.0
+  Grilled Vegetable Tamales: 7.36
+  Chili Lime Nachos: 16.84
+  Zesty Breakfast Tostadas: 11.08
+  Bacon Wrapped Jalapenos: 9.04
+  Smoky Chipotle Beef Empanadas: 11.97
+  Hatch Green Chile Quesadilla: 7.83
+  Caramelized Onion and Cheese Empanadas: 11.74
+  Crispy Carnitas Soft Tacos: 10.3
+  Avocado and Tomato Salsa: 8.03
+  Zesty Grilled Shrimp Skewers: 15.32
+  Chorizo Breakfast Skillet: 10.15
+  Zesty Lime Shrimp Skewers: 16.26
+  Classic Street Corn: 5.78
+  Spicy Beef Empanadas: 7.85
+  Ancho Chili Chocolate Cake: 3.03
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.87

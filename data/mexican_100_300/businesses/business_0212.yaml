@@ -1,0 +1,32 @@
+id: business_0212
+name: La Palma Picante
+description: Discover vibrant Mexican and Tex-Mex flavors in a festive, welcoming
+  setting. Enjoy fresh salsas, bold margaritas, savory classics, and creative modern
+  dishes inspired by the heart of Mexico.
+rating: 1.0
+progenitor_customer: customer_0071
+menu_features:
+  Pico de Gallo Fiesta Bowl: 6.53
+  Vegetarian Black Bean Burrito: 13.03
+  Steak and Cheese Chimichanga: 19.88
+  Mango Salsa Salmon: 15.17
+  Frozen Mango Jalapeno Daiquiri: 11.17
+  Pineapple Cilantro Margarita: 7.14
+  Spicy Mango Margarita: 14.82
+  Crispy Cactus Fries: 7.0
+  Smoky Chipotle Black Bean Dip: 6.58
+  Baja Shrimp Ceviche: 17.0
+  Sweet Corn Tamale Pancakes: 7.07
+  Mole Enchiladas: 13.32
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.72

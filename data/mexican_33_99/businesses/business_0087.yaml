@@ -1,0 +1,34 @@
+id: business_0087
+name: Tierra & Toppings
+description: Savor vibrant Mexican and Tex-Mex classics with a fresh, creative twist.
+  Enjoy bold flavors, colorful salsas, and mouthwatering specialties in a warm, welcoming
+  setting.
+rating: 1.0
+progenitor_customer: customer_0029
+menu_features:
+  Chorizo Sweet Potato Tacos: 13.88
+  Crispy Duck Tacos: 10.06
+  Roasted Poblano Pepper Burrito: 13.38
+  Roasted Vegetable Quesadilla: 10.32
+  Texas BBQ Pulled Pork Nachos: 17.28
+  Roasted Corn Black Bean Salsa: 4.73
+  Coconut Flan: 6.8
+  Strawberry Lime Agua Fresca: 4.81
+  Grilled Vegetable Fajitas: 13.36
+  Pineapple Salsa Nachos: 12.9
+  Fresh Baked Sopapillas: 4.9
+  Passionfruit Agua Fresca: 3.34
+  Adobo Chicken Tacos: 13.49
+  Savory Beef Empanadas: 14.46
+amenity_features:
+  Children's Menu: false
+  Large Groups: true
+  Live Music: false
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: false
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.71

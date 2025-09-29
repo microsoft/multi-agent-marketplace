@@ -1,0 +1,13 @@
+id: customer_0066
+name: Jacob Rodriguez
+request: 'Could you please help me place an order at a business that serves the following
+  menu items: 1 Chipotle Queso Fundido, 1 Smoky Chipotle Chicken Wrap, and 1 Charred
+  Tomatillo Chicken? It''s important that the business also has Outdoor Seating available.
+  I intend to make a purchase once a suitable business is found. Thank you for your
+  assistance!'
+menu_features:
+  Chipotle Queso Fundido: 6.99
+  Smoky Chipotle Chicken Wrap: 10.49
+  Charred Tomatillo Chicken: 14.49
+amenity_features:
+- Outdoor Seating

@@ -1,0 +1,34 @@
+id: business_0189
+name: Taco Mango Unchained
+description: Get ready to unleash your taste buds with a bold fusion of sweet, spicy,
+  and savory Tex-Mex classics. From zesty tacos to crave-worthy desserts, our menu
+  celebrates flavor without limits.
+rating: 1.0
+progenitor_customer: customer_0063
+menu_features:
+  Mango Tango Tacos: 9.01
+  Crispy Chicken Enchiladas: 14.46
+  Chipotle Lime Chicken Quesadilla: 14.28
+  Cheesy Street Corn Bites: 9.04
+  Grilled Shrimp and Mango Salad: 13.71
+  Cherry Jalapeno Slushie: 9.56
+  Spicy Chocolate Mousse: 7.37
+  Zesty Lime Grilled Corn: 3.24
+  Hatch Chile Queso Dip: 8.09
+  Salted Caramel Margarita: 11.48
+  Chocolate Dipped Sopapillas: 5.67
+  Wild Berry Agua Fresca: 3.91
+  Sopa de Tortilla: 7.76
+  Fiery Jalapeno Queso Fundido: 4.95
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.75

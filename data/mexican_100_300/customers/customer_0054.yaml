@@ -1,0 +1,13 @@
+id: customer_0054
+name: Isabella Chen
+request: 'Could you please help find a business that offers the exact menu items I
+  need: 1 Pepper Jack Cornbread Muffin, 1 Smoky Chipotle Beef Empanada, and 1 Pepper
+  Jack Quesadilla? It is also important that the business has Outdoor Seating. Upon
+  finding such a business, I intend to place an order for these items. Thank you for
+  your assistance.'
+menu_features:
+  Pepper Jack Cornbread Muffins: 3.99
+  Smoky Chipotle Beef Empanadas: 10.49
+  Pepper Jack Quesadilla: 9.99
+amenity_features:
+- Outdoor Seating

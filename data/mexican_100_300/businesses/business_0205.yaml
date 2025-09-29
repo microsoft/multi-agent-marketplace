@@ -1,0 +1,36 @@
+id: business_0205
+name: Salsa Verde & Sunbeams
+description: Dive into a fresh breeze of bold, sunny flavors where zesty salsas, vibrant
+  salads, and tropical twists bring each plate to life. Celebrate the tastes of Mexico
+  and the borderlands with a colorful, contemporary touch.
+rating: 1.0
+progenitor_customer: customer_0069
+menu_features:
+  Baja Fish Taco Salad: 11.49
+  Vegetarian Stuffed Bell Peppers: 9.97
+  Pineapple Agua Fresca: 2.61
+  Fresh Pineapple Salsa: 4.45
+  Avocado Cilantro Salad: 12.19
+  Chipotle Lime Chicken Quesadilla: 8.61
+  Mango Chili Sorbet: 6.52
+  Breakfast Chilaquiles: 7.39
+  Chipotle Lime Tacos: 14.12
+  Adobo Spiced Pork Tamales: 12.91
+  Grilled Vegetable Tamales: 11.68
+  Avocado Lime Grilled Shrimp: 16.17
+  Avocado Corn Salsa: 5.43
+  Tequila Sunrise Cocktail: 10.41
+  Avocado Lime Salad: 9.33
+  Roasted Corn Black Bean Salsa: 3.98
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.6

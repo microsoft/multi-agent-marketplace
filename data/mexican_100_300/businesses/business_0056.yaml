@@ -1,0 +1,37 @@
+id: business_0056
+name: Pueblo y Paloma
+description: Experience vibrant Mexican and Tex-Mex flavors in a warm, welcoming setting.
+  Enjoy fresh street-inspired dishes, refreshing beverages, and classic favorites
+  with a modern twist.
+rating: 1.0
+progenitor_customer: customer_0019
+menu_features:
+  Hibiscus Iced Tea: 4.53
+  Tequila Lime Grilled Steak: 14.51
+  Avocado Cilantro Lime Salad: 12.27
+  Black Bean and Quinoa Tacos: 10.14
+  "Spicy Jalape\xF1o Burger": 11.8
+  Blood Orange Paloma: 7.14
+  Cactus and Black Bean Tacos: 12.75
+  Chipotle Lime Street Tacos: 6.8
+  Guacamole and Salsa Sampler: 12.71
+  Grilled Chipotle Skewers: 13.82
+  Classic Mexican Street Tacos: 14.88
+  Zesty Lime Fish Tacos: 11.09
+  Chocolate Mole Chicken: 13.84
+  Honey Lime Chicken Fajitas: 19.04
+  Passionfruit Paloma: 9.45
+  Coconut Rice Pudding: 6.78
+  Verde Chicken Chimichanga: 6.4
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.87

@@ -1,0 +1,36 @@
+id: business_0115
+name: Sabores de la Calle Real
+description: Experience vibrant Mexican and Tex-Mex cuisine with bold flavors and
+  time-honored recipes. From sizzling meats to spicy salsas and irresistible desserts,
+  every dish celebrates the spirit of traditional street fare with a warm, welcoming
+  ambiance.
+rating: 1.0
+progenitor_customer: customer_0039
+menu_features:
+  Pork Carnitas Torta: 7.95
+  Mole-Braised Beef Burrito: 13.52
+  Hatch Green Chile Burrito: 15.29
+  Honey Chipotle Ribs: 9.55
+  Carne Asada Skillet: 14.89
+  Ancho Chili Braised Beef: 17.42
+  Spice-Rubbed Ribeye: 19.87
+  Spicy Black Bean Taquitos: 9.73
+  "Flan Caraibe\xF1o": 8.05
+  Carnitas Enchiladas Verde: 15.01
+  Smoky Chipotle Salsa: 3.95
+  Poblano Corn Chowder: 5.99
+  Chipotle Pineapple Pork Skewers: 17.64
+  Chili Lime Nachos: 9.79
+  Chocolate Dipped Churros: 7.07
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: true
+min_price_factor: 0.75

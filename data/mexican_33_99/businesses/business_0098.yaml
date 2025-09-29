@@ -1,0 +1,33 @@
+id: business_0098
+name: Pun in the Sun Cantina
+description: Dive into a fiesta of fresh flavors and bold twists at Pun in the Sun
+  Cantina, where classic Mexican and Tex-Mex favorites meet a playful, sunshine-inspired
+  culinary adventure. Enjoy a burst of color and zest with every bite in our warm,
+  welcoming atmosphere.
+rating: 1.0
+progenitor_customer: customer_0033
+menu_features:
+  Roasted Red Pepper Queso: 5.91
+  Crispy Chicken Tortilla Soup: 5.29
+  Pineapple BBQ Pulled Pork Nachos: 11.41
+  Sweet and Spicy Jalapeno Relish: 2.13
+  Mango Tango Tacos: 14.53
+  Crispy Fish Burrito: 12.45
+  Blue Corn Nachos Supreme: 8.61
+  Chipotle Lime Chicken Burrito: 11.03
+  Chipotle Black Bean Burger: 11.85
+  Cheesy Jalapeno Queso: 11.4
+  Cactus Citrus Salad: 8.59
+  Pico de Gallo Shrimp Cocktail: 14.44
+amenity_features:
+  Children's Menu: false
+  Large Groups: true
+  Live Music: true
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Onsite Parking: false
+  Happy Hour: true
+  Private Dining: false
+  Outdoor Seating: true
+  Takes Reservations: false
+min_price_factor: 0.68

@@ -1,0 +1,37 @@
+id: business_0280
+name: Sol y Sabores Grill
+description: Experience the vibrant spirit of Mexican and Tex-Mex cuisine with a fresh
+  twist. Enjoy bold, sun-kissed flavors and creative cocktails in a lively, welcoming
+  atmosphere.
+rating: 1.0
+progenitor_customer: customer_0094
+menu_features:
+  Mango Jalapeno Salsa: 4.38
+  Mango Jalapeno Margarita: 9.11
+  Spicy Chicken Fajita Salad: 11.25
+  Chocolate Dipped Sopapillas: 7.87
+  Cheesy Street Corn Bites: 11.53
+  Pineapple Cilantro Refresher: 1.43
+  Street Corn Fritters: 6.94
+  Sunrise Breakfast Burrito: 9.27
+  Chili Verde Pork Burrito: 14.98
+  Smoky Black Bean Salsa: 5.75
+  Spicy Chicken Tortilla Soup: 7.72
+  Smokey Mezcal Paloma: 7.47
+  Southwest Chicken Enchiladas: 10.3
+  Cactus Cooler Margarita: 7.27
+  Roasted Veggie Tostadas: 15.0
+  Chipotle Lime Rice: 3.93
+  Veracruz Fish Tacos: 12.27
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: true
+  Private Dining: true
+min_price_factor: 0.92

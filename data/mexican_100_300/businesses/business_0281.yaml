@@ -1,0 +1,32 @@
+id: business_0281
+name: Holy Guac & Ember
+description: An inviting spot where bold Tex-Mex flavors meet classic Mexican favorites.
+  Enjoy a sizzling selection of creative bites, smoky cocktails, and sweet treats,
+  all crafted with vibrant, fresh ingredients.
+rating: 1.0
+progenitor_customer: customer_0094
+menu_features:
+  Crispy Avocado Tostadas: 6.71
+  Spicy Beef Empanadas: 11.27
+  Smokey Mezcal Paloma: 14.49
+  Chocolate Dipped Churros: 8.09
+  Cheesy Street Corn Bites: 8.83
+  Picadillo Empanadas: 5.83
+  "Spicy Jalape\xF1o Burger": 9.55
+  Sizzling Veggie Quesadilla: 11.52
+  Grilled Elote Corn: 4.85
+  Texas BBQ Brisket Tacos: 14.05
+  Smoky Beef Enchiladas: 16.66
+  Avocado Lime Rice Bowl: 8.71
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.6

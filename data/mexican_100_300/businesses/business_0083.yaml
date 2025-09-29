@@ -1,0 +1,36 @@
+id: business_0083
+name: Ember & Elote
+description: Experience a fresh twist on Mexican and Tex-Mex classics in a vibrant,
+  modern setting. From flame-grilled favorites to bold flavors, Ember & Elote brings
+  lively taste and colorful dishes to every meal.
+rating: 1.0
+progenitor_customer: customer_0028
+menu_features:
+  Smoky Barbacoa Burrito Bowl: 8.78
+  Horchata Latte: 4.35
+  Grilled Elote Corn: 3.9
+  Roasted Red Pepper Queso: 7.98
+  Chipotle Ranch Chicken Sandwich: 10.98
+  Chorizo and Potato Empanadas: 8.71
+  Tex-Mex Breakfast Skillet: 9.78
+  Mango Habanero Salsa: 5.83
+  Plantain and Black Bean Empanadas: 8.54
+  Beef Barbacoa Nachos: 14.91
+  Mexican Shrimp Cocktail: 9.05
+  Loaded Nacho Supremo: 13.3
+  Twice-Baked Potato Tex-Mex Style: 4.18
+  Blackened Shrimp Quesadilla: 16.08
+  Spiced Pumpkin Churros: 5.1
+  Shrimp Fajita Fiesta: 8.65
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.83

@@ -1,0 +1,13 @@
+id: customer_0045
+name: Fatima Khan
+request: 'Could you please find a business that serves the following menu items in
+  the specified quantities: 1 Smokey Mezcal Paloma and 1 Grilled Pineapple Skewers?
+  It is essential that the business also offers a Children''s Menu and Free Wifi.
+  Upon identifying such a business, I intend to place an order for those items. Thank
+  you for your assistance.'
+menu_features:
+  Smokey Mezcal Paloma: 10.49
+  Grilled Pineapple Skewers: 6.99
+amenity_features:
+- Children's Menu
+- Free Wifi

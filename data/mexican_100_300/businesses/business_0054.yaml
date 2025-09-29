@@ -1,0 +1,36 @@
+id: business_0054
+name: "Mucho Jalape\xF1o Business"
+description: "Dive into bold Mexican and Tex-Mex flavors, zesty salsas, and garden-fresh\
+  \ salads at Mucho Jalape\xF1o Business\u2014where every bite is a little extra.\
+  \ Sip, savor, and spice up your day with our fresh take on tradition!"
+rating: 1.0
+progenitor_customer: customer_0018
+menu_features:
+  Beef Barbacoa Enchiladas: 14.49
+  Loaded Beef Nacho Bowl: 13.63
+  Strawberry Basil Agua Fresca: 3.96
+  Garden Veggie Nachos: 10.25
+  Jalapeno Lime Rice Bowl: 8.69
+  Spicy Beef Nacho Platter: 12.16
+  Passion Fruit Aqua Fresca: 4.44
+  Avocado Cilantro Salad: 10.57
+  Smoky Lime Guacamole: 4.81
+  Morning Chorizo Scramble: 7.37
+  Zesty Shrimp Fajitas: 14.59
+  Mole Enchilada Supreme: 13.12
+  Avocado Cilantro Lime Salad: 7.81
+  Chipotle Lime Tacos: 14.93
+  Shrimp Ceviche Tostadas: 9.96
+  Avocado Salsa Verde: 5.67
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.79

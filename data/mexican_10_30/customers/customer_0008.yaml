@@ -1,0 +1,13 @@
+id: customer_0008
+name: Noah Harris
+request: 'Could you please assist me in finding a restaurant that offers the following
+  menu items: 1 Beer-Battered Avocado Fries, 1 Tropical Lime Ceviche, and 1 Frozen
+  Mango Margarita? It is essential that the restaurant also takes reservations. Once
+  you identify such a place, I would like to place an order for these items. Thank
+  you!'
+menu_features:
+  Beer-Battered Avocado Fries: 8.49
+  Tropical Lime Ceviche: 10.99
+  Frozen Mango Margarita: 9.99
+amenity_features:
+- Takes Reservations

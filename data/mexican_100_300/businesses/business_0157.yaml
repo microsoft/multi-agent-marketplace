@@ -1,0 +1,33 @@
+id: business_0157
+name: "El Coraz\xF3n y Canela"
+description: Experience the vibrant flavors of Mexico and the Southwest in a warm,
+  inviting atmosphere. Enjoy a creative blend of classic favorites and fresh, zesty
+  dishes inspired by tradition.
+rating: 1.0
+progenitor_customer: customer_0053
+menu_features:
+  Avocado Citrus Salad: 11.5
+  Ancho Chili Beef Enchiladas: 9.93
+  Buttermilk Flan: 4.3
+  Zesty Chicken Enchiladas: 13.14
+  Grilled Street Corn: 4.23
+  Avocado Cilantro Dip: 3.02
+  Ancho Chile Beef Skewers: 12.72
+  Red Chili Beef Brisket: 20.8
+  Chipotle Honey Wings: 6.47
+  Chipotle Sweet Potato Fries: 3.37
+  Spicy Bacon & Egg Quesadilla: 8.9
+  Lime Cilantro Shrimp Skewers: 16.15
+  Adobo Grilled Steak Tacos: 13.4
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.61

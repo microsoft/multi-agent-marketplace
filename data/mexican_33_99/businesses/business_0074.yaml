@@ -1,0 +1,35 @@
+id: business_0074
+name: Hot Skillet Society
+description: Gather around for a fiesta of bold flavors and sizzling Tex-Mex classics,
+  all crafted with fresh ingredients and a touch of creative flair. At Hot Skillet
+  Society, each bite brings the warmth and zest of a true culinary celebration.
+rating: 1.0
+progenitor_customer: customer_0025
+menu_features:
+  Black Bean Corn Salsa: 4.92
+  Twice-Baked Potato Tex-Mex Style: 6.6
+  Zesty Lime Chicken Skewers: 9.75
+  Pulled Pork Quesadilla: 10.22
+  Green Chili Chicken Soup: 9.78
+  Black Bean and Corn Soup: 10.15
+  Chili Lime Grilled Chicken: 14.6
+  Sizzling Veggie Quesadilla: 10.99
+  Spicy Grilled Pineapple Margarita: 13.54
+  Choco-Chili Brownie: 10.58
+  Chipotle Lime Street Tacos: 11.06
+  Tex-Mex Breakfast Skillet: 12.37
+  Beef Barbacoa Empanadas: 10.29
+  Caramel Flan: 6.39
+  Chorizo and Egg Tacos: 12.65
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: true
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: true
+  Outdoor Seating: true
+  Takes Reservations: false
+min_price_factor: 0.87

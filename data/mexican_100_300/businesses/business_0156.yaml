@@ -1,0 +1,34 @@
+id: business_0156
+name: Shrimply the Zest
+description: A lively Mexican and Tex-Mex spot serving up bold flavors and creative
+  twists, from zesty street corn to mouthwatering tacos and vibrant margaritas. Bring
+  your appetite and your sense of adventure!
+rating: 1.0
+progenitor_customer: customer_0052
+menu_features:
+  Loaded Nacho Supreme: 9.96
+  Firecracker Shrimp Tacos: 14.32
+  Fresh Lime Margarita: 8.68
+  Jalapeno Cilantro Hummus: 4.91
+  Huevos Rancheros: 14.67
+  Fresh Pineapple Salsa: 3.37
+  Cilantro Lime Grilled Corn: 3.44
+  Chili Lime Shrimp Skewers: 13.29
+  Black Bean Avocado Wrap: 11.72
+  Sweet Plantain Fritters: 9.73
+  Blueberry Basil Margarita: 9.16
+  Hibiscus Agua Fresca: 6.23
+  Churro Sundae: 2.16
+  Black Bean Enchiladas: 10.62
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.69

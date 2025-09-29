@@ -1,0 +1,35 @@
+id: business_0088
+name: Citrus Corn Cantina
+description: Experience a vibrant twist on Mexican and Tex-Mex favorites, from zesty
+  street corn to bold, fruit-infused sips and sizzling specialties. Discover a fresh
+  fusion of sweet, smoky, and spicy flavors in a modern, welcoming setting.
+rating: 1.0
+progenitor_customer: customer_0030
+menu_features:
+  Caramelized Plantain Empanadas: 8.66
+  Zesty Lime Grilled Corn: 6.21
+  Roasted Corn and Poblanos: 7.05
+  Pineapple Pico de Gallo: 7.78
+  Hatch Green Chile Burger: 19.5
+  Watermelon Mint Agua Fresca: 4.65
+  Ancho Chile Braised Pork Tostadas: 14.01
+  Beef Enchilada Platter: 6.2
+  Cherry Jalapeno Slushie: 10.01
+  Beef and Bean Chili Relleno: 14.8
+  Smoky Chipotle Beef Empanadas: 8.39
+  Sizzling Veggie Quesadilla: 12.97
+  Pineapple Jalapeno Agua Fresca: 4.03
+  Classic Lime Margarita: 5.99
+  Peach Habanero Salsa Wings: 12.95
+amenity_features:
+  Children's Menu: false
+  Large Groups: true
+  Live Music: true
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Onsite Parking: false
+  Happy Hour: true
+  Private Dining: false
+  Outdoor Seating: false
+  Takes Reservations: true
+min_price_factor: 0.94

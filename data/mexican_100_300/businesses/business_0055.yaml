@@ -1,0 +1,38 @@
+id: business_0055
+name: Taco 'Bout Flavor
+description: Dive into a vibrant fusion of classic and creative Mexican and Tex-Mex
+  dishes, bursting with bold flavors and fresh ingredients. From zesty starters to
+  sweet finales, every bite is a fiesta for your senses.
+rating: 1.0
+progenitor_customer: customer_0019
+menu_features:
+  Cactus and Black Bean Tacos: 9.02
+  Smoky Chipotle Pulled Pork: 11.72
+  Spiced Mexican Coffee: 4.0
+  Spicy Chicken Quesadilla: 11.83
+  Three-Cheese Quesadilla: 9.59
+  Avocado Lime Grilled Skewers: 10.14
+  Cajeta-filled Sopapillas: 7.13
+  Raspberry Jalapeno Cheesecake: 7.42
+  Classic Tamale Plate: 14.2
+  Hibiscus Iced Tea: 4.1
+  Zesty Pineapple Salsa: 8.66
+  Chipotle Steak Fajitas: 9.88
+  Avocado Lime Chicken Salad: 8.46
+  Roasted Corn Esquites: 3.63
+  Carne Asada Burrito Bowl: 16.01
+  Black Bean and Quinoa Tacos: 10.83
+  Garden Veggie Nachos: 10.03
+  Sizzling Skillet Nachos: 8.76
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.63

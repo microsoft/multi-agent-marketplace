@@ -1,0 +1,34 @@
+id: business_0082
+name: El Rancho del Sabor
+description: Experience the vibrant spirit of Mexican and Tex-Mex cuisine at El Rancho
+  del Sabor, where bold flavors and fresh ingredients create a memorable dining adventure.
+  Join us for a festive atmosphere and classic favorites, from enchiladas to creative
+  cocktails.
+rating: 1.0
+progenitor_customer: customer_0028
+menu_features:
+  Chicken Fajita Skillet: 16.84
+  Spicy Serrano Margarita: 9.06
+  Berry Sangria Punch: 6.18
+  Classic Beef Enchilada Plate: 10.2
+  Spicy Chicken Enchiladas: 14.71
+  Caramelized Plantain Burrito: 7.85
+  Shrimp Diablo Tostadas: 17.09
+  Chile Verde Pork Bowl: 11.95
+  Ancho Chicken Enchiladas: 14.9
+  Shrimp Diablo Burritos: 8.85
+  Spiced Pumpkin Churros: 5.55
+  Watermelon Agua Fresca: 6.45
+  Smoky Chipotle Black Bean Dip: 7.63
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.7

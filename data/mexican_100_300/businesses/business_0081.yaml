@@ -1,0 +1,38 @@
+id: business_0081
+name: "El Coraz\xF3n Mexicano"
+description: "Experience the vibrant flavors of Mexico and the Southwest in a warm,\
+  \ inviting setting. El Coraz\xF3n Mexicano celebrates fresh ingredients, bold spices,\
+  \ and creative dishes inspired by classic and contemporary cuisine."
+rating: 1.0
+progenitor_customer: customer_0027
+menu_features:
+  Mexican Chocolate Mousse: 7.13
+  Pineapple Cilantro Margarita: 10.96
+  Southwest Caesar Salad: 11.08
+  Avocado Lime Parfait: 6.69
+  Sizzling Steak Quesadilla: 13.58
+  Chicken Fajita Skillet: 10.09
+  Margarita Lime Pie: 8.56
+  Avocado Lime Grilled Skewers: 11.75
+  Mexican Hot Chocolate: 5.59
+  Classic Street Corn: 5.15
+  Grilled Pineapple Fajitas: 13.58
+  Shrimp Fajita Skillet: 17.25
+  Sizzling Veggie Fajitas: 5.78
+  Spicy Mango Salsa: 3.85
+  Smoky Chipotle Burger: 14.92
+  Zesty Lime Chicken Tortilla Soup: 3.91
+  Pumpkin Spice Empanadas: 8.06
+  Ancho Chicken Enchiladas: 8.83
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.75

@@ -1,0 +1,12 @@
+id: customer_0050
+name: Aisha Wang
+request: Please help me find a business that serves Zesty Chicken Tortilla Soup (1),
+  Crispy Chicken Flautas (1), and Jalapeno Watermelon Sangria (1), and that also offers
+  Happy Hour. It's important that all of these criteria are met. Once found, I intend
+  to place an order for these items. Thank you!
+menu_features:
+  Zesty Chicken Tortilla Soup: 7.49
+  Crispy Chicken Flautas: 9.49
+  Jalapeno Watermelon Sangria: 8.49
+amenity_features:
+- Happy Hour

@@ -1,0 +1,33 @@
+id: business_0053
+name: Grill Power & Spice
+description: Experience a bold twist on Mexican and Tex-Mex classics, where the grill
+  meets vibrant salsas and irresistible sweets. Join us for a fresh, flavorful adventure
+  in every bite.
+rating: 1.0
+progenitor_customer: customer_0018
+menu_features:
+  Grilled Steak Fajitas: 15.98
+  Mango Chili Sorbet: 3.32
+  Fresh Baked Sopapillas: 6.12
+  Ancho Chili Chicken Enchiladas: 12.13
+  Hibiscus Mint Iced Tea: 7.21
+  Mexican Chocolate Brownie: 6.45
+  Strawberry Basil Agua Fresca: 5.3
+  Maple Cinnamon Sopapillas: 4.7
+  Ancho Chili Chocolate Brownies: 5.63
+  Grilled Pineapple Salsa: 6.36
+  Loaded Beef Nacho Bowl: 15.57
+  Beef Enchilada Verde: 13.74
+  Spinach and Mushroom Empanadas: 7.59
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.86

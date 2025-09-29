@@ -1,0 +1,36 @@
+id: business_0142
+name: Avocad-oh! La La
+description: A fun and vibrant spot serving up creative Mexican and Tex-Mex favorites
+  with a zesty twist. From sizzling fajitas to fresh salsas and inventive cocktails,
+  every dish is a flavorful fiesta.
+rating: 1.0
+progenitor_customer: customer_0048
+menu_features:
+  Nachos Supremo Platter: 13.46
+  Avocado Tomatillo Salsa: 4.56
+  Chili Verde Queso Dip: 8.93
+  Spiced Chicken Fajita Bowl: 11.06
+  Carne Asada Tacos: 10.13
+  Avocado Bacon Breakfast Tacos: 7.8
+  Tequila Sunrise Cocktail: 10.64
+  Zesty Shrimp Fajitas: 23.49
+  Guava Basil Mojito: 8.29
+  Chipotle Ranch Chicken Sandwich: 9.74
+  Horchata Almond Cake: 6.99
+  Al Pastor Pork Tacos: 10.05
+  Crispy Chipotle Chicken Wrap: 5.62
+  Chili Lime Chicken Wings: 12.91
+  Zesty Lime Shrimp Ceviche: 15.12
+  Zesty Chicken Fajita Bowl: 16.19
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: true
+  Happy Hour: true
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.91

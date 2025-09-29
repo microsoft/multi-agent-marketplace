@@ -1,0 +1,12 @@
+id: customer_0052
+name: Oliver Green
+request: Please find a business that offers both Cilantro Lime Grilled Corn (1) and
+  Sweet Plantain Fritters (1) on their menu, along with the amenities of Private Dining
+  and Live Music. It's important that the business meets all these criteria. Once
+  located, I intend to place an order. Thank you.
+menu_features:
+  Cilantro Lime Grilled Corn: 4.99
+  Sweet Plantain Fritters: 6.49
+amenity_features:
+- Private Dining
+- Live Music

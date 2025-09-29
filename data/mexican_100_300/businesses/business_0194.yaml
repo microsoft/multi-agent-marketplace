@@ -1,0 +1,36 @@
+id: business_0194
+name: "El Fog\xF3n de Chipotle"
+description: "Experience vibrant Mexican and Tex-Mex cuisine with bold chipotle flavors,\
+  \ fresh seafood, and savory classics. El Fog\xF3n de Chipotle is where timeless\
+  \ recipes meet a smoky, modern twist in a warm and festive atmosphere."
+rating: 1.0
+progenitor_customer: customer_0065
+menu_features:
+  Mole Enchiladas: 11.3
+  Smoky Chipotle Quesadillas: 14.98
+  Grilled Lime Shrimp Skewers: 19.72
+  Smoky Chipotle Burger: 20.43
+  Zesty Lime Shrimp Salad: 14.87
+  Crispy Fish Tostadas: 16.48
+  Sweet Lime Agua Fresca: 2.18
+  Passion Fruit Aqua Fresca: 3.36
+  Passionfruit Mojito: 8.68
+  Shrimp Ceviche Cups: 12.06
+  Guacamole and Plantain Chips: 5.12
+  Chipotle Honey Wings: 7.64
+  Roasted Veggie Fajitas: 14.15
+  Mole Chicken Burrito: 10.73
+  Cilantro-Lime Shrimp Bowl: 15.51
+  Smoky Chipotle Salsa: 4.45
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.74

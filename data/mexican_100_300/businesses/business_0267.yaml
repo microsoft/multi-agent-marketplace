@@ -1,0 +1,32 @@
+id: business_0267
+name: Sabor & Sizzle
+description: Discover bold Tex-Mex and Mexican-inspired flavors at Sabor & Sizzle,
+  where fresh ingredients and signature spice meet in every dish. Join us for vibrant
+  tastes and a lively dining experience, perfect for any craving.
+rating: 1.0
+progenitor_customer: customer_0089
+menu_features:
+  Avocado Lime Salad: 9.16
+  Tangy Tomatillo Salsa: 5.97
+  Crispy Chicken Tortilla Soup: 9.17
+  Twice-Baked Potato Tex-Mex Style: 8.56
+  Southwest Chicken Enchiladas: 10.13
+  Fresh Lime Agua Fresca: 3.19
+  Sizzling Beef Enchiladas: 11.14
+  Smoky Black Bean Quesadilla: 10.62
+  Red Chili Pork Tamale: 10.31
+  Smoky Chipotle Pulled Pork: 15.23
+  Spicy Pulled Pork Enchiladas: 11.43
+  Spicy Avocado Breakfast Wrap: 10.97
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.86

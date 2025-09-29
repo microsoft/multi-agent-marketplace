@@ -1,0 +1,36 @@
+id: business_0149
+name: La Cosecha Dorada
+description: Experience the vibrant flavors of Mexico and the Southwest with our inventive
+  takes on classic favorites, crafted with fresh ingredients and a touch of modern
+  flair. From zesty starters to indulgent desserts, every dish is a celebration of
+  tradition and taste.
+rating: 1.0
+progenitor_customer: customer_0050
+menu_features:
+  Crispy Chicken Enchiladas: 13.89
+  Agave Lime Grilled Chicken: 18.39
+  Tres Leches Flan: 4.57
+  Sweet Corn Tamale Cakes: 5.54
+  Zesty Chicken Tortilla Soup: 8.18
+  Zesty Lime Shrimp Skewers: 14.79
+  Jalapeno Watermelon Sangria: 5.8
+  Crispy Cactus Fries: 8.34
+  Carne Asada Supreme: 13.22
+  Black Bean Queso Dip: 4.21
+  Chili Verde Queso Dip: 5.6
+  Crispy Chicken Flautas: 12.54
+  Red Chili Beef Nachos: 13.77
+  Spiced Hot Chocolate Churros: 6.62
+  Ancho Chile Beef Nachos: 11.38
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.73

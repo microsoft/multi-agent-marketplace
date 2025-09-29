@@ -1,0 +1,13 @@
+id: customer_0049
+name: Noah Garcia
+request: 'Could you please assist me in finding a business that serves the following
+  items: 1 Grilled Chicken Fajita Platter and 1 Passionfruit Mojito? It is essential
+  that the chosen business also offers Live Music and accommodates Large Groups. Once
+  such a place is located, I intend to proceed with the order. Thank you for your
+  assistance.'
+menu_features:
+  Grilled Chicken Fajita Platter: 13.75
+  Passionfruit Mojito: 8.49
+amenity_features:
+- Live Music
+- Large Groups

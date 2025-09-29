@@ -1,0 +1,37 @@
+id: business_0057
+name: Brisket & Baja
+description: Dive into vibrant Tex-Mex and Mexican-inspired flavors, where fresh ingredients
+  and bold seasonings take center stage. Enjoy a lively atmosphere and creative dishes
+  perfect for any appetite.
+rating: 1.0
+progenitor_customer: customer_0019
+menu_features:
+  Baja Fish Tacos: 10.06
+  Chili Verde Pork Burrito: 16.49
+  Crispy Fish Baja Bowl: 10.03
+  Spicy Chorizo Quesadilla: 10.04
+  Spicy Serrano Margarita: 9.09
+  Texas BBQ Brisket Tacos: 12.05
+  Plantain and Black Bean Empanadas: 2.63
+  Black Bean and Quinoa Tacos: 10.45
+  Tex-Mex Steak Fajitas: 9.19
+  Cactus and Black Bean Tacos: 6.05
+  Hibiscus Iced Tea: 4.98
+  Avocado Cilantro Lime Salad: 9.05
+  Grilled Fish Tostadas: 10.35
+  Chipotle Lime Chicken Quesadilla: 13.74
+  Peach Habanero Salsa Wings: 12.8
+  Creamy Tomatillo Enchiladas: 12.61
+  Frozen Mango Margarita: 9.38
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.62

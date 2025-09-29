@@ -1,0 +1,35 @@
+id: business_0055
+name: Carnitas & Cocoa
+description: "Dive into a vibrant fusion of classic and contemporary Mexican and Tex-Mex\
+  \ flavors, where every dish is crafted with fresh ingredients and a creative twist.\
+  \ From savory starters to decadent desserts, there\u2019s something to satisfy every\
+  \ craving."
+rating: 1.0
+progenitor_customer: customer_0019
+menu_features:
+  Smoky Chipotle Black Bean Dip: 4.99
+  Crispy Carnitas Tostadas: 8.28
+  Chocolate Lava Churros: 6.02
+  Crispy Beef Taquitos: 9.87
+  Mexican Hot Chocolate: 4.83
+  Herb-Roasted Corn Salad: 6.01
+  Churro Fiesta Platter: 11.39
+  Southwestern Breakfast Burrito: 7.91
+  Agave Lime Glazed Wings: 9.65
+  Grilled Avocado Salad: 3.82
+  Pineapple Avocado Salsa: 4.39
+  Crispy Duck Tacos: 12.99
+  Ancho Chili Chocolate Brownies: 6.42
+  Chipotle Lime Grilled Corn: 5.12
+amenity_features:
+  Children's Menu: true
+  Large Groups: false
+  Live Music: false
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Onsite Parking: false
+  Happy Hour: true
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: true
+min_price_factor: 0.64

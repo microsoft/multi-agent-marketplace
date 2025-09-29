@@ -1,0 +1,33 @@
+id: business_0266
+name: Holy Chipotle & Guac Almighty
+description: "Experience a fiesta of bold, fresh flavors where smoky heat meets zesty,\
+  \ creamy creations. Our inventive twists on Mex and Tex-Mex favorites will leave\
+  \ your tastebuds shouting 'm\xE1s, por favor!'"
+rating: 1.0
+progenitor_customer: customer_0089
+menu_features:
+  Horseradish Guacamole: 7.1
+  Avocado Citrus Salad: 11.46
+  Fresh Lime Agua Fresca: 5.8
+  Honey-Lime Grilled Corn: 4.08
+  Tropical Fruit Agua Fresca: 4.75
+  Mango Chipotle Shrimp Quesadilla: 8.71
+  Spicy Chocolate Mousse: 8.49
+  Crispy Chicken Enchiladas: 16.1
+  Pineapple Pork Tacos: 12.99
+  Roasted Poblano Avocado Smash: 6.97
+  Black Bean & Sweet Potato Burrito: 9.76
+  Honey Chipotle Glazed Ribs: 20.86
+  Chorizo Breakfast Skillet: 12.74
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.8

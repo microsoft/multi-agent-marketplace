@@ -1,0 +1,33 @@
+id: business_0040
+name: Holy Smokes & Cocoa Beans
+description: Where bold flavors meet sweet surprises, blending the smoky, the spicy,
+  and the comforting in every bite and sip. Discover a new take on classic Mexican
+  and Tex-Mex tastes, all crafted with a pinch of fun and a lot of heart.
+rating: 1.0
+progenitor_customer: customer_0014
+menu_features:
+  Mexican Hot Chocolate: 4.58
+  Tamarind Glazed Ribs: 21.01
+  Black Bean & Cheese Empanadas: 11.09
+  Hatch Chile Queso Dip: 7.03
+  Crispy Fish Burrito: 12.72
+  Zesty Lime Shrimp Ceviche: 12.12
+  Spiced Mexican Coffee: 7.62
+  Watermelon Basil Aqua Fresca: 3.5
+  Three-Alarm Chili Con Queso: 4.76
+  Grilled Pineapple Quesadillas: 15.96
+  Smoky Chipotle Beef Tostadas: 10.94
+  Spicy Mango Salsa: 5.49
+  Black Bean & Sweet Potato Burrito: 11.09
+amenity_features:
+  Children's Menu: true
+  Large Groups: true
+  Live Music: false
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Onsite Parking: true
+  Happy Hour: false
+  Private Dining: false
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.82

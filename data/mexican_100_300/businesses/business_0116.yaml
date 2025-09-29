@@ -1,0 +1,33 @@
+id: business_0116
+name: El Camino de Sabores
+description: Discover a vibrant journey through bold Mexican and Tex-Mex flavors,
+  where every dish is crafted to delight your senses. From savory classics to inventive
+  sweets, our kitchen celebrates tradition and creativity in every bite.
+rating: 1.0
+progenitor_customer: customer_0039
+menu_features:
+  Chocolate Dusted Flan: 5.55
+  Zesty Lime Shrimp Tacos: 12.81
+  Flaky Beef Empanadas: 10.98
+  Chipotle Ranch Chicken Sandwich: 17.14
+  Smoky Chipotle Enchiladas: 13.42
+  Avocado Lime Tostadas: 14.26
+  Hatch Chile Chicken Burrito: 15.39
+  Zesty Lime Guacamole: 6.08
+  Pork Carnitas Torta: 12.14
+  Sizzling Fajita Platter: 17.76
+  Smoky Chipotle Nachos: 10.34
+  Coconut Tres Leches: 5.25
+  Cajun Spiced Fish Tacos: 14.48
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: true
+min_price_factor: 0.93

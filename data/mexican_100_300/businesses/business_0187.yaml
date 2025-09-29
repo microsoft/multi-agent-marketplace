@@ -1,0 +1,33 @@
+id: business_0187
+name: Chili & Citrus Social House
+description: A vibrant gathering place serving modern Mexican and Tex-Mex flavors,
+  blending smoky chilis, bright citrus, and creative cocktails. Experience bold bites
+  and sweet finishes in a lively, contemporary setting.
+rating: 1.0
+progenitor_customer: customer_0063
+menu_features:
+  Mango Chipotle Wings: 10.63
+  Grilled Lime Shrimp Skewers: 13.28
+  Pulled Pork Tamale Platter: 11.63
+  Salted Caramel Margarita: 13.07
+  Bacon Wrapped Jalapenos: 7.34
+  Zesty Lime Chicken Fajitas: 15.15
+  Pineapple Habanero Wings: 8.94
+  Pomegranate Pisco Sour: 10.74
+  Raspberry Jalapeno Cheesecake: 9.56
+  Ancho Chili Lime Shrimp: 14.34
+  Chipotle Lime Street Tacos: 9.9
+  Cheesy Street Corn Bites: 9.68
+  Spicy Paloma Cocktail: 8.74
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.87

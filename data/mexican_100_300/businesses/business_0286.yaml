@@ -1,0 +1,38 @@
+id: business_0286
+name: "Bean There, Saut\xE9ed That"
+description: Spice up your day with a fresh twist on Mexican and Tex-Mex classics,
+  from sizzling fajitas to decadent desserts. Our menu boldly blends smoky chiles,
+  vibrant veggies, and irresistible flavors in every bite.
+rating: 1.0
+progenitor_customer: customer_0096
+menu_features:
+  Chocolate Ancho Chile Brownie: 5.31
+  Breakfast Chorizo Migas: 2.42
+  Ancho Chile Coffee Rubbed Steak: 18.01
+  Pineapple Chipotle Salsa Dip: 4.58
+  Black Bean & Corn Quesadilla: 11.28
+  Southwest Black Bean Quesadilla: 8.32
+  Crispy Carnitas Soft Tacos: 12.47
+  Roasted Veggie Fajitas: 10.44
+  Tortilla Soup Supreme: 7.41
+  Spicy Chocolate Lava Cake: 5.95
+  Crispy Avocado Bites: 6.09
+  Horchata Cheesecake: 7.24
+  Ancho Chili Chicken Enchiladas: 9.49
+  Caramelized Onion Quesadilla: 10.53
+  Sweet Potato Black Bean Tacos: 8.36
+  Spicy Beef Burrito Bowl: 12.36
+  Horchata Latte: 3.97
+  Blackened Fish Tacos: 11.44
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: true
+min_price_factor: 0.87

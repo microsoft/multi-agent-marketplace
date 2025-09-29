@@ -1,0 +1,12 @@
+id: customer_0003
+name: Christopher Harris
+request: 'Could you please find a business that serves the following menu items: 1
+  Tequila Sunrise Smoothie and 1 Spicy Black Bean Tostadas, and also offers the amenities
+  of Private Dining and Happy Hour? It is important that the business meets all these
+  requirements as I intend to place an order with them. Thank you!'
+menu_features:
+  Tequila Sunrise Smoothie: 7.99
+  Spicy Black Bean Tostadas: 11.79
+amenity_features:
+- Private Dining
+- Happy Hour

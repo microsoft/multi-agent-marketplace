@@ -1,0 +1,35 @@
+id: business_0133
+name: Pico & Pineapple
+description: A vibrant spot serving up fresh, fire-kissed Tex-Mex and Mexican favorites
+  with a tropical twist. Enjoy bold flavors, bright salsas, and a menu full of creative,
+  crave-worthy bites.
+rating: 1.0
+progenitor_customer: customer_0045
+menu_features:
+  Grilled Pineapple Skewers: 5.2
+  Tequila Lime Chicken Wings: 9.06
+  Honey-Lime Cucumber Salad: 7.34
+  Slow-Cooked Carnitas Enchiladas: 14.44
+  Chipotle Mushroom Tacos: 6.9
+  Smokey Mezcal Paloma: 11.04
+  Grilled Shrimp and Mango Salad: 13.98
+  Crispy Pork Carnitas: 12.34
+  Street Corn Fritters: 6.75
+  Roasted Poblano Rice Bowl: 11.18
+  Grilled Pineapple Mojito: 5.35
+  Tex-Mex Steak Fajitas: 16.97
+  Pineapple Cilantro Salsa: 3.91
+  Honey Chipotle Grilled Chicken: 11.8
+  Chili Lime Grilled Chicken: 13.21
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.64

@@ -1,0 +1,38 @@
+id: business_0202
+name: Casa del Sol Naciente
+description: Discover bold, sun-inspired flavors at Casa del Sol Naciente, where vibrant
+  Mexican and Tex-Mex staples are reimagined with fresh, creative twists. Enjoy favorites
+  from zesty appetizers to decadent desserts and refreshing cocktails in a welcoming,
+  colorful setting.
+rating: 1.0
+progenitor_customer: customer_0068
+menu_features:
+  Crispy Fish Tostadas: 8.84
+  Hatch Green Chile Queso: 9.34
+  Mango Chipotle Shrimp Quesadilla: 8.88
+  Classic Tamale Plate: 12.62
+  Peach Habanero Salsa Wings: 9.07
+  Mango Cilantro Margarita: 5.55
+  Spicy Chipotle Quesadilla: 6.04
+  Cocoa Dusted Sopapillas: 5.5
+  Crispy Avocado Nachos: 12.05
+  Vanilla Bean Sopapillas: 5.7
+  Smoky Black Bean Burrito: 10.12
+  Fresh Guacamole Platter: 8.73
+  Coconut Mango Rice Pudding: 4.37
+  Spicy Chicken Enchilada Bake: 13.56
+  Chipotle Black Bean Burger: 6.38
+  Southwest Chicken Enchiladas: 13.9
+  Grilled Steak Fajita Platter: 22.97
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.63

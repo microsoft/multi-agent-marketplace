@@ -1,0 +1,37 @@
+id: business_0135
+name: Margarita Ville & Elote My Heart
+description: A playful fusion cantina where zesty flavors meet creative cocktails
+  and bold takes on Mexican street fare. Enjoy vibrant plates and inventive margaritas
+  crafted for every craving.
+rating: 1.0
+progenitor_customer: customer_0045
+menu_features:
+  Cajun Spiced Fish Tacos: 12.53
+  Chocolate Mole Chicken: 13.45
+  Coconut Lime Chicken Soup: 9.76
+  Jalapeno Pineapple Margarita: 11.38
+  Street Corn Off the Cob: 4.04
+  Carnitas Enchiladas Verde: 10.12
+  Wild Mushroom Tostada: 11.73
+  Pineapple Chipotle Margarita: 9.25
+  Chipotle Grilled Chicken Salad: 8.98
+  Crispy Avocado Tostadas: 8.06
+  Chocolate Dusted Flan: 5.78
+  Smokey Mezcal Paloma: 6.37
+  Grilled Pineapple Skewers: 7.44
+  Mango Chili Margarita: 9.52
+  Raspberry Jalapeno Margarita: 7.97
+  Baja Fish Taco Salad: 7.24
+  Sizzling Chorizo Empanadas: 6.61
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.79

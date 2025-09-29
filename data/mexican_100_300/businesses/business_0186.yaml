@@ -1,0 +1,35 @@
+id: business_0186
+name: "El Rel\xE1mpago Mexicano"
+description: Experience vibrant Mexican and Tex-Mex flavors in an inviting, modern
+  setting. From creative small plates to refreshing cocktails, every dish bursts with
+  bold, authentic taste.
+rating: 1.0
+progenitor_customer: customer_0062
+menu_features:
+  Al Pastor Tostada Crunch: 13.1
+  Ancho Chili Chocolate Brownies: 6.86
+  Al Pastor Salad Bowl: 14.08
+  Sweet Corn Tamale Cakes: 9.56
+  Tequila Sunrise Cocktail: 6.59
+  Passionfruit Agua Fresca: 4.6
+  Roasted Red Pepper and Black Bean Soup: 6.33
+  Mesquite Grilled Steak Burrito: 15.81
+  Blackberry Mint Mojito: 9.46
+  Chorizo and Potato Empanadas: 4.31
+  Chipotle BBQ Carnitas: 12.85
+  Smoky Black Bean Salsa: 10.24
+  Grilled Steak Fajita Bowl: 16.98
+  Bacon-Wrapped Jalapeno Dogs: 5.45
+  Black Bean & Corn Quesadilla: 9.9
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.87

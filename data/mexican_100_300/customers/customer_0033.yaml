@@ -1,0 +1,12 @@
+id: customer_0033
+name: Anna Kim
+request: Please find a business that offers 'Crispy Carnitas Nachos', 'Mole Sauce
+  Tamale', and 'Roasted Red Pepper Fajitas' in the quantities of 1 each. Additionally,
+  the business must have Private Dining available. Once located, I intend to place
+  the order as specified. Thank you for your assistance.
+menu_features:
+  Crispy Carnitas Nachos: 10.99
+  Mole Sauce Tamale: 10.49
+  Roasted Red Pepper Fajitas: 14.99
+amenity_features:
+- Private Dining

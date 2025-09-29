@@ -1,0 +1,31 @@
+id: business_0020
+name: La Mesa Sabrosa
+description: Experience vibrant Mexican and Tex-Mex cuisine made with fresh ingredients
+  and bold flavors. Enjoy a warm, inviting atmosphere and a menu full of delicious
+  classics and creative favorites.
+rating: 1.0
+progenitor_customer: customer_0007
+menu_features:
+  Avocado Cilantro Dip: 5.63
+  Spicy Beef Burrito Bowl: 9.4
+  Spice-Rubbed Ribeye: 20.42
+  Grilled Chicken Fajita Bowl: 14.11
+  Creamy Avocado Caesar Salad: 11.88
+  Poblano & Cream Cheese Quesadilla: 8.09
+  Breakfast Chilaquiles: 7.37
+  Chicken Fajita Skillet: 13.19
+  Honey Lime Grilled Shrimp: 17.76
+  Sizzling Beef Quesadillas: 17.15
+  Ancho Chili Grilled Chicken: 13.07
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.93

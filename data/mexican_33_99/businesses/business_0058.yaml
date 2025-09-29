@@ -1,0 +1,36 @@
+id: business_0058
+name: Salsa & Saffron
+description: Experience a vibrant twist on Mexican and Tex-Mex cuisine, featuring
+  fresh, colorful flavors and creative cocktails in a lively, welcoming setting. Indulge
+  in savory bites and sweet treats inspired by classic and contemporary traditions.
+rating: 1.0
+progenitor_customer: customer_0020
+menu_features:
+  Garden Veggie Nachos: 14.63
+  Black Bean and Corn Tamales: 5.76
+  Carne Asada Fries: 13.62
+  Blueberry Mezcal Mule: 7.99
+  Mango Jalapeno Salsa: 4.76
+  Pulled Pork Tamale Platter: 16.44
+  Chocolate Dusted Flan: 5.98
+  Pineapple Salsa Tostadas: 9.57
+  Pineapple Mango Salsa: 4.86
+  Cajeta-filled Sopapillas: 6.82
+  Cactus Cooler Margarita: 10.91
+  Poblano Corn Chowder: 8.1
+  Ranchero Breakfast Burrito: 8.68
+  Spicy Black Bean Soup: 5.12
+  Crispy Avocado Fajitas: 19.35
+  Saffron Scented Arroz Verde: 3.18
+amenity_features:
+  Children's Menu: true
+  Large Groups: true
+  Live Music: false
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: false
+  Outdoor Seating: false
+  Takes Reservations: true
+min_price_factor: 0.73

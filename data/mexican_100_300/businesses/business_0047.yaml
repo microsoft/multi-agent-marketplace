@@ -1,0 +1,36 @@
+id: business_0047
+name: Agave Azul Kitchen
+description: Agave Azul Kitchen brings a contemporary twist to Mexican and Tex-Mex
+  classics, blending fresh flavors and bold spices in every dish. Enjoy vibrant small
+  plates, signature margaritas, and inventive comfort food in a lively, welcoming
+  space.
+rating: 1.0
+progenitor_customer: customer_0016
+menu_features:
+  Blueberry Agave Margarita: 10.63
+  Loaded Beef Empanadas: 5.59
+  Poblano and Mushroom Tacos: 8.52
+  Creamy Avocado Soup: 5.21
+  Avocado Lime Crema Burger: 10.8
+  Coconut Rice Pudding: 6.74
+  Smoky Chipotle Enchiladas: 12.8
+  Smoky BBQ Pork Tacos: 10.6
+  Ancho Chili Spiced Tofu Tacos: 11.93
+  Ultimate Breakfast Burrito: 5.58
+  Blackberry Sage Margarita: 13.1
+  Avocado Lime Salsa: 4.56
+  Honey Chipotle Ribs: 18.68
+  Classic Beef Enchiladas: 12.4
+  Honey Glazed Pork Carnitas: 10.47
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.65

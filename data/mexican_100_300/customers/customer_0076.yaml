@@ -1,0 +1,12 @@
+id: customer_0076
+name: Claire Taylor
+request: 'I am looking for a business that offers the following items on their menu:
+  Pineapple Pico de Gallo (1) and Chili Con Queso Dip (1). Additionally, the business
+  must accommodate large groups and have outdoor seating. Once such a business is
+  found, I intend to place an order for these items. Thank you for your assistance.'
+menu_features:
+  Pineapple Pico de Gallo: 6.99
+  Chili Con Queso Dip: 6.95
+amenity_features:
+- Large Groups
+- Outdoor Seating

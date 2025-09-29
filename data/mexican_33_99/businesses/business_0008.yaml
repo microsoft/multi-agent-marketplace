@@ -1,0 +1,36 @@
+id: business_0008
+name: Fajita the Heat
+description: Savor a vibrant medley of Mexican and Tex-Mex favorites where every dish
+  brings the perfect kick of spice, zest, and tradition. From smoky grilled specialties
+  to sweet, fresh finishes, your taste buds are in for a sizzling treat.
+rating: 1.0
+progenitor_customer: customer_0003
+menu_features:
+  Chili Lime Grilled Chicken: 6.21
+  Spicy Lime Shrimp Tostadas: 8.84
+  Frijoles Charros: 5.51
+  Carnitas Enchiladas Verde: 17.37
+  Chicken Fajita Skillet: 12.39
+  Fresh Baked Sopapillas: 7.11
+  Smoky Black Bean Soup: 6.25
+  Tequila Sunrise Smoothie: 6.54
+  Flaky Beef Empanadas: 7.06
+  Coconut Lime Margarita: 12.74
+  Tex-Mex Steak Fajitas: 15.24
+  Mango Chipotle Shrimp Quesadilla: 7.43
+  Jalapeno Watermelon Sangria: 7.43
+  Spicy Black Bean Tostadas: 9.44
+  Mesquite Grilled Fajitas: 6.9
+  Freshly Squeezed Agua Fresca: 3.04
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: true
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Onsite Parking: false
+  Happy Hour: true
+  Private Dining: true
+  Outdoor Seating: true
+  Takes Reservations: false
+min_price_factor: 0.62

@@ -1,0 +1,33 @@
+id: business_0136
+name: Lime Time & Chili Crimes
+description: Spice up your day with a fresh twist on classic Mexican and Tex-Mex favorites,
+  where zesty limes and smoky chiles take center stage. From vibrant tacos to creative
+  cocktails and decadent desserts, every bite is a flavor fiesta.
+rating: 1.0
+progenitor_customer: customer_0046
+menu_features:
+  Zesty Lime Shrimp Tacos: 13.9
+  Coconut Lime Margarita: 11.01
+  Crispy Avocado Rolls: 8.13
+  Grilled Chipotle Lime Chicken: 12.6
+  Ancho Chile Beef Enchiladas: 12.55
+  House-Made Horchata: 4.69
+  Fresh Lime Margarita: 8.34
+  Chocolate Ancho Chile Brownie: 4.63
+  Smoky Barbacoa Burrito Bowl: 12.58
+  Ancho Chile Chicken Wings: 14.55
+  Black Bean and Corn Enchiladas: 7.06
+  Tropical Pineapple Salsa: 3.2
+  Ranchero Breakfast Burrito: 10.19
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.7

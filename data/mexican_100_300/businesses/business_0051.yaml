@@ -1,0 +1,38 @@
+id: business_0051
+name: "El Saz\xF3n de la Costa"
+description: Experience vibrant Mexican and Tex-Mex flavors inspired by the coasts,
+  with fresh salads, sizzling fajitas, hearty burritos, and indulgent desserts in
+  a welcoming, lively atmosphere. Perfect for those seeking a delicious fusion of
+  tradition and coastal flair.
+rating: 1.0
+progenitor_customer: customer_0017
+menu_features:
+  Vanilla Flan Delight: 6.81
+  Avocado Lime Salad: 8.28
+  Blackened Fish Tacos: 8.24
+  Black Bean Avocado Burrito: 5.53
+  Loaded Nacho Skillet: 13.58
+  Grilled Shrimp Fajitas: 16.0
+  Steak and Cheese Chimichanga: 21.61
+  Sizzling Steak Quesadilla: 15.66
+  Creamy Avocado Soup: 5.92
+  Avocado Cilantro Smoothie: 5.59
+  Tex-Mex Steak Fajitas: 7.27
+  Chili Verde Pork Burrito: 12.17
+  "Flan Caraibe\xF1o": 8.11
+  Spicy Tamarind Margarita: 7.16
+  Honey Lime Grilled Salmon: 13.88
+  Passionfruit Agua Fresca: 3.31
+  Loaded Tex-Mex Nachos Supreme: 11.6
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: true
+min_price_factor: 0.83

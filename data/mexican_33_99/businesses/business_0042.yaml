@@ -1,0 +1,33 @@
+id: business_0042
+name: Pepper & Palapa
+description: Step into a vibrant oasis where bold spices and fresh flavors meet sun-soaked
+  charm. Pepper & Palapa serves inventive Mexican and Tex-Mex dishes for breakfast,
+  lunch, and dinner, promising a feast for every craving.
+rating: 1.0
+progenitor_customer: customer_0014
+menu_features:
+  Chipotle Chicken Quesadilla: 11.19
+  Plantain and Black Bean Empanadas: 9.24
+  Crispy Carnitas Nachos: 8.36
+  Morning Chorizo Scramble: 15.73
+  Tropical Pineapple Salsa: 5.22
+  Spicy Black Bean Burrito: 9.7
+  Wild Mushroom Tostada: 10.7
+  Chili Lime Shrimp Enchiladas: 6.53
+  Cactus Cooler Salad: 8.31
+  Avocado Bacon Breakfast Tacos: 6.9
+  Ancho Chili Ribs: 19.93
+  Ancho Chili Chocolate Brownies: 4.78
+  Black Bean & Sweet Potato Burrito: 11.39
+amenity_features:
+  Children's Menu: true
+  Large Groups: false
+  Live Music: true
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.67

@@ -1,0 +1,32 @@
+id: business_0291
+name: Holy Frijoles & Fire
+description: Dive into bold Mexican and Tex-Mex flavors with our creative take on
+  classic and contemporary favorites, where every dish is a celebration of spice,
+  smoke, and sweetness. Enjoy a vibrant atmosphere and a menu packed with zesty, savory,
+  and sweet surprises.
+rating: 1.0
+progenitor_customer: customer_0097
+menu_features:
+  Smoky Black Bean Tacos: 11.88
+  Pineapple Chipotle Salsa Dip: 7.17
+  Cajeta Bread Pudding: 7.66
+  Horchata Milkshake: 5.79
+  Spicy Pulled Pork Burrito: 15.41
+  Zesty Chicken Enchiladas: 13.98
+  Coconut Lime Agua Fresca: 6.17
+  Shrimp Fajita Skillet: 12.04
+  Avocado Lime Crema Enchiladas: 8.9
+  Shrimp Diablo Tostadas: 20.2
+  Pico de Gallo Salsa: 3.7
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.82

@@ -1,0 +1,35 @@
+id: business_0188
+name: Pineapple & Poblano
+description: Experience a fresh twist on Mexican and Tex-Mex flavors with a menu bursting
+  with vibrant salsas, zesty salads, and creative cocktails. A welcoming spot to savor
+  bold tastes in a lively, inviting atmosphere.
+rating: 1.0
+progenitor_customer: customer_0063
+menu_features:
+  Pineapple Cilantro Salsa: 4.13
+  Spicy Corn and Poblano Soup: 6.59
+  Pomegranate Guacamole: 10.13
+  Smoky Chipotle Burger: 20.1
+  Passion Fruit Margarita: 9.99
+  Tostada Salad with Avocado Crema: 9.12
+  Shrimp Fajita Fiesta: 15.4
+  Wild Mushroom Quesadillas: 9.49
+  Cheesy Street Corn Bites: 9.06
+  Three-Cheese Queso Fundido: 4.62
+  Fresh Pineapple Salsa: 5.19
+  Cactus Blossom Salad: 11.41
+  Salted Caramel Margarita: 10.35
+  Roasted Red Pepper and Black Bean Soup: 7.3
+  Guacamole and Salsa Sampler: 11.21
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.62

@@ -1,0 +1,11 @@
+id: customer_0018
+name: Zoe Rodriguez
+request: 'I am looking to place an order with a business that can provide the following
+  items: 1 Loaded Beef Nacho Bowl and 1 Strawberry Basil Agua Fresca. Additionally,
+  it is important that the business offers outdoor seating. Please assist me in finding
+  such a business so I can proceed with my order. Thank you.'
+menu_features:
+  Loaded Beef Nacho Bowl: 11.99
+  Strawberry Basil Agua Fresca: 3.99
+amenity_features:
+- Outdoor Seating

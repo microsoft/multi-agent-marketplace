@@ -1,0 +1,32 @@
+id: business_0240
+name: Sabor & Skewers
+description: Sabor & Skewers blends vibrant Mexican and Tex-Mex flavors in a lively,
+  modern setting. Experience fresh citrus, savory seafood, zesty salsas, and creative
+  grilled specialties made to ignite your taste buds.
+rating: 1.0
+progenitor_customer: customer_0080
+menu_features:
+  Avocado Lime Toast: 6.96
+  Spicy Shrimp Ceviche: 14.15
+  Coconut Lime Agua Fresca: 4.3
+  Zesty Lime Fish Tacos: 14.05
+  Avocado Lime Grilled Salmon: 19.89
+  Spicy Black Bean Taquitos: 5.81
+  Pineapple Jalapeno Salsa: 4.41
+  Green Chile Cheeseburger: 12.08
+  Passion Fruit Margarita: 11.11
+  Spicy Tomatillo Salsa: 3.05
+  Honey Lime Shrimp Skewers: 10.77
+  Spicy Beef Chimichanga: 9.14
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.8

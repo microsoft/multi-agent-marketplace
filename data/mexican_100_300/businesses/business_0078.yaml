@@ -1,0 +1,38 @@
+id: business_0078
+name: Sabor & Sunrise
+description: Experience a fresh twist on Mexican and Tex-Mex favorites in a vibrant,
+  modern setting. From zesty breakfast creations to bold, flavor-packed bites and
+  refreshing drinks, Sabor & Sunrise brings hand-crafted flavor to every plate.
+rating: 1.0
+progenitor_customer: customer_0026
+menu_features:
+  Chorizo and Potato Empanadas: 8.38
+  Roasted Poblano and Corn Quesadilla: 15.65
+  Blueberry Tamale Pancakes: 12.21
+  Spicy Beef Nacho Platter: 8.28
+  Spicy Black Bean Burrito: 9.27
+  Zesty Lime Chicken Fajitas: 20.09
+  Pineapple Salsa Pork Burrito: 13.84
+  Chorizo Breakfast Burrito: 9.88
+  Mexican Chocolate Pudding: 6.08
+  Tamarind Spiced Chicken Wings: 6.78
+  Spicy Pineapple Mezcalita: 13.0
+  Tropical Mango Smoothie: 6.95
+  Strawberry Jalapeno Margarita: 11.7
+  Chipotle Lime Steak Burrito: 10.45
+  Cocoa Dusted Sopapillas: 5.98
+  Tamarind Glazed Pork Ribs: 14.42
+  Morning Chorizo Scramble: 14.24
+  Zesty Chicken Tortilla Soup: 10.09
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: true
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.86

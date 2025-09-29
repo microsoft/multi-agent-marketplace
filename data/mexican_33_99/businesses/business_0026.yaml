@@ -1,0 +1,36 @@
+id: business_0026
+name: Chorizo & Chime
+description: Step into a vibrant world of bold Mexican and Tex-Mex flavors, where
+  every dish strikes the perfect note between classic comfort and fresh creativity.
+  From sizzling specialties to zesty salads, our kitchen brings south-of-the-border
+  spirit to every plate.
+rating: 1.0
+progenitor_customer: customer_0009
+menu_features:
+  Hearty Chorizo Omelette: 8.98
+  Creamy Avocado Caesar Salad: 10.85
+  Stuffed Poblano Relleno: 11.76
+  Honey Lime Chicken Wings: 7.55
+  Crispy Chipotle Chicken Wrap: 14.69
+  Fresh Guacamole Platter: 4.87
+  Caramelized Onion & Cheese Dip: 8.57
+  Sizzling Veggie Quesadilla: 8.51
+  Carne Asada Fajitas: 21.16
+  Grilled Pineapple Margaritas: 7.88
+  Tangy Lime Chicken Salad: 8.76
+  Avocado Lime Salad: 9.34
+  Roasted Tomato Salsa: 2.79
+  Charred Poblano Quesadillas: 10.17
+  Ancho Chile Beef Burrito: 12.02
+amenity_features:
+  Children's Menu: true
+  Large Groups: false
+  Live Music: false
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Onsite Parking: false
+  Happy Hour: true
+  Private Dining: true
+  Outdoor Seating: true
+  Takes Reservations: false
+min_price_factor: 0.73

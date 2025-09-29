@@ -1,0 +1,34 @@
+id: business_0293
+name: Bean & Botanica
+description: Experience vibrant Tex-Mex and Mexican-inspired fare at Bean & Botanica,
+  where fresh ingredients shine in every bite. Enjoy a colorful array of flavorful
+  dishes, refreshing drinks, and creative twists in a warm, welcoming setting.
+rating: 1.0
+progenitor_customer: customer_0098
+menu_features:
+  Black Bean and Corn Enchiladas: 8.25
+  Black Bean Breakfast Burrito: 8.04
+  Spiced Mexican Coffee: 5.33
+  Honey-Lime Cucumber Salad: 12.61
+  Cucumber Cilantro Agua Fresca: 3.87
+  Street Corn Nacho Platter: 19.52
+  Blueberry Jalapeno Mocktail: 6.34
+  Chipotle Lime Chicken Salad: 14.24
+  Black Bean & Sweet Potato Burrito: 9.34
+  Spicy Black Bean Burrito: 8.67
+  Sweet Corn Tamale Bites: 5.87
+  Al Pastor Salad Bowl: 19.21
+  Cactus Citrus Salad: 7.12
+  Cactus and Black Bean Salad: 9.2
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.91

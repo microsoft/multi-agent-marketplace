@@ -1,0 +1,32 @@
+id: business_0084
+name: Sabor & Ember
+description: Experience bold, modern Mexican and Tex-Mex flavors in a vibrant, welcoming
+  setting. From zesty starters to decadent desserts, every dish is crafted to ignite
+  your senses.
+rating: 1.0
+progenitor_customer: customer_0028
+menu_features:
+  Spicy Chicken Tortilla Soup: 6.04
+  Sizzling Veggie Quesadilla: 10.28
+  Plantain and Black Bean Empanadas: 6.88
+  Loaded Nacho Platter: 14.25
+  Tamarind Chipotle Wings: 8.01
+  Hatch Chile Chicken Burrito: 15.75
+  Chocolate Dipped Churros: 6.97
+  Zesty Pineapple Salsa: 7.29
+  Dark Chocolate Spiced Mousse: 4.4
+  Grilled Pineapple Fajitas: 15.52
+  Smoky Black Bean Salsa: 5.97
+  Pumpkin Spice Horchata: 6.5
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: false
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: false
+  Outdoor Seating: false
+  Takes Reservations: true
+min_price_factor: 0.62

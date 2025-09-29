@@ -1,0 +1,32 @@
+id: business_0048
+name: Skeweriously Good Eats
+description: Dive into a vibrant world of Mexican and Tex-Mex flavors, where smoky
+  spices, zesty salsas, and bold dishes come together in creative ways. Fresh ingredients
+  and inventive twists make every bite skeweriously delicious.
+rating: 1.0
+progenitor_customer: customer_0016
+menu_features:
+  Smoky Chipotle Beef Skewers: 6.15
+  Chili Lime Shrimp Skewers: 12.99
+  Tres Leches French Toast: 7.77
+  Southwest Black Bean Quesadilla: 5.27
+  Crispy Carnitas Soft Tacos: 18.81
+  Spicy Mango Salsa: 3.34
+  Crispy Avocado Fries: 4.89
+  Grilled Chicken Fajita Bowl: 11.4
+  Jalapeno Infused Tequila Sunrise: 4.96
+  Spicy Chicken Fajita Salad: 8.82
+  Grilled Lime Shrimp Skewers: 15.85
+  Street Corn Fritters: 7.08
+amenity_features:
+  Children's Menu: false
+  Large Groups: true
+  Live Music: true
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.95

@@ -1,0 +1,31 @@
+id: business_0090
+name: "La Tradici\xF3n Grill"
+description: Experience the vibrant flavors of Mexico and the Southwest in a welcoming,
+  lively setting. Our kitchen offers a fresh take on classic favorites, blending smoky
+  spices and bold ingredients for a meal to remember.
+rating: 1.0
+progenitor_customer: customer_0030
+menu_features:
+  Grilled Chicken Fajita Salad: 5.75
+  Smoky Barbacoa Burrito Bowl: 15.01
+  Beef Enchilada Platter: 11.73
+  Smoky Mezcal Mule: 15.38
+  Flan de Caramel: 5.33
+  Al Pastor Pork Tacos: 11.33
+  Smoky Chipotle Nachos: 12.67
+  Black Bean and Sweet Potato Empanadas: 8.01
+  Chile Relleno Casserole: 7.94
+  Pineapple Habanero Margarita: 6.96
+  Crispy Pork Carnitas: 11.73
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: false
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Onsite Parking: true
+  Happy Hour: false
+  Private Dining: false
+  Outdoor Seating: true
+  Takes Reservations: false
+min_price_factor: 0.93

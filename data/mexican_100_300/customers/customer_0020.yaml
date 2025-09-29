@@ -1,0 +1,12 @@
+id: customer_0020
+name: Emma Zhang
+request: Please help me find a business that offers the menu items 'Carnitas Salsa
+  Verde Tacos' (1) and 'Matcha Horchata Freeze' (1), and also provides amenities such
+  as Happy Hour and Live Music. Once you've identified a suitable business, I would
+  like to place an order for these items. Thank you for your assistance.
+menu_features:
+  Carnitas Salsa Verde Tacos: 11.99
+  Matcha Horchata Freeze: 5.99
+amenity_features:
+- Happy Hour
+- Live Music

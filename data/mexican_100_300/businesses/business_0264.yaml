@@ -1,0 +1,36 @@
+id: business_0264
+name: Taco 'Bout Rib-Ticklers
+description: Dive into a fiesta of bold flavors and creative Tex-Mex at Taco 'Bout
+  Rib-Ticklers. From classic street eats to smoky, saucy delights, every bite brings
+  a fun twist on tradition.
+rating: 1.0
+progenitor_customer: customer_0088
+menu_features:
+  Classic Mexican Street Tacos: 13.45
+  Smoky Chipotle Wings: 7.52
+  Grilled Street Corn: 5.75
+  Tres Leches Flan: 8.66
+  Smoky Chipotle Burrito: 13.48
+  Cherry Chipotle Glazed Ribs: 20.95
+  Roasted Poblano Burger: 10.3
+  Chipotle Lime Street Tacos: 7.12
+  Carne Asada Fries: 10.13
+  Loaded Beef Nacho Bowl: 17.06
+  Chipotle Lime Fajitas: 7.25
+  Pineapple Salsa Pork Sliders: 14.05
+  Flaky Beef Empanadas: 6.81
+  Pico de Gallo Nachos: 11.71
+  Blackberry Sage Margarita: 7.99
+  Pineapple Habanero Paloma: 3.48
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.81

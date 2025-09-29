@@ -1,0 +1,13 @@
+id: customer_0002
+name: Chloe Zhang
+request: 'Could you please assist me in finding a business that offers the following
+  menu items: a ''Fresh Guacamole Platter'' (1), a ''Tex-Mex Breakfast Skillet'' (1),
+  and a ''Green Chili Chicken Soup'' (1), and that also has the amenity of being ''Wheelchair
+  Accessible''? It is important that all these requirements are met as I intend to
+  place an order. Thank you for your assistance.'
+menu_features:
+  Fresh Guacamole Platter: 8.49
+  Tex-Mex Breakfast Skillet: 11.49
+  Green Chili Chicken Soup: 8.5
+amenity_features:
+- Wheelchair Accessible

@@ -1,0 +1,34 @@
+id: business_0257
+name: Rib-Tide of Flavor
+description: Dive into a vibrant fusion of classic Mexican and Tex-Mex fare crafted
+  with a modern twist. From zesty starters to smoky favorites, bold flavors and fresh
+  ingredients steal the show in every bite.
+rating: 1.0
+progenitor_customer: customer_0086
+menu_features:
+  Zesty Lime Guacamole: 7.49
+  Plantain and Black Bean Empanadas: 6.12
+  Black Bean and Quinoa Tacos: 9.48
+  Maple Chipotle Glazed Ribs: 13.65
+  Avocado Citrus Salad: 5.62
+  Spicy Jalapeno Limeade: 4.13
+  Cactus and Black Bean Tacos: 12.95
+  Caramelized Onion & Cheese Quesadilla: 8.39
+  Roasted Corn Black Bean Salsa: 6.57
+  Three Cheese Enchiladas: 6.94
+  Smoky Adobo Chicken Wings: 18.21
+  Avocado Lime Soup: 8.84
+  Fresh Lime and Cilantro Rice Bowl: 8.66
+  Breakfast Chorizo Tacos: 11.34
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.87

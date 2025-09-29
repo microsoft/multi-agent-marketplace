@@ -1,0 +1,34 @@
+id: business_0150
+name: "Sol y Saz\xF3n Cantina"
+description: "Experience the vibrant flavors of Mexico and the Southwest at Sol y\
+  \ Saz\xF3n Cantina, where bold spices meet fresh, colorful ingredients. Join us\
+  \ for a lively atmosphere and creative takes on classic Tex-Mex favorites."
+rating: 1.0
+progenitor_customer: customer_0050
+menu_features:
+  Tropical Salsa Salmon: 18.75
+  Three-Alarm Chili Con Queso: 7.95
+  Spicy Jalapeno Limeade: 3.15
+  Charred Poblano Quesadillas: 6.47
+  Jalapeno Watermelon Sangria: 7.85
+  Zesty Chicken Tortilla Soup: 8.24
+  Warm Churro Chips: 5.31
+  Garden Veggie Nachos: 10.77
+  Pineapple Salsa Guacamole: 7.27
+  Chicken Fajita Skillet: 11.81
+  Citrus Grilled Shrimp Skewers: 21.32
+  Crispy Chicken Flautas: 7.99
+  Mango Habanero Margarita: 6.59
+  Hatch Chile Queso Dip: 7.57
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.82

@@ -1,0 +1,35 @@
+id: business_0017
+name: Mint to Bean Fiesta
+description: "Dive into a fresh, zesty take on Mexican and Tex-Mex favorites, where\
+  \ bold flavors meet a splash of tropical flair. From tangy salsas to citrus-kissed\
+  \ seafood, every bite is \u2018mint\u2019 to be memorable!"
+rating: 1.0
+progenitor_customer: customer_0006
+menu_features:
+  Coconut Lime Shrimp Tacos: 10.69
+  Horchata Cheesecake: 7.14
+  Grilled Fish Tostadas: 12.89
+  Crispy Fish Burrito: 15.68
+  Chile Verde Burrito: 10.54
+  Mango Habanero Wings: 9.74
+  Poblano Corn Chowder: 6.54
+  Blackberry Mint Mojito: 8.81
+  Citrus Grilled Shrimp Skewers: 15.06
+  Passionfruit Agua Fresca: 3.82
+  Avocado Cilantro Salsa: 5.78
+  Green Chili Chicken Soup: 10.72
+  Herb-Roasted Corn Salad: 10.03
+  Tequila Sunrise Sangria: 10.4
+  Blackened Shrimp Quesadilla: 14.49
+amenity_features:
+  Takes Reservations: false
+  Private Dining: false
+  Large Groups: true
+  Onsite Parking: false
+  Outdoor Seating: false
+  Children's Menu: false
+  Free Wifi: true
+  Live Music: true
+  Wheelchair Accessible: false
+  Happy Hour: false
+min_price_factor: 0.77

@@ -1,0 +1,34 @@
+id: business_0066
+name: Mole Lotta Love
+description: Serving up a fiesta of bold flavors and sweet surprises, our kitchen
+  blends Mexican classics with creative twists. Dive into our spicy, cheesy, and chocolatey
+  creations in a vibrant, welcoming setting.
+rating: 1.0
+progenitor_customer: customer_0022
+menu_features:
+  Cheesy Jalapeno Queso: 12.58
+  Verde Chicken Chimichanga: 15.31
+  Vanilla Bean Sopapillas: 4.96
+  Spicy Avocado Breakfast Wrap: 9.25
+  Coconut Lime Agua Fresca: 4.33
+  Black Bean and Corn Enchiladas: 11.11
+  Spicy Pulled Pork Burrito: 11.11
+  Ancho Chili Chicken Enchiladas: 11.34
+  Chocolate Mole Chicken: 16.53
+  Lime Cilantro Shrimp Skewers: 13.98
+  Choco-Chili Brownie: 4.3
+  Spiced Beef Fajita Platter: 19.51
+  Chocolate Tamal del Cielo: 4.97
+  Ancho Chili Ribs: 12.77
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: false
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Onsite Parking: true
+  Happy Hour: true
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.74

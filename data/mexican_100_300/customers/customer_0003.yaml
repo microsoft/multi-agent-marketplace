@@ -1,0 +1,10 @@
+id: customer_0003
+name: Yasmin Al-Hadi
+request: "Could you please assist me in finding a business that serves 1 Mango Jalape\xF1\
+  o Fresca and offers Onsite Parking? It's important that the business fulfills both\
+  \ of these requirements. Once such a business is found, I intend to place an order\
+  \ for the Mango Jalape\xF1o Fresca. Thank you for your help."
+menu_features:
+  "Mango Jalape\xF1o Fresca": 3.99
+amenity_features:
+- Onsite Parking

@@ -1,0 +1,35 @@
+id: business_0003
+name: Salsa Street
+description: Salsa Street serves up vibrant Mexican and Tex-Mex flavors in a fun,
+  welcoming setting. Enjoy a fresh mix of bold, zesty dishes and classic favorites
+  inspired by the spices and sunshine of the Southwest.
+rating: 1.0
+progenitor_customer: customer_0001
+menu_features:
+  Fiery Red Salsa: 4.42
+  Green Chile Cheeseburger: 13.12
+  Black Bean and Corn Enchiladas: 11.96
+  Pineapple Salsa Pork Burrito: 12.6
+  Baja Shrimp Tostadas: 16.09
+  Churro Fiesta Platter: 5.47
+  Guacamole and Salsa Sampler: 12.36
+  Sweet Potato Black Bean Tacos: 10.67
+  Avocado Lime Chicken Salad: 9.53
+  Spicy Black Bean Quesadilla: 11.7
+  Chili Lime Shrimp Enchiladas: 10.82
+  Smoky Black Bean Soup: 7.46
+  Habanero Lime Chicken Wings: 11.8
+  Cinnamon Dulce Nachos: 5.52
+  Loaded Veggie Queso: 6.95
+amenity_features:
+  Takes Reservations: false
+  Private Dining: false
+  Large Groups: false
+  Onsite Parking: true
+  Outdoor Seating: true
+  Children's Menu: false
+  Free Wifi: false
+  Live Music: false
+  Wheelchair Accessible: true
+  Happy Hour: false
+min_price_factor: 0.62

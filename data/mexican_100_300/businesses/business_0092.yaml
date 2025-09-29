@@ -1,0 +1,31 @@
+id: business_0092
+name: Nacho Average Cactus
+description: Spice up your day with vibrant Mexican and Tex-Mex favorites, from smoky
+  starters to hearty sizzling skillets. Dive into bold flavors and creative twists,
+  all served with a side of Southwest flair.
+rating: 1.0
+progenitor_customer: customer_0031
+menu_features:
+  Chipotle Chicken Nachos: 12.67
+  Blue Corn Enchiladas: 14.06
+  Southwest Chicken Salad: 13.8
+  Smoky Lime Guacamole: 8.09
+  Sweet Corn Tamalitos: 7.22
+  Sizzling Chorizo Skillet: 15.84
+  Nachos Supremo Platter: 9.31
+  Vegetarian Fajita Bowl: 13.48
+  Sizzling Beef Chimichangas: 20.29
+  Chili Lime Shrimp Fajitas: 13.24
+  Cactus and Black Bean Salad: 9.26
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.86

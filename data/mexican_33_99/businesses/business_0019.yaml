@@ -1,0 +1,38 @@
+id: business_0019
+name: Masa & Mezcal
+description: Discover vibrant Mexican and Tex-Mex flavors in a lively setting where
+  every bite is a celebration of bold spices and fresh ingredients. Sip on creative
+  cocktails and savor our delicious variety of shareable favorites and classic comfort
+  plates.
+rating: 1.0
+progenitor_customer: customer_0007
+menu_features:
+  Passion Fruit Mojito Twist: 10.2
+  Three-Cheese Stuffed Poblano: 11.66
+  Wild Mushroom Quesadillas: 9.19
+  Mole Poblano Chicken: 20.21
+  Roasted Veggie Fajitas: 13.88
+  Fiery Chipotle Chicken Salad: 19.38
+  Zesty Avocado Smash: 7.55
+  "Cheesy Jalape\xF1o Poppers": 4.02
+  Crispy Pork Carnitas: 10.26
+  Grilled Elote Corn: 3.8
+  Spicy Chorizo Quesadilla: 12.22
+  Spicy Pineapple Mezcalita: 5.33
+  Passion Fruit Margarita: 11.9
+  Beef Barbacoa Empanadas: 12.05
+  Beef Barbacoa Tacos: 10.39
+  Spicy Black Bean Tostadas: 14.5
+  Oven-Baked Ranchero Nachos: 5.7
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: false
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Onsite Parking: true
+  Happy Hour: true
+  Private Dining: true
+  Outdoor Seating: true
+  Takes Reservations: false
+min_price_factor: 0.92

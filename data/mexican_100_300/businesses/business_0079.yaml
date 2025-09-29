@@ -1,0 +1,35 @@
+id: business_0079
+name: Fajita the Heat
+description: "Turn up the flavor at Fajita the Heat, where bold Tex-Mex classics and\
+  \ fiery salsas bring a sizzling taste of the Southwest to your table. From smoky\
+  \ snacks to zesty cocktails, it\u2019s a fiesta in every bite!"
+rating: 1.0
+progenitor_customer: customer_0027
+menu_features:
+  Beef Enchilada Verde: 8.9
+  Smoky Chipotle Beef Tostadas: 11.19
+  Avocado Lime Salsa: 7.74
+  Chipotle Lime Fajitas: 9.75
+  Hatch Green Chile Queso: 8.74
+  Black Bean Breakfast Burrito: 9.62
+  Beef Barbacoa Quesadilla: 11.38
+  Roasted Corn Esquites: 5.59
+  Spicy Paloma Cocktail: 7.45
+  Southwest Caesar Salad: 9.45
+  Ancho Chile Brownies: 4.99
+  Grilled Pineapple Fajitas: 11.57
+  Pumpkin Spice Empanadas: 8.7
+  Black Bean Corn Salsa: 3.96
+  Jalapeno Infused Tequila Sunrise: 10.26
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.65

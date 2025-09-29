@@ -1,0 +1,9 @@
+id: customer_0028
+name: Hannah Scott
+request: Could you please help me find a business that serves Pumpkin Spice Horchata
+  (1) and has Outdoor Seating? Once you identify such a place, I would like to place
+  an order for the item. Thank you!
+menu_features:
+  Pumpkin Spice Horchata: 4.99
+amenity_features:
+- Outdoor Seating

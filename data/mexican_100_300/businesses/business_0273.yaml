@@ -1,0 +1,35 @@
+id: business_0273
+name: Holy Sheet Pan Enchiladas
+description: Dig into a fiesta of bold flavors, where every dish brings a fresh twist
+  to classic Mexican and Tex-Mex favorites. Our kitchen crafts sizzling plates and
+  decadent desserts, paired with zesty cocktails for the perfect bite and sip.
+rating: 1.0
+progenitor_customer: customer_0091
+menu_features:
+  Hatch Chile Enchiladas: 22.61
+  Sizzling Beef Nachos: 8.69
+  Smoky Beef Enchiladas: 19.77
+  Ancho Chile Chocolate Cake: 8.18
+  Avocado Cilantro Dip: 8.15
+  Pineapple Habanero Margarita: 10.13
+  Mole Enchilada Supreme: 12.62
+  Chicken Fajita Quesadilla: 10.18
+  Tequila Sunrise Cocktail: 9.25
+  Spicy Beef Empanadas: 4.19
+  Mango Chipotle BBQ Ribs: 14.99
+  Crispy Avocado Fritters: 10.49
+  Dulce de Leche Ice Cream: 5.15
+  Chipotle Black Bean Soup: 5.07
+  Ancho Chocolate Cake: 5.04
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.74

@@ -1,0 +1,37 @@
+id: business_0015
+name: Taco 'Bout Flavor
+description: Spice things up with a fresh twist on classic Mexican and Tex-Mex favorites,
+  where every bite packs a punch of bold flavors. Enjoy a vibrant selection of zesty
+  salads, sizzling grills, and sweet treats in a lively, welcoming atmosphere.
+rating: 1.0
+progenitor_customer: customer_0005
+menu_features:
+  Blueberry Agave Salad: 5.62
+  Blackened Fish Fajitas: 10.78
+  Spicy Pulled Pork Enchiladas: 16.03
+  Avocado Lime Grilled Skewers: 11.95
+  Honey Chipotle Grilled Chicken: 10.88
+  Sizzling Veggie Quesadilla: 8.06
+  Crispy Fish Baja Bowl: 21.58
+  Carne Asada Nachos: 14.6
+  Tropical Fruit Agua Fresca: 6.13
+  Roasted Red Pepper and Black Bean Soup: 7.47
+  Chocolate Dipped Churros: 9.77
+  Firecracker Shrimp Tacos: 10.09
+  Agave Nectar Cocktail: 11.13
+  Three-Cheese Quesadilla: 12.48
+  Flaky Beef Empanadas: 6.48
+  Zesty Lime Shrimp Tacos: 10.88
+  Nachos Supremo Platter: 9.73
+amenity_features:
+  Children's Menu: false
+  Large Groups: true
+  Live Music: false
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: true
+min_price_factor: 0.93

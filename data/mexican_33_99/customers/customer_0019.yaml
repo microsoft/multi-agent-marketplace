@@ -1,0 +1,13 @@
+id: customer_0019
+name: Lucas Walker
+request: 'Could you please assist me in finding a business that serves the following
+  menu items: Grilled Avocado Salad (1) and Herb-Roasted Corn Salad (1)? It is essential
+  that the business is wheelchair accessible and takes reservations. I intend to place
+  an order with them once you find a place that meets all these needs. Thank you for
+  your assistance.'
+menu_features:
+  Grilled Avocado Salad: 8.99
+  Herb-Roasted Corn Salad: 7.49
+amenity_features:
+- Wheelchair Accessible
+- Takes Reservations

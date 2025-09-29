@@ -1,0 +1,37 @@
+id: business_0002
+name: Pepper & Palate
+description: Pepper & Palate serves up vibrant Mexican and Tex-Mex flavors, featuring
+  an enticing mix of classic and creative dishes. From zesty appetizers to delectable
+  desserts, every bite is a fiesta of taste and tradition.
+rating: 1.0
+progenitor_customer: customer_0001
+menu_features:
+  Fresh Tomato Salsa Nachos: 9.15
+  Mexican Chocolate Tres Leches: 6.69
+  Chocolate Dusted Flan: 7.42
+  Raspberry Chipotle Margarita: 9.45
+  Pineapple Salsa Pork Burrito: 10.77
+  Black Bean and Corn Soup: 7.91
+  Honey Chipotle Grilled Chicken: 16.52
+  Fresh Cactus Salad: 12.04
+  Roasted Red Pepper Queso: 7.14
+  Roasted Poblano Queso Dip: 6.65
+  Ancho Chili Chicken Wings: 9.17
+  Chocolate Dipped Churros: 7.21
+  Chili Lime Chicken Quesadilla: 7.49
+  Classic Lime Margarita: 6.04
+  Spicy Black Bean Quesadilla: 10.75
+  Sweet Lime Agua Fresca: 3.74
+  Chipotle Beef Quesadilla: 6.66
+amenity_features:
+  Takes Reservations: false
+  Private Dining: false
+  Large Groups: true
+  Onsite Parking: false
+  Outdoor Seating: false
+  Children's Menu: false
+  Free Wifi: true
+  Live Music: false
+  Wheelchair Accessible: true
+  Happy Hour: true
+min_price_factor: 0.78

@@ -1,0 +1,37 @@
+id: business_0105
+name: Citrus Grove Cantina
+description: "A fresh, modern twist on Mexican and Tex-Mex flavors\u2014where vibrant\
+  \ citrus notes and bold spices come together in every dish. Enjoy a colorful and\
+  \ inviting setting for unforgettable meals and handcrafted drinks."
+rating: 1.0
+progenitor_customer: customer_0035
+menu_features:
+  Coconut Mango Rice Pudding: 5.72
+  Agave Lime Grilled Chicken: 16.62
+  Sizzling Fajita Skillet: 14.39
+  Passion Fruit Mojito Twist: 6.39
+  Cucumber Cilantro Agua Fresca: 4.65
+  Seafood Ceviche Cocktail: 11.01
+  Blackened Shrimp Fajitas: 11.99
+  Pineapple Jalapeno Slaw: 2.75
+  Carne Asada Bowl: 14.64
+  Avocado Lime Grilled Salmon: 19.45
+  Hatch Chile Enchiladas: 15.89
+  Charro Beans and Rice: 4.77
+  Mexican Vanilla Flan: 7.93
+  Crispy Avocado Fries: 7.24
+  Raspberry Jalapeno Margarita: 9.95
+  Margarita Lime Pie: 5.1
+  Roasted Corn and Poblanos: 11.64
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.65

@@ -1,0 +1,34 @@
+id: business_0161
+name: Baja Bowl & Barbacoa
+description: Dive into vibrant Mexican and Tex-Mex flavors with fresh bowls, zesty
+  salads, and hearty classics in a lively, welcoming atmosphere. Perfect for those
+  craving bold spices and creative, crave-worthy combinations.
+rating: 1.0
+progenitor_customer: customer_0054
+menu_features:
+  Ancho Chicken Burrito Bowl: 18.57
+  Chipotle Lime Chicken Wings: 10.84
+  Baja Fish Taco Bowl: 16.35
+  Smoky Barbacoa Burrito Bowl: 10.4
+  Zesty Lime Ceviche: 8.62
+  Pepper Jack Cornbread Muffins: 4.67
+  Mango Cilantro Margarita: 8.61
+  Loaded Beef Enchiladas: 18.27
+  Chipotle Lime Rice: 3.72
+  Tangy Lime Chicken Salad: 7.93
+  Pepper Jack Quesadilla: 14.17
+  Mango Avocado Salad: 12.98
+  Grilled Steak Fajita Bowl: 17.21
+  Smoky Chipotle Beef Empanadas: 15.59
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.86

@@ -1,0 +1,31 @@
+id: business_0015
+name: Pueblo Palate
+description: Discover vibrant Mexican and Tex-Mex flavors in a warm and welcoming
+  setting. Indulge in creative cocktails, crave-worthy appetizers, and delicious desserts
+  crafted with a modern twist.
+rating: 1.0
+progenitor_customer: customer_0005
+menu_features:
+  Churro Cinnamon Roll: 3.91
+  Coconut Flan: 9.86
+  Beef Barbacoa Nachos: 17.38
+  Classic Beef Empanadas: 10.94
+  Passionfruit Paloma: 12.05
+  Tequila Sunrise Slushie: 8.6
+  Pineapple Cilantro Margarita: 8.81
+  Vegetarian Stuffed Bell Peppers: 8.68
+  Roasted Poblano Queso Dip: 7.62
+  Sizzling Steak Quesadilla: 17.11
+  Chorizo Sweet Potato Tacos: 6.43
+amenity_features:
+  Takes Reservations: true
+  Private Dining: false
+  Large Groups: true
+  Onsite Parking: false
+  Outdoor Seating: false
+  Children's Menu: false
+  Free Wifi: false
+  Live Music: false
+  Wheelchair Accessible: true
+  Happy Hour: true
+min_price_factor: 0.73

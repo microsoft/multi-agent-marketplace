@@ -1,0 +1,37 @@
+id: business_0191
+name: Fajita Fusion
+description: Experience bold flavors and vibrant Tex-Mex cuisine at Fajita Fusion.
+  Enjoy a lively atmosphere and a delicious array of classic and contemporary favorites,
+  perfect for any occasion.
+rating: 1.0
+progenitor_customer: customer_0064
+menu_features:
+  Black Bean Corn Salsa: 6.15
+  Nachos Supremo Platter: 12.0
+  Passion Fruit Margarita: 6.24
+  Sizzling Fajita Bowl: 14.54
+  Carne Asada Burrito Bowl: 18.03
+  Grilled Pineapple Fajitas: 13.44
+  Spicy Chicken Enchilada Bake: 8.73
+  Creamy Queso Dip: 9.6
+  Southwest Caesar Salad: 6.71
+  BBQ Pulled Pork Enchiladas: 16.35
+  Zesty Chicken Fajita Bowl: 13.71
+  Loaded Nachos Supreme: 7.93
+  Avocado Lime Crema Burger: 13.71
+  Crispy Chicken Empanadas: 9.59
+  Green Chili Chicken Soup: 6.71
+  Honey Chipotle Ribs: 20.57
+  Avocado Lime Breakfast Tostada: 11.1
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.7

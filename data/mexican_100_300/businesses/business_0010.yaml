@@ -1,0 +1,31 @@
+id: business_0010
+name: Lime & Layers
+description: Experience bright, bold Mexican and Tex-Mex flavors in every bite at
+  Lime & Layers. From zesty soups and smoky quesadillas to refreshing agua frescas,
+  our vibrant menu offers something for everyone.
+rating: 1.0
+progenitor_customer: customer_0004
+menu_features:
+  Zesty Lime Chicken Tortilla Soup: 10.57
+  Smoky Black Bean Quesadilla: 12.9
+  Avocado Lime Grilled Shrimp: 15.54
+  Sweet Lime Agua Fresca: 4.63
+  Agave Lime Grilled Chicken: 17.04
+  Al Pastor Breakfast Burrito: 10.57
+  Adobo Spiced Pork Tamales: 15.36
+  Passionfruit Agua Fresca: 4.39
+  "Cheesy Jalape\xF1o Poppers": 5.47
+  Southwest Chicken Enchiladas: 12.99
+  Classic Lime Margarita: 6.27
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.85

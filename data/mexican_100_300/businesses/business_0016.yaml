@@ -1,0 +1,33 @@
+id: business_0016
+name: La Vida Verde
+description: Experience the vibrant flavors of Mexico and the Southwest at La Vida
+  Verde, where fresh ingredients and creative twists come together in every dish.
+  Enjoy a lively atmosphere and a menu full of zesty, bold tastes perfect for any
+  occasion.
+rating: 1.0
+progenitor_customer: customer_0006
+menu_features:
+  Avocado Salsa Verde: 4.91
+  Three-Cheese Empanadas: 9.08
+  Sizzling Chorizo Skillet: 12.88
+  Mango Jalapeno Margarita: 12.68
+  Avocado Lime Rice Bowl: 9.67
+  Cajun Spiced Fish Tacos: 12.06
+  Ancho-Coffee Rubbed Steak: 23.23
+  Sizzling Veggie Quesadilla: 9.76
+  Stuffed Poblano Pepper Bliss: 7.12
+  Zesty Lime Guacamole: 6.36
+  Pineapple Salsa Carnitas: 7.29
+  Black Bean and Sweet Potato Empanadas: 9.29
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.77

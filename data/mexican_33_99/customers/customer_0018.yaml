@@ -1,0 +1,12 @@
+id: customer_0018
+name: Noah King
+request: 'I would like assistance in finding a business that offers the following
+  menu items: 1 Pico de Gallo Nachos, 1 Morning Breakfast Burrito, and 1 Red Chili
+  Beef Empanadas. Additionally, the business must provide Free Wifi. Once found, I
+  intend to place an order for these items. Thank you for your help.'
+menu_features:
+  Pico de Gallo Nachos: 9.49
+  Morning Breakfast Burrito: 9.99
+  Red Chili Beef Empanadas: 9.49
+amenity_features:
+- Free Wifi

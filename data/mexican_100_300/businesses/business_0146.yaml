@@ -1,0 +1,37 @@
+id: business_0146
+name: Cilantro & Char
+description: Cilantro & Char celebrates bold Mexican and Tex-Mex flavors with vibrant
+  salads, hearty bowls, zesty salsas, and savory classics. Dive into a colorful dining
+  experience where every bite is fresh, flavorful, and satisfyingly smoky.
+rating: 1.0
+progenitor_customer: customer_0049
+menu_features:
+  Avocado Cilantro Salad: 6.11
+  Carne Asada Burrito Bowl: 10.93
+  Grilled Chicken Fajita Platter: 16.84
+  Smoky Chipotle Cornbread: 6.25
+  Chili Verde Queso Dip: 9.47
+  Pineapple Habanero Salsa: 5.59
+  Chorizo & Potato Tacos: 10.63
+  Passionfruit Mojito: 5.92
+  Chocolate Lava Churros: 7.2
+  Loaded Nacho Fiesta: 6.77
+  Honey Glazed Pork Carnitas: 8.77
+  Pollo Asado Burrito Bowl: 14.27
+  Beef Fajita Burrito Bowl: 10.53
+  Smoky Chicken Tortilla Soup: 5.66
+  Zesty Avocado Salad: 10.18
+  Carne Asada Fries: 10.72
+  Zesty Shrimp Ceviche: 9.08
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.65

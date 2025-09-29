@@ -1,0 +1,31 @@
+id: business_0093
+name: Casa Fruta y Fuego
+description: "Experience the vibrant flavors of Mexico with a twist\u2014fresh fruits,\
+  \ bold spices, and creative cocktails come together in a warm, welcoming atmosphere.\
+  \ Celebrate tradition and innovation with every bite and sip."
+rating: 1.0
+progenitor_customer: customer_0031
+menu_features:
+  Spicy Mango Salsa: 5.26
+  Pomegranate Pisco Sour: 10.8
+  Vegetarian Black Bean Tostadas: 13.11
+  Jalapeno Cilantro Hummus: 6.8
+  Passion Fruit Mojito Twist: 7.91
+  Black Bean Street Corn Bowl: 8.72
+  Chipotle Lime Fajitas: 15.49
+  Blueberry Jalapeno Margarita: 8.6
+  Pineapple Chipotle Margarita: 3.41
+  Mole Chicken Tacos: 8.71
+  Dulce de Leche Ice Cream: 4.66
+amenity_features:
+  Children's Menu: true
+  Large Groups: true
+  Live Music: true
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: false
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.87

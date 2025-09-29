@@ -1,0 +1,36 @@
+id: business_0014
+name: Sabores Callejeros
+description: Discover a vibrant celebration of classic and contemporary Mexican and
+  Tex-Mex fare, featuring bold flavors, fresh ingredients, and street-food inspired
+  favorites. Immerse yourself in the colorful spirit of Mexico with every bite and
+  sip.
+rating: 1.0
+progenitor_customer: customer_0005
+menu_features:
+  Street Corn Elote: 6.79
+  Spicy Chorizo Quesadilla: 9.41
+  Pineapple Avocado Salsa: 8.48
+  Smoky BBQ Pulled Pork Tacos: 15.99
+  Chorizo and Potato Empanadas: 7.32
+  Sopa de Tortilla: 5.57
+  Fiery Red Salsa: 6.02
+  Frijoles Charros: 7.72
+  Cactus and Black Bean Frittata: 6.86
+  Tostada Salad with Avocado Crema: 6.91
+  Smoky Chipotle Queso: 6.44
+  Blue Corn Nachos Supreme: 9.39
+  Spicy Chicken Enchilada Bake: 12.81
+  Loaded Nacho Fiesta: 13.67
+  Spicy Pineapple Mezcalita: 15.95
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: true
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.77

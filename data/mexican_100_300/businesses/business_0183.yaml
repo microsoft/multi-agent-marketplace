@@ -1,0 +1,38 @@
+id: business_0183
+name: Zest & Char Kitchen
+description: Zest & Char Kitchen brings a modern twist to Mexican and Tex-Mex classics,
+  delivering vibrant flavors and fire-kissed favorites in a lively, welcoming atmosphere.
+  Fresh ingredients and bold combinations make every dish a memorable experience.
+rating: 1.0
+progenitor_customer: customer_0061
+menu_features:
+  Black Bean & Sweet Potato Burrito: 7.34
+  Red Chili Beef Empanadas: 9.55
+  Zesty Lime Shrimp Skewers: 12.83
+  Zesty Chicken Fajita Bowl: 10.25
+  Chili Verde Pork Burrito: 19.6
+  Frijoles Charros: 8.18
+  Jalapeno Watermelon Sangria: 10.01
+  Charred Salsa Verde Burrito: 19.68
+  Red Chili Pork Tamale: 7.89
+  Pepper Jack Cornbread Muffins: 3.47
+  Blueberry Mezcal Mule: 11.81
+  Chocolate Lava Churros: 6.15
+  Bacon-Wrapped Jalapeno Dogs: 6.79
+  Pineapple BBQ Pulled Pork Nachos: 10.04
+  Mexican Chocolate Lava Cake: 6.52
+  Chipotle Pineapple Pork Skewers: 19.74
+  Blueberry Jalapeno Margarita: 8.67
+  Pepper Jack Quesadilla: 7.72
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.68

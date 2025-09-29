@@ -1,0 +1,33 @@
+id: business_0095
+name: Sizzle & Skewer
+description: Experience a vibrant twist on Mexican and Tex-Mex classics with bold
+  flavors, sizzling grills, and creative fresh ingredients. Join us for a delicious
+  journey through smoky, spicy, and savory favorites in a lively and welcoming atmosphere.
+rating: 1.0
+progenitor_customer: customer_0032
+menu_features:
+  Tequila Lime Chicken Skewers: 13.49
+  Mango Avocado Salad: 9.65
+  Pineapple Salsa Tostadas: 9.31
+  Chicken Verde Enchilada: 11.18
+  Charred Poblano Quesadillas: 11.24
+  Tex-Mex Breakfast Burrito: 9.52
+  Smoky Chipotle Burrito: 13.36
+  Queso Fundido Dip: 6.06
+  Mexican Chocolate Pudding: 5.74
+  Grilled Steak Nachos: 3.69
+  "Spicy Jalape\xF1o Burger": 12.29
+  Chorizo Breakfast Burrito: 7.02
+  Pineapple Jalapeno Salsa: 4.54
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.83

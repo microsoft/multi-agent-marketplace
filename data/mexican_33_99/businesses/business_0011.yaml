@@ -1,0 +1,31 @@
+id: business_0011
+name: Flantastic Bites & Sips
+description: Dive into vibrant flavors and creative twists at Flantastic Bites & Sips,
+  where savory bites meet refreshing sips in every meal. From zesty small plates to
+  decadent desserts, taste the spirited fusion of Mexican and Tex-Mex favorites.
+rating: 1.0
+progenitor_customer: customer_0004
+menu_features:
+  Chocolate Flan: 6.01
+  Tamarind Agua Fresca: 5.29
+  Tamarind Chipotle Wings: 10.26
+  Spicy Beef Burrito Bowl: 7.06
+  Mole Enchilada Supreme: 9.63
+  Ancho Chile Braised Pork Tostadas: 7.74
+  Crispy Fish Burrito: 11.61
+  Carnitas Quesadilla Melt: 12.72
+  Citrus Shrimp Ceviche: 7.6
+  Street Corn Nachos: 8.88
+  Pina Colada Agua Fresca: 4.16
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: true
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: false
+  Outdoor Seating: true
+  Takes Reservations: false
+min_price_factor: 0.65

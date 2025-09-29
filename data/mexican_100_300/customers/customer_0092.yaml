@@ -1,0 +1,11 @@
+id: customer_0092
+name: Maya Chen
+request: 'Could you please assist me in finding a business that serves the following
+  menu items: ''Street Style Beef Tacos'' (1) and ''Zesty Lime Cheesecake'' (1)? It''s
+  essential that the business also takes reservations. Once you''ve located such an
+  establishment, please proceed with placing the order for me. Thank you!'
+menu_features:
+  Street Style Beef Tacos: 10.49
+  Zesty Lime Cheesecake: 6.99
+amenity_features:
+- Takes Reservations

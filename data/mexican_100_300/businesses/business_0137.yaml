@@ -1,0 +1,37 @@
+id: business_0137
+name: Cactus & Citrus Kitchen
+description: A vibrant, modern spot celebrating the bold flavors of Mexico and the
+  borderlands. Dive into inventive dishes and fresh cocktails in a lively, welcoming
+  atmosphere.
+rating: 1.0
+progenitor_customer: customer_0046
+menu_features:
+  Chipotle Lime Rice: 4.54
+  Fresh Cactus Salad: 10.32
+  Charro Bean Burrito: 8.08
+  Zesty Lime Grilled Corn: 4.35
+  Loaded Nacho Supremo: 12.8
+  Wild Mushroom Quesadillas: 10.89
+  Spicy Bean and Cheese Quesadillas: 7.91
+  Chipotle Steak Fajitas: 17.56
+  Three-Cheese Queso Fundido: 5.08
+  Carne Asada Steak Plate: 10.37
+  Hatch Chile Queso Dip: 6.46
+  Blueberry Mojito: 6.54
+  Smoky Pulled Pork Sandwich: 14.0
+  Frozen Spicy Watermelon Daiquiri: 6.98
+  Mexican Shrimp Cocktail: 10.1
+  Grilled Chipotle Lime Chicken: 10.12
+  Ancho Chile Chicken Wings: 12.5
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: true
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.75

@@ -1,0 +1,37 @@
+id: business_0259
+name: Taco the Lake
+description: Dive into bold and zesty Mexican-inspired eats with a playful twist.
+  Enjoy vibrant plates, fresh flavors, and spirited sips in a lively, welcoming setting.
+rating: 1.0
+progenitor_customer: customer_0087
+menu_features:
+  Crispy Fish Tacos: 14.21
+  Grilled Pineapple Mojito: 10.58
+  Roasted Veggie Tostadas: 8.6
+  Baja Fish Taco Plate: 18.28
+  Chicken Fajita Quesadilla: 12.79
+  "Jalape\xF1o Margarita": 5.75
+  Crispy Shrimp Tostadas: 7.32
+  Tamarind Glazed Ribs: 15.96
+  Chipotle Chicken Skillet: 13.8
+  Choco-Taco Delight: 5.98
+  Pulled Pork Tamale Plate: 19.03
+  Tangy Lime Chicken Salad: 9.83
+  Hatch Green Chile Quesadilla: 12.86
+  Crispy Avocado Tostadas: 9.79
+  Roasted Poblano Quesadillas: 12.24
+  Tres Amigos Sampler Platter: 18.4
+  Spicy Pulled Pork Enchiladas: 12.78
+  Zesty Lime Chicken Salad: 10.51
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.9

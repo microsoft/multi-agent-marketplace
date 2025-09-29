@@ -1,0 +1,13 @@
+id: customer_0010
+name: James Turner
+request: 'Please assist me in finding a business that offers both ''Queso Fundido
+  with Chorizo'' (1) and ''Spicy Black Bean Quesadilla'' (1), and also ensures the
+  amenities: Wheelchair Accessible and Takes Reservations. It is important that these
+  conditions are met, as I intend to place an order with the business you find. Thank
+  you for your assistance.'
+menu_features:
+  Queso Fundido with Chorizo: 8.99
+  Spicy Black Bean Quesadilla: 9.99
+amenity_features:
+- Wheelchair Accessible
+- Takes Reservations

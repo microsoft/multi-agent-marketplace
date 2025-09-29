@@ -1,0 +1,33 @@
+id: business_0221
+name: Cactus & Chile Cantina
+description: Discover bold Tex-Mex flavors and vibrant Mexican-inspired fare in a
+  warm, colorful setting. From smoky starters to sizzling specialties, our menu brings
+  together classic tastes with a fresh, modern twist.
+rating: 1.0
+progenitor_customer: customer_0074
+menu_features:
+  Smoky Chipotle Queso: 8.5
+  Ancho Chile Rellenos: 13.38
+  Black Bean and Corn Tostadas: 5.31
+  Red Chile Enchiladas: 7.69
+  Jalapeno Lime Rice Bowl: 9.62
+  Classic Street Corn: 3.76
+  Avocado Salsa Verde: 5.12
+  Spicy Black Bean Quesadilla: 7.82
+  Roasted Vegetable Fajitas: 13.36
+  Chocolate Dusted Churro Bites: 7.1
+  Sizzling Beef Nachos: 7.51
+  Tamarind Glazed Ribs: 13.94
+  Cactus and Black Bean Salad: 6.71
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.68

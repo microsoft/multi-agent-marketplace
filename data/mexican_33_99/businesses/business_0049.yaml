@@ -1,0 +1,36 @@
+id: business_0049
+name: Flame & Ganache
+description: Dive into bold Tex-Mex and Mexican-inspired flavors, where spicy meets
+  sweet in every bite. From zesty wings to decadent chocolate desserts, our vibrant
+  dishes are sure to brighten your day.
+rating: 1.0
+progenitor_customer: customer_0017
+menu_features:
+  Spicy Chocolate Lava Cake: 6.04
+  Cinnamon Spice Flan: 6.14
+  Ancho Chile Chicken Wings: 14.05
+  Mango Chipotle Chicken: 11.98
+  Chipotle Chicken Tacos: 14.6
+  Freshly Squeezed Agua Fresca: 3.44
+  Cajun Spiced Fish Tacos: 5.08
+  Horchata Rice Pudding: 6.0
+  Mango Jalapeno Margarita: 13.89
+  Grilled Avocado Salad: 12.88
+  Ancho Chile Brownies: 3.1
+  Avocado Lime Grilled Shrimp: 15.36
+  Cheesy Jalapeno Poppers: 9.03
+  Chipotle BBQ Chicken Wings: 10.51
+  Pineapple Passion Mojito: 12.8
+  Avocado Cilantro Lime Salad: 7.21
+amenity_features:
+  Children's Menu: true
+  Large Groups: false
+  Live Music: true
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: false
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.76

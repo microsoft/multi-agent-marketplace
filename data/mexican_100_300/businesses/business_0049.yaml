@@ -1,0 +1,33 @@
+id: business_0049
+name: Guac My World
+description: A vibrant oasis of Mexican and Tex-Mex flavors, Guac My World serves
+  up fresh, tropical twists and savory classics that will delight your senses. Dive
+  into our colorful ceviches, zesty enchiladas, and sweet island-inspired treats in
+  a lively, welcoming atmosphere.
+rating: 1.0
+progenitor_customer: customer_0017
+menu_features:
+  Loaded Nacho Skillet: 11.31
+  Pineapple Salsa Shrimp Skewers: 13.21
+  Coconut Mango Rice Pudding: 8.31
+  Chili Lime Shrimp Enchiladas: 11.9
+  Vanilla Flan Delight: 3.84
+  Citrus Shrimp Ceviche: 6.54
+  Grilled Pineapple Mojito: 9.79
+  Sweet Plantain Empanadas: 7.49
+  Seafood Ceviche Cocktail: 9.08
+  Coconut Lime Agua Fresca: 2.65
+  Avocado Crunch Tostadas: 5.84
+  Grilled Vegetable Quesadilla: 5.7
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.74

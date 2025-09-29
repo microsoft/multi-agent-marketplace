@@ -1,0 +1,31 @@
+id: business_0013
+name: Colores de la Mesa
+description: Experience the vibrant flavors of Mexico and the Southwest in a warm,
+  inviting atmosphere. Our kitchen celebrates bold spices, fresh ingredients, and
+  comforting classics, all crafted with a creative touch.
+rating: 1.0
+progenitor_customer: customer_0005
+menu_features:
+  Roasted Poblano Rice Bowl: 10.94
+  Mexican Chocolate Lava Cake: 4.96
+  Smoky BBQ Pulled Pork Tacos: 9.68
+  Vegetarian Stuffed Bell Peppers: 12.54
+  Traditional Horchata Drink: 3.29
+  Savory Beef Empanadas: 7.64
+  Ancho Chili Chocolate Brownies: 6.1
+  Cheesy Jalapeno Queso: 7.74
+  Chili Lime Sizzling Fajitas: 15.31
+  Hatch Green Chile Queso: 7.59
+  Crispy Avocado Nachos: 12.1
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.72

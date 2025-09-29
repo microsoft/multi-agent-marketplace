@@ -1,0 +1,32 @@
+id: business_0007
+name: Citrus & Chile
+description: Citrus & Chile brings a vibrant twist to classic Mexican and Tex-Mex
+  comfort food, blending bold flavors with fresh, creative ingredients. Enjoy a lively
+  atmosphere and a menu that celebrates the zest and spice of Southwestern cuisine.
+rating: 1.0
+progenitor_customer: customer_0003
+menu_features:
+  Avocado Toast with Pico: 13.86
+  Chipotle Beef Quesadilla: 10.63
+  Tamarind Honey Glazed Ribs: 11.62
+  Chicken Fajita Skillet: 10.95
+  Pumpkin Spice Flan: 7.59
+  "Mango Jalape\xF1o Fresca": 4.87
+  Ancho Chile Braised Pork Tostadas: 15.35
+  Sizzling Fajita Skillet: 18.72
+  Smoky Chipotle Wings: 11.15
+  Classic Beef Enchilada Plate: 10.53
+  Pulled Pork Tamale Platter: 9.51
+  Poblano Pepper Relleno: 10.93
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.68

@@ -1,0 +1,10 @@
+id: customer_0006
+name: Noah Kim
+request: I am looking for a business that serves the Herb-Roasted Corn Salad in a
+  quantity of 1. Additionally, the establishment must offer free Wifi. These requirements
+  are essential, and I intend to place an order once such a business is found. Could
+  you assist me in identifying a suitable location?
+menu_features:
+  Herb-Roasted Corn Salad: 7.49
+amenity_features:
+- Free Wifi

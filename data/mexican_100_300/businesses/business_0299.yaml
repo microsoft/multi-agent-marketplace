@@ -1,0 +1,32 @@
+id: business_0299
+name: Cactus & Citrus Cantina
+description: A vibrant spot where zesty flavors and fresh ingredients take center
+  stage. Enjoy a colorful variety of Tex-Mex and Mexican favorites, served with a
+  contemporary twist in a welcoming atmosphere.
+rating: 1.0
+progenitor_customer: customer_0100
+menu_features:
+  Honey Lime Grilled Salmon: 12.85
+  Crispy Duck Tacos: 9.93
+  Cactus Citrus Salad: 8.91
+  Tomatillo Verde Salsa: 6.01
+  Chipotle Mushroom Tacos: 13.46
+  Chipotle Lime Chicken Burrito: 19.63
+  Roasted Poblano Queso Dip: 4.47
+  Chipotle Honey Wings: 5.85
+  Coconut Lime Rice: 5.08
+  Avocado Lime Cheesecake: 6.02
+  Hibiscus Mint Iced Tea: 4.98
+  Mango Jalapeno Salsa: 7.23
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.66

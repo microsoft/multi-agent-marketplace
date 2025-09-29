@@ -1,0 +1,35 @@
+id: business_0086
+name: La Brisa Mexicana
+description: Experience vibrant Mexican and Tex-Mex cuisine in a warm, lively setting.
+  Our menu features fresh ingredients and bold flavors, perfect for those who crave
+  a taste of tradition with a modern twist.
+rating: 1.0
+progenitor_customer: customer_0029
+menu_features:
+  Honey Chipotle Shrimp Skewers: 13.71
+  Fresh Cactus Salad: 11.53
+  Grilled Chipotle Skewers: 14.2
+  Frozen Mango Margarita: 12.92
+  Sizzling Chorizo Empanadas: 8.9
+  Sizzling Veggie Fajitas: 11.52
+  Adobo Chicken Tacos: 8.14
+  Sizzling Fajita Trio: 18.68
+  Mango Chili Margarita: 8.73
+  Zesty Lime Chicken Tortilla Soup: 12.02
+  Carne Asada Steak Plate: 16.24
+  Spicy Mango Salsa: 5.17
+  Smoky Chipotle Chicken Burrito: 12.05
+  Ancho Chile Coffee Rubbed Steak: 15.8
+  Avocado Cilantro Salad: 9.14
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.61

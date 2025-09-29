@@ -1,0 +1,33 @@
+id: business_0005
+name: Plantains of the Caribbean
+description: Set sail on a flavor adventure with bold Tex-Mex dishes, sweet and spicy
+  treats, and a tropical twist at every turn. From smoky bowls to refreshing cocktails,
+  discover vibrant food that surprises with every bite.
+rating: 1.0
+progenitor_customer: customer_0002
+menu_features:
+  Spiced Chocolate Tamales: 4.17
+  Smoky Barbacoa Burrito Bowl: 13.38
+  Mango Habanero Wings: 12.17
+  Caramelized Plantain Burrito: 12.97
+  Cactus Salad Bowl: 7.17
+  Coconut Mojito: 7.26
+  Chipotle Lime Chicken Bowl: 13.64
+  Coconut Lime Margarita: 6.69
+  Pina Colada Agua Fresca: 3.87
+  Chocolate Flan: 1.61
+  Pineapple Salsa Carnitas: 18.94
+  Mexican Mocha Latte: 7.09
+  Blue Corn Tortilla Soup: 9.56
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: true
+min_price_factor: 0.85

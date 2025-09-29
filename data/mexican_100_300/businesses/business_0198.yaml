@@ -1,0 +1,37 @@
+id: business_0198
+name: Great Skewkendo
+description: "Experience a sizzling symphony of Tex-Mex flavor, where smoky spice\
+  \ and fresh inspiration come together in every bite. From flame-kissed classics\
+  \ to vibrant aguas frescas, it\u2019s always a fiesta at Great Skewkendo."
+rating: 1.0
+progenitor_customer: customer_0066
+menu_features:
+  Tex-Mex Steak Fajitas: 14.18
+  Smoky Chipotle Chicken Wrap: 10.06
+  Cheesy Jalapeno Queso: 8.31
+  Passion Fruit Agua Fresca: 2.03
+  Charred Tomatillo Chicken: 14.47
+  Chipotle Queso Fundido: 7.34
+  Loaded Chorizo Nachos: 16.51
+  Chocolate and Cinnamon Flan: 4.52
+  Tamarind Glazed Ribs: 10.59
+  Chipotle Lime Tacos: 16.26
+  Ancho Chile Beef Skewers: 6.91
+  Mango Agua Fresca: 4.54
+  Chipotle Lime Chicken Quesadilla: 3.85
+  Three-Cheese Chile Rellenos: 7.22
+  Loaded Beef Enchiladas: 14.1
+  Adobo Grilled Steak Tacos: 16.1
+  Sizzling Beef Nachos: 7.41
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.94

@@ -1,0 +1,36 @@
+id: business_0050
+name: Fajita Fiesta
+description: Experience a vibrant celebration of Tex-Mex classics and fresh Mexican
+  flavors, served in a lively and welcoming atmosphere. From zesty salads and sizzling
+  fajitas to sweet, traditional desserts, our menu brings something delicious for
+  everyone.
+rating: 1.0
+progenitor_customer: customer_0017
+menu_features:
+  Vanilla Flan Delight: 4.41
+  Roasted Veggie Tostadas: 11.71
+  Fruity Cucumber Agua Fresca: 3.73
+  Zesty Lime Shrimp Salad: 11.0
+  Grilled Vegetable Fajitas: 13.45
+  Classic Street Corn: 5.51
+  Black Bean Breakfast Burrito: 11.07
+  Churro Cinnamon Roll: 6.09
+  Homemade Horchata: 6.0
+  Loaded Nacho Skillet: 8.04
+  Breakfast Chorizo Tostadas: 7.34
+  Sizzling Shrimp Fajitas: 16.82
+  Spicy Shrimp Ceviche: 18.3
+  Spiced Beef Empanadas: 7.49
+  Carne Asada Burrito Bowl: 14.36
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.76

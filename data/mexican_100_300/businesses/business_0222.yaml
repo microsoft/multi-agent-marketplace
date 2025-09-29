@@ -1,0 +1,35 @@
+id: business_0222
+name: La Mesa Zestosa
+description: Discover vibrant Mexican and Tex-Mex cuisine in a colorful, welcoming
+  atmosphere. From crave-worthy quesadillas and salads to refreshing handcrafted drinks,
+  every dish is a celebration of bold flavors.
+rating: 1.0
+progenitor_customer: customer_0074
+menu_features:
+  Passionfruit Agua Fresca: 4.71
+  Zesty Avocado Smash: 4.73
+  Three Cheese Quesadillas: 10.23
+  Fresh Guacamole Bowl: 9.99
+  Firecracker Shrimp Quesadilla: 6.58
+  Shrimp and Avocado Salad: 18.13
+  Baja Shrimp Tostadas: 12.79
+  Chorizo Stuffed Mushrooms: 9.94
+  Jalapeno Cilantro Hummus: 4.44
+  Spicy Black Bean Quesadilla: 7.45
+  Passion Fruit Agua Fresca: 4.33
+  Adobo Grilled Steak Tacos: 10.34
+  Maple Chipotle Glazed Ribs: 16.93
+  Avocado Cilantro Salad: 11.35
+  Jalapeno Pineapple Margarita: 10.27
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.67

@@ -1,0 +1,37 @@
+id: business_0021
+name: Cantina Dulce de Fuego
+description: A vibrant gathering spot celebrating the bold and sweet flavors of Mexico
+  and the Southwest. Enjoy a creative menu of richly spiced dishes, inventive cocktails,
+  and warm hospitality in a colorful, welcoming setting.
+rating: 1.0
+progenitor_customer: customer_0007
+menu_features:
+  Roasted Corn Guacamole: 5.76
+  Pulled Pork Tamale Platter: 15.86
+  Spicy Black Bean Tostadas: 12.05
+  Black Bean and Sweet Potato Empanadas: 8.58
+  Spiced Chocolate Mole: 6.54
+  Mole Chocolate Cake: 5.34
+  Three Cheese Quesadillas: 4.6
+  Spicy Cucumber Margarita: 10.67
+  Slow-Cooked Barbacoa Enchiladas: 16.15
+  Roasted Veggie Fajitas: 11.46
+  Black Bean & Mushroom Sopes: 11.19
+  Chipotle Chicken Caesar Burrito: 13.92
+  Cucumber Jalapeno Margarita: 7.49
+  Smoky Chipotle Salsa: 3.47
+  Carne Asada Breakfast Burrito: 10.95
+  Passionfruit Agua Fresca: 6.05
+  Jalapeno Watermelon Sangria: 9.9
+amenity_features:
+  Children's Menu: false
+  Large Groups: true
+  Live Music: false
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: true
+min_price_factor: 0.88

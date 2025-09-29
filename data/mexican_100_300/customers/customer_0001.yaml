@@ -1,0 +1,9 @@
+id: customer_0001
+name: Olivia Murphy
+request: Could you please help me find a business that serves 1 Avocado Lime Crema
+  Quesadilla and offers free Wifi? I intend to place an order once such a business
+  is identified. Thank you.
+menu_features:
+  Avocado Lime Crema Quesadillas: 10.99
+amenity_features:
+- Free Wifi

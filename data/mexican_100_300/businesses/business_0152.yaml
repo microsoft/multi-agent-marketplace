@@ -1,0 +1,35 @@
+id: business_0152
+name: Guac 'Til You Drop
+description: Zingy, vibrant flavors meet creative Tex-Mex at this playful eatery,
+  where fresh salsas, colorful salads, and smoky grilled favorites bring a fiesta
+  to every plate. Dive into a palate-pleasing adventure bursting with zest and a twist
+  of the unexpected.
+rating: 1.0
+progenitor_customer: customer_0051
+menu_features:
+  Zesty Lime Chicken Salad: 9.24
+  Blackened Shrimp Fajitas: 19.04
+  Cactus Cooler Salad: 9.96
+  Avocado Lime Quinoa Salad: 8.95
+  Tropical Salsa Salmon: 14.85
+  Fresh Guacamole Platter: 9.42
+  Fresh Mango Salsa & Chips: 5.15
+  Sunrise Breakfast Burrito: 9.61
+  Spicy Tomato Gazpacho: 3.91
+  Black Bean and Corn Taquitos: 6.93
+  Smoked Chipotle Chicken Skewers: 7.9
+  Roasted Tomato Salsa: 5.19
+  Sweet Corn Tamale Cakes: 8.76
+  Grilled Chicken Fajita Bowl: 17.0
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.94

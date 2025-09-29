@@ -1,0 +1,31 @@
+id: business_0075
+name: Pine & Pepper Cantina
+description: A vibrant, modern spot serving up bold Mexican and Tex-Mex creations
+  with fresh flavor and a touch of creativity. Dive into a colorful menu featuring
+  sizzling favorites and zesty twists, perfect for foodies seeking something new.
+rating: 1.0
+progenitor_customer: customer_0025
+menu_features:
+  Pineapple Salsa Tostadas: 7.69
+  Three-Cheese Queso Dip: 8.46
+  Sizzling Beef Enchiladas: 13.25
+  Pineapple Salsa Nachos: 8.87
+  Chili Lime Shrimp Enchiladas: 11.9
+  Zesty Lime Chicken Tortilla Soup: 7.63
+  Sweet Corn Tamale Cakes: 6.56
+  Sunrise Breakfast Burrito: 8.83
+  Baja Shrimp Tostadas: 11.14
+  Charro Bean Burrito: 12.5
+  Chili Verde Queso Dip: 7.07
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: true
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.8

@@ -1,0 +1,35 @@
+id: business_0159
+name: "Cielito de Ma\xEDz"
+description: Experience vibrant Mexican and Tex-Mex flavors in a warm, festive setting.
+  From tamales and enchiladas to fresh aguas frescas, enjoy classic dishes with a
+  zesty twist.
+rating: 1.0
+progenitor_customer: customer_0053
+menu_features:
+  Classic Tamale Plate: 10.45
+  Zesty Chicken Enchiladas: 17.36
+  Steak and Cheese Chimichanga: 19.06
+  Zesty Lime Ceviche: 10.53
+  Spiced Avocado Toast: 7.09
+  Ancho Chile Brownies: 6.95
+  Chili Lime Chicken Wings: 10.0
+  Ranchero Breakfast Burrito: 10.56
+  Pineapple Basil Agua Fresca: 5.42
+  Sweet Corn Tamales: 8.44
+  Tex-Mex Breakfast Skillet: 9.35
+  Classic Street Corn: 6.22
+  Three-Cheese Queso Fundido: 8.67
+  Ancho Chili Beef Enchiladas: 10.84
+  Watermelon Mint Agua Fresca: 3.99
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.82

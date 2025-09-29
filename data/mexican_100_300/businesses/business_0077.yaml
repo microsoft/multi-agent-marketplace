@@ -1,0 +1,36 @@
+id: business_0077
+name: Cactus & Ember
+description: Cactus & Ember serves up bold, vibrant Mexican and Tex-Mex flavors with
+  a modern twist, featuring unique salsas, smoky entrees, and creative small plates.
+  Experience a fresh take on classic favorites in a lively, welcoming atmosphere.
+rating: 1.0
+progenitor_customer: customer_0026
+menu_features:
+  Smoky Black Bean Salsa: 9.71
+  Zesty Chicken Tortilla Soup: 5.71
+  Chili Lime Sweet Potato Fries: 6.31
+  Mango Chipotle Wings: 7.78
+  Ancho Chile Beef Enchiladas: 9.2
+  Mango Habanero Salsa: 6.37
+  Coconut Tres Leches: 8.48
+  Honey Chipotle Glazed Ribs: 13.37
+  Roasted Poblano Avocado Smash: 9.01
+  Tamarind Spiced Chicken Wings: 11.42
+  Pulled Pork Tamale Platter: 12.99
+  Mango Habanero Glazed Salmon: 11.78
+  Strawberry Jalapeno Margarita: 9.83
+  Ancho Chocolate Cake: 9.72
+  Cactus Salad Bowl: 8.45
+  Cactus Blossom Salad: 16.81
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.61

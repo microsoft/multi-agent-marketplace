@@ -1,0 +1,11 @@
+id: customer_0028
+name: Ethan Thompson
+request: Please assist me in finding a business that offers Spiced Pumpkin Churros
+  (1 order) and also has a Children's Menu and accommodates Large Groups. It is important
+  that the business meets all of these requirements, as I intend to place an order
+  for the Spiced Pumpkin Churros. Thank you for your help.
+menu_features:
+  Spiced Pumpkin Churros: 5.49
+amenity_features:
+- Children's Menu
+- Large Groups

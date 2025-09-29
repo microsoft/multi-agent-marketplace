@@ -1,0 +1,36 @@
+id: business_0024
+name: Salsapalooza
+description: Salsapalooza serves up a playful mix of bold Mexican and Tex-Mex flavors,
+  from vibrant salads to sizzling small plates. Come join the fiesta for inventive
+  salsas, crave-worthy snacks, and a sweet finish you won't forget.
+rating: 1.0
+progenitor_customer: customer_0008
+menu_features:
+  Guacamole and Salsa Sampler: 9.51
+  "Jalape\xF1o Margarita": 10.42
+  Grilled Shrimp Ceviche: 14.07
+  Avocado Tomatillo Salsa: 5.92
+  Smoky Black Bean Salsa: 7.13
+  Sizzling Beef Nachos: 8.14
+  Spicy Chicken Fajita Salad: 10.29
+  Roasted Corn and Black Bean Salad: 5.61
+  Southwest Chicken Enchiladas: 16.73
+  Crispy Avocado Rolls: 7.86
+  Chili Con Queso Fundido: 8.95
+  Roasted Corn and Poblanos: 9.39
+  Spiced Beef Empanadas: 8.6
+  Loaded Nachos Supreme: 8.93
+  Mango Pico de Gallo: 6.23
+  Chocolate Tamal del Cielo: 5.73
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.91

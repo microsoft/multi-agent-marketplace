@@ -1,0 +1,36 @@
+id: business_0052
+name: Chili & Churro
+description: Experience a vibrant fusion of Mexican and Tex-Mex flavors, from fiery
+  grilled favorites to sweet cinnamon treats. Gather for bold street food and handcrafted
+  drinks in a lively, modern setting.
+rating: 1.0
+progenitor_customer: customer_0018
+menu_features:
+  Chocolate Dusted Churro Bites: 3.36
+  Chili Lime Grilled Salmon: 11.33
+  Chili Lime Chicken Quesadilla: 4.78
+  Vanilla Bean Sopapillas: 5.4
+  Pomegranate Guacamole: 6.97
+  Mexican Chocolate Ice Cream: 6.39
+  Spiced Chocolate Mole: 3.83
+  Street Corn Nachos: 11.08
+  Chipotle Lime Chicken Quesadilla: 12.88
+  Baja Fish Taco Bowl: 12.5
+  Loaded Beef Nacho Bowl: 9.97
+  Strawberry Basil Agua Fresca: 5.29
+  Cinnamon Sugar Sopapillas: 6.87
+  Blackened Shrimp Fajitas: 19.39
+  Sizzling Fajita Salad: 8.63
+  Blueberry Basil Agua Fresca: 5.04
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.77

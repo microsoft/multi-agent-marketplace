@@ -1,0 +1,38 @@
+id: business_0243
+name: Skillet & Citrus Social
+description: Enjoy bold, contemporary Mexican and Tex-Mex flavors with a fresh twist
+  at Skillet & Citrus Social. From sizzling skillets to zesty cocktails, gather for
+  a vibrant dining experience packed with south-of-the-border charm.
+rating: 1.0
+progenitor_customer: customer_0081
+menu_features:
+  Zesty Shrimp Fajitas: 18.6
+  Three Cheese Quesadillas: 8.32
+  Citrus Marinated Pork Carnitas: 14.51
+  Hatch Chile Enchiladas: 17.57
+  Sizzling Skillet Fajitas: 17.74
+  Tangy Tomatillo Salsa: 5.11
+  Mango Jalapeno Margarita: 8.8
+  Zesty Lime Shrimp Tacos: 11.14
+  Mole Sauce Tamale: 9.06
+  Classic Horchata: 3.02
+  Sweet Potato Chorizo Hash: 8.02
+  Carnitas Breakfast Burrito: 11.5
+  Spicy Beef Nacho Platter: 6.07
+  Tomatillo Shrimp Cocktail: 10.07
+  Honey Lime Grilled Salmon: 13.13
+  Smoky Black Bean Tacos: 8.55
+  Black Bean Street Corn Bowl: 11.53
+  Cinnamon Sugar Sopapillas: 3.25
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.95

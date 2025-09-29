@@ -1,0 +1,11 @@
+id: customer_0027
+name: Mia Harris
+request: 'Could you please assist me in finding a business that serves the following
+  menu items: 1 Blue Agave Paloma and 1 Chipotle Lime Tacos, and also has Onsite Parking?
+  It''s very important to me that the business meets all these criteria, as I intend
+  to place an order for these items. Thank you for your help.'
+menu_features:
+  Blue Agave Paloma: 9.49
+  Chipotle Lime Tacos: 11.99
+amenity_features:
+- Onsite Parking

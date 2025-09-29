@@ -1,0 +1,11 @@
+id: customer_0023
+name: Daniel Robinson
+request: 'I would like to place an order for the following item: 1 Green Chili Pork
+  Burrito. Please ensure that the business we choose has a Children''s Menu and is
+  Wheelchair Accessible, as these amenities are essential. Thank you for your assistance
+  in finding a suitable establishment.'
+menu_features:
+  Green Chili Pork Burrito: 11.5
+amenity_features:
+- Children's Menu
+- Wheelchair Accessible

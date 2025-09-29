@@ -1,0 +1,13 @@
+id: customer_0051
+name: Matthew Chen
+request: 'Could you please help me find a business that offers the following menu
+  items: 1 Black Bean and Corn Taquitos, 1 Fresh Guacamole Platter, and 1 Avocado
+  Lime Quinoa Salad, and also has the amenities of Free Wifi and Live Music? Once
+  you have found such a place, I intend to place this order. Thank you for your assistance!'
+menu_features:
+  Black Bean and Corn Taquitos: 7.49
+  Fresh Guacamole Platter: 8.49
+  Avocado Lime Quinoa Salad: 10.49
+amenity_features:
+- Free Wifi
+- Live Music

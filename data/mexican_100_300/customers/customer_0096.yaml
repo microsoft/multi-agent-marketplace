@@ -1,0 +1,14 @@
+id: customer_0096
+name: Alexander Garcia
+request: 'Could you please assist me in finding a business that offers the following
+  menu items: ''Crispy Avocado Bites'' (1), ''Caramelized Onion Quesadilla'' (1),
+  and ''Horchata Cheesecake'' (1)? It''s crucial that the business also takes reservations
+  and provides private dining. Once you find a suitable place, I would like to place
+  an order for these items. Thank you!'
+menu_features:
+  Crispy Avocado Bites: 6.99
+  Caramelized Onion Quesadilla: 9.99
+  Horchata Cheesecake: 6.99
+amenity_features:
+- Takes Reservations
+- Private Dining

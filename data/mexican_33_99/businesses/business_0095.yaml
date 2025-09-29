@@ -1,0 +1,33 @@
+id: business_0095
+name: Tamale Trail
+description: Experience the vibrant flavors of Mexico and the Southwest in a warm,
+  inviting setting. Tamale Trail serves up fresh, colorful dishes and creative margaritas
+  perfect for sharing with friends and family.
+rating: 1.0
+progenitor_customer: customer_0032
+menu_features:
+  Frozen Mango Margarita: 10.01
+  Grilled Vegetable Tamales: 5.64
+  Beef Barbacoa Enchiladas: 11.2
+  Street Corn Nacho Platter: 14.25
+  Smoky Beef Fajitas: 8.58
+  Crispy Chicken Empanadas: 8.59
+  Southwestern Breakfast Burrito: 9.9
+  Three Cheese Chile Relleno: 14.98
+  Grilled Elote Corn: 6.0
+  Classic Margarita: 10.96
+  Blueberry Basil Margarita: 9.27
+  Smoky Chipotle Nachos: 11.1
+  Maple Cinnamon Sopapillas: 7.09
+amenity_features:
+  Children's Menu: true
+  Large Groups: false
+  Live Music: true
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Onsite Parking: false
+  Happy Hour: true
+  Private Dining: false
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.84

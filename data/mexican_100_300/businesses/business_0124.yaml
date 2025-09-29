@@ -1,0 +1,32 @@
+id: business_0124
+name: Taco Bout a Fiesta
+description: Step into a vibrant celebration of bold Mexican flavors and Tex-Mex favorites.
+  From sizzling grilled dishes to refreshing house-made drinks, every plate brings
+  a fiesta to your taste buds!
+rating: 1.0
+progenitor_customer: customer_0042
+menu_features:
+  Cactus Fruit Agua Fresca: 4.56
+  Chili Verde Pork Burrito: 9.63
+  Vanilla Flan Delight: 1.59
+  Carne Asada Tacos: 10.83
+  Sizzling Steak Fajitas: 14.5
+  Horchata Smoothie: 7.89
+  Roasted Poblano Salsa Verde: 5.42
+  Savory Beef Empanadas: 10.35
+  Tomatillo Shrimp Cocktail: 5.5
+  Southwest Chicken Enchiladas: 22.58
+  Spiced Chocolate Cake: 4.37
+  Spicy Tamarind Margarita: 7.92
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.85

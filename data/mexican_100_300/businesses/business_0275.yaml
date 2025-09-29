@@ -1,0 +1,32 @@
+id: business_0275
+name: "El Camino del Ma\xEDz"
+description: Experience the bold flavors and vibrant colors of classic Mexican and
+  Tex-Mex cuisine in a welcoming setting. From street-style favorites to fresh, inventive
+  dishes, every plate celebrates the essence of corn and authentic taste.
+rating: 1.0
+progenitor_customer: customer_0092
+menu_features:
+  Charred Corn Elote Dip: 6.06
+  Blue Corn Tortilla Soup: 3.41
+  Avocado Lime Rice Bowl: 12.86
+  Smoky Chipotle Quesadillas: 12.43
+  Roasted Corn and Black Bean Salad: 8.02
+  Zesty Avocado Smash: 5.46
+  Zesty Lime Cheesecake: 4.91
+  Street Style Beef Tacos: 7.25
+  Crispy Cactus Fries: 7.28
+  Hatch Chile Enchiladas: 10.74
+  Chili Lime Sweet Potato Fries: 3.89
+  Cajeta-filled Sopapillas: 6.72
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.75

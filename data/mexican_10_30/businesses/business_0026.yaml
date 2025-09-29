@@ -1,0 +1,36 @@
+id: business_0026
+name: Guac to the Future
+description: Step into a bold Tex-Mex adventure where vibrant flavors and inventive
+  twists come together in every bite. From zesty tacos to crave-worthy starters and
+  refreshing drinks, our kitchen fuses tradition and creativity for a deliciously
+  memorable experience.
+rating: 1.0
+progenitor_customer: customer_0009
+menu_features:
+  Mango Habanero Chicken: 12.9
+  Chorizo & Potato Tacos: 9.87
+  Nachos Supremo Platter: 9.88
+  Creamy Avocado Soup: 8.2
+  Cactus Fruit Agua Fresca: 3.23
+  Smoky Chipotle Beef Skewers: 13.44
+  Cactus Cooler Margarita: 14.27
+  Fresh Mango Salsa & Chips: 8.61
+  Chocolate Dusted Churro Bites: 5.23
+  Coconut Flan: 5.6
+  Zesty Lime Chicken Tacos: 8.1
+  Breakfast Chorizo Migas: 9.43
+  Honey Lime Chicken Fajitas: 20.11
+  Creamy Queso Dip: 5.12
+  Stuffed Poblano Pepper Delight: 18.14
+amenity_features:
+  Takes Reservations: false
+  Private Dining: false
+  Large Groups: true
+  Onsite Parking: false
+  Outdoor Seating: true
+  Children's Menu: true
+  Free Wifi: false
+  Live Music: true
+  Wheelchair Accessible: false
+  Happy Hour: false
+min_price_factor: 0.94

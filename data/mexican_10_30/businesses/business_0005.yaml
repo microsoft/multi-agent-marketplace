@@ -1,0 +1,31 @@
+id: business_0005
+name: Empanada Palooza
+description: Dive into a fiesta of bold flavors and zesty creations inspired by the
+  heart of Mexico and Tex-Mex traditions. From crisp hand-held bites to savory classics
+  with a twist, we serve up mouthwatering goodness for every appetite.
+rating: 1.0
+progenitor_customer: customer_0002
+menu_features:
+  Flaky Beef Empanadas: 11.29
+  Avocado Cilantro Dip: 4.06
+  Stuffed Poblano Peppers: 10.17
+  Breakfast Chilaquiles: 6.49
+  Caramelized Onion & Cheese Quesadilla: 9.39
+  Crispy Chicken Enchiladas: 12.46
+  Smoky Chipotle Burger: 16.16
+  Smoky Beef Enchiladas: 15.08
+  Passion Fruit Mojito Twist: 4.73
+  Tequila Sunrise Chicken Wings: 14.31
+  Grilled Lime Chicken Tacos: 10.51
+amenity_features:
+  Takes Reservations: true
+  Private Dining: false
+  Large Groups: true
+  Onsite Parking: true
+  Outdoor Seating: false
+  Children's Menu: true
+  Free Wifi: false
+  Live Music: false
+  Wheelchair Accessible: true
+  Happy Hour: true
+min_price_factor: 0.81

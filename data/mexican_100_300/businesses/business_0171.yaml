@@ -1,0 +1,37 @@
+id: business_0171
+name: Holy Guacamole & Flan-tastic
+description: Dive into a fiesta of bold, fresh flavors where classic Mexican favorites
+  meet inventive Tex-Mex twists. From vibrant smoothies to decadent desserts, every
+  dish is crafted with heart and a splash of zest.
+rating: 1.0
+progenitor_customer: customer_0057
+menu_features:
+  Horchata Smoothie: 5.51
+  Tangy Lime Cilantro Tacos: 11.02
+  Queso Fundido with Chorizo: 5.42
+  Crispy Fish Burrito: 11.03
+  Charred Corn Elote Dip: 7.83
+  Smoky Chipotle Cornbread: 8.03
+  Grilled Shrimp Quesadilla: 13.62
+  Pico de Gallo Omelette: 10.54
+  Avocado Lime Soup: 5.64
+  Hatch Green Chile Stew: 6.67
+  Zesty Chicken Fajita Bowl: 12.8
+  Pumpkin Spice Empanadas: 7.46
+  Chipotle Chicken Skillet: 12.0
+  Chocolate Dipped Flan: 6.23
+  Chili Lime Sizzling Fajitas: 22.89
+  Mango Cilantro Margarita: 6.42
+  Cajeta Bread Pudding: 5.58
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.89

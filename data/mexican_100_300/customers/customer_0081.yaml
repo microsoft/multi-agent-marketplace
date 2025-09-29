@@ -1,0 +1,14 @@
+id: customer_0081
+name: Matthew Nguyen
+request: 'Please find a business that offers the following menu items: 1 Sizzling
+  Skillet Fajitas, 1 Mole Sauce Tamale, and 1 Citrus Marinated Pork Carnitas. Additionally,
+  it is essential that the business has Onsite Parking and accommodates Large Groups.
+  Once such a business is identified, I intend to place an order immediately. Thank
+  you for your assistance.'
+menu_features:
+  Sizzling Skillet Fajitas: 13.99
+  Mole Sauce Tamale: 10.49
+  Citrus Marinated Pork Carnitas: 14.99
+amenity_features:
+- Onsite Parking
+- Large Groups

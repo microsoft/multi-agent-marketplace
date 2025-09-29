@@ -1,0 +1,9 @@
+id: customer_0075
+name: Grace Rodriguez
+request: Could you please assist me in finding a business that offers SoCo Street
+  Nachos (1 order) and has Happy Hour? Once you find such a business, I intend to
+  place an order for the nachos. Thank you for your help.
+menu_features:
+  SoCo Street Nachos: 11.99
+amenity_features:
+- Happy Hour

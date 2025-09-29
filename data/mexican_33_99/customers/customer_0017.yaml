@@ -1,0 +1,13 @@
+id: customer_0017
+name: Jacob Rodriguez
+request: 'I am looking to place an order with a business that can fulfill the following:
+  1 Grilled Avocado Salad and 1 Cheesy Jalapeno Poppers. It is crucial that this business
+  also offers the following amenities: Wheelchair Accessible and Live Music. Once
+  such a business is identified, I intend to proceed with the order. Thank you for
+  your assistance in finding this establishment.'
+menu_features:
+  Grilled Avocado Salad: 8.99
+  Cheesy Jalapeno Poppers: 7.49
+amenity_features:
+- Wheelchair Accessible
+- Live Music

@@ -1,0 +1,37 @@
+id: business_0258
+name: Cactus & Crema
+description: Experience a vibrant fusion of bold Mexican and Tex-Mex flavors in a
+  warm, contemporary setting. From sizzling skillets to zesty salsas and fresh salads,
+  Cactus & Crema serves up memorable dishes with a modern twist.
+rating: 1.0
+progenitor_customer: customer_0086
+menu_features:
+  Smoky Adobo Chicken Wings: 8.68
+  Avocado Lime Crema Enchiladas: 15.31
+  Avocado Lime Salsa: 7.4
+  Avocado Lime Slaw: 2.83
+  Honey-Lime Grilled Corn: 4.95
+  Steak and Pepper Skillet: 14.65
+  Cactus Cooler Salad: 9.07
+  Breakfast Chorizo Migas: 11.02
+  Freshly Squeezed Agua Fresca: 3.69
+  Zesty Shrimp Ceviche: 9.4
+  Charro Bean Burrito: 13.83
+  Pulled Pork Tamale Plate: 11.66
+  Cactus and Black Bean Tacos: 12.79
+  Black Bean Queso Fundido: 12.94
+  Avocado Citrus Salad: 5.17
+  Lime Cilantro Shrimp Skewers: 8.23
+  Black Bean and Quinoa Tacos: 10.41
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: true
+  Private Dining: true
+min_price_factor: 0.81

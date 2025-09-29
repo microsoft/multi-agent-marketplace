@@ -1,0 +1,31 @@
+id: business_0300
+name: Spice & Skillet Social
+description: Discover bold, modern Mexican and Tex-Mex flavors in a lively setting
+  where sizzling skillets and vibrant spices unite. Join us for fresh, creative dishes
+  and a welcoming atmosphere that brings the fiesta to your table.
+rating: 1.0
+progenitor_customer: customer_0100
+menu_features:
+  Chipotle Pineapple Pork Skewers: 14.14
+  Garlic Lime Shrimp Skewers: 13.21
+  Southwest Chicken Enchiladas: 13.72
+  Cactus Blossom Salad: 7.47
+  Sizzling Skillet Nachos: 8.35
+  Tex-Mex Breakfast Tacos: 10.08
+  Mexican Mocha Latte: 4.34
+  Chipotle Lime Chicken Burrito: 11.35
+  Chipotle Chicken Tacos: 10.82
+  Blackened Shrimp Fajitas: 15.28
+  Chocolate Dusted Flan: 8.02
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.9

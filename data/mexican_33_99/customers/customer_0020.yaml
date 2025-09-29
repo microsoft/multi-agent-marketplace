@@ -1,0 +1,13 @@
+id: customer_0020
+name: "Daniel M\xFCller"
+request: 'Please find a business that offers the following menu items for immediate
+  purchase: 1 Chocolate Dusted Flan, 1 Carne Asada Fries, and 1 Pineapple Mango Salsa.
+  Additionally, the business must accommodate large groups and take reservations.
+  These criteria are essential. Thank you for your assistance.'
+menu_features:
+  Chocolate Dusted Flan: 5.99
+  Carne Asada Fries: 11.49
+  Pineapple Mango Salsa: 4.49
+amenity_features:
+- Large Groups
+- Takes Reservations

@@ -1,0 +1,35 @@
+id: business_0081
+name: Cantina Laguna Verde
+description: Experience a vibrant blend of classic Mexican and Tex-Mex favorites,
+  crafted with fresh ingredients and bold, zesty flavors. Join us for signature cocktails
+  and delicious bites in a colorful, welcoming atmosphere.
+rating: 1.0
+progenitor_customer: customer_0027
+menu_features:
+  Blue Agave Paloma: 12.07
+  Roasted Poblano Mac & Cheese: 7.29
+  Warm Churro Chips: 8.93
+  Pico de Gallo Salsa: 5.15
+  Chipotle Lime Tacos: 16.26
+  Strawberry Basil Margarita: 11.84
+  Sopa de Tortilla: 5.21
+  Crispy Fish Baja Bowl: 16.18
+  Tomatillo Verde Salsa: 5.75
+  Chili Lime Sweet Potato Fries: 7.3
+  Chili Lime Grilled Chicken: 8.64
+  Chili Lime Chicken Quesadilla: 8.54
+  Tamarind Lime Cooler: 4.92
+  Sizzling Beef Nachos: 7.01
+  Baja Fish Taco Bowl: 7.96
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: false
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: false
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.79

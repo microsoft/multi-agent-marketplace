@@ -1,0 +1,11 @@
+id: customer_0024
+name: Mark Allen
+request: Could you please help me find a business that offers the menu item 'Chipotle
+  Chicken Queso' in a quantity of 1 and provides live music as well as accommodations
+  for large groups? It is important that the business meets all these criteria as
+  I intend to place an order immediately. Thank you!
+menu_features:
+  Chipotle Chicken Queso: 8.49
+amenity_features:
+- Live Music
+- Large Groups

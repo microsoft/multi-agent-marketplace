@@ -1,0 +1,35 @@
+id: business_0272
+name: La Costa Caliente
+description: Savor the vibrant flavors of Mexico and the Southwest at La Costa Caliente,
+  where tropical freshness meets bold, smoky heat. Enjoy classic favorites and inventive
+  specialties in a warm and lively setting.
+rating: 1.0
+progenitor_customer: customer_0091
+menu_features:
+  Spicy Grilled Pineapple Margarita: 7.94
+  Peach Habanero Salsa Wings: 11.12
+  Smoky Chipotle Street Tacos: 11.98
+  Fresh Baked Sopapillas: 7.65
+  Honey Glazed Pork Carnitas: 18.9
+  Chicken Fajita Quesadilla: 13.76
+  Three-Cheese Elote: 3.3
+  Coconut Mango Rice Pudding: 5.16
+  Pineapple Salsa Nachos: 9.45
+  Adobo-Marinated Pork Carnitas: 12.51
+  Crispy Avocado Fritters: 9.9
+  Mango Chipotle BBQ Ribs: 8.81
+  Three-Alarm Chili Con Queso: 7.96
+  Shrimp Fajita Bowl: 9.99
+  Citrus Grilled Shrimp Skewers: 15.85
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.72

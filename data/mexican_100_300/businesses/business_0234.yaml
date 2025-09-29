@@ -1,0 +1,35 @@
+id: business_0234
+name: Chile Charm
+description: Step into a flavorful fiesta at Chile Charm, where vibrant Mexican and
+  Tex-Mex classics meet creative twists. Savor bold, zesty dishes and handcrafted
+  cocktails in a welcoming atmosphere that celebrates the true spirit of Mexican cuisine.
+rating: 1.0
+progenitor_customer: customer_0078
+menu_features:
+  Ancho Chile Beef Burrito: 14.78
+  Crispy Chicken Tinga Tacos: 3.62
+  Blueberry Mezcal Mule: 9.19
+  Tomatillo Shrimp Cocktail: 12.88
+  Breakfast Chorizo Tacos: 7.14
+  Caramelized Onion and Cheese Empanadas: 6.26
+  Ancho Chili Chicken Enchiladas: 12.56
+  Avocado Lime Parfait: 7.67
+  Hatch Chile Queso Dip: 7.95
+  Grilled Chipotle Skewers: 12.85
+  Pulled Pork Quesadilla: 8.34
+  Mango Cilantro Salsa Chicken: 15.17
+  Beef Barbacoa Empanadas: 10.39
+  Mango Chipotle Chicken: 12.41
+  Carne Asada Steak Plate: 23.89
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.87

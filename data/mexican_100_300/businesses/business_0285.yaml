@@ -1,0 +1,39 @@
+id: business_0285
+name: Shrimply Irresistible
+description: Dive into a playful blend of Tex-Mex and modern Mexican flavors where
+  zesty salsas, sizzling fajitas, crispy bites, and crave-worthy sweets steal the
+  spotlight. Perfect for those who like their meals with a hint of spice and a whole
+  lot of fun.
+rating: 1.0
+progenitor_customer: customer_0095
+menu_features:
+  Salted Caramel Churros: 4.78
+  Spicy Cucumber Margarita: 8.11
+  Shrimp Ceviche Cups: 8.02
+  Tropical Salsa Salmon: 8.35
+  Crispy Avocado Tostadas: 11.14
+  Hatch Chile Enchiladas: 7.98
+  Red Chili Beef Nachos: 7.47
+  Tequila Sunrise Fajitas: 19.82
+  Hatch Chile Chicken Burrito: 11.84
+  Frozen Tamarind Margarita: 12.39
+  Blackened Shrimp Fajitas: 10.88
+  Tangy Lime Chicken Salad: 5.45
+  Mango Habanero Glazed Salmon: 21.19
+  Sizzling Cactus Wrap: 17.04
+  Flan with Caramel Drizzle: 8.46
+  Blueberry Tamale Pancakes: 8.46
+  Street Corn Nachos: 9.76
+  Crispy Chicken Empanadas: 9.99
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.72

@@ -1,0 +1,34 @@
+id: business_0230
+name: Casa Naranja y Canela
+description: Experience a vibrant fusion of classic Mexican and Tex-Mex flavors in
+  a warm, welcoming atmosphere. From sizzling skillets to sweet, cinnamon-kissed treats,
+  every meal celebrates the zest and soul of Mexican cuisine.
+rating: 1.0
+progenitor_customer: customer_0077
+menu_features:
+  Citrus Cilantro Rice Bowl: 7.47
+  Salted Caramel Churros: 4.07
+  Chipotle Queso Fundido: 5.71
+  Ancho Chicken Burrito Bowl: 22.14
+  Horchata Iced Coffee: 5.35
+  Smoky Beef Enchiladas: 14.6
+  Spicy Lime Chicken Tacos: 13.68
+  Charred Tomatillo Chicken: 12.11
+  Chicken Fajita Skillet: 11.65
+  Three-Cheese Quesadilla: 12.01
+  Breakfast Chorizo Tacos: 14.39
+  Sizzling Cactus Wrap: 15.38
+  Ancho Chili Chicken Wings: 10.61
+  Loaded Beef Enchiladas: 12.02
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: true
+min_price_factor: 0.85

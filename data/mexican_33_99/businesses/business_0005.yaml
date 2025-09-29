@@ -1,0 +1,34 @@
+id: business_0005
+name: Citrus & Smoke
+description: Discover bold, modern Mexican and Tex-Mex flavors in a vibrant setting.
+  Savor bright citrus notes, slow-smoked specialties, and fresh ingredients in every
+  bite.
+rating: 1.0
+progenitor_customer: customer_0002
+menu_features:
+  Smoked Chipotle Chicken Skewers: 10.3
+  Loaded Nacho Skillet: 9.82
+  Loaded Nacho Fries: 10.1
+  Fresh Guacamole Platter: 8.22
+  Cactus and Black Bean Salad: 12.35
+  Tex-Mex Breakfast Skillet: 6.65
+  Al Pastor Tostada Crunch: 12.09
+  Tamarind Glazed Ribs: 12.56
+  Zesty Lime Chicken Tortilla Soup: 12.14
+  Green Chili Chicken Soup: 11.18
+  Zesty Lime Chicken Salad: 9.59
+  Watermelon Agua Fresca: 6.2
+  Zesty Lime Cheesecake: 5.12
+  Flan de Coco: 6.7
+amenity_features:
+  Children's Menu: true
+  Large Groups: false
+  Live Music: false
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: false
+  Outdoor Seating: true
+  Takes Reservations: false
+min_price_factor: 0.9

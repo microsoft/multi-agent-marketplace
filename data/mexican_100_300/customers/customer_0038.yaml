@@ -1,0 +1,12 @@
+id: customer_0038
+name: Ava Patel
+request: 'Please help me find a business that serves the following menu items: 1 Carnitas
+  Quesadilla Melt, 1 Beef Barbacoa Street Tacos, and 1 Tamarind Chipotle Wings. Additionally,
+  the business must accommodate Large Groups. These requirements are critical, and
+  I intend to place an order once such a business is identified. Thank you.'
+menu_features:
+  Carnitas Quesadilla Melt: 10.99
+  Beef Barbacoa Street Tacos: 11.99
+  Tamarind Chipotle Wings: 9.49
+amenity_features:
+- Large Groups

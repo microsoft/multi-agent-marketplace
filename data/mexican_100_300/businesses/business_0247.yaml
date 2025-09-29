@@ -1,0 +1,36 @@
+id: business_0247
+name: El Paladar Picante
+description: Discover a vibrant blend of classic Mexican and Tex-Mex flavors, crafted
+  with a contemporary twist. From smoky meats to inventive vegetarian bites and refreshing
+  drinks, every dish is a celebration of bold taste and tradition.
+rating: 1.0
+progenitor_customer: customer_0083
+menu_features:
+  Sweet Potato Black Bean Tacos: 8.45
+  Pineapple Jalapeno Agua Fresca: 4.72
+  Ancho Chili Ribs: 16.04
+  Spiced Chocolate Cake: 6.7
+  Chili Lime Chicken Skewers: 8.45
+  "Flan Caraibe\xF1o": 2.42
+  Chili Lime Chicken Quesadilla: 9.12
+  Chipotle Honey Wings: 10.38
+  Pulled Pork Tamale Platter: 11.6
+  Carnitas Salsa Verde Tacos: 16.74
+  Slow-Cooked Carnitas Enchiladas: 17.14
+  Beef Barbacoa Bowl: 11.19
+  Southwest Chicken Enchiladas: 14.49
+  Chile Verde Burrito: 14.68
+  Sweet Corn Tamale Pancakes: 7.49
+  Smoky Chipotle Queso: 6.7
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: true
+  Private Dining: true
+min_price_factor: 0.78

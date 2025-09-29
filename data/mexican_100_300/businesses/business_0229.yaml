@@ -1,0 +1,38 @@
+id: business_0229
+name: La Mesa del Sabor Picante
+description: Experience the vibrant flavors of Mexico and the Southwest in a warm
+  and inviting atmosphere. Enjoy a selection of zesty classics and innovative favorites,
+  all crafted with fresh ingredients and bold spices.
+rating: 1.0
+progenitor_customer: customer_0077
+menu_features:
+  Spicy Ground Beef Empanadas: 13.01
+  Cucumber Cilantro Agua Fresca: 2.47
+  Sizzling Chorizo Empanadas: 7.22
+  Chili Lime Grilled Salmon: 20.19
+  Chili Lime Nachos: 7.74
+  Mango Chipotle Shrimp Quesadilla: 13.68
+  Black Bean Corn Empanadas: 7.8
+  Sizzling Cactus Wrap: 9.37
+  Carne Asada Breakfast Burrito: 13.15
+  Zesty Lime Chicken Tacos: 9.76
+  Grilled Steak Fajitas: 19.89
+  Honey Lime Grilled Salmon: 15.83
+  Smoky Chipotle Chicken Fajitas: 20.46
+  Chipotle Queso Fundido: 8.06
+  Breakfast Burrito Bowl: 10.1
+  Firecracker Shrimp Tacos: 12.02
+  Mexican Hot Chocolate: 4.48
+  Charred Tomatillo Chicken: 13.13
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.77

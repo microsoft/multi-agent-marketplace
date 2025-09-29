@@ -1,0 +1,33 @@
+id: business_0196
+name: El Fuego Verde Cantina
+description: Experience the bold and vibrant flavors of Mexico and the Southwest in
+  a warm, welcoming setting. From sizzling skillets to zesty grilled specialties,
+  our cantina brings classic recipes and fresh ingredients to your table.
+rating: 1.0
+progenitor_customer: customer_0066
+menu_features:
+  Charred Tomatillo Chicken: 15.66
+  Smoky Chipotle Chicken Wrap: 12.05
+  Roasted Veggie Tostadas: 15.3
+  Spicy Shrimp Ceviche: 15.82
+  Classic Tamale Plate: 8.31
+  Cherry Jalapeno Slushie: 8.33
+  Carne Asada Skillet: 19.81
+  Spicy Chicken Quesadilla: 6.12
+  Ancho Chile Beef Enchiladas: 10.91
+  Southwest Black Bean Chili: 6.98
+  Chocolate Dipped Sopapillas: 7.65
+  Honey-Lime Grilled Corn: 3.31
+  Chipotle Queso Fundido: 7.18
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: true
+min_price_factor: 0.83

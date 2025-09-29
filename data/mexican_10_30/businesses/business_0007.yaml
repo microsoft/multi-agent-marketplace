@@ -1,0 +1,35 @@
+id: business_0007
+name: Mesa & Mingle
+description: Mesa & Mingle brings vibrant Mexican and Tex-Mex flavors to a lively,
+  modern setting. Enjoy fresh, creative dishes and decadent desserts, all made to
+  spark conversation and delight your senses.
+rating: 1.0
+progenitor_customer: customer_0003
+menu_features:
+  Chocolate Dipped Flan: 8.45
+  Black Bean and Corn Tostadas: 8.43
+  Caramelized Plantain Empanadas: 5.13
+  Chipotle BBQ Brisket Nachos: 7.97
+  Chipotle Lime Shrimp Salad: 12.1
+  Pineapple Jalapeno Slaw: 2.73
+  Pollo Asado Burrito Bowl: 9.08
+  Roasted Poblano Pepper Dip: 7.92
+  Frozen Spicy Watermelon Daiquiri: 5.64
+  Homemade Horchata: 3.63
+  Pepper Jack Cornbread Muffins: 2.89
+  Avocado Cilantro Smoothie: 4.49
+  Tequila Lime Shrimp Cocktail: 18.48
+  Crispy Avocado Bites: 9.77
+  Caramelized Onion and Chorizo Empanadas: 7.94
+amenity_features:
+  Takes Reservations: false
+  Private Dining: false
+  Large Groups: false
+  Onsite Parking: true
+  Outdoor Seating: false
+  Children's Menu: true
+  Free Wifi: false
+  Live Music: false
+  Wheelchair Accessible: false
+  Happy Hour: true
+min_price_factor: 0.81

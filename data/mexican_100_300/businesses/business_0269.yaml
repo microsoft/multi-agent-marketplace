@@ -1,0 +1,33 @@
+id: business_0269
+name: Skillet & Sip
+description: Skillet & Sip brings bold Mexican and Tex-Mex flavors together with vibrant
+  cocktails and crave-worthy bites in a lively, modern atmosphere. Dive into fresh,
+  fiery classics and inventive sips perfect for any occasion.
+rating: 1.0
+progenitor_customer: customer_0090
+menu_features:
+  Avocado Enchiladas: 10.55
+  Mango Chili Margarita: 9.38
+  Black Bean Stuffed Burrito Bowl: 9.95
+  Queso Fundido with Chorizo: 9.29
+  Tex-Mex Steak Fajitas: 14.92
+  Sizzling Skillet Nachos: 7.57
+  Spicy Paloma Cocktail: 4.83
+  Three-Alarm Chili Con Queso: 8.9
+  Horchata Iced Latte: 5.69
+  Sizzling Veggie Nachos: 10.04
+  Loaded Nachos Supreme: 11.52
+  Chili Lime Chicken Salad: 7.69
+  Shrimp Diablo Tostadas: 12.92
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.75

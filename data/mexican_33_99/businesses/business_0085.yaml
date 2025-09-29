@@ -1,0 +1,35 @@
+id: business_0085
+name: Too Hot to Tostada
+description: Savor a fresh spin on Mexican and Tex-Mex flavors, from zesty tacos to
+  mouthwatering tostadas and punchy drinks. Bring your appetite for bold tastes and
+  creative comfort in every bite.
+rating: 1.0
+progenitor_customer: customer_0029
+menu_features:
+  Honey Chipotle Ribs: 13.02
+  Berry Sangria Punch: 6.69
+  Avocado Toastadas: 5.98
+  Black Bean & Mushroom Sopes: 12.96
+  Adobo-Marinated Pork Carnitas: 9.95
+  Savory Beef Empanadas: 7.27
+  Chicken Tinga Tostadas: 11.69
+  Blackened Fish Tacos: 13.6
+  Black Bean Veggie Tacos: 9.94
+  Chipotle Lime Steak Burrito: 9.64
+  Three Cheese Enchiladas: 11.64
+  Strawberry Lime Agua Fresca: 4.72
+  Tex-Mex Breakfast Tacos: 8.24
+  Horchata Iced Coffee: 5.48
+  Spicy Lime Shrimp Tostadas: 11.23
+amenity_features:
+  Children's Menu: false
+  Large Groups: true
+  Live Music: false
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.77

@@ -1,0 +1,14 @@
+id: customer_0047
+name: Emma Lee
+request: 'I am looking for a business that can meet my specific needs. I would like
+  to place an order for the following menu items: 1 Caramelized Plantain Tostones
+  and 1 Adobo Chicken Tacos. Additionally, it is important that the business offers
+  the following amenities: Private Dining and Large Groups. Once you find a suitable
+  business that meets all these criteria, I intend to proceed with the order. Thank
+  you for your assistance.'
+menu_features:
+  Caramelized Plantain Tostones: 5.49
+  Adobo Chicken Tacos: 11.49
+amenity_features:
+- Private Dining
+- Large Groups

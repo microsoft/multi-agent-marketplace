@@ -1,0 +1,35 @@
+id: business_0216
+name: Cilantro & Ember
+description: Cilantro & Ember infuses modern energy into classic Mexican and Tex-Mex
+  flavors, blending fresh herbs and fire-grilled ingredients for a vibrant dining
+  experience. Enjoy a sizzling showcase of bold salsas, grilled specialties, and veggie-forward
+  bites in a contemporary, lively setting.
+rating: 1.0
+progenitor_customer: customer_0072
+menu_features:
+  Avocado Cilantro Dip: 3.92
+  Carne Asada Quesadilla: 13.35
+  Cactus and Black Bean Tostadas: 10.49
+  Molten Queso Fundido: 7.03
+  Chili Lime Grilled Salmon: 18.49
+  Ancho Chile Beef Skewers: 14.64
+  Pineapple Salsa Shrimp Skewers: 12.78
+  Chipotle BBQ Chicken Wings: 6.4
+  Roasted Poblano Rice Bowl: 9.76
+  Verde Chicken Chimichanga: 9.68
+  Chipotle Lime Grilled Corn: 3.97
+  Street Corn Skillet: 6.86
+  Black Bean Corn Salsa: 4.09
+  Chili Lime Chicken Salad: 7.94
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.8

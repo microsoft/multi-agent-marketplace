@@ -1,0 +1,13 @@
+id: customer_0035
+name: Amy Wilson
+request: 'Could you please assist in finding a business that serves the following
+  menu items: Pineapple Jalapeno Slaw (1) and Mexican Vanilla Flan (1), and also offers
+  the amenities of taking reservations and providing free WiFi? These requirements
+  are essential, as I intend to place an order with a business that meets them fully.
+  Thank you!'
+menu_features:
+  Pineapple Jalapeno Slaw: 3.49
+  Mexican Vanilla Flan: 6.49
+amenity_features:
+- Takes Reservations
+- Free Wifi

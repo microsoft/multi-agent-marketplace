@@ -1,0 +1,12 @@
+id: customer_0012
+name: Chloe Evans
+request: Could you please find a business that offers both 'Red Chili Pork Tamale'
+  and 'Maple Cinnamon Sopapillas', with one of each item available for order? Additionally,
+  the business must provide Outdoor Seating and accommodate Large Groups. Once such
+  a business is found, I intend to place an order. Thank you.
+menu_features:
+  Red Chili Pork Tamale: 9.99
+  Maple Cinnamon Sopapillas: 6.29
+amenity_features:
+- Outdoor Seating
+- Large Groups

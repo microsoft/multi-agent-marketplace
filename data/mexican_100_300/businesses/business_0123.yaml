@@ -1,0 +1,36 @@
+id: business_0123
+name: Cacao & Lime Cantina
+description: Cacao & Lime Cantina brings a fresh twist to classic Mexican and Tex-Mex
+  flavors, highlighting bold spices, vibrant salsas, and a creative blend of savory
+  and sweet tastes. Enjoy a lively, modern atmosphere where every bite is a celebration
+  of colorful cuisine.
+rating: 1.0
+progenitor_customer: customer_0041
+menu_features:
+  Chocolate Mole Chicken: 8.49
+  Spicy Black Bean Tostadas: 10.83
+  Tequila Sunrise Fajitas: 20.7
+  Chili Lime Shrimp Enchiladas: 5.3
+  Roasted Tomato Salsa: 4.29
+  Chorizo Sweet Potato Tacos: 12.53
+  Chili-Lime Grilled Corn: 3.64
+  Spicy Beef Chimichanga: 8.91
+  Green Chile Enchiladas: 12.78
+  Spicy Pineapple Mezcalita: 14.4
+  Chipotle Ranch Chicken Sandwich: 8.65
+  Chocolate Dipped Churros: 8.05
+  Loaded Carnitas Nachos: 14.18
+  Blueberry Mojito: 9.03
+  Chili Lime Shrimp Skewers: 8.88
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.87

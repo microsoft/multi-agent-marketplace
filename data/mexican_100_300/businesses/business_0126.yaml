@@ -1,0 +1,38 @@
+id: business_0126
+name: "Tropic Like It\u2019s Hot"
+description: "Spice and sunshine come together at Tropic Like It\u2019s Hot, where\
+  \ every dish is a vibrant celebration of fresh flavors, zesty salsas, and bold,\
+  \ tropical ingredients. Experience a playful twist on classic Mexican and Tex-Mex\
+  \ cuisine with every colorful bite and sip."
+rating: 1.0
+progenitor_customer: customer_0042
+menu_features:
+  Black Bean Mango Salad: 9.32
+  Shrimp and Avocado Salad: 14.25
+  Spicy Grilled Pineapple Margarita: 9.23
+  Grilled Chipotle Skewers: 15.2
+  Baja Fish Tacos: 9.67
+  Fiery Red Salsa: 3.66
+  Vanilla Flan Delight: 7.55
+  Pineapple Salsa Tostadas: 9.47
+  Carne Asada Breakfast Burrito: 9.25
+  Chipotle Ranch Chicken Sandwich: 14.45
+  Tomatillo Verde Salsa: 4.4
+  Cactus Fruit Agua Fresca: 2.2
+  Blueberry Jalapeno Lemonade: 2.99
+  Ancho Chili Lime Shrimp: 16.92
+  Mango Chipotle Chicken: 16.62
+  Spicy Bacon & Egg Quesadilla: 7.62
+  Pomegranate Guacamole: 10.36
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.69

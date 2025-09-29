@@ -1,0 +1,34 @@
+id: business_0164
+name: La Mar y Tierra Cantina
+description: "Experience the vibrant flavors of Mexico and Tex-Mex classics at La\
+  \ Mar y Tierra Cantina, where fresh ingredients and bold spices come together in\
+  \ every dish. From smoky grilled favorites to tangy and refreshing specialties,\
+  \ it\u2019s a celebration of savory traditions and lively ambiance."
+rating: 1.0
+progenitor_customer: customer_0055
+menu_features:
+  Mexican Shrimp Cocktail: 12.81
+  Black Bean Stuffed Burrito Bowl: 10.4
+  Margarita Lime Pie: 5.93
+  Grilled Shrimp Fajitas: 11.06
+  Beef Barbacoa Bowl: 9.5
+  Classic Beef Fajitas: 14.58
+  Smoky Chipotle Beef Tostadas: 11.01
+  Charred Salsa Verde Burrito: 11.55
+  Shrimp Fajita Fiesta: 16.38
+  Crispy Chicken Empanadas: 11.08
+  Shrimp and Avocado Salad: 12.75
+  Agave Lime Grilled Chicken: 16.01
+  Tangy Lime Cilantro Tacos: 13.49
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.93

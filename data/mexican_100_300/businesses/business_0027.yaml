@@ -1,0 +1,38 @@
+id: business_0027
+name: Pepper & Palate
+description: Pepper & Palate brings a bold twist to classic Mexican and Tex-Mex favorites,
+  combining zesty flavors and vibrant ingredients. Enjoy an inviting atmosphere while
+  savoring inventive margaritas, sizzling bites, and fresh, colorful fare.
+rating: 1.0
+progenitor_customer: customer_0009
+menu_features:
+  Crispy Pork Carnitas: 19.99
+  Tequila Lime Shrimp Cocktail: 12.52
+  Citrus Grilled Shrimp Skewers: 18.84
+  "Jalape\xF1o Margarita": 9.1
+  Pineapple Habanero Margarita: 8.86
+  Red Chile Enchiladas: 16.89
+  Spiced Beef Empanadas: 7.13
+  Ranchero Breakfast Burrito: 14.12
+  Sizzling Beef Nachos: 9.7
+  Zesty Lime Shrimp Quesadillas: 9.5
+  Adobo Grilled Skirt Steak: 11.72
+  Frozen Raspberry Margarita: 9.48
+  Passion Fruit Margarita: 9.19
+  Smoky Chipotle Queso: 6.57
+  Stuffed Poblano Pepper Delight: 18.78
+  Raspberry Chipotle Margarita: 8.73
+  Black Bean Mango Salad: 8.18
+  Poblano Pepper Queso Dip: 8.0
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.62

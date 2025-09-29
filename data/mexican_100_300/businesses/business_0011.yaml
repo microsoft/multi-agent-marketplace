@@ -1,0 +1,33 @@
+id: business_0011
+name: "El Jard\xEDn de Sabores"
+description: Experience a vibrant taste of Mexico with bold flavors, fresh ingredients,
+  and creative combinations, all served in a warm and inviting setting. Discover unique
+  salads, sizzling skewers, and festive drinks that bring a modern twist to classic
+  favorites.
+rating: 1.0
+progenitor_customer: customer_0004
+menu_features:
+  Chipotle Pineapple Pork Skewers: 9.57
+  "Cheesy Jalape\xF1o Poppers": 7.95
+  Blueberry Agave Salad: 8.92
+  Avocado Crunch Tostadas: 7.2
+  Red Chili Beef Brisket: 13.68
+  Seafood Ceviche Cocktail: 8.43
+  Zesty Lime Shrimp Salad: 12.13
+  Pineapple Salsa Tostadas: 7.57
+  Vanilla Bean Sopapillas: 6.76
+  Chipotle BBQ Brisket Nachos: 10.13
+  Tequila Sunrise Smoothie: 5.52
+  Raspberry Chipotle Margarita: 6.91
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.88
