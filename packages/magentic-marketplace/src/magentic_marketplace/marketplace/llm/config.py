@@ -15,6 +15,8 @@ logger = logging.getLogger(__name__)
 
 LLM_PROVIDER = Literal["openai", "trapi", "gemini", "anthropic"]
 ALLOWED_LLM_PROVIDERS = get_args(LLM_PROVIDER)
+# Exclude these fields when dumping for concrete client completions
+EXCLUDE_FIELDS = {"provider", "max_concurrency"}
 
 TField = TypeVar("TField")
 
@@ -47,3 +49,4 @@ class BaseLLMConfig(BaseModel):
     )
     temperature: float = EnvField("LLM_TEMPERATURE", default=0.0)
     max_tokens: int = EnvField("LLM_MAX_TOKENS", default=2000)
+    max_concurrency: int | None = EnvField("LLM_MAX_CONCURRENCY", default=None)

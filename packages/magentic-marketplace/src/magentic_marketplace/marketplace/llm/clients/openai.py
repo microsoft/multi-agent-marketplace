@@ -1,7 +1,9 @@
 """OpenAI model client implementation."""
 
 import json
+import threading
 from collections.abc import Sequence
+from hashlib import sha256
 from typing import Any, Literal, cast, overload
 
 import pydantic
@@ -31,8 +33,11 @@ class OpenAIConfig(BaseLLMConfig):
     api_key: str = EnvField("OPENAI_API_KEY", exclude=True)
 
 
-class OpenAIClient(ProviderClient):
+class OpenAIClient(ProviderClient[OpenAIConfig]):
     """OpenAI model client that accepts OpenAI SDK arguments."""
+
+    _client_cache: dict[str, "OpenAIClient"] = {}
+    _cache_lock = threading.Lock()
 
     def __init__(self, config: OpenAIConfig | None = None):
         """Initialize OpenAI client.
@@ -46,7 +51,7 @@ class OpenAIClient(ProviderClient):
         else:
             config = OpenAIConfig.model_validate(config)
 
-        super().__init__(model=config.model, provider=config.provider)
+        super().__init__(config)
 
         self.config = config
         if not self.config.api_key:
@@ -55,6 +60,21 @@ class OpenAIClient(ProviderClient):
                 "or pass api_key in config."
             )
         self.client = AsyncOpenAI(api_key=self.config.api_key)
+
+    @staticmethod
+    def _get_cache_key(config: OpenAIConfig) -> str:
+        """Generate cache key for a config."""
+        config_json = config.model_dump_json(include={"api_key", "provider"})
+        return sha256(config_json.encode()).hexdigest()
+
+    @staticmethod
+    def from_cache(config: OpenAIConfig) -> "OpenAIClient":
+        """Get or create client from cache."""
+        cache_key = OpenAIClient._get_cache_key(config)
+        with OpenAIClient._cache_lock:
+            if cache_key not in OpenAIClient._client_cache:
+                OpenAIClient._client_cache[cache_key] = OpenAIClient(config)
+            return OpenAIClient._client_cache[cache_key]
 
     @overload
     async def _generate(

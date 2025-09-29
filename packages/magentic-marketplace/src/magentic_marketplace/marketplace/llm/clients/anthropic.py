@@ -1,6 +1,8 @@
 """Anthropic model client implementation."""
 
+import threading
 from collections.abc import Sequence
+from hashlib import sha256
 from typing import Any, Literal, cast, overload
 
 import anthropic
@@ -22,8 +24,11 @@ class AnthropicConfig(BaseLLMConfig):
     api_key: str = EnvField("ANTHROPIC_API_KEY", exclude=True)
 
 
-class AnthropicClient(ProviderClient):
+class AnthropicClient(ProviderClient[AnthropicConfig]):
     """Anthropic model client that accepts OpenAI SDK arguments."""
+
+    _client_cache: dict[str, "AnthropicClient"] = {}
+    _cache_lock = threading.Lock()
 
     def __init__(self, config: AnthropicConfig | None = None):
         """Initialize Anthropic client.
@@ -37,7 +42,7 @@ class AnthropicClient(ProviderClient):
         else:
             config = AnthropicConfig.model_validate(config)
 
-        super().__init__(model=config.model, provider=config.provider)
+        super().__init__(config)
 
         self.config = config
         if not self.config.api_key:
@@ -46,6 +51,21 @@ class AnthropicClient(ProviderClient):
                 "or pass api_key in config."
             )
         self.client = anthropic.AsyncAnthropic(api_key=self.config.api_key)
+
+    @staticmethod
+    def _get_cache_key(config: AnthropicConfig) -> str:
+        """Generate cache key for a config."""
+        config_json = config.model_dump_json(include={"api_key", "provider"})
+        return sha256(config_json.encode()).hexdigest()
+
+    @staticmethod
+    def from_cache(config: AnthropicConfig) -> "AnthropicClient":
+        """Get or create client from cache."""
+        cache_key = AnthropicClient._get_cache_key(config)
+        with AnthropicClient._cache_lock:
+            if cache_key not in AnthropicClient._client_cache:
+                AnthropicClient._client_cache[cache_key] = AnthropicClient(config)
+            return AnthropicClient._client_cache[cache_key]
 
     @overload
     async def _generate(
