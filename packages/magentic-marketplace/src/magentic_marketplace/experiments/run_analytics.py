@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Analyze marketplace simulation data to compute utility metrics using typed models."""
 
-import asyncio
 import json
 import sys
 from collections import Counter, defaultdict
@@ -581,20 +580,3 @@ async def run_analytics(db_path: str, save_to_json: bool = True):
 
     analytics = MarketplaceAnalytics(db_controller)
     await analytics.generate_report(save_to_json=save_to_json, db_name=db_name)
-
-
-if __name__ == "__main__":
-    import argparse
-
-    parser = argparse.ArgumentParser(description="Analyze marketplace simulation data")
-    parser.add_argument("database_path", help="Path to the SQLite database file")
-    parser.add_argument(
-        "--no-save-json",
-        action="store_true",
-        help="Disable saving analytics to JSON file",
-    )
-
-    args = parser.parse_args()
-
-    save_to_json = not args.no_save_json
-    asyncio.run(run_analytics(args.database_path, save_to_json=save_to_json))
