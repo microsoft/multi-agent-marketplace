@@ -49,6 +49,7 @@ _connection_metrics = {
 
 # Global initialization flag to avoid redundant table creation
 _initialized = False
+_init_lock = threading.Lock()
 
 # Global metrics timer
 _metrics_timer = None
@@ -1016,57 +1017,59 @@ class ShardedSQLiteDatabaseController(BaseDatabaseController):
         """Initialize all database tables across all shards."""
         global _initialized
 
-        # Skip initialization if already done
-        if _initialized:
-            return
+        # Use lock to prevent race conditions during initialization
+        with _init_lock:
+            # Skip initialization if already done
+            if _initialized:
+                return
 
-        # SQL DDL for all tables - each shard will contain all three tables
-        create_all_tables_sql = """
-        CREATE TABLE IF NOT EXISTS agents (
-            id TEXT PRIMARY KEY,
-            created_at TEXT NOT NULL,
-            data TEXT NOT NULL,
-            agent_embedding BLOB
-        );
+            # SQL DDL for all tables - each shard will contain all three tables
+            create_all_tables_sql = """
+            CREATE TABLE IF NOT EXISTS agents (
+                id TEXT PRIMARY KEY,
+                created_at TEXT NOT NULL,
+                data TEXT NOT NULL,
+                agent_embedding BLOB
+            );
 
-        CREATE TABLE IF NOT EXISTS actions (
-            id TEXT PRIMARY KEY,
-            created_at TEXT NOT NULL,
-            data TEXT NOT NULL
-        );
+            CREATE TABLE IF NOT EXISTS actions (
+                id TEXT PRIMARY KEY,
+                created_at TEXT NOT NULL,
+                data TEXT NOT NULL
+            );
 
-        CREATE TABLE IF NOT EXISTS logs (
-            id TEXT PRIMARY KEY,
-            created_at TEXT NOT NULL,
-            data TEXT NOT NULL
-        );
-        """
+            CREATE TABLE IF NOT EXISTS logs (
+                id TEXT PRIMARY KEY,
+                created_at TEXT NOT NULL,
+                data TEXT NOT NULL
+            );
+            """
 
-        # Initialize all shards concurrently
-        async def init_shard(controller, shard_id: int):
-            async with controller._write_connection_for_shard(shard_id) as db:
-                await db.executescript(create_all_tables_sql)
-                await db.commit()
+            # Initialize all shards concurrently
+            async def init_shard(controller, shard_id: int):
+                async with controller._write_connection_for_shard(shard_id) as db:
+                    await db.executescript(create_all_tables_sql)
+                    await db.commit()
 
-        # Create tasks for all shard initializations
-        tasks = []
+            # Create tasks for all shard initializations
+            tasks = []
 
-        # Agent shards - each contains all tables but only agents table will be used
-        for i in range(self._agent_shards):
-            tasks.append(init_shard(self._agents, i))
+            # Agent shards - each contains all tables but only agents table will be used
+            for i in range(self._agent_shards):
+                tasks.append(init_shard(self._agents, i))
 
-        # Action shards - each contains all tables but only actions table will be used
-        for i in range(self._action_shards):
-            tasks.append(init_shard(self._actions, i))
+            # Action shards - each contains all tables but only actions table will be used
+            for i in range(self._action_shards):
+                tasks.append(init_shard(self._actions, i))
 
-        # Log shards - each contains all tables but only logs table will be used
-        for i in range(self._log_shards):
-            tasks.append(init_shard(self._logs, i))
+            # Log shards - each contains all tables but only logs table will be used
+            for i in range(self._log_shards):
+                tasks.append(init_shard(self._logs, i))
 
-        # Run all initializations concurrently
-        await asyncio.gather(*tasks)
+            # Run all initializations concurrently
+            await asyncio.gather(*tasks)
 
-        _initialized = True
+            _initialized = True
 
     async def merge_all_shards(self, target_db_path: str):
         """Merge all shards from all tables into a single SQLite database file.

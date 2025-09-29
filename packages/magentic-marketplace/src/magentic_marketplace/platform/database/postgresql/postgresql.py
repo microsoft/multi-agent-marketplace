@@ -40,6 +40,7 @@ _metrics_timer = None
 
 # Global initialization flag
 _initialized = False
+_init_lock = threading.Lock()
 
 
 def _dump_metrics_to_file(database_url: str):
@@ -113,28 +114,37 @@ def _convert_query_to_postgres(query: Query) -> tuple[str, list[Any]]:
 
         # Handle special NULL operators first
         if q.operator in ["IS NULL", "IS NOT NULL"]:
-            return f"data->>'{q.path.lstrip('$.')}' {q.operator}"
+            return f"jsonb_path_query_first(data, '{q.path}') {q.operator}"
 
         # Handle value conversion for PostgreSQL
         if q.value is None:
             # For NULL values, we need to adjust the operator
             if q.operator == "=":
-                return f"data->>'{q.path.lstrip('$.')}' IS NULL"
+                return f"jsonb_path_query_first(data, '{q.path}') IS NULL"
             elif q.operator == "!=":
-                return f"data->>'{q.path.lstrip('$.')}' IS NOT NULL"
+                return f"jsonb_path_query_first(data, '{q.path}') IS NOT NULL"
             else:
                 # For other operators with NULL, use NULL as is
                 params.append(None)
-                return f"data->>'{q.path.lstrip('$.')}' {q.operator} ${len(params)}"
+                return f"jsonb_path_query_first(data, '{q.path}') {q.operator} ${len(params)}"
         else:
-            params.append(q.value)
+            # For jsonb_path_query_first, we need to wrap string values in JSON quotes
+            if isinstance(q.value, str):
+                params.append(f'"{q.value}"')
+            else:
+                params.append(json.dumps(q.value))
             param_idx = len(params)
 
-            # Generate SQL using JSON operators for PostgreSQL
+            # Generate SQL using jsonb_path_query_first
             if q.operator.upper() == "LIKE":
-                return f"data->>'{q.path.lstrip('$.')}' ILIKE ${param_idx}"
+                # For LIKE operations, we need to extract as text first
+                # Use the string value without JSON quotes for LIKE operations
+                params[param_idx - 1] = (
+                    q.value
+                )  # Replace the JSON-quoted value with plain string
+                return f"jsonb_path_query_first(data, '{q.path}') #>> '{{}}' ILIKE ${param_idx}"
             else:
-                return f"data->>'{q.path.lstrip('$.')}' {q.operator} ${param_idx}"
+                return f"jsonb_path_query_first(data, '{q.path}') {q.operator} ${param_idx}"
 
     sql = build_query(query)
     return sql, params
@@ -726,29 +736,31 @@ class PostgreSQLDatabaseController(BaseDatabaseController):
         """Initialize the database tables."""
         global _initialized
 
-        # Skip initialization if already done
-        if _initialized:
-            return
+        # Use lock to prevent race conditions during initialization
+        with _init_lock:
+            # Skip initialization if already done
+            if _initialized:
+                return
 
-        async with self._pool.acquire() as conn:
-            # Check if schema already exists
-            exists = await conn.fetchval(
-                "SELECT EXISTS(SELECT 1 FROM information_schema.schemata WHERE schema_name = $1)",
-                self._schema,
-            )
-
-            if exists:
-                raise ValueError(
-                    f"Schema '{self._schema}' already exists. Please use a different schema name or clean up the existing schema."
+            async with self._pool.acquire() as conn:
+                # Check if schema already exists
+                exists = await conn.fetchval(
+                    "SELECT EXISTS(SELECT 1 FROM information_schema.schemata WHERE schema_name = $1)",
+                    self._schema,
                 )
 
-            # Create the new schema
-            await conn.execute(f"CREATE SCHEMA {self._schema}")
+                if exists:
+                    raise ValueError(
+                        f"Schema '{self._schema}' already exists. Please use a different schema name or clean up the existing schema."
+                    )
 
-            # Create tables in the schema
-            await conn.execute(create_tables_sql(self._schema))
+                # Create the new schema
+                await conn.execute(f"CREATE SCHEMA {self._schema}")
 
-        _initialized = True
+                # Create tables in the schema
+                await conn.execute(create_tables_sql(self._schema))
+
+            _initialized = True
 
     def __del__(self):
         """Write metrics to file when object is destroyed."""
@@ -766,8 +778,8 @@ async def create_postgresql_database(
     database: str = "marketplace",
     user: str = "postgres",
     password: str | None = None,
-    min_size: int = 10,
-    max_size: int = 20,
+    min_size: int = 50,
+    max_size: int = 50,
     command_timeout: float = 60,
 ):
     """Create PostgreSQL database controller with connection pooling.

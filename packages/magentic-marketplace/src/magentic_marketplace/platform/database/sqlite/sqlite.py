@@ -39,6 +39,7 @@ _connection_metrics = {
 
 # Global initialization flag to avoid redundant table creation
 _initialized = False
+_init_lock = threading.Lock()
 
 # Global metrics timer
 _metrics_timer = None
@@ -796,15 +797,17 @@ class SQLiteDatabaseController(BaseDatabaseController, _BoundedSqliteConnectionM
         """Initialize the database tables."""
         global _initialized
 
-        # Skip initialization if already done for this database path
-        if _initialized:
-            return
+        # Use lock to prevent race conditions during initialization
+        with _init_lock:
+            # Skip initialization if already done for this database path
+            if _initialized:
+                return
 
-        async with self._get_connection(is_write=True) as db:
-            await db.executescript(CREATE_TABLES_SQL)
-            await db.commit()
+            async with self._get_connection(is_write=True) as db:
+                await db.executescript(CREATE_TABLES_SQL)
+                await db.commit()
 
-        _initialized = True
+            _initialized = True
 
     def __del__(self):
         """Write metrics to file when object is destroyed."""
