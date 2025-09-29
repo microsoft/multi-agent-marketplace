@@ -1,7 +1,6 @@
 """Abstract base class for LLM model clients."""
 
 from collections.abc import Sequence
-from hashlib import sha256
 from typing import Annotated, Any, overload
 
 from pydantic import Field, TypeAdapter
@@ -10,7 +9,6 @@ from magentic_marketplace.platform.logger import MarketplaceLogger
 
 from .base import (
     AllowedChatCompletionMessageParams,
-    ProviderClient,
     TResponseModel,
     Usage,
 )
@@ -18,29 +16,13 @@ from .clients.anthropic import AnthropicClient, AnthropicConfig
 from .clients.gemini import GeminiClient, GeminiConfig
 from .clients.openai import OpenAIClient, OpenAIConfig
 from .clients.trapi.client import TrapiClient, TrapiConfig
-from .config import LLM_PROVIDER, BaseLLMConfig
+from .config import EXCLUDE_FIELDS, LLM_PROVIDER
 
 ConcreteLLMConfigs = Annotated[
     AnthropicConfig | GeminiConfig | OpenAIConfig | TrapiConfig,
     Field(discriminator="provider"),
 ]
 ConcreteConfigAdapter: TypeAdapter[ConcreteLLMConfigs] = TypeAdapter(ConcreteLLMConfigs)
-
-# Global client cache to avoid creating new HTTP clients for every request
-_client_cache: dict[str, ProviderClient] = {}
-
-
-def _get_client_cache_key(config: BaseLLMConfig):
-    client_json = config.model_dump_json(
-        # Exclude parameters that don't require a new client
-        exclude={
-            "model",
-            "reasoning_effort",
-            "temperature",
-            "max_tokens",
-        }
-    )
-    return sha256(client_json.encode()).hexdigest()
 
 
 @overload
@@ -114,6 +96,7 @@ async def generate(
     response_format: type[TResponseModel] | None = None,
     logger: MarketplaceLogger | None = None,
     log_metadata: dict[str, Any] | None = None,
+    max_concurrency: int | None = None,
     **kwargs: Any,
 ) -> tuple[str, Usage] | tuple[TResponseModel, Usage]:
     """Generate a completion using OpenAI SDK arguments.
@@ -128,6 +111,7 @@ async def generate(
         response_format: Optional structured output schema
         logger: Optional MarketplaceLogger for logging LLM calls
         log_metadata: Optional metadata to include with LLM logs
+        max_concurrency: Optional, the maximum number of concurrent requests the returned client supports.
         **kwargs: Additional provider-specific arguments
 
     Returns:
@@ -144,35 +128,33 @@ async def generate(
     config_kwargs = {k: v for k, v in config_kwargs.items() if v is not None}
     config = ConcreteConfigAdapter.validate_python(config_kwargs)
 
-    cache_key = _get_client_cache_key(config)
+    # Get or create client from cache using the from_cache method
+    match config.provider:
+        case "anthropic":
+            client = AnthropicClient.from_cache(config)
+        case "openai":
+            client = OpenAIClient.from_cache(config)
+        case "trapi":
+            client = TrapiClient.from_cache(config)
+        case "gemini":
+            client = GeminiClient.from_cache(config)
+        case _:
+            raise ValueError(f"Unsupported provider: {config.provider}")
 
-    # Get or create client from cache
-    if cache_key not in _client_cache:
-        match config.provider:
-            case "anthropic":
-                _client_cache[cache_key] = AnthropicClient(config)
-            case "openai":
-                _client_cache[cache_key] = OpenAIClient(config)
-            case "trapi":
-                _client_cache[cache_key] = TrapiClient(config)
-            case "gemini":
-                _client_cache[cache_key] = GeminiClient(config)
-            case _:
-                raise ValueError(f"Unsupported provider: {config.provider}")
-
-    client = _client_cache[cache_key]
+    kwargs = {**config.model_dump(exclude=EXCLUDE_FIELDS), **kwargs}
 
     return await client.generate(
         messages=messages,
         response_format=response_format,
         logger=logger,
         log_metadata=log_metadata,
-        **config.model_dump(exclude={"provider"}),
         **kwargs,
     )
 
 
-def clear_client_cache() -> None:
-    """Clear the global client cache. Useful for testing or changing configurations."""
-    global _client_cache
-    _client_cache.clear()
+def clear_client_caches() -> None:
+    """Clear the client caches in all client classes. Useful for testing or changing configurations."""
+    AnthropicClient._client_cache.clear()
+    OpenAIClient._client_cache.clear()
+    GeminiClient._client_cache.clear()
+    TrapiClient._client_cache.clear()

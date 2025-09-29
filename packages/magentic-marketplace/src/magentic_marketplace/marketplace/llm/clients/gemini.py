@@ -1,7 +1,9 @@
 """Gemini model client implementation."""
 
 import json
+import threading
 from collections.abc import Sequence
+from hashlib import sha256
 from typing import Any, Literal, overload
 
 import google.genai as genai
@@ -24,8 +26,11 @@ class GeminiConfig(BaseLLMConfig):
     api_key: str = EnvField("GEMINI_API_KEY", exclude=True)
 
 
-class GeminiClient(ProviderClient):
+class GeminiClient(ProviderClient[GeminiConfig]):
     """Gemini model client that accepts OpenAI SDK arguments."""
+
+    _client_cache: dict[str, "GeminiClient"] = {}
+    _cache_lock = threading.Lock()
 
     def __init__(self, config: GeminiConfig | None = None):
         """Initialize Gemini client.
@@ -39,7 +44,7 @@ class GeminiClient(ProviderClient):
         else:
             config = GeminiConfig.model_validate(config)
 
-        super().__init__(model=config.model, provider=config.provider)
+        super().__init__(config)
 
         self.config = config
         if not self.config.api_key:
@@ -48,6 +53,21 @@ class GeminiClient(ProviderClient):
                 "or pass api_key in config."
             )
         self.client = genai.Client(api_key=self.config.api_key)
+
+    @staticmethod
+    def _get_cache_key(config: GeminiConfig) -> str:
+        """Generate cache key for a config."""
+        config_json = config.model_dump_json(include={"api_key", "provider"})
+        return sha256(config_json.encode()).hexdigest()
+
+    @staticmethod
+    def from_cache(config: GeminiConfig) -> "GeminiClient":
+        """Get or create client from cache."""
+        cache_key = GeminiClient._get_cache_key(config)
+        with GeminiClient._cache_lock:
+            if cache_key not in GeminiClient._client_cache:
+                GeminiClient._client_cache[cache_key] = GeminiClient(config)
+            return GeminiClient._client_cache[cache_key]
 
     @overload
     async def _generate(
