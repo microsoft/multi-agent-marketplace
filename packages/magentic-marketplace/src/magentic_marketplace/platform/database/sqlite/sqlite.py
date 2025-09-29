@@ -37,10 +37,6 @@ _connection_metrics = {
     "write_db_errors": 0,
 }
 
-# Global initialization flag to avoid redundant table creation
-_initialized = False
-_init_lock = threading.Lock()
-
 # Global metrics timer
 _metrics_timer = None
 
@@ -772,6 +768,25 @@ class SQLiteDatabaseController(BaseDatabaseController, _BoundedSqliteConnectionM
         # Start periodic metrics dumping
         _start_metrics_timer(db_path)
 
+    @staticmethod
+    async def from_cached(
+        db_path: str, db_timeout: float = 5, max_read_connections: int = 3
+    ):
+        """Create a new controller for the given database path.
+
+        Args:
+            db_path: Path to the SQLite database file
+            db_timeout: Connection timeout in seconds
+            max_read_connections: Maximum concurrent read connections
+
+        Returns:
+            SQLiteDatabaseController instance
+
+        """
+        controller = SQLiteDatabaseController(db_path, db_timeout, max_read_connections)
+        await controller.initialize()
+        return controller
+
     @property
     def agents(self) -> AgentTableController:
         """Get the agent controller."""
@@ -795,19 +810,9 @@ class SQLiteDatabaseController(BaseDatabaseController, _BoundedSqliteConnectionM
 
     async def initialize(self):
         """Initialize the database tables."""
-        global _initialized
-
-        # Use lock to prevent race conditions during initialization
-        with _init_lock:
-            # Skip initialization if already done for this database path
-            if _initialized:
-                return
-
-            async with self._get_connection(is_write=True) as db:
-                await db.executescript(CREATE_TABLES_SQL)
-                await db.commit()
-
-            _initialized = True
+        async with self._get_connection(is_write=True) as db:
+            await db.executescript(CREATE_TABLES_SQL)
+            await db.commit()
 
     def __del__(self):
         """Write metrics to file when object is destroyed."""
@@ -821,8 +826,8 @@ class SQLiteDatabaseController(BaseDatabaseController, _BoundedSqliteConnectionM
 async def create_sqlite_database(database_path: str = "marketplace.db"):
     """Create SQLite database controller."""
     controller = SQLiteDatabaseController(database_path)
+    await controller.initialize()
     try:
-        await controller.initialize()
         yield controller
     finally:
         # Any cleanup if needed

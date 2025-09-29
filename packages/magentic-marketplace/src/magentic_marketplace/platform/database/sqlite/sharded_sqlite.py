@@ -47,10 +47,6 @@ _connection_metrics = {
     },
 }
 
-# Global initialization flag to avoid redundant table creation
-_initialized = False
-_init_lock = threading.Lock()
-
 # Global metrics timer
 _metrics_timer = None
 
@@ -334,7 +330,10 @@ class _ShardedBoundedSqliteConnectionMixIn:
         for idx, result in enumerate(shard_results):
             if isinstance(result, BaseException):
                 # Log exceptions that occurred during shard execution
-                logger.error(f"Exception occurred during execution on shard {idx}: {result}", exc_info=result)
+                logger.error(
+                    f"Exception occurred during execution on shard {idx}: {result}",
+                    exc_info=result,
+                )
                 continue
             all_results.extend(result)
 
@@ -987,6 +986,40 @@ class ShardedSQLiteDatabaseController(BaseDatabaseController):
         # Start periodic metrics dumping
         _start_metrics_timer(base_path)
 
+    @staticmethod
+    async def from_cached(
+        base_path: str,
+        agent_shards: int = 4,
+        action_shards: int = 4,
+        log_shards: int = 4,
+        db_timeout: float = 5,
+        max_read_connections_per_shard: int = 3,
+    ):
+        """Create a new controller for the given base path.
+
+        Args:
+            base_path: Base path for database files (without extension)
+            agent_shards: Number of shards for agent table
+            action_shards: Number of shards for action table
+            log_shards: Number of shards for log table
+            db_timeout: Connection timeout in seconds
+            max_read_connections_per_shard: Maximum concurrent read connections per shard
+
+        Returns:
+            ShardedSQLiteDatabaseController instance
+
+        """
+        controller = ShardedSQLiteDatabaseController(
+            base_path,
+            agent_shards,
+            action_shards,
+            log_shards,
+            db_timeout,
+            max_read_connections_per_shard,
+        )
+        await controller.initialize()
+        return controller
+
     @property
     def agents(self) -> AgentTableController:
         """Get the agent controller."""
@@ -1015,16 +1048,8 @@ class ShardedSQLiteDatabaseController(BaseDatabaseController):
 
     async def initialize(self):
         """Initialize all database tables across all shards."""
-        global _initialized
-
-        # Use lock to prevent race conditions during initialization
-        with _init_lock:
-            # Skip initialization if already done
-            if _initialized:
-                return
-
-            # SQL DDL for all tables - each shard will contain all three tables
-            create_all_tables_sql = """
+        # SQL DDL for all tables - each shard will contain all three tables
+        create_all_tables_sql = """
             CREATE TABLE IF NOT EXISTS agents (
                 id TEXT PRIMARY KEY,
                 created_at TEXT NOT NULL,
@@ -1045,31 +1070,29 @@ class ShardedSQLiteDatabaseController(BaseDatabaseController):
             );
             """
 
-            # Initialize all shards concurrently
-            async def init_shard(controller, shard_id: int):
-                async with controller._write_connection_for_shard(shard_id) as db:
-                    await db.executescript(create_all_tables_sql)
-                    await db.commit()
+        # Initialize all shards concurrently
+        async def init_shard(controller, shard_id: int):
+            async with controller._write_connection_for_shard(shard_id) as db:
+                await db.executescript(create_all_tables_sql)
+                await db.commit()
 
-            # Create tasks for all shard initializations
-            tasks = []
+        # Create tasks for all shard initializations
+        tasks = []
 
-            # Agent shards - each contains all tables but only agents table will be used
-            for i in range(self._agent_shards):
-                tasks.append(init_shard(self._agents, i))
+        # Agent shards - each contains all tables but only agents table will be used
+        for i in range(self._agent_shards):
+            tasks.append(init_shard(self._agents, i))
 
-            # Action shards - each contains all tables but only actions table will be used
-            for i in range(self._action_shards):
-                tasks.append(init_shard(self._actions, i))
+        # Action shards - each contains all tables but only actions table will be used
+        for i in range(self._action_shards):
+            tasks.append(init_shard(self._actions, i))
 
-            # Log shards - each contains all tables but only logs table will be used
-            for i in range(self._log_shards):
-                tasks.append(init_shard(self._logs, i))
+        # Log shards - each contains all tables but only logs table will be used
+        for i in range(self._log_shards):
+            tasks.append(init_shard(self._logs, i))
 
-            # Run all initializations concurrently
-            await asyncio.gather(*tasks)
-
-            _initialized = True
+        # Run all initializations concurrently
+        await asyncio.gather(*tasks)
 
     async def merge_all_shards(self, target_db_path: str):
         """Merge all shards from all tables into a single SQLite database file.
@@ -1150,8 +1173,8 @@ async def create_sharded_sqlite_database(
         db_timeout=db_timeout,
         max_read_connections_per_shard=max_read_connections_per_shard,
     )
+    await controller.initialize()
     try:
-        await controller.initialize()
         yield controller
     finally:
         # Any cleanup if needed
