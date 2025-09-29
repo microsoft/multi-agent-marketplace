@@ -9,8 +9,12 @@ from datetime import datetime
 from pathlib import Path
 
 from dotenv import load_dotenv
-from utils import load_businesses_from_yaml, load_customers_from_yaml, setup_logging
 
+from magentic_marketplace.experiments.utils import (
+    load_businesses_from_yaml,
+    load_customers_from_yaml,
+    setup_logging,
+)
 from magentic_marketplace.marketplace.agents import BusinessAgent, CustomerAgent
 from magentic_marketplace.marketplace.protocol.protocol import SimpleMarketplaceProtocol
 from magentic_marketplace.platform.database import (

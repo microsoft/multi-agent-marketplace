@@ -7,13 +7,12 @@ import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
-from models import (
+from magentic_marketplace.experiments.models import (
     AnalyticsResults,
     BusinessSummary,
     CustomerSummary,
     TransactionSummary,
 )
-
 from magentic_marketplace.marketplace.actions import ActionAdapter, SendMessage
 from magentic_marketplace.marketplace.actions.messaging import (
     Message,
