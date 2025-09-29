@@ -1,0 +1,11 @@
+id: customer_0060
+name: Harper Lopez
+request: Could you please assist me in finding a business that serves 'Tropical Lime
+  Ceviche' in the quantity of 1, and offers the amenities of being Wheelchair Accessible
+  and having a Children's Menu? These requirements are essential for me, and upon
+  finding such a business, I intend to place an order. Thank you for your help.
+menu_features:
+  Tropical Lime Ceviche: 10.99
+amenity_features:
+- Wheelchair Accessible
+- Children's Menu

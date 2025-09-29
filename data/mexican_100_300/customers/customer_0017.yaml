@@ -1,0 +1,10 @@
+id: customer_0017
+name: Steven Hall
+request: Please find a business that offers the Vanilla Flan Delight and the Loaded
+  Nacho Skillet, and has a Children's Menu. I intend to place an order for 1 Vanilla
+  Flan Delight and 1 Loaded Nacho Skillet from them. Thank you.
+menu_features:
+  Vanilla Flan Delight: 5.99
+  Loaded Nacho Skillet: 10.79
+amenity_features:
+- Children's Menu

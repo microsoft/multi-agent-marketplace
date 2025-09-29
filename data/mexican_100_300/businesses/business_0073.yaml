@@ -1,0 +1,34 @@
+id: business_0073
+name: Poblano Palms
+description: Step into a vibrant oasis where bold Mexican and Tex-Mex flavors meet
+  fresh, creative twists. Indulge in a colorful array of street-inspired dishes, zesty
+  salads, and decadent desserts in a lively, welcoming setting.
+rating: 1.0
+progenitor_customer: customer_0025
+menu_features:
+  Ancho Chocolate Cake: 6.57
+  Churro Sundae: 5.58
+  Crispy Potato Flautas: 5.25
+  Creamy Avocado Caesar Salad: 7.49
+  Baja Shrimp Tostadas: 12.88
+  Chipotle Grilled Chicken Salad: 8.67
+  Street Corn Elote: 4.82
+  Passion Fruit Margarita: 7.97
+  Three-Cheese Queso Dip: 7.03
+  Black Bean & Corn Salad: 7.68
+  Mole Chocolate Cake: 4.78
+  Roasted Poblano Cornbread: 4.78
+  Mole Poblano Chicken: 13.14
+  Crispy Fish Baja Bowl: 18.28
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.73

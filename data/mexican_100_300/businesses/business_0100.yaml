@@ -1,0 +1,33 @@
+id: business_0100
+name: El Alma Mexicana
+description: Experience the vibrant spirit of Mexican and Tex-Mex cuisine in a warm,
+  inviting atmosphere. From flavorful enchiladas and sizzling fajitas to decadent
+  desserts and refreshing handcrafted drinks, every dish is crafted with heart and
+  tradition.
+rating: 1.0
+progenitor_customer: customer_0034
+menu_features:
+  Mexican Chocolate Cake: 3.77
+  Carnitas Breakfast Burrito: 12.65
+  Chipotle Chicken Enchiladas: 10.63
+  Street Corn Skillet: 4.87
+  Carne Asada Loaded Nachos: 15.32
+  Mango Cilantro Salsa Chicken: 9.52
+  Strawberry Basil Margarita: 11.07
+  Caramelized Onion and Chorizo Empanadas: 11.55
+  Strawberry Jalapeno Mojito: 7.9
+  Matcha Horchata Freeze: 5.97
+  Carne Asada Quesadilla: 6.51
+  Grilled Shrimp Fajitas: 6.57
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.83

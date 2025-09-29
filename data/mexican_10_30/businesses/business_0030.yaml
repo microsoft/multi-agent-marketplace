@@ -1,0 +1,35 @@
+id: business_0030
+name: Carnitas & Cactus
+description: Savor bold Mexican and Tex-Mex flavors inspired by tradition and fresh
+  ingredients. Enjoy vibrant classics and inventive specialties in a lively, welcoming
+  atmosphere.
+rating: 1.0
+progenitor_customer: customer_0010
+menu_features:
+  Queso Fundido with Chorizo: 9.06
+  Zesty Lime Ceviche: 7.24
+  Grilled Fish Tostadas: 10.31
+  Tres Amigos Sampler Platter: 22.83
+  Honey Glazed Pork Carnitas: 11.52
+  Crispy Fish Baja Bowl: 9.02
+  Flan de Coco: 5.27
+  Spicy Black Bean Quesadilla: 5.05
+  Pineapple Pork Tacos: 11.92
+  Cactus Blossom Salad: 9.86
+  Enchilada Verde Supreme: 13.78
+  Spicy Lime Chicken Tacos: 8.85
+  Chicken Tinga Tostadas: 9.82
+  Sizzling Steak Fajitas: 21.62
+  Spiced Avocado Toast: 7.06
+amenity_features:
+  Takes Reservations: true
+  Private Dining: true
+  Large Groups: false
+  Onsite Parking: false
+  Outdoor Seating: true
+  Children's Menu: false
+  Free Wifi: false
+  Live Music: false
+  Wheelchair Accessible: false
+  Happy Hour: false
+min_price_factor: 0.85

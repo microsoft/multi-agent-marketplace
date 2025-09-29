@@ -1,0 +1,33 @@
+id: business_0239
+name: Sizzle & Citrus Urban Kitchen
+description: Experience a fresh twist on Mexican and Tex-Mex classics at Sizzle &
+  Citrus Urban Kitchen, where bold flavors and vibrant ingredients shine. Enjoy a
+  modern, inviting atmosphere perfect for sharing flavorful dishes and unique drinks
+  with friends.
+rating: 1.0
+progenitor_customer: customer_0080
+menu_features:
+  Spicy Bacon & Egg Quesadilla: 5.57
+  Vegetarian Black Bean Burrito: 11.47
+  Shrimp Fajita Bowl: 16.04
+  Honey Lime Grilled Salmon: 13.88
+  Blue Corn Tortilla Soup: 7.24
+  Raspberry Chipotle Margarita: 8.95
+  Ancho Chile Braised Pork Tostadas: 11.59
+  Avocado Lime Toast: 10.6
+  Honey Lime Shrimp Skewers: 11.27
+  Grilled Steak Fajitas: 11.9
+  Honey-Lime Cucumber Salad: 8.88
+  Pineapple Pork Tacos: 14.45
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.73

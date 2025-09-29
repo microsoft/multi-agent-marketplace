@@ -1,0 +1,37 @@
+id: business_0044
+name: "Cantina Sol y Ma\xEDz"
+description: Experience vibrant flavors and refreshing drinks inspired by Mexican
+  and Tex-Mex traditions. Our cozy cantina celebrates the best of sun-kissed spices,
+  garden-fresh ingredients, and classic comfort in every bite.
+rating: 1.0
+progenitor_customer: customer_0015
+menu_features:
+  Roasted Corn Black Bean Salsa: 5.49
+  Tequila Sunrise Spritzer: 6.3
+  Chili Verde Queso Dip: 7.43
+  Blueberry Jalapeno Mocktail: 4.42
+  Mexican Vanilla Flan: 5.24
+  Watermelon Mint Agua Fresca: 5.11
+  Grilled Chicken Tortilla Soup: 6.63
+  Roasted Vegetable Tostadas: 10.84
+  Carnitas Enchiladas Verde: 11.57
+  Frozen Spicy Watermelon Daiquiri: 11.36
+  Chili Lime Shrimp Fajitas: 15.7
+  Jalapeno Infused Tequila Sunrise: 7.17
+  Chocolate Tamal del Cielo: 7.24
+  Horchata Milkshake: 5.96
+  Chipotle Lime Street Tacos: 6.38
+  Grilled Chicken Fajita Salad: 7.27
+  Chipotle Chicken Enchiladas: 13.86
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.91

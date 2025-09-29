@@ -1,0 +1,35 @@
+id: business_0228
+name: Wrap & Root Cantina
+description: Experience bold Mexican and Tex-Mex flavors in a vibrant, modern setting.
+  From sizzling wraps to fresh, zesty salads and handcrafted cocktails, every dish
+  brings a delicious twist to tradition.
+rating: 1.0
+progenitor_customer: customer_0076
+menu_features:
+  Crispy Chipotle Chicken Wrap: 7.61
+  Spicy Chicken Quesadilla: 10.49
+  Chipotle Lime Shrimp Bowl: 11.56
+  Pulled Pork Quesadilla: 11.57
+  Guava Basil Mojito: 5.65
+  Mango Avocado Salad: 10.28
+  Coconut Rice Pudding: 4.68
+  Pineapple Pico de Gallo: 8.38
+  Chili Con Queso Dip: 6.01
+  Guacamole and Salsa Sampler: 6.73
+  Roasted Poblano and Corn Quesadilla: 10.56
+  Shrimp Ceviche Tostadas: 9.68
+  Smoky Barbacoa Burrito Bowl: 10.74
+  Sizzling Beef Enchiladas: 16.52
+  Spiked Horchata: 5.35
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.71

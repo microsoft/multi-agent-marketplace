@@ -1,0 +1,33 @@
+id: business_0022
+name: Cilantro & Crunch
+description: Dive into bold flavors and vibrant textures inspired by Mexican and Tex-Mex
+  traditions. Sip, savor, and enjoy our unique creations, from crisp appetizers to
+  refreshing drinks and decadent desserts.
+rating: 1.0
+progenitor_customer: customer_0008
+menu_features:
+  Avocado Lime Crema Burger: 11.65
+  Beer-Battered Avocado Fries: 8.62
+  Frozen Mango Margarita: 9.83
+  Dark Chocolate Spiced Mousse: 3.45
+  Al Pastor Tostada Crunch: 17.7
+  Habanero Honey Wings: 13.16
+  Tropical Lime Ceviche: 9.59
+  Baja Shrimp Quesadilla: 9.78
+  Jalapeno-Lime Cheesecake: 8.29
+  Honey Chipotle Glazed Wings: 10.56
+  Pineapple Cilantro Refresher: 4.03
+  Southwest Black Bean Quesadilla: 9.16
+  Chipotle Lime Rice: 3.36
+amenity_features:
+  Takes Reservations: true
+  Private Dining: true
+  Large Groups: false
+  Onsite Parking: false
+  Outdoor Seating: false
+  Children's Menu: false
+  Free Wifi: false
+  Live Music: true
+  Wheelchair Accessible: true
+  Happy Hour: true
+min_price_factor: 0.95

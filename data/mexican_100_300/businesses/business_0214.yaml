@@ -1,0 +1,34 @@
+id: business_0214
+name: Rib, Shrimp & Harmony
+description: Where smoky, sweet, and zesty Tex-Mex flavors unite in perfect harmony.
+  From bold, glazed ribs to fresh bowls and irresistible desserts, every bite is a
+  celebration.
+rating: 1.0
+progenitor_customer: customer_0072
+menu_features:
+  Tamarind Glazed Ribs: 16.94
+  Tequila Lime Shrimp Bowl: 12.02
+  Spiced Beef Empanadas: 9.43
+  Honey Lime Chicken Fajitas: 14.91
+  Black Bean Quinoa Bowl: 10.58
+  Horchata Rice Pudding: 4.41
+  Horchata Milkshake: 5.14
+  Three Cheese Chile Relleno: 9.75
+  Molten Queso Fundido: 10.86
+  Tres Leches French Toast: 11.96
+  Texas BBQ Brisket Tacos: 14.04
+  Chorizo & Potato Tacos: 7.71
+  Crispy Carnitas Tostadas: 10.2
+  Spiced Chocolate Mole: 7.41
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: true
+min_price_factor: 0.84

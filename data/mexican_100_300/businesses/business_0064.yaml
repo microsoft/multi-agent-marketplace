@@ -1,0 +1,32 @@
+id: business_0064
+name: Cantina Dulce Verde
+description: Experience the vibrant spirit of Mexican and Tex-Mex cuisine with a creative
+  twist. From savory grilled delights to irresistible sweets, our kitchen celebrates
+  fresh flavors and bold combinations.
+rating: 1.0
+progenitor_customer: customer_0022
+menu_features:
+  Caramelized Onion & Cheese Quesadilla: 8.41
+  Fiesta Nacho Bowl: 9.91
+  Sweet Potato Churros: 5.76
+  Mexican Chocolate Brownie: 7.66
+  Creamy Avocado Quesadillas: 10.45
+  Chile Verde Pork Bowl: 14.67
+  Mesquite Grilled Steak Burrito: 12.97
+  Blueberry Jalapeno Mocktail: 3.04
+  Habanero Lime Chicken Wings: 10.12
+  Spicy Verde Chicken Tostadas: 10.26
+  Ancho Chile Beef Enchiladas: 12.66
+  Caramelized Plantain Burrito: 11.46
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.76

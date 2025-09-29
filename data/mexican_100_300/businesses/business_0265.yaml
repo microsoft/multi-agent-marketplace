@@ -1,0 +1,33 @@
+id: business_0265
+name: Margarita Mercado
+description: Margarita Mercado is a lively spot serving up vibrant Mexican and Tex-Mex
+  flavors, along with refreshing drinks and fresh, zesty salads. Enjoy bold, smoky
+  tastes and creative cocktails in a welcoming, festive atmosphere.
+rating: 1.0
+progenitor_customer: customer_0089
+menu_features:
+  Smoky Mezcal Mule: 16.39
+  Black Bean & Corn Quesadilla: 11.68
+  Spicy Beef Taco Salad: 9.45
+  Watermelon Agua Fresca: 4.74
+  Zesty Lime Chicken Salad: 14.93
+  Coconut Lime Margarita: 8.94
+  Mango Jalapeno Margarita: 9.6
+  Fresh Lime Agua Fresca: 6.4
+  Blood Orange Paloma: 12.79
+  Avocado Cilantro Smoothie: 5.79
+  Tostada Salad with Avocado Crema: 10.03
+  Crispy Pork Carnitas: 20.45
+  Passion Fruit Agua Fresca: 3.47
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: true
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.83

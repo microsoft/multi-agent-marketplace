@@ -1,0 +1,33 @@
+id: business_0284
+name: Zestful Nopal Kitchen
+description: Experience vibrant Mexican and Tex-Mex flavors in a lively, modern setting.
+  Fresh produce, bold spices, and creative cocktails come together for an unforgettable
+  dining adventure.
+rating: 1.0
+progenitor_customer: customer_0095
+menu_features:
+  Roasted Vegetable Quesadilla: 7.93
+  Spicy Cucumber Margarita: 8.75
+  Pineapple Salsa Pork Street Tacos: 9.73
+  Crispy Carnitas Soft Tacos: 18.16
+  Sizzling Cactus Wrap: 11.97
+  Enchilada Verde Supreme: 17.95
+  Zesty Lime Chicken Tortilla Soup: 7.76
+  Tequila Sunrise Fajitas: 10.69
+  Shrimp Fajita Skillet: 23.1
+  Ancho Chicken Enchiladas: 8.47
+  Chile Relleno Casserole: 6.69
+  Spicy Pineapple Mezcalita: 10.12
+  Creamy Avocado Smoothie: 7.97
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: true
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.75

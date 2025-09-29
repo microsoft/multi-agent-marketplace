@@ -1,0 +1,34 @@
+id: business_0218
+name: Viva Cactus Kitchen
+description: Experience a modern twist on Mexican and Tex-Mex favorites with vibrant
+  flavors, fresh ingredients, and bold seasonal cocktails. At Viva Cactus Kitchen,
+  every dish is crafted to celebrate the spirit and zest of contemporary Mexican cuisine.
+rating: 1.0
+progenitor_customer: customer_0073
+menu_features:
+  Fresh Lime Margarita: 7.42
+  Cactus and Black Bean Salad: 7.35
+  Charred Veggie Tacos: 16.65
+  Black Bean & Sweet Potato Burrito: 12.28
+  Spicy Pineapple Mezcalita: 9.61
+  Honey Chipotle Grilled Chicken: 7.71
+  Citrus Shrimp Ceviche: 12.31
+  Chipotle BBQ Carnitas: 6.16
+  Habanero Honey Wings: 9.37
+  Ancho Chile Beef Enchiladas: 11.99
+  Tomatillo Chicken Soup: 7.38
+  Cinnamon Spice Flan: 5.76
+  Red Chili Beef Brisket: 7.76
+  Smoky Lime Guacamole: 6.66
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.89

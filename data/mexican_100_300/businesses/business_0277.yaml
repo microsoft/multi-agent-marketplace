@@ -1,0 +1,33 @@
+id: business_0277
+name: Chili & Charm
+description: Step into Chili & Charm, where bold Mexican and Tex-Mex flavors meet
+  creative flair. Enjoy smoky, spicy, and sweet dishes alongside refreshingly unique
+  beverages, all served in a vibrant and welcoming atmosphere.
+rating: 1.0
+progenitor_customer: customer_0093
+menu_features:
+  Queso Fundido Dip: 8.01
+  Honey Lime Chicken Skewers: 12.26
+  Ancho Chili Lime Shrimp: 21.25
+  Chipotle Black Bean Burger: 14.72
+  Smoky Chili-Lime Wings: 8.16
+  Smoky Chipotle Ribs: 18.3
+  Crispy Avocado Rolls: 3.29
+  Spicy Mango Margarita: 9.39
+  Cherry Jalapeno Slushie: 7.45
+  Cajeta Bread Pudding: 5.19
+  Spicy Chicken Enchiladas: 16.28
+  Charro Bean Burrito: 9.76
+  Mango Habanero Margarita: 12.97
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.63

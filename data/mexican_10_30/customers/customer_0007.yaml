@@ -1,0 +1,14 @@
+id: customer_0007
+name: Amy Wilson
+request: 'I need assistance finding a business that can provide the following menu
+  items: Avocado Lime Salad (1), Spicy Cucumber Margarita (1), and Tequila Sunrise
+  Spritzer (1). It''s important that the business also has amenities for Large Groups
+  and offers Live Music. Once such a business is found, I intend to place an order.
+  Thank you for your help in locating a suitable option.'
+menu_features:
+  Avocado Lime Salad: 8.49
+  Spicy Cucumber Margarita: 9.49
+  Tequila Sunrise Spritzer: 8.49
+amenity_features:
+- Large Groups
+- Live Music

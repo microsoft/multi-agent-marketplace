@@ -1,0 +1,39 @@
+id: business_0244
+name: "El Encanto del Saz\xF3n"
+description: "Discover vibrant, modern Mexican and Tex-Mex flavors at El Encanto del\
+  \ Saz\xF3n, where fresh salsas, sizzling classics, and inventive appetizers create\
+  \ a feast for all the senses. Join us for a welcoming atmosphere and a delicious\
+  \ celebration of tradition and creativity."
+rating: 1.0
+progenitor_customer: customer_0082
+menu_features:
+  Pineapple Salsa Verde: 7.8
+  Sizzling Steak Quesadilla: 12.99
+  Guajillo Grilled Steak Burrito: 13.58
+  Blue Corn Tortilla Chips: 6.25
+  Peach Habanero Salsa Wings: 16.73
+  Crispy Avocado Fries: 9.54
+  Roasted Poblano Cornbread: 5.61
+  Grilled Lime Chicken Tacos: 11.72
+  Crispy Fish Taco Duo: 11.24
+  Tangy Tomatillo Salsa: 3.85
+  Queso Fundido Dip: 8.29
+  Pulled Pork Tamale Skillet: 15.25
+  Hibiscus Iced Tea: 3.69
+  Smoky Chipotle Chicken Fajitas: 9.7
+  Cactus and Black Bean Tacos: 7.96
+  Veracruz Fish Tacos: 18.72
+  Ancho Chile Braised Pork Tostadas: 6.07
+  Beef Barbacoa Quesadilla: 9.91
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.87

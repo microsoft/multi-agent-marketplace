@@ -1,0 +1,13 @@
+id: customer_0083
+name: Hannah White
+request: 'Please help me find a business that offers the following menu items: ''Carnitas
+  Salsa Verde Tacos'' (1) and ''Sweet Corn Tamale Pancakes'' (1). Additionally, the
+  business must have amenities such as ''Private Dining'' and a ''Children''s Menu''.
+  It is important that all these criteria are met, as I intend to place an order with
+  them. Thank you.'
+menu_features:
+  Carnitas Salsa Verde Tacos: 11.99
+  Sweet Corn Tamale Pancakes: 8.99
+amenity_features:
+- Private Dining
+- Children's Menu

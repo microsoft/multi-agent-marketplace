@@ -1,0 +1,35 @@
+id: business_0008
+name: Guac 'N' Awe
+description: Guac 'N' Awe serves up bold Mexican and Tex-Mex flavors with a creative
+  twist, featuring fresh grilled specialties, vibrant salsas, and irresistible sweet
+  treats. Experience a fiesta of tastes in every bite at our lively and welcoming
+  spot.
+rating: 1.0
+progenitor_customer: customer_0003
+menu_features:
+  Tropical Pineapple Salsa: 4.97
+  Carne Asada Fajitas: 8.87
+  Ancho Chile Coffee Rubbed Steak: 11.46
+  Grilled Shrimp Fajitas: 16.78
+  Avocado Cilantro Smoothie: 7.56
+  Grilled Fish Tostadas: 9.71
+  Chocolate Dusted Churro Bites: 7.78
+  Shrimp Ceviche Cups: 9.61
+  Chocolate Dipped Flan: 8.53
+  Fresh Lime Agua Fresca: 5.57
+  Savory Black Bean Soup: 7.08
+  Mango Jalapeno Salsa: 4.92
+  Twice-Baked Potato Tex-Mex Style: 8.14
+  Chocolate Avocado Mousse: 8.23
+amenity_features:
+  Takes Reservations: false
+  Private Dining: false
+  Large Groups: false
+  Onsite Parking: true
+  Outdoor Seating: true
+  Children's Menu: false
+  Free Wifi: true
+  Live Music: false
+  Wheelchair Accessible: false
+  Happy Hour: true
+min_price_factor: 0.8

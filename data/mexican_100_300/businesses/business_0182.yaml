@@ -1,0 +1,34 @@
+id: business_0182
+name: Holy Mole & More
+description: A spirited Tex-Mex hotspot melding sweet, savory, and spicy into imaginative,
+  mouthwatering creations. From zingy salsas to decadent desserts, every plate is
+  a vibrant celebration of Mexican-inspired flavor.
+rating: 1.0
+progenitor_customer: customer_0061
+menu_features:
+  Ancho Chicken Enchiladas: 14.08
+  Blueberry Tamale Pancakes: 8.06
+  Pumpkin Spice Horchata: 5.72
+  Chili Lime Chicken Salad: 10.06
+  Smoky Black Bean Salsa: 8.07
+  Warm Cinnamon Churros: 6.28
+  Spicy Tomatillo Salsa: 2.65
+  Pepper Jack Cornbread Muffins: 3.17
+  Cajeta-filled Sopapillas: 9.19
+  Tropical Salsa Salmon: 18.51
+  Dark Chocolate Spiced Mousse: 7.1
+  Pepper Jack Quesadilla: 7.82
+  Southwest Chicken Salad: 9.71
+  Jalapeno Watermelon Sangria: 8.61
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.93

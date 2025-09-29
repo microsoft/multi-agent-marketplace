@@ -1,0 +1,32 @@
+id: business_0018
+name: Corny Concoctions
+description: Dive into a flavorful adventure where vibrant Mexican and Tex-Mex classics
+  meet a creative twist. From spicy starters to sweet treats, our eclectic menu is
+  sure to delight every palate.
+rating: 1.0
+progenitor_customer: customer_0006
+menu_features:
+  Churro Cinnamon Roll: 4.89
+  Tres Amigos Sampler Platter: 12.94
+  Avocado Toast with Pico: 11.69
+  Herb-Roasted Corn Salad: 9.48
+  Ancho Chicken Enchiladas: 19.52
+  Honey Lime Grilled Salmon: 7.87
+  Hibiscus Iced Tea: 2.56
+  Habanero Hot Wings: 12.09
+  Slow-Cooked Barbacoa Enchiladas: 9.93
+  Cheesy Street Corn Bites: 9.52
+  Zesty Chicken Tortilla Soup: 6.4
+  Hatch Green Chile Burger: 14.28
+amenity_features:
+  Takes Reservations: true
+  Private Dining: false
+  Large Groups: false
+  Onsite Parking: true
+  Outdoor Seating: false
+  Children's Menu: false
+  Free Wifi: false
+  Live Music: false
+  Wheelchair Accessible: false
+  Happy Hour: false
+min_price_factor: 0.85

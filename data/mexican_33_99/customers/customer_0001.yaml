@@ -1,0 +1,13 @@
+id: customer_0001
+name: Mia Kim
+request: "Could you please find a business that serves the following menu items: 1\
+  \ Hearty Chorizo Omelette, 1 Caramelized Onion & Cheese Dip, and 1 Spicy Pulled\
+  \ Pork Enchiladas, and also has Outdoor Seating? It\u2019s essential that the business\
+  \ meets all these requirements. Upon finding such a business, I intend to place\
+  \ an order for these items. Thank you!"
+menu_features:
+  Hearty Chorizo Omelette: 9.49
+  Caramelized Onion & Cheese Dip: 8.59
+  Spicy Pulled Pork Enchiladas: 14.49
+amenity_features:
+- Outdoor Seating

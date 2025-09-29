@@ -1,0 +1,34 @@
+id: business_0208
+name: Poblano & Paloma
+description: Experience a vibrant fusion of modern Mexican and Tex-Mex flavors, where
+  bright cocktails and bold, smoky dishes come together. Perfect for gatherings, celebrations,
+  and a fresh take on classic favorites.
+rating: 1.0
+progenitor_customer: customer_0070
+menu_features:
+  Pomegranate Paloma: 8.48
+  Beef and Bean Chili Relleno: 8.21
+  Tropical Shrimp Ceviche: 11.71
+  Roasted Poblano Salsa Verde: 6.68
+  Smoky Barbacoa Burrito Bowl: 13.59
+  Adobo Spiced Pork Tamales: 14.34
+  Grilled Pineapple Margaritas: 9.28
+  Sizzling Steak Quesadilla: 15.28
+  Crispy Chicken Empanadas: 4.06
+  Chicken Verde Enchilada: 11.16
+  Pineapple Pork Tacos: 10.6
+  Blueberry Mojito: 10.07
+  Blue Corn Tortilla Soup: 3.12
+  Pineapple Habanero Salsa: 5.0
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.62

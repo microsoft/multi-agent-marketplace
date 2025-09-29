@@ -1,0 +1,37 @@
+id: business_0195
+name: Mole & Mango
+description: Experience a dazzling blend of modern Mexican and Tex-Mex flavors, where
+  bold spices meet fresh, vibrant ingredients. From flavorful breakfast bites to decadent
+  desserts and inventive cocktails, every meal is a celebration of taste.
+rating: 1.0
+progenitor_customer: customer_0065
+menu_features:
+  Tex-Mex Breakfast Tacos: 8.23
+  Chocolate Dusted Flan: 6.59
+  Pork Carnitas Burrito: 13.13
+  Mole Enchiladas: 14.46
+  Honey Chipotle Ribs: 19.35
+  Al Pastor Breakfast Burrito: 11.32
+  Dark Chocolate Spiced Mousse: 9.06
+  Al Pastor Salad Bowl: 12.58
+  Passionfruit Mojito: 7.27
+  Grilled Lime Chicken Fajitas: 9.82
+  Three-Cheese Stuffed Poblano: 5.54
+  Mango Jalapeno Margarita: 14.37
+  Honey Lime Grilled Salmon: 18.58
+  Beer-Battered Avocado Fries: 10.16
+  Chocolate Mole Chicken: 16.02
+  Avocado Citrus Salad: 13.89
+  Pineapple Jalapeno Nachos: 16.79
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: true
+min_price_factor: 0.79

@@ -1,0 +1,31 @@
+id: business_0174
+name: "La Pi\xF1a y Poblano"
+description: Experience vibrant Mexican and Tex-Mex flavors with fresh, lively ingredients
+  and creative twists. From smoky classics and spiced moles to refreshing beverages,
+  every dish is crafted to delight your senses.
+rating: 1.0
+progenitor_customer: customer_0058
+menu_features:
+  Pineapple Cilantro Refresher: 6.17
+  Spiced Chocolate Mole: 5.42
+  Red Chili Pork Tamale: 8.97
+  Smoky BBQ Pork Tacos: 15.3
+  Three-Bean Vegetarian Tostadas: 13.47
+  Roasted Poblano Avocado Smash: 5.21
+  Coconut Lime Chicken Soup: 8.97
+  Black Bean Queso Dip: 4.82
+  Mexican Chocolate Tres Leches: 6.01
+  Tangy Lime Cilantro Tacos: 11.45
+  Smoky Black Bean Quesadilla: 9.26
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.86

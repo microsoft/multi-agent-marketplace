@@ -1,0 +1,36 @@
+id: business_0022
+name: Sabor de la Tierra
+description: Experience the vibrant flavors of Mexico with a menu rich in fresh salsas,
+  savory enchiladas, and crisp, inventive cocktails. Enjoy a warm and lively atmosphere
+  where authentic ingredients and culinary creativity meet.
+rating: 1.0
+progenitor_customer: customer_0008
+menu_features:
+  Hatch Chile Enchiladas: 12.96
+  Ginger-Tequila Paloma: 8.48
+  Pineapple Salsa Verde: 6.85
+  Chili Con Queso Fundido: 7.75
+  Veggie Enchilada Stack: 10.72
+  Spicy Serrano Margarita: 11.93
+  Spicy Pineapple Mezcalita: 10.03
+  Mango Pico de Gallo: 5.63
+  Smoky Chipotle Black Bean Dip: 7.36
+  Black Bean Quinoa Bowl: 9.64
+  Grilled Street Corn: 6.29
+  Avocado Lime Parfait: 4.92
+  Bacon-Wrapped Jalapeno Dogs: 7.18
+  Sweet and Spicy Jalapeno Relish: 2.41
+  Honey Chipotle Grilled Chicken: 14.42
+  Black Bean and Corn Tamales: 14.47
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.88

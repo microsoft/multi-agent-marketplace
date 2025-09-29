@@ -1,0 +1,34 @@
+id: business_0026
+name: Barbacool Beans
+description: Dive into a fiesta of bold Mexican and Tex-Mex flavors where classics
+  get an inventive twist. Our vibrant menu features crave-worthy bites, refreshing
+  sips, and sweet treats, all crafted with fresh ingredients and a dash of playful
+  spirit.
+rating: 1.0
+progenitor_customer: customer_0009
+menu_features:
+  Beef Barbacoa Burrito: 15.61
+  Stuffed Poblano Pepper Delight: 15.86
+  Spicy Paloma Cocktail: 11.61
+  Breakfast Burrito Bowl: 10.19
+  Warm Churro Chips: 4.86
+  Caramelized Onion & Cheese Dip: 9.5
+  Avocado Cilantro Lime Salad: 7.57
+  Honey Lime Grilled Shrimp: 13.83
+  Zesty Lime Shrimp Quesadillas: 11.73
+  Mango Habanero Glazed Salmon: 17.52
+  Watermelon Basil Aqua Fresca: 5.78
+  Tequila Lime Shrimp Cocktail: 14.25
+  Sweet Plantain Empanadas: 13.3
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.61

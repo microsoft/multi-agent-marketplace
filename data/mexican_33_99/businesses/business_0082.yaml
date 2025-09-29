@@ -1,0 +1,32 @@
+id: business_0082
+name: La Vida Fresca Cantina
+description: Experience vibrant Mexican and Tex-Mex cuisine at La Vida Fresca Cantina,
+  where fresh flavors and creative pairings come together in every dish. Celebrate
+  every meal with bold tastes, lively ambiance, and unforgettable sips.
+rating: 1.0
+progenitor_customer: customer_0028
+menu_features:
+  Roasted Corn and Black Bean Salad: 8.77
+  Mango Pico de Gallo: 6.79
+  Al Pastor Street Tacos: 14.07
+  Pineapple Cilantro Refresher: 3.72
+  Crispy Avocado Fajitas: 18.25
+  Jalapeno Lime Rice Bowl: 8.89
+  Roasted Poblano Mac & Cheese: 14.0
+  Loaded Tex-Mex Nachos Supreme: 10.21
+  Chipotle Sweet Potato Fries: 7.17
+  Pumpkin Spice Horchata: 5.12
+  Crispy Duck Tacos: 13.32
+  Blueberry Jalapeno Mocktail: 5.63
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: false
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Onsite Parking: false
+  Happy Hour: true
+  Private Dining: true
+  Outdoor Seating: true
+  Takes Reservations: false
+min_price_factor: 0.67

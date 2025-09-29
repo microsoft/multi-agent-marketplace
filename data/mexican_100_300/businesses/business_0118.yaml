@@ -1,0 +1,38 @@
+id: business_0118
+name: Skillet & Salsa
+description: Skillet & Salsa brings vibrant Mexican and Tex-Mex flavors to life with
+  bold, modern twists. Enjoy a lively atmosphere and a menu full of sizzling favorites,
+  fresh salads, and crave-worthy classics.
+rating: 1.0
+progenitor_customer: customer_0040
+menu_features:
+  Chipotle Grilled Chicken Salad: 12.21
+  Cinnamon Spice Churros: 6.08
+  Citrus Marinated Pork Carnitas: 11.09
+  Tender Lime Cilantro Steak Fajitas: 16.62
+  BBQ Pulled Pork Enchiladas: 10.59
+  Sizzling Skillet Fajitas: 14.74
+  Cactus and Black Bean Salad: 3.41
+  Loaded Veggie Queso: 6.58
+  Stuffed Poblano Peppers: 4.88
+  Hatch Chile Chicken Burrito: 12.99
+  Texas BBQ Pulled Pork Nachos: 6.35
+  Spicy Paloma Cocktail: 11.69
+  Chipotle Beef Quesadilla: 5.17
+  Smoky Chipotle Black Bean Dip: 6.95
+  Smoky Chipotle Enchiladas: 18.52
+  Bacon Wrapped Jalapenos: 12.63
+  Baja Fish Burrito: 14.65
+  Pineapple Salsa Quesadilla: 13.4
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.6

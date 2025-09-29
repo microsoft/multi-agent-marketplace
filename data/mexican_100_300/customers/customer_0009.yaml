@@ -1,0 +1,14 @@
+id: customer_0009
+name: Charlotte Taylor
+request: 'I am looking for a business where I can place an order for the following
+  menu items: 1 Zesty Lime Shrimp Quesadilla, 1 Tequila Lime Shrimp Cocktail, and
+  1 Stuffed Poblano Pepper Delight. Additionally, this business must offer Private
+  Dining and Free Wifi. Please help me locate such a business, as I intend to place
+  an order meeting these specific needs. Thank you!'
+menu_features:
+  Zesty Lime Shrimp Quesadillas: 11.49
+  Tequila Lime Shrimp Cocktail: 12.99
+  Stuffed Poblano Pepper Delight: 12.99
+amenity_features:
+- Private Dining
+- Free Wifi

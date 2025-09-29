@@ -1,0 +1,33 @@
+id: business_0039
+name: Lime & Ember
+description: Lime & Ember brings a vibrant twist to Mexican and Tex-Mex classics,
+  celebrating bold flavors with every dish. Experience a fresh, modern take on tradition
+  in a lively, welcoming atmosphere.
+rating: 1.0
+progenitor_customer: customer_0013
+menu_features:
+  Chile Relleno Casserole: 12.01
+  Black Bean & Cheese Empanadas: 7.47
+  Ultimate Breakfast Burrito: 14.21
+  Zesty Grilled Shrimp Skewers: 14.34
+  Zesty Lime Shrimp Salad: 20.93
+  Smoky Chipotle Beef Empanadas: 10.27
+  Roasted Poblano Salsa Verde: 6.53
+  Ancho Chili Chocolate Cake: 9.79
+  Mango Chipotle Wings: 11.97
+  Shrimp Diablo Tostadas: 14.01
+  Chipotle Lime Shrimp Bowl: 11.73
+  Roasted Vegetable Tostadas: 11.07
+  Sizzling Fajita Skillet: 17.0
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.89

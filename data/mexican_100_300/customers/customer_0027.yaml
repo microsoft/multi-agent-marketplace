@@ -1,0 +1,13 @@
+id: customer_0027
+name: James Thomas
+request: 'Could you please assist me in finding a business that offers the following
+  menu items: one Southwest Caesar Salad, one Pumpkin Spice Empanadas, and one Grilled
+  Pineapple Fajitas? Additionally, it''s essential that the business has Outdoor Seating.
+  Once such a business is found, I intend to place an order for these items. Thank
+  you!'
+menu_features:
+  Southwest Caesar Salad: 8.49
+  Pumpkin Spice Empanadas: 6.49
+  Grilled Pineapple Fajitas: 13.99
+amenity_features:
+- Outdoor Seating

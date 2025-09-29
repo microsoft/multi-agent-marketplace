@@ -1,0 +1,12 @@
+id: customer_0025
+name: Liam Ramirez
+request: 'Please find a business that offers the following menu items: 1 Tex-Mex Breakfast
+  Skillet, 1 Green Chili Chicken Soup, and 1 Pulled Pork Quesadilla, and also provides
+  outdoor seating. It is important that all these requirements are met, as I intend
+  to place an order with them. Thank you for your assistance.'
+menu_features:
+  Tex-Mex Breakfast Skillet: 11.49
+  Green Chili Chicken Soup: 8.5
+  Pulled Pork Quesadilla: 11.29
+amenity_features:
+- Outdoor Seating

@@ -1,0 +1,38 @@
+id: business_0040
+name: Cielo & Canela
+description: Experience the vibrant spirit of modern Mexican and Tex-Mex cuisine in
+  a warm, inviting atmosphere. Fresh, bold flavors and creative classics await at
+  every turn, perfect for sharing and savoring.
+rating: 1.0
+progenitor_customer: customer_0014
+menu_features:
+  Warm Cinnamon Churros: 7.51
+  Charro Beans Special: 4.69
+  Tropical Shrimp Ceviche: 8.28
+  Grilled Chicken Fajita Bowl: 16.26
+  Spicy Black Bean Burrito: 8.72
+  Spicy Pulled Pork Enchiladas: 16.55
+  Ancho Chile Beef Enchiladas: 9.55
+  Pomegranate Paloma: 4.34
+  Pollo Asado Burrito Bowl: 8.66
+  Tortilla Soup Supreme: 7.4
+  Chocolate Tamal del Cielo: 5.58
+  Oven-Baked Ranchero Nachos: 6.9
+  Pineapple Pork Tacos: 9.02
+  Tamarind Chipotle Wings: 6.45
+  Sunrise Breakfast Burrito: 10.82
+  Smoky Barbacoa Burrito Bowl: 12.6
+  Spiced Chocolate Tamales: 5.61
+  Pineapple Salsa Carnitas: 13.06
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.69

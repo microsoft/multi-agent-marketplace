@@ -1,0 +1,33 @@
+id: business_0001
+name: Citrus & Smoke
+description: Citrus & Smoke brings a fresh, vibrant twist to classic Mexican and Tex-Mex
+  flavors, featuring zesty salsas, smoky cocktails, and bold, colorful dishes. Join
+  us for a lively atmosphere and unforgettable bites inspired by the heart of Mexico.
+rating: 1.0
+progenitor_customer: customer_0001
+menu_features:
+  Fresh Guacamole Platter: 5.67
+  Smokey Mezcal Paloma: 14.7
+  Pineapple Salsa Pork Burrito: 4.6
+  Cherry Chipotle Glazed Ribs: 17.61
+  Citrus Cilantro Chicken Salad: 14.22
+  Carnitas Breakfast Burrito: 7.85
+  Mango Jalapeno Salsa: 7.46
+  Baja Shrimp Ceviche: 11.7
+  Spicy Black Bean Quesadilla: 12.68
+  Cactus and Black Bean Tostadas: 5.91
+  Mango Pico de Gallo: 5.26
+  Blackened Fish Tacos: 14.73
+  Spicy Chicken Enchiladas: 11.64
+amenity_features:
+  Takes Reservations: false
+  Private Dining: false
+  Large Groups: false
+  Onsite Parking: true
+  Outdoor Seating: false
+  Children's Menu: true
+  Free Wifi: true
+  Live Music: false
+  Wheelchair Accessible: true
+  Happy Hour: true
+min_price_factor: 0.78

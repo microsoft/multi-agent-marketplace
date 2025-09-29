@@ -1,0 +1,36 @@
+id: business_0044
+name: Pepper & Palate
+description: Pepper & Palate brings you bold Mexican and Tex-Mex flavors with a creative
+  twist, featuring fresh ingredients and vibrant combinations. Enjoy a lively atmosphere
+  and a menu full of both classic and unique favorites.
+rating: 1.0
+progenitor_customer: customer_0015
+menu_features:
+  Horchata Ice Cream Scoop: 3.9
+  Avocado Lime Tostadas: 12.82
+  Veggie Enchilada Stack: 9.04
+  Passionfruit Mojito: 9.81
+  Hatch Green Chile Burger: 9.57
+  Coconut Flan: 6.98
+  Chorizo Breakfast Skillet: 6.76
+  "Cheesy Jalape\xF1o Poppers": 12.79
+  Avocado Lime Grilled Salmon: 18.44
+  Roasted Veggie Burrito: 14.02
+  Grilled Shrimp Quesadilla: 13.01
+  Sizzling Veggie Quesadilla: 4.15
+  Avocado Lime Grilled Skewers: 6.11
+  Three-Cheese Chile Rellenos: 13.73
+  Carnitas Salsa Verde Tacos: 15.15
+  Roasted Red Pepper Hummus with Tortilla Chips: 5.19
+amenity_features:
+  Children's Menu: true
+  Large Groups: false
+  Live Music: true
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: false
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.74

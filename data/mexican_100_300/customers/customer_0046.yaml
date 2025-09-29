@@ -1,0 +1,12 @@
+id: customer_0046
+name: David Nguyen
+request: 'Could you please assist me in finding a business that offers Outdoor Seating
+  and can fulfill an order for the following items: 1 Ancho Chile Chicken Wings and
+  1 Grilled Chipotle Lime Chicken? It is important that the business meets both the
+  menu and amenity requirements. Upon your recommendation, I intend to place this
+  order. Thank you for your help.'
+menu_features:
+  Ancho Chile Chicken Wings: 10.99
+  Grilled Chipotle Lime Chicken: 14.49
+amenity_features:
+- Outdoor Seating

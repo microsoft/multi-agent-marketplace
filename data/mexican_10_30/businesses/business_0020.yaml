@@ -1,0 +1,33 @@
+id: business_0020
+name: Taco 'Bout Flavor
+description: Dive into a fiesta of bold flavors and fresh ingredients at Taco 'Bout
+  Flavor, where every bite is a celebration of Tex-Mex creativity. From smoky wings
+  to zesty margaritas, our menu brings a twist of fun to every meal.
+rating: 1.0
+progenitor_customer: customer_0007
+menu_features:
+  Sizzling Beef Enchiladas: 7.39
+  Spicy Cucumber Margarita: 6.03
+  Avocado Lime Salad: 9.3
+  Jalapeno Cheese Dip: 6.83
+  Chorizo & Potato Tacos: 10.21
+  Grilled Lime Chicken Fajitas: 14.63
+  Mexican Chocolate Pudding: 6.17
+  Charred Veggie Tacos: 12.8
+  Honey Chipotle Glazed Wings: 8.77
+  Southwest Caesar Salad: 7.27
+  Roasted Red Pepper Queso: 6.85
+  Tequila Sunrise Spritzer: 6.54
+  Chipotle Lime Chicken Wings: 8.45
+amenity_features:
+  Takes Reservations: false
+  Private Dining: true
+  Large Groups: true
+  Onsite Parking: true
+  Outdoor Seating: true
+  Children's Menu: false
+  Free Wifi: false
+  Live Music: true
+  Wheelchair Accessible: false
+  Happy Hour: false
+min_price_factor: 0.75

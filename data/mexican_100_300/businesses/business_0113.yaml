@@ -1,0 +1,37 @@
+id: business_0113
+name: Azul & Ember
+description: Experience vibrant Mexican and Tex-Mex flavors with a modern twist at
+  Azul & Ember. Enjoy creative appetizers, refreshing cocktails, and bold, zesty mains
+  in a lively, welcoming setting.
+rating: 1.0
+progenitor_customer: customer_0038
+menu_features:
+  Loaded Chorizo Nachos: 11.1
+  Blueberry Basil Margarita: 11.34
+  Sizzling Beef Quesadillas: 12.45
+  Carnitas Quesadilla Melt: 6.14
+  Zesty Shrimp Ceviche: 14.28
+  Coconut Mango Rice Pudding: 8.04
+  Steak and Pepper Skillet: 15.46
+  Veggie Enchilada Stack: 13.08
+  Mango Avocado Salad: 10.89
+  Mole Chocolate Cake: 8.14
+  Roasted Poblano Queso Dip: 6.34
+  Roasted Poblano Pepper Dip: 7.99
+  Blue Corn Tortilla Salad: 7.4
+  Beef Barbacoa Street Tacos: 14.28
+  Black Bean and Corn Tamales: 8.53
+  Al Pastor Breakfast Burrito: 11.86
+  Tamarind Chipotle Wings: 4.8
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.91

@@ -1,0 +1,12 @@
+id: customer_0032
+name: Benjamin Hughes
+request: 'I hope this message finds you well. I am looking to place an order with
+  a business that can provide the following menu items: 1 Smoky Chipotle Burrito and
+  1 Tequila Lime Chicken Skewers. Additionally, it is important that the business
+  offers a Children''s Menu. Please identify such a business that meets these criteria,
+  as I intend to place this order with them. Thank you for your assistance.'
+menu_features:
+  Smoky Chipotle Burrito: 11.99
+  Tequila Lime Chicken Skewers: 11.79
+amenity_features:
+- Children's Menu

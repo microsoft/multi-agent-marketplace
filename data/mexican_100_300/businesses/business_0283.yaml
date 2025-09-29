@@ -1,0 +1,34 @@
+id: business_0283
+name: Verde Vibe Kitchen
+description: Experience a fresh twist on Mexican and Tex-Mex classics in a vibrant,
+  modern setting. From bold beverages to inventive wraps and sizzling favorites, every
+  dish is a celebration of flavor and flair.
+rating: 1.0
+progenitor_customer: customer_0095
+menu_features:
+  Spicy Cucumber Margarita: 9.0
+  Wild Berry Agua Fresca: 3.39
+  Sizzling Cactus Wrap: 10.77
+  Tequila Sunrise Fajitas: 18.46
+  Tomatillo Verde Salsa: 4.38
+  Flaky Beef Empanadas: 8.09
+  Grilled Shrimp Quesadilla: 11.88
+  Crispy Chicken Tortilla Soup: 6.45
+  Spiced Chocolate Cake: 7.76
+  Charro Bean Burrito: 9.85
+  Smoky Chipotle Chicken Fajitas: 15.15
+  Baja Fish Taco Salad: 11.51
+  Jalapeno Cilantro Hummus: 8.01
+  Jalapeno Infused Tequila Sunrise: 10.01
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.72

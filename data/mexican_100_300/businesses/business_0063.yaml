@@ -1,0 +1,35 @@
+id: business_0063
+name: Char & Churro
+description: Experience the vibrant flavors of Mexico and the Southwest with creative
+  classics and bold new favorites. From sizzling mains to irresistible desserts, every
+  dish promises a fiesta for your taste buds.
+rating: 1.0
+progenitor_customer: customer_0021
+menu_features:
+  Salted Caramel Churros: 7.69
+  Avocado Cilantro Salad: 10.12
+  Ancho Chili Lime Shrimp: 12.11
+  Black Bean and Corn Tostadas: 6.08
+  Tostada Salad with Avocado Crema: 12.52
+  Slow-Cooked Carnitas Plate: 17.82
+  Loaded Veggie Queso: 6.35
+  Mexican Chocolate Pudding: 4.53
+  Chili Con Queso Dip: 7.27
+  Three Cheese Enchiladas: 12.92
+  Blackened Fish Tacos: 11.11
+  Roasted Poblano Soup: 8.14
+  Grilled Shrimp Fajitas: 14.25
+  Honey Chipotle Glazed Wings: 9.49
+  Charro Beans and Rice: 4.99
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.87

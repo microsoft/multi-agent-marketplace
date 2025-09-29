@@ -1,0 +1,12 @@
+id: customer_0029
+name: Daniel Thompson
+request: Could you please find a business that offers both a Strawberry Lime Agua
+  Fresca and Savory Beef Empanadas, with one of each item to be ordered? Additionally,
+  the business must be wheelchair accessible as this is an important requirement.
+  Once such a business is found, I would like to proceed with placing the order. Thank
+  you.
+menu_features:
+  Strawberry Lime Agua Fresca: 3.99
+  Savory Beef Empanadas: 8.99
+amenity_features:
+- Wheelchair Accessible

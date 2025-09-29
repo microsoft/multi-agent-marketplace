@@ -1,0 +1,35 @@
+id: business_0268
+name: El Nopal y Sol
+description: Experience fresh, vibrant flavors at our classic Mexican restaurant,
+  where sun-kissed ingredients and beloved traditions come together. Enjoy a welcoming
+  atmosphere and a menu full of authentic and creative dishes perfect for any appetite.
+rating: 1.0
+progenitor_customer: customer_0090
+menu_features:
+  Hibiscus Agua Fresca: 5.79
+  Chorizo Breakfast Burrito: 7.26
+  Sizzling Veggie Nachos: 11.66
+  Crispy Fish Tostadas: 18.9
+  Fresh Lime and Cilantro Rice Bowl: 7.95
+  Adobo Spiced Pork Tamales: 15.36
+  Pico de Gallo Omelette: 6.32
+  Wild Mushroom Quesadillas: 7.92
+  Sizzling Steak Quesadilla: 11.28
+  Fresh Cactus Salad: 4.51
+  Chili Lime Sweet Potato Fries: 0.75
+  Caramel Flan: 6.11
+  Avocado Lime Grilled Skewers: 9.61
+  Beef and Bean Chimichanga: 10.52
+  Smoky Chipotle Cornbread: 3.77
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.63

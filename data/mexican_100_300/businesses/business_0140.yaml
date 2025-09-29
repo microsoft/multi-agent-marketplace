@@ -1,0 +1,37 @@
+id: business_0140
+name: Holy Fajita Matrimony
+description: Experience a sizzling union of bold Mexican and Tex-Mex flavors where
+  classic favorites meet creative, vibrant twists. From heavenly hand-helds to decadent
+  desserts, every bite is a fiesta for your taste buds.
+rating: 1.0
+progenitor_customer: customer_0047
+menu_features:
+  Sizzling Fajita Trio: 19.8
+  Chili Lime Sweet Potato Fries: 4.79
+  Avocado Lime Dip: 4.86
+  Wild Mushroom Quesadillas: 10.82
+  Baja Fish Burrito: 12.46
+  Pineapple BBQ Pulled Pork Nachos: 9.91
+  Caramelized Plantain Tostones: 4.53
+  Mole Chocolate Cake: 8.51
+  Horchata Iced Latte: 4.63
+  Horchata Rice Pudding: 4.41
+  Tequila Sunrise Sangria: 10.92
+  Ancho Chocolate Cake: 5.12
+  Adobo Chicken Tacos: 5.8
+  Roasted Poblano Pepper Dip: 3.97
+  Tangy Lime Cilantro Tacos: 9.63
+  Zesty Lime Chicken Fajitas: 16.43
+  Chipotle Chicken Caesar Burrito: 13.42
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.66

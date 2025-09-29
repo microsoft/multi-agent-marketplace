@@ -1,0 +1,33 @@
+id: business_0023
+name: Zest & Agave
+description: Experience a vibrant fusion of bold Mexican and Tex-Mex flavors, where
+  every dish bursts with fresh ingredients and a touch of creative flair. From sizzling
+  favorites to delectable desserts, Zest & Agave offers a lively, modern dining escape.
+rating: 1.0
+progenitor_customer: customer_0008
+menu_features:
+  Flan with Caramel Drizzle: 4.03
+  Chili Con Queso Fundido: 11.08
+  Agave Lime Glazed Wings: 6.82
+  Sizzling Shrimp Fajitas: 12.76
+  Chipotle Lime Grilled Corn: 8.12
+  Zesty Chicken Enchiladas: 11.55
+  Raspberry Jalapeno Cheesecake: 8.1
+  Spicy Chorizo Queso Dip: 8.36
+  Horchata Rice Pudding: 5.32
+  Jalapeno Infused Tequila Sunrise: 5.5
+  Chipotle Lime Rice: 4.49
+  Mango Pico de Gallo: 5.13
+  Mango Salsa Salmon: 18.68
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.71

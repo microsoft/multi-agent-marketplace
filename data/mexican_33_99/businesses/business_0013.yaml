@@ -1,0 +1,34 @@
+id: business_0013
+name: Lime & Ember
+description: Lime & Ember brings a fresh twist to classic Mexican and Tex-Mex flavors
+  with vibrant salads, bold enchiladas, and inventive tacos. Enjoy a modern, lively
+  atmosphere and a menu crafted with bright ingredients and sizzling spices.
+rating: 1.0
+progenitor_customer: customer_0005
+menu_features:
+  Warm Churro Chips: 6.29
+  Spinach and Mushroom Empanadas: 9.72
+  Avocado Lime Quinoa Salad: 10.08
+  Blackened Fish Fajitas: 11.7
+  Spicy Pulled Pork Enchiladas: 14.01
+  Guava Basil Mojito: 9.66
+  Sizzling Beef Nachos: 12.2
+  Crispy Avocado Fajitas: 21.41
+  Crispy Fish Taco Duo: 12.55
+  Zesty Lime Chicken Tacos: 11.55
+  Honey Chipotle Grilled Chicken: 14.76
+  Berry Sangria Punch: 9.05
+  Roasted Corn Enchiladas: 13.65
+  Zesty Lime Chicken Salad: 12.01
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: true
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Onsite Parking: true
+  Happy Hour: false
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.78

@@ -1,0 +1,12 @@
+id: customer_0007
+name: Chloe Young
+request: 'Please help me find a business that serves the following menu items: 1 Roasted
+  Veggie Fajitas and 1 Spicy Black Bean Tostadas. It''s essential that the business
+  also offers Happy Hour and Private Dining amenities. Once found, I intend to place
+  an order for these items. Thank you for your assistance.'
+menu_features:
+  Roasted Veggie Fajitas: 12.49
+  Spicy Black Bean Tostadas: 11.79
+amenity_features:
+- Happy Hour
+- Private Dining

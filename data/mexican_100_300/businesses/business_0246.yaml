@@ -1,0 +1,38 @@
+id: business_0246
+name: Cactus & Citrus Table
+description: Experience a vibrant take on Mexican and Tex-Mex cuisine with fresh flavors,
+  creative twists, and bold combinations. From zesty appetizers to sizzling mains
+  and refreshing drinks, the menu delivers something delightfully unexpected in every
+  bite.
+rating: 1.0
+progenitor_customer: customer_0082
+menu_features:
+  Tomatillo Shrimp Cocktail: 13.56
+  Breakfast Chorizo Migas: 9.05
+  Cactus and Black Bean Tacos: 9.26
+  Avocado Lime Grilled Skewers: 5.18
+  Frozen Mango Jalapeno Daiquiri: 14.02
+  Mole Chicken Burrito: 16.57
+  Red Chile Enchiladas: 8.93
+  Carne Asada Skillet: 11.79
+  Blue Corn Tortilla Chips: 5.27
+  Black Bean Mango Salad: 10.02
+  Cinnamon Spice Flan: 5.89
+  Black Bean & Sweet Potato Burrito: 12.46
+  Hibiscus Iced Tea: 3.67
+  Sizzling Fajita Trio: 13.71
+  Mango Chipotle Chicken: 14.69
+  Texas BBQ Pulled Pork Nachos: 16.79
+  Baja Fish Taco Salad: 11.43
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.74

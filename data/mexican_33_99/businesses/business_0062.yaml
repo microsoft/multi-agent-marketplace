@@ -1,0 +1,36 @@
+id: business_0062
+name: Citrus Ember Kitchen
+description: Citrus Ember Kitchen brings together bold flavors and vibrant ingredients,
+  crafting a modern take on classic Mexican and Tex-Mex fare. Enjoy a variety of hot,
+  fresh dishes and decadent desserts in a lively, contemporary setting.
+rating: 1.0
+progenitor_customer: customer_0021
+menu_features:
+  Spicy Beef Taco Salad: 11.99
+  Spicy Shrimp Ceviche: 20.76
+  Coconut Flan: 8.35
+  Grilled Vegetable Fajitas: 14.01
+  Black Bean Queso Dip: 6.02
+  Fiesta Black Bean Dip: 5.93
+  Smoky Chicken Tortilla Soup: 7.56
+  Coconut Lime Shrimp Tacos: 8.91
+  Red Chili Beef Empanadas: 11.85
+  Mexican Chocolate Lava Cake: 11.64
+  Tequila Sunrise Slushie: 8.91
+  Chocolate Dipped Churros: 9.54
+  Mango Chipotle Wings: 7.45
+  Smoky Black Bean Tacos: 8.52
+  Morning Breakfast Burrito: 12.22
+  Mexican Shrimp Cocktail: 12.64
+amenity_features:
+  Children's Menu: true
+  Large Groups: false
+  Live Music: false
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Onsite Parking: false
+  Happy Hour: true
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.92

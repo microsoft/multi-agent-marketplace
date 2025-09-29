@@ -1,0 +1,33 @@
+id: business_0176
+name: Sabores del Amanecer
+description: Experience a vibrant blend of classic Mexican and Tex-Mex flavors in
+  a lively, welcoming setting. From soulful soups to zesty seafood and vegetarian
+  creations, every dish celebrates the spirit of fresh, bold cuisine.
+rating: 1.0
+progenitor_customer: customer_0059
+menu_features:
+  Sopa de Tortilla: 4.39
+  Tropical Salsa Salmon: 12.3
+  Morning Chorizo Scramble: 14.04
+  Mango Habanero Salsa: 6.14
+  Spinach and Mushroom Enchiladas: 15.42
+  Crispy Pork Carnitas: 16.51
+  Poblano Pepper Relleno: 6.49
+  Pineapple Habanero Salsa: 6.35
+  Honey Lime Shrimp Skewers: 11.13
+  Roasted Corn and Black Bean Salad: 10.19
+  Zesty Lime Cheesecake: 4.47
+  Black Bean Veggie Tacos: 9.89
+  Honey Chipotle Shrimp Skewers: 13.32
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: true
+min_price_factor: 0.63

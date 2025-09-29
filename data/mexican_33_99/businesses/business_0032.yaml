@@ -1,0 +1,38 @@
+id: business_0032
+name: La Parrilla Dorada
+description: A vibrant and welcoming spot celebrating the flavors of Mexico and the
+  Southwest, La Parrilla Dorada offers fresh fare and creative drinks in a lively,
+  colorful atmosphere. Experience classic and contemporary favorites made with bold
+  spices and vibrant ingredients.
+rating: 1.0
+progenitor_customer: customer_0011
+menu_features:
+  Cactus and Black Bean Tostadas: 11.42
+  Frozen Mango Margarita: 12.41
+  Chocolate Dusted Churro Bites: 5.14
+  Seafood Ceviche Cocktail: 9.36
+  Roasted Corn elote: 3.3
+  Cucumber Cilantro Agua Fresca: 3.61
+  Chili Lime Grilled Salmon: 18.35
+  Baja Shrimp Quesadilla: 4.92
+  Loaded Nachos Grande: 8.96
+  Roasted Poblano Rice Bowl: 4.6
+  Habanero Lime Chicken Wings: 10.94
+  Chocolate Ancho Chile Brownie: 5.5
+  Poblano and Mushroom Tacos: 6.7
+  "Spicy Jalape\xF1o Burger": 10.03
+  Hatch Green Chile Queso: 8.79
+  Tamarind Glazed Ribs: 14.78
+  Mango Chili Sorbet: 3.03
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: true
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: true
+  Outdoor Seating: true
+  Takes Reservations: true
+min_price_factor: 0.61

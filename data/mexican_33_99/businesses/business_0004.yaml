@@ -1,0 +1,33 @@
+id: business_0004
+name: El Mercado de Sabor
+description: "Experience vibrant Mexican and Tex-Mex flavors, crafted with the freshest\
+  \ ingredients and a creative twist. From bold appetizers to sizzling entr\xE9es,\
+  \ every dish brings together tradition and taste in a festive atmosphere."
+rating: 1.0
+progenitor_customer: customer_0002
+menu_features:
+  Fresh Guacamole Platter: 8.78
+  Tex-Mex Breakfast Skillet: 16.58
+  Green Chili Chicken Soup: 7.18
+  Hibiscus Agua Fresca: 5.36
+  Loaded Nachos Supreme: 12.32
+  Grilled Pineapple Quesadillas: 9.19
+  Grilled Pineapple Fajitas: 15.38
+  Tequila Lime Grilled Steak: 15.96
+  Ancho Chile Rellenos: 16.35
+  Fresh Lime and Cilantro Rice Bowl: 9.82
+  Ancho Chile Chicken Wings: 15.01
+  Hatch Green Chile Burger: 16.28
+  Pineapple Salsa Pork Street Tacos: 10.28
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: true
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: false
+  Outdoor Seating: true
+  Takes Reservations: false
+min_price_factor: 0.83

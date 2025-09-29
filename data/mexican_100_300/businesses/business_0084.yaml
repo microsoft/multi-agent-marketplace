@@ -1,0 +1,33 @@
+id: business_0084
+name: Pineapple & Pepper Kitchen
+description: Experience a vibrant twist on Mexican and Tex-Mex favorites at Pineapple
+  & Pepper Kitchen. Enjoy fresh salads, sizzling specialties, and bold flavors crafted
+  with a modern flair.
+rating: 1.0
+progenitor_customer: customer_0028
+menu_features:
+  Sizzling Fajita Salad: 11.5
+  Chipotle BBQ Brisket Nachos: 14.06
+  Three Cheese Chile Relleno: 14.43
+  Grilled Avocado Salad: 11.6
+  Loaded Carnitas Nachos: 11.15
+  Pineapple Habanero Wings: 7.83
+  Cherry Jalapeno Slushie: 7.22
+  Tropical Pineapple Salsa: 5.31
+  Spiced Pumpkin Churros: 3.74
+  Mango Chipotle Shrimp Quesadilla: 7.92
+  Chipotle Honey Wings: 9.42
+  Mango Tango Tacos: 11.53
+  Coconut Tres Leches: 6.96
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.66

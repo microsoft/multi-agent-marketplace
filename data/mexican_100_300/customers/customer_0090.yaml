@@ -1,0 +1,9 @@
+id: customer_0090
+name: Sarah Hernandez
+request: Could you please find a business that serves Sizzling Veggie Nachos with
+  a quantity of 1 and offers Outdoor Seating? These requirements are very important
+  to us as we intend to place this order. Thank you!
+menu_features:
+  Sizzling Veggie Nachos: 10.49
+amenity_features:
+- Outdoor Seating

@@ -1,0 +1,38 @@
+id: business_0020
+name: Sizzle & Spice
+description: Experience a vibrant fusion of bold Tex-Mex and Mexican flavors, where
+  smoky, zesty, and fresh ingredients come together in imaginative dishes. Gather
+  for a lively atmosphere and crave-worthy cuisine crafted with a touch of heat and
+  plenty of heart.
+rating: 1.0
+progenitor_customer: customer_0007
+menu_features:
+  Fiesta Black Bean Dip: 5.76
+  Chargrilled Carne Asada: 8.1
+  Avocado Lime Soup: 6.47
+  Chipotle Chicken Quesadilla: 11.73
+  Roasted Veggie Fajitas: 5.39
+  Roasted Red Pepper Hummus with Tortilla Chips: 3.66
+  Smoky Black Bean Tacos: 12.98
+  Red Chile Enchiladas: 9.84
+  Spicy Black Bean Tostadas: 14.82
+  Crispy Avocado Tostadas: 10.46
+  Loaded Nachos Grande: 12.16
+  Cherry Chipotle Glazed Ribs: 18.88
+  Ancho Chili Braised Beef: 2.55
+  Cinnamon Sugar Sopapillas: 7.36
+  Ancho Chili Black Bean Soup: 6.54
+  Mango Habanero Glazed Salmon: 14.71
+  Mango Chipotle BBQ Ribs: 19.28
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: false
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Onsite Parking: true
+  Happy Hour: true
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.73

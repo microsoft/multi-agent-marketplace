@@ -1,0 +1,33 @@
+id: business_0122
+name: Chili & Corn Social
+description: A vibrant gathering spot serving modern takes on Mexican and Tex-Mex
+  cuisine, blending bold chiles, sweet corn, and fresh flavors. Enjoy creative small
+  plates, zesty salads, and signature cocktails in a lively, welcoming atmosphere.
+rating: 1.0
+progenitor_customer: customer_0041
+menu_features:
+  Poblano Corn Chowder: 11.79
+  Spicy Black Bean Tostadas: 14.13
+  Blue Corn Tortilla Soup: 7.55
+  Bacon-Wrapped Jalapeno Dogs: 3.53
+  Red Chili Beef Nachos: 14.53
+  Raspberry Chipotle Margarita: 9.9
+  Chili Lime Shrimp Fajitas: 11.99
+  Horchata Smoothie: 6.72
+  Tequila Sunrise Fajitas: 18.06
+  Chili-Lime Grilled Corn: 4.24
+  Zesty Lime Shrimp Salad: 11.82
+  Hatch Chile Queso Dip: 7.48
+  Beef Barbacoa Burrito: 18.96
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: true
+  Happy Hour: true
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.81

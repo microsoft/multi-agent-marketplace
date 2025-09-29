@@ -1,0 +1,32 @@
+id: business_0047
+name: "El Jard\xEDn del Sabor"
+description: Step into a vibrant oasis where fresh flavors and authentic Mexican-inspired
+  dishes are crafted with a modern twist. Enjoy a warm, colorful atmosphere as you
+  savor inventive salads, tacos, and grilled specialties bursting with zest and tradition.
+rating: 1.0
+progenitor_customer: customer_0016
+menu_features:
+  Avocado Citrus Salad: 9.47
+  Charro Beans and Rice: 8.19
+  Charred Veggie Tacos: 13.22
+  Horchata Smoothie: 6.08
+  Avocado Lime Slaw: 5.84
+  Cactus and Black Bean Tostadas: 8.85
+  Grilled Lime Shrimp Skewers: 21.62
+  Blackened Fish Tacos: 14.76
+  Spicy Chicken Fajita Salad: 8.12
+  Habanero Honey Wings: 8.05
+  Sizzling Steak Fajitas: 12.2
+  Mango Chili Sorbet: 4.56
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: false
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Onsite Parking: true
+  Happy Hour: true
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.66

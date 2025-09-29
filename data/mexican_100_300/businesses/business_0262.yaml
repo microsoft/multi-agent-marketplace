@@ -1,0 +1,37 @@
+id: business_0262
+name: QuesadillaRiot
+description: Dive into a playful explosion of zesty flavors and bold bites at QuesadillaRiot.
+  From fiery starters to refreshing sips and hearty bowls, every visit is a spirited
+  celebration of modern Mexican and Tex-Mex cuisine.
+rating: 1.0
+progenitor_customer: customer_0088
+menu_features:
+  Pomegranate Guacamole: 9.66
+  Habanero Lime Chicken Wings: 8.94
+  Fiesta Black Bean Dip: 6.92
+  Grilled Pineapple Margaritas: 6.5
+  Smoky Chipotle Burrito: 16.19
+  Tomatillo Chicken Soup: 5.77
+  Crispy Fish Baja Bowl: 11.84
+  Classic Street Corn: 3.42
+  Loaded Beef Nacho Bowl: 12.88
+  Roasted Poblano Soup: 2.97
+  Loaded Nacho Platter: 9.6
+  Carne Asada Loaded Nachos: 11.38
+  Beef Barbacoa Burrito: 12.08
+  Sizzling Beef Quesadillas: 10.49
+  Tamarind Lime Cooler: 4.08
+  Blackened Shrimp Quesadilla: 17.56
+  Three Cheese Chile Relleno: 8.7
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.67

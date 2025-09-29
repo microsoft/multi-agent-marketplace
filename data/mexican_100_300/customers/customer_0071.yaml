@@ -1,0 +1,11 @@
+id: customer_0071
+name: Chloe Hall
+request: 'I would like assistance in finding a business that offers the following
+  menu items: Sweet Corn Tamale Pancakes (1) and Mole Enchiladas (1). Additionally,
+  it is important that the business can accommodate large groups. Once such a business
+  is found, I intend to place an order for these items. Thank you for your help.'
+menu_features:
+  Sweet Corn Tamale Pancakes: 8.99
+  Mole Enchiladas: 12.49
+amenity_features:
+- Large Groups

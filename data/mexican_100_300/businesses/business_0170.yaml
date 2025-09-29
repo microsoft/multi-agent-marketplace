@@ -1,0 +1,34 @@
+id: business_0170
+name: Urban Pibil Kitchen
+description: Experience a modern twist on classic Mexican and Tex-Mex cuisine, where
+  vibrant flavors meet fresh ingredients. From zesty street tacos to creative breakfast
+  plates and decadent desserts, every dish is crafted for a bold and unforgettable
+  bite.
+rating: 1.0
+progenitor_customer: customer_0057
+menu_features:
+  Chipotle Lime Street Tacos: 12.95
+  Tequila Lime Grilled Steak: 20.5
+  Crispy Avocado Tostadas: 4.99
+  Al Pastor Pork Tacos: 9.82
+  Avocado Tomatillo Salsa: 6.42
+  Hatch Green Chile Stew: 11.16
+  Classic Beef Empanadas: 11.13
+  Spicy Avocado Breakfast Wrap: 9.18
+  Chocolate Dipped Flan: 5.53
+  Pumpkin Spice Empanadas: 7.51
+  Pineapple Chipotle Salsa Dip: 8.98
+  Stuffed Poblano Peppers: 7.18
+  Al Pastor Breakfast Burrito: 6.43
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.91

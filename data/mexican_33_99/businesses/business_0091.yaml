@@ -1,0 +1,36 @@
+id: business_0091
+name: Mole & Mingle
+description: Experience the vibrant flavors of Mexico and the Southwest with dishes
+  celebrating bold sauces, savory street eats, and indulgent desserts in a lively,
+  welcoming setting. Perfect for gatherings or a casual night out, our menu blends
+  tradition with a fresh twist.
+rating: 1.0
+progenitor_customer: customer_0031
+menu_features:
+  Mole Enchiladas: 13.4
+  Avocado Cilantro Salsa: 4.59
+  Ancho Chile Brownies: 4.65
+  Al Pastor Street Tacos: 10.36
+  Roasted Veggie Burrito: 9.3
+  Roasted Poblano Cornbread: 5.93
+  Horchata Cheesecake: 9.46
+  Zesty Avocado Salad: 8.5
+  Avocado Lime Grilled Chicken Salad: 11.87
+  Creamy Avocado Quesadillas: 12.15
+  Horchata Ice Cream Scoop: 8.21
+  Black Bean and Corn Tamales: 11.42
+  Blueberry Jalapeno Margarita: 7.42
+  Vanilla Flan Delight: 6.39
+  Creamy Avocado Delight Salad: 13.37
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: false
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Onsite Parking: true
+  Happy Hour: true
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.72

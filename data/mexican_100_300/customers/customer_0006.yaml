@@ -1,0 +1,10 @@
+id: customer_0006
+name: Mia Wilson
+request: Could you please help find a business that offers the Ancho-Coffee Rubbed
+  Steak, with a quantity of 1, and has live music as an amenity? It is important that
+  both the menu item and amenity are available. Once found, I would like to place
+  an order for the steak. Thank you!
+menu_features:
+  Ancho-Coffee Rubbed Steak: 18.99
+amenity_features:
+- Live Music

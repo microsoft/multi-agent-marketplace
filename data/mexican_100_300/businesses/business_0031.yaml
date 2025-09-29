@@ -1,0 +1,32 @@
+id: business_0031
+name: Tamale Terrace
+description: Experience vibrant Mexican and Tex-Mex flavors in a colorful, welcoming
+  setting. Sip fresh aguas frescas and enjoy classic plates and sweet treats inspired
+  by street food traditions.
+rating: 1.0
+progenitor_customer: customer_0011
+menu_features:
+  Passionfruit Agua Fresca: 4.82
+  Sweet Lime Agua Fresca: 3.75
+  Classic Tamale Plate: 10.77
+  Margarita Lime Pie: 8.58
+  Churro Sundae: 8.87
+  Mango Agua Fresca: 5.4
+  Street Style Beef Tacos: 9.8
+  Honey Glazed Pork Carnitas: 13.97
+  Spicy Black Bean Soup: 6.5
+  Avocado and Tomato Salsa: 6.76
+  Grilled Pineapple Skewers: 9.13
+  Chili Lime Grilled Salmon: 17.2
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.86

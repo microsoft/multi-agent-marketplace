@@ -1,0 +1,36 @@
+id: business_0058
+name: Pepita & Palapa
+description: Discover vibrant Mexican and Tex-Mex cuisine with a creative twist in
+  a lively, welcoming setting. From street food staples to refreshing drinks and sweet
+  treats, each dish bursts with color and flavor.
+rating: 1.0
+progenitor_customer: customer_0020
+menu_features:
+  Savory Pumpkin Empanadas: 12.04
+  Matcha Horchata Freeze: 4.13
+  Baja Fish Burrito: 13.39
+  Carnitas Enchilada Delight: 20.86
+  Carnitas Salsa Verde Tacos: 9.61
+  Chile-Lime Roasted Corn: 3.82
+  Pepper Jack Queso Dip: 5.83
+  Grilled Lime Shrimp Skewers: 14.96
+  Sunrise Breakfast Burrito: 8.57
+  Charro Beans Special: 2.25
+  Classic Horchata: 4.59
+  Cinnamon Sugar Churros: 3.92
+  Guava Basil Mojito: 9.2
+  Tequila Sunrise Smoothie: 8.1
+  Watermelon Basil Aqua Fresca: 4.72
+  Tropical Salsa Salmon: 13.59
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.81

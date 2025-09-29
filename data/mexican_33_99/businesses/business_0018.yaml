@@ -1,0 +1,32 @@
+id: business_0018
+name: Pepper Patch
+description: "Pepper Patch serves up bold, smoky flavors and creative twists on Mexican\
+  \ and Tex-Mex classics in a vibrant, inviting atmosphere. Come savor sizzling dishes,\
+  \ zesty spices, and unforgettable cocktails\u2014all made for sharing with friends\
+  \ and family."
+rating: 1.0
+progenitor_customer: customer_0006
+menu_features:
+  Smoky Barbacoa Burrito Bowl: 7.99
+  Spicy Corn and Poblano Soup: 8.2
+  Spicy Bacon & Egg Quesadilla: 4.44
+  Zesty Shrimp Fajitas: 12.57
+  BBQ Pulled Pork Enchiladas: 13.98
+  Sizzling Beef Quesadillas: 22.11
+  Cajun Spiced Fish Tacos: 16.97
+  Frozen Raspberry Margarita: 6.79
+  Cheesy Jalapeno Queso: 10.98
+  Coconut Tres Leches: 9.38
+  Zesty Chicken Enchiladas: 18.45
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: false
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: true
+min_price_factor: 0.61

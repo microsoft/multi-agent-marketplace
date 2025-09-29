@@ -1,0 +1,36 @@
+id: business_0090
+name: Holy Chip & Salsa Batman!
+description: "Dive into a lively mix of classic and creative Mexican and Tex-Mex favorites,\
+  \ where every bite bursts with bold, fresh flavors. From sizzling quesadillas to\
+  \ sweet plantain treats, there\u2019s a taste adventure waiting for everyone."
+rating: 1.0
+progenitor_customer: customer_0030
+menu_features:
+  Enchilada Verde Supreme: 14.86
+  Zesty Lime Shrimp Tacos: 8.29
+  Chocolate Tamal del Cielo: 9.31
+  Roasted Red Pepper Hummus with Tortilla Chips: 8.26
+  Chipotle Beef Quesadilla: 8.64
+  Baja Shrimp Quesadilla: 13.18
+  Sweet Plantain Dessert Tostadas: 6.05
+  Southwest Chicken Enchiladas: 11.57
+  Pineapple Cilantro Salsa: 4.98
+  Black Bean and Corn Soup: 2.77
+  Roasted Poblano Cornbread: 7.09
+  Honey-Lime Grilled Corn: 2.57
+  Homemade Horchata: 1.99
+  Freshly Squeezed Agua Fresca: 4.4
+  Loaded Nachos Supreme: 8.39
+  Black Bean & Cheese Empanadas: 13.42
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: true
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.83

@@ -1,0 +1,37 @@
+id: business_0282
+name: El Rancho Sabroso
+description: Experience classic Mexican and Tex-Mex flavors at El Rancho Sabroso,
+  where vibrant salsas, bold spices, and signature house specialties come together
+  in a lively, welcoming atmosphere. Enjoy handcrafted dishes and refreshing drinks
+  inspired by authentic tradition and a modern twist.
+rating: 1.0
+progenitor_customer: customer_0094
+menu_features:
+  Black Bean Corn Empanadas: 8.47
+  Horseradish Guacamole: 7.02
+  Charred Salsa Verde Burrito: 10.23
+  Smoky Chipotle Quesadillas: 13.79
+  Crispy Carnitas Tostadas: 13.37
+  Grilled Pineapple Salsa: 5.88
+  Loaded Nacho Supreme: 14.83
+  Tangy Pineapple Salsa: 11.23
+  Classic Horchata: 3.71
+  Smokey Mezcal Paloma: 13.1
+  Cactus Salad Bowl: 8.01
+  Roasted Poblano Queso Dip: 5.36
+  Poblano Pepper Queso Dip: 9.21
+  Ancho Chile Beef Burrito: 12.24
+  Spicy Black Bean Nachos: 9.33
+  Cheesy Street Corn Bites: 9.72
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.93

@@ -1,0 +1,9 @@
+id: customer_0006
+name: Ava Kim
+request: Could you please find a business that serves 1 Sizzling Beef Quesadilla and
+  offers onsite parking? It's very important that both of these conditions are met
+  as I intend to place an order. Thank you.
+menu_features:
+  Sizzling Beef Quesadillas: 13.99
+amenity_features:
+- Onsite Parking

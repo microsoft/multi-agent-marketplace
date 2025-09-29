@@ -1,0 +1,36 @@
+id: business_0033
+name: La Hacienda Dorada
+description: Experience the vibrant flavors of Mexico and the Southwest at La Hacienda
+  Dorada. Enjoy a welcoming atmosphere and a menu that celebrates classic and contemporary
+  dishes crafted with fresh ingredients and bold spices.
+rating: 1.0
+progenitor_customer: customer_0011
+menu_features:
+  Charro Beans Special: 4.41
+  Hatch Green Chile Quesadilla: 13.08
+  Chipotle Lime Chicken Wings: 8.67
+  Warm Cinnamon Churros: 7.2
+  Pineapple Passion Mojito: 11.26
+  Street Style Beef Tacos: 13.64
+  Mole Chocolate Cake: 4.06
+  Carne Asada Breakfast Burrito: 13.4
+  Grilled Steak Fajita Tacos: 10.87
+  Strawberry Jalapeno Mojito: 7.46
+  Shrimp Ceviche Tostadas: 10.46
+  Baja Fish Burrito: 10.3
+  Carnitas Breakfast Burrito: 9.65
+  Ancho Chili Grilled Chicken: 13.95
+  Grilled Pineapple Skewers: 7.72
+  Fresh Lime Margarita: 9.92
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: true
+min_price_factor: 0.93

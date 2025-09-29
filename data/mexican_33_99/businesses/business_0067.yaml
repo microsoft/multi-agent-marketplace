@@ -1,0 +1,33 @@
+id: business_0067
+name: "Coraz\xF3n Mexicano"
+description: Experience the vibrant flavors of classic and contemporary Mexican and
+  Tex-Mex cuisine in a warm, welcoming setting. From hearty burritos and enchiladas
+  to fresh salsas and savory tortas, every bite is crafted with passion and tradition.
+rating: 1.0
+progenitor_customer: customer_0023
+menu_features:
+  Pumpkin Spice Empanadas: 7.84
+  Spicy Black Bean Burrito: 12.56
+  Green Chili Pork Burrito: 15.78
+  Enchilada Verde Supreme: 13.34
+  Roasted Vegetable Tacos: 10.09
+  Pico de Gallo Tostadas: 7.82
+  Green Chile Enchiladas: 18.45
+  Pork Carnitas Torta: 11.08
+  Vegetarian Stuffed Bell Peppers: 14.72
+  Roasted Poblano and Corn Quesadilla: 13.37
+  Spicy Mango Salsa: 2.75
+  Ranchero Breakfast Burrito: 10.24
+  Southwestern Breakfast Burrito: 8.27
+amenity_features:
+  Children's Menu: true
+  Large Groups: false
+  Live Music: true
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Onsite Parking: false
+  Happy Hour: true
+  Private Dining: false
+  Outdoor Seating: true
+  Takes Reservations: true
+min_price_factor: 0.78

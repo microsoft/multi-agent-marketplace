@@ -1,0 +1,32 @@
+id: business_0141
+name: Fresco Fiesta
+description: Experience fresh, vibrant flavors and creative Mexican-inspired dishes
+  in a lively, welcoming setting. Perfect for those craving a refreshing twist on
+  classic favorites.
+rating: 1.0
+progenitor_customer: customer_0047
+menu_features:
+  Tropical Fruit Agua Fresca: 3.76
+  Street Corn Elote: 3.06
+  Bacon-Wrapped Jalapeno Dogs: 9.11
+  Breakfast Chilaquiles: 6.5
+  Caramelized Plantain Tostones: 4.06
+  Adobo Chicken Tacos: 10.52
+  Charro Beans and Rice: 6.01
+  Wild Berry Agua Fresca: 4.76
+  Chipotle Lime Chicken Quesadilla: 15.42
+  Zesty Lime Chicken Fajitas: 15.28
+  Coconut Lime Margarita: 11.01
+  Tortilla Soup Supreme: 10.58
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.73

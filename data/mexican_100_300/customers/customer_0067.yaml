@@ -1,0 +1,10 @@
+id: customer_0067
+name: Ava Rivera
+request: Could you please help me find a business that offers a 'Chipotle Lime Shrimp
+  Salad' and takes reservations? I intend to order 1 Chipotle Lime Shrimp Salad and
+  would appreciate assistance in securing a reservation at such a place. Thank you
+  for your help.
+menu_features:
+  Chipotle Lime Shrimp Salad: 12.49
+amenity_features:
+- Takes Reservations

@@ -1,0 +1,36 @@
+id: business_0045
+name: Mojito & Mirasol
+description: A vibrant spot serving up bold Tex-Mex flavors, refreshing sips, and
+  creative twists on classic favorites. Experience a lively ambiance with an irresistible
+  menu full of zesty, spicy, and sweet delights.
+rating: 1.0
+progenitor_customer: customer_0015
+menu_features:
+  Zesty Lime Shrimp Ceviche: 13.31
+  Sunrise Breakfast Burrito: 8.38
+  Fiery Red Salsa: 3.64
+  Habanero Honey Wings: 9.97
+  Mango Chipotle BBQ Ribs: 19.42
+  Sizzling Steak Fajitas: 21.49
+  Raspberry Jalapeno Cheesecake: 9.69
+  Passionfruit Mojito: 7.3
+  Carne Asada Loaded Nachos: 13.84
+  Spinach and Mushroom Empanadas: 10.33
+  Pineapple Habanero Salsa: 5.6
+  Fresh Cactus Salad: 11.0
+  Crispy Fish Baja Bowl: 13.8
+  Grilled Pineapple Skewers: 8.36
+  Cinnamon Spice Churros: 5.4
+  Citrus Cilantro Rice Bowl: 7.31
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: false
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: false
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.87

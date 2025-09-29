@@ -1,0 +1,35 @@
+id: business_0035
+name: "Ma\xEDz & Flame"
+description: "Ma\xEDz & Flame offers a fresh, vibrant twist on Mexican and Tex-Mex\
+  \ favorites. Experience bold flavors, grilled specialties, and creative house-made\
+  \ salsas in a lively, modern setting."
+rating: 1.0
+progenitor_customer: customer_0012
+menu_features:
+  Street Corn Nachos: 9.27
+  Shrimp Fajita Platter: 15.9
+  Charred Poblano Quesadillas: 10.4
+  Pineapple Salsa Shrimp Skewers: 15.11
+  Grilled Lime Chicken Fajitas: 13.98
+  Spicy Chicken Tortilla Soup: 7.06
+  Chargrilled Carne Asada: 17.9
+  Crispy Flautas Plate: 10.37
+  Traditional Horchata Drink: 2.58
+  Avocado Lime Cheesecake: 6.46
+  Chipotle Mushroom Tacos: 10.63
+  Hatch Chile Enchiladas: 17.13
+  Roasted Corn and Black Bean Salad: 6.12
+  Spicy Beef Empanadas: 9.28
+  Pineapple Jalapeno Agua Fresca: 2.74
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.71

@@ -1,0 +1,32 @@
+id: business_0069
+name: El Refugio del Sabor
+description: Experience the vibrant traditions and bold flavors of Mexican and Tex-Mex
+  cuisine in a warm, welcoming atmosphere. Fresh ingredients and creative combinations
+  come together for an unforgettable dining experience.
+rating: 1.0
+progenitor_customer: customer_0023
+menu_features:
+  Buttermilk Flan: 7.94
+  Pineapple Cilantro Salsa: 3.57
+  Tamarind Spiced Chicken Wings: 7.78
+  Pineapple Cilantro Refresher: 3.36
+  Green Chili Pork Burrito: 9.68
+  Avocado Lime Toast: 7.94
+  Crispy Beef Taquitos: 7.73
+  Passionfruit Paloma: 7.91
+  Roasted Red Pepper and Black Bean Soup: 6.41
+  Ancho Chile Beef Burrito: 12.64
+  Zesty Shrimp Ceviche: 17.74
+  Southwest Chicken Salad: 11.01
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: false
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: true
+min_price_factor: 0.68

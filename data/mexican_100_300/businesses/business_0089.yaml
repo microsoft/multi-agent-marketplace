@@ -1,0 +1,33 @@
+id: business_0089
+name: La Mesa Brillante
+description: Discover the vibrant flavors of Mexico and Tex-Mex cuisine in a warm,
+  inviting setting. Savor classic dishes and inventive specialties crafted with fresh
+  ingredients and bold spices.
+rating: 1.0
+progenitor_customer: customer_0030
+menu_features:
+  Roasted Vegetable Quesadilla: 9.34
+  Sweet Plantain Dessert Tostadas: 5.74
+  Crispy Avocado Tostadas: 12.71
+  Dark Chocolate Spiced Mousse: 7.51
+  Sizzling Steak Fajitas: 11.87
+  Pineapple Jalapeno Cooler: 9.19
+  Chipotle Lime Fajitas: 10.66
+  Beef Barbacoa Enchiladas: 12.9
+  Ancho Chile Beef Burrito: 9.25
+  Smoky Chipotle Queso: 8.08
+  Smoky Barbacoa Burrito Bowl: 14.83
+  Churro Bites with Chocolate Dip: 3.95
+  Ancho Chile Beef Enchiladas: 6.72
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.62

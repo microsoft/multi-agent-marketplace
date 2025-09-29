@@ -1,0 +1,36 @@
+id: business_0201
+name: Grilluminati
+description: Unlock the secrets of flavor at this vibrant Tex-Mex spot where smoky,
+  spicy, and zesty creations come together in unexpected ways. Dive into inventive
+  tacos, fresh grilled delights, and spirited sips, all served with a wink and a smile.
+rating: 1.0
+progenitor_customer: customer_0067
+menu_features:
+  Chipotle Chicken Enchiladas: 18.86
+  Classic Beef Empanadas: 7.66
+  Spiked Horchata: 6.32
+  Ancho Chicken Burrito Bowl: 16.85
+  Beer-Battered Avocado Fries: 8.48
+  Smoky Black Bean Tacos: 9.9
+  Baja Fish Tacos: 13.4
+  Roasted Poblano and Corn Quesadilla: 11.48
+  Stuffed Poblano Peppers: 7.81
+  Chipotle Lime Shrimp Salad: 18.74
+  Blueberry Tequila Smash: 8.67
+  Pineapple Pork Tacos: 13.32
+  Honey Lime Grilled Shrimp: 9.76
+  Chorizo Sweet Potato Tacos: 11.32
+  Avocado Lime Grilled Salmon: 11.59
+  Spiced Beef Fajita Platter: 27.61
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.77

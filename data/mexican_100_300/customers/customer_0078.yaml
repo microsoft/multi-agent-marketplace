@@ -1,0 +1,9 @@
+id: customer_0078
+name: Lisa Payne
+request: Could you please find a business that serves 1 Crispy Chicken Tinga Taco
+  and offers Free Wifi? It is very important that the place meets both these requirements.
+  Once found, I would like to place an order for the item. Thank you!
+menu_features:
+  Crispy Chicken Tinga Tacos: 11.99
+amenity_features:
+- Free Wifi

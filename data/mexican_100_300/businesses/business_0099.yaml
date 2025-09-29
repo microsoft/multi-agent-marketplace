@@ -1,0 +1,37 @@
+id: business_0099
+name: Fajita Like It Hot
+description: "Get ready to turn up the flavor at this creatively spicy spot, where\
+  \ fresh ingredients and bold Tex-Mex delights are always sizzling. Enjoy a vibrant\
+  \ menu of zesty salsas, zippy entr\xE9es, and sweet treats in a colorful, welcoming\
+  \ setting."
+rating: 1.0
+progenitor_customer: customer_0033
+menu_features:
+  Chili Lime Shrimp Fajitas: 20.45
+  Mole Sauce Tamale: 15.55
+  Pepper Jack Queso Dip: 8.92
+  Spicy Black Bean Burger: 5.73
+  Tequila Lime Chicken Wings: 12.84
+  Warm Cinnamon Churros: 5.42
+  Crispy Carnitas Nachos: 11.1
+  Pineapple Salsa Pork Burrito: 7.42
+  Mango Agua Fresca: 4.45
+  Black Bean and Corn Tostadas: 5.93
+  Creamy Avocado Caesar Salad: 7.67
+  Roasted Red Pepper Fajitas: 15.86
+  Passion Fruit Aqua Fresca: 4.68
+  Vegetarian Stuffed Bell Peppers: 9.85
+  Avocado Enchiladas: 9.06
+  Sunrise Breakfast Burrito: 9.24
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.92

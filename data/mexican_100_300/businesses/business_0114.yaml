@@ -1,0 +1,38 @@
+id: business_0114
+name: Agave & Flame
+description: Agave & Flame blends vibrant Mexican and Tex-Mex traditions with a modern
+  twist, featuring street-style tacos, sizzling fajitas, and handcrafted salsas. Experience
+  bold flavors and fresh ingredients in a lively, contemporary setting.
+rating: 1.0
+progenitor_customer: customer_0038
+menu_features:
+  Beef Barbacoa Street Tacos: 11.54
+  Smoky Chipotle Salsa: 4.11
+  Carnitas Quesadilla Melt: 5.07
+  Grilled Steak Fajita Bowl: 15.47
+  Caramelized Onion and Cheese Empanadas: 6.18
+  Grilled Pineapple Salsa: 6.33
+  Adobo-Marinated Pork Carnitas: 16.36
+  Carne Asada Nachos: 9.48
+  Tequila Lime Shrimp Bowl: 11.23
+  Carne Asada Quesadilla: 8.41
+  Avocado Lime Parfait: 9.19
+  Ancho Chili Chicken Enchiladas: 16.67
+  Zesty Lime Shrimp Tacos: 11.57
+  Texas BBQ Brisket Tacos: 6.46
+  Green Chile Enchiladas: 12.16
+  Carnitas Enchilada Delight: 15.62
+  Tamarind Chipotle Wings: 9.26
+  Sizzling Shrimp Fajitas: 14.09
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.64

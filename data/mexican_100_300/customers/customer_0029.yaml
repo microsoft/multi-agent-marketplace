@@ -1,0 +1,12 @@
+id: customer_0029
+name: Mia Robinson
+request: 'Please assist in identifying a business that offers both the Smoky Chipotle
+  Chicken Burrito and Adobo Chicken Tacos, meeting these specific order quantities:
+  1 Smoky Chipotle Chicken Burrito and 1 Adobo Chicken Tacos. Additionally, the business
+  must have Outdoor Seating, as this is a critical requirement. Once identified, I
+  intend to place an order for these menu items. Thank you for your help.'
+menu_features:
+  Smoky Chipotle Chicken Burrito: 10.99
+  Adobo Chicken Tacos: 11.49
+amenity_features:
+- Outdoor Seating

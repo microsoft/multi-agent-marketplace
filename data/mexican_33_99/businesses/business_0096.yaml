@@ -1,0 +1,36 @@
+id: business_0096
+name: El Cobre Mexicano
+description: Step into a vibrant atmosphere where bold Mexican and Tex-Mex flavors
+  come alive with fresh ingredients and creative flair. Enjoy handcrafted drinks and
+  comforting classics that celebrate tradition with a modern twist.
+rating: 1.0
+progenitor_customer: customer_0032
+menu_features:
+  Chipotle Lime Steak Burrito: 8.32
+  Jalapeno Pineapple Margarita: 8.69
+  Maple Cinnamon Sopapillas: 6.64
+  Ancho Chile Beef Nachos: 10.95
+  Blueberry Basil Margarita: 11.76
+  Tortilla Soup Supreme: 8.57
+  Mexican Chocolate Lava Cake: 8.45
+  Pineapple Jalapeno Salsa: 6.45
+  Savory Black Bean Soup: 7.81
+  Salted Caramel Margarita: 9.57
+  Roasted Corn and Poblanos: 7.85
+  Al Pastor Breakfast Burrito: 9.31
+  Pineapple Cilantro Cooler: 4.61
+  Tres Leches Flan: 5.85
+  Blue Corn Tortilla Chips: 8.3
+  Creamy Avocado Soup: 6.16
+amenity_features:
+  Children's Menu: true
+  Large Groups: true
+  Live Music: true
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Onsite Parking: false
+  Happy Hour: true
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.76

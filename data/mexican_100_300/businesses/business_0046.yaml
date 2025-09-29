@@ -1,0 +1,39 @@
+id: business_0046
+name: Verde & Ember
+description: Experience a vibrant twist on Mexican and Tex-Mex cuisine, blending bold
+  flavors, fresh ingredients, and colorful traditions in every dish. From savory street
+  classics to inventive grilled specialties, this is where contemporary taste meets
+  fiery flair.
+rating: 1.0
+progenitor_customer: customer_0016
+menu_features:
+  Saffron Scented Arroz Verde: 4.8
+  Ancho Chili Spiced Tofu Tacos: 16.14
+  Shrimp Fajita Platter: 20.11
+  Loaded Beef Empanadas: 3.37
+  Sizzling Shrimp Tacos: 18.83
+  Street-Style Carnitas: 14.54
+  Roasted Red Pepper and Black Bean Soup: 5.99
+  Carne Asada Skillet: 11.74
+  Honey Chipotle Grilled Chicken: 13.17
+  Mole Chicken Tacos: 18.76
+  Morning Chorizo Scramble: 9.2
+  Coconut Lime Shrimp Tacos: 11.64
+  Tequila Sunrise Slushie: 10.69
+  Sizzling Steak Fajitas: 8.84
+  Roasted Poblano and Corn Quesadilla: 9.3
+  Classic Beef Enchiladas: 10.62
+  Mexican Chocolate Mousse: 7.45
+  Blue Corn Chicken Tamales: 14.67
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.86

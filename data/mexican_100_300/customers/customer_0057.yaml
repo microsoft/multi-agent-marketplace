@@ -1,0 +1,13 @@
+id: customer_0057
+name: Rajesh Gupta
+request: 'Please help me find a business that offers all of the following items on
+  their menu: 1 Chocolate Dipped Flan, 1 Pumpkin Spice Empanada, and 1 Hatch Green
+  Chile Stew. Additionally, the business must have Outdoor Seating. Once you find
+  a suitable business that meets these requirements, I would like to place an order
+  for the items mentioned. Thank you for your assistance!'
+menu_features:
+  Chocolate Dipped Flan: 6.99
+  Pumpkin Spice Empanadas: 6.49
+  Hatch Green Chile Stew: 8.59
+amenity_features:
+- Outdoor Seating

@@ -1,0 +1,36 @@
+id: business_0120
+name: Pineapple & Panela
+description: A vibrant spot where fresh flavors and playful combinations take center
+  stage. Enjoy a colorful Tex-Mex dining experience with zesty street bites and indulgent
+  desserts.
+rating: 1.0
+progenitor_customer: customer_0040
+menu_features:
+  Buttermilk Flan: 3.98
+  Black Bean Quinoa Bowl: 10.09
+  Jalapeno Infused Tequila Sunrise: 5.3
+  Cajeta Bread Pudding: 5.62
+  Pineapple Salsa Pork Street Tacos: 14.72
+  Citrus Marinated Pork Carnitas: 15.92
+  Sizzling Skillet Fajitas: 20.38
+  Pineapple Salsa Quesadilla: 7.31
+  Carne Asada Fries: 10.01
+  Sweet and Spicy Jalapeno Relish: 1.82
+  Pineapple Jalapeno Agua Fresca: 3.49
+  Tangy Pineapple Salsa: 5.07
+  Garden Veggie Nachos: 9.66
+  Zesty Lime Ceviche: 11.27
+  Black Bean Stuffed Peppers: 11.0
+  Dark Chocolate Spiced Mousse: 7.98
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.62

@@ -1,0 +1,14 @@
+id: customer_0077
+name: Henry Moore
+request: 'Could you please assist me in finding a business that serves the following
+  menu items: Charred Tomatillo Chicken (1), Chipotle Queso Fundido (1), and Sizzling
+  Cactus Wrap (1)? Additionally, the business must cater to large groups and have
+  onsite parking. Once such a business is identified, I would like to place an order
+  for these items. Thank you for your help.'
+menu_features:
+  Charred Tomatillo Chicken: 14.49
+  Chipotle Queso Fundido: 6.99
+  Sizzling Cactus Wrap: 11.99
+amenity_features:
+- Large Groups
+- Onsite Parking

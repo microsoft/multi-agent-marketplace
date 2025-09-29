@@ -1,0 +1,34 @@
+id: business_0071
+name: La Cocina del Solano
+description: Experience vibrant Mexican and Tex-Mex flavors in a warm, inviting setting.
+  Our menu features fresh, creative twists on classic dishes for breakfast, lunch,
+  and dinner.
+rating: 1.0
+progenitor_customer: customer_0024
+menu_features:
+  Horchata Rice Pudding: 4.02
+  Spicy Chorizo Quesadilla: 14.24
+  Avocado Bacon Breakfast Tacos: 7.95
+  Spicy Beef Nacho Platter: 11.75
+  Carne Asada Supreme: 18.49
+  Herb-Roasted Corn Salad: 6.29
+  Roasted Poblano Mac & Cheese: 13.18
+  Crispy Avocado Fritters: 9.45
+  Sunrise Breakfast Burrito: 13.29
+  Spiced Pumpkin Churros: 4.97
+  Mole Enchilada Supreme: 14.45
+  Guajillo Grilled Steak Burrito: 15.04
+  Tamarind Spiced Chicken Wings: 11.21
+  Red Chili Beef Nachos: 10.29
+amenity_features:
+  Children's Menu: true
+  Large Groups: true
+  Live Music: true
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Onsite Parking: false
+  Happy Hour: true
+  Private Dining: false
+  Outdoor Seating: true
+  Takes Reservations: false
+min_price_factor: 0.67

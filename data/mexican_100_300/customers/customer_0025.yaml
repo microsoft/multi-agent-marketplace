@@ -1,0 +1,10 @@
+id: customer_0025
+name: Zara Arnaud
+request: I would like assistance finding a business that offers 'Three-Cheese Queso
+  Dip' with an order of 1, has Outdoor Seating, and takes Reservations. Once you find
+  such a business, I intend to place an order. Thank you.
+menu_features:
+  Three-Cheese Queso Dip: 6.99
+amenity_features:
+- Outdoor Seating
+- Takes Reservations

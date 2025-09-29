@@ -1,0 +1,14 @@
+id: customer_0044
+name: Hiroshi Tanaka
+request: 'Could you please help me find a business that offers the following menu
+  items: 1 Sizzling Skillet Fajitas, 1 Pineapple Salsa Quesadilla, and 1 Churro Bites
+  with Chocolate Sauce? It''s important that the business also provides a Children''s
+  Menu and is Wheelchair Accessible. Once you find such a business, I intend to place
+  an order for the items listed above. Thank you!'
+menu_features:
+  Sizzling Skillet Fajitas: 13.99
+  Pineapple Salsa Quesadilla: 9.49
+  Churro Bites with Chocolate Sauce: 5.99
+amenity_features:
+- Children's Menu
+- Wheelchair Accessible

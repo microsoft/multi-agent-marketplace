@@ -1,0 +1,10 @@
+id: customer_0004
+name: Jennifer Rodriguez
+request: "I am looking to place an order with a business that offers Cheesy Jalape\xF1\
+  o Poppers in a quantity of 1, and can also accommodate Large Groups. Please help\
+  \ me find such a business that meets these specific requirements so I can proceed\
+  \ with the purchase. Thank you!"
+menu_features:
+  "Cheesy Jalape\xF1o Poppers": 7.99
+amenity_features:
+- Large Groups

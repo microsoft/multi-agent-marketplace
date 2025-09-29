@@ -1,0 +1,32 @@
+id: business_0250
+name: Citrus Mesa Modern Mex
+description: A fresh, vibrant eatery serving contemporary Mexican and Tex-Mex cuisine,
+  where bright citrus and bold spice meet. Enjoy inventive dishes, vegetarian options,
+  and refreshing flavors in a lively, welcoming space.
+rating: 1.0
+progenitor_customer: customer_0084
+menu_features:
+  Vegetarian Fajita Bowl: 16.47
+  Chili Lime Grilled Salmon: 10.68
+  Creamy Tomatillo Enchiladas: 13.81
+  Vegetarian Black Bean Burrito: 13.58
+  Blueberry Jalapeno Lemonade: 5.54
+  Avocado Lime Grilled Chicken Salad: 14.9
+  Green Chile Cheeseburger: 14.88
+  Savory Black Bean Soup: 8.66
+  Honey-Lime Grilled Corn: 3.74
+  Cinnamon Sugar Tortilla Chips: 4.32
+  Spicy Chorizo Quesadilla: 9.87
+  Cinnamon Sugar Churros: 4.58
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.64

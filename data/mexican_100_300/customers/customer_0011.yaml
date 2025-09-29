@@ -1,0 +1,11 @@
+id: customer_0011
+name: Ethan Murphy
+request: 'Could you please find a business that serves the following menu items: 1
+  Grilled Pineapple Skewers and 1 Street Style Beef Tacos? Additionally, the business
+  must have Live Music. Once you find a suitable place, I intend to place an order
+  for these items. Thank you!'
+menu_features:
+  Grilled Pineapple Skewers: 6.99
+  Street Style Beef Tacos: 10.49
+amenity_features:
+- Live Music

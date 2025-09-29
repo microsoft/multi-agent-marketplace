@@ -1,0 +1,36 @@
+id: business_0014
+name: Casa del Sabor
+description: Experience vibrant Mexican and Tex-Mex flavors in a warm, inviting setting.
+  From zesty burritos and enchiladas to creative cocktails and decadent desserts,
+  Casa del Sabor brings the heart of Mexico to your table.
+rating: 1.0
+progenitor_customer: customer_0005
+menu_features:
+  Al Pastor Breakfast Burrito: 10.74
+  Avocado Enchiladas: 19.68
+  Spicy Corn and Poblano Soup: 7.78
+  Pork Carnitas Torta: 11.38
+  Passion Fruit Mojito Twist: 6.27
+  Horchata Milkshake: 5.18
+  Salted Caramel Churros: 8.23
+  Tequila Sunrise Slushie: 6.17
+  Guava Basil Mojito: 8.13
+  Ancho Chili Beef Enchiladas: 7.08
+  Roasted Poblano Pepper Burrito: 9.3
+  Avocado Cilantro Dip: 4.7
+  Spicy Black Bean Burrito: 7.82
+  Classic Mexican Street Tacos: 13.63
+  Spinach and Mushroom Enchiladas: 9.71
+  Mango Avocado Salad: 12.92
+amenity_features:
+  Takes Reservations: false
+  Private Dining: false
+  Large Groups: false
+  Onsite Parking: true
+  Outdoor Seating: true
+  Children's Menu: false
+  Free Wifi: true
+  Live Music: false
+  Wheelchair Accessible: true
+  Happy Hour: false
+min_price_factor: 0.71

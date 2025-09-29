@@ -1,0 +1,9 @@
+id: customer_0093
+name: Zoe Thompson
+request: Could you please help me find a business that serves Smoky Chipotle Ribs
+  and offers free Wifi? I would like to place an order for 1 portion of Smoky Chipotle
+  Ribs. Thank you!
+menu_features:
+  Smoky Chipotle Ribs: 14.99
+amenity_features:
+- Free Wifi

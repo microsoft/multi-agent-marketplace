@@ -1,0 +1,35 @@
+id: business_0076
+name: Guac to the Future
+description: Step into a bold world of Mexican and Tex-Mex flavors where every bite
+  fuses tradition and a touch of adventure. From zesty plates to inventive drinks,
+  Guac to the Future brings a fresh twist to your favorite south-of-the-border classics.
+rating: 1.0
+progenitor_customer: customer_0026
+menu_features:
+  Chicken Tinga Tostadas: 9.44
+  Ancho Chili Chicken Enchiladas: 8.62
+  Tomatillo Verde Salsa: 5.97
+  Huevos Rancheros: 13.27
+  Coconut Lime Rice: 2.85
+  Charred Salsa Verde Burrito: 10.69
+  Pumpkin Spice Horchata: 3.55
+  Zesty Chicken Tortilla Soup: 8.08
+  Strawberry Jalapeno Margarita: 9.25
+  Honey Chipotle Grilled Chicken: 13.7
+  Grilled Steak Nachos: 10.53
+  Chipotle Lime Steak Burrito: 16.39
+  Tamarind Spiced Chicken Wings: 11.06
+  Avocado Lime Crema Burger: 13.7
+  Smoky Beef Enchiladas: 12.27
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: true
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.63

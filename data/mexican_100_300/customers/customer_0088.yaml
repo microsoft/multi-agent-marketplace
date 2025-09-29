@@ -1,0 +1,11 @@
+id: customer_0088
+name: Grace Lopez
+request: Could you please find a business that offers a Smoky Chipotle Burrito and
+  a Loaded Beef Nacho Bowl, with one of each item, and also provides a Private Dining
+  experience? Once you find such a business, I would like to place the order. Thank
+  you.
+menu_features:
+  Smoky Chipotle Burrito: 11.99
+  Loaded Beef Nacho Bowl: 11.99
+amenity_features:
+- Private Dining

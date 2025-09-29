@@ -1,0 +1,31 @@
+id: business_0292
+name: "El Piqu\xEDn Dorado"
+description: "Step into El Piqu\xEDn Dorado for vibrant, modern Mexican and Tex-Mex\
+  \ cuisine. Enjoy bold flavors, fresh ingredients, and a warm, inviting atmosphere\
+  \ that celebrates every meal."
+rating: 1.0
+progenitor_customer: customer_0098
+menu_features:
+  Stuffed Poblano Relleno: 11.13
+  Chipotle Lime Chicken Wings: 6.61
+  Queso Fundido with Chorizo: 11.24
+  Blue Corn Tortilla Soup: 7.64
+  Veracruz Fish Tacos: 9.78
+  Bacon-Wrapped Jalapeno Dogs: 4.8
+  Tres Amigos Sampler Platter: 12.37
+  Coconut Lime Shrimp Tacos: 13.35
+  Sizzling Steak Fajitas: 16.59
+  Chipotle Lime Chicken Salad: 8.28
+  Zesty Breakfast Tostadas: 11.03
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.63

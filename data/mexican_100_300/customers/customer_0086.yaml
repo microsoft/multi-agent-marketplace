@@ -1,0 +1,13 @@
+id: customer_0086
+name: Emma Johnson
+request: 'Could you please help me find a business that offers the following menu
+  items: Cactus and Black Bean Tacos (1), Smoky Adobo Chicken Wings (1), and Black
+  Bean and Quinoa Tacos (1)? Additionally, it is crucial that the business provides
+  Free Wifi. Once you find a suitable business, I intend to place an order for those
+  items. Thank you for your assistance.'
+menu_features:
+  Cactus and Black Bean Tacos: 11.49
+  Smoky Adobo Chicken Wings: 11.99
+  Black Bean and Quinoa Tacos: 10.49
+amenity_features:
+- Free Wifi

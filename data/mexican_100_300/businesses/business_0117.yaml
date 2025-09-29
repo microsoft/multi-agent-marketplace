@@ -1,0 +1,35 @@
+id: business_0117
+name: Poblano Paradise
+description: Experience a fiesta of flavor at Poblano Paradise, where fresh ingredients
+  and bold spices come together in creative Mexican and Tex-Mex fare. Enjoy vibrant
+  drinks and savory dishes in a lively, welcoming atmosphere.
+rating: 1.0
+progenitor_customer: customer_0039
+menu_features:
+  Passion Fruit Agua Fresca: 5.02
+  Three-Cheese Elote: 8.55
+  Grilled Pineapple Salsa: 6.4
+  Buttermilk Flan: 5.79
+  Smoky Chipotle Queso: 2.61
+  Three-Cheese Stuffed Poblano: 11.65
+  Roasted Poblano Mac & Cheese: 10.56
+  Bacon-Wrapped Jalapeno Dogs: 8.84
+  Loaded Nacho Fiesta: 11.35
+  Chipotle Chicken Skillet: 15.28
+  Chipotle Lime Steak Burrito: 8.08
+  Blackened Fish Tacos: 13.31
+  Pork Carnitas Torta: 8.13
+  Coconut Lime Margarita: 6.59
+  Spicy Ground Beef Empanadas: 7.44
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.68

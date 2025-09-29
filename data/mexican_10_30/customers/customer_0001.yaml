@@ -1,0 +1,10 @@
+id: customer_0001
+name: Alexander Okoro
+request: Please help me find a business that offers a Pineapple Salsa Pork Burrito
+  and a Spicy Black Bean Quesadilla, and also has Happy Hour. I would like to place
+  an order once you locate a suitable establishment. Thank you!
+menu_features:
+  Pineapple Salsa Pork Burrito: 11.99
+  Spicy Black Bean Quesadilla: 9.99
+amenity_features:
+- Happy Hour

@@ -1,0 +1,34 @@
+id: business_0072
+name: Burrito Breeze
+description: Burrito Breeze blends bold Tex-Mex flavors with fresh, vibrant twists
+  on classic dishes and cocktails. Enjoy a lively, welcoming atmosphere and a menu
+  bursting with savory bites and refreshing sips.
+rating: 1.0
+progenitor_customer: customer_0024
+menu_features:
+  Chile Verde Burrito: 14.61
+  Carne Asada Supreme: 15.9
+  Papaya Passion Fruit Smoothie: 9.5
+  Ranchero Breakfast Burrito: 10.01
+  Chipotle Chicken Caesar Burrito: 13.82
+  Chorizo Stuffed Mushrooms: 8.45
+  Blood Orange Paloma: 11.11
+  Grilled Pineapple Mojito: 8.49
+  Spicy Black Bean Nachos: 8.23
+  Black Bean Avocado Tostadas: 11.08
+  Classic Lime Margarita: 7.66
+  Herb-Roasted Corn Salad: 5.93
+  Black Bean & Mushroom Sopes: 8.59
+  Spicy Tomato Gazpacho: 4.87
+amenity_features:
+  Children's Menu: true
+  Large Groups: false
+  Live Music: true
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.74

@@ -1,0 +1,35 @@
+id: business_0131
+name: "El Saz\xF3n Dorado"
+description: "Experience the vibrant flavors of Mexico and Texas in a warm, inviting\
+  \ setting where every bite brings together tradition and a touch of modern flare.\
+  \ From zesty soups to decadent desserts, El Saz\xF3n Dorado serves up freshly prepared\
+  \ classics and creative favorites for every appetite."
+rating: 1.0
+progenitor_customer: customer_0044
+menu_features:
+  Sizzling Skillet Fajitas: 13.81
+  Churro Bites with Chocolate Sauce: 7.39
+  Texas BBQ Brisket Tacos: 15.95
+  Chocolate Tamal del Cielo: 7.01
+  Zesty Lime Chicken Tortilla Soup: 9.5
+  Morning Chorizo Scramble: 17.0
+  Breakfast Burrito Bowl: 10.21
+  Pineapple Salsa Quesadilla: 9.01
+  Ancho Chocolate Cake: 9.24
+  Pineapple Jalapeno Agua Fresca: 5.11
+  Saffron Scented Arroz Verde: 4.9
+  Spiced Chocolate Cake: 7.61
+  Hatch Green Chile Quesadilla: 7.67
+  Zesty Chicken Fajita Bowl: 8.32
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.7

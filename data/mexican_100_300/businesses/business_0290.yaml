@@ -1,0 +1,34 @@
+id: business_0290
+name: Basil & Blue Agave
+description: Basil & Blue Agave blends modern Mexican and Tex-Mex flavors with fresh
+  ingredients and creative twists. Gather with friends for vibrant salsas, inventive
+  margaritas, and a lively, welcoming atmosphere.
+rating: 1.0
+progenitor_customer: customer_0097
+menu_features:
+  Blueberry Basil Margarita: 10.2
+  Loaded Nacho Fiesta: 11.78
+  Pico de Gallo Salsa: 6.15
+  Chipotle Lime Chicken Wings: 11.64
+  Pineapple Basil Agua Fresca: 4.22
+  Spicy Mango Margarita: 8.58
+  Fiesta Veggie Tacos: 9.77
+  Sweet Corn Tamale Cakes: 4.67
+  Ancho Chili Chicken Wings: 9.17
+  Poblano and Mushroom Tacos: 10.3
+  Shrimp Fajita Fiesta: 16.23
+  Chipotle Chicken Skillet: 14.45
+  Grilled Steak Nachos: 13.4
+  Three-Cheese Chile Rellenos: 8.55
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.69

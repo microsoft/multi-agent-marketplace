@@ -1,0 +1,35 @@
+id: business_0233
+name: El Refugio del Sol
+description: Step into El Refugio del Sol for a vibrant Mexican and Tex-Mex dining
+  experience. Enjoy flavorful classics and creative dishes made fresh with bold spices
+  and local ingredients.
+rating: 1.0
+progenitor_customer: customer_0078
+menu_features:
+  Bacon-Wrapped Jalapeno Dogs: 11.48
+  Sunrise Breakfast Burrito: 7.15
+  Avocado Lime Crema Enchiladas: 11.87
+  Pulled Pork Tamale Skillet: 15.93
+  Mango Tango Tacos: 10.47
+  Freshly Squeezed Agua Fresca: 1.42
+  Grilled Avocado Salad: 6.05
+  Chipotle Chicken Skillet: 17.3
+  Stuffed Poblano Pepper Bliss: 15.59
+  Chocolate Dipped Sopapillas: 7.15
+  Crispy Chicken Tinga Tacos: 16.1
+  Carne Asada Steak Plate: 14.96
+  Sweet Lime Agua Fresca: 2.89
+  Black Bean and Corn Soup: 6.03
+  Chipotle Lime Fajitas: 14.92
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.84

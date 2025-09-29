@@ -1,0 +1,12 @@
+id: customer_0024
+name: Isabella Nguyen
+request: 'Could you please find a business that serves the following menu items: 1
+  Herb-Roasted Corn Salad and 1 Carne Asada Supreme, and also offers the amenities
+  of Happy Hour and a Children''s Menu? It is important that the business meets all
+  these criteria, as I intend to place an order for these items. Thank you.'
+menu_features:
+  Herb-Roasted Corn Salad: 7.49
+  Carne Asada Supreme: 16.49
+amenity_features:
+- Happy Hour
+- Children's Menu

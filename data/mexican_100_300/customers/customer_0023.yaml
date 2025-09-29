@@ -1,0 +1,13 @@
+id: customer_0023
+name: Zara Khan
+request: 'I am looking for a business that offers the following menu items: 1 Crispy
+  Avocado Bites, 1 Pico de Gallo Tostadas, and 1 Chocolate Dipped Flan. Additionally,
+  it is crucial that the business provides Happy Hour and Free Wifi. Once such a business
+  is found, I plan to place an order for the items listed. Thank you for your assistance.'
+menu_features:
+  Crispy Avocado Bites: 6.99
+  Pico de Gallo Tostadas: 8.49
+  Chocolate Dipped Flan: 6.99
+amenity_features:
+- Happy Hour
+- Free Wifi

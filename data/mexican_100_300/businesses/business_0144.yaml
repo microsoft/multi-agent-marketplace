@@ -1,0 +1,37 @@
+id: business_0144
+name: Barbacoa Breeze
+description: Savor the vibrant spirit of Mexican and Tex-Mex cuisine in a lively,
+  welcoming setting. From zesty salsas to flavor-packed enchiladas, every dish offers
+  a fresh twist on classic favorites.
+rating: 1.0
+progenitor_customer: customer_0048
+menu_features:
+  Beef Barbacoa Enchiladas: 11.16
+  Charro Bean Burrito: 11.14
+  Avocado Enchiladas: 14.83
+  Zesty Pineapple Salsa: 5.44
+  Avocado Crunch Tostadas: 9.07
+  Hatch Chile Enchiladas: 10.31
+  Spicy Pineapple Sangria: 5.81
+  Breakfast Chorizo Tacos: 8.35
+  Carne Asada Burrito Bowl: 18.5
+  Horchata Almond Cake: 4.03
+  Spicy Shrimp Fajitas: 18.63
+  Spicy Chicken Fajita Salad: 11.87
+  Mango Salsa Salmon: 13.74
+  Tomatillo Verde Salsa: 5.25
+  Avocado Bacon Breakfast Tacos: 10.92
+  Pineapple Mango Salsa: 5.02
+  Avocado Lime Chicken Salad: 9.11
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.92

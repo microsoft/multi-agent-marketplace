@@ -1,0 +1,12 @@
+id: customer_0099
+name: Mason Wright
+request: Could you please find a business that offers 'Avocado Bacon Breakfast Tacos'
+  (1) and a 'Coconut Mojito' (1), and also has the amenities 'Wheelchair Accessible'
+  and 'Happy Hour'? Once you find such a business, I would like to place an order
+  for these items. Thank you.
+menu_features:
+  Avocado Bacon Breakfast Tacos: 7.49
+  Coconut Mojito: 8.99
+amenity_features:
+- Wheelchair Accessible
+- Happy Hour

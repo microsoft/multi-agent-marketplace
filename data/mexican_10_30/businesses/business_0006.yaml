@@ -1,0 +1,36 @@
+id: business_0006
+name: Fajita Fiesta
+description: Experience bold flavors and vibrant vibes at Fajita Fiesta, where sizzling
+  specialties and creative cocktails celebrate the spirit of Tex-Mex cuisine. Enjoy
+  a lively atmosphere full of fresh ingredients, smoky spices, and delicious comfort
+  food.
+rating: 1.0
+progenitor_customer: customer_0002
+menu_features:
+  Raspberry Jalapeno Margarita: 10.2
+  Stuffed Poblano Delight: 13.18
+  Sizzling Steak Fajitas: 20.97
+  Passion Fruit Paloma: 4.81
+  Smoky Beef Enchiladas: 11.99
+  Crispy Pork Carnitas: 18.29
+  Horchata Iced Coffee: 8.03
+  Grilled Chipotle Lime Chicken: 11.32
+  Grilled Chicken Fajita Salad: 15.45
+  Beef Barbacoa Nachos: 16.78
+  Roasted Veggie Tostadas: 14.32
+  Avocado and Tomato Salsa: 8.13
+  Crispy Taquito Sampler: 12.93
+  Sizzling Steak Quesadilla: 12.96
+  Smoky Chipotle Burger: 15.04
+amenity_features:
+  Takes Reservations: false
+  Private Dining: false
+  Large Groups: true
+  Onsite Parking: false
+  Outdoor Seating: true
+  Children's Menu: true
+  Free Wifi: false
+  Live Music: false
+  Wheelchair Accessible: false
+  Happy Hour: true
+min_price_factor: 0.86

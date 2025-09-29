@@ -1,0 +1,33 @@
+id: business_0068
+name: Margarita Mesa
+description: Gather around for bold flavors and creative cocktails at Margarita Mesa,
+  where every dish brings a fresh twist to Mexican and Tex-Mex classics. Enjoy vibrant
+  small plates, mezcal-inspired drinks, and an inviting atmosphere perfect for any
+  occasion.
+rating: 1.0
+progenitor_customer: customer_0023
+menu_features:
+  Tomatillo Guacamole Dip: 2.39
+  Green Chili Pork Burrito: 7.96
+  Raspberry Chipotle Margarita: 11.56
+  Roasted Corn and Black Bean Salad: 7.11
+  Adobo-Marinated Pork Carnitas: 13.16
+  Blue Corn Chicken Tamales: 11.09
+  Sizzling Chorizo Empanadas: 10.54
+  Grilled Steak Fajita Platter: 18.69
+  Mango Pico de Gallo: 7.06
+  Zesty Shrimp Fajitas: 16.74
+  Coconut Lime Margarita: 13.03
+  Churro Bites with Chocolate Sauce: 6.31
+amenity_features:
+  Children's Menu: true
+  Large Groups: false
+  Live Music: true
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: false
+  Outdoor Seating: true
+  Takes Reservations: true
+min_price_factor: 0.87

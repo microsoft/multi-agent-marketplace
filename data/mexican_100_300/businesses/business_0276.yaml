@@ -1,0 +1,35 @@
+id: business_0276
+name: La Parrilla Verde
+description: Experience a vibrant blend of Mexican and Tex-Mex flavors in a lively,
+  welcoming atmosphere. From sizzling fajitas to zesty desserts, every dish is prepared
+  with fresh ingredients and a touch of culinary flair.
+rating: 1.0
+progenitor_customer: customer_0092
+menu_features:
+  Lime Cilantro Shrimp Skewers: 12.85
+  Mexican Chocolate Brownie: 5.74
+  Tomatillo Verde Salsa: 6.25
+  Tex-Mex Breakfast Skillet: 10.56
+  Zesty Lime Cheesecake: 7.14
+  Honey-Lime Grilled Corn: 3.0
+  Jalapeno Lime Rice Bowl: 13.24
+  Mesquite Grilled Fajitas: 13.56
+  Mexican Shrimp Cocktail: 14.89
+  Smoky Chipotle Burger: 16.49
+  Carne Asada Steak Plate: 13.48
+  Spicy Cilantro Shrimp Skewers: 8.68
+  Ancho Chicken Quesadilla: 12.6
+  Buttermilk Flan: 4.14
+  Street Style Beef Tacos: 9.49
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.63

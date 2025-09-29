@@ -1,0 +1,34 @@
+id: business_0065
+name: "El Rinc\xF3n Sabroso"
+description: "Step into a warm, inviting space where classic Tex-Mex and Mexican flavors\
+  \ are reimagined with a twist. Enjoy vibrant favorites\u2014freshly grilled, packed\
+  \ with bright spices, and always served with a side of hospitality."
+rating: 1.0
+progenitor_customer: customer_0022
+menu_features:
+  Chili Lime Chicken Quesadilla: 7.28
+  Black Bean and Corn Enchiladas: 7.78
+  Pineapple BBQ Pulled Pork Nachos: 11.0
+  Smoky Chipotle Street Tacos: 9.94
+  Mango Agua Fresca: 4.91
+  Spice-Rubbed Ribeye: 19.92
+  Lime Cilantro Shrimp Skewers: 15.41
+  Tequila Lime Shrimp Skewers: 15.19
+  Street Style Beef Tacos: 8.86
+  Frozen Tamarind Margarita: 12.61
+  Spicy Avocado Breakfast Wrap: 11.86
+  Avocado Lime Chicken Salad: 10.45
+  Black Bean Corn Empanadas: 12.12
+  Sizzling Steak Quesadilla: 10.59
+amenity_features:
+  Children's Menu: true
+  Large Groups: true
+  Live Music: false
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Onsite Parking: false
+  Happy Hour: true
+  Private Dining: false
+  Outdoor Seating: false
+  Takes Reservations: true
+min_price_factor: 0.86

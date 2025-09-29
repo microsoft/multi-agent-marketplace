@@ -1,0 +1,32 @@
+id: business_0154
+name: Kernel & Spice Carnival
+description: Step right up for a fiesta of bold flavors, fresh ingredients, and creative
+  twists on classic Mexican and Tex-Mex street eats. From zesty starters to sweet
+  finishes, every dish brings a little celebration to your plate.
+rating: 1.0
+progenitor_customer: customer_0052
+menu_features:
+  Sweet Plantain Fritters: 9.14
+  Berry Sangria Punch: 8.22
+  Ancho Chile Beef Enchiladas: 12.11
+  Street-Style Carnitas: 14.6
+  Cilantro Lime Grilled Corn: 5.08
+  Cilantro-Lime Shrimp Bowl: 14.86
+  Poblano and Mushroom Tacos: 10.16
+  Honey Lime Chicken Skewers: 11.57
+  Cinnamon Spice Churros: 3.4
+  Coconut Rice Pudding: 6.73
+  Enchilada Verde Supreme: 15.02
+  Three Cheese Quesadillas: 6.79
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: true
+min_price_factor: 0.85

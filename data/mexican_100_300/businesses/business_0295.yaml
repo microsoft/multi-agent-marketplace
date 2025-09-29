@@ -1,0 +1,35 @@
+id: business_0295
+name: Fajita de Resistance
+description: Ignite your taste buds with sizzling Tex-Mex creations, fresh street
+  corn, and bold, zesty flavors. Vibrant, inventive cocktails and savory classics
+  await in a festive, welcoming setting.
+rating: 1.0
+progenitor_customer: customer_0099
+menu_features:
+  Chili Lime Street Corn: 6.78
+  Creamy Avocado Smoothie: 3.31
+  Sizzling Beef Fajitas: 12.05
+  Ginger-Tequila Paloma: 7.11
+  Three-Cheese Elote: 7.38
+  Sizzling Shrimp Tacos: 11.2
+  Avocado Bacon Breakfast Tacos: 5.51
+  Crispy Chicken Tortilla Soup: 5.37
+  Loaded Burrito Bowl: 14.53
+  Sizzling Shrimp Fajitas: 19.1
+  Roasted Poblano Salsa Verde: 4.34
+  Cinnamon Sugar Tortilla Chips: 2.31
+  Beef Barbacoa Enchiladas: 16.9
+  Coconut Mojito: 6.69
+  Pineapple Chipotle Margarita: 12.61
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: true
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.93

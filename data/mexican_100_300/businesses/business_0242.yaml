@@ -1,0 +1,37 @@
+id: business_0242
+name: Fajitabout It!
+description: Turn up the flavor and spice at this vibrant spot serving sizzling Mexican
+  and Tex-Mex favorites, from fresh salads to sweet cinnamon treats. Enjoy a colorful
+  culinary adventure bursting with lively eats and bold beverages.
+rating: 1.0
+progenitor_customer: customer_0081
+menu_features:
+  Sizzling Shrimp Fajitas: 17.62
+  Fiery Chipotle Chicken Salad: 11.22
+  Baja Shrimp Ceviche: 18.28
+  Garden Veggie Nachos: 7.95
+  Warm Cinnamon Churros: 3.29
+  Mole Sauce Tamale: 12.77
+  Citrus Marinated Pork Carnitas: 11.47
+  Coconut Rice Pudding: 6.68
+  Grilled Steak Nachos: 15.13
+  Hatch Chile Chicken Burrito: 10.69
+  Blue Corn Enchiladas: 12.41
+  Zesty Lime Ceviche: 14.99
+  Spicy Corn and Poblano Soup: 5.58
+  Passionfruit Agua Fresca: 2.85
+  Mexican Mocha Latte: 3.6
+  Sizzling Skillet Fajitas: 10.48
+  Jalapeno Infused Tequila Sunrise: 10.89
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.81

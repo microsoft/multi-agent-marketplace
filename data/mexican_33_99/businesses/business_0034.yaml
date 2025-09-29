@@ -1,0 +1,38 @@
+id: business_0034
+name: Cielo & Comal
+description: Experience a fresh take on Mexican and Tex-Mex flavors, where vibrant
+  salads, sizzling favorites, and sweet treats come together in a lively, modern setting.
+  At Cielo & Comal, every bite brings a taste of sunshine and tradition with a contemporary
+  twist.
+rating: 1.0
+progenitor_customer: customer_0012
+menu_features:
+  Roasted Red Pepper Hummus with Tortilla Chips: 10.14
+  Firecracker Shrimp Tacos: 7.7
+  Sizzling Shrimp Fajitas: 5.85
+  Tropical Fruit Agua Fresca: 3.39
+  Smoky Chicken Tortilla Soup: 7.76
+  Veggie Enchilada Stack: 17.85
+  Hatch Chile Chicken Burrito: 16.47
+  Savory Black Bean Soup: 8.01
+  Crispy Avocado Fritters: 10.3
+  Maple Cinnamon Sopapillas: 8.21
+  Baja Fish Taco Salad: 7.2
+  Red Chili Pork Tamale: 12.04
+  Smoky Chipotle Nachos: 8.58
+  Sizzling Fajita Salad: 13.55
+  Pulled Pork Tamale Skillet: 10.5
+  Avocado Lime Grilled Skewers: 9.76
+  Chocolate Lava Churros: 2.26
+amenity_features:
+  Children's Menu: false
+  Large Groups: true
+  Live Music: true
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Onsite Parking: true
+  Happy Hour: false
+  Private Dining: false
+  Outdoor Seating: true
+  Takes Reservations: false
+min_price_factor: 0.64

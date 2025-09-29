@@ -1,0 +1,13 @@
+id: customer_0026
+name: Andres Garcia
+request: 'Please help me find a business that offers the following menu items: 1 Strawberry
+  Jalapeno Margarita, 1 Zesty Chicken Tortilla Soup, and 1 Tamarind Spiced Chicken
+  Wings. The business must also provide private dining and take reservations. Once
+  you identify such a business, I intend to place an order with them. Thank you!'
+menu_features:
+  Strawberry Jalapeno Margarita: 9.49
+  Zesty Chicken Tortilla Soup: 7.49
+  Tamarind Spiced Chicken Wings: 9.99
+amenity_features:
+- Private Dining
+- Takes Reservations

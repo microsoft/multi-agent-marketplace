@@ -1,0 +1,32 @@
+id: business_0004
+name: Holy Chipotle!
+description: Where bold flavors and fresh twists on Mexican and Tex-Mex classics meet
+  in every bite. From sizzling empanadas to crisp salads and just-sweet-enough treats,
+  it's a vibrant fiesta for your taste buds.
+rating: 1.0
+progenitor_customer: customer_0002
+menu_features:
+  Spicy Beef Empanadas: 7.6
+  Chorizo and Egg Tacos: 8.82
+  Caramelized Onion and Chorizo Empanadas: 9.82
+  Southwest Black Bean Quesadilla: 10.65
+  Grilled Shrimp and Mango Salad: 12.6
+  Black Bean Corn Salsa: 3.59
+  Honey-Lime Cucumber Salad: 8.41
+  Chocolate Dusted Churro Bites: 5.46
+  Smoky Chipotle Burger: 10.52
+  Crispy Cactus Fries: 7.14
+  Horchata Latte: 5.24
+  Smoky Chipotle Beef Empanadas: 10.01
+amenity_features:
+  Takes Reservations: true
+  Private Dining: true
+  Large Groups: true
+  Onsite Parking: false
+  Outdoor Seating: true
+  Children's Menu: false
+  Free Wifi: false
+  Live Music: false
+  Wheelchair Accessible: false
+  Happy Hour: true
+min_price_factor: 0.61

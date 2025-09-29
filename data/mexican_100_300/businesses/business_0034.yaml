@@ -1,0 +1,36 @@
+id: business_0034
+name: "El Rinc\xF3n Alegre"
+description: Discover vibrant Mexican and Tex-Mex classics reimagined with fresh ingredients
+  and bold flavors. Enjoy a lively atmosphere where every bite is a celebration of
+  tradition and creativity.
+rating: 1.0
+progenitor_customer: customer_0012
+menu_features:
+  Three Cheese Quesadillas: 6.79
+  Frozen Mango Jalapeno Daiquiri: 13.87
+  Slow-Cooked Carnitas Enchiladas: 10.57
+  Crispy Flautas Plate: 5.36
+  Slow-Cooked Carnitas Plate: 11.49
+  Watermelon Mint Agua Fresca: 3.74
+  Spinach and Mushroom Empanadas: 7.86
+  Avocado Toastadas: 6.08
+  Crispy Chicken Empanadas: 13.44
+  Roasted Vegetable Quesadilla: 11.04
+  Roasted Tomato Salsa: 3.25
+  Roasted Vegetable Tostadas: 14.27
+  Tropical Pineapple Salsa: 5.42
+  Chipotle Lime Chicken Wings: 14.27
+  Spicy Black Bean Burger: 8.91
+  Freshly Squeezed Agua Fresca: 2.85
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.63

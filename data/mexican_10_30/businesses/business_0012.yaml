@@ -1,0 +1,31 @@
+id: business_0012
+name: Kernel of Truth
+description: Dive into bold Tex-Mex flavors where fresh corn, zesty salsas, and succulent
+  meats meet a creative culinary twist. Our vibrant menu reimagines classics with
+  a modern, mouthwatering flair.
+rating: 1.0
+progenitor_customer: customer_0004
+menu_features:
+  Chipotle Lime Grilled Corn: 6.86
+  Chipotle Chicken Queso: 11.3
+  Watermelon Agua Fresca: 4.8
+  Creamy Avocado Caesar Salad: 8.27
+  Spicy Pulled Pork Burrito: 15.25
+  Cactus and Black Bean Salad: 9.38
+  Zesty Lime Chicken Salad: 9.79
+  Black Bean and Corn Enchiladas: 13.99
+  Smoky Chipotle Burrito: 11.81
+  Chicken Tinga Tostadas: 10.19
+  Creamy Avocado Smoothie: 8.73
+amenity_features:
+  Takes Reservations: false
+  Private Dining: false
+  Large Groups: false
+  Onsite Parking: false
+  Outdoor Seating: false
+  Children's Menu: false
+  Free Wifi: true
+  Live Music: false
+  Wheelchair Accessible: true
+  Happy Hour: false
+min_price_factor: 0.68

@@ -1,0 +1,37 @@
+id: business_0226
+name: "Pepper & Pl\xE1tano"
+description: "Pepper & Pl\xE1tano delivers a vibrant twist on Mexican and Tex-Mex\
+  \ favorites, blending bold flavors with fresh ingredients in a lively, modern setting.\
+  \ The menu features both classic and creative dishes, complemented by craft cocktails\
+  \ and a welcoming atmosphere."
+rating: 1.0
+progenitor_customer: customer_0076
+menu_features:
+  Roasted Red Pepper and Black Bean Soup: 6.63
+  Chili Con Queso Dip: 7.3
+  Smoked Chipotle Chicken Skewers: 11.36
+  Tequila Sunrise Spritzer: 5.88
+  Black Bean & Sweet Potato Burrito: 12.53
+  Spicy Beef Chimichanga: 12.02
+  Tequila Sunrise Cocktail: 5.73
+  Spiked Horchata: 8.02
+  Honey Glazed Pork Carnitas: 11.71
+  Sweet Plantain Empanadas: 9.23
+  Red Chili Beef Empanadas: 12.1
+  Mango Chipotle Chicken: 14.51
+  Spicy Chipotle Quesadilla: 11.9
+  Pineapple Pico de Gallo: 4.98
+  Sizzling Beef Enchilada Plate: 17.15
+  Chocolate Tamal del Cielo: 6.56
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.74

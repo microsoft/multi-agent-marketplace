@@ -1,0 +1,32 @@
+id: business_0011
+name: Fire & Fresco
+description: Experience bold Mexican and Tex-Mex flavors in a fresh, modern setting.
+  From sizzling bowls to smoky, savory meats and vibrant salads, every dish is crafted
+  to excite your taste buds.
+rating: 1.0
+progenitor_customer: customer_0004
+menu_features:
+  Smoky BBQ Carnitas: 13.89
+  Coconut Rice Pudding: 5.84
+  Ancho Chicken Burrito Bowl: 7.98
+  Shrimp Fajita Bowl: 14.16
+  Creamy Avocado Caesar Salad: 11.05
+  Tequila Lime Chicken Wings: 11.09
+  Sizzling Fajita Bowl: 10.3
+  Tres Leches Cake: 6.93
+  Smoky Chipotle Ribs: 17.84
+  Sizzling Veggie Quesadilla: 10.37
+  Shrimp Diablo Burritos: 12.83
+  Poblano & Cream Cheese Quesadilla: 12.04
+amenity_features:
+  Takes Reservations: false
+  Private Dining: false
+  Large Groups: true
+  Onsite Parking: true
+  Outdoor Seating: true
+  Children's Menu: false
+  Free Wifi: false
+  Live Music: true
+  Wheelchair Accessible: false
+  Happy Hour: false
+min_price_factor: 0.65

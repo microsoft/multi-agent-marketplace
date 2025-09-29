@@ -1,0 +1,36 @@
+id: business_0066
+name: Pepper & Plume
+description: Experience a vibrant twist on Mexican and Tex-Mex classics, blending
+  bold flavors with fresh, seasonal ingredients. Pepper & Plume invites you to savor
+  innovative plates and signature cocktails in a welcoming, modern setting.
+rating: 1.0
+progenitor_customer: customer_0022
+menu_features:
+  Spicy Verde Chicken Tostadas: 10.43
+  Pumpkin Spice Flan: 6.08
+  Steak and Pepper Skillet: 18.58
+  Crispy Avocado Nachos: 8.46
+  Watermelon Basil Aqua Fresca: 5.54
+  Spicy Serrano Margarita: 9.98
+  Chipotle Ranch Chicken Sandwich: 11.18
+  Cajeta-filled Sopapillas: 9.36
+  Honey Lime Shrimp Skewers: 9.94
+  Creamy Avocado Quesadillas: 9.86
+  Carne Asada Steak Plate: 8.87
+  Chocolate Churro Milkshake: 5.44
+  Sizzling Beef Enchiladas: 13.6
+  Horchata Ice Cream Scoop: 3.53
+  Chili Lime Grilled Salmon: 22.26
+  Fiesta Nachos Platter: 8.5
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: true
+  Private Dining: true
+min_price_factor: 0.95

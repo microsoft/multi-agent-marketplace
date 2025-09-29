@@ -1,0 +1,34 @@
+id: business_0101
+name: Holy Guacamole Mac & Cheese
+description: "Where Tex-Mex tradition meets playful innovation\u2014indulge in bold\
+  \ flavors, sizzling specialties, and a twist or two you won't see coming. Gather\
+  \ with friends and let your taste buds fiesta from first bite to sweet finale."
+rating: 1.0
+progenitor_customer: customer_0034
+menu_features:
+  Zesty Shrimp Ceviche: 11.48
+  Black Bean Avocado Tostadas: 8.66
+  Sizzling Fajita Trio: 15.94
+  Three-Cheese Elote: 10.41
+  Caramelized Onion and Chorizo Empanadas: 10.57
+  House-Made Horchata: 3.83
+  Baja Fish Burrito: 14.45
+  Roasted Poblano Mac & Cheese: 9.86
+  Cinnamon Sugar Churros: 4.45
+  Blueberry Jalapeno Lemonade: 6.63
+  Spiced Beef Fajita Platter: 12.24
+  Matcha Horchata Freeze: 5.04
+  Sopa de Tortilla: 6.22
+  Fresh Baked Sopapillas: 5.61
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: true
+  Private Dining: true
+min_price_factor: 0.72

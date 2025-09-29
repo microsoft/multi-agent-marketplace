@@ -1,0 +1,33 @@
+id: business_0073
+name: Skillet & Swirl Cantina
+description: A lively spot where sizzling skillets and bold flavors meet, serving
+  up a creative twist on Mexican and Tex-Mex classics. Indulge in mouthwatering bites
+  and sweet treats, all paired with refreshing, handcrafted drinks.
+rating: 1.0
+progenitor_customer: customer_0025
+menu_features:
+  Chocolate and Cinnamon Flan: 6.53
+  Sizzling Skillet Fajitas: 17.32
+  Sweet Corn Tamale Bites: 3.65
+  Crispy Carnitas Tostadas: 15.7
+  Pulled Pork Quesadilla: 9.66
+  Green Chili Chicken Soup: 8.9
+  Tamarind Chili Margarita: 11.56
+  Spicy Pulled Pork Burrito: 14.39
+  Pico de Gallo Tostadas: 6.0
+  Molten Lava Chocolate Cake: 9.64
+  Tex-Mex Breakfast Skillet: 12.66
+  Mexican Chocolate Pudding: 4.63
+  Pork Carnitas Torta: 11.57
+amenity_features:
+  Children's Menu: true
+  Large Groups: false
+  Live Music: false
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Onsite Parking: true
+  Happy Hour: false
+  Private Dining: false
+  Outdoor Seating: true
+  Takes Reservations: false
+min_price_factor: 0.75

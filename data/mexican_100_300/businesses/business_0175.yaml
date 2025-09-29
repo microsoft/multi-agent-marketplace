@@ -1,0 +1,37 @@
+id: business_0175
+name: Canela & Cactus
+description: Experience the vibrant fusion of Mexican and Tex-Mex flavors, where classic
+  comfort meets creative twists. Refreshing drinks, savory bites, and sweet treats
+  await in a warm, inviting atmosphere.
+rating: 1.0
+progenitor_customer: customer_0059
+menu_features:
+  Pumpkin Spice Horchata: 5.73
+  Mexican Chocolate Cake: 3.64
+  Pina Colada Agua Fresca: 4.42
+  Carne Asada Fries: 10.29
+  Watermelon Agua Fresca: 5.42
+  Spinach and Mushroom Enchiladas: 16.48
+  Honey-Lime Cucumber Salad: 7.8
+  Street Corn Fritters: 7.4
+  Churro Cinnamon Roll: 7.59
+  Zesty Lime Cheesecake: 7.81
+  Fiesta Nachos Platter: 9.5
+  Passion Fruit Margarita: 8.04
+  Loaded Chorizo Nachos: 14.51
+  Stuffed Poblano Peppers: 11.52
+  Honey Glazed Pork Carnitas: 12.36
+  Smoky Chipotle Enchiladas: 11.59
+  Mango Chipotle Chicken: 13.46
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.94

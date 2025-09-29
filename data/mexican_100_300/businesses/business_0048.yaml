@@ -1,0 +1,38 @@
+id: business_0048
+name: Enchi-Lotta Flavor
+description: Where bold Mexican and Tex-Mex traditions meet a festival of flavor,
+  served up in classics and creative twists. Spice up your day with a vibrant array
+  of savory plates, sweet treats, and everything in between.
+rating: 1.0
+progenitor_customer: customer_0016
+menu_features:
+  Classic Beef Enchiladas: 7.99
+  Flan de Coco: 5.87
+  Three-Cheese Elote: 6.38
+  Grilled Lime Cilantro Shrimp: 15.45
+  Loaded Beef Empanadas: 9.2
+  Pineapple Mango Salsa: 1.78
+  Three Cheese Enchiladas: 9.46
+  Sizzling Skillet Nachos: 8.72
+  Pulled Pork Tamale Platter: 13.49
+  Chipotle Honey Wings: 13.25
+  Cilantro-Lime Shrimp Bowl: 9.87
+  Roasted Poblano and Corn Quesadilla: 11.89
+  Plantain and Black Bean Empanadas: 7.73
+  Carne Asada Skillet: 16.66
+  Ancho Chili Spiced Tofu Tacos: 9.67
+  Ultimate Breakfast Burrito: 4.99
+  Caramel Flan: 5.92
+  Spiced Chocolate Cake: 7.15
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.91

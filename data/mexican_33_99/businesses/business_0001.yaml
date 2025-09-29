@@ -1,0 +1,35 @@
+id: business_0001
+name: Guac 'n' Mole
+description: Dive into bold, fruity, and spicy Tex-Mex flavors at Guac 'n' Mole, where
+  traditional favorites get a vibrant, modern twist. From tangy salsas to mouthwatering
+  mains and decadent desserts, every bite is a fiesta for your taste buds.
+rating: 1.0
+progenitor_customer: customer_0001
+menu_features:
+  Pineapple Cilantro Salsa: 4.35
+  Tropical Lime Ceviche: 13.78
+  Avocado Lime Toast: 10.99
+  Spicy Pulled Pork Burrito: 18.21
+  Cherry Chipotle Glazed Ribs: 20.5
+  Charro Beans Special: 4.75
+  Grilled Pineapple Mojito: 6.25
+  Spicy Pulled Pork Enchiladas: 13.27
+  Spicy Chocolate Mousse: 6.71
+  Mole Poblano Chicken: 18.61
+  Hearty Chorizo Omelette: 14.12
+  Caramelized Onion & Cheese Dip: 5.05
+  Ancho Chocolate Cake: 8.03
+  Honey-Lime Grilled Corn: 3.85
+  Mole Enchilada Supreme: 9.01
+amenity_features:
+  Children's Menu: true
+  Large Groups: false
+  Live Music: false
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: false
+  Outdoor Seating: true
+  Takes Reservations: false
+min_price_factor: 0.93

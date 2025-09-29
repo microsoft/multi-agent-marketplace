@@ -1,0 +1,36 @@
+id: business_0068
+name: Pico & Lime
+description: Pico & Lime offers a fresh take on Mexican and Tex-Mex cuisine, where
+  vibrant flavors and bold ingredients come together in creative, colorful dishes.
+  Enjoy a lively atmosphere perfect for savoring both classic bites and modern favorites.
+rating: 1.0
+progenitor_customer: customer_0023
+menu_features:
+  Pico de Gallo Fiesta Bowl: 8.88
+  Shrimp Fajita Bowl: 13.16
+  Sweet Corn Tamales: 11.1
+  Chocolate Dipped Flan: 7.75
+  Avocado Lime Grilled Shrimp: 12.78
+  Pico de Gallo Tostadas: 11.56
+  Guava Basil Mojito: 11.92
+  Twice-Baked Potato Tex-Mex Style: 2.86
+  Honey Lime Shrimp Skewers: 10.57
+  Mole Chocolate Cake: 4.63
+  Crispy Avocado Bites: 8.66
+  Fresh Guacamole Bowl: 7.16
+  Street Corn Salad: 8.21
+  Chipotle Lime Steak Burrito: 19.97
+  Smoky Chipotle Queso: 6.46
+  Habanero Lime Chicken Wings: 9.04
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.71

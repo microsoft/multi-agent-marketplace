@@ -1,0 +1,32 @@
+id: business_0238
+name: La Cosecha Sabrosa
+description: Experience vibrant Mexican and Tex-Mex flavors in every bite, from fresh
+  salads to savory bowls and decadent desserts. At La Cosecha Sabrosa, classic tradition
+  meets creative flair in a welcoming, lively atmosphere.
+rating: 1.0
+progenitor_customer: customer_0080
+menu_features:
+  Loaded Burrito Bowl: 14.35
+  Spicy Chocolate Lava Cake: 7.14
+  Crispy Avocado Rolls: 7.32
+  Chipotle Chicken Caesar Burrito: 9.35
+  Mango Tango Tacos: 13.55
+  Avocado Lime Toast: 9.04
+  Queso Fundido with Chorizo: 5.8
+  Jalapeno Cheese Dip: 5.53
+  Street Corn Skillet: 4.72
+  Zesty Lime Chicken Salad: 10.48
+  Frozen Mango Margarita: 12.09
+  Tender Lime Cilantro Steak Fajitas: 11.1
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.68

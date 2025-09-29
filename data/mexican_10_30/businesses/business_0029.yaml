@@ -1,0 +1,36 @@
+id: business_0029
+name: Casa de Fuego y Fruta
+description: Experience a vibrant fusion of bold Mexican flavors and fresh, fruity
+  twists at Casa de Fuego y Fruta. Our warm, lively atmosphere is the perfect setting
+  to savor creative dishes and refreshing drinks inspired by the heart of Mexico.
+rating: 1.0
+progenitor_customer: customer_0010
+menu_features:
+  Queso Fundido with Chorizo: 5.71
+  Tamarind Spiced Chicken Wings: 9.61
+  Mango Chipotle BBQ Ribs: 12.66
+  Hearty Chorizo Omelette: 5.91
+  Spicy Black Bean Quesadilla: 14.19
+  Zesty Lime Grilled Corn: 4.95
+  Grilled Pineapple Margaritas: 8.96
+  Breakfast Chilaquiles: 10.2
+  Spicy Chicken Tortilla Soup: 8.16
+  Roasted Red Pepper Hummus with Tortilla Chips: 12.72
+  Chipotle Pineapple Pork Skewers: 6.31
+  Loaded Beef Nacho Bowl: 13.64
+  Mango Chipotle Shrimp Quesadilla: 9.2
+  Grilled Lime Shrimp Skewers: 13.08
+  Black Bean Mango Salad: 3.98
+  Avocado Lime Cheesecake: 6.16
+amenity_features:
+  Takes Reservations: true
+  Private Dining: false
+  Large Groups: false
+  Onsite Parking: false
+  Outdoor Seating: false
+  Children's Menu: true
+  Free Wifi: true
+  Live Music: true
+  Wheelchair Accessible: true
+  Happy Hour: false
+min_price_factor: 0.86

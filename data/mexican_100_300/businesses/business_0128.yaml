@@ -1,0 +1,33 @@
+id: business_0128
+name: La Fogata Viva
+description: Discover bold and vibrant flavors inspired by classic Mexican and Tex-Mex
+  traditions in a welcoming, energetic setting. Enjoy a variety of sizzling favorites,
+  fresh salsas, and savory specialties crafted with care.
+rating: 1.0
+progenitor_customer: customer_0043
+menu_features:
+  Sizzling Beef Chimichangas: 13.08
+  Spicy Shrimp Fajitas: 14.11
+  Chipotle BBQ Carnitas: 16.97
+  Pineapple Cilantro Salsa: 5.18
+  Smoky Barbacoa Burrito Bowl: 20.69
+  Spinach and Mushroom Enchiladas: 8.53
+  Fiery Red Salsa: 4.35
+  Creamy Avocado Delight Salad: 9.39
+  Tres Amigos Sampler Platter: 22.84
+  Spicy Bean and Cheese Nachos: 5.21
+  Roasted Vegetable Tostadas: 15.04
+  Churro Sundae: 8.01
+  Cheesy Jalapeno Poppers: 7.64
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.79

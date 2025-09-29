@@ -1,0 +1,36 @@
+id: business_0060
+name: Sabrosa Alley
+description: Experience a modern twist on classic Mexican and Tex-Mex flavors, where
+  each dish serves up a vibrant blend of spice, freshness, and a touch of sweetness.
+  Perfect for gatherings big and small, Sabrosa Alley invites you to savor every bite
+  in a lively, welcoming atmosphere.
+rating: 1.0
+progenitor_customer: customer_0020
+menu_features:
+  Cinnamon Sugar Churros: 7.22
+  Roasted Vegetable Tacos: 7.0
+  Chocolate Dusted Flan: 6.97
+  Beef Barbacoa Enchiladas: 10.4
+  Carne Asada Fries: 12.75
+  Chili Lime Shrimp Fajitas: 13.75
+  Smoky Chipotle Queso: 6.68
+  Texas BBQ Pulled Pork Nachos: 11.26
+  Honey Lime Chicken Fajitas: 11.65
+  Pineapple Mango Salsa: 5.37
+  Coconut Lime Rice: 4.58
+  Fresh Guacamole Bowl: 5.84
+  Al Pastor Tostada Crunch: 12.37
+  Fiesta Nachos Platter: 8.85
+  Smoky Barbacoa Burrito Bowl: 8.74
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: false
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Onsite Parking: true
+  Happy Hour: false
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: true
+min_price_factor: 0.62

@@ -1,0 +1,11 @@
+id: customer_0059
+name: Jessica Garcia
+request: 'Could you please help me find a business that serves the following menu
+  items: 1 Spinach and Mushroom Enchiladas and 1 Zesty Lime Cheesecake, and also offers
+  Private Dining? These criteria are essential for me, and once such a business is
+  found, I intend to place the order. Thank you!'
+menu_features:
+  Spinach and Mushroom Enchiladas: 10.99
+  Zesty Lime Cheesecake: 6.99
+amenity_features:
+- Private Dining

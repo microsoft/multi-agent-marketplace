@@ -1,0 +1,35 @@
+id: business_0038
+name: Sizzle & Spice
+description: Discover a lively spot where bold flavors and vibrant ingredients come
+  together in every dish, from savory mains to irresistible sweets. At Sizzle & Spice,
+  each meal is a celebration of fresh, inspired Mexican and Tex-Mex cuisine.
+rating: 1.0
+progenitor_customer: customer_0013
+menu_features:
+  Pina Colada Agua Fresca: 3.66
+  Smoky Barbacoa Burrito Bowl: 7.26
+  Honey Chipotle Ribs: 12.68
+  Coconut Flan: 6.97
+  Zesty Grilled Shrimp Skewers: 14.42
+  Ancho Chili Chocolate Cake: 7.99
+  Smoky Chipotle Beef Empanadas: 5.71
+  Chili Lime Nachos: 11.77
+  Cinnamon Sugar Tortilla Chips: 3.51
+  Chocolate Dipped Churros: 5.28
+  Churro Sundae: 4.81
+  Fresh Pineapple Salsa: 6.42
+  Carne Asada Supreme: 19.4
+  Loaded Nacho Supreme: 4.25
+  Breakfast Chorizo Tostadas: 8.49
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.87

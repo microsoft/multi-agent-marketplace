@@ -1,0 +1,35 @@
+id: business_0029
+name: "Nacho Problem Caf\xE9"
+description: Step into a bold blend of Mexican and Tex-Mex flavors, where sizzling
+  street classics and inventive drinks await. From smoky tacos to fresh, citrusy cocktails,
+  every bite is a fiesta for your taste buds.
+rating: 1.0
+progenitor_customer: customer_0010
+menu_features:
+  Sizzling Skillet Nachos: 8.16
+  Honey Chipotle Glazed Ribs: 13.59
+  Baja Fish Taco Plate: 18.57
+  Guava Basil Mojito: 11.02
+  House-Made Horchata: 2.45
+  Coconut Lime Tres Leches: 6.22
+  Smoky Chipotle Street Tacos: 11.13
+  Pineapple Habanero Margarita: 10.4
+  Breakfast Chilaquiles: 8.97
+  Blue Corn Enchiladas: 6.82
+  Flan de Coco: 6.83
+  Avocado Lime Chicken Salad: 10.36
+  Caramelized Onion Quesadilla: 11.22
+  Classic Street Corn: 2.76
+  Ancho Chili Chicken Enchiladas: 11.84
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: true
+  Private Dining: true
+min_price_factor: 0.93

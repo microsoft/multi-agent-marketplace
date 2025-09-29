@@ -1,0 +1,34 @@
+id: business_0059
+name: Cactus & Caramelo
+description: A fresh, flavorful Tex-Mex eatery bringing together vibrant classics
+  and sweet surprises. Enjoy savory plates, crisp bites, and decadent desserts in
+  a lively, welcoming atmosphere.
+rating: 1.0
+progenitor_customer: customer_0020
+menu_features:
+  Classic Tamale Plate: 6.41
+  Crispy Cactus Fries: 4.85
+  Pineapple Mango Salsa: 3.89
+  Carne Asada Fries: 10.73
+  Chocolate Dusted Flan: 4.46
+  Cucumber Cilantro Agua Fresca: 3.9
+  Smoky Pulled Pork Sandwich: 8.33
+  Al Pastor Nachos: 11.35
+  Chipotle Lime Chicken Quesadilla: 9.96
+  Carne Asada Burrito Bowl: 19.42
+  Black Bean and Corn Tostadas: 5.55
+  Roasted Corn Enchiladas: 5.97
+  Sweet Corn Tamale Cakes: 3.21
+  Sweet Potato Churros: 4.59
+amenity_features:
+  Children's Menu: false
+  Large Groups: true
+  Live Music: false
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: false
+  Outdoor Seating: false
+  Takes Reservations: true
+min_price_factor: 0.91

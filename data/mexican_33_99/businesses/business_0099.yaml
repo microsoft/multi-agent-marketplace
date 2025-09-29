@@ -1,0 +1,34 @@
+id: business_0099
+name: Pico & Paloma
+description: Experience vibrant Mexican and Tex-Mex flavors with a modern twist at
+  Pico & Paloma. Enjoy fresh, colorful dishes and inventive drinks in a lively and
+  welcoming atmosphere.
+rating: 1.0
+progenitor_customer: customer_0033
+menu_features:
+  Blueberry Jalapeno Lemonade: 4.9
+  Smoky BBQ Pulled Pork Tacos: 11.33
+  Passion Fruit Agua Fresca: 3.85
+  Pineapple Habanero Paloma: 9.91
+  Chipotle BBQ Brisket Nachos: 13.1
+  Chipotle BBQ Carnitas: 16.27
+  Mole Enchilada Supreme: 9.16
+  Classic Mexican Street Tacos: 11.78
+  Honey Chipotle Ribs: 14.66
+  Mango Pico de Gallo: 5.38
+  Spicy Beef Taco Salad: 8.98
+  Crispy Chipotle Chicken Wrap: 7.46
+  Pico de Gallo Shrimp Cocktail: 4.92
+  Flaming Cheese Fundido: 6.9
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: true
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Onsite Parking: true
+  Happy Hour: false
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: true
+min_price_factor: 0.64

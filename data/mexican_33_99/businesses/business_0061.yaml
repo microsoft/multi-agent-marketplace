@@ -1,0 +1,38 @@
+id: business_0061
+name: Pepper & Panela
+description: Discover bold Tex-Mex flavors and vibrant Mexican classics, freshly prepared
+  in a warm, inviting atmosphere. From sizzling skillets to sweet treats, every bite
+  is a celebration of tradition and creativity.
+rating: 1.0
+progenitor_customer: customer_0021
+menu_features:
+  Savory Pumpkin Empanadas: 8.76
+  Vanilla Flan Delight: 10.05
+  Morning Breakfast Burrito: 12.53
+  Choco-Taco Delight: 7.65
+  Black Bean Stuffed Peppers: 10.85
+  Al Pastor Street Tacos: 11.79
+  Blackened Shrimp Fajitas: 20.13
+  Grilled Pineapple Mojito: 11.64
+  Chicken Fajita Skillet: 15.24
+  Frozen Raspberry Margarita: 6.28
+  Mexican Shrimp Cocktail: 6.37
+  Blackened Fish Tacos: 7.69
+  Red Chili Beef Empanadas: 6.49
+  Mango Chili Margarita: 8.01
+  Spicy Tomato Gazpacho: 6.01
+  Texas BBQ Pulled Pork Nachos: 12.34
+  Sizzling Fajita Bowl: 12.81
+  Southwest Caesar Salad: 7.4
+amenity_features:
+  Children's Menu: true
+  Large Groups: true
+  Live Music: false
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: false
+  Outdoor Seating: true
+  Takes Reservations: true
+min_price_factor: 0.83

@@ -1,0 +1,36 @@
+id: business_0052
+name: Chili & Cobalt
+description: A modern Mexican and Tex-Mex eatery bringing bold flavors to classic
+  favorites with a fresh twist. Enjoy vibrant drinks, unique salads, hearty tacos,
+  and crave-worthy bites in a lively, welcoming atmosphere.
+rating: 1.0
+progenitor_customer: customer_0018
+menu_features:
+  Fruity Cucumber Agua Fresca: 5.17
+  Blueberry Tequila Cobbler: 10.01
+  Blue Corn Tortilla Salad: 9.07
+  Morning Breakfast Burrito: 7.42
+  Ancho Chicken Enchiladas: 11.23
+  Pico de Gallo Nachos: 9.2
+  Crispy Carnitas Soft Tacos: 16.25
+  Classic Lime Margarita: 5.32
+  Carne Asada Tacos: 10.69
+  Chili Verde Pork Burrito: 17.13
+  Passionfruit Mezcal Mule: 7.23
+  Three Cheese Chile Relleno: 8.26
+  Chipotle Chicken Skillet: 7.41
+  Smoky Chipotle Nachos: 8.53
+  Pineapple Salsa Nachos: 11.5
+  Red Chili Beef Empanadas: 7.4
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: true
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: true
+  Outdoor Seating: true
+  Takes Reservations: true
+min_price_factor: 0.61

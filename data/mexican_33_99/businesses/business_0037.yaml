@@ -1,0 +1,33 @@
+id: business_0037
+name: Citrus & Azul
+description: Experience a fresh twist on Mexican and Tex-Mex favorites, crafted with
+  vibrant flavors, colorful ingredients, and a modern vibe. From savory bowls to sweet
+  treats and creative drinks, there's a taste for every craving.
+rating: 1.0
+progenitor_customer: customer_0013
+menu_features:
+  Citrus Cilantro Rice Bowl: 7.22
+  Blue Corn Chicken Tamales: 9.08
+  Blueberry Basil Agua Fresca: 3.8
+  Chocolate Lava Churros: 4.82
+  Pollo Asado Burrito Bowl: 11.03
+  Avocado Corn Salsa: 6.07
+  Chipotle Lime Chicken Burrito: 11.7
+  Tamarind Glazed Ribs: 13.73
+  Ancho Chili Ribs: 18.43
+  Warm Churro Chips: 4.45
+  Crispy Avocado Tacos: 10.14
+  Tamarind Chili Margarita: 6.75
+  Crispy Fish Tacos: 9.69
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: false
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Onsite Parking: false
+  Happy Hour: true
+  Private Dining: false
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.61

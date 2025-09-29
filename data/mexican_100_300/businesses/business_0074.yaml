@@ -1,0 +1,35 @@
+id: business_0074
+name: Skeweriously Good Eats
+description: Dive into a zesty celebration of Tex-Mex and Mexican flavors, where sizzling
+  skillets, fresh veggies, and bold spices come together in every bite. Our vibrant
+  menu and handcrafted drinks bring a fiesta to your table, every time you visit.
+rating: 1.0
+progenitor_customer: customer_0025
+menu_features:
+  Loaded Tex-Mex Nachos Supreme: 8.79
+  Berry Sangria Punch: 5.49
+  Sizzling Veggie Fajitas: 14.09
+  Grilled Vegetable Fajitas: 14.49
+  Lime Cilantro Shrimp Skewers: 11.38
+  Zesty Lime Chicken Tortilla Soup: 6.43
+  Chicken Tinga Tostadas: 11.85
+  Chile Verde Burrito: 8.84
+  Roasted Vegetable Enchiladas: 11.59
+  Vegetarian Fajita Bowl: 11.41
+  Jalapeno Pineapple Margarita: 8.16
+  Chipotle Pineapple Pork Skewers: 11.32
+  Three-Cheese Queso Dip: 6.72
+  Black Bean Mango Salad: 7.96
+  Jalapeno Lime Rice Bowl: 11.41
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.83

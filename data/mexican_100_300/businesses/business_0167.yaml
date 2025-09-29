@@ -1,0 +1,35 @@
+id: business_0167
+name: "Ma\xEDz & Mingle"
+description: "Savor a vibrant blend of Mexican and Tex-Mex favorites in a warm, welcoming\
+  \ setting. From smoky meats and zesty salads to refreshing cocktails and sweet treats,\
+  \ it\u2019s a feast for all senses."
+rating: 1.0
+progenitor_customer: customer_0056
+menu_features:
+  Street Corn Salad: 10.14
+  Smoky Pulled Pork Sandwich: 9.25
+  Mango Chipotle Chicken: 10.62
+  Frijoles Charros: 7.27
+  Tequila Sunrise Spritzer: 10.17
+  Ancho Chile Coffee Rubbed Steak: 13.64
+  Sweet Corn Tamales: 7.15
+  Citrus Cilantro Chicken Salad: 12.5
+  Spicy Cilantro Shrimp Skewers: 11.82
+  Cinnamon Sugar Churros: 5.44
+  Beef and Bean Chimichanga: 11.17
+  Breakfast Chilaquiles: 7.86
+  Spicy Paloma Cocktail: 11.87
+  Zesty Lime Guacamole: 7.59
+  Frozen Mango Margarita: 11.42
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.66

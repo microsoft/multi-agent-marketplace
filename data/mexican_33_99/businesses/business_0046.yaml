@@ -1,0 +1,37 @@
+id: business_0046
+name: Sabor Urbano
+description: Experience vibrant, modern Mexican and Tex-Mex flavors with creative
+  twists and bold spices. From sizzling platters to zesty salsas and decadent desserts,
+  Sabor Urbano brings tradition and freshness together in every bite.
+rating: 1.0
+progenitor_customer: customer_0016
+menu_features:
+  Black Bean & Mushroom Sopes: 10.62
+  Spiced Chicken Fajita Bowl: 6.52
+  Raspberry Jalapeno Cheesecake: 10.36
+  Spiced Beef Fajita Platter: 20.28
+  Chargrilled Carne Asada: 22.62
+  Spicy Chicken Quesadilla: 6.18
+  Sizzling Shrimp Tacos: 12.51
+  Grilled Lime Shrimp Skewers: 17.75
+  Mexican Mocha Latte: 7.04
+  Spicy Verde Chicken Tostadas: 14.14
+  Roasted Poblano Salsa Verde: 3.07
+  Spicy Chicken Fajita Salad: 2.71
+  Queso Fundido with Chorizo: 11.91
+  Smoky BBQ Pork Tacos: 5.29
+  Tropical Pineapple Salsa: 3.55
+  Sizzling Fajita Skillet: 15.91
+  Loaded Nacho Fries: 7.99
+amenity_features:
+  Children's Menu: true
+  Large Groups: false
+  Live Music: false
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Onsite Parking: true
+  Happy Hour: true
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.87

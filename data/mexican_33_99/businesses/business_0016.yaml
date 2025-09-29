@@ -1,0 +1,31 @@
+id: business_0016
+name: El Paraiso del Sabor
+description: Experience vibrant Tex-Mex and Mexican flavors in an inviting setting,
+  where fresh ingredients and bold spices come together. From zesty appetizers to
+  sizzling main courses and tropical cocktails, each dish is crafted for pure deliciousness.
+rating: 1.0
+progenitor_customer: customer_0006
+menu_features:
+  Sizzling Beef Quesadillas: 9.45
+  Passion Fruit Margarita: 5.1
+  Pineapple Avocado Salsa: 4.82
+  Black Bean Quinoa Bowl: 13.21
+  Grilled Steak Fajitas: 25.53
+  Zesty Lime Grilled Corn: 4.87
+  Coconut Lime Margarita: 10.63
+  Ancho Chili Black Bean Soup: 6.92
+  Caramelized Onion and Chorizo Empanadas: 8.76
+  Shrimp Fajita Fiesta: 10.97
+  Chipotle Chicken Queso: 9.38
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: false
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Onsite Parking: true
+  Happy Hour: false
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.68

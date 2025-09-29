@@ -1,0 +1,36 @@
+id: business_0148
+name: Queso Mist-ery & Lime Crimes
+description: Step into a world of bold flavors and delightful surprises, where molten
+  cheese meets zesty citrus and every dish is a playful twist on classic Mexican and
+  Tex-Mex fare. Enjoy craveable creations, refreshing sips, and a lively, welcoming
+  vibe perfect for culinary adventurers.
+rating: 1.0
+progenitor_customer: customer_0050
+menu_features:
+  Zesty Chicken Tortilla Soup: 7.31
+  Flaming Cheese Fundido: 8.06
+  Agave Nectar Limeade: 2.03
+  Spicy Jalapeno Limeade: 3.65
+  Crispy Chicken Flautas: 5.87
+  Sizzling Skillet Nachos: 6.03
+  Roasted Corn and Black Bean Salad: 6.82
+  Wild Mushroom Tostada: 8.72
+  Ginger-Tequila Paloma: 11.21
+  Smoky Chipotle Quesadillas: 13.14
+  Coconut Lime Rice: 5.09
+  Chorizo Stuffed Mushrooms: 8.57
+  Roasted Poblano Queso Dip: 6.44
+  Sunrise Breakfast Burrito: 6.79
+  Jalapeno Watermelon Sangria: 9.75
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.74

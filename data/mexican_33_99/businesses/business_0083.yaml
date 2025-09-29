@@ -1,0 +1,31 @@
+id: business_0083
+name: Caramel & Cilantro
+description: Caramel & Cilantro brings together bold, vibrant flavors and sweet, creative
+  desserts in a lively, welcoming setting. Discover a fresh take on Mexican and Tex-Mex
+  classics made for sharing and savoring.
+rating: 1.0
+progenitor_customer: customer_0028
+menu_features:
+  Spicy Black Bean Quesadilla: 8.39
+  Adobo-Marinated Pork Carnitas: 12.05
+  Grilled Elote Corn: 4.97
+  Salted Caramel Churros: 5.45
+  Black Bean Avocado Tostadas: 4.69
+  Roasted Poblano Pepper Burrito: 5.5
+  Tequila Lime Shrimp Skewers: 16.5
+  Pumpkin Spice Horchata: 3.92
+  Black Bean and Quinoa Tacos: 8.27
+  Chocolate Dipped Flan: 3.88
+  Dulce de Leche Ice Cream: 7.45
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: true
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: false
+  Outdoor Seating: true
+  Takes Reservations: false
+min_price_factor: 0.77

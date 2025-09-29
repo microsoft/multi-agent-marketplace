@@ -1,0 +1,33 @@
+id: business_0263
+name: La Fogata Dorada
+description: Discover bold Tex-Mex and Mexican flavors in a warm, lively setting where
+  every dish bursts with vibrant spices, tender meats, and fresh salsas. Join us for
+  a spirited taste of tradition and inventive twists, perfect for any craving or occasion.
+rating: 1.0
+progenitor_customer: customer_0088
+menu_features:
+  Zesty Pineapple Salsa: 6.16
+  Smoky Chipotle Pulled Pork: 13.41
+  Fiery Jalapeno Queso Fundido: 5.96
+  Mole Chicken Empanadas: 3.6
+  Tex-Mex Breakfast Tacos: 7.16
+  Frozen Mango Jalapeno Daiquiri: 12.99
+  Loaded Beef Nacho Bowl: 12.76
+  Fiery Red Salsa: 5.3
+  Texas BBQ Pulled Pork Nachos: 15.51
+  Ancho Chile Chocolate Cake: 5.03
+  Coconut Lime Rice: 4.42
+  Smoky Chipotle Burrito: 9.79
+  Classic Mexican Street Tacos: 14.92
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.72

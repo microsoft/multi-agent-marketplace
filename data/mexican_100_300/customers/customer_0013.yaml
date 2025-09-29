@@ -1,0 +1,13 @@
+id: customer_0013
+name: "Amelia Fern\xE1ndez"
+request: 'I would like assistance in finding a business where I can place an order
+  for the following menu items: 1 Zesty Grilled Shrimp Skewers, 1 Ancho Chili Chocolate
+  Cake, and 1 Smoky Chipotle Beef Empanadas. Additionally, it is imperative that the
+  business is Wheelchair Accessible. Please help me in identifying such a business
+  as I intend to make a purchase. Thank you.'
+menu_features:
+  Zesty Grilled Shrimp Skewers: 13.49
+  Ancho Chili Chocolate Cake: 7.29
+  Smoky Chipotle Beef Empanadas: 10.49
+amenity_features:
+- Wheelchair Accessible

@@ -1,0 +1,33 @@
+id: business_0207
+name: Chili & Coconut Cantina
+description: Experience a lively fusion of bold Mexican and tropical flavors in a
+  vibrant, welcoming setting. Our creative menu brings together zesty spices, fresh
+  ingredients, and a touch of sweetness for an unforgettable dining adventure.
+rating: 1.0
+progenitor_customer: customer_0069
+menu_features:
+  Coconut Lime Shrimp Tacos: 11.02
+  Tequila Lime Shrimp Skewers: 15.23
+  Agave Lime Glazed Wings: 15.84
+  Red Chile Enchiladas: 12.68
+  Pepper Jack Queso Dip: 8.24
+  Honey Chipotle Grilled Chicken: 18.93
+  Black Bean and Corn Tostadas: 6.63
+  Red Chili Beef Empanadas: 10.38
+  Black Bean Avocado Wrap: 13.81
+  Smoky Black Bean Soup: 7.09
+  Churro Fiesta Platter: 7.43
+  Blackened Shrimp Quesadilla: 15.2
+  Pineapple Agua Fresca: 3.71
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.6

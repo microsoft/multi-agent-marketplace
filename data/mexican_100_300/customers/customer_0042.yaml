@@ -1,0 +1,12 @@
+id: customer_0042
+name: Olivia Chen
+request: 'Could you please help me find a business that offers both Live Music and
+  serves the following items: 1 Vanilla Flan Delight and 1 Cactus Fruit Agua Fresca?
+  It is important that both the amenity and the specific menu items are available.
+  Upon finding such a business, I would like to place an order for the mentioned items.
+  Thank you for your assistance.'
+menu_features:
+  Vanilla Flan Delight: 5.99
+  Cactus Fruit Agua Fresca: 3.99
+amenity_features:
+- Live Music

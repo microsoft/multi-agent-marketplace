@@ -1,0 +1,9 @@
+id: customer_0100
+name: Daniel Kim
+request: Could you please find a business that offers a 'Chipotle Lime Chicken Burrito'
+  with free Wifi? I would like to order 1 of this menu item from such a place. Thank
+  you!
+menu_features:
+  Chipotle Lime Chicken Burrito: 12.99
+amenity_features:
+- Free Wifi

@@ -1,0 +1,14 @@
+id: customer_0040
+name: Olivia Green
+request: 'Please help me find a business that offers the following menu items: 1 Citrus
+  Marinated Pork Carnitas, 1 Pineapple Salsa Quesadilla, and 1 Sizzling Skillet Fajitas,
+  and that has the amenities of being Wheelchair Accessible and offering Live Music.
+  It is important that the business meets all these criteria, as I intend to place
+  an order with them. Thank you for your assistance.'
+menu_features:
+  Citrus Marinated Pork Carnitas: 14.99
+  Pineapple Salsa Quesadilla: 9.49
+  Sizzling Skillet Fajitas: 13.99
+amenity_features:
+- Wheelchair Accessible
+- Live Music

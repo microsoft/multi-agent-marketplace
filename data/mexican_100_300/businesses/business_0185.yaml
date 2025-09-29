@@ -1,0 +1,34 @@
+id: business_0185
+name: Flan Your Appetite
+description: Spice up your day with fresh, vibrant Mexican and Tex-Mex flavors, served
+  with a playful twist. From zesty street tacos to sweet endings, every bite celebrates
+  tradition with a modern flair.
+rating: 1.0
+progenitor_customer: customer_0062
+menu_features:
+  Fresh Cactus Salad: 8.35
+  Coconut Lime Margarita: 13.81
+  Spicy Shrimp Fajitas: 11.32
+  Cinnamon Spice Flan: 8.26
+  Queso Fundido with Chorizo: 10.98
+  Avocado Tomatillo Salsa: 4.36
+  Al Pastor Tostada Crunch: 15.49
+  Smoky Chipotle Cornbread: 5.77
+  Pineapple Salsa Carnitas: 12.2
+  Pork Carnitas Burrito: 11.72
+  Chipotle Lime Street Tacos: 9.82
+  Honey Chipotle Shrimp Skewers: 9.99
+  Spicy Lime Chicken Tacos: 11.48
+  Blackberry Mint Mojito: 12.39
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.65

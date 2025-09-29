@@ -1,0 +1,32 @@
+id: business_0029
+name: Casa Asada y Dulce
+description: Experience the vibrant flavors of Mexico and the Southwest in a warm,
+  inviting setting. From sizzling skillets and fresh salads to decadent desserts,
+  every dish is crafted with authentic taste and a modern twist.
+rating: 1.0
+progenitor_customer: customer_0010
+menu_features:
+  Carne Asada Skillet: 19.85
+  Chargrilled Carne Asada: 13.12
+  Chocolate Dipped Churros: 6.92
+  Sweet Lime Agua Fresca: 3.45
+  Blueberry Agave Salad: 7.62
+  Avocado Lime Crema Burger: 15.07
+  Horchata Rice Pudding: 4.35
+  Chili Lime Shrimp Fajitas: 5.74
+  Spicy Chorizo Quesadilla: 10.09
+  Seafood Enchilada Verde: 19.96
+  Tortilla Soup Supreme: 4.95
+  Smoky Chipotle Cornbread: 4.18
+amenity_features:
+  Children's Menu: true
+  Large Groups: true
+  Live Music: true
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Onsite Parking: true
+  Happy Hour: false
+  Private Dining: false
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.83

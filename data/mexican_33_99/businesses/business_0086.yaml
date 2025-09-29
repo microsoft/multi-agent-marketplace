@@ -1,0 +1,34 @@
+id: business_0086
+name: Chili Con Carnival
+description: Step right up to a festive medley of bold flavors and hearty Tex-Mex
+  classics, where every dish is a celebration. Savor zesty spices, smoky sips, and
+  sweet finishes in a vibrant, welcoming atmosphere.
+rating: 1.0
+progenitor_customer: customer_0029
+menu_features:
+  Southwest Black Bean Chili: 9.22
+  Smoky Chipotle Beef Empanadas: 10.62
+  House-Made Horchata: 3.79
+  Cajeta Bread Pudding: 4.3
+  Spicy Black Bean Taquitos: 3.56
+  Smoky Chipotle Chicken Fajitas: 21.62
+  Carnitas Enchiladas Verde: 18.6
+  Savory Beef Empanadas: 7.53
+  Strawberry Lime Agua Fresca: 5.92
+  Green Chile Cheeseburger: 11.81
+  Pico de Gallo Fiesta Bowl: 11.54
+  Cajun Spiced Fish Tacos: 15.35
+  Sizzling Fajita Platter: 12.91
+  Avocado Salsa Verde: 4.85
+amenity_features:
+  Children's Menu: false
+  Large Groups: true
+  Live Music: false
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.74

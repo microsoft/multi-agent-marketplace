@@ -1,0 +1,33 @@
+id: business_0089
+name: Sizzle & Sprout
+description: Sizzle & Sprout brings vibrant Mexican and Tex-Mex flavors to life with
+  a fresh twist on classic favorites. Dive into bold, zesty dishes and unique house
+  specialties served in a colorful, welcoming atmosphere.
+rating: 1.0
+progenitor_customer: customer_0030
+menu_features:
+  Chipotle Sweet Potato Fries: 5.15
+  Pineapple Salsa Shrimp Skewers: 15.56
+  Beef Enchilada Platter: 11.93
+  Choco-Taco Delight: 4.97
+  Spicy Verde Chicken Tostadas: 11.2
+  Black Bean & Corn Salad: 8.33
+  Tequila Lime Chicken Wings: 8.57
+  Al Pastor Nachos: 12.71
+  Avocado Lime Crema Quesadillas: 16.55
+  Pico de Gallo Fiesta Bowl: 6.54
+  Blackened Shrimp Fajitas: 20.03
+  Baja Fish Taco Plate: 7.39
+  Avocado Lime Breakfast Tostada: 9.28
+amenity_features:
+  Children's Menu: true
+  Large Groups: false
+  Live Music: true
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Onsite Parking: true
+  Happy Hour: false
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.89

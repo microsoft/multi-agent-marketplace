@@ -1,0 +1,36 @@
+id: business_0025
+name: La Mesa Verde
+description: Experience vibrant Mexican and Tex-Mex cuisine made with fresh ingredients
+  and creative flair. Enjoy flavorful classics and inventive specialties in a warm,
+  welcoming atmosphere.
+rating: 1.0
+progenitor_customer: customer_0009
+menu_features:
+  Avocado Lime Cheesecake: 4.71
+  Blackened Shrimp Fajitas: 14.47
+  Strawberry Basil Agua Fresca: 5.9
+  Crispy Fish Tacos: 10.49
+  Fresh Guacamole Platter: 9.12
+  Sizzling Veggie Fajitas: 13.79
+  Grilled Vegetable Quesadilla: 7.75
+  Hearty Chorizo Omelette: 11.41
+  Tres Leches Flan: 8.46
+  Breakfast Chilaquiles: 8.19
+  Smoky Chipotle Chicken Wrap: 9.8
+  Sizzling Beef Fajitas: 16.83
+  Wild Mushroom Quesadillas: 11.16
+  Blueberry Mezcal Mule: 9.13
+  Matcha Horchata Freeze: 3.39
+  Caramelized Onion & Cheese Dip: 3.52
+amenity_features:
+  Children's Menu: true
+  Large Groups: false
+  Live Music: false
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Onsite Parking: true
+  Happy Hour: true
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.79

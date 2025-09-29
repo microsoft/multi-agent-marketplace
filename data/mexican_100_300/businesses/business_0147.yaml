@@ -1,0 +1,38 @@
+id: business_0147
+name: Pineapple & Peppercorn
+description: Experience a vibrant blend of fresh flavors and bold spices in every
+  bite at Pineapple & Peppercorn. Our menu brings a creative twist to Mexican and
+  Tex-Mex classics with vegetarian, seafood, and hearty specialties in a lively, welcoming
+  setting.
+rating: 1.0
+progenitor_customer: customer_0049
+menu_features:
+  Fresh Pineapple Salsa: 4.15
+  Street Corn Skillet: 6.52
+  Cajun Spiced Fish Tacos: 15.45
+  Smoky Chipotle Burger: 15.73
+  Roasted Vegetable Enchiladas: 10.9
+  Black Bean Corn Fritters: 5.89
+  Tres Amigos Sampler Platter: 19.02
+  Roasted Poblano Burger: 12.39
+  Fresh Cactus Salad: 9.07
+  Tropical Pineapple Salsa: 5.61
+  Chipotle Chicken Caesar Burrito: 7.63
+  Carne Asada Fries: 12.59
+  Zesty Breakfast Tostadas: 10.03
+  Grilled Chicken Fajita Platter: 12.73
+  Shrimp Fajita Skillet: 17.52
+  Picadillo Empanadas: 7.44
+  Passionfruit Mojito: 10.37
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.84

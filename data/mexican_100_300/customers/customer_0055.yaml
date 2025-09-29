@@ -1,0 +1,9 @@
+id: customer_0055
+name: Joshua Walker
+request: I am looking to place an order with a business that serves exactly one Classic
+  Beef Fajitas and offers a Happy Hour. Could you please assist me in finding such
+  a business so I can proceed with my order? Thank you.
+menu_features:
+  Classic Beef Fajitas: 14.99
+amenity_features:
+- Happy Hour

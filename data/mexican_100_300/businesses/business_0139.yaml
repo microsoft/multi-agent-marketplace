@@ -1,0 +1,32 @@
+id: business_0139
+name: Poblano & Panela
+description: Enjoy a vibrant fusion of flavors at Poblano & Panela, where creative
+  Tex-Mex and Mexican classics are crafted from the freshest ingredients. Refreshing
+  beverages and decadent desserts round out a menu designed to satisfy every craving.
+rating: 1.0
+progenitor_customer: customer_0047
+menu_features:
+  Mexican Chocolate Brownie: 6.55
+  Adobo Chicken Tacos: 15.61
+  Wild Berry Agua Fresca: 4.92
+  Crispy Beef Taquitos: 5.6
+  Roasted Poblano Soup: 9.3
+  Mango Cilantro Margarita: 6.4
+  Creamy Avocado Smoothie: 8.39
+  Caramelized Plantain Tostones: 5.63
+  Creamy Avocado Soup: 7.62
+  Mole Poblano Chicken: 18.93
+  Smoky Black Bean Soup: 5.57
+  Chicken Fajita Skillet: 14.17
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.89

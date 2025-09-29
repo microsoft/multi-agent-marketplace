@@ -1,0 +1,33 @@
+id: business_0019
+name: Marg My Words
+description: Sip, savor, and spice things up at Marg My Words, where vibrant Mexican
+  and Tex-Mex flavors meet cool, creative margaritas. Our fresh, colorful fare and
+  inventive drinks will have you coming back for more.
+rating: 1.0
+progenitor_customer: customer_0007
+menu_features:
+  Tequila Sunrise Spritzer: 10.21
+  Chipotle Lime Rice: 3.16
+  Crispy Chicken Tortilla Soup: 5.47
+  Horchata Almond Cake: 8.08
+  Frozen Raspberry Margarita: 8.23
+  Spicy Cucumber Margarita: 8.76
+  Spicy Grilled Pineapple Margarita: 5.96
+  Pico de Gallo Nachos: 8.74
+  Sweet Corn Tamale Bites: 7.76
+  Citrus Cilantro Rice Bowl: 10.32
+  Avocado Lime Salad: 3.62
+  Sizzling Cactus Wrap: 15.92
+  Tequila Lime Shrimp Skewers: 14.54
+amenity_features:
+  Takes Reservations: false
+  Private Dining: false
+  Large Groups: true
+  Onsite Parking: false
+  Outdoor Seating: true
+  Children's Menu: false
+  Free Wifi: true
+  Live Music: true
+  Wheelchair Accessible: false
+  Happy Hour: false
+min_price_factor: 0.64

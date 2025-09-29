@@ -1,0 +1,33 @@
+id: business_0092
+name: Masa & Mango
+description: Masa & Mango brings bold Mexican and Tex-Mex flavors together with a
+  creative twist. Enjoy a vibrant selection of savory street eats, inventive snacks,
+  and signature cocktails in a lively, welcoming atmosphere.
+rating: 1.0
+progenitor_customer: customer_0031
+menu_features:
+  Crispy Avocado Nachos: 11.71
+  Spicy Beef Chimichanga: 11.54
+  Chipotle Lime Street Tacos: 6.28
+  Chili Lime Sweet Potato Fries: 5.44
+  Crispy Carnitas Tostadas: 14.77
+  Blueberry Jalapeno Margarita: 8.28
+  Spiced Chocolate Tamales: 9.78
+  Caramelized Onion and Goat Cheese Empanadas: 7.22
+  Chipotle Mushroom Tacos: 11.59
+  Mango Habanero Chicken: 15.24
+  Ancho Chile Coffee Rubbed Steak: 15.24
+  Carne Asada Loaded Nachos: 8.6
+  Mango Cilantro Salsa Chicken: 8.47
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: false
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Onsite Parking: true
+  Happy Hour: false
+  Private Dining: true
+  Outdoor Seating: true
+  Takes Reservations: false
+min_price_factor: 0.65

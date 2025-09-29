@@ -1,0 +1,33 @@
+id: business_0172
+name: Avocado Ember Kitchen
+description: Discover a fresh, vibrant twist on Mexican and Tex-Mex classics at Avocado
+  Ember Kitchen, where bold flavors and wholesome ingredients come together. Enjoy
+  a lively, modern space featuring satisfying bowls, zesty salads, street tacos, and
+  irresistible salsas.
+rating: 1.0
+progenitor_customer: customer_0058
+menu_features:
+  Carne Asada Burrito Bowl: 14.02
+  Zesty Avocado Salad: 6.66
+  Horchata Rice Pudding: 5.59
+  Smoky Chipotle Street Tacos: 11.16
+  Avocado Toast with Pico: 8.99
+  Three-Bean Vegetarian Tostadas: 8.38
+  Seafood Enchilada Verde: 18.14
+  Pineapple Avocado Salsa: 6.55
+  Tex-Mex Breakfast Tacos: 4.86
+  Avocado Lime Salsa: 7.89
+  Tangy Pineapple Salsa: 5.87
+  Fresh Cactus Salad: 10.37
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.65

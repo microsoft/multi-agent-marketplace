@@ -1,0 +1,34 @@
+id: business_0056
+name: Sonrisa Azul
+description: Experience vibrant, modern Mexican flavors with a fresh twist at Sonrisa
+  Azul. Enjoy a lively atmosphere and bold, colorful dishes inspired by the heart
+  of Mexico and the Southwest.
+rating: 1.0
+progenitor_customer: customer_0019
+menu_features:
+  Blue Corn Enchiladas: 4.55
+  Mango Chili Margarita: 8.92
+  Black Bean Queso Dip: 5.54
+  Chicken Fajita Quesadilla: 10.77
+  Herb-Roasted Corn Salad: 8.37
+  Zesty Lime Chicken Tacos: 8.32
+  Black Bean and Sweet Potato Empanadas: 11.18
+  Tropical Pineapple Salsa: 3.24
+  Chile Verde Pork Bowl: 9.39
+  Pineapple Agua Fresca: 2.53
+  Grilled Avocado Salad: 7.86
+  Citrus Marinated Pork Carnitas: 16.52
+  Chili Con Queso Fundido: 9.3
+  Creamy Avocado Quesadillas: 13.88
+amenity_features:
+  Children's Menu: false
+  Large Groups: true
+  Live Music: true
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Onsite Parking: false
+  Happy Hour: true
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: true
+min_price_factor: 0.66

@@ -1,0 +1,35 @@
+id: business_0296
+name: Crisp & Cactus Cantina
+description: Step into a lively Tex-Mex escape where bold flavors and fresh ingredients
+  come together in creative dishes and refreshing drinks. Celebrate every meal with
+  vibrant classics, zesty salads, and crave-worthy sweets in a fun, welcoming atmosphere.
+rating: 1.0
+progenitor_customer: customer_0099
+menu_features:
+  Fiesta Veggie Tacos: 10.13
+  Southwest Chicken Enchiladas: 12.72
+  Baja Shrimp Tostadas: 11.05
+  "Spicy Jalape\xF1o Burger": 13.21
+  Coconut Mojito: 8.4
+  Tequila Lime Grilled Steak: 13.84
+  Chocolate Dipped Sopapillas: 6.73
+  Spinach and Mushroom Empanadas: 11.79
+  Cactus and Black Bean Salad: 7.43
+  Chicken Fajita Skillet: 10.56
+  Beef Fajita Burrito Bowl: 9.07
+  Loaded Carnitas Nachos: 10.33
+  Avocado Bacon Breakfast Tacos: 7.38
+  Carne Asada Breakfast Burrito: 12.19
+  Mexican Mocha Latte: 5.12
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.87

@@ -1,0 +1,32 @@
+id: business_0236
+name: Kernel Knowledge & Salsa Sense
+description: Dive into a lively celebration of Mexican and Tex-Mex favorites, where
+  vibrant flavors, fresh ingredients, and clever twists take center stage. Enjoy a
+  bold, playful dining experience that delights every palate from brunch to dessert.
+rating: 1.0
+progenitor_customer: customer_0079
+menu_features:
+  Ancho Chili Chicken Enchiladas: 13.5
+  Honey-Lime Grilled Corn: 2.35
+  Morning Chorizo Scramble: 18.21
+  Chocolate Churro Milkshake: 5.69
+  Avocado Enchiladas: 13.7
+  Street Corn Quesadilla: 7.06
+  Pineapple Jalapeno Slaw: 1.56
+  Spicy Beef Taco Salad: 11.47
+  Poblano Corn Chowder: 4.64
+  Creamy Avocado Caesar Salad: 11.13
+  Creamy Queso Dip: 7.26
+  Tequila Lime Grilled Steak: 20.95
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.85

@@ -1,0 +1,34 @@
+id: business_0261
+name: Sabor y Brisa Mexicana
+description: Experience a celebration of vibrant flavors and refreshing drinks inspired
+  by the coasts and countryside of Mexico. Gather with friends over creative bites
+  and spirited sips in a lively, welcoming atmosphere.
+rating: 1.0
+progenitor_customer: customer_0087
+menu_features:
+  Spiced Avocado Toast: 6.52
+  Crispy Fish Tacos: 13.04
+  Raspberry Chipotle Margarita: 9.15
+  Spicy Chicken Tortilla Soup: 8.56
+  Honey Lime Shrimp Skewers: 7.44
+  Avocado Lime Soup: 8.91
+  Fiesta Nachos Platter: 10.77
+  Pulled Pork Tamale Platter: 11.66
+  Sizzling Shrimp Fajitas: 17.15
+  Blueberry Mezcal Mule: 6.28
+  Baja Fish Taco Plate: 14.44
+  Chicken Fajita Quesadilla: 13.43
+  Spicy Chicken Enchiladas: 23.98
+  Tequila Sunrise Chicken Wings: 14.5
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.7

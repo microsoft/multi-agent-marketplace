@@ -1,0 +1,11 @@
+id: customer_0084
+name: Chloe Wilson
+request: Could you please help me find a business that serves an Avocado Lime Grilled
+  Chicken Salad and has outdoor seating as well as takes reservations? I intend to
+  place an order for 1 Avocado Lime Grilled Chicken Salad once you find a suitable
+  business. Thank you!
+menu_features:
+  Avocado Lime Grilled Chicken Salad: 11.99
+amenity_features:
+- Outdoor Seating
+- Takes Reservations

@@ -1,0 +1,35 @@
+id: business_0287
+name: Cantina Playa Sol
+description: Experience the vibrant flavors of Mexico and the Southwest with fresh
+  ingredients, bold spices, and a coastal twist. Enjoy creative bowls, shareable bites,
+  and decadent desserts in a warm, welcoming atmosphere.
+rating: 1.0
+progenitor_customer: customer_0096
+menu_features:
+  Baja Fish Taco Bowl: 6.22
+  Horchata Cheesecake: 4.19
+  Roasted Poblano Salsa Verde: 4.39
+  Smoky Chili-Lime Wings: 8.12
+  Crispy Avocado Bites: 7.68
+  Tomatillo Shrimp Cocktail: 8.81
+  Carne Asada Bowl: 17.62
+  Ancho Chili Chicken Enchiladas: 8.84
+  Fresh Baked Sopapillas: 3.35
+  Caramelized Onion Quesadilla: 9.24
+  Flan de Coco: 7.31
+  Avocado Citrus Salad: 12.88
+  Tequila Lime Shrimp Skewers: 10.74
+  Grilled Lime Chicken Fajitas: 15.47
+  Sweet Plantain Empanadas: 8.74
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.82

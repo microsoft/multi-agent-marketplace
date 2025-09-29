@@ -1,0 +1,36 @@
+id: business_0025
+name: Citrus & Spice Cantina
+description: Experience vibrant Mexican and Tex-Mex cuisine with a fresh twist at
+  Citrus & Spice Cantina. Our menu features zesty salads, grilled favorites, crave-worthy
+  appetizers, and sweet treats, all served in a lively, modern atmosphere.
+rating: 1.0
+progenitor_customer: customer_0009
+menu_features:
+  Zesty Lime Chicken Salad: 14.22
+  Chipotle Lime Chicken Bowl: 9.01
+  Crispy Taquito Sampler: 10.87
+  Tequila Lime Shrimp Cocktail: 16.5
+  Tex-Mex Steak Fajitas: 21.49
+  Queso Fundido Dip: 9.02
+  Stuffed Poblano Pepper Delight: 13.95
+  Beef Barbacoa Quesadilla: 10.64
+  Vanilla Bean Sopapillas: 6.15
+  Zesty Lime Shrimp Quesadillas: 11.03
+  Mexican Hot Chocolate: 2.79
+  Ancho Chile Beef Skewers: 14.29
+  Breakfast Chorizo Tostadas: 10.03
+  Passion Fruit Mojito Twist: 8.33
+  Tequila Sunrise Spritzer: 8.38
+  Beef and Bean Chimichanga: 13.61
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.68

@@ -1,0 +1,33 @@
+id: business_0036
+name: Mango & Maple Cantina
+description: Discover vibrant Mexican and Tex-Mex flavors with a modern twist at Mango
+  & Maple Cantina. From sweet and spicy sips to irresistible street eats, every dish
+  is crafted for a fresh and memorable dining experience.
+rating: 1.0
+progenitor_customer: customer_0012
+menu_features:
+  Maple Cinnamon Sopapillas: 4.7
+  Mango Jalapeno Margarita: 4.57
+  Chile-Lime Roasted Corn: 3.22
+  Three-Cheese Quesadilla: 9.5
+  Loaded Carnitas Nachos: 6.83
+  Red Chili Pork Tamale: 7.59
+  Chipotle Lime Shrimp Salad: 0.01
+  Chipotle Lime Chicken Burrito: 13.51
+  Chocolate Dipped Sopapillas: 6.77
+  Horchata Cheesecake: 8.37
+  Carne Asada Steak Plate: 14.84
+  Chipotle Chicken Caesar Burrito: 9.56
+  Mole-Braised Beef Burrito: 11.29
+amenity_features:
+  Children's Menu: false
+  Large Groups: true
+  Live Music: false
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: false
+  Outdoor Seating: false
+  Takes Reservations: true
+min_price_factor: 0.85

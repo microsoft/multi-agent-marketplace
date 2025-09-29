@@ -1,0 +1,33 @@
+id: business_0109
+name: "Saz\xF3n & Sizzle Kitchen"
+description: Experience bold Tex-Mex and Mexican flavors reimagined with fresh ingredients
+  and creative flair. From delicious shareable appetizers to satisfying mains, every
+  dish brings a twist on tradition in a vibrant, welcoming space.
+rating: 1.0
+progenitor_customer: customer_0037
+menu_features:
+  Pulled Pork Tamale Skillet: 10.01
+  Roasted Poblano Cornbread: 4.9
+  Honey Lime Chicken Wings: 5.8
+  Poblano Pepper Queso Dip: 11.29
+  Peach Habanero Salsa Wings: 14.47
+  Pineapple Salsa Guacamole: 7.98
+  Smoky Beef Fajitas: 13.08
+  Hibiscus Agua Fresca: 4.91
+  Pineapple Salsa Quesadilla: 11.94
+  Churro Bites with Chocolate Sauce: 7.53
+  Beer-Battered Avocado Fries: 9.75
+  Grilled Shrimp Quesadilla: 11.11
+  Ancho Chile Beef Burrito: 11.41
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.69

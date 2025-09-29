@@ -1,0 +1,37 @@
+id: business_0085
+name: Cactus & Chipotle Cantina
+description: A vibrant and welcoming spot serving bold Mexican and Tex-Mex favorites
+  with fresh flavors and smoky spices. Enjoy a variety of inventive dishes and signature
+  drinks in a festive, fun atmosphere.
+rating: 1.0
+progenitor_customer: customer_0029
+menu_features:
+  Smoky Chipotle Enchiladas: 10.25
+  Pineapple Pork Tacos: 10.5
+  Cinnamon Sugar Sopapillas: 5.71
+  Beef Fajita Burrito Bowl: 5.03
+  Shrimp and Avocado Salad: 12.73
+  Tres Amigos Sampler Platter: 11.39
+  Cherry Jalapeno Slushie: 7.62
+  Pico de Gallo Omelette: 5.55
+  Smoky Chipotle Chicken Burrito: 12.93
+  Cactus and Black Bean Tostadas: 6.51
+  Pollo Asado Burrito Bowl: 14.22
+  Pepper Jack Queso Dip: 7.38
+  Chipotle Lime Grilled Corn: 5.3
+  Adobo Chicken Tacos: 9.94
+  Mango Habanero Salsa: 6.62
+  Saffron Scented Arroz Verde: 3.93
+  Green Chili Chicken Soup: 6.71
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.9

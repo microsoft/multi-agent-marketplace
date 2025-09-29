@@ -1,0 +1,32 @@
+id: business_0155
+name: El Sabor Tropical
+description: Experience vibrant Mexican and Tex-Mex cuisine with bold spices, fresh
+  fruits, and classic flavors in a lively, welcoming atmosphere. Our menu brings together
+  sweet, smoky, and zesty tastes for a truly memorable dining experience.
+rating: 1.0
+progenitor_customer: customer_0052
+menu_features:
+  Spicy Chipotle Quesadilla: 11.53
+  Sweet Plantain Fritters: 6.73
+  Passion Fruit Margarita: 6.01
+  Tres Leches Cake: 5.94
+  Spicy Beef Empanadas: 13.07
+  Pineapple Chipotle Margarita: 11.34
+  Zesty Pineapple Salsa: 6.89
+  Cilantro Lime Grilled Corn: 5.34
+  Black Bean Avocado Tostadas: 6.17
+  Southwest Chicken Salad: 8.8
+  Smoky Lime Guacamole: 5.97
+  Traditional Horchata Drink: 2.88
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: true
+min_price_factor: 0.73

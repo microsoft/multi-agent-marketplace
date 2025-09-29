@@ -1,0 +1,13 @@
+id: customer_0008
+name: Lucas Chen
+request: Could you please assist me in finding a business that offers a Poblano Pepper
+  Relleno, a Coconut Mango Rice Pudding, and a Pulled Pork Tamale Plate and also takes
+  reservations and has a children's menu? It is important that the business meets
+  all of these criteria, as I intend to place an order for these items. Thank you.
+menu_features:
+  Poblano Pepper Relleno: 11.49
+  Coconut Mango Rice Pudding: 6.49
+  Pulled Pork Tamale Plate: 13.49
+amenity_features:
+- Takes Reservations
+- Children's Menu

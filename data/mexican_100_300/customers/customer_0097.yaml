@@ -1,0 +1,10 @@
+id: customer_0097
+name: Chloe Lewis
+request: Could you please help me find a business that offers Pico de Gallo Salsa
+  and also has Happy Hour and Outdoor Seating? I would like to place an order for
+  1 Pico de Gallo Salsa from them. Thank you!
+menu_features:
+  Pico de Gallo Salsa: 4.99
+amenity_features:
+- Happy Hour
+- Outdoor Seating

@@ -1,0 +1,12 @@
+id: customer_0043
+name: Joshua Lewis
+request: 'I would like assistance in finding a business that offers both the ''Creamy
+  Avocado Delight Salad'' and the ''Spinach and Mushroom Enchiladas,'' with outdoor
+  seating available. Once you find a suitable place, I intend to place an order for
+  these items in the following quantities: 1 ''Creamy Avocado Delight Salad'' and
+  1 ''Spinach and Mushroom Enchiladas.'' Thank you!'
+menu_features:
+  Creamy Avocado Delight Salad: 10.49
+  Spinach and Mushroom Enchiladas: 10.99
+amenity_features:
+- Outdoor Seating

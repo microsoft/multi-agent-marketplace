@@ -1,0 +1,34 @@
+id: business_0030
+name: "Sol y Saz\xF3n Grill"
+description: Experience the vibrant flavors of Mexico and the Southwest in a warm,
+  welcoming atmosphere, where fresh ingredients and bold combinations shine on every
+  plate. From zestful salads to handcrafted tacos and decadent desserts, each dish
+  celebrates tradition with a modern twist.
+rating: 1.0
+progenitor_customer: customer_0010
+menu_features:
+  Grilled Avocado Salad: 12.24
+  Avocado Tomatillo Salsa: 3.04
+  Spicy Lime Chicken Tacos: 12.65
+  Baja Fish Taco Plate: 8.76
+  Roasted Poblano Pepper Dip: 5.6
+  Spicy Black Bean Burrito: 13.13
+  Caramelized Onion Quesadilla: 5.2
+  Coconut Lime Tres Leches: 10.28
+  Black Bean & Sweet Potato Burrito: 8.57
+  Loaded Burrito Bowl: 10.24
+  Mango Cilantro Margarita: 11.63
+  Chipotle BBQ Carnitas: 12.71
+  Buttermilk Flan: 7.3
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: true
+min_price_factor: 0.67

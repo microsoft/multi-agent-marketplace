@@ -1,0 +1,33 @@
+id: business_0045
+name: Daiquiris & Cheese
+description: Where bold sips and melty dips meet fresh, vibrant Tex-Mex flavors. Gather
+  for savory bites, sweet treats, and a fiesta in every glass.
+rating: 1.0
+progenitor_customer: customer_0015
+menu_features:
+  Frozen Mango Jalapeno Daiquiri: 10.99
+  Agave Nectar Limeade: 2.8
+  Chili Lime Grilled Salmon: 18.77
+  Queso Fundido Dip: 5.0
+  Pineapple Cilantro Margarita: 11.2
+  Mexican Vanilla Flan: 5.58
+  Churro Sundae: 4.31
+  Spinach and Mushroom Empanadas: 8.14
+  Buttermilk Flan: 7.9
+  Coconut Lime Rice: 3.64
+  Grilled Chicken Fajita Salad: 12.71
+  Three-Alarm Chili Con Queso: 11.6
+  Three-Cheese Stuffed Poblano: 7.4
+  Beef Barbacoa Quesadilla: 9.88
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.84

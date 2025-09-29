@@ -1,0 +1,36 @@
+id: business_0209
+name: Crisp & Ceviche Cantina
+description: Fresh flavors and bold bites await at Crisp & Ceviche Cantina, where
+  creative Mexican and Tex-Mex favorites are served in a vibrant, welcoming atmosphere.
+  Enjoy a delicious mix of classics and contemporary twists inspired by sunny coasts
+  and zesty traditions.
+rating: 1.0
+progenitor_customer: customer_0070
+menu_features:
+  Tropical Shrimp Ceviche: 10.9
+  Coconut Tres Leches: 2.69
+  Crispy Potato Flautas: 7.48
+  Oven-Baked Ranchero Nachos: 7.64
+  Spicy Beef Empanadas: 5.35
+  Chorizo Breakfast Burrito: 9.61
+  Beef and Bean Chili Relleno: 8.67
+  Spicy Chipotle Quesadilla: 7.64
+  Avocado Lime Salad: 9.61
+  Crispy Taquito Sampler: 14.12
+  Tomatillo Guacamole Dip: 4.06
+  Pico de Gallo Omelette: 9.62
+  Pomegranate Paloma: 9.65
+  Tortilla Soup Supreme: 8.83
+  Chili Lime Shrimp Enchiladas: 13.54
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.95

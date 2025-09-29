@@ -1,0 +1,37 @@
+id: business_0031
+name: Tacozilla
+description: Prepare your appetite for a flavor invasion at Tacozilla, where bold
+  Mexican and Tex-Mex classics meet creative twists. From street-style tacos to zesty
+  salsas and refreshing house-made drinks, every bite is a flavor adventure.
+rating: 1.0
+progenitor_customer: customer_0011
+menu_features:
+  Guacamole and Salsa Sampler: 12.59
+  Street Style Beef Tacos: 10.69
+  Frozen Tamarind Margarita: 11.09
+  Seafood Ceviche Cocktail: 8.5
+  Black Bean Avocado Burrito: 13.6
+  Avocado Lime Salsa: 7.71
+  Roasted Poblano Rice Bowl: 3.51
+  Pineapple Habanero Wings: 7.16
+  Crispy Carnitas Nachos: 11.39
+  Blackened Shrimp Fajitas: 20.39
+  Crispy Fish Burrito: 11.31
+  Street Corn Fritters: 8.43
+  Pineapple Salsa Nachos: 12.96
+  Habanero Lime Chicken Wings: 10.23
+  Ranchero Breakfast Burrito: 10.09
+  Grilled Chicken Tortilla Soup: 8.26
+  Avocado Cilantro Smoothie: 4.68
+amenity_features:
+  Children's Menu: true
+  Large Groups: false
+  Live Music: false
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Onsite Parking: false
+  Happy Hour: true
+  Private Dining: true
+  Outdoor Seating: true
+  Takes Reservations: true
+min_price_factor: 0.93

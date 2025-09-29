@@ -1,0 +1,14 @@
+id: customer_0037
+name: Emma Hassan
+request: 'Could you please find a business that serves the following items: 1 Honey
+  Lime Chicken Wings, 1 Pineapple Salsa Quesadilla, and 1 Churro Bites with Chocolate
+  Sauce? It''s essential that the business also accommodates large groups and offers
+  free Wifi. Once identified, I would like to place an order for the mentioned items.
+  Thank you for your assistance.'
+menu_features:
+  Honey Lime Chicken Wings: 9.99
+  Pineapple Salsa Quesadilla: 9.49
+  Churro Bites with Chocolate Sauce: 5.99
+amenity_features:
+- Large Groups
+- Free Wifi

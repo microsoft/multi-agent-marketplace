@@ -1,0 +1,35 @@
+id: business_0017
+name: Chimi-Charm & Salsa Sage
+description: Spice up your day with our inventive Tex-Mex and Mexican dishes, handcrafted
+  drinks, and vibrant, welcoming atmosphere. From sizzling favorites to fresh, zesty
+  delights, every bite is a fiesta of flavors.
+rating: 1.0
+progenitor_customer: customer_0006
+menu_features:
+  Chargrilled Carne Asada: 19.93
+  Vegetarian Enchilada Delight: 12.26
+  Mango Habanero Glazed Salmon: 18.81
+  Zesty Shrimp Fajitas: 11.36
+  Smoky Beef Enchiladas: 20.81
+  Blackberry Sage Margarita: 9.41
+  Steak and Cheese Chimichanga: 17.42
+  Avocado Citrus Salad: 9.28
+  Wild Mushroom Tostada: 13.55
+  Sizzling Beef Quesadillas: 12.63
+  Sizzling Beef Nachos: 12.48
+  Frozen Mango Jalapeno Daiquiri: 11.1
+  Chorizo and Egg Tacos: 5.46
+  House-Made Horchata: 4.19
+  Spiked Horchata: 7.22
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: false
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Onsite Parking: true
+  Happy Hour: false
+  Private Dining: true
+  Outdoor Seating: true
+  Takes Reservations: true
+min_price_factor: 0.68

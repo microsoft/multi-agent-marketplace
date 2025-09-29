@@ -1,0 +1,36 @@
+id: business_0220
+name: Urban Cactus Cantina
+description: Step into Urban Cactus Cantina for a modern twist on classic Mexican
+  and Tex-Mex favorites, where bold flavors and imaginative dishes are served in a
+  vibrant, lively setting. Experience fresh takes on street food staples, savory entrees,
+  and irresistible desserts.
+rating: 1.0
+progenitor_customer: customer_0074
+menu_features:
+  Spicy Black Bean Quesadilla: 8.99
+  Chipotle Honey Wings: 7.34
+  Sizzling Fajita Platter: 14.3
+  "Flan Caraibe\xF1o": 8.86
+  Tequila Lime Shrimp Bowl: 12.49
+  Blackened Fish Tacos: 13.01
+  Charro Bean Burrito: 7.15
+  Poblano Pepper Queso Dip: 7.72
+  Mango Jalapeno Salsa: 5.12
+  Churro Bites with Chocolate Dip: 7.42
+  Carne Asada Skillet: 15.59
+  Churro Fiesta Platter: 3.68
+  Black Bean and Corn Tostadas: 5.99
+  Pumpkin Spice Flan: 5.56
+  Chipotle Chicken Caesar Burrito: 10.29
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.85

@@ -1,0 +1,35 @@
+id: business_0210
+name: Chili & Citrus Cantina
+description: Experience vibrant Tex-Mex cuisine where zesty chiles meet fresh citrus
+  in every bite. Enjoy bold flavors, unique cocktails, and a lively, welcoming atmosphere
+  perfect for any gathering.
+rating: 1.0
+progenitor_customer: customer_0070
+menu_features:
+  Hatch Chile Queso Dip: 6.26
+  Sizzling Chorizo Empanadas: 5.22
+  Tropical Shrimp Ceviche: 14.22
+  Frozen Tamarind Margarita: 9.43
+  Pineapple Habanero Wings: 6.33
+  Roasted Red Pepper and Black Bean Soup: 7.89
+  Mexican Chocolate Brownie: 5.81
+  Pomegranate Paloma: 10.5
+  Red Chili Braised Beef Tacos: 12.39
+  Beef and Bean Chili Relleno: 11.19
+  Ancho Chile Beef Skewers: 9.18
+  Tamarind Glazed Ribs: 8.35
+  Tender Lime Cilantro Steak Fajitas: 22.25
+  Pineapple Cilantro Margarita: 8.88
+  Pineapple Avocado Salsa: 7.1
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: true
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.76

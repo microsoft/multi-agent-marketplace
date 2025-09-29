@@ -1,0 +1,35 @@
+id: business_0224
+name: El Patio de Chipotle
+description: "Experience the bold and vibrant flavors of Mexican and Tex-Mex cuisine\
+  \ in a lively, welcoming setting. Our menu features smoky grilled meats, zesty tacos,\
+  \ sizzling nachos, and creative salads\u2014perfect for any craving."
+rating: 1.0
+progenitor_customer: customer_0075
+menu_features:
+  Honey Chipotle Grilled Chicken: 10.05
+  Steak and Cheese Chimichanga: 12.65
+  Chipotle Lime Chicken Wings: 10.91
+  Roasted Vegetable Quesadilla: 10.32
+  Spicy Beef Nacho Platter: 10.79
+  Chipotle Chicken Tacos: 10.7
+  Tangy Lime Cilantro Tacos: 13.96
+  Sizzling Beef Nachos: 12.86
+  SoCo Street Nachos: 17.77
+  Pineapple Salsa Shrimp Skewers: 17.42
+  Grilled Lime Cilantro Shrimp: 7.67
+  Loaded Nachos Grande: 9.21
+  Maple Cinnamon Sopapillas: 10.83
+  Classic Beef Empanadas: 14.53
+  Cactus Citrus Salad: 7.89
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.67

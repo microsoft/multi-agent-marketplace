@@ -1,0 +1,33 @@
+id: business_0103
+name: Bean There, Spiced That
+description: Savor a bold blend of classic Mexican and Tex-Mex favorites with a zesty
+  twist in every bite. From sizzling empanadas to sweet, cinnamon-kissed treats, our
+  menu brings vibrant flavors and creativity to every plate.
+rating: 1.0
+progenitor_customer: customer_0035
+menu_features:
+  Spiced Beef Empanadas: 9.49
+  Sizzling Beef Chimichangas: 14.9
+  Blueberry Basil Agua Fresca: 2.61
+  Chipotle Chicken Quesadilla: 16.87
+  Roasted Corn and Poblanos: 6.75
+  Mexican Vanilla Flan: 9.54
+  Charro Bean Burrito: 11.34
+  Pineapple Jalapeno Slaw: 4.36
+  Shrimp Diablo Tostadas: 15.21
+  Pineapple Jalapeno Agua Fresca: 4.36
+  Churro Cinnamon Roll: 7.45
+  Chipotle Honey Wings: 9.38
+  Roasted Poblano Avocado Smash: 4.9
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.66

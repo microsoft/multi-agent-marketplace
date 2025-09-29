@@ -1,0 +1,38 @@
+id: business_0041
+name: Bean Me Up, Salsa!
+description: Dive into a zesty world of Tex-Mex flavor with bold cocktails, vibrant
+  salsas, and crave-worthy grilled specialties. Our creative menu brings a spicy twist
+  to classic favorites in an upbeat, welcoming atmosphere.
+rating: 1.0
+progenitor_customer: customer_0014
+menu_features:
+  Fiery Red Salsa: 4.11
+  Mango Jalapeno Margarita: 14.41
+  Agave Nectar Cocktail: 6.4
+  Vegetarian Black Bean Tostadas: 6.73
+  Crispy Taquito Sampler: 12.72
+  Creamy Tomatillo Enchiladas: 12.47
+  Pineapple Jalapeno Salsa: 4.95
+  Garlic Lime Shrimp Skewers: 12.18
+  Molten Lava Chocolate Cake: 6.59
+  Tamarind Chipotle Wings: 11.32
+  Tropical Shrimp Ceviche: 9.94
+  Pomegranate Paloma: 9.02
+  Avocado Cilantro Lime Salad: 8.52
+  Tequila Lime Grilled Steak: 19.19
+  Smoky Chipotle Wings: 14.05
+  Chipotle Honey Wings: 7.92
+  Chipotle Steak Fajitas: 9.41
+  Crispy Beef Taquitos: 9.64
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: true
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.91

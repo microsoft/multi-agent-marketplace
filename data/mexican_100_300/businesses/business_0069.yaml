@@ -1,0 +1,33 @@
+id: business_0069
+name: Chili & Chimichurri
+description: A vibrant Tex-Mex eatery serving bold flavors, creative small plates,
+  and classic favorites with a modern twist. Experience a colorful fusion of tradition
+  and innovation in every bite.
+rating: 1.0
+progenitor_customer: customer_0023
+menu_features:
+  Pico de Gallo Tostadas: 8.72
+  Ancho Chili Black Bean Soup: 7.2
+  Caramelized Onion and Goat Cheese Empanadas: 8.72
+  Texas BBQ Brisket Tacos: 11.7
+  Hatch Green Chile Queso: 6.78
+  Spicy Bacon & Egg Quesadilla: 11.08
+  Cajeta-filled Sopapillas: 7.05
+  Hatch Green Chile Quesadilla: 12.92
+  Avocado Lime Grilled Shrimp: 17.55
+  Grilled Pineapple Mojito: 15.09
+  Crispy Avocado Bites: 5.29
+  Chipotle BBQ Carnitas: 14.17
+  Chocolate Dipped Flan: 8.41
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.65

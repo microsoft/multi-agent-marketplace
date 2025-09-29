@@ -1,0 +1,11 @@
+id: customer_0069
+name: Jessica Patel
+request: 'Please find a business that can fulfill the following order and requirements:
+  Order 1 Pineapple Agua Fresca and ensure the business offers a Children''s Menu.
+  It is important that both the menu item and the amenity are available as specified.
+  Once you''ve identified such a business, please proceed to place the order. Thank
+  you.'
+menu_features:
+  Pineapple Agua Fresca: 3.49
+amenity_features:
+- Children's Menu

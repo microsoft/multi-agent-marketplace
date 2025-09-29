@@ -1,0 +1,36 @@
+id: business_0134
+name: Margarita & Mango
+description: Experience a vibrant twist on Tex-Mex favorites in a cheerful setting
+  where fresh flavors and creative cocktails come together. From zesty bowls to refreshing
+  margaritas, every bite is crafted for a fiesta of taste.
+rating: 1.0
+progenitor_customer: customer_0045
+menu_features:
+  Tequila Lime Shrimp Bowl: 15.63
+  Three Cheese Quesadillas: 8.3
+  Smokey Mezcal Paloma: 7.79
+  Crispy Fish Taco Duo: 9.11
+  Pomegranate Pisco Sour: 9.1
+  Tex-Mex Breakfast Skillet: 12.97
+  Cactus and Black Bean Tostadas: 10.21
+  Fresh Pineapple Salsa: 5.98
+  Ancho Chile Beef Burrito: 9.16
+  Pineapple Habanero Margarita: 8.22
+  Cactus Cooler Margarita: 9.1
+  Fiesta Nacho Bowl: 10.93
+  Grilled Pineapple Skewers: 6.3
+  Creamy Queso Dip: 5.59
+  Pollo Asado Burrito Bowl: 13.1
+  Blackberry Sage Margarita: 8.83
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.88

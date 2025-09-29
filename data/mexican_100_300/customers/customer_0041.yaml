@@ -1,0 +1,13 @@
+id: customer_0041
+name: Benjamin Hall
+request: 'Could you please assist me in finding a business that offers the following
+  menu items: 1 Chili-Lime Grilled Corn, 1 Spicy Black Bean Tostadas, and 1 Tequila
+  Sunrise Fajitas? Additionally, it is essential that the business provides a Children''s
+  Menu. Once you find such a business, I would like to proceed with placing an order
+  for the items specified. Thank you for your help.'
+menu_features:
+  Chili-Lime Grilled Corn: 3.99
+  Spicy Black Bean Tostadas: 11.79
+  Tequila Sunrise Fajitas: 16.49
+amenity_features:
+- Children's Menu

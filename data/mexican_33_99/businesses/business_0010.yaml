@@ -1,0 +1,36 @@
+id: business_0010
+name: Poblano Palate
+description: Experience vibrant Mexican and Tex-Mex flavors in a warm, inviting atmosphere.
+  From smoky appetizers to indulgent desserts, our menu showcases creative twists
+  on classic favorites.
+rating: 1.0
+progenitor_customer: customer_0004
+menu_features:
+  Pomegranate Pisco Sour: 7.06
+  Cajeta-filled Sopapillas: 11.26
+  Hibiscus Mint Iced Tea: 2.77
+  Cheesy Jalapeno Queso: 9.21
+  Crispy Carnitas Nachos: 6.78
+  Jalapeno-Lime Cheesecake: 6.79
+  Pulled Pork Tamale Platter: 10.39
+  Avocado and Tomato Salsa: 5.46
+  Roasted Poblano Queso Dip: 8.28
+  Chorizo Breakfast Skillet: 7.5
+  Sopa de Tortilla: 5.47
+  Spiced Mexican Coffee: 6.61
+  Spicy Corn and Poblano Soup: 6.75
+  Coconut Lime Rice: 4.19
+  Breakfast Chorizo Migas: 7.88
+  Chocolate Flan: 4.03
+amenity_features:
+  Children's Menu: false
+  Large Groups: true
+  Live Music: false
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: true
+min_price_factor: 0.94

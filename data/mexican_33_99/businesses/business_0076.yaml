@@ -1,0 +1,34 @@
+id: business_0076
+name: La Mesa de Lumbre
+description: Experience vibrant Mexican and Tex-Mex flavors crafted with smoky, zesty,
+  and fresh ingredients. From breakfast classics to spicy desserts and creative drinks,
+  each dish celebrates the warmth and joy of the Mexican table.
+rating: 1.0
+progenitor_customer: customer_0026
+menu_features:
+  Horchata Iced Latte: 4.3
+  Tex-Mex Breakfast Burrito: 7.43
+  Smoked Chipotle Chicken Skewers: 9.94
+  Zesty Lime Chicken Skewers: 7.41
+  Stuffed Poblano Delight: 8.71
+  Raspberry Jalapeno Cheesecake: 6.59
+  Ancho Chili Beef Enchiladas: 13.16
+  Avocado Lime Crema Quesadillas: 15.25
+  Grilled Vegetable Quesadilla: 8.19
+  Cilantro Lime Rice: 4.46
+  Black Bean Quinoa Bowl: 10.21
+  Passion Fruit Mojito Twist: 12.57
+  Pineapple Agua Fresca: 3.28
+  Spicy Chocolate Lava Cake: 8.36
+amenity_features:
+  Children's Menu: true
+  Large Groups: false
+  Live Music: false
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Onsite Parking: true
+  Happy Hour: true
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.6

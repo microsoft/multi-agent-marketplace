@@ -1,0 +1,32 @@
+id: business_0294
+name: Pumpkin Spice & Streetwise
+description: "Where modern Tex-Mex meets bold tradition\u2014dig into vibrant street\
+  \ snacks, smoky meats, zesty salads, and just-sweet-enough treats in an atmosphere\
+  \ as lively as your cravings."
+rating: 1.0
+progenitor_customer: customer_0098
+menu_features:
+  Savory Pumpkin Empanadas: 7.52
+  Street Corn Fritters: 3.94
+  Beef Barbacoa Burrito: 9.73
+  Tequila Sunrise Chicken Wings: 11.82
+  Street Corn Nachos: 7.33
+  Chili Lime Grilled Chicken: 13.8
+  Chipotle Lime Chicken Salad: 10.9
+  Hatch Green Chile Burrito: 16.81
+  Mole Chicken Burrito: 11.64
+  Cinnamon Sugar Sopapillas: 6.97
+  Spicy Cilantro Shrimp Skewers: 9.54
+  Chili Lime Nachos: 11.99
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.77

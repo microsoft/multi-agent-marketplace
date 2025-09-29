@@ -1,0 +1,16 @@
+id: customer_0068
+name: Charlotte Kim
+request: 'I am seeking assistance in locating a business that can fulfill a specific
+  order and meets certain requirements. I need a business that offers the following
+  menu items: 1 Fresh Guacamole Platter, 1 Smoky Black Bean Burrito, and 1 Grilled
+  Steak Fajita Platter. Additionally, it is crucial that the business is both Wheelchair
+  Accessible and offers Free Wifi. Once a suitable business is found, I plan to place
+  an order for these items. Thank you for your help in finding a business that meets
+  all these criteria.'
+menu_features:
+  Fresh Guacamole Platter: 8.49
+  Smoky Black Bean Burrito: 9.99
+  Grilled Steak Fajita Platter: 15.99
+amenity_features:
+- Wheelchair Accessible
+- Free Wifi

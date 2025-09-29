@@ -1,0 +1,14 @@
+id: customer_0019
+name: "Daniel M\xFCller"
+request: 'Could you please assist me in finding a business that serves the following
+  menu items: Black Bean and Quinoa Tacos (1), Cactus and Black Bean Tacos (1), and
+  Hibiscus Iced Tea (1)? Additionally, the business must provide live music and take
+  reservations. Once such a business is identified, I would like to place an order
+  for these items. Thank you for your assistance!'
+menu_features:
+  Black Bean and Quinoa Tacos: 10.49
+  Cactus and Black Bean Tacos: 11.49
+  Hibiscus Iced Tea: 3.49
+amenity_features:
+- Live Music
+- Takes Reservations

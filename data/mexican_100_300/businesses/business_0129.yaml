@@ -1,0 +1,37 @@
+id: business_0129
+name: Savor & Squeeze
+description: Modern Mexican and Tex-Mex cuisine with bold flavors, crisp veggies,
+  zesty spices, and vibrant, refreshing drinks. Dive into a fresh twist on south-of-the-border
+  classics in a lively, colorful setting.
+rating: 1.0
+progenitor_customer: customer_0043
+menu_features:
+  Chocolate Mole Chicken: 12.58
+  Avocado Lime Slaw: 4.69
+  Southwestern Breakfast Burrito: 7.12
+  Spinach and Mushroom Enchiladas: 12.29
+  Roasted Vegetable Fajitas: 11.41
+  Spicy Ground Beef Empanadas: 9.83
+  Southwest Black Bean Quesadilla: 9.52
+  Creamy Avocado Delight Salad: 10.32
+  Queso Fundido with Chorizo: 9.2
+  Cherry Jalapeno Slushie: 5.27
+  Pineapple Passion Mojito: 12.27
+  Smoky Chipotle Wings: 13.21
+  Caramelized Onion & Cheese Quesadilla: 9.45
+  Ancho Chili Lime Shrimp: 13.56
+  Spicy Lime Chicken Tacos: 14.09
+  Honey Chipotle Ribs: 12.77
+  Chili Lime Shrimp Enchiladas: 8.35
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.62

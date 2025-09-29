@@ -1,0 +1,32 @@
+id: business_0013
+name: Agave & Ember
+description: Agave & Ember brings a fresh take on Mexican and Tex-Mex cuisine, featuring
+  vibrant salads, creative street bowls, signature tamales, and bold flavors inspired
+  by tradition. Gather with friends and savor our flavorful bites and refreshing drinks
+  in a lively, modern setting.
+rating: 1.0
+progenitor_customer: customer_0005
+menu_features:
+  Black Bean Street Corn Bowl: 8.41
+  Red Chili Beef Empanadas: 13.77
+  Blueberry Agave Salad: 9.42
+  Black Bean and Corn Tamales: 14.81
+  Sweet Plantain Fritters: 8.62
+  Tequila Sunrise Slushie: 4.95
+  Avocado Cilantro Lime Salad: 7.25
+  Al Pastor Pork Tacos: 8.74
+  Al Pastor Nachos: 16.88
+  Caramelized Onion & Cheese Quesadilla: 10.56
+  Loaded Nacho Platter: 8.84
+amenity_features:
+  Takes Reservations: false
+  Private Dining: false
+  Large Groups: false
+  Onsite Parking: true
+  Outdoor Seating: false
+  Children's Menu: true
+  Free Wifi: true
+  Live Music: false
+  Wheelchair Accessible: true
+  Happy Hour: false
+min_price_factor: 0.75

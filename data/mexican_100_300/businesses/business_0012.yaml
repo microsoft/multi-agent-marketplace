@@ -1,0 +1,33 @@
+id: business_0012
+name: La Cuchara Fresca
+description: Experience vibrant Mexican and Tex-Mex flavors in a welcoming atmosphere.
+  Our kitchen crafts fresh, bold dishes and creative drinks inspired by the heart
+  of Mexico.
+rating: 1.0
+progenitor_customer: customer_0004
+menu_features:
+  Cucumber Jalapeno Margarita: 8.05
+  Black Bean and Corn Enchiladas: 8.9
+  Crispy Avocado Egg Rolls: 13.91
+  Chile-Lime Roasted Corn: 4.7
+  "Cheesy Jalape\xF1o Poppers": 5.69
+  Spiced Mexican Coffee: 4.95
+  Cinnamon Sugar Sopapillas: 6.12
+  Red Chili Braised Beef Tacos: 9.52
+  Agave Nectar Limeade: 2.86
+  Zesty Avocado Salad: 11.84
+  Grilled Elote Corn: 5.5
+  Dulce de Leche Flan: 4.67
+  Pico de Gallo Shrimp Cocktail: 11.09
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.8

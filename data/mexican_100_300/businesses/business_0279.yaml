@@ -1,0 +1,36 @@
+id: business_0279
+name: Salsa & Sizzle
+description: Experience the vibrant flavors of modern Mexican and Tex-Mex cuisine
+  in a lively, welcoming atmosphere. Enjoy fresh salsas, smoky meats, and creative
+  takes on classic favorites.
+rating: 1.0
+progenitor_customer: customer_0093
+menu_features:
+  Avocado Lime Salsa: 5.31
+  Pineapple Salsa Pork Sliders: 11.88
+  Smoky Chipotle Ribs: 16.13
+  Steak and Cheese Chimichanga: 18.07
+  Tequila Sunrise Chicken Wings: 14.24
+  Avocado Lime Parfait: 7.93
+  Stuffed Poblano Relleno: 10.64
+  Sweet Potato Chorizo Hash: 9.04
+  Avocado Corn Salsa: 6.19
+  Sizzling Fajita Bowl: 9.1
+  Chocolate Churro Milkshake: 5.87
+  Poblano Corn Chowder: 13.58
+  Ancho Chile Brownies: 4.73
+  Breakfast Burrito Bowl: 6.44
+  Ancho Chile Chocolate Cake: 7.9
+  Smoky Chipotle Burger: 12.45
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.85

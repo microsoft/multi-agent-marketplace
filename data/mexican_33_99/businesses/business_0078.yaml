@@ -1,0 +1,34 @@
+id: business_0078
+name: Fajita Chip-off the Old Block
+description: Bringing a fresh twist to Mexican and Tex-Mex favorites, we blend smoky,
+  bold flavors with unexpected sweet delights. From sizzling fajitas to indulgent
+  desserts, every bite is a fiesta for your taste buds.
+rating: 1.0
+progenitor_customer: customer_0026
+menu_features:
+  Smoky Chipotle Wings: 13.29
+  Tender Lime Cilantro Steak Fajitas: 24.62
+  Mole Enchiladas: 14.54
+  Spicy Chocolate Mousse: 5.85
+  Chipotle Lime Fajitas: 18.97
+  Chipotle Lime Shrimp Bowl: 16.01
+  Beef Fajita Burrito Bowl: 8.42
+  Stuffed Poblano Delight: 10.61
+  Tex-Mex Breakfast Burrito: 11.02
+  Churro Cinnamon Roll: 8.33
+  Pineapple Salsa Nachos: 5.17
+  Avocado Lime Cheesecake: 6.06
+  Morning Chorizo Scramble: 14.3
+  Buttermilk Flan: 4.7
+amenity_features:
+  Children's Menu: false
+  Large Groups: true
+  Live Music: false
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Onsite Parking: false
+  Happy Hour: true
+  Private Dining: false
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.61

@@ -1,0 +1,36 @@
+id: business_0206
+name: Poblano Porch
+description: Step onto Poblano Porch for vibrant Mexican and Tex-Mex flavors served
+  fresh in a lively, welcoming setting. Enjoy a creative twist on classic favorites
+  and bold beverages, inspired by the zest and warmth of the Southwest.
+rating: 1.0
+progenitor_customer: customer_0069
+menu_features:
+  Sweet Corn Tamales: 4.92
+  Mango Jalapeno Margarita: 8.29
+  Grilled Vegetable Quesadilla: 6.93
+  Breakfast Burrito Bowl: 6.92
+  Cheesy Jalapeno Queso: 7.14
+  Horchata Iced Latte: 5.45
+  Pineapple Agua Fresca: 3.19
+  Jalapeno Lime Rice Bowl: 8.2
+  Roasted Poblano Avocado Smash: 5.12
+  Grilled Steak Fajita Bowl: 18.0
+  Chili Lime Chicken Salad: 8.57
+  Blueberry Jalapeno Margarita: 12.88
+  Chipotle BBQ Carnitas: 11.89
+  Smoky Beef Fajitas: 9.97
+  Charred Poblano Quesadillas: 8.87
+  Black Bean Veggie Tacos: 10.71
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.75

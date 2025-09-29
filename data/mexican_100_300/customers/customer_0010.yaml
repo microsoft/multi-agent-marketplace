@@ -1,0 +1,14 @@
+id: customer_0010
+name: Aisha Patel
+request: 'Could you please help me find a business that can fulfill the following
+  order: 1 Caramelized Onion Quesadilla, 1 Coconut Lime Tres Leches, and 1 Baja Fish
+  Taco Plate? It is essential that the business also offers a Children''s Menu and
+  Live Music. Once you''ve found a suitable business, I intend to place this order.
+  Thank you for your assistance.'
+menu_features:
+  Caramelized Onion Quesadilla: 9.99
+  Coconut Lime Tres Leches: 6.99
+  Baja Fish Taco Plate: 13.49
+amenity_features:
+- Children's Menu
+- Live Music

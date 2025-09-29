@@ -1,0 +1,36 @@
+id: business_0241
+name: Skillet Me Softly
+description: A sizzling Tex-Mex retreat serving up bold flavors and creative cocktails
+  in a vibrant atmosphere. Come for the classics with a twist, stay for the sweet
+  and spicy surprises.
+rating: 1.0
+progenitor_customer: customer_0081
+menu_features:
+  Sizzling Beef Quesadillas: 11.05
+  Mole Sauce Tamale: 8.4
+  Pulled Pork Tamale Plate: 13.68
+  Mango Jalapeno Margarita: 8.39
+  Strawberry Jalapeno Mojito: 9.04
+  Chili Verde Queso Dip: 10.8
+  Honey Lime Chicken Skewers: 10.19
+  Tres Leches Cake: 6.92
+  Sizzling Beef Chimichangas: 11.6
+  Sizzling Skillet Fajitas: 9.88
+  Pomegranate Pisco Sour: 5.63
+  Spicy Paloma Cocktail: 10.46
+  Mole Enchilada Supreme: 3.79
+  Citrus Marinated Pork Carnitas: 16.97
+  Smoky Chipotle Enchiladas: 14.93
+  Raspberry Chipotle Margarita: 6.58
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.86

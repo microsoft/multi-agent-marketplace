@@ -1,0 +1,33 @@
+id: business_0200
+name: Guac & Awe
+description: Prepare to be amazed by vibrant flavors and inventive twists on classic
+  Mexican and Tex-Mex favorites. From hearty bowls to crave-worthy bites, our kitchen
+  celebrates fresh veggies, bold spices, and a dash of fun in every dish.
+rating: 1.0
+progenitor_customer: customer_0067
+menu_features:
+  Roasted Veggie Burrito: 15.42
+  Chipotle Lime Shrimp Salad: 12.25
+  Creamy Avocado Soup: 5.02
+  Mole Enchilada Supreme: 11.56
+  Sweet Potato Black Bean Tacos: 11.14
+  Sweet Corn Tamales: 6.62
+  Avocado Lime Soup: 7.22
+  Mango Chili Margarita: 6.1
+  Street Corn Skillet: 4.86
+  Caramelized Onion & Cheese Dip: 5.1
+  Roasted Vegetable Tostadas: 11.64
+  Savory Black Bean Soup: 5.47
+  Mexican Chocolate Brownie: 7.44
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.92

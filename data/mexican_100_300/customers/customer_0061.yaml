@@ -1,0 +1,14 @@
+id: customer_0061
+name: Liam Singh
+request: 'I am looking for a business that serves the following menu items: ''Jalapeno
+  Watermelon Sangria'' (1), ''Pepper Jack Cornbread Muffins'' (1), and ''Pepper Jack
+  Quesadilla'' (1). Additionally, it''s essential that this business takes reservations
+  and offers outdoor seating. Once you identify such a business, I would like to proceed
+  with placing an order for the mentioned items. Thank you for your assistance.'
+menu_features:
+  Jalapeno Watermelon Sangria: 8.49
+  Pepper Jack Cornbread Muffins: 3.99
+  Pepper Jack Quesadilla: 9.99
+amenity_features:
+- Takes Reservations
+- Outdoor Seating

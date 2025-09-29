@@ -1,0 +1,33 @@
+id: business_0289
+name: Holy Shrimp & Salsa, Batman!
+description: Dive into a fiesta of bold flavors and playful twists where fresh seafood,
+  zesty salsas, and vibrant Tex-Mex classics meet in a cozy, upbeat setting. Spice,
+  sweetness, and just a little bit of mischief await your taste buds.
+rating: 1.0
+progenitor_customer: customer_0097
+menu_features:
+  Street Corn Fritters: 7.69
+  Honey Lime Grilled Shrimp: 15.99
+  Tropical Fruit Agua Fresca: 2.76
+  Spicy Bean and Cheese Quesadillas: 10.6
+  Shrimp Diablo Tostadas: 17.36
+  Cinnamon Dulce Nachos: 7.05
+  Pineapple Habanero Margarita: 10.87
+  Chocolate Chipotle Mousse: 9.57
+  Carne Asada Steak Plate: 17.01
+  Smoky Chipotle Queso: 5.57
+  Coconut Lime Shrimp Tacos: 13.48
+  Pico de Gallo Salsa: 4.26
+  Black Bean and Corn Soup: 4.02
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.71

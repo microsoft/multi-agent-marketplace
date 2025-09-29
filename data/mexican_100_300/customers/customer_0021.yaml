@@ -1,0 +1,10 @@
+id: customer_0021
+name: Maya Petrova
+request: Could you please help me find a business that offers both Honey Chipotle
+  Glazed Wings and Chili Con Queso Dip, with quantities of 1 each, and also provides
+  Free Wifi? Once identified, I would like to place an order with them. Thank you!
+menu_features:
+  Honey Chipotle Glazed Wings: 9.79
+  Chili Con Queso Dip: 6.95
+amenity_features:
+- Free Wifi

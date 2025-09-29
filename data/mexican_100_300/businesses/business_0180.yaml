@@ -1,0 +1,32 @@
+id: business_0180
+name: El Nopal Dorado
+description: Experience vibrant Mexican and Tex-Mex flavors in a welcoming atmosphere,
+  where creative dishes highlight fresh ingredients and classic culinary traditions.
+  From hearty breakfasts to indulgent desserts, every meal is crafted to delight your
+  senses.
+rating: 1.0
+progenitor_customer: customer_0060
+menu_features:
+  Chocolate Flan: 7.62
+  Spicy Avocado Breakfast Wrap: 11.17
+  Veggie Enchilada Stack: 20.52
+  Adobo-Marinated Pork Carnitas: 10.75
+  Avocado Tomatillo Salsa: 4.76
+  Jalapeno Lime Rice Bowl: 8.47
+  Cactus and Black Bean Frittata: 14.02
+  Creamy Avocado Soup: 8.09
+  Zesty Lime Ceviche: 11.06
+  Beef and Bean Chimichanga: 6.35
+  Tropical Lime Ceviche: 13.55
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.86

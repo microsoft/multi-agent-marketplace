@@ -1,0 +1,37 @@
+id: business_0254
+name: Barbacoa & Blueberry
+description: A vibrant getaway for classic and creative Mexican and Tex-Mex cuisine,
+  blending bold flavors and unexpected twists. Dive into street-style bites, zesty
+  burritos, and sweet treats in a welcoming atmosphere.
+rating: 1.0
+progenitor_customer: customer_0085
+menu_features:
+  Beef Barbacoa Burrito: 17.6
+  Chipotle Chicken Skillet: 10.98
+  Sweet Potato Black Bean Tacos: 18.0
+  Cilantro Lime Rice: 3.06
+  Honey Chipotle Grilled Chicken: 14.44
+  Crispy Chicken Enchiladas: 19.99
+  Spicy Beef Burrito Bowl: 16.13
+  Pineapple Cilantro Cooler: 4.63
+  Street Corn Fritters: 4.98
+  Guajillo Grilled Steak Burrito: 17.32
+  Roasted Corn Guacamole: 8.03
+  Blueberry Tequila Cobbler: 4.51
+  Horchata Almond Cake: 5.85
+  Savory Black Bean Soup: 9.33
+  Verde Chicken Chimichanga: 13.27
+  Grilled Lime Cilantro Shrimp: 17.32
+  Honey Chipotle Glazed Wings: 11.54
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.61

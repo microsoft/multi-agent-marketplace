@@ -1,0 +1,32 @@
+id: business_0252
+name: Calle Sabor & Sol
+description: Experience the lively flavors of Mexican and Tex-Mex cuisine in a vibrant,
+  sun-kissed atmosphere. From sizzling salads to bold breakfast and grill-inspired
+  specialties, every dish brings a taste of tradition with a fresh, modern twist.
+rating: 1.0
+progenitor_customer: customer_0084
+menu_features:
+  Sizzling Fajita Salad: 8.05
+  Spicy Beef Chimichanga: 16.68
+  Pineapple Habanero Paloma: 7.82
+  Avocado Lime Grilled Chicken Salad: 16.02
+  Al Pastor Breakfast Burrito: 9.41
+  Hatch Green Chile Burger: 13.02
+  Cherry Chipotle Glazed Ribs: 11.49
+  Tex-Mex Breakfast Skillet: 16.22
+  Street-Style Carnitas: 11.53
+  Pineapple Jalapeno Cooler: 10.21
+  Three Cheese Enchiladas: 8.9
+  Grilled Elote Corn: 4.07
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.81

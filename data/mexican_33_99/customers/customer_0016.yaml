@@ -1,0 +1,11 @@
+id: customer_0016
+name: Sarah Lee
+request: Could you please assist me in finding a business that offers both Grilled
+  Lime Shrimp Skewers and Spicy Chicken Fajita Salad in the quantities of 1 each,
+  and also has onsite parking? These are essential for my needs, and I intend to place
+  an order with such a business. Thank you!
+menu_features:
+  Grilled Lime Shrimp Skewers: 13.99
+  Spicy Chicken Fajita Salad: 11.49
+amenity_features:
+- Onsite Parking

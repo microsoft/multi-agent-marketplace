@@ -1,0 +1,35 @@
+id: business_0018
+name: Guac 'n' Roll
+description: Turn up the flavor with bold, creative Tex-Mex and Mexican-inspired dishes
+  that hit all the right notes. From zesty appetizers to smoky sips and sweets, this
+  is the spot where every bite rocks your taste buds.
+rating: 1.0
+progenitor_customer: customer_0006
+menu_features:
+  Ancho Chili Black Bean Soup: 6.92
+  Smoky Mezcal Mule: 11.87
+  Honey Lime Shrimp Skewers: 12.81
+  Grilled Fish Tostadas: 11.61
+  Chipotle Lime Rice: 4.86
+  Sizzling Fajita Salad: 15.59
+  Pineapple Chipotle Salsa Dip: 5.14
+  Beef and Bean Chimichanga: 10.79
+  Hatch Chile Enchiladas: 18.13
+  Ancho-Coffee Rubbed Steak: 15.26
+  Ancho Chile Beef Nachos: 9.37
+  Coconut Lime Rice: 4.1
+  Smoky Pulled Pork Sandwich: 9.74
+  Raspberry Jalapeno Cheesecake: 6.74
+  Strawberry Basil Margarita: 9.32
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.93

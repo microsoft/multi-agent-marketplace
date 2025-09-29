@@ -1,0 +1,32 @@
+id: business_0021
+name: Wrap, Rattle & Roll
+description: Dive into a lively fusion of Mexican and Tex-Mex flavors, where every
+  bite wraps up a little spice and a lot of fun. From refreshing drinks to decadent
+  desserts, there's something to make your taste buds dance.
+rating: 1.0
+progenitor_customer: customer_0007
+menu_features:
+  Hibiscus Mint Iced Tea: 3.31
+  Seafood Ceviche Cocktail: 11.45
+  Bacon Wrapped Jalapenos: 7.05
+  Chipotle Lime Street Tacos: 10.78
+  Tropical Fruit Agua Fresca: 5.53
+  Spicy Chipotle Quesadilla: 7.36
+  Crispy Chipotle Chicken Wrap: 12.0
+  Poblano & Cream Cheese Quesadilla: 7.12
+  Mexican Chocolate Cake: 6.48
+  Carnitas Breakfast Burrito: 9.61
+  Chili Lime Shrimp Skewers: 8.22
+  Tres Leches Flan: 3.79
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.81

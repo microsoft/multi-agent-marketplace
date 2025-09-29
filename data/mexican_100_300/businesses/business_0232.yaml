@@ -1,0 +1,32 @@
+id: business_0232
+name: Avocado Avenue
+description: Fresh flavors meet vibrant spices at Avocado Avenue, where Tex-Mex classics
+  get a zesty twist. Enjoy savory grilled dishes, creative salads, and refreshing
+  drinks in a lively, welcoming atmosphere.
+rating: 1.0
+progenitor_customer: customer_0078
+menu_features:
+  Spicy Chicken Quesadilla: 11.09
+  Crispy Chicken Tinga Tacos: 10.13
+  Mango Agua Fresca: 4.25
+  Beef Fajita Burrito Bowl: 10.05
+  Spicy Avocado Toast: 6.56
+  Avocado Lime Grilled Salmon: 18.17
+  Steak and Cheese Chimichanga: 13.64
+  Grilled Lime Cilantro Shrimp: 14.54
+  Zesty Lime Shrimp Skewers: 7.59
+  Avocado Cilantro Salad: 12.24
+  Grilled Avocado Salad: 9.36
+  Blueberry Jalapeno Margarita: 8.49
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.93

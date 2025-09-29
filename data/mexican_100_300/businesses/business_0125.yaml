@@ -1,0 +1,34 @@
+id: business_0125
+name: Caliente Table
+description: Discover a vibrant fusion of Mexican and Tex-Mex flavors, where every
+  dish bursts with fresh ingredients, bold spices, and a modern twist. From sunrise
+  breakfasts to sizzling plates and creative desserts, every bite brings a taste of
+  fiesta.
+rating: 1.0
+progenitor_customer: customer_0042
+menu_features:
+  Zesty Lime Grilled Corn: 7.36
+  Pineapple Chipotle Salsa Dip: 7.34
+  Roasted Poblano Mac & Cheese: 9.51
+  Beef Fajita Burrito Bowl: 12.22
+  Ancho Chili Lime Shrimp: 9.03
+  Black Bean Breakfast Burrito: 13.44
+  Vanilla Flan Delight: 10.05
+  Blueberry Tequila Smash: 8.68
+  Three-Cheese Empanadas: 9.68
+  Shrimp Diablo Burritos: 21.7
+  Cactus Fruit Agua Fresca: 5.32
+  Ancho Chili Chocolate Brownies: 5.72
+  Hearty Chorizo Omelette: 6.69
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.9

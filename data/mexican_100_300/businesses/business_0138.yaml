@@ -1,0 +1,35 @@
+id: business_0138
+name: Pepper & Platter
+description: Pepper & Platter serves up bold, vibrant Mexican and Tex-Mex flavors
+  in every dish. Gather with friends and family to enjoy a fresh and lively dining
+  experience fueled by spice and tradition.
+rating: 1.0
+progenitor_customer: customer_0046
+menu_features:
+  Grilled Chipotle Lime Chicken: 20.62
+  Carne Asada Steak Plate: 6.6
+  Flaming Cheese Fundido: 7.3
+  Vegetarian Stuffed Bell Peppers: 13.88
+  Black Bean & Mushroom Sopes: 9.05
+  Spicy Avocado Breakfast Wrap: 9.06
+  Sizzling Veggie Quesadilla: 9.85
+  Smoky Lime Guacamole: 7.67
+  Sunrise Breakfast Burrito: 5.28
+  Carne Asada Loaded Nachos: 11.22
+  Chipotle Lime Tacos: 12.47
+  Spiced Beef Fajita Platter: 20.67
+  Charro Beans Special: 5.14
+  Cheesy Jalapeno Queso: 6.52
+  Ancho Chile Chicken Wings: 10.17
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.75

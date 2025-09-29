@@ -1,0 +1,34 @@
+id: business_0245
+name: El Nopalito Alegre
+description: Experience a vibrant celebration of Mexican and Tex-Mex flavors in a
+  warm, inviting atmosphere. El Nopalito Alegre serves up fresh, colorful dishes and
+  lively hospitality for a true south-of-the-border escape.
+rating: 1.0
+progenitor_customer: customer_0082
+menu_features:
+  Honey Lime Shrimp Skewers: 12.92
+  Black Bean Avocado Burrito: 11.65
+  Loaded Burrito Bowl: 10.6
+  Hibiscus Iced Tea: 2.25
+  Roasted Poblano Mac & Cheese: 13.4
+  Southwest Chicken Enchiladas: 15.64
+  Cactus and Black Bean Tacos: 12.52
+  Grilled Lime Cilantro Shrimp: 13.82
+  Caramelized Onion & Cheese Dip: 7.07
+  Blue Corn Tortilla Chips: 4.17
+  Hatch Green Chile Queso: 11.27
+  Classic Beef Empanadas: 10.36
+  Nachos Supremo Platter: 13.98
+  Chipotle Lime Fajitas: 21.32
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.82

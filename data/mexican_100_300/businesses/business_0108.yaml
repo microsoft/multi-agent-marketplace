@@ -1,0 +1,31 @@
+id: business_0108
+name: Skewer & Salsa
+description: A vibrant spot serving up bold Tex-Mex and Mexican flavors with a special
+  flair for grilled skewers, zesty salsas, and hearty classics. Enjoy a colorful menu
+  of savory bites and fresh, satisfying favorites in a lively, welcoming space.
+rating: 1.0
+progenitor_customer: customer_0036
+menu_features:
+  Smoked Chipotle Chicken Skewers: 14.44
+  Beef Barbacoa Quesadilla: 13.17
+  Vegetarian Black Bean Tostadas: 18.12
+  Three-Cheese Queso Fundido: 10.47
+  Avocado Lime Grilled Skewers: 10.53
+  Crispy Chicken Tortilla Soup: 6.58
+  Grilled Chicken Fajita Bowl: 11.72
+  Roasted Veggie Burrito: 9.94
+  Mango Habanero Salsa: 4.37
+  Fried Plantain Bites: 5.86
+  Loaded Tex-Mex Nachos Supreme: 5.98
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.77

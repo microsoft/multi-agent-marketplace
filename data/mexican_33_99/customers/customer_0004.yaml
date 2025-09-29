@@ -1,0 +1,9 @@
+id: customer_0004
+name: Emma Thompson
+request: Please find a business that serves 1 Chocolate Flan and has Wheelchair Accessible
+  amenities. It is important that the business meets both of these criteria, as I
+  intend to place an order. Thank you for your assistance.
+menu_features:
+  Chocolate Flan: 6.99
+amenity_features:
+- Wheelchair Accessible

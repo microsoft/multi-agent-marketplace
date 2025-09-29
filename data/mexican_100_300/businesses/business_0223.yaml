@@ -1,0 +1,33 @@
+id: business_0223
+name: "Crabby Jalape\xF1o Business"
+description: "Dive into bold Tex-Mex flavors and coastal-inspired creations at Crabby\
+  \ Jalape\xF1o Business, where every dish brings a zesty, spicy twist to classic\
+  \ favorites. Savor vibrant tacos, stuffed jalape\xF1os, sizzling wings, and mouthwatering\
+  \ enchiladas in a lively, welcoming atmosphere."
+rating: 1.0
+progenitor_customer: customer_0075
+menu_features:
+  Crab Stuffed Jalapenos: 7.17
+  Zesty Lime Shrimp Skewers: 18.38
+  Coconut Lime Shrimp Tacos: 14.45
+  Smoky Chipotle Wings: 11.43
+  Mole Chicken Burrito: 12.45
+  Chorizo & Potato Tacos: 8.08
+  Ancho Chile Beef Enchiladas: 19.49
+  Sizzling Fajita Salad: 10.19
+  SoCo Street Nachos: 9.2
+  Beef Barbacoa Tacos: 11.77
+  Mole Chicken Tacos: 15.61
+  Zesty Lime Chicken Tacos: 6.21
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.63

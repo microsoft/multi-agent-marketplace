@@ -1,0 +1,37 @@
+id: business_0027
+name: Guac to the Future
+description: Step into a vibrant eatery where bold Mexican flavors and Tex-Mex classics
+  get a fresh twist. From sizzling grilled bites to zesty salads and creative cocktails,
+  every meal is a delicious adventure.
+rating: 1.0
+progenitor_customer: customer_0009
+menu_features:
+  Fresh Guacamole Platter: 8.36
+  Carne Asada Loaded Nachos: 18.26
+  Grilled Elote Corn: 7.41
+  Crispy Chicken Enchiladas: 13.6
+  Avocado Lime Grilled Chicken Salad: 10.88
+  Charred Corn Elote Dip: 3.89
+  Molten Queso Fundido: 7.14
+  Tomatillo Shrimp Cocktail: 8.96
+  Caramelized Onion & Cheese Quesadilla: 5.93
+  Coconut Lime Agua Fresca: 4.26
+  Mango Habanero Margarita: 14.09
+  Spicy Black Bean Burger: 9.88
+  Caramelized Onion & Cheese Dip: 13.07
+  Hearty Chorizo Omelette: 10.49
+  Crispy Avocado Fajitas: 7.0
+  Mole Chicken Burrito: 12.34
+  Grilled Lime Chicken Tacos: 13.02
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: false
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Onsite Parking: false
+  Happy Hour: true
+  Private Dining: false
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.94

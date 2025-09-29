@@ -1,0 +1,11 @@
+id: customer_0074
+name: Christopher Phillips
+request: Could you please find a business that offers a Spicy Black Bean Quesadilla
+  for order and has the amenities of taking reservations and a happy hour? It is important
+  that all these criteria are met. Once you find such a business, I intend to place
+  the order for one Spicy Black Bean Quesadilla. Thank you for your assistance.
+menu_features:
+  Spicy Black Bean Quesadilla: 9.99
+amenity_features:
+- Takes Reservations
+- Happy Hour

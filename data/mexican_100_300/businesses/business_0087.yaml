@@ -1,0 +1,37 @@
+id: business_0087
+name: Burrito Beato
+description: A vibrant spot where Tex-Mex favorites and bold flavors come together
+  in creative, satisfying dishes. Dive into an array of loaded nachos, fiery tacos,
+  refreshing aguas frescas, and sweet treats for a taste fiesta you won't forget.
+rating: 1.0
+progenitor_customer: customer_0029
+menu_features:
+  Mexican Chocolate Cake: 7.99
+  Roasted Poblano Salsa Verde: 5.91
+  Smoky Chipotle Chicken Burrito: 11.84
+  Loaded Chorizo Nachos: 11.57
+  Mango Agua Fresca: 3.47
+  Pineapple Salsa Pork Burrito: 8.62
+  Pumpkin Spice Horchata: 6.91
+  Shrimp and Avocado Salad: 11.95
+  Adobo Chicken Tacos: 7.52
+  Passion Fruit Mojito Twist: 9.38
+  Bacon Wrapped Jalapenos: 4.79
+  Fruity Cucumber Agua Fresca: 3.57
+  Texas BBQ Pulled Pork Nachos: 12.05
+  Mole Chicken Tacos: 10.19
+  Jalapeno Pineapple Margarita: 10.41
+  Avocado Corn Salsa: 5.33
+  Firecracker Shrimp Tacos: 12.31
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.91

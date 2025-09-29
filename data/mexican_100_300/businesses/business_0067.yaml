@@ -1,0 +1,33 @@
+id: business_0067
+name: Fry Me to the Moon Cantina
+description: Take your taste buds on a flavorful adventure with vibrant Tex-Mex fare,
+  inventive cocktails, and sweet treats. Savor bold bites and classic favorites served
+  with a modern twist in a lively, welcoming atmosphere.
+rating: 1.0
+progenitor_customer: customer_0023
+menu_features:
+  Loaded Nacho Supreme: 9.15
+  Sweet Plantain Empanadas: 8.65
+  Roasted Vegetable Fajitas: 6.96
+  Spicy Paloma Cocktail: 6.03
+  Chocolate Dipped Flan: 5.18
+  Hatch Chile Enchiladas: 18.48
+  Beef Barbacoa Tacos: 13.38
+  Crispy Avocado Bites: 4.27
+  Black Bean Stuffed Peppers: 6.9
+  Pico de Gallo Tostadas: 8.0
+  Chorizo & Potato Tacos: 13.19
+  Red Chili Beef Brisket: 23.34
+  Tamarind Glazed Pork Ribs: 13.59
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.71

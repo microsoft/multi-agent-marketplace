@@ -1,0 +1,39 @@
+id: business_0097
+name: "Los Sabores del Coraz\xF3n"
+description: Experience a celebration of traditional and contemporary Mexican and
+  Tex-Mex cuisine, featuring bold flavors, fresh ingredients, and vibrant dishes in
+  a warm, welcoming atmosphere. Perfect for sharing, savoring, and discovering something
+  new.
+rating: 1.0
+progenitor_customer: customer_0033
+menu_features:
+  Crispy Carnitas Nachos: 11.43
+  Street Corn Skillet: 5.51
+  Mole Sauce Tamale: 11.17
+  Savory Pumpkin Empanadas: 12.7
+  Roasted Red Pepper Fajitas: 14.16
+  Dulce de Leche Flan: 5.7
+  Tequila Lime Chicken Wings: 13.29
+  Smoky Chipotle Enchiladas: 14.27
+  Churro Bites with Chocolate Dip: 3.66
+  Chipotle Lime Tacos: 9.06
+  Blueberry Basil Margarita: 12.47
+  Grilled Steak Fajita Tacos: 10.28
+  Al Pastor Street Tacos: 14.01
+  Cucumber Jalapeno Margarita: 3.96
+  Mango Habanero Salsa: 7.18
+  Sizzling Beef Chimichangas: 13.48
+  Watermelon Basil Aqua Fresca: 5.76
+  Cinnamon Spice Churros: 5.72
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: true
+min_price_factor: 0.65

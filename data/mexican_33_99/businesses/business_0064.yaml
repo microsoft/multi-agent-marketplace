@@ -1,0 +1,38 @@
+id: business_0064
+name: Salsa Skewer
+description: Salsa Skewer brings a fresh twist to Mexican and Tex-Mex favorites, pairing
+  zesty flavors with bold bites. Join us for vibrant street-style dishes, sizzling
+  specialties, and crave-worthy sweets in a lively and welcoming setting.
+rating: 1.0
+progenitor_customer: customer_0022
+menu_features:
+  Lime Cilantro Shrimp Skewers: 11.98
+  Spicy Avocado Breakfast Wrap: 5.98
+  Mango Jalapeno Salsa: 5.83
+  Cactus and Black Bean Salad: 10.65
+  Smoky Black Bean Burrito: 8.96
+  Black Bean and Corn Enchiladas: 10.95
+  Chocolate Dipped Churros: 7.2
+  Cocoa Dusted Sopapillas: 3.25
+  Molten Queso Fundido: 10.06
+  Roasted Poblano Quesadillas: 8.0
+  Smoky Barbacoa Burrito Bowl: 16.2
+  Loaded Beef Empanadas: 12.99
+  Agave Lime Glazed Wings: 8.48
+  Smoky Beef Fajitas: 11.01
+  Loaded Beef Nacho Bowl: 7.21
+  Roasted Vegetable Tostadas: 8.84
+  Spicy Pineapple Sangria: 8.83
+  Guacamole and Plantain Chips: 7.55
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: false
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Onsite Parking: true
+  Happy Hour: true
+  Private Dining: false
+  Outdoor Seating: false
+  Takes Reservations: true
+min_price_factor: 0.61

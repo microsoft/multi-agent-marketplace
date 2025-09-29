@@ -1,0 +1,31 @@
+id: business_0017
+name: Cantina Brava
+description: Cantina Brava serves bold, vibrant Mexican and Tex-Mex fare in a welcoming
+  atmosphere. Enjoy a delicious mix of classics and inventive favorites full of fresh
+  flavor and spice.
+rating: 1.0
+progenitor_customer: customer_0006
+menu_features:
+  Sizzling Skillet Nachos: 7.76
+  Pulled Pork Tamale Plate: 15.81
+  Zesty Lime Shrimp Tacos: 11.82
+  Crispy Potato Flautas: 10.07
+  Spicy Chicken Enchilada Bake: 14.9
+  Ancho-Coffee Rubbed Steak: 26.38
+  Blueberry Jalapeno Mocktail: 7.79
+  Breakfast Burrito Bowl: 9.3
+  Chipotle Pineapple Pork Skewers: 18.26
+  Spicy Avocado Breakfast Wrap: 8.1
+  Pineapple Salsa Pork Burrito: 12.53
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: true
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.91

@@ -1,0 +1,38 @@
+id: business_0181
+name: "Citrus & Jalape\xF1o"
+description: Bright flavors and bold spices come together in a fresh, modern twist
+  on classic Mexican and Tex-Mex cuisine. Enjoy vibrant dishes and creative drinks
+  in an inviting, energetic atmosphere.
+rating: 1.0
+progenitor_customer: customer_0061
+menu_features:
+  Fresh Lime and Jalapeno Guacamole: 12.04
+  Pepper Jack Quesadilla: 5.77
+  Pineapple Cilantro Cooler: 2.79
+  Pineapple Salsa Pork Street Tacos: 12.77
+  Spicy Black Bean Nachos: 9.24
+  Roasted Corn elote: 7.55
+  Adobo Spiced Pork Tamales: 19.73
+  Mango Jalapeno Margarita: 5.2
+  Spiced Chocolate Mole: 5.27
+  Mexican Chocolate Ice Cream: 5.79
+  Sweet Potato Black Bean Tacos: 17.26
+  Jalapeno Cilantro Hummus: 5.82
+  Mexican Chocolate Pudding: 7.78
+  Chipotle Beef Quesadilla: 11.35
+  Roasted Vegetable Fajitas: 12.5
+  Pepper Jack Cornbread Muffins: 4.66
+  Creamy Avocado Smoothie: 6.45
+  Jalapeno Watermelon Sangria: 5.57
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.92

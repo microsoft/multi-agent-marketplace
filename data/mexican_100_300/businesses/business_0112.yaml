@@ -1,0 +1,33 @@
+id: business_0112
+name: Chilantro Carnival
+description: Spice up your appetite with vibrant Tex-Mex and Mexican-inspired creations,
+  from sizzling fajitas to mouthwatering enchiladas and tacos. Experience a playful
+  twist on tradition, served fresh in every dish.
+rating: 1.0
+progenitor_customer: customer_0038
+menu_features:
+  Zesty Chicken Enchiladas: 14.0
+  Tamarind Glazed Pork Ribs: 17.93
+  Spiced Chicken Fajita Bowl: 11.13
+  Green Chile Enchiladas: 13.1
+  Tamarind Chipotle Wings: 11.16
+  Mole Chicken Tacos: 9.96
+  Tamarind Honey Glazed Ribs: 14.88
+  Flan de Caramel: 4.51
+  Zesty Shrimp Fajitas: 10.17
+  Chocolate Churro Milkshake: 6.32
+  Cilantro-Lime Shrimp Bowl: 12.77
+  Beef Barbacoa Street Tacos: 12.03
+  Carnitas Quesadilla Melt: 13.85
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: true
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.66

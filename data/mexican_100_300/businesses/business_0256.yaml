@@ -1,0 +1,38 @@
+id: business_0256
+name: Wing and a Quiero
+description: A vibrant Tex-Mex spot where bold flavors take flight, from zesty tacos
+  and burritos to smoky wings and spirited margaritas. Experience creative twists
+  on classic favorites in a lively, colorful atmosphere.
+rating: 1.0
+progenitor_customer: customer_0086
+menu_features:
+  Shrimp Ceviche Cups: 7.23
+  Black Bean and Quinoa Tacos: 9.32
+  Smoky Adobo Chicken Wings: 11.66
+  Zesty Lime Shrimp Tacos: 10.63
+  Ancho Chile Brownies: 5.26
+  Chorizo Breakfast Burrito: 12.68
+  Pineapple Salsa Pork Burrito: 12.89
+  Smoky Chipotle Burger: 13.64
+  Strawberry Basil Margarita: 10.56
+  Carne Asada Fajitas: 13.23
+  Zesty Lime Shrimp Salad: 7.48
+  Spicy Chorizo Queso Dip: 12.16
+  Three-Cheese Queso Fundido: 7.27
+  Cactus and Black Bean Tacos: 13.23
+  Carnitas Enchiladas Verde: 10.72
+  Veggie Enchilada Stack: 17.56
+  Maple Cinnamon Sopapillas: 7.76
+  Black Bean Queso Fundido: 5.87
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: true
+min_price_factor: 0.75

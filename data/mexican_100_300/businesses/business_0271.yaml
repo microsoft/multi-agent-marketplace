@@ -1,0 +1,38 @@
+id: business_0271
+name: Citrus Ember Eatery
+description: Citrus Ember Eatery blends bold, vibrant flavors with fresh, modern twists
+  on Mexican and Tex-Mex classics. Find your new favorites among refreshing drinks,
+  sizzling bites, and inventive dishes in a lively, welcoming space.
+rating: 1.0
+progenitor_customer: customer_0091
+menu_features:
+  Pineapple Jalapeno Agua Fresca: 4.37
+  Mango Chipotle BBQ Ribs: 20.29
+  Chicken Fajita Quesadilla: 8.65
+  Black Bean Mango Salad: 6.99
+  Veggie Enchilada Stack: 10.71
+  Shrimp Ceviche Tostadas: 11.63
+  Spiced Chocolate Tamales: 4.85
+  Crispy Avocado Fritters: 6.55
+  Roasted Poblano Quesadillas: 13.75
+  Mole-Braised Beef Burrito: 8.26
+  Avocado Lime Chicken Salad: 11.58
+  Chili Lime Nachos: 9.3
+  Blue Corn Tortilla Salad: 9.21
+  Sizzling Veggie Quesadilla: 6.04
+  Three-Cheese Quesadilla: 6.23
+  Cinnamon Spice Churros: 5.49
+  Tequila Sunrise Sangria: 10.86
+  Carne Asada Nachos: 12.71
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: true
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.93

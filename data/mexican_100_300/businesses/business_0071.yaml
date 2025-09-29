@@ -1,0 +1,31 @@
+id: business_0071
+name: Mole-licious Mischief
+description: Dive into a playful and vibrant Tex-Mex dining experience where sweet,
+  smoky, and spicy flavors come together in creative new ways. Enjoy a lively atmosphere
+  and bold plates crafted with a twist of tradition and a dash of fun.
+rating: 1.0
+progenitor_customer: customer_0024
+menu_features:
+  Chocolate Mole Chicken: 10.82
+  Chipotle Beef Quesadilla: 5.81
+  Charro Beans and Rice: 7.38
+  Chipotle Chicken Queso: 6.76
+  Pineapple BBQ Pulled Pork Nachos: 16.81
+  Spiced Hot Chocolate Churros: 7.09
+  Huevos Rancheros: 6.83
+  Chipotle Chicken Nachos: 16.27
+  Savory Pumpkin Empanadas: 9.55
+  Pulled Pork Tamale Skillet: 9.05
+  Mango Habanero Salsa: 5.63
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.94

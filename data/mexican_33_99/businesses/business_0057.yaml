@@ -1,0 +1,37 @@
+id: business_0057
+name: Shuck & Awe
+description: "Experience bold Tex-Mex flavors with a fresh twist\u2014where zesty\
+  \ salads, sizzling quesadillas, and smoky tacos meet vibrant drinks in a fiesta\
+  \ of taste. Our menu brings together classic comforts and adventurous bites for\
+  \ a memorable meal every time."
+rating: 1.0
+progenitor_customer: customer_0019
+menu_features:
+  Herb-Roasted Corn Salad: 9.07
+  Avocado Lime Grilled Shrimp: 15.56
+  Chipotle Chicken Caesar Burrito: 7.38
+  Roasted Poblano and Corn Quesadilla: 9.27
+  Hibiscus Agua Fresca: 2.78
+  Ancho Chile Beef Burrito: 10.1
+  Blueberry Mojito: 11.58
+  Spicy Bacon & Egg Quesadilla: 9.45
+  Chipotle Lime Chicken Wings: 8.43
+  Agave Nectar Cocktail: 5.74
+  Pineapple Cilantro Margarita: 8.97
+  Papaya Passion Fruit Smoothie: 6.14
+  Spiced Hot Chocolate Churros: 5.66
+  Smoky BBQ Pulled Pork Tacos: 13.77
+  Loaded Veggie Queso: 6.39
+  Grilled Avocado Salad: 11.86
+amenity_features:
+  Children's Menu: true
+  Large Groups: false
+  Live Music: true
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Onsite Parking: true
+  Happy Hour: false
+  Private Dining: false
+  Outdoor Seating: false
+  Takes Reservations: true
+min_price_factor: 0.72

@@ -1,0 +1,33 @@
+id: business_0024
+name: Mango & Mesa
+description: A vibrant gathering spot serving up bold Mexican and Tex-Mex bites, refreshing
+  cocktails, and sweet treats. Enjoy a flavorful fusion of smoky, spicy, and tropical
+  tastes in a lively atmosphere.
+rating: 1.0
+progenitor_customer: customer_0008
+menu_features:
+  Mango Chili Sorbet: 5.22
+  Smoky Chicken Tortilla Soup: 6.4
+  Flan de Caramel: 6.1
+  Chorizo & Potato Tacos: 10.27
+  Steak and Pepper Skillet: 16.69
+  Spicy Black Bean Burger: 10.84
+  Roasted Corn elote: 5.72
+  Chipotle BBQ Carnitas: 15.28
+  Spicy Shrimp Quesadilla: 11.12
+  Chipotle Beef Quesadilla: 8.3
+  Beer-Battered Avocado Fries: 9.11
+  Frozen Mango Margarita: 10.64
+  Tropical Lime Ceviche: 8.88
+amenity_features:
+  Takes Reservations: false
+  Private Dining: false
+  Large Groups: true
+  Onsite Parking: false
+  Outdoor Seating: true
+  Children's Menu: false
+  Free Wifi: false
+  Live Music: false
+  Wheelchair Accessible: false
+  Happy Hour: false
+min_price_factor: 0.91

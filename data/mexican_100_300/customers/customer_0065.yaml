@@ -1,0 +1,12 @@
+id: customer_0065
+name: Henry Morgan
+request: Could you please find a business that serves both a 'Mole Enchiladas' and
+  a 'Passionfruit Mojito' and also offers the amenities of a Children's Menu and is
+  Wheelchair Accessible? Once found, kindly go ahead and place an order for 1 Mole
+  Enchiladas and 1 Passionfruit Mojito. Thank you!
+menu_features:
+  Mole Enchiladas: 12.49
+  Passionfruit Mojito: 8.49
+amenity_features:
+- Children's Menu
+- Wheelchair Accessible

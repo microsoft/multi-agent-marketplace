@@ -1,0 +1,12 @@
+id: customer_0094
+name: Lily Nguyen
+request: Could you please find a business that offers both a Smokey Mezcal Paloma
+  and Cheesy Street Corn Bites, and ensure that it is wheelchair accessible? It is
+  very important that the place fulfills all these requirements. Once found, I intend
+  to place an order for 1 Smokey Mezcal Paloma and 1 Cheesy Street Corn Bites. Thank
+  you!
+menu_features:
+  Smokey Mezcal Paloma: 10.49
+  Cheesy Street Corn Bites: 7.99
+amenity_features:
+- Wheelchair Accessible

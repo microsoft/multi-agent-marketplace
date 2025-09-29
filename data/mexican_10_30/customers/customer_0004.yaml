@@ -1,0 +1,8 @@
+id: customer_0004
+name: Chloe Harris
+request: Could you please help me find a business that offers a 'Creamy Avocado Caesar
+  Salad' and has 'Outdoor Seating'? I'd like to order 1 of the salads. Thank you!
+menu_features:
+  Creamy Avocado Caesar Salad: 8.99
+amenity_features:
+- Outdoor Seating

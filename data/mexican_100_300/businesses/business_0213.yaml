@@ -1,0 +1,35 @@
+id: business_0213
+name: Flan-tastic & Sear-iously Good
+description: A vibrant Tex-Mex eatery putting a playful twist on Mexican classics.
+  Dive into sizzling, sweet, and savory flavors that will have you coming back for
+  more.
+rating: 1.0
+progenitor_customer: customer_0071
+menu_features:
+  Adobo-Marinated Pork Carnitas: 15.99
+  Tostada Salad with Avocado Crema: 11.85
+  Tres Leches Flan: 4.32
+  Flaky Beef Empanadas: 5.84
+  Chipotle Chicken Quesadilla: 9.94
+  Avocado Lime Grilled Skewers: 10.59
+  Sweet Corn Tamale Pancakes: 7.42
+  Passion Fruit Aqua Fresca: 3.19
+  Horchata Rice Pudding: 6.46
+  Loaded Nacho Fiesta: 7.22
+  Frozen Mango Margarita: 7.34
+  Carne Asada Nachos: 10.24
+  Al Pastor Salad Bowl: 9.66
+  Sizzling Chorizo Skillet: 16.68
+  Mole Enchiladas: 9.01
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.61

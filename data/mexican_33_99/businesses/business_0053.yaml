@@ -1,0 +1,37 @@
+id: business_0053
+name: La Cocina Celeste
+description: Savor the vibrant essence of Mexican and Tex-Mex cuisine in a warm, inviting
+  setting. Enjoy a creative menu highlighting fresh flavors, bold spices, and sweet
+  treats inspired by tradition.
+rating: 1.0
+progenitor_customer: customer_0018
+menu_features:
+  Shrimp Fajita Bowl: 10.23
+  Blue Corn Tortilla Chips: 4.23
+  Spiced Chocolate Cake: 5.83
+  Avocado Cilantro Lime Salad: 9.65
+  Ancho Chili Chicken Wings: 10.5
+  Morning Breakfast Burrito: 7.48
+  Red Chili Beef Empanadas: 10.98
+  Sizzling Shrimp Fajitas: 19.16
+  Pomegranate Pisco Sour: 9.76
+  Chili Lime Chicken Skewers: 12.95
+  Traditional Horchata Drink: 2.55
+  Loaded Nacho Fiesta: 7.62
+  Vegetarian Enchilada Delight: 10.08
+  Pico de Gallo Nachos: 11.66
+  Chipotle BBQ Carnitas: 14.55
+  Spiced Chocolate Tamales: 7.88
+  Ancho Chile Brownies: 7.85
+amenity_features:
+  Children's Menu: true
+  Large Groups: false
+  Live Music: false
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: true
+min_price_factor: 0.92

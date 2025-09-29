@@ -1,0 +1,33 @@
+id: business_0104
+name: "Maple & Ma\xEDz Cantina"
+description: "Experience a fresh, modern take on Mexican and Tex-Mex cuisine with\
+  \ vibrant flavors, flame-grilled specialties, and creative cocktails. Maple & Ma\xED\
+  z Cantina brings bold tastes and a lively atmosphere to every meal."
+rating: 1.0
+progenitor_customer: customer_0035
+menu_features:
+  Maple Chipotle Glazed Ribs: 19.66
+  Grilled Elote Corn: 4.11
+  Wild Mushroom Quesadillas: 9.49
+  Flaming Cheese Fundido: 8.07
+  Pineapple Passion Mojito: 6.46
+  Chili Lime Shrimp Skewers: 10.1
+  Mexican Vanilla Flan: 5.5
+  Chili Lime Shrimp Fajitas: 14.56
+  Honey Chipotle Shrimp Skewers: 13.53
+  Spicy Chicken Quesadilla: 7.78
+  Pineapple Jalapeno Slaw: 3.37
+  Creamy Queso Dip: 5.57
+  Blood Orange Paloma: 7.62
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.67

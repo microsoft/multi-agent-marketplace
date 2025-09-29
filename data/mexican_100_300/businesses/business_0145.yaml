@@ -1,0 +1,35 @@
+id: business_0145
+name: Taco 'Bout Sweet Heat
+description: Bold, zesty flavors meet unexpected sweet twists at this Mex-Tex eatery,
+  where spice and indulgence go hand-in-hand. From fiery bites to decadent desserts,
+  every dish is a fiesta for your senses.
+rating: 1.0
+progenitor_customer: customer_0049
+menu_features:
+  Spiced Chocolate Tamales: 8.05
+  Chipotle Honey Wings: 8.2
+  Passionfruit Mojito: 7.88
+  Grilled Chicken Fajita Platter: 14.07
+  Chocolate Dusted Churro Bites: 4.43
+  Citrus Cilantro Rice Bowl: 7.18
+  Zesty Avocado Smash: 7.97
+  Chipotle BBQ Carnitas: 18.82
+  Pineapple Chipotle Salsa Dip: 7.61
+  Spicy Beef Taco Salad: 11.15
+  Classic Margarita: 6.82
+  Jalapeno Pineapple Margarita: 11.21
+  Jalapeno Infused Tequila Sunrise: 6.39
+  Fruity Cucumber Agua Fresca: 2.48
+  Sizzling Chorizo Skillet: 14.04
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.8

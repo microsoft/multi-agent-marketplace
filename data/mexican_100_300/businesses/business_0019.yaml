@@ -1,0 +1,35 @@
+id: business_0019
+name: Holy Mole & Queso
+description: Dive into a flavorful fiesta where smoky spices, vibrant salsas, and
+  decadent desserts bring classic Mexican and Tex-Mex favorites to life. Every bite
+  is a celebration of bold, unexpected twists and craveable comfort.
+rating: 1.0
+progenitor_customer: customer_0007
+menu_features:
+  Smoky Chipotle Enchiladas: 17.57
+  Tamarind Lime Cooler: 7.73
+  "Flan Caraibe\xF1o": 9.78
+  Chipotle Lime Steak Burrito: 14.21
+  Red Chile Enchiladas: 18.01
+  Ancho Chocolate Cake: 6.73
+  Poblano & Cream Cheese Quesadilla: 9.93
+  Avocado Tomatillo Salsa: 2.98
+  Carne Asada Quesadilla: 8.4
+  Chipotle Pineapple Pork Skewers: 17.75
+  Crispy Potato Flautas: 8.41
+  Southwest Chicken Enchiladas: 12.28
+  Strawberry Jalapeno Mojito: 7.65
+  Roasted Poblano Queso Dip: 5.66
+  Chocolate Lava Churros: 6.5
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.71

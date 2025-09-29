@@ -1,0 +1,35 @@
+id: business_0093
+name: "Ma\xEDz & Mango"
+description: Experience a vibrant twist on Mexican and Tex-Mex classics, where fresh
+  flavors and creative combinations come together in every dish. Our inviting atmosphere
+  and unique menu promise a delicious adventure with every visit.
+rating: 1.0
+progenitor_customer: customer_0031
+menu_features:
+  Roasted Corn Enchiladas: 7.48
+  Chili Lime Shrimp Skewers: 11.4
+  Watermelon Basil Aqua Fresca: 7.56
+  Crispy Avocado Fries: 8.44
+  Sweet Corn Tamalitos: 13.03
+  Street Corn Fritters: 7.23
+  Spiced Chocolate Mole: 6.08
+  Saffron Scented Arroz Verde: 4.11
+  Mango Chili Sorbet: 4.44
+  Beef Barbacoa Bowl: 17.65
+  Zesty Lime Fish Tacos: 15.71
+  Bacon Wrapped Jalapenos: 9.25
+  Adobo Grilled Skirt Steak: 13.6
+  Fiesta Nachos Platter: 12.59
+  Sizzling Steak Fajitas: 19.14
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.75

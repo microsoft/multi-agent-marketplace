@@ -1,0 +1,37 @@
+id: business_0094
+name: Verde & Fire Grill
+description: Experience a vibrant blend of fresh flavors and smoky goodness at Verde
+  & Fire Grill, where classic Mexican and Tex-Mex dishes are reimagined with modern
+  flair. Enjoy a lively, colorful atmosphere and inventive meals that celebrate the
+  best in contemporary Mexican cuisine.
+rating: 1.0
+progenitor_customer: customer_0032
+menu_features:
+  Poblano Corn Chowder: 6.94
+  Grilled Shrimp Ceviche: 14.51
+  Pineapple Salsa Tostadas: 9.17
+  Grilled Chipotle Skewers: 11.3
+  Chipotle Lime Chicken Bowl: 12.86
+  Tequila Lime Chicken Skewers: 8.07
+  Beef Barbacoa Tacos: 10.01
+  Honey Lime Grilled Salmon: 20.02
+  Pumpkin Spice Horchata: 3.77
+  Verde Chicken Chimichanga: 15.53
+  Chocolate Dipped Churros: 4.21
+  Smoky Chipotle Burrito: 8.72
+  Horchata Ice Cream Scoop: 5.78
+  Roasted Corn and Black Bean Salad: 5.46
+  Spicy Black Bean Burger: 8.02
+  Black Bean Avocado Wrap: 8.61
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.69

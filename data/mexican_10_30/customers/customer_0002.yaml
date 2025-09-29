@@ -1,0 +1,11 @@
+id: customer_0002
+name: Elijah Carter
+request: Could you please help me find a business that serves a Smoky Chipotle Burger
+  (1) and has the amenities to take reservations and accommodate large groups? It's
+  very important that all these requirements are met, as I intend to place an order.
+  Thank you!
+menu_features:
+  Smoky Chipotle Burger: 12.99
+amenity_features:
+- Takes Reservations
+- Large Groups

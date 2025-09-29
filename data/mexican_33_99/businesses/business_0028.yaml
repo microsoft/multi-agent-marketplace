@@ -1,0 +1,32 @@
+id: business_0028
+name: Cinnamon & Char
+description: Savor bold flavors and sweet twists at this lively spot blending vibrant
+  Mexican and Tex-Mex traditions. From zesty grilled specialties to irresistible cinnamon
+  treats and refreshing cocktails, each dish is crafted to delight your senses.
+rating: 1.0
+progenitor_customer: customer_0010
+menu_features:
+  Cinnamon Sugar Tortilla Chips: 4.5
+  Carne Asada Burrito Bowl: 14.65
+  Smoky Chipotle Beef Skewers: 16.5
+  Tres Amigos Sampler Platter: 8.77
+  Cucumber Jalapeno Margarita: 13.09
+  Honey Chipotle Glazed Ribs: 16.83
+  Baja Shrimp Ceviche: 9.49
+  Warm Cinnamon Churros: 5.52
+  Vegetarian Stuffed Bell Peppers: 10.62
+  Smoky Chipotle Cornbread: 5.95
+  Morning Chorizo Scramble: 11.06
+  Three-Cheese Elote: 10.82
+amenity_features:
+  Children's Menu: true
+  Large Groups: true
+  Live Music: false
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Onsite Parking: true
+  Happy Hour: false
+  Private Dining: false
+  Outdoor Seating: true
+  Takes Reservations: false
+min_price_factor: 0.72

@@ -1,0 +1,9 @@
+id: customer_0072
+name: Matthew Lopez
+request: I am looking to place an order for 1 Molten Queso Fundido from a business
+  that is wheelchair accessible. Could you please assist me in finding such a business
+  so I can proceed with my purchase? Thank you.
+menu_features:
+  Molten Queso Fundido: 8.49
+amenity_features:
+- Wheelchair Accessible

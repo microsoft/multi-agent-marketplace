@@ -1,0 +1,11 @@
+id: customer_0010
+name: Liam Anderson
+request: Could you please find a business that serves 'Smoky Chipotle Cornbread' and
+  is equipped with both onsite parking and a children's menu? It is important that
+  all these criteria are met, as I intend to place an order for 1 Smoky Chipotle Cornbread.
+  Thank you for your assistance.
+menu_features:
+  Smoky Chipotle Cornbread: 4.99
+amenity_features:
+- Onsite Parking
+- Children's Menu

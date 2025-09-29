@@ -1,0 +1,36 @@
+id: business_0219
+name: El Pueblito Fresco
+description: Step into a vibrant corner of Mexico with bold flavors, fresh ingredients,
+  and creative cocktails. Discover a delicious blend of tradition and modern flair
+  in every dish and drink.
+rating: 1.0
+progenitor_customer: customer_0073
+menu_features:
+  Roasted Vegetable Tacos: 8.91
+  Hibiscus Agua Fresca: 3.51
+  Mexican Chocolate Pudding: 5.87
+  Chipotle Lime Rice: 4.03
+  Habanero Honey Wings: 7.01
+  Passionfruit Paloma: 9.69
+  Tostada Salad with Avocado Crema: 7.92
+  Al Pastor Nachos: 13.62
+  Roasted Poblano and Corn Quesadilla: 8.85
+  Blue Corn Tortilla Soup: 8.74
+  Hatch Green Chile Burrito: 9.55
+  Tres Amigos Sampler Platter: 18.83
+  Agave Nectar Cocktail: 6.24
+  Black Bean Stuffed Peppers: 5.18
+  Zesty Lime Chicken Tortilla Soup: 13.75
+  Pineapple Habanero Margarita: 6.51
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.61

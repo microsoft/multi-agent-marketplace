@@ -1,0 +1,34 @@
+id: business_0173
+name: Sol & Sabores Cantina
+description: Step into Sol & Sabores Cantina for vibrant Mexican and Tex-Mex classics,
+  served with a modern twist in a lively, welcoming atmosphere. Enjoy bold flavors,
+  sizzling plates, and a celebration of fresh ingredients inspired by tradition.
+rating: 1.0
+progenitor_customer: customer_0058
+menu_features:
+  Three-Bean Vegetarian Tostadas: 9.5
+  Beef Barbacoa Empanadas: 11.07
+  Classic Beef Enchilada Plate: 18.57
+  Baja Fish Burrito: 16.74
+  Steak and Pepper Skillet: 26.68
+  Ancho Chile Beef Nachos: 11.87
+  Southwest Chicken Salad: 9.23
+  Pulled Pork Tamale Plate: 13.25
+  Ancho Chicken Enchiladas: 15.85
+  Sizzling Beef Enchiladas: 11.52
+  Tomatillo Chicken Soup: 7.27
+  Pumpkin Spice Flan: 6.42
+  Grilled Vegetable Fajitas: 14.97
+  Spicy Black Bean Burrito: 8.95
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.85

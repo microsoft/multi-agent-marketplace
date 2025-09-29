@@ -1,0 +1,33 @@
+id: business_0158
+name: La Sage Mexicana
+description: Experience a modern twist on classic Mexican and Tex-Mex cuisine, where
+  bold flavors and fresh ingredients come together in every dish. Sip handcrafted
+  margaritas and savor inspired creations in a vibrant, welcoming setting.
+rating: 1.0
+progenitor_customer: customer_0053
+menu_features:
+  Blackberry Sage Margarita: 11.38
+  Ancho Chili Beef Enchiladas: 13.88
+  Chocolate Ancho Chile Brownie: 6.22
+  Charred Poblano Quesadillas: 9.21
+  Roasted Poblano Burger: 11.03
+  Black Bean Queso Fundido: 9.46
+  Sizzling Chorizo Empanadas: 9.47
+  Black Bean & Mushroom Sopes: 10.48
+  Spicy Shrimp Quesadilla: 6.65
+  Tangy Lime Cilantro Tacos: 9.82
+  Smoky Beef Fajitas: 11.71
+  Picadillo Empanadas: 7.83
+  Cactus Citrus Salad: 9.95
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.61

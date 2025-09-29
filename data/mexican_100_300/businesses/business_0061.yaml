@@ -1,0 +1,36 @@
+id: business_0061
+name: Holy Frijole!
+description: Serving up a fiesta of bold, smoky, and zesty flavors, Holy Frijole!
+  blends classic Mexican and Tex-Mex favorites with clever modern twists. Fresh ingredients
+  and inventive combinations promise to delight every appetite.
+rating: 1.0
+progenitor_customer: customer_0021
+menu_features:
+  Beef Enchilada Verde: 12.42
+  Black Bean Avocado Wrap: 9.85
+  Black Bean and Corn Enchiladas: 15.03
+  "Spicy Jalape\xF1o Burger": 12.06
+  Smoky Black Bean Soup: 7.52
+  Honey Chipotle Glazed Wings: 10.21
+  Sweet Corn Tamales: 5.5
+  Roasted Poblano Rice Bowl: 13.94
+  Chili Con Queso Dip: 9.07
+  Chicken Verde Enchilada: 5.79
+  Zesty Lime Chicken Tortilla Soup: 7.79
+  Roasted Corn Guacamole: 9.9
+  Cinnamon Spice Churros: 7.82
+  Grilled Shrimp Ceviche: 10.97
+  Pineapple Salsa Tostadas: 7.77
+  Shrimp Fajita Fiesta: 14.53
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.93

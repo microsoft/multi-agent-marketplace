@@ -1,0 +1,12 @@
+id: customer_0014
+name: Henry Kim
+request: 'Please find a business that offers the following menu items: Tamarind Chipotle
+  Wings (1), Pomegranate Paloma (1), and Tropical Shrimp Ceviche (1). The business
+  must also take reservations. Once such a business is found, please proceed to place
+  the order for these items. Thank you!'
+menu_features:
+  Tamarind Chipotle Wings: 9.49
+  Pomegranate Paloma: 8.99
+  Tropical Shrimp Ceviche: 10.99
+amenity_features:
+- Takes Reservations

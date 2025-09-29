@@ -1,0 +1,37 @@
+id: business_0023
+name: "Sol y Saz\xF3n Cantina"
+description: Experience vibrant, contemporary Mexican and Tex-Mex cuisine in a lively,
+  welcoming atmosphere. Our creative menu blends fresh local ingredients with bold,
+  authentic flavors perfect for any occasion.
+rating: 1.0
+progenitor_customer: customer_0008
+menu_features:
+  Cinnamon Spice Flan: 6.72
+  Frozen Mango Margarita: 12.56
+  Tropical Lime Ceviche: 13.78
+  Ancho Chile Brownies: 8.74
+  Honey Chipotle Ribs: 21.88
+  Black Bean Quinoa Bowl: 9.92
+  Spicy Beef Chimichanga: 10.86
+  Green Chili Chicken Soup: 12.73
+  Strawberry Basil Margarita: 12.17
+  Mexican Chocolate Brownie: 4.91
+  Roasted Veggie Burrito: 11.19
+  Ancho Chili Beef Enchiladas: 11.34
+  Tender Lime Cilantro Steak Fajitas: 13.25
+  Beer-Battered Avocado Fries: 5.36
+  Crispy Carnitas Tostadas: 10.96
+  Roasted Veggie Fajitas: 8.45
+  Classic Margarita: 8.53
+amenity_features:
+  Takes Reservations: true
+  Private Dining: false
+  Large Groups: false
+  Onsite Parking: false
+  Outdoor Seating: false
+  Children's Menu: false
+  Free Wifi: true
+  Live Music: false
+  Wheelchair Accessible: true
+  Happy Hour: false
+min_price_factor: 0.77

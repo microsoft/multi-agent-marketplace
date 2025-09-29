@@ -1,0 +1,33 @@
+id: business_0177
+name: El Sabroso Mango
+description: Experience vibrant Mexican and Tex-Mex flavors in a lively, welcoming
+  setting. From tropical-inspired tacos to smoky, savory classics, enjoy a fresh twist
+  on tradition with every bite.
+rating: 1.0
+progenitor_customer: customer_0059
+menu_features:
+  Mango Tango Tacos: 5.7
+  Smoky Chipotle Wings: 4.95
+  Verde Chicken Chimichanga: 16.24
+  Zesty Lime Cheesecake: 4.25
+  Hibiscus Mint Iced Tea: 4.48
+  Grilled Pineapple Mojito: 5.93
+  Spicy Chicken Tortilla Soup: 9.48
+  Three-Cheese Quesadilla: 10.35
+  Pulled Pork Tamale Plate: 12.31
+  Chargrilled Carne Asada: 12.16
+  Carne Asada Nachos: 7.8
+  Smoky Chipotle Burger: 15.51
+  Spinach and Mushroom Enchiladas: 6.82
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.61

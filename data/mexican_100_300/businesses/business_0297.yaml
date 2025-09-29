@@ -1,0 +1,37 @@
+id: business_0297
+name: Citrus & Skewer
+description: Citrus & Skewer is a lively spot serving fresh, vibrant Mexican and Tex-Mex
+  cuisine with a creative twist. Enjoy bold flavors, refreshing drinks, and a menu
+  designed to delight with every bite.
+rating: 1.0
+progenitor_customer: customer_0099
+menu_features:
+  Citrus Shrimp Ceviche: 14.42
+  Baja Fish Burrito: 13.49
+  Pineapple Basil Agua Fresca: 2.93
+  Passion Fruit Aqua Fresca: 2.41
+  Cinnamon Sugar Churros: 3.19
+  Chili Lime Chicken Skewers: 12.83
+  Beer-Battered Avocado Fries: 7.44
+  Avocado Bacon Breakfast Tacos: 6.62
+  Tequila Sunrise Sangria: 9.64
+  Zesty Lime Shrimp Salad: 9.89
+  Pineapple Habanero Wings: 12.76
+  Ancho Chili Black Bean Soup: 8.08
+  Caramelized Onion & Cheese Dip: 7.13
+  Green Chili Chicken Soup: 10.54
+  Spicy Pineapple Sangria: 9.32
+  Coconut Mojito: 7.0
+  Crispy Taquito Sampler: 10.88
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.83

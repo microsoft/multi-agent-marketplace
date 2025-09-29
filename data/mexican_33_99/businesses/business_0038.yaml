@@ -1,0 +1,32 @@
+id: business_0038
+name: "Fiesta Like There's No Ma\xF1ana"
+description: "Savor bold, vibrant flavors inspired by classic Mexican and Tex-Mex\
+  \ traditions, from saucy enchiladas to refreshing aguas frescas. Join us for a flavorful\
+  \ escape that\u2019s always a celebration."
+rating: 1.0
+progenitor_customer: customer_0013
+menu_features:
+  Slow-Cooked Carnitas Enchiladas: 15.14
+  Tamarind Agua Fresca: 2.46
+  Spiced Chicken Fajita Bowl: 11.36
+  Avocado Lime Cheesecake: 3.05
+  Pollo Asado Burrito Bowl: 13.97
+  Hatch Green Chile Burrito: 16.91
+  House-Made Horchata: 3.53
+  Spicy Mango Margarita: 4.61
+  Zesty Avocado Salad: 7.29
+  Ancho Chili Chocolate Brownies: 4.27
+  Roasted Poblano Queso Dip: 6.47
+  Roasted Vegetable Enchiladas: 8.34
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: false
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Onsite Parking: true
+  Happy Hour: true
+  Private Dining: true
+  Outdoor Seating: false
+  Takes Reservations: false
+min_price_factor: 0.77

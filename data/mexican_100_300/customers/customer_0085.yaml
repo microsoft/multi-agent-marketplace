@@ -1,0 +1,12 @@
+id: customer_0085
+name: Henry Robinson
+request: Could you please help me find a business that offers both Honey Chipotle
+  Glazed Wings (1 order) and Horchata Almond Cake (1 order), and also has amenities
+  such as Outdoor Seating and Live Music? It is important that the business meets
+  all these requirements as I intend to place an order for these items. Thank you!
+menu_features:
+  Honey Chipotle Glazed Wings: 9.79
+  Horchata Almond Cake: 5.99
+amenity_features:
+- Outdoor Seating
+- Live Music

@@ -1,0 +1,34 @@
+id: business_0249
+name: El Camino del Mar y Tierra
+description: Experience the flavorful crossroads of coastal and inland Mexican cuisine
+  in a warm, vibrant setting. Enjoy a spirited menu of classic dishes, fresh salads,
+  sizzling plates, and bold, contemporary flavors.
+rating: 1.0
+progenitor_customer: customer_0083
+menu_features:
+  Shrimp Fajita Bowl: 15.08
+  Cactus Salad Bowl: 8.16
+  Baja Fish Burrito: 13.86
+  Carnitas Salsa Verde Tacos: 15.69
+  Tex-Mex Steak Fajitas: 22.71
+  Sweet Corn Tamale Pancakes: 14.42
+  Grilled Lime Shrimp Skewers: 14.8
+  Sunrise Breakfast Burrito: 4.38
+  Veracruz Fish Tacos: 9.1
+  Enchilada Verde Supreme: 15.34
+  Sizzling Veggie Quesadilla: 10.6
+  Spiced Beef Fajita Platter: 15.91
+  Poblano Pepper Relleno: 11.06
+  Cilantro Lime Rice: 3.1
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: false
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: true
+  Children's Menu: true
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.79

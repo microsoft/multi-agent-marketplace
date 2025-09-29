@@ -1,0 +1,36 @@
+id: business_0163
+name: Fiesta Fresca
+description: A vibrant spot serving fresh takes on classic and modern Mexican and
+  Tex-Mex flavors, with bold beverages and inventive desserts. Experience lively eats
+  and creative sips in a welcoming, colorful setting.
+rating: 1.0
+progenitor_customer: customer_0055
+menu_features:
+  Carne Asada Quesadilla: 7.91
+  Watermelon Basil Aqua Fresca: 4.42
+  Mole Chicken Tacos: 12.32
+  Fruity Cucumber Agua Fresca: 5.47
+  Tequila Sunrise Slushie: 10.35
+  Pineapple Salsa Guacamole: 7.09
+  Cactus and Black Bean Frittata: 9.22
+  Fiesta Veggie Tacos: 9.8
+  Churro Sundae: 4.23
+  Coffee Infused Flan: 5.53
+  Warm Churro Chips: 7.0
+  Smoky BBQ Brisket Tacos: 13.58
+  Classic Beef Fajitas: 8.78
+  Breakfast Chorizo Tostadas: 8.92
+  Tangy Lime Cilantro Tacos: 13.11
+  Mole Chocolate Cake: 6.12
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.75

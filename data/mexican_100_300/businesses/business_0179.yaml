@@ -1,0 +1,35 @@
+id: business_0179
+name: Sunrise & Spice
+description: Experience a vibrant twist on Mexican and Tex-Mex classics, where every
+  dish is crafted with bold flavors, fresh ingredients, and a burst of creativity.
+  Join us for a colorful dining adventure from breakfast favorites to flavorful bites
+  and sweet treats.
+rating: 1.0
+progenitor_customer: customer_0060
+menu_features:
+  Fresh Baked Sopapillas: 6.79
+  Tropical Lime Ceviche: 8.94
+  Sweet Potato Churros: 5.12
+  Spicy Bean and Cheese Nachos: 13.05
+  Herb-Roasted Corn Salad: 8.52
+  Ancho Chile Brownies: 5.41
+  Roasted Poblano Pepper Burrito: 11.47
+  Ultimate Breakfast Burrito: 5.48
+  Al Pastor Breakfast Burrito: 8.78
+  Smoky Black Bean Tacos: 15.57
+  Beef Barbacoa Bowl: 12.69
+  Honey Lime Grilled Shrimp: 15.64
+  Chile Relleno Casserole: 10.55
+  Fiery Chipotle Chicken Salad: 7.69
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: false
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: true
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.89

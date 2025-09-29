@@ -1,0 +1,32 @@
+id: business_0039
+name: Taco 'Bout Sizzle
+description: Step into bold flavors and vibrant ingredients at this lively Mexican
+  and Tex-Mex spot. From sizzling bowls and crisp tostadas to creative cocktails,
+  there's a fiesta in every bite.
+rating: 1.0
+progenitor_customer: customer_0013
+menu_features:
+  Pollo Asado Burrito Bowl: 12.8
+  Pineapple Pork Tacos: 11.95
+  Fiesta Nacho Bowl: 12.13
+  Crispy Avocado Tostadas: 12.2
+  Chipotle Chicken Quesadilla: 10.98
+  Sizzling Chorizo Empanadas: 8.32
+  Sizzling Fajita Salad: 9.83
+  Red Chili Beef Brisket: 23.87
+  Cilantro-Lime Shrimp Bowl: 19.35
+  Mango Chili Margarita: 9.63
+  Chile-Lime Roasted Corn: 4.03
+  Sizzling Shrimp Tacos: 13.11
+amenity_features:
+  Children's Menu: false
+  Large Groups: false
+  Live Music: false
+  Free Wifi: false
+  Wheelchair Accessible: true
+  Onsite Parking: false
+  Happy Hour: false
+  Private Dining: true
+  Outdoor Seating: true
+  Takes Reservations: false
+min_price_factor: 0.76

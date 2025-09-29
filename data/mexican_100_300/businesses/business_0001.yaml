@@ -1,0 +1,34 @@
+id: business_0001
+name: Casa Sabor Mexicano
+description: Experience vibrant flavors and classic Mexican hospitality at Casa Sabor
+  Mexicano, where fresh ingredients and traditional recipes come together for an unforgettable
+  dining experience. Savor a variety of dishes and handcrafted cocktails in a lively,
+  welcoming atmosphere.
+rating: 1.0
+progenitor_customer: customer_0001
+menu_features:
+  Ranchero Breakfast Burrito: 7.38
+  Tortilla Soup Supreme: 11.98
+  Shrimp Diablo Tostadas: 16.09
+  Citrus Cilantro Rice Bowl: 9.94
+  Tropical Pineapple Salsa: 2.41
+  Black Bean Veggie Tacos: 10.79
+  Avocado Lime Crema Quesadillas: 11.32
+  Mole Poblano Chicken: 18.4
+  "Jalape\xF1o Margarita": 7.44
+  Grilled Lime Shrimp Skewers: 11.39
+  Fresh Guacamole Bowl: 8.75
+  Vanilla Bean Sopapillas: 5.27
+  Chipotle Beef Quesadilla: 6.39
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.66

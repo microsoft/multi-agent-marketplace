@@ -1,0 +1,32 @@
+id: business_0004
+name: Estrella del Sabor
+description: Experience vibrant Mexican and Tex-Mex cuisine in an inviting setting
+  where bold flavors and fresh ingredients come together. Enjoy creative appetizers,
+  savory mains, and specialty cocktails inspired by tradition and modern flair.
+rating: 1.0
+progenitor_customer: customer_0002
+menu_features:
+  Jalapeno-Lime Cheesecake: 10.32
+  Coconut Lime Chicken Soup: 6.4
+  Coconut Mojito: 9.1
+  Mango Chipotle Wings: 12.42
+  Roasted Poblano Queso Dip: 11.94
+  Avocado Lime Grilled Shrimp: 12.47
+  Spiced Beef Empanadas: 7.77
+  Ancho Chicken Burrito Bowl: 14.16
+  Tequila Sunrise Spritzer: 9.36
+  Mango Habanero Wings: 6.72
+  Berry Sangria Punch: 8.66
+  Blue Corn Enchiladas: 8.53
+amenity_features:
+  Free Wifi: true
+  Wheelchair Accessible: true
+  Outdoor Seating: false
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: true
+  Live Music: true
+  Children's Menu: false
+  Onsite Parking: true
+  Private Dining: false
+min_price_factor: 0.77

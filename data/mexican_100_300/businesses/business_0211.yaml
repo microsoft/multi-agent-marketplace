@@ -1,0 +1,33 @@
+id: business_0211
+name: Guac to the Sweet Spot
+description: A lively Tex-Mex eatery serving up creative twists on classic flavors,
+  from zesty aguas frescas to sweet and savory bites. Come discover bold combinations
+  and vibrant tastes in every dish.
+rating: 1.0
+progenitor_customer: customer_0071
+menu_features:
+  Tamarind Agua Fresca: 3.42
+  Mole Enchiladas: 9.94
+  Avocado Lime Dip: 4.7
+  Chocolate Tamal del Cielo: 7.88
+  Blueberry Jalapeno Margarita: 11.44
+  BBQ Pulled Pork Enchiladas: 9.62
+  Tamarind Lime Cooler: 4.65
+  Sweet Potato Chorizo Hash: 15.15
+  Sweet Corn Tamale Pancakes: 5.78
+  Chipotle Lime Rice: 4.37
+  Creamy Avocado Soup: 10.2
+  Crispy Avocado Tostadas: 12.83
+  Wild Berry Agua Fresca: 5.44
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: true
+  Takes Reservations: false
+  Happy Hour: false
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: true
+min_price_factor: 0.68

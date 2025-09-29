@@ -1,0 +1,13 @@
+id: customer_0016
+name: Matthew Clark
+request: 'I am looking for a business that can fulfill the following order: 1 Ancho
+  Chili Spiced Tofu Tacos, 1 Loaded Beef Empanadas, and 1 Classic Beef Enchiladas.
+  It is crucial that the business also offers Live Music as an amenity. Once you find
+  a suitable business meeting all these criteria, please go ahead and place the order.
+  Thank you!'
+menu_features:
+  Ancho Chili Spiced Tofu Tacos: 10.49
+  Loaded Beef Empanadas: 9.99
+  Classic Beef Enchiladas: 12.99
+amenity_features:
+- Live Music

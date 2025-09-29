@@ -1,0 +1,11 @@
+id: customer_0058
+name: Brian Taylor
+request: Could you please assist me in finding a business that serves exactly one
+  order of the 'Three-Bean Vegetarian Tostadas' and also offers live music and a happy
+  hour? These amenities are essential, and I am ready to place an order once such
+  a business is found. Thank you very much for your help.
+menu_features:
+  Three-Bean Vegetarian Tostadas: 10.49
+amenity_features:
+- Live Music
+- Happy Hour

@@ -1,0 +1,35 @@
+id: business_0102
+name: Sizzle & Dulce
+description: Savor the vibrant flavors of modern Mexican cuisine and Tex-Mex favorites
+  in a stylish, welcoming setting. From sizzling street eats to sweet indulgences,
+  each bite brings a fresh twist to tradition.
+rating: 1.0
+progenitor_customer: customer_0034
+menu_features:
+  Poblano Pepper Queso Dip: 8.77
+  Churro Bites with Chocolate Dip: 4.77
+  Pineapple Cilantro Margarita: 10.43
+  Loaded Beef Enchiladas: 8.43
+  Mexican Chocolate Ice Cream: 4.13
+  Chipotle BBQ Carnitas: 15.97
+  Crispy Taquito Sampler: 7.73
+  Grilled Steak Fajita Tacos: 16.75
+  Tangy Pineapple Salsa: 6.66
+  Classic Tamale Plate: 8.41
+  Matcha Horchata Freeze: 5.83
+  Caramelized Onion and Chorizo Empanadas: 6.59
+  Black Bean and Sweet Potato Empanadas: 11.56
+  Avocado Lime Rice Bowl: 13.5
+  Warm Cinnamon Churros: 2.38
+amenity_features:
+  Free Wifi: false
+  Wheelchair Accessible: false
+  Outdoor Seating: true
+  Large Groups: false
+  Takes Reservations: true
+  Happy Hour: true
+  Live Music: false
+  Children's Menu: false
+  Onsite Parking: false
+  Private Dining: false
+min_price_factor: 0.75
