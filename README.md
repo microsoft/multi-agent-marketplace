@@ -31,7 +31,7 @@ docker compose up -d
 Then run the simulation:
 
 ```bash
-uv run packages/magentic-marketplace/experiments/run_experiment.py example_data/mexican_3_9
+uv run packages/magentic-marketplace/experiments/run_experiment.py data/mexican_3_9
 ```
 
 ## Paper
