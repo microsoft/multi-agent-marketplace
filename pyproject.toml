@@ -68,3 +68,16 @@ spell = "codespell packages/**/*.py packages/**/*.md"
 check-all = ["format", "lint", "type", "spell"]
 fix-all = ["format-fix", "lint-fix"]
 
+[tool.pytest.ini_options]
+testpaths = ["packages/magentic-marketplace/tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+addopts = "-v --tb=short"
+markers = [
+    "skip_ci: mark test to skip in CI environments",
+    "rnr: tests that require the rnr extra dependencies"
+]
+

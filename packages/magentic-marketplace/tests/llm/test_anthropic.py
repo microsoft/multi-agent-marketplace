@@ -12,6 +12,8 @@ from magentic_marketplace.marketplace.llm.clients.anthropic import (
     AnthropicConfig,
 )
 
+pytestmark = pytest.mark.skip_ci
+
 
 class ResponseModel(BaseModel):
     """Test response model for structured output."""

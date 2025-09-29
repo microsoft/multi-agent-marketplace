@@ -12,6 +12,8 @@ from magentic_marketplace.marketplace.llm.clients.openai import (
     OpenAIConfig,
 )
 
+pytestmark = pytest.mark.skip_ci
+
 
 class ResponseModel(BaseModel):
     """Test response model for structured output."""
@@ -62,6 +64,7 @@ class TestOpenAIClient:
     def config(self) -> OpenAIConfig:
         """Test configuration."""
         return OpenAIConfig(
+            provider="openai",
             api_key=os.environ["OPENAI_API_KEY"],
             model="gpt-4o-mini",
             temperature=0.1,
