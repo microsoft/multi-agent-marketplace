@@ -307,7 +307,7 @@ class TestMarketplaceClientRetry:
             mock_request.return_value.__aenter__ = AsyncMock(
                 side_effect=[
                     aiohttp.ClientConnectionError("Connection failed"),
-                    TimeoutError("Request timed out"),
+                    asyncio.TimeoutError("Request timed out"),
                     mock_response,  # Success on third attempt
                 ]
             )
