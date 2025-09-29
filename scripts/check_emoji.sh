@@ -12,37 +12,46 @@ fi
 
 echo "Checking for emojis in PR changes..."
 
-# Get the diff of all changed files
-DIFF_OUTPUT=$(git diff $BASE_BRANCH...$HEAD_COMMIT)
+# Check for emojis using Python for portability across macOS and Linux
+# This covers common emoji Unicode ranges
 
-# Check for emojis using Unicode ranges
-# Common emoji ranges:
-# - U+1F300-U+1F9FF (Miscellaneous Symbols and Pictographs, Emoticons, Transport and Map Symbols)
-# - U+2600-U+26FF (Miscellaneous Symbols)
-# - U+2700-U+27BF (Dingbats)
-# - U+1F600-U+1F64F (Emoticons)
-# - U+1F680-U+1F6FF (Transport and Map)
-# - U+1F900-U+1F9FF (Supplemental Symbols)
+HAS_EMOJIS=0
+FILES_WITH_EMOJIS=""
 
-EMOJI_PATTERN='[\x{1F300}-\x{1F9FF}\x{2600}-\x{26FF}\x{2700}-\x{27BF}]'
+git diff $BASE_BRANCH...$HEAD_COMMIT --name-only | while read file; do
+  if [ -f "$file" ]; then
+    EMOJI_CHECK=$(python3 -c "
+import re
+import sys
 
-if echo "$DIFF_OUTPUT" | grep -P "$EMOJI_PATTERN" > /dev/null; then
-  echo "ERROR: Emojis found in PR changes"
-  echo ""
-  echo "Found emojis in the following locations:"
-  echo ""
+emoji_pattern = re.compile(
+    '[\U0001F300-\U0001F9FF'  # Miscellaneous Symbols and Pictographs, Emoticons, etc.
+    '\U00002600-\U000026FF'   # Miscellaneous Symbols
+    '\U00002700-\U000027BF'   # Dingbats
+    '\U0001F600-\U0001F64F'   # Emoticons
+    '\U0001F680-\U0001F6FF'   # Transport and Map
+    '\U0001F900-\U0001F9FF]'  # Supplemental Symbols
+)
 
-  # Show files and line numbers with emojis
-  git diff $BASE_BRANCH...$HEAD_COMMIT --name-only | while read file; do
-    if [ -f "$file" ]; then
-      if grep -n -P "$EMOJI_PATTERN" "$file" > /dev/null 2>&1; then
-        echo "File: $file"
-        grep -n -P "$EMOJI_PATTERN" "$file" | head -5
-        echo ""
-      fi
+try:
+    with open('$file', 'r', encoding='utf-8') as f:
+        for line_num, line in enumerate(f, 1):
+            if emoji_pattern.search(line):
+                print(f'{line_num}:{line.rstrip()}')
+except Exception:
+    pass
+" 2>/dev/null)
+
+    if [ -n "$EMOJI_CHECK" ]; then
+      echo "ERROR: Emojis found in: $file"
+      echo "$EMOJI_CHECK" | head -5
+      echo ""
+      HAS_EMOJIS=1
     fi
-  done
+  fi
+done
 
+if [ "$HAS_EMOJIS" -eq 1 ]; then
   echo "Please remove all emojis from code, comments, and documentation."
   exit 1
 else
