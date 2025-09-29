@@ -283,7 +283,7 @@ class TestMarketplaceClientRetry:
 
                 # Verify exponential backoff delays
                 # With max_attempts=3, all failing: sleep after attempt 0, 1, and 2
-                assert mock_sleep.call_count == 2  # Three sleep calls
+                assert mock_sleep.call_count == 2  # Two sleep calls
                 delays = [call[0][0] for call in mock_sleep.call_args_list]
 
                 # With base_delay=0.01 and multiplier=2.0:
