@@ -49,8 +49,8 @@ _connection_metrics = {
 
 # Cache for database controllers to avoid recreating them
 # Key is the base path for sharded SQLite databases
-_cached_controllers = {}
-_controller_locks = {}
+_cached_controllers: dict[str, "ShardedSQLiteDatabaseController"] = {}
+_controller_locks: dict[str, asyncio.Lock] = {}
 
 # Global metrics timer
 _metrics_timer = None
@@ -991,11 +991,8 @@ class ShardedSQLiteDatabaseController(BaseDatabaseController):
         # Start periodic metrics dumping
         _start_metrics_timer(base_path)
 
-        # Initialize the database tables synchronously
-        asyncio.create_task(self.initialize())
-
     @staticmethod
-    def from_cached(
+    async def from_cached(
         base_path: str,
         agent_shards: int = 4,
         action_shards: int = 4,
@@ -1021,11 +1018,11 @@ class ShardedSQLiteDatabaseController(BaseDatabaseController):
 
         # Get or create a lock for this specific base path
         if base_path not in _controller_locks:
-            _controller_locks[base_path] = threading.Lock()
+            _controller_locks[base_path] = asyncio.Lock()
 
         lock = _controller_locks[base_path]
 
-        with lock:
+        async with lock:
             # Return cached controller if it exists
             if base_path in _cached_controllers:
                 return _cached_controllers[base_path]
@@ -1039,6 +1036,7 @@ class ShardedSQLiteDatabaseController(BaseDatabaseController):
                 db_timeout,
                 max_read_connections_per_shard,
             )
+            await controller.initialize()
             _cached_controllers[base_path] = controller
             return controller
 

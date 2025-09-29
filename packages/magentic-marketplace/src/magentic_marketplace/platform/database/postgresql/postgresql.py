@@ -40,8 +40,8 @@ _metrics_timer = None
 
 # Cache for database controllers to avoid recreating them
 # Key is the schema name for PostgreSQL databases
-_cached_controllers = {}
-_controller_locks = {}
+_cached_controllers: dict[str, "PostgreSQLDatabaseController"] = {}
+_controller_locks: dict[str, asyncio.Lock] = {}
 
 
 def _dump_metrics_to_file(database_url: str):
@@ -713,9 +713,6 @@ class PostgreSQLDatabaseController(BaseDatabaseController):
         # Start periodic metrics dumping
         _start_metrics_timer("postgresql_connection_pool")
 
-        # Initialize the database tables synchronously
-        asyncio.create_task(self.initialize())
-
     @staticmethod
     async def from_cached(
         schema: str,
@@ -751,11 +748,11 @@ class PostgreSQLDatabaseController(BaseDatabaseController):
 
         # Get or create a lock for this specific schema
         if schema not in _controller_locks:
-            _controller_locks[schema] = threading.Lock()
+            _controller_locks[schema] = asyncio.Lock()
 
         lock = _controller_locks[schema]
 
-        with lock:
+        async with lock:
             # Return cached controller if it exists
             if schema in _cached_controllers:
                 return _cached_controllers[schema]
@@ -773,6 +770,7 @@ class PostgreSQLDatabaseController(BaseDatabaseController):
             )
 
             controller = PostgreSQLDatabaseController(pool, db_timeout, schema)
+            await controller.initialize()
             _cached_controllers[schema] = controller
             return controller
 

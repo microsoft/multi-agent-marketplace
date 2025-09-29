@@ -39,8 +39,8 @@ _connection_metrics = {
 
 # Cache for database controllers to avoid recreating them
 # Key is the database path for SQLite
-_cached_controllers = {}
-_controller_locks = {}
+_cached_controllers: dict[str, "SQLiteDatabaseController"] = {}
+_controller_locks: dict[str, asyncio.Lock] = {}
 
 # Global metrics timer
 _metrics_timer = None
@@ -773,11 +773,10 @@ class SQLiteDatabaseController(BaseDatabaseController, _BoundedSqliteConnectionM
         # Start periodic metrics dumping
         _start_metrics_timer(db_path)
 
-        # Initialize the database tables synchronously
-        asyncio.create_task(self.initialize())
-
     @staticmethod
-    def from_cached(db_path: str, db_timeout: float = 5, max_read_connections: int = 3):
+    async def from_cached(
+        db_path: str, db_timeout: float = 5, max_read_connections: int = 3
+    ):
         """Get a cached controller for the given database path or create a new one.
 
         Args:
@@ -793,11 +792,11 @@ class SQLiteDatabaseController(BaseDatabaseController, _BoundedSqliteConnectionM
 
         # Get or create a lock for this specific database path
         if db_path not in _controller_locks:
-            _controller_locks[db_path] = threading.Lock()
+            _controller_locks[db_path] = asyncio.Lock()
 
         lock = _controller_locks[db_path]
 
-        with lock:
+        async with lock:
             # Return cached controller if it exists
             if db_path in _cached_controllers:
                 return _cached_controllers[db_path]
@@ -806,6 +805,7 @@ class SQLiteDatabaseController(BaseDatabaseController, _BoundedSqliteConnectionM
             controller = SQLiteDatabaseController(
                 db_path, db_timeout, max_read_connections
             )
+            await controller.initialize()
             _cached_controllers[db_path] = controller
             return controller
 
