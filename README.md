@@ -3,7 +3,7 @@
 Magentic Marketplace is a Python SDK for running generative simulations of agentic markets.
 You can configure business and customer agents that transact and then run simulations that evaluate the market's welfar.
 
-![Magentic Marketplace](/.github/images/landing.png)
+<!-- ![Magentic Marketplace](/.github/images/landing.png) -->
 
 ## Quick Start
 
