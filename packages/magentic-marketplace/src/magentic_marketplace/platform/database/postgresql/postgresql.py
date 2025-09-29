@@ -140,36 +140,37 @@ def _convert_query_to_postgres(query: Query) -> tuple[str, list[Any]]:
     return sql, params
 
 
-# SQL DDL for table creation
-CREATE_TABLES_SQL = """
-CREATE TABLE IF NOT EXISTS agents (
+def create_tables_sql(schema: str) -> str:
+    """Generate SQL DDL for table creation in the specified schema."""
+    return f"""
+CREATE TABLE IF NOT EXISTS {schema}.agents (
     id TEXT PRIMARY KEY,
     created_at TIMESTAMPTZ NOT NULL,
     data JSONB NOT NULL,
     agent_embedding BYTEA
 );
 
-CREATE TABLE IF NOT EXISTS actions (
+CREATE TABLE IF NOT EXISTS {schema}.actions (
     id TEXT PRIMARY KEY,
     created_at TIMESTAMPTZ NOT NULL,
     data JSONB NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS logs (
+CREATE TABLE IF NOT EXISTS {schema}.logs (
     id TEXT PRIMARY KEY,
     created_at TIMESTAMPTZ NOT NULL,
     data JSONB NOT NULL
 );
 
 -- Add indexes for better performance
-CREATE INDEX IF NOT EXISTS agents_created_at_idx ON agents(created_at);
-CREATE INDEX IF NOT EXISTS actions_created_at_idx ON actions(created_at);
-CREATE INDEX IF NOT EXISTS logs_created_at_idx ON logs(created_at);
+CREATE INDEX IF NOT EXISTS agents_created_at_idx ON {schema}.agents(created_at);
+CREATE INDEX IF NOT EXISTS actions_created_at_idx ON {schema}.actions(created_at);
+CREATE INDEX IF NOT EXISTS logs_created_at_idx ON {schema}.logs(created_at);
 
 -- Add GIN indexes for JSONB columns for fast JSON queries
-CREATE INDEX IF NOT EXISTS agents_data_gin_idx ON agents USING GIN(data);
-CREATE INDEX IF NOT EXISTS actions_data_gin_idx ON actions USING GIN(data);
-CREATE INDEX IF NOT EXISTS logs_data_gin_idx ON logs USING GIN(data);
+CREATE INDEX IF NOT EXISTS agents_data_gin_idx ON {schema}.agents USING GIN(data);
+CREATE INDEX IF NOT EXISTS actions_data_gin_idx ON {schema}.actions USING GIN(data);
+CREATE INDEX IF NOT EXISTS logs_data_gin_idx ON {schema}.logs USING GIN(data);
 """
 
 
@@ -195,8 +196,6 @@ class _BoundedPostgresConnectionMixIn:
         try:
             async with asyncio.timeout(self._timeout):
                 async with self._pool.acquire() as conn:
-                    # Set search path to use the correct schema
-                    await conn.execute(f"SET search_path TO {self._schema}")
                     _connection_metrics["successful_requests"] += 1
                     yield conn
         except TimeoutError as e:
@@ -218,7 +217,7 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
 
         async with self.connection(is_write=True) as conn:
             await conn.execute(
-                "INSERT INTO agents (id, created_at, data, agent_embedding) VALUES ($1, $2, $3, $4)",
+                f"INSERT INTO {self._schema}.agents (id, created_at, data, agent_embedding) VALUES ($1, $2, $3, $4)",
                 agent_id,
                 item.created_at,
                 json.dumps(item.data.model_dump()),
@@ -236,7 +235,7 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
         """Get agent by ID."""
         async with self.connection() as conn:
             row = await conn.fetchrow(
-                "SELECT id, created_at, data, agent_embedding FROM agents WHERE id = $1",
+                f"SELECT id, created_at, data, agent_embedding FROM {self._schema}.agents WHERE id = $1",
                 item_id,
             )
 
@@ -254,7 +253,7 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
 
     async def get_all(self, params: RangeQueryParams | None = None) -> list[AgentRow]:
         """Get all agents with pagination."""
-        sql = "SELECT id, created_at, data, agent_embedding FROM agents ORDER BY created_at"
+        sql = f"SELECT id, created_at, data, agent_embedding FROM {self._schema}.agents ORDER BY created_at"
         sql_params = []
 
         if params and params.limit:
@@ -285,7 +284,7 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
         where_clause, query_params = _convert_query_to_postgres(query)
 
         sql = f"""
-        SELECT id, created_at, data, agent_embedding FROM agents
+        SELECT id, created_at, data, agent_embedding FROM {self._schema}.agents
         WHERE {where_clause}
         """
         sql_params = query_params[:]
@@ -342,9 +341,7 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
             return existing
 
         sql_params.append(item_id)
-        sql = (
-            f"UPDATE agents SET {', '.join(set_clauses)} WHERE id = ${len(sql_params)}"
-        )
+        sql = f"UPDATE {self._schema}.agents SET {', '.join(set_clauses)} WHERE id = ${len(sql_params)}"
 
         async with self.connection(is_write=True) as conn:
             await conn.execute(sql, *sql_params)
@@ -354,20 +351,22 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
     async def delete(self, item_id: str) -> bool:
         """Delete an agent."""
         async with self.connection() as conn:
-            result = await conn.execute("DELETE FROM agents WHERE id = $1", item_id)
+            result = await conn.execute(
+                f"DELETE FROM {self._schema}.agents WHERE id = $1", item_id
+            )
             return result.split()[-1] != "0"  # Check if any rows were affected
 
     async def count(self) -> int:
         """Count total agents."""
         async with self.connection() as conn:
-            result = await conn.fetchval("SELECT COUNT(*) FROM agents")
+            result = await conn.fetchval(f"SELECT COUNT(*) FROM {self._schema}.agents")
             return result
 
     async def find_agents_by_id_pattern(self, id_pattern: str) -> list[str]:
         """Find all agent IDs that contain the given ID pattern."""
         async with self.connection() as conn:
             rows = await conn.fetch(
-                "SELECT id FROM agents WHERE id ILIKE $1",
+                f"SELECT id FROM {self._schema}.agents WHERE id ILIKE $1",
                 f"%{id_pattern}%",
             )
         return [row["id"] for row in rows]
@@ -386,7 +385,7 @@ class PostgreSQLActionController(
         where_clause, query_params = _convert_query_to_postgres(query)
 
         sql = f"""
-        SELECT id, created_at, data FROM actions
+        SELECT id, created_at, data FROM {self._schema}.actions
         WHERE {where_clause}
         """
         sql_params = query_params[:]
@@ -428,7 +427,7 @@ class PostgreSQLActionController(
 
         async with self.connection(is_write=True) as conn:
             await conn.execute(
-                "INSERT INTO actions (id, created_at, data) VALUES ($1, $2, $3)",
+                f"INSERT INTO {self._schema}.actions (id, created_at, data) VALUES ($1, $2, $3)",
                 action_id,
                 item.created_at,
                 action_json,
@@ -444,7 +443,7 @@ class PostgreSQLActionController(
         """Get action by ID."""
         async with self.connection() as conn:
             row = await conn.fetchrow(
-                "SELECT id, created_at, data FROM actions WHERE id = $1",
+                f"SELECT id, created_at, data FROM {self._schema}.actions WHERE id = $1",
                 item_id,
             )
 
@@ -460,7 +459,7 @@ class PostgreSQLActionController(
 
     async def get_all(self, params: RangeQueryParams | None = None) -> list[ActionRow]:
         """Get all actions with pagination."""
-        sql = "SELECT id, created_at, data FROM actions ORDER BY created_at"
+        sql = f"SELECT id, created_at, data FROM {self._schema}.actions ORDER BY created_at"
         sql_params = []
 
         if params and params.limit:
@@ -515,9 +514,7 @@ class PostgreSQLActionController(
             return existing
 
         sql_params.append(item_id)
-        sql = (
-            f"UPDATE actions SET {', '.join(set_clauses)} WHERE id = ${len(sql_params)}"
-        )
+        sql = f"UPDATE {self._schema}.actions SET {', '.join(set_clauses)} WHERE id = ${len(sql_params)}"
 
         async with self.connection(is_write=True) as conn:
             await conn.execute(sql, *sql_params)
@@ -527,13 +524,15 @@ class PostgreSQLActionController(
     async def delete(self, item_id: str) -> bool:
         """Delete an action."""
         async with self.connection() as conn:
-            result = await conn.execute("DELETE FROM actions WHERE id = $1", item_id)
+            result = await conn.execute(
+                f"DELETE FROM {self._schema}.actions WHERE id = $1", item_id
+            )
             return result.split()[-1] != "0"
 
     async def count(self) -> int:
         """Count total actions."""
         async with self.connection() as conn:
-            result = await conn.fetchval("SELECT COUNT(*) FROM actions")
+            result = await conn.fetchval(f"SELECT COUNT(*) FROM {self._schema}.actions")
             return result
 
 
@@ -548,7 +547,7 @@ class PostgreSQLLogController(LogTableController, _BoundedPostgresConnectionMixI
         where_clause, query_params = _convert_query_to_postgres(query)
 
         sql = f"""
-        SELECT id, created_at, data FROM logs
+        SELECT id, created_at, data FROM {self._schema}.logs
         WHERE {where_clause}
         """
         sql_params = query_params[:]
@@ -589,7 +588,7 @@ class PostgreSQLLogController(LogTableController, _BoundedPostgresConnectionMixI
 
         async with self.connection(is_write=True) as conn:
             await conn.execute(
-                "INSERT INTO logs (id, created_at, data) VALUES ($1, $2, $3)",
+                f"INSERT INTO {self._schema}.logs (id, created_at, data) VALUES ($1, $2, $3)",
                 log_id,
                 item.created_at,
                 json.dumps(item.data.model_dump()),
@@ -601,7 +600,7 @@ class PostgreSQLLogController(LogTableController, _BoundedPostgresConnectionMixI
         """Get log by ID."""
         async with self.connection() as conn:
             row = await conn.fetchrow(
-                "SELECT id, created_at, data FROM logs WHERE id = $1",
+                f"SELECT id, created_at, data FROM {self._schema}.logs WHERE id = $1",
                 item_id,
             )
 
@@ -617,7 +616,9 @@ class PostgreSQLLogController(LogTableController, _BoundedPostgresConnectionMixI
 
     async def get_all(self, params: RangeQueryParams | None = None) -> list[LogRow]:
         """Get all logs with pagination."""
-        sql = "SELECT id, created_at, data FROM logs ORDER BY created_at"
+        sql = (
+            f"SELECT id, created_at, data FROM {self._schema}.logs ORDER BY created_at"
+        )
         sql_params = []
 
         if params and params.limit:
@@ -660,7 +661,7 @@ class PostgreSQLLogController(LogTableController, _BoundedPostgresConnectionMixI
             return existing
 
         sql_params.append(item_id)
-        sql = f"UPDATE logs SET {', '.join(set_clauses)} WHERE id = ${len(sql_params)}"
+        sql = f"UPDATE {self._schema}.logs SET {', '.join(set_clauses)} WHERE id = ${len(sql_params)}"
 
         async with self.connection(is_write=True) as conn:
             await conn.execute(sql, *sql_params)
@@ -670,13 +671,15 @@ class PostgreSQLLogController(LogTableController, _BoundedPostgresConnectionMixI
     async def delete(self, item_id: str) -> bool:
         """Delete a log record."""
         async with self.connection() as conn:
-            result = await conn.execute("DELETE FROM logs WHERE id = $1", item_id)
+            result = await conn.execute(
+                f"DELETE FROM {self._schema}.logs WHERE id = $1", item_id
+            )
             return result.split()[-1] != "0"
 
     async def count(self) -> int:
         """Count total log records."""
         async with self.connection() as conn:
-            result = await conn.fetchval("SELECT COUNT(*) FROM logs")
+            result = await conn.fetchval(f"SELECT COUNT(*) FROM {self._schema}.logs")
             return result
 
 
@@ -717,8 +720,6 @@ class PostgreSQLDatabaseController(BaseDatabaseController):
     async def execute(self, command: Any) -> Any:
         """Execute an arbitrary database command."""
         async with self._pool.acquire() as conn:
-            # Set search path to use the correct schema
-            await conn.execute(f"SET search_path TO {self._schema}")
             return await conn.execute(command)
 
     async def initialize(self):
@@ -744,11 +745,8 @@ class PostgreSQLDatabaseController(BaseDatabaseController):
             # Create the new schema
             await conn.execute(f"CREATE SCHEMA {self._schema}")
 
-            # Set search path to use the schema
-            await conn.execute(f"SET search_path TO {self._schema}")
-
             # Create tables in the schema
-            await conn.execute(CREATE_TABLES_SQL)
+            await conn.execute(create_tables_sql(self._schema))
 
         _initialized = True
 
