@@ -4,6 +4,8 @@ import os
 from unittest.mock import patch
 
 import pytest
+from azure.core.exceptions import ClientAuthenticationError
+from azure.identity import AzureCliCredential
 from openai.types.chat import ChatCompletionUserMessageParam
 from pydantic import BaseModel
 
@@ -13,6 +15,24 @@ from magentic_marketplace.marketplace.llm.clients.trapi.client import (
 )
 
 pytestmark = pytest.mark.skip_ci
+
+
+def is_azure_cli_logged_in() -> bool:
+    """Check if user is logged in via Azure CLI."""
+    try:
+        credential = AzureCliCredential()
+        # Try to get a token for a common Azure resource
+        credential.get_token("api://trapi/.default")
+        return True
+    except (ClientAuthenticationError, Exception):
+        return False
+
+
+# Skip decorator for Azure CLI authentication
+skipif_no_azure_cli = pytest.mark.skipif(
+    not is_azure_cli_logged_in(),
+    reason="Azure CLI authentication required - run 'az login' first",
+)
 
 
 class ResponseModel(BaseModel):
@@ -51,6 +71,7 @@ class TestTrapiConfig:
         assert config.reasoning_effort == "minimal"
 
 
+@skipif_no_azure_cli
 class TestTrapiClient:
     """Test TrapiClient functionality with real API calls."""
 
