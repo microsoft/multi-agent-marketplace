@@ -1,66 +1,30 @@
 # Magentic Marketplace
 
-Magentic Marketplace is a Python SDK for building and running agentic marketplace simulations. 
+Magentic Marketplace is a Python SDK for running generative simulations of agentic markets.
+You can configure business and customer agents that transact and then run simulations that evaluate the market's welfar.
 
 ![Magentic Marketplace](/.github/images/landing.png)
 
-## Features
-
-- Configure business and customer agents that transact in the marketplace
-- Run test simulations and evaluate marketplace welfare
-
 ## Quick Start
 
-### 1. Download the source code
-
 ```bash
+# Clone the repo
 git clone https://github.com/microsoft/multi-agent-marketplace.git
 cd multi-agent-marketplace
-```
 
-### 2. Install the python dependencies with [`uv`](https://docs.astral.sh/uv/getting-started/installation/)
-
-```bash
+# Install dependencies with `uv`. Install from https://docs.astral.sh/uv/
 uv sync --all-extras
 source .venv/bin/activate
-```
 
-### 3. Configure your environment variables
-
-```bash
+# Configure environment variables in .env. Edit in favorite editor
 cp sample.env .env
-```
 
-Open `.env` in your favorite text editor. Fill out at least `LLM_PROVIDER`, `LLM_MODEL`, and the `<PROVIDER>_API_KEY` for that model.
-
-e.g.
-
-```bash
-# .env
-OPENAI_API_KEY="sk-..."
-LLM_PROVIDER="openai" # or "anthropic" or "gemini"
-LLM_MODEL="gpt-4.1"
-```
-
-### 4. Start a database server via [Docker](https://www.docker.com/get-started/)
-
-```bash
+# Start the database server
 docker compose up -d
-```
 
-### 5. Run an experiment
-
-```bash
+# Run the experiments
 magentic-marketplace experiment data/mexican_3_9
-```
 
-### 6. Analyze the results
-
-NOTE: This actually doesn't work yet!
-
-```bash
+# Analyze the results
 magentic-marketplace analytics data/mexican_3_9
 ```
-
-## Paper
-See our paper for more info: TODO
