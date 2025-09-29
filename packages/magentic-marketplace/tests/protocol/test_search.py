@@ -211,6 +211,7 @@ class TestSearch:
         parsed_response = SearchResponse.model_validate(result.content)
         assert len(parsed_response.businesses) == 0
 
+    @pytest.mark.rnr
     @pytest.mark.asyncio
     async def test_search_rnr_basic(self, test_agents_with_client: dict[str, Any]):
         """Test RNR search algorithm with semantic ranking."""
@@ -233,6 +234,7 @@ class TestSearch:
         assert parsed_response.businesses[0].id == business.id
         assert parsed_response.search_algorithm == SearchAlgorithm.RNR
 
+    @pytest.mark.rnr
     @pytest.mark.asyncio
     async def test_search_rnr_no_query(self, test_agents_with_client: dict[str, Any]):
         """Test RNR search algorithm without query (should fallback to rating sort)."""
@@ -254,6 +256,7 @@ class TestSearch:
         assert len(parsed_response.businesses) == 1
         assert parsed_response.businesses[0].id == business.id
 
+    @pytest.mark.rnr
     @pytest.mark.asyncio
     async def test_search_rnr_embedding_computation(
         self, test_agents_with_client: dict[str, Any]

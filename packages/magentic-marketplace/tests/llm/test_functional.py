@@ -8,6 +8,8 @@ from pydantic import BaseModel
 
 from magentic_marketplace.marketplace.llm import functional
 
+pytestmark = pytest.mark.skip_ci
+
 
 class ResponseModel(BaseModel):
     """Test response model for structured output."""
@@ -79,7 +81,7 @@ class TestFunctionalInterface:
         response, usage = await functional.generate(
             messages,
             provider="gemini",
-            model="gemini-1.5-flash",
+            model="gemini-2.5-flash",
             temperature=0.1,
             max_tokens=50,
         )
