@@ -126,7 +126,7 @@ class TestMarketplaceClientRetry:
         """Test that client does NOT retry on timeout errors by default."""
         with patch.object(client._session, "request") as mock_request:
             mock_request.return_value.__aenter__ = AsyncMock(
-                side_effect=TimeoutError("Request timed out")
+                side_effect=asyncio.TimeoutError("Request timed out")
             )
 
             with pytest.raises(asyncio.TimeoutError) as exc_info:
