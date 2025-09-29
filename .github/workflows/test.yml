@@ -19,7 +19,7 @@ jobs:
         version: "latest"
 
     - name: Sync dependencies
-      run: uv sync
+      run: uv sync --all-extras
 
     - name: Run package-specific tests
       run: uv run pytest packages/magentic-marketplace/tests/
