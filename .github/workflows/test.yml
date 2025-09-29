@@ -22,5 +22,5 @@ jobs:
       run: uv sync --all-extras
 
     - name: Run package-specific tests
-      run: uv run pytest packages/magentic-marketplace/tests/
+      run: uv run pytest -m "not skip_ci" packages/magentic-marketplace/tests/
 
