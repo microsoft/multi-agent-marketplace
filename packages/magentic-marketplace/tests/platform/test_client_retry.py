@@ -282,7 +282,7 @@ class TestMarketplaceClientRetry:
                     await client.request("GET", "/test")
 
                 # Verify exponential backoff delays
-                # With max_attempts=3, all failing: sleep after attempt 0, 1, and 2
+                # With max_attempts=3, all failing: sleep occurs before retry attempts 1 and 2 (i.e., two sleep calls)
                 assert mock_sleep.call_count == 2  # Two sleep calls
                 delays = [call[0][0] for call in mock_sleep.call_args_list]
 
