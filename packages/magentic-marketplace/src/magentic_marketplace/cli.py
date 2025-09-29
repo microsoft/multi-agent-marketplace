@@ -80,7 +80,9 @@ def experiment_command(args):
 def analytics_command(args):
     """Handle the analytics subcommand."""
     save_to_json = not args.no_save_json
-    asyncio.run(run_analytics(args.database_path, save_to_json=save_to_json))
+    asyncio.run(
+        run_analytics(args.database_name, args.db_type, save_to_json=save_to_json)
+    )
 
 
 def main():
@@ -159,7 +161,14 @@ def main():
     )
 
     analytics_parser.add_argument(
-        "database_path", help="Path to the SQLite database file"
+        "database_name", help="Postgres schema name or path to the SQLite database file"
+    )
+
+    analytics_parser.add_argument(
+        "--db-type",
+        choices=["sqlite", "postgres"],
+        default="postgres",
+        help="Type of database to use (default: postgres)",
     )
 
     analytics_parser.add_argument(

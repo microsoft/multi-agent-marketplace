@@ -813,6 +813,8 @@ async def create_postgresql_database(
 ):
     """Create PostgreSQL database controller with connection pooling.
 
+    Automatically connects to existing schema if it exists, or creates it if it doesn't.
+
     Args:
         schema: Database schema (required)
         host: PostgreSQL server host
