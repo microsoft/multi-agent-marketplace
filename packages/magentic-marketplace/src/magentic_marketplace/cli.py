@@ -139,12 +139,6 @@ def main():
     )
 
     experiment_parser.add_argument(
-        "--postgres-user",
-        default="postgres",
-        help="PostgreSQL user (default: postgres)",
-    )
-
-    experiment_parser.add_argument(
         "--postgres-password",
         default="postgres",
         help="PostgreSQL password (default: postgres)",
