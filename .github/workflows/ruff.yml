@@ -25,7 +25,7 @@ jobs:
       run: uv sync
 
     - name: Run ruff format check
-      run: uv run ruff format --check --diff packages/magentic-marketplace/
+      run: uv run poe format
 
     - name: Run ruff linting
-      run: uv run ruff check packages/magentic-marketplace/
+      run: uv run poe lint
