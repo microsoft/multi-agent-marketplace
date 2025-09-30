@@ -221,5 +221,6 @@ __marimo__/
 # ignore files that contain ".local" in the file name
 *.local*
 
-# log files are json so ignore all
+# log files are json so ignore all, but keep config files
 *.json
+!pyrightconfig.json

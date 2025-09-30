@@ -1,0 +1,10 @@
+{
+  "include": [
+    "packages/magentic-marketplace/src",
+    "packages/magentic-marketplace/tests"
+  ],
+  "exclude": [
+    "packages/magentic-marketplace/src/magentic_marketplace/marketplace/protocol/search/rnr_algo.py"
+  ],
+  "typeCheckingMode": "basic"
+}
