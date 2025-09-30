@@ -2,7 +2,7 @@
 
 from typing import Any
 
-from .base import BaseClient
+from .base import BaseClient, RetryConfig
 from .resources import ActionsResource, AgentsResource, LogsResource
 
 
@@ -19,9 +19,14 @@ class MarketplaceClient(BaseClient):
             logger.info("This logs to both Python logging and database")
     """
 
-    def __init__(self, base_url: str, timeout: float | None = 60.0):
+    def __init__(
+        self,
+        base_url: str,
+        timeout: float | None = 60.0,
+        retry_config: RetryConfig | None = None,
+    ):
         """Initialize marketplace client with resource modules."""
-        super().__init__(base_url, timeout)
+        super().__init__(base_url, timeout, retry_config=retry_config)
 
         # Initialize resource modules
         self.agents = AgentsResource(self)
