@@ -11,7 +11,7 @@ dev = [
 [tool.uv.workspace]
 members = [
     "packages/magentic-marketplace",
-    "packages/magentic-marketplace-mcp"
+    "packages/magentic-marketplace-mcp",
 ]
 
 
