@@ -23,6 +23,10 @@ from magentic_marketplace.marketplace.shared.models import (
     CustomerAgentProfile,
     MarketplaceAgentProfileAdapter,
 )
+from magentic_marketplace.platform.database import (
+    create_postgresql_database,
+)
+from magentic_marketplace.platform.database.base import BaseDatabaseController
 from magentic_marketplace.platform.database.models import ActionRow
 from magentic_marketplace.platform.database.sqlite.sqlite import (
     SQLiteDatabaseController,
@@ -44,7 +48,7 @@ RESET_COLOR = "\033[0m" if sys.stdout.isatty() else ""
 class MarketplaceAnalytics:
     """Advanced analytics engine for marketplace simulation data using typed models."""
 
-    def __init__(self, db_controller: SQLiteDatabaseController):
+    def __init__(self, db_controller: BaseDatabaseController):
         """Initialize analytics with database controller."""
         self.db = db_controller
         self.customer_agents: dict[str, CustomerAgentProfile] = {}
@@ -566,17 +570,42 @@ class MarketplaceAnalytics:
         print(f"Purchase completion rate: {results.purchase_completion_rate:.1f}%")
 
 
-async def run_analytics(db_path: str, save_to_json: bool = True):
-    """Run comprehensive analytics on the database."""
-    if not Path(db_path).exists():
-        print(f"Error: Database file {db_path} not found")
-        sys.exit(1)
+async def run_analytics(
+    db_path_or_schema: str, db_type: str, save_to_json: bool = True
+):
+    """Run comprehensive analytics on the database.
 
-    # Extract database name from path (without extension)
-    db_name = Path(db_path).stem
+    Args:
+        db_path_or_schema (str): Path to SQLite database file or Postgres schema name.
+        db_type (str): Type of database ("sqlite" or "postgres").
+        save_to_json (bool): Whether to save results to JSON file.
 
-    db_controller = SQLiteDatabaseController(db_path)
-    await db_controller.initialize()
+    """
+    if db_type == "sqlite":
+        if not Path(db_path_or_schema).exists():
+            raise FileNotFoundError(
+                f"SQLite database file {db_path_or_schema} not found"
+            )
 
-    analytics = MarketplaceAnalytics(db_controller)
-    await analytics.generate_report(save_to_json=save_to_json, db_name=db_name)
+        db_name = Path(db_path_or_schema).stem
+
+        db_controller = SQLiteDatabaseController(db_path_or_schema)
+        await db_controller.initialize()
+
+        analytics = MarketplaceAnalytics(db_controller)
+        await analytics.generate_report(save_to_json=save_to_json, db_name=db_name)
+    elif db_type == "postgres":
+        async with create_postgresql_database(
+            schema=db_path_or_schema,
+            host="localhost",
+            port=5432,
+            password="postgres",
+        ) as db_controller:
+            analytics = MarketplaceAnalytics(db_controller)
+            await analytics.generate_report(
+                save_to_json=save_to_json, db_name=db_path_or_schema
+            )
+    else:
+        raise ValueError(
+            f"Unsupported database type: {db_type}. Must be 'sqlite' or 'postgres'."
+        )
