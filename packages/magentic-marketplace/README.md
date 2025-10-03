@@ -1,6 +1,6 @@
 # Magentic Marketplace
 
-Magentic markertplace has 3 sub-modules:
+Magentic marketplace has 3 sub-modules:
 
 - `experiments`: scripts for running experiments
 - `marketplace`: defines the marketplace protocol and actions
