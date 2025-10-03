@@ -42,27 +42,33 @@ async def run_greeter_reader_example():
     )
 
     async with launcher:
+        # Note: Agent IDs may be modified by the server during registration
+        # Use the registered profile IDs for communication
         alice_profile = AgentProfile(id="alice", metadata={})
         bob_profile = AgentProfile(id="bob", metadata={})
 
-        greeter = GreeterAgent(
-            profile=alice_profile,
-            server_url=launcher.server_url,
-            target_agent_id="bob",
-            message_count=3,
-        )
-
+        # Create reader first (will be registered first)
         reader = ReaderAgent(
             profile=bob_profile,
             server_url=launcher.server_url,
             check_interval=1.0,
         )
 
+        # Create greeter that will send to bob
+        # The target ID will be resolved after registration
+        greeter = GreeterAgent(
+            profile=alice_profile,
+            server_url=launcher.server_url,
+            target_agent_id=bob_profile.id,  # Will use bob's actual registered ID
+            message_count=3,
+        )
+
         async with AgentLauncher(launcher.server_url) as agent_launcher:
             try:
+                # Run both agents as primary so they both register concurrently
                 await agent_launcher.run_agents_with_dependencies(
-                    primary_agents=[greeter],
-                    dependent_agents=[reader],
+                    primary_agents=[reader, greeter],  # Reader first to register
+                    dependent_agents=[],
                 )
             except KeyboardInterrupt:
                 print("\nExample interrupted by user")
