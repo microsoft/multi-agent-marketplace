@@ -129,4 +129,4 @@ class MarketplaceLogger:
         """Wait for any pending tasks to complete."""
         tasks = list(self._tasks)
         self._tasks.clear()
-        return await asyncio.gather(*tasks)
+        return await asyncio.gather(*tasks, return_exceptions=True)
