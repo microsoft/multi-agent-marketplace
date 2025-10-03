@@ -16,7 +16,7 @@ from cookbook.text_only_protocol.messaging import TextMessage
 
 
 class WriterAgent(BaseAgent[AgentProfile]):
-    """Agent that sends text for proofreading to multiple proofreaders."""
+    """Agent that requests quotes and selects best proofreader using LLM."""
 
     def __init__(
         self,
@@ -24,6 +24,8 @@ class WriterAgent(BaseAgent[AgentProfile]):
         server_url: str,
         proofreader_ids: list[str],
         text_to_proofread: str,
+        llm_provider: str,
+        llm_model: str,
     ):
         """Initialize writer agent.
 
@@ -32,23 +34,29 @@ class WriterAgent(BaseAgent[AgentProfile]):
             server_url: Marketplace server URL
             proofreader_ids: List of proofreader agent IDs
             text_to_proofread: Text content to send for proofreading
+            llm_provider: LLM provider for decision making
+            llm_model: LLM model for decision making
 
         """
         super().__init__(profile, server_url)
         self.proofreader_ids = proofreader_ids
         self.text_to_proofread = text_to_proofread
+        self.llm_provider = llm_provider
+        self.llm_model = llm_model
         self.initialized = False
-        self.text_sent = False
-        self.expected_responses = len(proofreader_ids)
-        self.received_count = 0
+        self.quotes_requested = False
+        self.quotes_received = 0
+        self.selected_proofreader = None
+        self.task_sent = False
+        self.result_received = False
 
     async def step(self) -> None:
-        """Send text to all proofreaders and collect corrections."""
+        """Request quotes, select best, send task to winner."""
         if not self.initialized:
             await asyncio.sleep(1)
             self.initialized = True
 
-            # Resolve proofreader IDs from registered agents
+            # Resolve proofreader IDs
             agents_response = await self.client.agents.list(limit=100)
             resolved_ids = []
             for proofreader_prefix in self.proofreader_ids:
@@ -58,40 +66,114 @@ class WriterAgent(BaseAgent[AgentProfile]):
                         break
             self.proofreader_ids = resolved_ids
 
-        if not self.text_sent:
-            preview = self.text_to_proofread[:60].replace("\n", " ") + "..." if len(self.text_to_proofread) > 60 else self.text_to_proofread
-            print(f"\n[{self.id}] Sending {len(self.text_to_proofread)} chars to {len(self.proofreader_ids)} proofreaders")
-            print(f"[{self.id}] First 60 chars: {preview}\n")
+        # Phase 1: Request quotes
+        if not self.quotes_requested:
+            quote_request = await self._generate_quote_request()
+            print(f"\n{'='*70}")
+            print(f"PHASE 1: REQUEST QUOTES")
+            print(f"{'='*70}")
+            print(f"[{self.id}] Generated quote request:")
+            print(f"  {quote_request[:100].replace(chr(10), ' ')}...")
+            print()
 
             for proofreader_id in self.proofreader_ids:
-                await self._send_message(proofreader_id, self.text_to_proofread)
+                print(f"[{self.id}] → Sending quote request to {proofreader_id}")
+                await self._send_message(proofreader_id, quote_request)
 
-            self.text_sent = True
+            self.quotes_requested = True
+            print()
 
-        result = await self.execute_action(CheckMessages())
+        # Phase 2: Collect quotes and select winner
+        if self.quotes_requested and not self.selected_proofreader:
+            result = await self.execute_action(CheckMessages())
 
-        if not result.is_error and self.received_count < self.expected_responses:
-            messages = result.content.get("messages", [])
-            new_count = len(messages)
+            if not result.is_error:
+                messages = result.content.get("messages", [])
+                if len(messages) >= len(self.proofreader_ids):
+                    print(f"{'='*70}")
+                    print(f"PHASE 2: EVALUATE QUOTES")
+                    print(f"{'='*70}")
+                    quotes = [(msg["from_agent_id"], msg["message"]["content"]) for msg in messages]
 
-            if new_count > self.received_count:
-                new_messages = messages[self.received_count:]
-                for msg in new_messages:
-                    sender_id = msg["from_agent_id"]
-                    content = msg["message"]["content"]
+                    for agent_id, quote in quotes:
+                        preview = quote[:80].replace('\n', ' ')
+                        print(f"[{self.id}] ← Received quote from {agent_id}:")
+                        print(f"  {preview}...")
 
-                    # Extract model name from response
-                    model_name = "Unknown"
-                    if content.startswith("["):
-                        end_bracket = content.find("]")
-                        if end_bracket > 0:
-                            model_name = content[1:end_bracket]
+                    print(f"\n[{self.id}] Using LLM to select best quality/price ratio...")
+                    self.selected_proofreader = await self._select_best_quote(quotes)
+                    print(f"[{self.id}] ✓ Selected: {self.selected_proofreader}\n")
 
-                    print(f"[{self.id}] ✓ Received correction from {sender_id} using {model_name}\n")
+        # Phase 3: Send task to winner
+        if self.selected_proofreader and not self.task_sent:
+            print(f"{'='*70}")
+            print(f"PHASE 3: ASSIGN TASK")
+            print(f"{'='*70}")
+            print(f"[{self.id}] → Sending {len(self.text_to_proofread)} chars to {self.selected_proofreader}")
+            await self._send_message(self.selected_proofreader, self.text_to_proofread)
+            self.task_sent = True
+            print()
 
-                self.received_count = new_count
+        # Phase 4: Collect result
+        if self.task_sent and not self.result_received:
+            result = await self.execute_action(CheckMessages())
+
+            if not result.is_error:
+                messages = result.content.get("messages", [])
+                for msg in messages:
+                    if msg["from_agent_id"] == self.selected_proofreader and "CORRECTED TEXT" in msg["message"]["content"]:
+                        print(f"{'='*70}")
+                        print(f"PHASE 4: RECEIVE RESULT")
+                        print(f"{'='*70}")
+                        print(f"[{self.id}] ← Received proofreading result from {self.selected_proofreader}")
+                        print(f"  Result length: {len(msg['message']['content'])} chars\n")
+                        self.result_received = True
+                        # Stop the agent - work is complete
+                        self.stop()
+                        break
 
         await asyncio.sleep(1.5)
+
+    async def _generate_quote_request(self) -> str:
+        """Use LLM to generate a quote request message."""
+        prompt = f"""You are a writer agent requesting proofreading quotes. Generate a brief quote request message that includes:
+- The task: proofreading a document
+- Text length: {len(self.text_to_proofread)} characters
+- What you need back: price quote and quality estimate
+
+Keep the message concise and professional."""
+
+        response, _ = await generate(
+            prompt,
+            provider=self.llm_provider,
+            model=self.llm_model,
+            max_tokens=200,
+        )
+        return response.strip()
+
+    async def _select_best_quote(self, quotes: list[tuple[str, str]]) -> str:
+        """Use LLM to parse quotes and select the best quality/price ratio."""
+        quotes_text = "\n\n".join([f"From {agent_id}:\n{quote}" for agent_id, quote in quotes])
+
+        prompt = f"""You are selecting the best proofreading service based on quality/price ratio.
+
+Here are the quotes:
+{quotes_text}
+
+Analyze each quote for:
+1. Price (lower is better)
+2. Quality estimate (higher is better)
+3. Calculate quality/price ratio
+
+Return ONLY the agent ID of the best choice (e.g., "proofreader-gpt4o-123"). Nothing else."""
+
+        response, _ = await generate(
+            prompt,
+            provider=self.llm_provider,
+            model=self.llm_model,
+            max_tokens=100,
+        )
+        return response.strip()
 
     async def _send_message(self, to_agent_id: str, content: str) -> None:
         """Send a message to a specific proofreader."""
@@ -135,7 +217,7 @@ class ProofreaderAgent(BaseAgent[AgentProfile]):
         self.processed_message_count = 0
 
     async def step(self) -> None:
-        """Check for text to proofread and send corrections."""
+        """Check for messages and respond appropriately."""
         if not self.initialized:
             await asyncio.sleep(1)
             self.initialized = True
@@ -150,19 +232,68 @@ class ProofreaderAgent(BaseAgent[AgentProfile]):
                     sender_id = msg["from_agent_id"]
                     text = msg["message"]["content"]
 
-                    char_count = len(text)
-                    print(f"[{self.id}] Received {char_count} chars from {sender_id}")
-                    print(f"[{self.id}] Proofreading with {self.llm_model}...")
+                    # Use LLM to determine if this is a quote request or actual task
+                    message_type = await self._interpret_message(text)
 
-                    corrected, explanation = await self._proofread(text)
-                    response = f"[{self.llm_model}]\n\nCORRECTED TEXT:\n{corrected}\n\nCHANGES:\n{explanation}"
+                    if message_type == "quote_request":
+                        print(f"[{self.id}] ← Received quote request from {sender_id}")
+                        quote = await self._generate_quote(text)
+                        print(f"[{self.id}] → Sending quote to {sender_id}:")
+                        print(f"  {quote[:80].replace(chr(10), ' ')}...")
+                        await self._send_message(sender_id, quote)
+                    else:
+                        # Actual proofreading task
+                        print(f"[{self.id}] ← Received {len(text)} chars task from {sender_id}")
+                        print(f"[{self.id}] Proofreading with {self.llm_model}...")
 
-                    await self._send_message(sender_id, response)
-                    print(f"[{self.id}] Sent corrections back to {sender_id}")
+                        corrected, explanation = await self._proofread(text)
+                        response = f"[{self.llm_model}]\n\nCORRECTED TEXT:\n{corrected}\n\nCHANGES:\n{explanation}"
+
+                        print(f"[{self.id}] → Sending corrections to {sender_id}")
+                        await self._send_message(sender_id, response)
 
                 self.processed_message_count = len(messages)
 
         await asyncio.sleep(1.5)
+
+    async def _interpret_message(self, text: str) -> str:
+        """Use LLM to determine if message is a quote request or actual task."""
+        prompt = f"""You are analyzing a message to determine its type.
+
+Message: {text[:200]}...
+
+Is this a QUOTE REQUEST (asking for a price quote) or an ACTUAL TASK (the full text to proofread)?
+
+Respond with ONLY one word: "quote_request" or "task"."""
+
+        response, _ = await generate(
+            prompt,
+            provider=self.llm_provider,
+            model=self.llm_model,
+            max_tokens=10,
+        )
+        return response.strip().lower()
+
+    async def _generate_quote(self, request_text: str) -> str:
+        """Use LLM to generate a price quote based on model capabilities."""
+        prompt = f"""You are a proofreading service powered by {self.llm_model}.
+
+Quote Request: {request_text}
+
+Generate a professional quote response that includes:
+1. Your price (consider: {self.llm_model} tier - gpt-4o is premium, gpt-4o-mini is budget, gemini is mid-tier)
+2. Your quality estimate (1-10 scale, based on your model's capability)
+3. Brief explanation of value
+
+Keep it concise (2-3 sentences)."""
+
+        response, _ = await generate(
+            prompt,
+            provider=self.llm_provider,
+            model=self.llm_model,
+            max_tokens=150,
+        )
+        return response.strip()
 
     async def _proofread(self, text: str) -> tuple[str, str]:
         """Proofread text using LLM and return corrected version with explanation.

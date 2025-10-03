@@ -59,19 +59,20 @@ async def main():
         sys.exit(1)
 
     print("\n" + "=" * 70)
-    print("TEXT-ONLY PROTOCOL: MULTI-LLM PDF PROOFREADING")
+    print("TEXT-ONLY PROTOCOL: LLM-POWERED QUOTE NEGOTIATION")
     print("=" * 70)
     print(f"PDF: {pdf_path.name}")
-    print("\nWriter agent will:")
+    print("\nWriter agent (GPT-4o) will:")
     print("  1. Extract text from PDF")
-    print("  2. Send text to 3 proofreaders using SendTextMessage")
-    print("\nProofreader agents will (in parallel):")
-    print("  - gpt-4o: Receive text, proofread with GPT-4o, send corrections")
-    print("  - gpt-4o-mini: Receive text, proofread with GPT-4o-mini, send corrections")
-    print("  - gemini-2.0-flash-exp: Receive text, proofread with Gemini, send corrections")
+    print("  2. Use LLM to generate quote request")
+    print("  3. Send quote requests to 3 proofreaders")
+    print("\nProofreader agents will:")
+    print("  - Each uses LLM to interpret message and generate quote")
+    print("  - Quotes include price and quality based on model tier")
     print("\nWriter agent will:")
-    print("  3. Collect all corrections using CheckMessages")
-    print("  4. Display results from each LLM")
+    print("  4. Use LLM to evaluate quotes and select best quality/price")
+    print("  5. Send full text only to selected proofreader")
+    print("  6. Collect proofreading result")
     print("-" * 70 + "\n")
 
     print(f"Extracting text from {pdf_path.name}...")
@@ -110,12 +111,14 @@ async def main():
             llm_model="gemini-2.0-flash-exp",
         )
 
-        # Writer sends to all three proofreaders
+        # Writer uses GPT-4o to request quotes and select best proofreader
         writer = WriterAgent(
             profile=AgentProfile(id="writer", metadata={}),
             server_url=launcher.server_url,
             proofreader_ids=["proofreader-gpt4o", "proofreader-gpt4mini", "proofreader-gemini"],
             text_to_proofread=text,
+            llm_provider="openai",
+            llm_model="gpt-4o",
         )
 
         async with AgentLauncher(launcher.server_url) as agent_launcher:
@@ -130,11 +133,16 @@ async def main():
     print("\n" + "-" * 70)
     print("Example complete!")
     print("\nWhat happened:")
-    print("  - Writer sent PDF text to 3 different LLM-powered proofreaders")
-    print("  - Each proofreader processed the text in parallel")
-    print("  - Writer collected all 3 corrections via CheckMessages")
+    print("  - Writer (GPT-4o) generated and sent quote requests to 3 proofreaders")
+    print("  - Each proofreader used its LLM to generate a price quote")
+    print("  - Writer used GPT-4o to evaluate quotes and select best quality/price")
+    print("  - Writer sent full text only to the selected proofreader")
+    print("  - Selected proofreader completed the task")
+    print("\nKey insight:")
+    print("  - All negotiation happened via text messages (no new actions)")
+    print("  - LLMs interpreted message intent and generated appropriate responses")
     print("\nNext steps:")
-    print("  - Check example/agents.py to see WriterAgent and ProofreaderAgent")
+    print("  - Check example/agents.py to see LLM-powered negotiation logic")
     print("  - Run tests: uv run pytest cookbook/text_only_protocol/tests/ -v")
     print("=" * 70 + "\n")
 

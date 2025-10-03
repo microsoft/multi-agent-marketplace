@@ -4,7 +4,7 @@ Think of this like building a simple chat app for AI agents. This minimal protoc
 
 ## What You'll Build
 
-A multi-LLM PDF proofreading system where a Writer agent extracts text from a PDF, sends it to three Proofreader agents (each powered by a different LLM: GPT-4o, GPT-4o-mini, and Gemini), and collects all corrections. All coordination happens through two simple message-passing actions.
+An LLM-powered quote negotiation system where a Writer agent (GPT-4o) requests quotes from three Proofreader agents (GPT-4o, GPT-4o-mini, Gemini), uses an LLM to select the best quality/price ratio, and assigns the task to the winner. All negotiation happens through natural language text messages using only two actions.
 
 ## Quick Start
 
@@ -24,68 +24,71 @@ uv run pytest cookbook/text_only_protocol/tests/ -v
 ```
 
 **What happens:**
-1. Writer extracts text from PDF
-2. Writer sends same text to 3 proofreaders (GPT-4o, GPT-4o-mini, Gemini) using `SendTextMessage`
-3. Each proofreader processes text in parallel with their LLM
-4. Each proofreader sends corrections back using `SendTextMessage`
-5. Writer collects all 3 corrections using `CheckMessages`
+1. Writer (GPT-4o) uses LLM to generate quote request message
+2. Writer sends quote requests to 3 proofreaders using `SendTextMessage`
+3. Each proofreader uses its LLM to interpret the message and generate a quote (price + quality)
+4. Writer collects quotes using `CheckMessages`
+5. Writer uses GPT-4o to evaluate quotes and select best quality/price ratio
+6. Writer sends full PDF text only to selected proofreader using `SendTextMessage`
+7. Selected proofreader completes task and returns result
 
-All coordination uses only two actions: `SendTextMessage` and `CheckMessages`.
+**Key insight:** LLMs handle all message interpretation and decision-making. No hardcoded message formats - agents communicate naturally using only `SendTextMessage` and `CheckMessages`.
 
 ## How It Works
 
 Think of message sending like mailing letters. An agent writes a message, the protocol checks the recipient address exists, stores it in a mailbox (database), and the recipient retrieves it later.
 
-### Message Flow Example
+### Negotiation Flow Example
 
 ```
-Writer          Protocol        Database     GPT-4o     GPT-4o-mini    Gemini
-  |                |                |           |            |            |
-  |--SendMsg------>|                |           |            |            |
-  | (to GPT-4o)    |--Validate----->|           |            |            |
-  |                |--Persist------>|           |            |            |
-  |<--Success------|                |           |            |            |
-  |                |                |           |            |            |
-  |--SendMsg------>|                |           |            |            |
-  | (to 4o-mini)   |--Validate----->|           |            |            |
-  |                |--Persist------>|           |            |            |
-  |<--Success------|                |           |            |            |
-  |                |                |           |            |            |
-  |--SendMsg------>|                |           |            |            |
-  | (to Gemini)    |--Validate----->|           |            |            |
-  |                |--Persist------>|           |            |            |
-  |<--Success------|                |           |            |            |
-  |                |                |           |            |            |
-  |                |                |<--CheckMessages--------|            |
-  |                |<--Query--------|           |            |            |
-  |                |--PDF text----->|---------->|            |            |
-  |                |                |           |            |            |
-  |                |                |           |<--CheckMessages---------|
-  |                |<--Query--------|           |            |            |
-  |                |--PDF text----->|------------------------->           |
-  |                |                |           |            |            |
-  |                |                |           |            |<--CheckMsg-|
-  |                |<--Query--------|           |            |            |
-  |                |--PDF text----->|------------------------------>      |
-  |                |                |           |            |            |
-  |                |<--SendMsg------|           |            |            |
-  |                | (GPT-4o fix)   |           |            |            |
-  |                |--Persist------>|           |            |            |
-  |                |                |           |            |            |
-  |                |<--SendMsg------|           |            |            |
-  |                | (4o-mini fix)  |           |            |            |
-  |                |--Persist------>|           |            |            |
-  |                |                |           |            |            |
-  |                |<--SendMsg------|           |            |            |
-  |                | (Gemini fix)   |           |            |            |
-  |                |--Persist------>|           |            |            |
-  |                |                |           |            |            |
-  |<--CheckMsg-----|                |           |            |            |
-  |--Query-------->|                |           |            |            |
-  |<--All 3 fixes--|                |           |            |            |
+Writer(GPT-4o)  Protocol     Database    Proofreader-A  Proofreader-B  Proofreader-C
+     |             |             |              |              |              |
+     |--LLM: Generate quote request------------>|              |              |
+     |             |             |              |              |              |
+     |--SendMsg--->|             |              |              |              |
+     | (quote req) |--Persist--->|              |              |              |
+     |             |             |              |              |              |
+     |             |             |     <--CheckMessages--------|              |
+     |             |<--Query-----|              |              |              |
+     |             |--Quote req->|------------->|              |              |
+     |             |             |              |              |              |
+     |             |             |              |--LLM: Generate quote------->|
+     |             |             |              |              |              |
+     |             |<--SendMsg---|              |              |              |
+     |             | (quote)     |              |              |              |
+     |             |--Persist--->|              |              |              |
+     |             |             |              |              |              |
+     | (repeat for other proofreaders...)       |              |              |
+     |             |             |              |              |              |
+     |<--CheckMsg--|             |              |              |              |
+     |--Query----->|             |              |              |              |
+     |<--3 quotes--|             |              |              |              |
+     |             |             |              |              |              |
+     |--LLM: Select best quality/price--------->|              |              |
+     |             |             |              |              |              |
+     |--SendMsg--->|             |              |              |              |
+     | (full text  |--Persist--->|              |              |              |
+     |  to winner) |             |              |              |              |
+     |             |             |              |              |              |
+     |             |             |     <--CheckMessages--------|              |
+     |             |<--Query-----|              |              |              |
+     |             |--Full text->|------------->|              |              |
+     |             |             |              |              |              |
+     |             |             |              |--LLM: Proofread------------>|
+     |             |             |              |              |              |
+     |             |<--SendMsg---|              |              |              |
+     |             | (result)    |              |              |              |
+     |             |--Persist--->|              |              |              |
+     |             |             |              |              |              |
+     |<--CheckMsg--|             |              |              |              |
+     |--Query----->|             |              |              |              |
+     |<--Result----|             |              |              |              |
 ```
 
-**Key insight:** The same two actions (`SendTextMessage` + `CheckMessages`) enable complex multi-agent workflows. The protocol handles routing, persistence, and querying automatically.
+**Key insights:**
+- Same two actions (`SendTextMessage` + `CheckMessages`) enable quote negotiation
+- LLMs interpret message intent (quote request vs task) without hardcoded formats
+- Protocol handles routing and persistence - agents focus on business logic
 
 ### The Five Core Components
 
@@ -197,10 +200,10 @@ This example shows the minimal protocol structure. To build your own:
 4. **Add queries** (optional) in `database/queries.py` - Make it easy to find data
 
 **Example use cases:**
-- Task assignment and completion system
+- Quote negotiation and task assignment (as shown)
 - Auction or bidding protocol
-- Multi-agent negotiation
-- Request/response workflows
+- Multi-agent negotiation with LLM-powered decision making
+- Request/response workflows with natural language interpretation
 
 ## Learn More
 
