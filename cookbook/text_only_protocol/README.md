@@ -1,213 +1,82 @@
 # Text-Only Protocol Cookbook
 
-Think of this like building a simple chat app for AI agents. This minimal protocol demonstrates the core components needed to create a custom marketplace protocol - just message sending and receiving.
+A minimal protocol showing how to build a multi-agent marketplace with just two actions: `SendTextMessage` and `CheckMessages`.
 
-## What You'll Build
+## What This Shows
 
-An LLM-powered quote negotiation system where a Writer agent (GPT-4o) requests quotes from three Proofreader agents (GPT-4o, GPT-4o-mini, Gemini), uses an LLM to select the best quality/price ratio, and assigns the task to the winner. All negotiation happens through natural language text messages using only two actions.
+Think of a freelance marketplace: post a job, get quotes, pick the best one. Here, a Writer broadcasts work to 3 Proofreaders, collects quotes, and assigns the task to the winner - all via simple text messages.
 
-## Quick Start
-
+**Run the example:**
 ```bash
-# 1. Install dependencies
 uv sync --extra cookbook
-
-# 2. Configure LLM API keys (the example uses multiple providers)
-export OPENAI_API_KEY=your-openai-key
-export GEMINI_API_KEY=your-gemini-key
-
-# 3. Run the example
-uv run python cookbook/text_only_protocol/example/run_example.py path/to/document.pdf
-
-# 4. Run tests
-uv run pytest cookbook/text_only_protocol/tests/ -v
+export OPENAI_API_KEY=your-key GEMINI_API_KEY=your-key
+uv run python cookbook/text_only_protocol/example/run_example.py path/to/file.pdf
 ```
-
-**What happens:**
-1. Writer (GPT-4o) uses LLM to generate quote request message
-2. Writer sends quote requests to 3 proofreaders using `SendTextMessage`
-3. Each proofreader uses its LLM to interpret the message and generate a quote (price + quality)
-4. Writer collects quotes using `CheckMessages`
-5. Writer uses GPT-4o to evaluate quotes and select best quality/price ratio
-6. Writer sends full PDF text only to selected proofreader using `SendTextMessage`
-7. Selected proofreader completes task and returns result
-
-**Key insight:** LLMs handle all message interpretation and decision-making. No hardcoded message formats - agents communicate naturally using only `SendTextMessage` and `CheckMessages`.
 
 ## How It Works
 
-Think of message sending like mailing letters. An agent writes a message, the protocol checks the recipient address exists, stores it in a mailbox (database), and the recipient retrieves it later.
-
-### Negotiation Flow Example
+Four phases using two actions:
 
 ```
-Writer(GPT-4o)  Protocol     Database    Proofreader-A  Proofreader-B  Proofreader-C
-     |             |             |              |              |              |
-     |--LLM: Generate quote request------------>|              |              |
-     |             |             |              |              |              |
-     |--SendMsg--->|             |              |              |              |
-     | (quote req) |--Persist--->|              |              |              |
-     |             |             |              |              |              |
-     |             |             |     <--CheckMessages--------|              |
-     |             |<--Query-----|              |              |              |
-     |             |--Quote req->|------------->|              |              |
-     |             |             |              |              |              |
-     |             |             |              |--LLM: Generate quote------->|
-     |             |             |              |              |              |
-     |             |<--SendMsg---|              |              |              |
-     |             | (quote)     |              |              |              |
-     |             |--Persist--->|              |              |              |
-     |             |             |              |              |              |
-     | (repeat for other proofreaders...)       |              |              |
-     |             |             |              |              |              |
-     |<--CheckMsg--|             |              |              |              |
-     |--Query----->|             |              |              |              |
-     |<--3 quotes--|             |              |              |              |
-     |             |             |              |              |              |
-     |--LLM: Select best quality/price--------->|              |              |
-     |             |             |              |              |              |
-     |--SendMsg--->|             |              |              |              |
-     | (full text  |--Persist--->|              |              |              |
-     |  to winner) |             |              |              |              |
-     |             |             |              |              |              |
-     |             |             |     <--CheckMessages--------|              |
-     |             |<--Query-----|              |              |              |
-     |             |--Full text->|------------->|              |              |
-     |             |             |              |              |              |
-     |             |             |              |--LLM: Proofread------------>|
-     |             |             |              |              |              |
-     |             |<--SendMsg---|              |              |              |
-     |             | (result)    |              |              |              |
-     |             |--Persist--->|              |              |              |
-     |             |             |              |              |              |
-     |<--CheckMsg--|             |              |              |              |
-     |--Query----->|             |              |              |              |
-     |<--Result----|             |              |              |              |
+1. BROADCAST (1 → Many)
+   Writer sends quote request to A, B, C
+
+2. COLLECT BIDS (Many → 1)
+   A, B, C send quotes back
+   Writer uses CheckMessages to get all quotes
+
+3. SELECT WINNER
+   Writer's LLM picks best quote
+
+4. ASSIGN WORK (1 → 1)
+   Writer sends task to winner
+   Winner returns result
 ```
 
-**Key insights:**
-- Same two actions (`SendTextMessage` + `CheckMessages`) enable quote negotiation
-- LLMs interpret message intent (quote request vs task) without hardcoded formats
-- Protocol handles routing and persistence - agents focus on business logic
+The protocol handles routing and storage. You implement the market logic.
 
-### The Five Core Components
+## Protocol Structure
 
-Every marketplace protocol has these pieces:
+Every protocol needs three things:
 
-**1. Message Model** (`messaging.py`) - What data looks like:
-```python
-class TextMessage(BaseModel):
-    type: Literal["text"] = "text"
-    content: str = Field(description="Text content of the message")
-```
-
-**2. Actions** (`actions.py`) - What agents can do:
+**1. Actions** (`actions.py`) - What agents can do
 ```python
 class SendTextMessage(BaseAction):
-    type: Literal["send_text_message"] = "send_text_message"
     from_agent_id: str
     to_agent_id: str
     message: TextMessage
 
 class CheckMessages(BaseAction):
-    type: Literal["check_messages"] = "check_messages"
     limit: int | None = None
 ```
 
-**3. Handlers** (`handlers/`) - Business logic for each action:
+**2. Handlers** (`handlers/`) - What happens when they act
 - `send_message.py`: Validates recipient exists
-- `check_messages.py`: Queries database, handles pagination
+- `check_messages.py`: Queries messages for the agent
 
-**4. Protocol** (`protocol.py`) - Routes actions to handlers:
+**3. Protocol** (`protocol.py`) - Routes actions to handlers
 ```python
 class TextOnlyProtocol(BaseMarketplaceProtocol):
     def get_actions(self):
         return [SendTextMessage, CheckMessages]
 
     async def execute_action(self, *, agent, action, database):
-        if action.type == "send_text_message":
-            return await execute_send_text_message(action, database)
-        elif action.type == "check_messages":
-            return await execute_check_messages(action, agent, database)
+        # Route to appropriate handler
 ```
 
-**5. Database Queries** (`database/queries.py`) - Find data easily:
-```python
-query = to_agent(agent_id) & action_type("send_text_message")
-```
+**Key feature:** The platform auto-saves all actions to the database. Your handlers just validate - messages are already stored and queryable.
 
-### File Structure
+## Building Your Own
 
-```
-text_only_protocol/
-├── messaging.py              # Message models
-├── actions.py                # Action definitions
-├── protocol.py               # Protocol implementation
-├── handlers/                 # Action handlers
-├── database/queries.py       # Database helpers
-├── tests/                    # Unit tests
-└── example/                  # Working example
-```
+To create a custom protocol:
 
-## Key Concepts
+1. Define actions in `actions.py`
+2. Create handlers in `handlers/`
+3. Wire them in `protocol.py`
 
-### Auto-Persistence
+**Other marketplace patterns:**
+- Auctions with time limits
+- Negotiation with counter-offers
+- Task posting and claiming
 
-Think of it like a postal service that keeps a record of every letter sent. The platform automatically saves all actions to the database before handlers execute.
-
-When Writer sends a message:
-1. Platform receives the `SendTextMessage` action
-2. Platform saves it to the actions table (auto-persist)
-3. Platform calls your handler to validate business logic
-4. Handler checks if Proofreader exists and returns success/error
-
-This means handlers validate business logic, not data persistence. Messages are queryable from the actions table without writing separate persistence code.
-
-**Why this matters:** You can build complex message-based workflows without writing any database code. The protocol handles all message storage automatically.
-
-### Composable Queries
-
-Combine filters to find specific data:
-```python
-# Find all messages sent to the proofreader
-query = to_agent("proofreader") & action_type("send_text_message")
-
-# Find messages from writer to proofreader
-query = to_agent("proofreader") & from_agent("writer") & action_type("send_text_message")
-```
-
-The query system uses JSONPath to search nested JSON in the actions table. See `database/queries.py` for details on the path syntax.
-
-**Why this matters:** You can query message history without SQL. The composable query syntax makes it easy to filter actions by recipient, sender, type, or any field in the action data.
-
-### Error Handling
-
-Return `ActionExecutionResult` with `is_error=True`:
-```python
-return ActionExecutionResult(
-    content={"error": "Agent not found"},
-    is_error=True
-)
-```
-
-## Building Your Own Protocol
-
-This example shows the minimal protocol structure. To build your own:
-
-1. **Define your actions** in `actions.py` - What can agents do?
-2. **Create handlers** in `handlers/` - What happens when agents perform those actions?
-3. **Wire it up** in `protocol.py` - Route actions to handlers
-4. **Add queries** (optional) in `database/queries.py` - Make it easy to find data
-
-**Example use cases:**
-- Quote negotiation and task assignment (as shown)
-- Auction or bidding protocol
-- Multi-agent negotiation with LLM-powered decision making
-- Request/response workflows with natural language interpretation
-
-## Learn More
-
-- `tests/test_text_protocol.py`: Testing patterns for protocols
-- `example/agents.py`: WriterAgent and ProofreaderAgent implementations
-- `example/run_example.py`: How to launch marketplace with custom protocol
-- `packages/magentic-marketplace/src/magentic_marketplace/marketplace/protocol/`: Full-featured marketplace protocol with listings, negotiations, and contracts
+See `example/agents.py` for the Writer and Proofreader implementation.
