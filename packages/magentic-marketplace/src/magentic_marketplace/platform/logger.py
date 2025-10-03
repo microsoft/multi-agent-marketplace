@@ -24,6 +24,7 @@ class MarketplaceLogger:
             )
         self.python_logger = logging.getLogger(name)
         self._client = client
+        self._flush_lock = asyncio.Lock()
         self._tasks: list[asyncio.Task] = []
         self._flush_every = flush_every
 
@@ -127,6 +128,7 @@ class MarketplaceLogger:
 
     async def flush(self):
         """Wait for any pending tasks to complete."""
-        tasks = list(self._tasks)
-        self._tasks.clear()
+        async with self._flush_lock:
+            tasks = list(self._tasks)
+            self._tasks.clear()
         return await asyncio.gather(*tasks, return_exceptions=True)
