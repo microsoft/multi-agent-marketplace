@@ -99,12 +99,6 @@ pr-comments = { shell = "PR_NUM=$(gh pr view --json number -q .number 2>/dev/nul
 check-all = ["format", "lint", "type", "spell"]
 fix-all = ["format-fix", "lint-fix"]
 
-[tool.pyright]
-exclude = [
-    "src/magentic_marketplace/marketplace/protocol/search/rnr_algo.py"
-]
-typeCheckingMode = "basic"
-
 [dependency-groups]
 dev = [
     "codespell>=2.4.1",

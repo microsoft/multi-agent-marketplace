@@ -68,16 +68,6 @@ spell = "codespell packages/**/*.py packages/**/*.md"
 check-all = ["format", "lint", "type", "spell"]
 fix-all = ["format-fix", "lint-fix"]
 
-[tool.pyright]
-include = [
-    "packages/magentic-marketplace/src",
-    "packages/magentic-marketplace/tests"
-]
-exclude = [
-    "packages/magentic-marketplace/src/magentic_marketplace/marketplace/protocol/search/rnr_algo.py"
-]
-typeCheckingMode = "basic"
-
 [tool.pytest.ini_options]
 testpaths = ["packages/magentic-marketplace/tests"]
 python_files = "test_*.py"
