@@ -123,10 +123,15 @@ async def main():
 
         async with AgentLauncher(launcher.server_url) as agent_launcher:
             try:
-                await agent_launcher.run_agents_with_dependencies(
-                    primary_agents=[writer, proofreader_gpt4o, proofreader_gpt4mini, proofreader_gemini],
-                    dependent_agents=[],
+                await asyncio.wait_for(
+                    agent_launcher.run_agents_with_dependencies(
+                        primary_agents=[writer, proofreader_gpt4o, proofreader_gpt4mini, proofreader_gemini],
+                        dependent_agents=[],
+                    ),
+                    timeout=60.0
                 )
+            except asyncio.TimeoutError:
+                print("\nExample completed (timeout)")
             except KeyboardInterrupt:
                 print("\nExample interrupted")
 

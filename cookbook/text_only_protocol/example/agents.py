@@ -128,8 +128,8 @@ class WriterAgent(BaseAgent[AgentProfile]):
                         print(f"[{self.id}] ← Received proofreading result from {self.selected_proofreader}")
                         print(f"  Result length: {len(msg['message']['content'])} chars\n")
                         self.result_received = True
-                        # Stop the agent - work is complete
-                        self.stop()
+                        # Shutdown the agent - work is complete
+                        self.shutdown()
                         break
 
         await asyncio.sleep(1.5)
