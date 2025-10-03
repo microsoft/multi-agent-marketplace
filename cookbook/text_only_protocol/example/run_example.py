@@ -58,18 +58,21 @@ async def main():
         print(f"Error: PDF file not found: {pdf_path}")
         sys.exit(1)
 
-    print("\n" + "=" * 60)
-    print("TEXT-ONLY PROTOCOL: PDF PROOFREADING")
-    print("=" * 60)
+    print("\n" + "=" * 70)
+    print("TEXT-ONLY PROTOCOL: MULTI-LLM PDF PROOFREADING")
+    print("=" * 70)
     print(f"PDF: {pdf_path.name}")
     print("\nWriter agent will:")
     print("  1. Extract text from PDF")
-    print("  2. Send text to Proofreader using SendTextMessage")
-    print("\nProofreader agent will:")
-    print("  1. Receive text using CheckMessages")
-    print("  2. Correct errors and explain changes")
-    print("  3. Send corrections back using SendTextMessage")
-    print("-" * 60 + "\n")
+    print("  2. Send text to 3 proofreaders using SendTextMessage")
+    print("\nProofreader agents will (in parallel):")
+    print("  - gpt-4o: Receive text, proofread with GPT-4o, send corrections")
+    print("  - gpt-4o-mini: Receive text, proofread with GPT-4o-mini, send corrections")
+    print("  - gemini-2.0-flash-exp: Receive text, proofread with Gemini, send corrections")
+    print("\nWriter agent will:")
+    print("  3. Collect all corrections using CheckMessages")
+    print("  4. Display results from each LLM")
+    print("-" * 70 + "\n")
 
     print(f"Extracting text from {pdf_path.name}...")
     text = extract_text_from_pdf(str(pdf_path))
@@ -85,33 +88,55 @@ async def main():
     )
 
     async with launcher:
+        # Create three proofreaders with different LLMs
+        proofreader_gpt4o = ProofreaderAgent(
+            profile=AgentProfile(id="proofreader-gpt4o", metadata={}),
+            server_url=launcher.server_url,
+            llm_provider="openai",
+            llm_model="gpt-4o",
+        )
+
+        proofreader_gpt4mini = ProofreaderAgent(
+            profile=AgentProfile(id="proofreader-gpt4mini", metadata={}),
+            server_url=launcher.server_url,
+            llm_provider="openai",
+            llm_model="gpt-4o-mini",
+        )
+
+        proofreader_gemini = ProofreaderAgent(
+            profile=AgentProfile(id="proofreader-gemini", metadata={}),
+            server_url=launcher.server_url,
+            llm_provider="gemini",
+            llm_model="gemini-2.0-flash-exp",
+        )
+
+        # Writer sends to all three proofreaders
         writer = WriterAgent(
             profile=AgentProfile(id="writer", metadata={}),
             server_url=launcher.server_url,
-            proofreader_id="proofreader",
+            proofreader_ids=["proofreader-gpt4o", "proofreader-gpt4mini", "proofreader-gemini"],
             text_to_proofread=text,
-        )
-
-        proofreader = ProofreaderAgent(
-            profile=AgentProfile(id="proofreader", metadata={}),
-            server_url=launcher.server_url,
         )
 
         async with AgentLauncher(launcher.server_url) as agent_launcher:
             try:
                 await agent_launcher.run_agents_with_dependencies(
-                    primary_agents=[writer, proofreader],
+                    primary_agents=[writer, proofreader_gpt4o, proofreader_gpt4mini, proofreader_gemini],
                     dependent_agents=[],
                 )
             except KeyboardInterrupt:
                 print("\nExample interrupted")
 
-    print("\n" + "-" * 60)
+    print("\n" + "-" * 70)
     print("Example complete!")
+    print("\nWhat happened:")
+    print("  - Writer sent PDF text to 3 different LLM-powered proofreaders")
+    print("  - Each proofreader processed the text in parallel")
+    print("  - Writer collected all 3 corrections via CheckMessages")
     print("\nNext steps:")
     print("  - Check example/agents.py to see WriterAgent and ProofreaderAgent")
     print("  - Run tests: uv run pytest cookbook/text_only_protocol/tests/ -v")
-    print("=" * 60 + "\n")
+    print("=" * 70 + "\n")
 
     try:
         import os

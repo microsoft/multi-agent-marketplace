@@ -4,7 +4,7 @@ Think of this like building a simple chat app for AI agents. This minimal protoc
 
 ## What You'll Build
 
-A PDF proofreading system where a Writer agent extracts text from a PDF, sends it to a Proofreader agent who uses an LLM to correct errors, and returns the corrections. All coordination happens through two simple message-passing actions.
+A multi-LLM PDF proofreading system where a Writer agent extracts text from a PDF, sends it to three Proofreader agents (each powered by a different LLM: GPT-4o, GPT-4o-mini, and Gemini), and collects all corrections. All coordination happens through two simple message-passing actions.
 
 ## Quick Start
 
@@ -12,15 +12,9 @@ A PDF proofreading system where a Writer agent extracts text from a PDF, sends i
 # 1. Install dependencies
 uv sync --extra cookbook
 
-# 2. Configure LLM (choose one provider)
-export LLM_PROVIDER=anthropic
-export ANTHROPIC_API_KEY=your-key-here
-export LLM_MODEL=claude-3-5-sonnet-20241022
-
-# Or use OpenAI
-# export LLM_PROVIDER=openai
-# export OPENAI_API_KEY=your-key-here
-# export LLM_MODEL=gpt-4
+# 2. Configure LLM API keys (the example uses multiple providers)
+export OPENAI_API_KEY=your-openai-key
+export GEMINI_API_KEY=your-gemini-key
 
 # 3. Run the example
 uv run python cookbook/text_only_protocol/example/run_example.py path/to/document.pdf
@@ -29,7 +23,14 @@ uv run python cookbook/text_only_protocol/example/run_example.py path/to/documen
 uv run pytest cookbook/text_only_protocol/tests/ -v
 ```
 
-**What happens:** Writer agent sends PDF text → Proofreader agent uses LLM to correct it → Writer receives corrections. Both agents coordinate using only `SendTextMessage` and `CheckMessages` actions.
+**What happens:**
+1. Writer extracts text from PDF
+2. Writer sends same text to 3 proofreaders (GPT-4o, GPT-4o-mini, Gemini) using `SendTextMessage`
+3. Each proofreader processes text in parallel with their LLM
+4. Each proofreader sends corrections back using `SendTextMessage`
+5. Writer collects all 3 corrections using `CheckMessages`
+
+All coordination uses only two actions: `SendTextMessage` and `CheckMessages`.
 
 ## How It Works
 
@@ -38,28 +39,53 @@ Think of message sending like mailing letters. An agent writes a message, the pr
 ### Message Flow Example
 
 ```
-Writer              Protocol              Database           Proofreader
-  |                     |                      |                   |
-  |--SendMessage------->|                      |                   |
-  | (PDF text)          |--Validate recip----->|                   |
-  |                     |<--Proofreader OK-----|                   |
-  |                     |--Auto-persist------->|                   |
-  |<--Success-----------|                      |                   |
-  |                     |                      |                   |
-  |                     |                      |<--CheckMessages---|
-  |                     |<--Query messages-----|                   |
-  |                     |--Return PDF text---->|                   |
-  |                     |                      |---PDF text------->|
-  |                     |                      |                   |
-  |                     |<--SendMessage--------|                   |
-  |                     | (corrections)        |                   |
-  |                     |--Auto-persist------->|                   |
-  |                     |--Success------------>|                   |
-  |                     |                      |                   |
-  |<--CheckMessages-----|                      |                   |
-  |--Query messages---->|                      |                   |
-  |<--Corrections-------|                      |                   |
+Writer          Protocol        Database     GPT-4o     GPT-4o-mini    Gemini
+  |                |                |           |            |            |
+  |--SendMsg------>|                |           |            |            |
+  | (to GPT-4o)    |--Validate----->|           |            |            |
+  |                |--Persist------>|           |            |            |
+  |<--Success------|                |           |            |            |
+  |                |                |           |            |            |
+  |--SendMsg------>|                |           |            |            |
+  | (to 4o-mini)   |--Validate----->|           |            |            |
+  |                |--Persist------>|           |            |            |
+  |<--Success------|                |           |            |            |
+  |                |                |           |            |            |
+  |--SendMsg------>|                |           |            |            |
+  | (to Gemini)    |--Validate----->|           |            |            |
+  |                |--Persist------>|           |            |            |
+  |<--Success------|                |           |            |            |
+  |                |                |           |            |            |
+  |                |                |<--CheckMessages--------|            |
+  |                |<--Query--------|           |            |            |
+  |                |--PDF text----->|---------->|            |            |
+  |                |                |           |            |            |
+  |                |                |           |<--CheckMessages---------|
+  |                |<--Query--------|           |            |            |
+  |                |--PDF text----->|------------------------->           |
+  |                |                |           |            |            |
+  |                |                |           |            |<--CheckMsg-|
+  |                |<--Query--------|           |            |            |
+  |                |--PDF text----->|------------------------------>      |
+  |                |                |           |            |            |
+  |                |<--SendMsg------|           |            |            |
+  |                | (GPT-4o fix)   |           |            |            |
+  |                |--Persist------>|           |            |            |
+  |                |                |           |            |            |
+  |                |<--SendMsg------|           |            |            |
+  |                | (4o-mini fix)  |           |            |            |
+  |                |--Persist------>|           |            |            |
+  |                |                |           |            |            |
+  |                |<--SendMsg------|           |            |            |
+  |                | (Gemini fix)   |           |            |            |
+  |                |--Persist------>|           |            |            |
+  |                |                |           |            |            |
+  |<--CheckMsg-----|                |           |            |            |
+  |--Query-------->|                |           |            |            |
+  |<--All 3 fixes--|                |           |            |            |
 ```
+
+**Key insight:** The same two actions (`SendTextMessage` + `CheckMessages`) enable complex multi-agent workflows. The protocol handles routing, persistence, and querying automatically.
 
 ### The Five Core Components
 
