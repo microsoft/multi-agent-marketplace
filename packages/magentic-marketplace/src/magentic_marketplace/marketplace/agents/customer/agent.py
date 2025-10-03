@@ -109,7 +109,7 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
 
         # 5. Check if transaction completed
         if len(self.completed_transactions) > 0:
-            await self.logger.info("Completed a transaction, shutting down!")
+            self.logger.info("Completed a transaction, shutting down!")
             self.shutdown()
             return
 
