@@ -118,7 +118,7 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
 
         # 5b. Early-stopping if max steps exceeded
         if self._max_steps is not None and self.conversation_step >= self._max_steps:
-            self.logger.warning("Max steps exceeded, shutting down early!")
+            await self.logger.warning("Max steps exceeded, shutting down early!")
             self.shutdown()
             return
 
