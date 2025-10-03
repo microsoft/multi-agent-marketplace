@@ -14,7 +14,7 @@ from .client import MarketplaceClient
 class MarketplaceLogger:
     """Logger wrapper that logs to both Python logging and the database."""
 
-    def __init__(self, name: str, client: MarketplaceClient):
+    def __init__(self, name: str, client: MarketplaceClient, flush_every: int = 100):
         """Initialize marketplace logger with name and client."""
         self.name = name
         # Set up basic logging config if none exists
@@ -24,6 +24,8 @@ class MarketplaceLogger:
             )
         self.python_logger = logging.getLogger(name)
         self._client = client
+        self._tasks: list[asyncio.Task] = []
+        self._flush_every = flush_every
 
     def _log(
         self,
@@ -51,9 +53,14 @@ class MarketplaceLogger:
             level=level, name=self.name, message=message, data=data, metadata=metadata
         )
 
-        # Log to database (fire and forget - don't await to avoid blocking)
-        if asyncio.get_event_loop().is_running():
-            return asyncio.create_task(self._log_to_db(log))
+        # Log to database. Fire and forget to avoid blocking but return task in case caller wants to wait.
+        loop = asyncio.get_event_loop()
+        if loop.is_running():
+            task = asyncio.create_task(self._log_to_db(log))
+            self._tasks.append(task)
+            if len(self._tasks) >= self._flush_every:
+                asyncio.create_task(self.flush())
+            return task
         else:
             raise RuntimeError("Cannot log to database: No running event loop.")
 
@@ -117,3 +124,9 @@ class MarketplaceLogger:
         """Log an error message."""
         message = ((message or "") + "\n" + traceback.format_exc(2)).strip()
         return self.error(message, data=data, metadata=metadata)
+
+    async def flush(self):
+        """Wait for any pending tasks to complete."""
+        tasks = list(self._tasks)
+        self._tasks.clear()
+        return await asyncio.gather(*tasks)
