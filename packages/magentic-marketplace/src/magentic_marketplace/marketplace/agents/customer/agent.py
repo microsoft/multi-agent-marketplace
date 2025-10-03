@@ -96,11 +96,6 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
         4. Check if transaction completed (triggers shutdown)
         """
         self.conversation_step += 1
-        # Early-stopping if max steps exceeded
-        if self._max_steps is not None and self.conversation_step > self._max_steps:
-            self.logger.warning("Max steps exceeded, shutting down early!")
-            self.shutdown()
-            return
 
         # 1. Check for new messages from businesses
         fetch_result = await self.fetch_messages()
@@ -115,9 +110,15 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
             # 4. Execute the action (handles messaging internally)
             await self._execute_customer_action(action)
 
-        # 5. Check if transaction completed
+        # 5a. Check if transaction completed
         if len(self.completed_transactions) > 0:
             await self.logger.info("Completed a transaction, shutting down!")
+            self.shutdown()
+            return
+
+        # 5b. Early-stopping if max steps exceeded
+        if self._max_steps is not None and self.conversation_step >= self._max_steps:
+            self.logger.warning("Max steps exceeded, shutting down early!")
             self.shutdown()
             return
 
