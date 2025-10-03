@@ -3,10 +3,11 @@
 import asyncio
 from datetime import UTC, datetime
 
-from cookbook.text_only_protocol.actions import CheckMessages, SendTextMessage
-from cookbook.text_only_protocol.messaging import TextMessage
 from magentic_marketplace.platform.agent.base import BaseAgent
 from magentic_marketplace.platform.shared.models import AgentProfile
+
+from cookbook.text_only_protocol.actions import CheckMessages, SendTextMessage
+from cookbook.text_only_protocol.messaging import TextMessage
 
 
 class GreeterAgent(BaseAgent[AgentProfile]):
@@ -148,7 +149,10 @@ class ConversationAgent(BaseAgent[AgentProfile]):
 
         messages = result.content.get("messages", [])
 
-        if len(messages) > self.last_message_count and self.response_count < self.max_responses:
+        if (
+            len(messages) > self.last_message_count
+            and self.response_count < self.max_responses
+        ):
             new_messages = messages[self.last_message_count :]
             for msg in new_messages:
                 content = msg["message"]["content"]

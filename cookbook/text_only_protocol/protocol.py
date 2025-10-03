@@ -1,4 +1,8 @@
-"""Text-only marketplace protocol implementation."""
+"""Text-only marketplace protocol implementation.
+
+This minimal protocol demonstrates the core structure needed for any marketplace
+protocol: defining actions and routing them to handlers.
+"""
 
 from magentic_marketplace.platform.database.base import BaseDatabaseController
 from magentic_marketplace.platform.protocol.base import BaseMarketplaceProtocol
@@ -26,7 +30,11 @@ class TextOnlyProtocol(BaseMarketplaceProtocol):
         """Initialize the text-only protocol."""
 
     def get_actions(self):
-        """Define available actions in the marketplace."""
+        """Return list of actions agents can perform.
+
+        The platform uses this to validate agent requests and generate
+        documentation. Each action class defines its parameters and types.
+        """
         return [SendTextMessage, CheckMessages]
 
     async def execute_action(
@@ -36,21 +44,30 @@ class TextOnlyProtocol(BaseMarketplaceProtocol):
         action: ActionExecutionRequest,
         database: BaseDatabaseController,
     ) -> ActionExecutionResult:
-        """Execute an action.
+        """Route an action to its handler.
+
+        The platform calls this method when an agent performs an action.
+        This method:
+        1. Checks the action type
+        2. Validates parameters using the action model
+        3. Calls the appropriate handler function
+        4. Returns the result
 
         Args:
             agent: The agent executing the action
-            action: The action execution request
-            database: Database controller for accessing data
+            action: Raw action request from agent
+            database: Database for reading/writing data
 
         Returns:
-            ActionExecutionResult containing the result of the action
+            Result of the action (success or error)
 
         """
         action_type = action.parameters.get("type")
 
         if action_type == "send_text_message":
+            # Validate and parse the action parameters
             parsed_action = SendTextMessage.model_validate(action.parameters)
+            # Call the handler that implements the business logic
             return await execute_send_text_message(parsed_action, database)
 
         elif action_type == "check_messages":
@@ -58,6 +75,7 @@ class TextOnlyProtocol(BaseMarketplaceProtocol):
             return await execute_check_messages(parsed_action, agent, database)
 
         else:
+            # Unknown action type - return error
             return ActionExecutionResult(
                 content={"error": f"Unknown action type: {action_type}"},
                 is_error=True,

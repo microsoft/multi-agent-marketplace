@@ -2,9 +2,8 @@
 
 from typing import Literal
 
-from pydantic import AwareDatetime, BaseModel, Field
-
 from magentic_marketplace.platform.shared.models import BaseAction
+from pydantic import AwareDatetime, BaseModel, Field
 
 from .messaging import TextMessage
 
@@ -43,7 +42,5 @@ class ReceivedTextMessage(BaseModel):
 class CheckMessagesResponse(BaseModel):
     """Response from checking messages."""
 
-    messages: list[ReceivedTextMessage] = Field(
-        description="List of received messages"
-    )
+    messages: list[ReceivedTextMessage] = Field(description="List of received messages")
     has_more: bool = Field(description="Whether there are more messages available")

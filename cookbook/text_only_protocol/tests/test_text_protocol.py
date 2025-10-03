@@ -4,10 +4,10 @@ from datetime import UTC, datetime
 from typing import Any
 
 import pytest
+from magentic_marketplace.platform.database.queries.base import QueryParams
 
 from cookbook.text_only_protocol.actions import CheckMessages, SendTextMessage
 from cookbook.text_only_protocol.messaging import TextMessage
-from magentic_marketplace.platform.database.queries.base import QueryParams
 
 
 class TestSendTextMessage:
