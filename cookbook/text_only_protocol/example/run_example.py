@@ -21,12 +21,12 @@ from cookbook.text_only_protocol.protocol import TextOnlyProtocol
 
 
 async def run_greeter_reader_example():
-    """Run example with one agent sending messages and another receiving."""
+    """Run example with one agent sending messages and another receiving and responding."""
     print("\n" + "=" * 60)
-    print("EXAMPLE 1: One-Way Messaging")
+    print("EXAMPLE 1: Bidirectional Messaging")
     print("=" * 60)
     print("Alice (greeter) will send 3 messages to Bob (reader)")
-    print("Bob will check for messages every second")
+    print("Bob will check for messages and respond to each one")
     print("-" * 60 + "\n")
 
     with tempfile.NamedTemporaryFile(suffix=".db", delete=False) as temp_file:
@@ -74,7 +74,7 @@ async def run_greeter_reader_example():
                 print("\nExample interrupted by user")
 
     print("\n" + "-" * 60)
-    print("Example 1 complete! All messages delivered successfully.")
+    print("Example 1 complete! Messages sent and responses received.")
     print("=" * 60)
 
     try:
@@ -164,7 +164,7 @@ async def main():
     print("ALL EXAMPLES COMPLETE")
     print("=" * 60)
     print("You've seen:")
-    print("  1. One-way messaging (greeter -> reader)")
+    print("  1. Bidirectional messaging (greeter <-> reader with responses)")
     print("  2. Two-way conversation (alice <-> bob)")
     print("\nNext steps: Check the code in example/agents.py to see how")
     print("these agents work, or run the tests with:")

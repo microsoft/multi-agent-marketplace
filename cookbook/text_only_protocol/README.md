@@ -15,7 +15,7 @@ uv run pytest cookbook/text_only_protocol/tests/ -v
 ```
 
 The example shows two scenarios:
-1. One agent sends messages, another reads them
+1. One agent sends messages, another reads and responds to them
 2. Two agents have a conversation
 
 ## How It Works

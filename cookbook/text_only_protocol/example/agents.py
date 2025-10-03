@@ -11,7 +11,7 @@ from cookbook.text_only_protocol.messaging import TextMessage
 
 
 class GreeterAgent(BaseAgent[AgentProfile]):
-    """Agent that sends greeting messages to other agents."""
+    """Agent that sends greeting messages and checks for responses."""
 
     def __init__(
         self,
@@ -34,9 +34,10 @@ class GreeterAgent(BaseAgent[AgentProfile]):
         self.target_agent_id = None  # Will be resolved on first send
         self.message_count = message_count
         self.messages_sent = 0
+        self.last_message_count = 0
 
     async def step(self) -> None:
-        """Send a greeting message if quota not reached."""
+        """Send a greeting message if quota not reached, and check for responses."""
         # Resolve target agent ID on first step
         if self.messages_sent == 0 and self.target_agent_id is None:
             await asyncio.sleep(1.5)  # Give other agents time to register
@@ -54,39 +55,53 @@ class GreeterAgent(BaseAgent[AgentProfile]):
                 )
                 return
 
-        if self.messages_sent >= self.message_count:
-            return
+        # Send message if quota not reached
+        if self.messages_sent < self.message_count:
+            message = TextMessage(
+                content=f"Hello from {self.id}! (message {self.messages_sent + 1})"
+            )
 
-        message = TextMessage(
-            content=f"Hello from {self.id}! (message {self.messages_sent + 1})"
-        )
+            send_action = SendTextMessage(
+                from_agent_id=self.id,
+                to_agent_id=self.target_agent_id,
+                created_at=datetime.now(UTC),
+                message=message,
+            )
 
-        send_action = SendTextMessage(
-            from_agent_id=self.id,
-            to_agent_id=self.target_agent_id,
-            created_at=datetime.now(UTC),
-            message=message,
-        )
+            result = await self.execute_action(send_action)
 
-        result = await self.execute_action(send_action)
+            if result.is_error:
+                print(f"[{self.id}] Failed to send message: {result.content}")
+            else:
+                self.messages_sent += 1
+                print(f"[{self.id}] Sent: {message.content}")
 
-        if result.is_error:
-            print(f"[{self.id}] Failed to send message: {result.content}")
-        else:
-            self.messages_sent += 1
-            print(f"[{self.id}] Sent: {message.content}")
+        # Check for responses
+        check_action = CheckMessages()
+        result = await self.execute_action(check_action)
+
+        if not result.is_error:
+            messages = result.content.get("messages", [])
+            if len(messages) > self.last_message_count:
+                new_messages = messages[self.last_message_count :]
+                for msg in new_messages:
+                    sender_id = msg["from_agent_id"]
+                    content = msg["message"]["content"]
+                    print(f"[{self.id}] Received from {sender_id}: {content}")
+                self.last_message_count = len(messages)
 
         await asyncio.sleep(1)
 
 
 class ReaderAgent(BaseAgent[AgentProfile]):
-    """Agent that periodically checks and prints received messages."""
+    """Agent that checks messages and responds to them."""
 
     def __init__(
         self,
         profile: AgentProfile,
         server_url: str,
         check_interval: float = 2.0,
+        max_responses: int = 3,
     ):
         """Initialize reader agent.
 
@@ -94,14 +109,17 @@ class ReaderAgent(BaseAgent[AgentProfile]):
             profile: Agent profile
             server_url: Marketplace server URL
             check_interval: Seconds between message checks
+            max_responses: Maximum number of responses to send
 
         """
         super().__init__(profile, server_url)
         self.check_interval = check_interval
         self.last_message_count = 0
+        self.max_responses = max_responses
+        self.response_count = 0
 
     async def step(self) -> None:
-        """Check for new messages and print them."""
+        """Check for new messages and respond to them."""
         check_action = CheckMessages()
 
         result = await self.execute_action(check_action)
@@ -115,12 +133,41 @@ class ReaderAgent(BaseAgent[AgentProfile]):
         if len(messages) > self.last_message_count:
             new_messages = messages[self.last_message_count :]
             for msg in new_messages:
-                print(
-                    f"[{self.id}] Received from {msg['from_agent_id']}: {msg['message']['content']}"
-                )
+                sender_id = msg["from_agent_id"]
+                content = msg["message"]["content"]
+                print(f"[{self.id}] Received from {sender_id}: {content}")
+
+                if self.response_count < self.max_responses:
+                    response = f"Thanks for message {self.response_count + 1}!"
+                    await self._send_message(sender_id, response)
+                    self.response_count += 1
+
             self.last_message_count = len(messages)
 
         await asyncio.sleep(self.check_interval)
+
+    async def _send_message(self, to_agent_id: str, content: str) -> None:
+        """Send a message to another agent.
+
+        Args:
+            to_agent_id: ID of the recipient agent
+            content: Message content
+
+        """
+        message = TextMessage(content=content)
+        send_action = SendTextMessage(
+            from_agent_id=self.id,
+            to_agent_id=to_agent_id,
+            created_at=datetime.now(UTC),
+            message=message,
+        )
+
+        result = await self.execute_action(send_action)
+
+        if result.is_error:
+            print(f"[{self.id}] Failed to send: {result.content}")
+        else:
+            print(f"[{self.id}] Sent to {to_agent_id}: {content}")
 
 
 class ConversationAgent(BaseAgent[AgentProfile]):
