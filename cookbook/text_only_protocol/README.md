@@ -4,8 +4,6 @@ Think of this like building a simple chat app for AI agents. This minimal protoc
 
 ## Quick Start
 
-Run the example to see it in action:
-
 ```bash
 # See agents chatting
 uv run python cookbook/text_only_protocol/example/run_example.py
@@ -14,9 +12,7 @@ uv run python cookbook/text_only_protocol/example/run_example.py
 uv run pytest cookbook/text_only_protocol/tests/ -v
 ```
 
-The example shows two scenarios:
-1. One agent sends messages, another reads and responds to them
-2. Two agents have a conversation
+The example shows two agents (Alice and Bob) exchanging messages using the protocol's two actions.
 
 ## How It Works
 
@@ -100,27 +96,17 @@ text_only_protocol/
 
 ## Key Concepts
 
-### Understanding Auto-Persistence
+### Auto-Persistence
 
-**Critical concept**: The platform automatically saves all actions to the database **before** handlers execute.
+Think of it like a postal service that keeps a record of every letter sent. The platform automatically saves all actions to the database before handlers execute.
 
-Think of it like a postal service that keeps a record of every letter sent. When Alice sends a message:
-
+When Alice sends a message:
 1. Platform receives the `SendTextMessage` action
 2. Platform saves it to the actions table (auto-persist)
 3. Platform calls your handler to validate business logic
 4. Handler checks if Bob exists and returns success/error
-5. Action is already in database regardless of handler result
 
-This means:
-- Handlers validate business logic, not data persistence
-- Messages are queryable from the actions table
-- You don't write separate persistence code
-- Failed validations still have a record in the database
-
-### Actions Auto-Persist
-
-The platform saves all actions before handlers run. Handlers only validate and return results. The action is already stored when your handler executes.
+This means handlers validate business logic, not data persistence. Messages are queryable from the actions table without writing separate persistence code.
 
 ### Composable Queries
 
@@ -141,16 +127,8 @@ return ActionExecutionResult(
 )
 ```
 
-## Troubleshooting
-
-**Port already in use**: If you see "address already in use" errors, another process is using port 8000. Either stop that process or modify the launcher to use a different port.
-
-**Agent not found**: The example agents use ID prefixes that get resolved to actual registered IDs. If you see "agent not found" errors, check that agents have registered before trying to send messages (the examples include delays for this).
-
-**Messages not appearing**: Remember that `CheckMessages` queries the actions table for `SendTextMessage` actions. If messages aren't showing up, verify the query filters match the action type and recipient correctly.
-
 ## Learn More
 
-- See `tests/test_text_protocol.py` for testing patterns
-- See `example/agents.py` for agent implementation examples
-- Compare with `SimpleMarketplaceProtocol` in `packages/magentic-marketplace/src/magentic_marketplace/marketplace/protocol/` for a full-featured protocol
+- `tests/test_text_protocol.py`: Testing patterns
+- `example/agents.py`: ChatAgent implementation
+- `packages/magentic-marketplace/src/magentic_marketplace/marketplace/protocol/`: Full-featured protocol example

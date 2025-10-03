@@ -10,75 +10,55 @@ from cookbook.text_only_protocol.actions import CheckMessages, SendTextMessage
 from cookbook.text_only_protocol.messaging import TextMessage
 
 
-class GreeterAgent(BaseAgent[AgentProfile]):
-    """Agent that sends greeting messages and checks for responses."""
+class ChatAgent(BaseAgent[AgentProfile]):
+    """Simple agent that sends and receives messages."""
 
     def __init__(
         self,
         profile: AgentProfile,
         server_url: str,
-        target_agent_id: str,
-        message_count: int = 3,
+        peer_id: str,
+        messages_to_send: int = 2,
+        send_first: bool = False,
     ):
-        """Initialize greeter agent.
+        """Initialize chat agent.
 
         Args:
             profile: Agent profile
             server_url: Marketplace server URL
-            target_agent_id: ID prefix of agent to send messages to (will be resolved to actual ID)
-            message_count: Number of messages to send
+            peer_id: ID of the peer agent to chat with
+            messages_to_send: Number of messages to send
+            send_first: Whether to send first message immediately
 
         """
         super().__init__(profile, server_url)
-        self.target_agent_id_prefix = target_agent_id
-        self.target_agent_id = None  # Will be resolved on first send
-        self.message_count = message_count
-        self.messages_sent = 0
+        self.peer_id = peer_id
+        self.messages_to_send = messages_to_send
+        self.send_first = send_first
+        self.sent_count = 0
         self.last_message_count = 0
+        self.initialized = False
 
     async def step(self) -> None:
-        """Send a greeting message if quota not reached, and check for responses."""
-        # Resolve target agent ID on first step
-        if self.messages_sent == 0 and self.target_agent_id is None:
-            await asyncio.sleep(1.5)  # Give other agents time to register
+        """Send messages and check for new ones."""
+        if not self.initialized:
+            await asyncio.sleep(1)
+            self.initialized = True
 
-            # Look up the actual registered agent ID
+            # Resolve peer ID from registered agents
             agents_response = await self.client.agents.list(limit=100)
             for agent in agents_response.items:
-                if agent.id.startswith(self.target_agent_id_prefix):
-                    self.target_agent_id = agent.id
+                if agent.id.startswith(self.peer_id) and agent.id != self.id:
+                    self.peer_id = agent.id
                     break
 
-            if not self.target_agent_id:
-                print(
-                    f"[{self.id}] Could not find target agent with prefix '{self.target_agent_id_prefix}'"
+            if self.send_first and self.sent_count < self.messages_to_send:
+                await self._send_message(
+                    f"Hi {self.peer_id}, this is {self.id}! (message {self.sent_count + 1})"
                 )
-                return
+                self.sent_count += 1
 
-        # Send message if quota not reached
-        if self.messages_sent < self.message_count:
-            message = TextMessage(
-                content=f"Hello from {self.id}! (message {self.messages_sent + 1})"
-            )
-
-            send_action = SendTextMessage(
-                from_agent_id=self.id,
-                to_agent_id=self.target_agent_id,
-                created_at=datetime.now(UTC),
-                message=message,
-            )
-
-            result = await self.execute_action(send_action)
-
-            if result.is_error:
-                print(f"[{self.id}] Failed to send message: {result.content}")
-            else:
-                self.messages_sent += 1
-                print(f"[{self.id}] Sent: {message.content}")
-
-        # Check for responses
-        check_action = CheckMessages()
-        result = await self.execute_action(check_action)
+        result = await self.execute_action(CheckMessages())
 
         if not result.is_error:
             messages = result.content.get("messages", [])
@@ -88,193 +68,22 @@ class GreeterAgent(BaseAgent[AgentProfile]):
                     sender_id = msg["from_agent_id"]
                     content = msg["message"]["content"]
                     print(f"[{self.id}] Received from {sender_id}: {content}")
+
+                    if self.sent_count < self.messages_to_send:
+                        response = f"Thanks! Here's my message {self.sent_count + 1}"
+                        await self._send_message(response)
+                        self.sent_count += 1
+
                 self.last_message_count = len(messages)
 
-        await asyncio.sleep(1)
-
-
-class ReaderAgent(BaseAgent[AgentProfile]):
-    """Agent that checks messages and responds to them."""
-
-    def __init__(
-        self,
-        profile: AgentProfile,
-        server_url: str,
-        check_interval: float = 2.0,
-        max_responses: int = 3,
-    ):
-        """Initialize reader agent.
-
-        Args:
-            profile: Agent profile
-            server_url: Marketplace server URL
-            check_interval: Seconds between message checks
-            max_responses: Maximum number of responses to send
-
-        """
-        super().__init__(profile, server_url)
-        self.check_interval = check_interval
-        self.last_message_count = 0
-        self.max_responses = max_responses
-        self.response_count = 0
-
-    async def step(self) -> None:
-        """Check for new messages and respond to them."""
-        check_action = CheckMessages()
-
-        result = await self.execute_action(check_action)
-
-        if result.is_error:
-            print(f"[{self.id}] Failed to check messages: {result.content}")
-            return
-
-        messages = result.content.get("messages", [])
-
-        if len(messages) > self.last_message_count:
-            new_messages = messages[self.last_message_count :]
-            for msg in new_messages:
-                sender_id = msg["from_agent_id"]
-                content = msg["message"]["content"]
-                print(f"[{self.id}] Received from {sender_id}: {content}")
-
-                if self.response_count < self.max_responses:
-                    response = f"Thanks for message {self.response_count + 1}!"
-                    await self._send_message(sender_id, response)
-                    self.response_count += 1
-
-            self.last_message_count = len(messages)
-
-        await asyncio.sleep(self.check_interval)
-
-    async def _send_message(self, to_agent_id: str, content: str) -> None:
-        """Send a message to another agent.
-
-        Args:
-            to_agent_id: ID of the recipient agent
-            content: Message content
-
-        """
-        message = TextMessage(content=content)
-        send_action = SendTextMessage(
-            from_agent_id=self.id,
-            to_agent_id=to_agent_id,
-            created_at=datetime.now(UTC),
-            message=message,
-        )
-
-        result = await self.execute_action(send_action)
-
-        if result.is_error:
-            print(f"[{self.id}] Failed to send: {result.content}")
-        else:
-            print(f"[{self.id}] Sent to {to_agent_id}: {content}")
-
-
-class ConversationAgent(BaseAgent[AgentProfile]):
-    """Agent that both sends and receives messages."""
-
-    def __init__(
-        self,
-        profile: AgentProfile,
-        server_url: str,
-        peer_agent_id: str,
-        initial_message: str | None = None,
-    ):
-        """Initialize conversation agent.
-
-        Args:
-            profile: Agent profile
-            server_url: Marketplace server URL
-            peer_agent_id: ID prefix of agent to converse with (will be resolved to actual ID)
-            initial_message: Optional message to send at start
-
-        """
-        super().__init__(profile, server_url)
-        self.peer_agent_id_prefix = peer_agent_id
-        self.peer_agent_id = None  # Will be resolved when needed
-        self.initial_message = initial_message
-        self.sent_initial = False
-        self.last_message_count = 0
-        self.response_count = 0
-        self.max_responses = 3
-
-    async def _resolve_peer_id(self) -> bool:
-        """Resolve the peer agent's actual registered ID.
-
-        Returns:
-            True if peer was found, False otherwise
-
-        """
-        if self.peer_agent_id:
-            return True
-
-        agents_response = await self.client.agents.list(limit=100)
-        for agent in agents_response.items:
-            if agent.id.startswith(self.peer_agent_id_prefix) and agent.id != self.id:
-                self.peer_agent_id = agent.id
-                return True
-
-        print(
-            f"[{self.id}] Could not find peer agent with prefix '{self.peer_agent_id_prefix}'"
-        )
-        return False
-
-    async def step(self) -> None:
-        """Check for messages and respond to them."""
-        if not self.sent_initial and self.initial_message:
-            # Give other agents time to register
-            await asyncio.sleep(1.5)
-
-            # Resolve peer agent ID
-            if not await self._resolve_peer_id():
-                return
-
-            await self._send_message(self.initial_message)
-            self.sent_initial = True
-            await asyncio.sleep(1)
-            return
-
-        check_action = CheckMessages()
-        result = await self.execute_action(check_action)
-
-        if result.is_error:
-            print(f"[{self.id}] Error checking messages: {result.content}")
-            return
-
-        messages = result.content.get("messages", [])
-
-        if (
-            len(messages) > self.last_message_count
-            and self.response_count < self.max_responses
-        ):
-            # Resolve peer ID if we haven't yet
-            if not await self._resolve_peer_id():
-                return
-
-            new_messages = messages[self.last_message_count :]
-            for msg in new_messages:
-                content = msg["message"]["content"]
-                print(f"[{self.id}] Received: {content}")
-
-                response = f"Thanks for your message! (reply {self.response_count + 1})"
-                await self._send_message(response)
-                self.response_count += 1
-
-            self.last_message_count = len(messages)
-
-        await asyncio.sleep(2)
+        await asyncio.sleep(1.5)
 
     async def _send_message(self, content: str) -> None:
-        """Send a message to peer agent.
-
-        Args:
-            content: Message content
-
-        """
+        """Send a message to peer agent."""
         message = TextMessage(content=content)
         send_action = SendTextMessage(
             from_agent_id=self.id,
-            to_agent_id=self.peer_agent_id,
+            to_agent_id=self.peer_id,
             created_at=datetime.now(UTC),
             message=message,
         )
