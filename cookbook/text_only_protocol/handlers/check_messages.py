@@ -63,10 +63,12 @@ async def _fetch_messages_from_database(
         Tuple of (list of ReceivedTextMessage objects, has_more flag)
 
     """
-    # Build query to filter SendTextMessage actions for this recipient
+    # Messages are stored as SendTextMessage actions in the actions table.
+    # We query the actions table (not a separate messages table) to retrieve them.
+    # The & operator composes multiple query filters together.
     query = queries.to_agent(agent.id) & queries.action_type("send_text_message")
 
-    # Setup query parameters with pagination
+    # Request one extra item to check if there are more results (for pagination)
     limit = action.limit + 1 if action.limit else None
     query_params = RangeQueryParams(
         offset=action.offset or 0,
@@ -83,7 +85,8 @@ async def _fetch_messages_from_database(
         if received_message:
             received_messages.append(received_message)
 
-    # Check if there are more messages
+    # Check if there are more messages beyond the requested limit
+    # If we got more results than requested, there are additional pages available
     has_more = False
     if action.limit is not None and len(received_messages) > action.limit:
         received_messages = received_messages[: action.limit]
@@ -104,6 +107,8 @@ def _convert_action_to_received_message(
         ReceivedTextMessage object or None if conversion fails
 
     """
+    # Extract the original action parameters from the stored action row.
+    # All actions are stored with their full data in action_row.data.request.parameters
     params = action_row.data.request.parameters
 
     return ReceivedTextMessage(

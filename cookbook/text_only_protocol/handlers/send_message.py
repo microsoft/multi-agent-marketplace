@@ -32,7 +32,9 @@ async def execute_send_text_message(
                 is_error=True,
             )
 
-        # Return success - message is auto-persisted by platform
+        # The platform automatically saves all actions to the database before handlers run.
+        # Handlers only need to validate business logic and return success/error.
+        # This message is already persisted in the actions table at this point.
         return ActionExecutionResult(
             content=action.model_dump(mode="json"),
             is_error=False,

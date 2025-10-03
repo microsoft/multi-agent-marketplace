@@ -22,6 +22,23 @@ The example shows two scenarios:
 
 Think of message sending like mailing letters. An agent writes a message, the protocol checks the recipient address exists, stores it in a mailbox (database), and the recipient retrieves it later.
 
+### Message Flow
+
+```
+Alice                Protocol              Database              Bob
+  |                     |                      |                   |
+  |--SendMessage------->|                      |                   |
+  |                     |--Validate Bob------->|                   |
+  |                     |<---Bob exists--------|                   |
+  |                     |--Auto-persist------->|                   |
+  |<---Success----------|                      |                   |
+  |                     |                      |                   |
+  |                     |                      |<--CheckMessages---|
+  |                     |<---Query messages----|                   |
+  |                     |---Return messages--->|                   |
+  |                     |                      |--Messages-------->|
+```
+
 ### The Five Core Components
 
 Every marketplace protocol has these pieces:
@@ -81,53 +98,56 @@ text_only_protocol/
 └── example/                  # Working example
 ```
 
-## Adding a New Action
-
-Here's how to extend the protocol with a `DeleteMessage` action:
-
-**Step 1** - Define in `actions.py`:
-```python
-class DeleteMessage(BaseAction):
-    type: Literal["delete_message"] = "delete_message"
-    message_id: str
-```
-
-**Step 2** - Create handler in `handlers/delete_message.py`:
-```python
-async def execute_delete_message(action, database):
-    # Your logic here
-    return ActionExecutionResult(content={"status": "deleted"})
-```
-
-**Step 3** - Update `protocol.py`:
-```python
-def get_actions(self):
-    return [SendTextMessage, CheckMessages, DeleteMessage]
-
-async def execute_action(self, ...):
-    # Add routing
-    elif action.type == "delete_message":
-        return await execute_delete_message(action, database)
-```
-
-**Step 4** - Add test in `tests/test_text_protocol.py`
-
 ## Key Concepts
 
-**Actions auto-persist**: The platform automatically saves all actions to the database. Handlers just validate and return results.
+### Understanding Auto-Persistence
 
-**Composable queries**: Combine filters to find specific data:
+**Critical concept**: The platform automatically saves all actions to the database **before** handlers execute.
+
+Think of it like a postal service that keeps a record of every letter sent. When Alice sends a message:
+
+1. Platform receives the `SendTextMessage` action
+2. Platform saves it to the actions table (auto-persist)
+3. Platform calls your handler to validate business logic
+4. Handler checks if Bob exists and returns success/error
+5. Action is already in database regardless of handler result
+
+This means:
+- Handlers validate business logic, not data persistence
+- Messages are queryable from the actions table
+- You don't write separate persistence code
+- Failed validations still have a record in the database
+
+### Actions Auto-Persist
+
+The platform saves all actions before handlers run. Handlers only validate and return results. The action is already stored when your handler executes.
+
+### Composable Queries
+
+Combine filters to find specific data:
 ```python
 query = to_agent("bob") & from_agent("alice") & action_type("send_text_message")
 ```
 
-**Error handling**: Return `ActionExecutionResult` with `is_error=True`:
+The query system uses JSONPath to search nested JSON in the actions table. See `database/queries.py` for details on the path syntax.
+
+### Error Handling
+
+Return `ActionExecutionResult` with `is_error=True`:
 ```python
 return ActionExecutionResult(
     content={"error": "Agent not found"},
     is_error=True
 )
 ```
+
+## Troubleshooting
+
+**Port already in use**: If you see "address already in use" errors, another process is using port 8000. Either stop that process or modify the launcher to use a different port.
+
+**Agent not found**: The example agents use ID prefixes that get resolved to actual registered IDs. If you see "agent not found" errors, check that agents have registered before trying to send messages (the examples include delays for this).
+
+**Messages not appearing**: Remember that `CheckMessages` queries the actions table for `SendTextMessage` actions. If messages aren't showing up, verify the query filters match the action type and recipient correctly.
 
 ## Learn More
 
