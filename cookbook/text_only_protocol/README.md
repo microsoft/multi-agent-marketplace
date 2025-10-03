@@ -2,37 +2,63 @@
 
 Think of this like building a simple chat app for AI agents. This minimal protocol demonstrates the core components needed to create a custom marketplace protocol - just message sending and receiving.
 
+## What You'll Build
+
+A PDF proofreading system where a Writer agent extracts text from a PDF, sends it to a Proofreader agent who uses an LLM to correct errors, and returns the corrections. All coordination happens through two simple message-passing actions.
+
 ## Quick Start
 
 ```bash
-# See agents chatting
-uv run python cookbook/text_only_protocol/example/run_example.py
+# 1. Install dependencies
+uv sync --extra cookbook
 
-# Run tests
+# 2. Configure LLM (choose one provider)
+export LLM_PROVIDER=anthropic
+export ANTHROPIC_API_KEY=your-key-here
+export LLM_MODEL=claude-3-5-sonnet-20241022
+
+# Or use OpenAI
+# export LLM_PROVIDER=openai
+# export OPENAI_API_KEY=your-key-here
+# export LLM_MODEL=gpt-4
+
+# 3. Run the example
+uv run python cookbook/text_only_protocol/example/run_example.py path/to/document.pdf
+
+# 4. Run tests
 uv run pytest cookbook/text_only_protocol/tests/ -v
 ```
 
-The example shows two agents (Alice and Bob) exchanging messages using the protocol's two actions.
+**What happens:** Writer agent sends PDF text → Proofreader agent uses LLM to correct it → Writer receives corrections. Both agents coordinate using only `SendTextMessage` and `CheckMessages` actions.
 
 ## How It Works
 
 Think of message sending like mailing letters. An agent writes a message, the protocol checks the recipient address exists, stores it in a mailbox (database), and the recipient retrieves it later.
 
-### Message Flow
+### Message Flow Example
 
 ```
-Alice                Protocol              Database              Bob
+Writer              Protocol              Database           Proofreader
   |                     |                      |                   |
   |--SendMessage------->|                      |                   |
-  |                     |--Validate Bob------->|                   |
-  |                     |<---Bob exists--------|                   |
+  | (PDF text)          |--Validate recip----->|                   |
+  |                     |<--Proofreader OK-----|                   |
   |                     |--Auto-persist------->|                   |
-  |<---Success----------|                      |                   |
+  |<--Success-----------|                      |                   |
   |                     |                      |                   |
   |                     |                      |<--CheckMessages---|
-  |                     |<---Query messages----|                   |
-  |                     |---Return messages--->|                   |
-  |                     |                      |--Messages-------->|
+  |                     |<--Query messages-----|                   |
+  |                     |--Return PDF text---->|                   |
+  |                     |                      |---PDF text------->|
+  |                     |                      |                   |
+  |                     |<--SendMessage--------|                   |
+  |                     | (corrections)        |                   |
+  |                     |--Auto-persist------->|                   |
+  |                     |--Success------------>|                   |
+  |                     |                      |                   |
+  |<--CheckMessages-----|                      |                   |
+  |--Query messages---->|                      |                   |
+  |<--Corrections-------|                      |                   |
 ```
 
 ### The Five Core Components
@@ -100,22 +126,30 @@ text_only_protocol/
 
 Think of it like a postal service that keeps a record of every letter sent. The platform automatically saves all actions to the database before handlers execute.
 
-When Alice sends a message:
+When Writer sends a message:
 1. Platform receives the `SendTextMessage` action
 2. Platform saves it to the actions table (auto-persist)
 3. Platform calls your handler to validate business logic
-4. Handler checks if Bob exists and returns success/error
+4. Handler checks if Proofreader exists and returns success/error
 
 This means handlers validate business logic, not data persistence. Messages are queryable from the actions table without writing separate persistence code.
+
+**Why this matters:** You can build complex message-based workflows without writing any database code. The protocol handles all message storage automatically.
 
 ### Composable Queries
 
 Combine filters to find specific data:
 ```python
-query = to_agent("bob") & from_agent("alice") & action_type("send_text_message")
+# Find all messages sent to the proofreader
+query = to_agent("proofreader") & action_type("send_text_message")
+
+# Find messages from writer to proofreader
+query = to_agent("proofreader") & from_agent("writer") & action_type("send_text_message")
 ```
 
 The query system uses JSONPath to search nested JSON in the actions table. See `database/queries.py` for details on the path syntax.
+
+**Why this matters:** You can query message history without SQL. The composable query syntax makes it easy to filter actions by recipient, sender, type, or any field in the action data.
 
 ### Error Handling
 
@@ -127,8 +161,24 @@ return ActionExecutionResult(
 )
 ```
 
+## Building Your Own Protocol
+
+This example shows the minimal protocol structure. To build your own:
+
+1. **Define your actions** in `actions.py` - What can agents do?
+2. **Create handlers** in `handlers/` - What happens when agents perform those actions?
+3. **Wire it up** in `protocol.py` - Route actions to handlers
+4. **Add queries** (optional) in `database/queries.py` - Make it easy to find data
+
+**Example use cases:**
+- Task assignment and completion system
+- Auction or bidding protocol
+- Multi-agent negotiation
+- Request/response workflows
+
 ## Learn More
 
-- `tests/test_text_protocol.py`: Testing patterns
-- `example/agents.py`: ChatAgent implementation
-- `packages/magentic-marketplace/src/magentic_marketplace/marketplace/protocol/`: Full-featured protocol example
+- `tests/test_text_protocol.py`: Testing patterns for protocols
+- `example/agents.py`: WriterAgent and ProofreaderAgent implementations
+- `example/run_example.py`: How to launch marketplace with custom protocol
+- `packages/magentic-marketplace/src/magentic_marketplace/marketplace/protocol/`: Full-featured marketplace protocol with listings, negotiations, and contracts

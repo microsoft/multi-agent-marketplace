@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
-"""Run example agents using the text-only protocol."""
+"""Run example agents using the text-only protocol.
 
+This example shows a Writer agent sending text from a PDF to a Proofreader agent,
+who corrects errors and explains the changes.
+"""
+
+import argparse
 import asyncio
 import sys
 import tempfile
@@ -12,19 +17,63 @@ from magentic_marketplace.platform.database.sqlite import create_sqlite_database
 from magentic_marketplace.platform.launcher import AgentLauncher, MarketplaceLauncher
 from magentic_marketplace.platform.shared.models import AgentProfile
 
-from cookbook.text_only_protocol.example.agents import ChatAgent
+from cookbook.text_only_protocol.example.agents import ProofreaderAgent, WriterAgent
 from cookbook.text_only_protocol.protocol import TextOnlyProtocol
 
 
+def extract_text_from_pdf(pdf_path: str) -> str:
+    """Extract text content from a PDF file using markitdown.
+
+    Args:
+        pdf_path: Path to the PDF file
+
+    Returns:
+        Extracted text content
+
+    """
+    try:
+        from markitdown import MarkItDown
+
+        md = MarkItDown()
+        result = md.convert(pdf_path)
+        return result.text_content
+    except ImportError:
+        print("Error: markitdown not installed. Install with: uv sync --extra cookbook")
+        sys.exit(1)
+    except Exception as e:
+        print(f"Error reading PDF: {e}")
+        sys.exit(1)
+
+
 async def main():
-    """Show two agents exchanging messages."""
+    """Run writer and proofreader agents with PDF input."""
+    parser = argparse.ArgumentParser(
+        description="Proofread a PDF document using the text-only protocol"
+    )
+    parser.add_argument("pdf_path", help="Path to PDF file to proofread")
+    args = parser.parse_args()
+
+    pdf_path = Path(args.pdf_path)
+    if not pdf_path.exists():
+        print(f"Error: PDF file not found: {pdf_path}")
+        sys.exit(1)
+
     print("\n" + "=" * 60)
-    print("TEXT-ONLY PROTOCOL EXAMPLE")
+    print("TEXT-ONLY PROTOCOL: PDF PROOFREADING")
     print("=" * 60)
-    print("Alice and Bob will exchange messages using two actions:")
-    print("  - SendTextMessage: Send a message to another agent")
-    print("  - CheckMessages: Retrieve messages sent to this agent")
+    print(f"PDF: {pdf_path.name}")
+    print("\nWriter agent will:")
+    print("  1. Extract text from PDF")
+    print("  2. Send text to Proofreader using SendTextMessage")
+    print("\nProofreader agent will:")
+    print("  1. Receive text using CheckMessages")
+    print("  2. Correct errors and explain changes")
+    print("  3. Send corrections back using SendTextMessage")
     print("-" * 60 + "\n")
+
+    print(f"Extracting text from {pdf_path.name}...")
+    text = extract_text_from_pdf(str(pdf_path))
+    print(f"Extracted {len(text)} characters\n")
 
     with tempfile.NamedTemporaryFile(suffix=".db", delete=False) as temp_file:
         db_path = temp_file.name
@@ -36,25 +85,22 @@ async def main():
     )
 
     async with launcher:
-        alice = ChatAgent(
-            profile=AgentProfile(id="alice", metadata={}),
+        writer = WriterAgent(
+            profile=AgentProfile(id="writer", metadata={}),
             server_url=launcher.server_url,
-            peer_id="bob",
-            messages_to_send=2,
-            send_first=True,
+            proofreader_id="proofreader",
+            text_to_proofread=text,
         )
 
-        bob = ChatAgent(
-            profile=AgentProfile(id="bob", metadata={}),
+        proofreader = ProofreaderAgent(
+            profile=AgentProfile(id="proofreader", metadata={}),
             server_url=launcher.server_url,
-            peer_id="alice",
-            messages_to_send=2,
         )
 
         async with AgentLauncher(launcher.server_url) as agent_launcher:
             try:
                 await agent_launcher.run_agents_with_dependencies(
-                    primary_agents=[alice, bob],
+                    primary_agents=[writer, proofreader],
                     dependent_agents=[],
                 )
             except KeyboardInterrupt:
@@ -63,7 +109,7 @@ async def main():
     print("\n" + "-" * 60)
     print("Example complete!")
     print("\nNext steps:")
-    print("  - Check example/agents.py to see the ChatAgent implementation")
+    print("  - Check example/agents.py to see WriterAgent and ProofreaderAgent")
     print("  - Run tests: uv run pytest cookbook/text_only_protocol/tests/ -v")
     print("=" * 60 + "\n")
 

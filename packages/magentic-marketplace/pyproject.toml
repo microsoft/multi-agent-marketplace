@@ -29,6 +29,9 @@ rnr = [
     "torch>=2.0.0",
     "pytest-asyncio>=1.2.0",
 ]
+cookbook = [
+    "markitdown[pdf]>=0.0.1a2",
+]
 
 [build-system]
 requires = ["hatchling"]
