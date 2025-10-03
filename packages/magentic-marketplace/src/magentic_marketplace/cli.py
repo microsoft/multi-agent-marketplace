@@ -70,6 +70,7 @@ def experiment_command(args):
             data_dir=data_dir,
             experiment_name=args.experiment_name,
             search_algorithm=args.search_algorithm,
+            customer_max_steps=args.customer_max_steps,
             postgres_host=args.postgres_host,
             postgres_port=args.postgres_port,
             postgres_password=args.postgres_password,
@@ -113,6 +114,13 @@ def main():
         type=str,
         default="simple",
         help="Search algorithm for customer agents (default: simple)",
+    )
+
+    experiment_parser.add_argument(
+        "--customer-max-steps",
+        type=int,
+        default=None,
+        help="Maximum number of steps a customer agent can take before stopping.",
     )
 
     experiment_parser.add_argument(

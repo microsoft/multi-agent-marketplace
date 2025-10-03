@@ -33,6 +33,7 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
         search_algorithm: str = "simple",
         search_bandwidth: int = 10,
         polling_interval: float = 2,
+        max_steps: int | None = None,
     ):
         """Initialize the customer agent.
 
@@ -43,6 +44,7 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
             search_algorithm: Search algorithm to use (e.g., "simple", "filtered", "rnr")
             search_bandwidth: The maximum number of search results to return.
             polling_interval: Number of seconds to wait after receiving no messages.
+            max_steps: Maximum number of steps to take before stopping.
 
         """
         profile = CustomerAgentProfile.from_customer(customer)
@@ -59,6 +61,7 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
         self._search_bandwidth = search_bandwidth
 
         self._polling_interval = polling_interval
+        self._max_steps = max_steps
 
     @property
     def customer(self) -> Customer:
@@ -93,6 +96,11 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
         4. Check if transaction completed (triggers shutdown)
         """
         self.conversation_step += 1
+        # Early-stopping if max steps exceeded
+        if self._max_steps is not None and self.conversation_step > self._max_steps:
+            self.logger.warning("Max steps exceeded, shutting down early!")
+            self.shutdown()
+            return
 
         # 1. Check for new messages from businesses
         fetch_result = await self.fetch_messages()
