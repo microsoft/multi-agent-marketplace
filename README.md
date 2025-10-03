@@ -29,8 +29,8 @@ You can configure business and customer agents that transact and then run simula
 
     ```bash
     # Run the experiments
-    magentic-marketplace experiment data/mexican_3_9 --experiment-name test_exp
+    magentic-marketplace run data/mexican_3_9 --experiment-name test_exp
 
     # Analyze the results
-    magentic-marketplace analytics test_exp
+    magentic-marketplace analyze test_exp
     ```
