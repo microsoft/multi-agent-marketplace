@@ -125,6 +125,7 @@ class BaseAgent(Generic[TProfile], ABC):  # noqa: UP046
             # Call shutdown hooks
             await self.on_will_stop()
             await self.on_stopped()
+            await self.logger.flush()
             await self._client.close()
 
     def __repr__(self) -> str:
