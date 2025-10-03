@@ -56,6 +56,7 @@ async def run_marketplace_experiment(
         protocol=SimpleMarketplaceProtocol(),
         database_factory=database_factory,
         server_log_level="warning",
+        experiment_name=experiment_name,
     )
 
     print(f"Using protocol: {marketplace_launcher.protocol.__class__.__name__}")

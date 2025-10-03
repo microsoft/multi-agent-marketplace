@@ -13,7 +13,7 @@ from magentic_marketplace.experiments.run_experiment import run_marketplace_expe
 from magentic_marketplace.experiments.utils import setup_logging
 
 
-def experiment_command(args):
+def run_experiment_command(args):
     """Handle the experiment subcommand."""
     # Setup logging
     setup_logging()
@@ -78,7 +78,7 @@ def experiment_command(args):
     )
 
 
-def analytics_command(args):
+def run_analysis_command(args):
     """Handle the analytics subcommand."""
     save_to_json = not args.no_save_json
     asyncio.run(
@@ -100,8 +100,9 @@ def main():
 
     # experiment subcommand
     experiment_parser = subparsers.add_parser(
-        "experiment", help="Run a marketplace experiment using YAML configuration files"
+        "run", help="Run a marketplace experiment using YAML configuration files"
     )
+    experiment_parser.set_defaults(func=run_experiment_command)
 
     experiment_parser.add_argument(
         "data_dir",
@@ -161,12 +162,11 @@ def main():
         help="Set the logging level (default: INFO)",
     )
 
-    experiment_parser.set_defaults(func=experiment_command)
-
     # analytics subcommand
     analytics_parser = subparsers.add_parser(
-        "analytics", help="Analyze marketplace simulation data"
+        "analyze", help="Analyze marketplace simulation data"
     )
+    analytics_parser.set_defaults(func=run_analysis_command)
 
     analytics_parser.add_argument(
         "database_name", help="Postgres schema name or path to the SQLite database file"
@@ -184,8 +184,6 @@ def main():
         action="store_true",
         help="Disable saving analytics to JSON file",
     )
-
-    analytics_parser.set_defaults(func=analytics_command)
 
     # Parse arguments and execute the appropriate function
     args = parser.parse_args()
