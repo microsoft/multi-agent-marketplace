@@ -44,6 +44,7 @@ class MarketplaceLauncher:
         title: str = "Marketplace API",
         description: str = "A marketplace for autonomous agents",
         server_log_level: str = "info",
+        experiment_name: str | None = None,
     ):
         """Initialize the marketplace launcher.
 
@@ -55,6 +56,7 @@ class MarketplaceLauncher:
             title: API documentation title
             description: API documentation description
             server_log_level: FastAPI server log level (debug, info, warning, error, critical)
+            experiment_name: Name of the experiment
 
         """
         self.protocol = protocol
@@ -64,6 +66,7 @@ class MarketplaceLauncher:
         self.title = title
         self.description = description
         self.server_log_level = server_log_level
+        self.experiment_name = experiment_name
 
         self.server: MarketplaceServer | None = None
         self.server_task: asyncio.Task[None] | None = None
@@ -104,6 +107,10 @@ class MarketplaceLauncher:
                 pass
 
         print("Server stopped")
+        if self.experiment_name:
+            print(
+                f"\nRun analytics with: magentic-marketplace analyze {self.experiment_name}"
+            )
 
     async def create_logger(self, name: str = __name__) -> MarketplaceLogger:
         """Create a logger connected to the marketplace.
