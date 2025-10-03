@@ -1,6 +1,5 @@
 """Tests for MarketplaceLogger."""
 
-import asyncio
 from unittest.mock import AsyncMock, MagicMock
 
 import pytest
@@ -64,11 +63,8 @@ class TestMarketplaceLogger:
         assert len(results) == 0
 
     @pytest.mark.asyncio
-    async def test_flush_returns_count_below_flush_every(self, mock_client):
-        """Test that flush returns correct count for tasks below flush_every threshold."""
-        logger = MarketplaceLogger("test-logger", mock_client, flush_every=10)
-
-        # Log fewer than flush_every
+    async def test_flush_returns_count_for_multiple_tasks(self, logger, mock_client):
+        """Test that flush returns correct count for multiple tasks."""
         logger.info("message 1")
         logger.info("message 2")
         logger.info("message 3")
@@ -76,26 +72,6 @@ class TestMarketplaceLogger:
         results = await logger.flush()
         assert len(results) == 3
         assert mock_client.logs.create.call_count == 3
-
-    @pytest.mark.asyncio
-    async def test_flush_returns_count_above_flush_every(self, mock_client):
-        """Test that flush returns correct count for tasks above flush_every threshold."""
-        flush_every = 2
-        logger = MarketplaceLogger("test-logger", mock_client, flush_every=flush_every)
-
-        # Log more than flush_every (will trigger auto-flush)
-        n = 5
-        for i in range(n):
-            logger.info(f"message {i}")
-
-        # Wait for auto-flushes
-        await asyncio.sleep(0.1)
-
-        # Flush any remaining
-        await logger.flush()
-
-        # Total logged should be 5
-        assert mock_client.logs.create.call_count == n
 
     @pytest.mark.asyncio
     async def test_flush_with_task_errors(self, mock_client):

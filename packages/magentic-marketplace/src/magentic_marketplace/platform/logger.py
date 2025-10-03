@@ -14,7 +14,7 @@ from .client import MarketplaceClient
 class MarketplaceLogger:
     """Logger wrapper that logs to both Python logging and the database."""
 
-    def __init__(self, name: str, client: MarketplaceClient, flush_every: int = 100):
+    def __init__(self, name: str, client: MarketplaceClient):
         """Initialize marketplace logger with name and client."""
         self.name = name
         # Set up basic logging config if none exists
@@ -24,9 +24,7 @@ class MarketplaceLogger:
             )
         self.python_logger = logging.getLogger(name)
         self._client = client
-        self._flush_lock = asyncio.Lock()
         self._tasks: list[asyncio.Task] = []
-        self._flush_every = flush_every
 
     def _log(
         self,
@@ -55,15 +53,10 @@ class MarketplaceLogger:
         )
 
         # Log to database. Fire and forget to avoid blocking but return task in case caller wants to wait.
-        loop = asyncio.get_event_loop()
-        if loop.is_running():
-            task = asyncio.create_task(self._log_to_db(log))
-            self._tasks.append(task)
-            if len(self._tasks) >= self._flush_every:
-                asyncio.create_task(self.flush())
-            return task
-        else:
-            raise RuntimeError("Cannot log to database: No running event loop.")
+        task = asyncio.create_task(self._log_to_db(log))
+        self._tasks.append(task)
+        task.add_done_callback(self._remove_task)
+        return task
 
     async def _log_to_db(self, log: Log):
         """Async helper to log to database."""
@@ -72,8 +65,10 @@ class MarketplaceLogger:
         except Exception:
             # If database logging fails, log the error to Python logger only
             self.python_logger.error(
-                f"Failed to log to database: {traceback.format_exc(2)}"
+                f"Failed to log to database: {traceback.format_exc()}"
             )
+            # Raise so any awaiters can handle it appropriately
+            raise
 
     def debug(
         self,
@@ -126,9 +121,15 @@ class MarketplaceLogger:
         message = ((message or "") + "\n" + traceback.format_exc(2)).strip()
         return self.error(message, data=data, metadata=metadata)
 
+    def _remove_task(self, task: asyncio.Task):
+        try:
+            self._tasks.remove(task)
+        except ValueError:
+            # Debug because this can get noisy and is expected when flush is called
+            self.python_logger.debug("Failed to remove task: task is not in list.")
+
     async def flush(self):
         """Wait for any pending tasks to complete."""
-        async with self._flush_lock:
-            tasks = list(self._tasks)
-            self._tasks.clear()
+        tasks = list(self._tasks)
+        self._tasks.clear()
         return await asyncio.gather(*tasks, return_exceptions=True)
