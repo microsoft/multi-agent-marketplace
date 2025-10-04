@@ -64,12 +64,14 @@ async def main():
     print(f"Document: {pdf_path.name}")
     print("\nLEARNING OBJECTIVE:")
     print("  See how 2 actions (SendTextMessage + CheckMessages) enable a")
-    print("  complete marketplace with bidding, selection, and task execution.")
+    print("  complete marketplace with bidding, negotiation, and execution.")
     print("\nMARKETPLACE FLOW:")
     print("  Phase 1: Broadcast (1→Many)  - Request quotes from all vendors")
-    print("  Phase 2: Collect (Many→1)    - Gather bids, select winner")
-    print("  Phase 3: Assign (1→1)        - Send work to chosen vendor")
-    print("  Phase 4: Complete (1→1)      - Receive finished work")
+    print("  Phase 2: Collect (Many→1)    - Gather initial bids")
+    print("  Phase 3: Negotiate (1→Many)  - Share best offer, ask for counter-offers")
+    print("  Phase 4: Select (Many→1)     - Choose final winner")
+    print("  Phase 5: Assign (1→1)        - Send work to winner")
+    print("  Phase 6: Complete (1→1)      - Receive finished work")
     print("-" * 70 + "\n")
 
     print(f"Extracting text from {pdf_path.name}...")
@@ -105,7 +107,7 @@ async def main():
             profile=AgentProfile(id="proofreader-gemini", metadata={}),
             server_url=launcher.server_url,
             llm_provider="gemini",
-            llm_model="gemini-2.0-flash-exp",
+            llm_model="gemini-2.5-flash",
         )
 
         # Writer uses GPT-4o to request quotes and select best proofreader
@@ -136,17 +138,21 @@ async def main():
     print("KEY TAKEAWAYS")
     print("=" * 70)
     print("\n1. MINIMAL ACTIONS, MAXIMUM FLEXIBILITY:")
-    print("   - Only 2 actions needed: SendTextMessage + CheckMessages")
-    print("   - Same actions work for quotes, tasks, and results")
-    print("   - No special 'bid' or 'contract' actions required")
+    print("   - Only 2 actions: SendTextMessage + CheckMessages")
+    print("   - Same actions for quotes, negotiation, tasks, and results")
+    print("   - No special 'bid', 'negotiate', or 'contract' actions needed")
     print("\n2. PROTOCOL HANDLES INFRASTRUCTURE:")
     print("   - Auto-persistence: All messages saved to database")
     print("   - Auto-routing: Messages delivered to correct agents")
-    print("   - Simple queries: CheckMessages() retrieves all relevant messages")
+    print("   - Simple queries: CheckMessages() retrieves all messages")
     print("\n3. LLMS ENABLE NATURAL NEGOTIATION:")
-    print("   - Agents interpret message intent (quote vs task)")
-    print("   - Decision making (select best quote) uses LLM reasoning")
-    print("   - No hardcoded message formats or rigid protocols")
+    print("   - Agents interpret message type (quote/negotiation/task)")
+    print("   - Multi-round negotiation emerges from simple messaging")
+    print("   - Decision making uses LLM reasoning, not hardcoded rules")
+    print("\n4. MARKETPLACE DYNAMICS:")
+    print("   - Competitive bidding: Initial quotes from all vendors")
+    print("   - Price negotiation: Share best offer, collect counter-offers")
+    print("   - Winner selection: LLM evaluates quality/price across rounds")
     print("\nNext: Read example/agents.py to see the implementation")
     print("=" * 70 + "\n")
 
