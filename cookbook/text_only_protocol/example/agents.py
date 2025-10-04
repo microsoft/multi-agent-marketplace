@@ -70,14 +70,19 @@ class WriterAgent(BaseAgent[AgentProfile]):
         if not self.quotes_requested:
             quote_request = await self._generate_quote_request()
             print(f"\n{'='*70}")
-            print(f"PHASE 1: REQUEST QUOTES")
+            print(f"PHASE 1: BROADCAST REQUEST (1 → Many)")
             print(f"{'='*70}")
-            print(f"[{self.id}] Generated quote request:")
-            print(f"  {quote_request[:100].replace(chr(10), ' ')}...")
-            print()
+            print("ACTION: Writer sends the same message to multiple agents")
+            print("WHY: Enables competitive marketplace - multiple vendors can bid\n")
 
+            # Show quote request with reasonable truncation
+            display_text = quote_request if len(quote_request) <= 300 else quote_request[:300] + "..."
+            print(f"Writer's message:")
+            print(f"{display_text}\n")
+
+            print(f"Broadcasting via SendTextMessage to {len(self.proofreader_ids)} agents:")
             for proofreader_id in self.proofreader_ids:
-                print(f"[{self.id}] → Sending quote request to {proofreader_id}")
+                print(f"  → SendTextMessage(to={proofreader_id})")
                 await self._send_message(proofreader_id, quote_request)
 
             self.quotes_requested = True
@@ -91,28 +96,34 @@ class WriterAgent(BaseAgent[AgentProfile]):
                 messages = result.content.get("messages", [])
                 if len(messages) >= len(self.proofreader_ids):
                     print(f"{'='*70}")
-                    print(f"PHASE 2: EVALUATE QUOTES")
+                    print(f"PHASE 2: COLLECT BIDS (Many → 1)")
                     print(f"{'='*70}")
+                    print("ACTION: Writer retrieves all responses with single CheckMessages call")
+                    print("WHY: Protocol auto-stores messages - no need to query each agent\n")
+
                     quotes = [(msg["from_agent_id"], msg["message"]["content"]) for msg in messages]
 
-                    for agent_id, quote in quotes:
-                        preview = quote[:80].replace('\n', ' ')
-                        print(f"[{self.id}] ← Received quote from {agent_id}:")
-                        print(f"  {preview}...")
+                    print(f"Received {len(quotes)} quotes via CheckMessages():\n")
+                    for i, (agent_id, quote) in enumerate(quotes, 1):
+                        display_quote = quote if len(quote) <= 200 else quote[:200] + "..."
+                        print(f"{i}. [{agent_id}]")
+                        print(f"   {display_quote}\n")
 
-                    print(f"\n[{self.id}] Using LLM to select best quality/price ratio...")
+                    print("DECISION: Using LLM to evaluate quality/price ratio...")
                     self.selected_proofreader = await self._select_best_quote(quotes)
-                    print(f"[{self.id}] ✓ Selected: {self.selected_proofreader}\n")
+                    print(f"RESULT: Selected {self.selected_proofreader}\n")
 
         # Phase 3: Send task to winner
         if self.selected_proofreader and not self.task_sent:
             print(f"{'='*70}")
-            print(f"PHASE 3: ASSIGN TASK")
+            print(f"PHASE 3: ASSIGN TASK (1 → 1)")
             print(f"{'='*70}")
-            print(f"[{self.id}] → Sending {len(self.text_to_proofread)} chars to {self.selected_proofreader}")
+            print("ACTION: Writer sends full document to winning bidder only")
+            print("WHY: Market selected best vendor - now execute the work\n")
+            print(f"SendTextMessage(to={self.selected_proofreader})")
+            print(f"  Payload: {len(self.text_to_proofread)} character document\n")
             await self._send_message(self.selected_proofreader, self.text_to_proofread)
             self.task_sent = True
-            print()
 
         # Phase 4: Collect result
         if self.task_sent and not self.result_received:
@@ -121,14 +132,24 @@ class WriterAgent(BaseAgent[AgentProfile]):
             if not result.is_error:
                 messages = result.content.get("messages", [])
                 for msg in messages:
-                    if msg["from_agent_id"] == self.selected_proofreader and "CORRECTED TEXT" in msg["message"]["content"]:
+                    if msg["from_agent_id"] == self.selected_proofreader and "CHANGES:" in msg["message"]["content"]:
                         print(f"{'='*70}")
-                        print(f"PHASE 4: RECEIVE RESULT")
+                        print(f"PHASE 4: RECEIVE RESULT (1 → 1)")
                         print(f"{'='*70}")
-                        print(f"[{self.id}] ← Received proofreading result from {self.selected_proofreader}")
-                        print(f"  Result length: {len(msg['message']['content'])} chars\n")
+                        print("ACTION: Writer checks for completion message from winner")
+                        print("WHY: Winner sends result back via same message protocol\n")
+
+                        result_text = msg['message']['content']
+
+                        # Extract and show the changes (more useful than full corrected text)
+                        if "CHANGES:" in result_text:
+                            changes = result_text.split("CHANGES:")[1].strip()
+                            display_changes = changes if len(changes) <= 300 else changes[:300] + "..."
+                            print(f"CheckMessages() returned completion from {self.selected_proofreader}:")
+                            print(f"{display_changes}\n")
+                            print("MARKETPLACE TRANSACTION COMPLETE")
+
                         self.result_received = True
-                        # Shutdown the agent - work is complete
                         self.shutdown()
                         break
 
@@ -136,12 +157,16 @@ class WriterAgent(BaseAgent[AgentProfile]):
 
     async def _generate_quote_request(self) -> str:
         """Use LLM to generate a quote request message."""
-        prompt = f"""You are a writer agent requesting proofreading quotes. Generate a brief quote request message that includes:
-- The task: proofreading a document
-- Text length: {len(self.text_to_proofread)} characters
-- What you need back: price quote and quality estimate
+        prompt = f"""Write a quote request from {self.id} for proofreading services.
 
-Keep the message concise and professional."""
+Do NOT use placeholder names like [Name] or [Recipient's Name].
+
+Include:
+- Task: Proofread a document
+- Size: {len(self.text_to_proofread)} characters
+- Need: Price quote and quality estimate
+
+Start with "Hello," and sign from {self.id}. Keep it professional and under 100 words."""
 
         response, _ = await generate(
             prompt,
@@ -236,20 +261,29 @@ class ProofreaderAgent(BaseAgent[AgentProfile]):
                     message_type = await self._interpret_message(text)
 
                     if message_type == "quote_request":
-                        print(f"[{self.id}] ← Received quote request from {sender_id}")
+                        display_request = text if len(text) <= 200 else text[:200] + "..."
+                        print(f"\n[{self.id}] Received message via CheckMessages():")
+                        print(f"  From: {sender_id}")
+                        print(f"  Type: Quote request (LLM interpreted)\n")
+                        print(f"Message content:")
+                        print(f"{display_request}\n")
+
+                        print(f"Generating quote using {self.llm_model}...")
                         quote = await self._generate_quote(text)
-                        print(f"[{self.id}] → Sending quote to {sender_id}:")
-                        print(f"  {quote[:80].replace(chr(10), ' ')}...")
+                        print(f"→ Sending quote via SendTextMessage(to={sender_id})\n")
                         await self._send_message(sender_id, quote)
                     else:
                         # Actual proofreading task
-                        print(f"[{self.id}] ← Received {len(text)} chars task from {sender_id}")
-                        print(f"[{self.id}] Proofreading with {self.llm_model}...")
+                        print(f"\n[{self.id}] Received message via CheckMessages():")
+                        print(f"  From: {sender_id}")
+                        print(f"  Type: Work assignment (LLM interpreted)")
+                        print(f"  Size: {len(text)} chars\n")
 
+                        print(f"Processing task with {self.llm_model}...")
                         corrected, explanation = await self._proofread(text)
-                        response = f"[{self.llm_model}]\n\nCORRECTED TEXT:\n{corrected}\n\nCHANGES:\n{explanation}"
+                        response = f"[{self.llm_model}]\n\nCHANGES:\n{explanation}"
 
-                        print(f"[{self.id}] → Sending corrections to {sender_id}")
+                        print(f"→ Sending result via SendTextMessage(to={sender_id})\n")
                         await self._send_message(sender_id, response)
 
                 self.processed_message_count = len(messages)
@@ -276,16 +310,19 @@ Respond with ONLY one word: "quote_request" or "task"."""
 
     async def _generate_quote(self, request_text: str) -> str:
         """Use LLM to generate a price quote based on model capabilities."""
-        prompt = f"""You are a proofreading service powered by {self.llm_model}.
+        prompt = f"""You are {self.id}, a proofreading service using {self.llm_model}.
 
-Quote Request: {request_text}
+Quote request:
+{request_text}
 
-Generate a professional quote response that includes:
-1. Your price (consider: {self.llm_model} tier - gpt-4o is premium, gpt-4o-mini is budget, gemini is mid-tier)
-2. Your quality estimate (1-10 scale, based on your model's capability)
-3. Brief explanation of value
+Write a quote response. Do NOT use placeholder names like [Your Name] or [Recipient's Name].
 
-Keep it concise (2-3 sentences)."""
+Include:
+1. Price (gpt-4o=$300-400, gpt-4o-mini=$100-200, gemini=$50-100)
+2. Quality rating 1-10 (gpt-4o=9-10, gpt-4o-mini=7-8, gemini=8-9)
+3. Brief value statement
+
+Sign from {self.id}. Keep under 80 words."""
 
         response, _ = await generate(
             prompt,
@@ -308,15 +345,13 @@ Keep it concise (2-3 sentences)."""
         prompt = f"""You are a professional proofreader. Please proofread the following text and:
 1. Correct any spelling, grammar, or punctuation errors
 2. Improve clarity where needed
-3. Return the corrected text followed by a brief list of changes made
+3. Return the corrected text followed by a brief list of suggested changes
 
 Format your response as:
-CORRECTED TEXT:
-[corrected text here]
 
 CHANGES:
-- [change 1]
-- [change 2]
+- [suggested change 1]
+- [suggested change 2]
 etc.
 
 TEXT TO PROOFREAD:
