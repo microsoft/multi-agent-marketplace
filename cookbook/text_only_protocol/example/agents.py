@@ -26,6 +26,7 @@ class WriterAgent(BaseAgent[AgentProfile]):
         text_to_proofread: str,
         llm_provider: str,
         llm_model: str,
+        priorities: str = "Good balance of price, quality, and reasonable turnaround time",
     ):
         """Initialize writer agent.
 
@@ -36,6 +37,7 @@ class WriterAgent(BaseAgent[AgentProfile]):
             text_to_proofread: Text content to send for proofreading
             llm_provider: LLM provider for decision making
             llm_model: LLM model for decision making
+            priorities: Buyer's priorities for vendor selection
 
         """
         super().__init__(profile, server_url)
@@ -43,6 +45,7 @@ class WriterAgent(BaseAgent[AgentProfile]):
         self.text_to_proofread = text_to_proofread
         self.llm_provider = llm_provider
         self.llm_model = llm_model
+        self.priorities = priorities
         self.initialized = False
         self.quotes_requested = False
         self.quotes_received = 0
@@ -77,6 +80,8 @@ class WriterAgent(BaseAgent[AgentProfile]):
             print("ACTION: Writer sends the same message to multiple agents")
             print("WHY: Enables competitive marketplace - multiple vendors can bid\n")
 
+            print(f"Writer's priorities: {self.priorities}\n")
+
             # Show full quote request
             print(f"Writer's message:")
             print(f"{quote_request}\n")
@@ -109,7 +114,8 @@ class WriterAgent(BaseAgent[AgentProfile]):
                         print(f"{i}. [{agent_id}]")
                         print(f"{quote}\n")
 
-                    print("DECISION: Using LLM to identify best initial quote...")
+                    print(f"DECISION: Using LLM to identify best quote based on priorities...")
+                    print(f"Priorities: {self.priorities}\n")
                     self.best_quote = await self._select_best_quote(quotes, return_tuple=True)
                     print(f"RESULT: Best initial quote from {self.best_quote[0]}\n")
 
@@ -169,7 +175,8 @@ class WriterAgent(BaseAgent[AgentProfile]):
 
                         # Include best initial quote in final comparison
                         all_final_quotes = [self.best_quote] + counter_offers
-                        print("DECISION: Comparing counter-offers with best initial quote...")
+                        print(f"DECISION: Comparing all offers based on priorities...")
+                        print(f"Priorities: {self.priorities}\n")
                         self.selected_proofreader = await self._select_best_quote(all_final_quotes, return_tuple=False)
                         print(f"RESULT: Final winner is {self.selected_proofreader}\n")
                     else:
@@ -227,9 +234,10 @@ Do NOT use placeholder names like [Name] or [Recipient's Name].
 Include:
 - Task: Proofread a document
 - Size: {len(self.text_to_proofread)} characters
-- Need: Price quote and quality estimate
+- Buyer's priorities: {self.priorities}
+- Need: Price quote, quality estimate, and turnaround time
 
-Start with "Hello," and sign from {self.id}. Keep it professional and under 100 words."""
+Start with "Hello," and sign from {self.id}. Keep it professional and under 120 words."""
 
         response, _ = await generate(
             prompt,
@@ -251,15 +259,21 @@ Start with "Hello," and sign from {self.id}. Keep it professional and under 100 
         """
         quotes_text = "\n\n".join([f"From {agent_id}:\n{quote}" for agent_id, quote in quotes])
 
-        prompt = f"""You are selecting the best proofreading service based on quality/price ratio.
+        prompt = f"""You are selecting the best proofreading service for a buyer.
+
+Buyer's priorities: {self.priorities}
 
 Here are the quotes:
 {quotes_text}
 
 Analyze each quote for:
 1. Price (lower is better)
-2. Quality estimate (higher is better)
-3. Calculate quality/price ratio
+2. Quality rating (higher is better)
+3. Turnaround time (faster may be valuable)
+4. Other factors (revisions, service level)
+
+Select the vendor that BEST MATCHES the buyer's stated priorities.
+The buyer's priorities should guide your decision - if they value speed, pick faster option even if pricier.
 
 Return ONLY the agent ID of the best choice (e.g., "proofreader-gpt4o-123"). Nothing else."""
 
@@ -288,14 +302,14 @@ Return ONLY the agent ID of the best choice (e.g., "proofreader-gpt4o-123"). Not
 Their quote:
 {best_quote}
 
-Extract the PRICE from their quote and write a negotiation message to OTHER vendors.
+Extract their FULL OFFER (price, turnaround time, quality, and extras) and write a negotiation message to OTHER vendors.
 
 Your message MUST:
-1. State the specific price to beat (e.g., "$X from {best_agent_id}")
-2. Ask if they can provide a better (lower) price
+1. State the complete offer to beat from {best_agent_id} (not just price - include turnaround, quality, extras)
+2. Ask if they can provide a better overall value (could be: lower price, faster delivery, higher quality, or add-ons)
 3. Mention this is their final chance to compete
 
-Do NOT use placeholder names. Keep under 80 words. Sign from {self.id}."""
+Do NOT use placeholder names. Keep under 100 words. Sign from {self.id}."""
 
         response, _ = await generate(
             prompt,
@@ -428,19 +442,24 @@ Respond with ONLY one word: quote_request, negotiation, or task."""
 
     async def _generate_quote(self, request_text: str) -> str:
         """Use LLM to generate a price quote based on model capabilities."""
+        # Define service tiers with realistic constraints
+        if self.llm_model == "gpt-4o":
+            service_params = "Price: $350 | Turnaround: 24 hours | Quality: 9/10 | Includes: 1 revision round"
+        elif self.llm_model == "gpt-4o-mini":
+            service_params = "Price: $150 | Turnaround: 48 hours | Quality: 10/10 | Includes: Basic proofreading"
+        else:  # gemini
+            service_params = "Price: $80 | Turnaround: 72 hours | Quality: 10/10 | Includes: Standard service"
+
         prompt = f"""You are {self.id}, a proofreading service using {self.llm_model}.
 
 Quote request:
 {request_text}
 
-Write a quote response. Do NOT use placeholder names like [Your Name] or [Recipient's Name].
+Generate a professional quote with these parameters:
+{service_params}
 
-Include:
-1. Price (gpt-4o=$300-400, gpt-4o-mini=$100-200, gemini=$50-100)
-2. Quality rating 1-10 (gpt-4o=9-10, gpt-4o-mini=10, gemini=10)
-3. Brief value statement
-
-Sign from {self.id}. Keep under 80 words."""
+Include: price, turnaround time, quality rating, and what's included.
+Do NOT use placeholder names. Keep under 90 words. Sign from {self.id}."""
 
         response, _ = await generate(
             prompt,
@@ -453,24 +472,43 @@ Sign from {self.id}. Keep under 80 words."""
     async def _generate_counter_offer(self, negotiation_text: str) -> str:
         """Generate a counter-offer in response to negotiation."""
         if self.llm_model == "gpt-4o":
-            pricing_instruction = """You are premium gpt-4o service competing hard to win.
-PRICE: Drop significantly to $30-40 to beat competition
-QUALITY: Maintain 9-10 quality rating
-Explain this is a special competitive rate to win the contract."""
+            counter_params = """Your original: $350, 24hr, quality 9/10, includes 1 revision
+
+Counter-offer options (choose ONE creative trade-off):
+1. Same $350 but add 2nd revision + faster 18hr delivery (MORE value at same price)
+2. Reduce to $280 by extending to 36hr (trade time for price)
+3. Keep $350, 24hr but upgrade quality to 10/10 (premium positioning)
+
+Pick the option that best counters the competing offer. Explain your value proposition."""
         elif self.llm_model == "gpt-4o-mini":
-            pricing_instruction = "PRICE: Reduce to $80-100, QUALITY: 10/10"
+            counter_params = """Your original: $150, 48hr, quality 10/10
+
+Counter-offer options (choose ONE):
+1. Reduce to $130 with same 48hr, quality 10/10 (price reduction)
+2. Keep $150 but deliver in 36hr instead of 48hr (faster for same price)
+3. Keep $150, 48hr but add 1 free revision round (more value)
+
+Pick what best competes with the other offer."""
         else:  # gemini
-            pricing_instruction = "PRICE: Reduce to $50-70, QUALITY: 10/10"
+            counter_params = """Your original: $80, 72hr, quality 10/10
+
+Counter-offer options (choose ONE):
+1. Keep $80 but deliver in 60hr instead of 72hr (faster for same price)
+2. Keep $80, 72hr but add a formatting check (extra value)
+3. Reduce to $75 but note this is absolute minimum
+
+Pick what makes you competitive while staying profitable."""
 
         prompt = f"""You are {self.id} using {self.llm_model}.
 
 Negotiation message:
 {negotiation_text}
 
-{pricing_instruction}
+{counter_params}
 
-IMPORTANT: Include BOTH your reduced price AND quality rating clearly in your response.
-Do NOT use placeholder names. Keep under 70 words. Sign from {self.id}."""
+Write a realistic counter-offer. You can compete on price, speed, quality, OR extras.
+Clearly state: price, turnaround time, quality, and what's included.
+Do NOT use placeholder names. Keep under 100 words. Sign from {self.id}."""
 
         response, _ = await generate(
             prompt,

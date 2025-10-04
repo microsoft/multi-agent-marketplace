@@ -118,6 +118,7 @@ async def main():
             text_to_proofread=text,
             llm_provider="openai",
             llm_model="gpt-4o",
+            priorities="I need a good balance of quality and reasonable turnaround time (ideally 48 hours or less). Price is important but not the only factor.",
         )
 
         async with AgentLauncher(launcher.server_url) as agent_launcher:
