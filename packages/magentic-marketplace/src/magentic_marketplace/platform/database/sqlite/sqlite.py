@@ -786,7 +786,7 @@ class SQLiteDatabaseController(BaseDatabaseController, _BoundedSqliteConnectionM
     @staticmethod
     async def from_cached(
         db_path: str, db_timeout: float = 5, max_read_connections: int = 3
-    ):
+    ) -> "SQLiteDatabaseController":
         """Create a new controller for the given database path.
 
         Args:
@@ -795,7 +795,7 @@ class SQLiteDatabaseController(BaseDatabaseController, _BoundedSqliteConnectionM
             max_read_connections: Maximum concurrent read connections
 
         Returns:
-            SQLiteDatabaseController instance
+            SQLiteDatabaseController instance.
 
         """
         controller = SQLiteDatabaseController(db_path, db_timeout, max_read_connections)

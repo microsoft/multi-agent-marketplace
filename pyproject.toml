@@ -7,6 +7,14 @@ dev = [
     "pytest-asyncio>=1.2.0",
     "ruff>=0.13.0"
 ]
+docs = [
+    "mkdocs>=1.6.0",
+    "mkdocs-material>=9.5.0",
+    "mkdocstrings[python]>=0.27.0",
+    "mkdocs-gen-files>=0.5.0",
+    "mkdocs-literate-nav>=0.6.0",
+    "mkdocs-section-index>=0.3.0",
+]
 
 [tool.uv.workspace]
 members = [
@@ -64,8 +72,13 @@ echo 'Type checking completed.'
 
 spell = "codespell packages/**/*.py packages/**/*.md"
 
+# Documentation tasks
+docs-build = "mkdocs build"
+docs-serve = "mkdocs serve"
+docs-check = "mkdocs build --strict"
+
 # Combined quality checks
-check-all = ["format", "lint", "type", "spell"]
+check-all = ["format", "lint", "type", "spell", "docs-check"]
 fix-all = ["format-fix", "lint-fix"]
 
 [tool.pytest.ini_options]

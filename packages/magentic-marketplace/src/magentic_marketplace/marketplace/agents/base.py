@@ -6,6 +6,7 @@ from typing import Any, TypeVar
 from pydantic import BaseModel
 
 from magentic_marketplace.platform.agent.base import BaseAgent, TProfile
+from magentic_marketplace.platform.shared.models import ActionExecutionResult
 
 from ..actions import (
     FetchMessages,
@@ -48,7 +49,9 @@ class BaseSimpleMarketplaceAgent(BaseAgent[TProfile]):
         self.llm_config = llm_config or BaseLLMConfig()
         self._seen_message_indexes: set[int] = set()
 
-    async def send_message(self, to_agent_id: str, message: Message):
+    async def send_message(
+        self, to_agent_id: str, message: Message
+    ) -> ActionExecutionResult:
         """Send a message to another agent.
 
         Args:
@@ -56,7 +59,7 @@ class BaseSimpleMarketplaceAgent(BaseAgent[TProfile]):
             message: The message to send
 
         Returns:
-            Result of the action execution
+            Result of the action execution.
 
         """
         action = SendMessage(
@@ -80,14 +83,8 @@ class BaseSimpleMarketplaceAgent(BaseAgent[TProfile]):
     ) -> FetchMessagesResponse:
         """Fetch messages received by this agent.
 
-        Args:
-            from_agent_id: Filter by sender agent ID
-            limit: Maximum number of messages to retrieve
-            offset: Number of messages to skip for pagination
-            after_index: Only return messages with index greater than this
-
         Returns:
-            Response containing the fetched messages
+            Response containing the fetched messages.
 
         """
         action = FetchMessages()
@@ -145,7 +142,7 @@ class BaseSimpleMarketplaceAgent(BaseAgent[TProfile]):
 
     async def generate_struct(
         self, prompt: str, response_format: type[TResponseFormat], **kwargs: Any
-    ):
+    ) -> tuple[TResponseFormat, LLMCallMetadata]:
         """Generate LLM structured response with automatic logging.
 
         Args:
@@ -154,7 +151,7 @@ class BaseSimpleMarketplaceAgent(BaseAgent[TProfile]):
             **kwargs: Additional arguments passed to generate_struct
 
         Returns:
-            Tuple of (structured_response, call_metadata)
+            Tuple of (structured_response, call_metadata).
 
         """
         # Use llm_config if provided, otherwise use kwargs directly
