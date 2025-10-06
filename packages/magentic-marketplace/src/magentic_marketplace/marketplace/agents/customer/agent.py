@@ -1,17 +1,18 @@
 """Main customer agent implementation."""
 
 import asyncio
+from datetime import UTC, datetime
 
 from magentic_marketplace.platform.shared.models import BaseAction
 
 from ...actions import (
-    OrderProposal,
-    Payment,
-    ReceivedMessage,
     Search,
     SearchAlgorithm,
     SearchResponse,
-    TextMessage,
+    SendMessageAction,
+    SendOrderProposal,
+    SendPayment,
+    SendTextMessage,
 )
 from ...llm.config import BaseLLMConfig
 from ...shared.models import Customer, CustomerAgentProfile
@@ -132,18 +133,16 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
         """Handle when the customer agent starts."""
         self.logger.info("Starting autonomous shopping agent")
 
-    async def _process_new_messages(self, messages: list[ReceivedMessage]):
+    async def _process_new_messages(self, messages: list[SendMessageAction]):
         for message in messages:
             # Note: ReceivedMessages are now captured in the FetchMessages ActionExecutionResult
             # Store order proposals
-            if isinstance(message.message, OrderProposal):
+            if isinstance(message, SendOrderProposal):
                 self.proposal_storage.add_proposal(
-                    message.message,
-                    message.from_agent_id,
-                    self.id,
+                    message,
                 )
                 self.logger.debug(
-                    f"Received and stored order proposal {message.message.id} from {message.from_agent_id}",
+                    f"Received and stored order proposal {message.id} from {message.from_agent_id}",
                     data=message,
                 )
 
@@ -192,19 +191,19 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
             self.history.record_error("LLM decision failed", e)
             return None
 
-    async def _execute_customer_action(self, action: CustomerAction):
+    async def _execute_customer_action(self, customer_action: CustomerAction):
         """Execute the action decided by the LLM.
 
         Args:
-            action: The action to execute
+            customer_action: The action to execute
 
         """
         # Execute search and update known businesses
-        if action.action_type == "search_businesses":
+        if customer_action.action_type == "search_businesses":
             search_action = Search(
-                query=action.search_query or self.customer.request,
+                query=customer_action.search_query or self.customer.request,
                 search_algorithm=self._search_algorithm,
-                constraints=action.search_constraints,
+                constraints=customer_action.search_constraints,
                 limit=self._search_bandwidth,
             )
             search_result = await self.execute_action(search_action)
@@ -213,14 +212,19 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
                 search_response = SearchResponse.model_validate(search_result.content)
                 business_ids = [ba.id for ba in search_response.businesses]
                 self.known_business_ids.extend(business_ids)
-        elif action.action_type == "send_messages":
+        elif customer_action.action_type == "send_messages":
             # Send messages directly with proper error handling
-            if action.target_business_ids and action.message_content:
-                for business_id in action.target_business_ids:
-                    message = TextMessage(content=action.message_content)
+            if customer_action.target_business_ids and customer_action.message_content:
+                for business_id in customer_action.target_business_ids:
+                    protocol_action = SendTextMessage(
+                        from_agent_id=self.id,
+                        to_agent_id=business_id,
+                        created_at=datetime.now(UTC),
+                        content=customer_action.message_content,
+                    )
 
                     try:
-                        result = await self.send_message(business_id, message)
+                        result = await self.execute_action(protocol_action)
                         if result.is_error:
                             self.logger.error(
                                 f"Failed to send message to {business_id}: {result.content}"
@@ -232,37 +236,38 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
                         self.history.record_error(
                             f"Failed to send message to {business_id}", e
                         )
-        elif action.action_type == "end_transaction":
+        elif customer_action.action_type == "end_transaction":
             # Accept the proposal specified by the LLM
-            if action.proposal_to_accept:
+            if customer_action.proposal_to_accept:
                 stored_proposal = self.proposal_storage.get_proposal(
-                    action.proposal_to_accept
+                    customer_action.proposal_to_accept
                 )
 
                 if stored_proposal:
-                    payment_message = Payment(
-                        proposal_message_id=action.proposal_to_accept,
+                    protocol_action = SendPayment(
+                        from_agent_id=self.id,
+                        to_agent_id=stored_proposal.business_id,
+                        created_at=datetime.now(UTC),
+                        proposal_message_id=customer_action.proposal_to_accept,
                         payment_method="credit_card",
-                        payment_message=action.message_content
+                        payment_message=customer_action.message_content
                         or f"Accepting your proposal for {len(stored_proposal.proposal.items)} items",
                     )
 
                     self.logger.info(
-                        f"Sending ${stored_proposal.proposal.total_price} payment to {stored_proposal.business_id} for proposal id {action.proposal_to_accept}",
+                        f"Sending ${stored_proposal.proposal.total_price} payment to {stored_proposal.business_id} for proposal id {customer_action.proposal_to_accept}",
                     )
 
                     try:
-                        result = await self.send_message(
-                            stored_proposal.business_id, payment_message
-                        )
+                        result = await self.execute_action(protocol_action)
                         if not result.is_error:
                             # Mark proposal as accepted
                             success = self.proposal_storage.update_proposal_status(
-                                action.proposal_to_accept, "accepted"
+                                customer_action.proposal_to_accept, "accepted"
                             )
                             if success:
                                 self.completed_transactions.append(
-                                    action.proposal_to_accept
+                                    customer_action.proposal_to_accept
                                 )
                         else:
                             self.logger.error(
@@ -279,10 +284,10 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
 
                 else:
                     self.logger.warning(
-                        f"Error: proposal_to_accept '{action.proposal_to_accept}' does not match any known proposals."
+                        f"Error: proposal_to_accept '{customer_action.proposal_to_accept}' does not match any known proposals."
                     )
                     self.history.record_error(
-                        f"Error: proposal_to_accept '{action.proposal_to_accept}' does not match any known proposals."
+                        f"Error: proposal_to_accept '{customer_action.proposal_to_accept}' does not match any known proposals."
                     )
             else:
                 self.logger.warning(

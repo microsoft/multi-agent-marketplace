@@ -11,12 +11,10 @@ from magentic_marketplace.platform.shared.models import (
 from ...actions import (
     FetchMessages,
     FetchMessagesResponse,
-    Message,
-    OrderProposal,
-    Payment,
-    ReceivedMessage,
-    SendMessage,
-    TextMessage,
+    SendMessageAction,
+    SendOrderProposal,
+    SendPayment,
+    SendTextMessage,
 )
 from ...llm.config import BaseLLMConfig
 from ...shared.models import Business, BusinessAgentProfile
@@ -57,16 +55,6 @@ class BusinessAgent(BaseSimpleMarketplaceAgent[BusinessAgentProfile]):
         self.confirmed_orders: list[str] = []
         self._polling_interval = polling_interval
 
-        # Initialize handler resources
-        self._responses = ResponseHandler(
-            business=self.business,
-            agent_id=self.id,
-            customer_histories=self.customer_histories,
-            proposal_storage=self.proposal_storage,
-            logger=self.logger,
-            generate_struct_fn=self.generate_struct,
-        )
-
     @property
     def business(self) -> Business:
         """Access business data from profile with full type safety."""
@@ -99,9 +87,9 @@ class BusinessAgent(BaseSimpleMarketplaceAgent[BusinessAgentProfile]):
         # Execute the action through the parent class
         result = await super().execute_action(action)
 
-        if isinstance(action, SendMessage):
+        if isinstance(action, SendMessageAction):
             self.logger.info(
-                f"Sending {action.message.type} message to customer {action.to_agent_id}"
+                f"Sending {action.type} message to customer {action.to_agent_id}"
             )
             self.customer_histories[action.to_agent_id].record_event(action, result)
         elif isinstance(action, FetchMessages):
@@ -115,7 +103,7 @@ class BusinessAgent(BaseSimpleMarketplaceAgent[BusinessAgentProfile]):
                 # Don't love this at all, we do this same work after returning.
                 # But we need to group up all the received messages
                 # and rebuild a ActionExecutionResult per customer
-                new_messages_by_customer: dict[str, list[ReceivedMessage]] = (
+                new_messages_by_customer: dict[str, list[SendMessageAction]] = (
                     defaultdict(list)
                 )
                 for message in content.messages:
@@ -134,23 +122,21 @@ class BusinessAgent(BaseSimpleMarketplaceAgent[BusinessAgentProfile]):
         return result
 
     async def _handle_new_customer_messages(
-        self, customer_id: str, new_messages: list[ReceivedMessage]
+        self, customer_id: str, new_messages: list[SendMessageAction]
     ):
-        messages_to_send: list[tuple[str, Message]] = []
+        messages_to_send: list[tuple[str, SendMessageAction]] = []
 
         # First, handle all payments to update proposal statuses
         for received_message in new_messages:
-            if isinstance(received_message.message, Payment):
-                response = await self._handle_payment(
-                    customer_id, received_message.message
-                )
+            if isinstance(received_message, SendPayment):
+                response = await self._handle_payment(customer_id, received_message)
                 messages_to_send.append((customer_id, response))
 
         # Find the most recent TextMessage if it exists
-        last_text_message: TextMessage | None = None
+        last_text_message: SendTextMessage | None = None
         for message in new_messages:
-            if isinstance(message.message, TextMessage):
-                last_text_message = message.message
+            if isinstance(message, SendTextMessage):
+                last_text_message = message
 
         # Generate a text response if there are any text messages
         if last_text_message is not None:
@@ -162,12 +148,12 @@ class BusinessAgent(BaseSimpleMarketplaceAgent[BusinessAgentProfile]):
         # Send all generated responses
         for customer_id, message in messages_to_send:
             # If this is a proposal, store it in proposal storage
-            if isinstance(message, OrderProposal):
-                self.proposal_storage.add_proposal(message, self.id, customer_id)
+            if isinstance(message, SendOrderProposal):
+                self.proposal_storage.add_proposal(message)
 
             # Note: Messages are now recorded as action-result pairs via send_message
             try:
-                result = await self.send_message(customer_id, message)
+                result = await self.execute_action(message)
                 if result.is_error:
                     self.logger.error(
                         f"Failed to send message to {customer_id}: {result.content}"
@@ -185,7 +171,7 @@ class BusinessAgent(BaseSimpleMarketplaceAgent[BusinessAgentProfile]):
         messages = await self.fetch_messages()
 
         # Group new messages by customer
-        new_messages_by_customer: dict[str, list[ReceivedMessage]] = defaultdict(list)
+        new_messages_by_customer: dict[str, list[SendMessageAction]] = defaultdict(list)
         for received_message in messages.messages:
             # Note: ReceivedMessages are now captured in the FetchMessages ActionExecutionResult
             new_messages_by_customer[received_message.from_agent_id].append(
@@ -212,7 +198,19 @@ class BusinessAgent(BaseSimpleMarketplaceAgent[BusinessAgentProfile]):
         """Handle when the business agent starts."""
         self.logger.info("Ready for customers")
 
-    async def _handle_payment(self, customer_id: str, payment: Payment) -> Message:
+        # Initialize handler resources now that self.id is set.
+        self._responses = ResponseHandler(
+            business=self.business,
+            agent_id=self.id,
+            customer_histories=self.customer_histories,
+            proposal_storage=self.proposal_storage,
+            logger=self.logger,
+            generate_struct_fn=self.generate_struct,
+        )
+
+    async def _handle_payment(
+        self, customer_id: str, payment: SendPayment
+    ) -> SendMessageAction:
         """Handle a payment from a customer.
 
         Args:
@@ -236,7 +234,9 @@ class BusinessAgent(BaseSimpleMarketplaceAgent[BusinessAgentProfile]):
 
             # Generate confirmation using ResponseHandler
             confirmation = self._responses.generate_payment_confirmation(
-                proposal_id, stored_proposal.proposal.total_price
+                customer_id=customer_id,
+                proposal_id=proposal_id,
+                total_price=stored_proposal.proposal.total_price,
             )
             self.logger.info(
                 f"Confirmed payment for proposal {proposal_id} from customer {customer_id}"
@@ -248,7 +248,7 @@ class BusinessAgent(BaseSimpleMarketplaceAgent[BusinessAgentProfile]):
             )
             # Generate error message using ResponseHandler
             error_message = self._responses.generate_proposal_not_found_error(
-                proposal_id
+                proposal_id=proposal_id, customer_id=customer_id
             )
             return error_message
 

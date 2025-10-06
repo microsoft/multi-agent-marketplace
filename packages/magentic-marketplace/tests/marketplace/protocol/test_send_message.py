@@ -5,12 +5,11 @@ from typing import Any
 
 import pytest
 
-from magentic_marketplace.marketplace.actions import SendMessage
-from magentic_marketplace.marketplace.actions.messaging import (
+from magentic_marketplace.marketplace.actions import (
     OrderItem,
-    OrderProposal,
-    Payment,
-    TextMessage,
+    SendOrderProposal,
+    SendPayment,
+    SendTextMessage,
 )
 from magentic_marketplace.platform.database.queries.base import QueryParams
 
@@ -35,12 +34,11 @@ class TestSendMessage:
         )
 
         # Create and execute action through HTTP
-        message = TextMessage(content="Hello!")
-        send_message = SendMessage(
+        send_message = SendTextMessage(
             from_agent_id=customer.id,
             to_agent_id=business.id,
             created_at=datetime.now(UTC),
-            message=message,
+            content="Hello!",
         )
 
         # Execute action through client (goes through actions.py route)
@@ -75,12 +73,11 @@ class TestSendMessage:
 
         # Create action with fake recipient
         fake_id = "super-fake-id"
-        message = TextMessage(content="Hello!")
-        send_message = SendMessage(
+        send_message = SendTextMessage(
             from_agent_id=customer.id,
             to_agent_id=fake_id,
             created_at=datetime.now(UTC),
-            message=message,
+            content="Hello!",
         )
 
         # Execute action through client - should fail
@@ -112,18 +109,15 @@ class TestSendMessage:
 
         # Business sends order proposal
         order_proposal_message_id = "proposal-001"
-        order_proposal = OrderProposal(
+        send_message_proposal = SendOrderProposal(
+            from_agent_id=business.id,
+            to_agent_id=customer.id,
+            created_at=datetime.now(UTC),
             id=order_proposal_message_id,
             items=[
                 OrderItem(id="item1", item_name="Item 1", quantity=2, unit_price=10.0)
             ],
             total_price=20.0,
-        )
-        send_message_proposal = SendMessage(
-            from_agent_id=business.id,
-            to_agent_id=customer.id,
-            created_at=datetime.now(UTC),
-            message=order_proposal,
         )
 
         # Execute proposal through HTTP
@@ -137,13 +131,11 @@ class TestSendMessage:
         assert len(all_actions_after) == 1, "Action table should have 1 entry"
 
         # Use the OrderProposal's own ID for payment reference
-
-        payment = Payment(proposal_message_id=order_proposal_message_id)
-        send_message_payment = SendMessage(
+        send_message_payment = SendPayment(
             from_agent_id=customer.id,
             to_agent_id=business.id,
             created_at=datetime.now(UTC),
-            message=payment,
+            proposal_message_id=order_proposal_message_id,
         )
 
         # Execute payment through HTTP
@@ -174,12 +166,11 @@ class TestSendMessage:
 
         # Test 1: Payment with non-existent proposal_message_id
         fake_proposal_id = "non-existent-proposal-id"
-        payment_bad_proposal = Payment(proposal_message_id=fake_proposal_id)
-        send_message_bad_payment = SendMessage(
+        send_message_bad_payment = SendPayment(
             from_agent_id=customer.id,
             to_agent_id=business.id,
             created_at=datetime.now(UTC),
-            message=payment_bad_proposal,
+            proposal_message_id=fake_proposal_id,
         )
 
         result_bad_payment = await customer.execute_action(send_message_bad_payment)
@@ -197,12 +188,11 @@ class TestSendMessage:
 
         # Test 2: Payment referencing an action that's not an order proposal
         # First create a text message (not a proposal)
-        text_message = TextMessage(content="Hello!")
-        send_text = SendMessage(
+        send_text = SendTextMessage(
             from_agent_id=business.id,
             to_agent_id=customer.id,
             created_at=datetime.now(UTC),
-            message=text_message,
+            content="Hello!",
         )
 
         # Send the text message through HTTP
@@ -218,12 +208,11 @@ class TestSendMessage:
         assert text_message_id is not None, "Text message should have an ID"
 
         # Now try to pay for the text message (should fail)
-        payment_wrong_type = Payment(proposal_message_id=text_message_id)
-        send_payment_wrong = SendMessage(
+        send_payment_wrong = SendPayment(
             from_agent_id=customer.id,
             to_agent_id=business.id,
             created_at=datetime.now(UTC),
-            message=payment_wrong_type,
+            proposal_message_id=text_message_id,
         )
 
         result_wrong_type = await customer.execute_action(send_payment_wrong)

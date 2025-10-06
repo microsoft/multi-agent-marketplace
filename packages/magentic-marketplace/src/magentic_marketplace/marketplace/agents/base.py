@@ -10,8 +10,6 @@ from magentic_marketplace.platform.agent.base import BaseAgent, TProfile
 from ..actions import (
     FetchMessages,
     FetchMessagesResponse,
-    Message,
-    SendMessage,
 )
 from ..llm import generate
 from ..llm.config import BaseLLMConfig
@@ -47,33 +45,6 @@ class BaseSimpleMarketplaceAgent(BaseAgent[TProfile]):
         # Track last fetch time
         self.last_fetch_time: AwareDatetime | None = None
         self.llm_config = llm_config or BaseLLMConfig()
-
-    async def send_message(self, to_agent_id: str, message: Message):
-        """Send a message to another agent.
-
-        Args:
-            to_agent_id: ID of the agent to send the message to
-            message: The message to send
-
-        Returns:
-            Result of the action execution
-
-        """
-        action = SendMessage(
-            from_agent_id=self.id,
-            to_agent_id=to_agent_id,
-            created_at=datetime.now(UTC),
-            message=message,
-        )
-
-        self.logger.info(
-            f"Sending {message.type} message to {to_agent_id}",
-            data=action,
-        )
-
-        result = await self.execute_action(action)
-
-        return result
 
     async def fetch_messages(
         self,

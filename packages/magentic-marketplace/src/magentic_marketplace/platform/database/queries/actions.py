@@ -2,6 +2,7 @@
 
 from typing import Any, Literal
 
+from ...shared.models import BaseAction
 from .base import JSONQuery
 from .base import query as _query
 
@@ -28,6 +29,11 @@ def agent_id(*, value: Any = None, operator: str) -> ActionsQuery:
 def request_name(*, value: Any = None, operator: str) -> ActionsQuery:
     """Query actions by request name field."""
     return query(path="$.request.name", value=value, operator=operator)
+
+
+def request_action(*, action: type[BaseAction], operator: str) -> ActionsQuery:
+    """Query actions of the provided type."""
+    return request_name(value=action.get_name(), operator=operator)
 
 
 def request_parameters(*, path: str, value: Any = None, operator: str) -> ActionsQuery:

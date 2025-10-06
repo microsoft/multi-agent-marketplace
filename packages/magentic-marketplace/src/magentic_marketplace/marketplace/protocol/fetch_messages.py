@@ -10,8 +10,12 @@ from magentic_marketplace.platform.shared.models import (
     AgentProfile,
 )
 
-from ..actions import FetchMessages, FetchMessagesResponse, ReceivedMessage
-from ..actions.messaging import MessageAdapter
+from ..actions import (
+    FetchMessages,
+    FetchMessagesResponse,
+    SendMessageAction,
+    SendMessageActionAdapter,
+)
 from ..database import queries
 
 
@@ -57,7 +61,7 @@ async def _fetch_messages_from_database(
     fetch_messages: FetchMessages,
     agent: AgentProfile,
     database: BaseDatabaseController,
-) -> tuple[list[ReceivedMessage], bool]:
+) -> tuple[list[SendMessageAction], bool]:
     """Fetch messages from the actions table using efficient database queries.
 
     Args:
@@ -92,7 +96,7 @@ async def _fetch_messages_from_database(
     action_rows = await database.actions.find(query, query_params)
 
     # Convert to ReceivedMessage objects
-    received_messages: list[ReceivedMessage] = []
+    received_messages: list[SendMessageAction] = []
     for action_row in action_rows:
         received_message = _convert_action_to_received_message(action_row)
         if received_message:
@@ -111,7 +115,7 @@ async def _fetch_messages_from_database(
 
 def _convert_action_to_received_message(
     action_row: ActionRow,
-) -> ReceivedMessage | None:
+) -> SendMessageAction | None:
     """Convert ActionRow to ReceivedMessage format.
 
     Args:
@@ -122,12 +126,4 @@ def _convert_action_to_received_message(
 
     """
     params = action_row.data.request.parameters
-    message_data = params.get("message", {})
-    message = MessageAdapter.validate_python(message_data)
-
-    return ReceivedMessage(
-        from_agent_id=params["from_agent_id"],
-        to_agent_id=params["to_agent_id"],
-        created_at=action_row.created_at,
-        message=message,
-    )
+    return SendMessageActionAdapter.validate_python(params)

@@ -15,8 +15,9 @@ from magentic_marketplace.marketplace.actions import (
     Search,
     SearchAlgorithm,
     SearchResponse,
-    SendMessage,
-    TextMessage,
+    SendOrderProposal,
+    SendPayment,
+    SendTextMessage,
 )
 from magentic_marketplace.marketplace.protocol import SimpleMarketplaceProtocol
 from magentic_marketplace.marketplace.shared.models import (
@@ -175,11 +176,16 @@ async def test_list_tools(
             result = await client.list_tools()
 
             tool_names = [tool.name for tool in result.tools]
-
-            assert Search.get_name() in tool_names
-            assert SendMessage.get_name() in tool_names
-            assert FetchMessages.get_name() in tool_names
-            assert len(tool_names) == 3
+            assert all(
+                tool.get_name() in tool_names
+                for tool in (
+                    Search,
+                    FetchMessages,
+                    SendTextMessage,
+                    SendOrderProposal,
+                    SendPayment,
+                )
+            )
 
 
 @pytest.mark.asyncio
@@ -228,14 +234,12 @@ async def test_end_to_end(
             to_agent_id = result.businesses[0].id
 
             result = await client.call_tool(
-                SendMessage.get_name(),
-                SendMessage(
+                SendTextMessage.get_name(),
+                SendTextMessage(
+                    created_at=datetime.now(UTC),
                     from_agent_id=from_agent_id,
                     to_agent_id=to_agent_id,
-                    message=TextMessage(
-                        content=f"Hello, {result.businesses[0].business.name}!"
-                    ),
-                    created_at=datetime.now(UTC),
+                    content=f"Hello, {result.businesses[0].business.name}!",
                 ).model_dump(),
             )
             assert not result.isError
@@ -245,12 +249,12 @@ async def test_end_to_end(
 
             note_to_self = "Note to self."
             result = await client.call_tool(
-                SendMessage.get_name(),
-                SendMessage(
+                SendTextMessage.get_name(),
+                SendTextMessage(
+                    created_at=datetime.now(UTC),
                     from_agent_id=from_agent_id,
                     to_agent_id=from_agent_id,
-                    message=TextMessage(content=note_to_self),
-                    created_at=datetime.now(UTC),
+                    content=note_to_self,
                 ).model_dump(),
             )
             assert not result.isError
@@ -267,5 +271,5 @@ async def test_end_to_end(
             assert result.is_error is False
             result = FetchMessagesResponse.model_validate(result.content)
             assert len(result.messages) == 1
-            assert result.messages[0].message.type == "text"
-            assert result.messages[0].message.content == note_to_self
+            assert result.messages[0].type == "send_text_message"
+            assert result.messages[0].content == note_to_self

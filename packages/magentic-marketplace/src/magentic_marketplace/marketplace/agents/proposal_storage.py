@@ -3,9 +3,9 @@
 from datetime import UTC, datetime
 from typing import Literal
 
-from pydantic import AwareDatetime, BaseModel, Field
+from pydantic import AwareDatetime, BaseModel, Field, computed_field
 
-from ..actions import OrderProposal
+from ..actions import SendOrderProposal
 
 
 class ProposalInfo(BaseModel):
@@ -27,22 +27,31 @@ class ProposalSummary(BaseModel):
 class StoredOrderProposal(BaseModel):
     """A stored proposal with metadata that works for both business and customer perspectives."""
 
-    business_id: str = Field(
-        description="ID of the business (sender for customers, self for businesses)"
-    )
-    customer_id: str = Field(
-        description="ID of the customer (recipient for businesses, self for customers)"
-    )
-    created_at: AwareDatetime = Field(
-        description="When the proposal was created/received"
-    )
-    proposal: OrderProposal = Field(description="The actual order proposal")
+    proposal: SendOrderProposal = Field(description="The actual order proposal")
     status: Literal["pending", "accepted", "rejected", "expired"] = Field(
         default="pending", description="Current status of the proposal"
     )
     notes: str | None = Field(
         default=None, description="Additional notes about the proposal"
     )
+
+    @computed_field
+    @property
+    def business_id(self) -> str:
+        """Get the ID of the business (sender for customers, self for businesses)."""
+        return self.proposal.from_agent_id
+
+    @computed_field
+    @property
+    def customer_id(self) -> str:
+        """Get the ID of the customer (recipient for businesses, self for customers)."""
+        return self.proposal.to_agent_id
+
+    @computed_field
+    @property
+    def created_at(self) -> AwareDatetime:
+        """Get when the proposal was created/received."""
+        return self.proposal.created_at
 
     @property
     def proposal_id(self) -> str:
@@ -77,9 +86,7 @@ class OrderProposalStorage(BaseModel):
         description="Count of proposals sent to each customer (business perspective)",
     )
 
-    def add_proposal(
-        self, proposal: OrderProposal, business_id: str, customer_id: str
-    ) -> str:
+    def add_proposal(self, proposal: SendOrderProposal) -> str:
         """Add a new proposal to storage.
 
         Args:
@@ -92,9 +99,6 @@ class OrderProposalStorage(BaseModel):
 
         """
         stored_proposal = StoredOrderProposal(
-            business_id=business_id,
-            customer_id=customer_id,
-            created_at=datetime.now(UTC),
             proposal=proposal,
         )
         self.proposals[proposal.id] = stored_proposal

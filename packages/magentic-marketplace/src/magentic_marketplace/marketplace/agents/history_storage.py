@@ -13,7 +13,7 @@ from ..actions import (
     FetchMessagesResponse,
     Search,
     SearchResponse,
-    SendMessage,
+    SendMessageAction,
 )
 
 # Generic history entry type that both customer and business agents can use
@@ -126,7 +126,7 @@ class HistoryStorage:
         # Dispatch to specific action formatters
         if isinstance(action, Search):
             entries = self._format_search_action(action, result)
-        elif isinstance(action, SendMessage):
+        elif isinstance(action, SendMessageAction):
             entries = self._format_send_message_action(action, result)
         elif isinstance(action, FetchMessages):
             entries = self._format_fetch_messages_action(action, result)
@@ -180,12 +180,12 @@ class HistoryStorage:
         return formatted_entries
 
     def _format_send_message_action(
-        self, action: SendMessage, result: ActionExecutionResult
+        self, message: SendMessageAction, result: ActionExecutionResult
     ) -> list[str]:
         """Format SendMessage action and result.
 
         Args:
-            action: SendMessage action
+            message: SendMessage action
             result: Action execution result
 
         Returns:
@@ -194,9 +194,8 @@ class HistoryStorage:
         """
         formatted_entries: list[str] = []
         # Add message-specific details
-        message = action.message
         formatted_entries.append(
-            f"Action: Send {message.type} message to {action.to_agent_id}: {message.model_dump_json()}"
+            f"Action: Send {message.type} message to {message.to_agent_id}: {message.model_dump_json()}"
         )
 
         formatted_entries.append("\nResult:")
@@ -241,9 +240,8 @@ class HistoryStorage:
                     formatted_entries.append("✅ No new messages")
                 # Add received messages to conversation
                 for received_message in content.messages:
-                    message_content = received_message.message
                     formatted_entries.append(
-                        f"\n✉️ {message_content.type} message from {received_message.from_agent_id}:\n{message_content.model_dump_json()}"
+                        f"\n✉️ {received_message.type} message from {received_message.from_agent_id}:\n{received_message.model_dump_json()}"
                     )
             except Exception:
                 formatted_entries.append(

@@ -12,14 +12,14 @@ from magentic_marketplace.platform.shared.models import (
     ActionExecutionResult,
 )
 
-from ..actions import OrderProposal, Payment, SendMessage
+from ..actions import SendMessageAction, SendOrderProposal, SendPayment
 from ..database import queries
 
 logger = logging.getLogger(__name__)
 
 
 async def execute_send_message(
-    send_message: SendMessage,
+    send_message: SendMessageAction,
     database: BaseDatabaseController,
 ) -> ActionExecutionResult:
     """Execute a send message action.
@@ -72,7 +72,7 @@ async def execute_send_message(
 
 
 async def _validate_message_content(
-    send_message: SendMessage,
+    send_message: SendMessageAction,
     database: BaseDatabaseController,
 ) -> dict[str, str] | None:
     """Validate message content based on message type.
@@ -86,8 +86,8 @@ async def _validate_message_content(
 
     """
     # For payment messages, validate proposal_id exists
-    if isinstance(send_message.message, Payment):
-        proposal_id = send_message.message.proposal_message_id
+    if isinstance(send_message, SendPayment):
+        proposal_id = send_message.proposal_message_id
         try:
             # Find the order proposal we're trying to pay for
             query = (
@@ -96,26 +96,23 @@ async def _validate_message_content(
                 & queries.actions.send_message.order_proposal_id(proposal_id)
             )
             action_rows = await database.actions.find(query, RangeQueryParams())
-            order_proposals: list[OrderProposal] = []
+            order_proposals: list[SendOrderProposal] = []
             for row in action_rows:
                 try:
-                    action = SendMessage.model_validate(row.data.request.parameters)
-                    if isinstance(action.message, OrderProposal):
-                        logger.warning("Ignoring OrderProposal expiry time!")
-                        order_proposals.append(action.message)
-                        # TODO: Get LLMs to generate a decent expiry time, then bring this back:
-                        # if (
-                        #     action.message.expiry_time
-                        #     and action.message.expiry_time
-                        #     < datetime.now(action.message.expiry_time.tzinfo)
-                        # ):
-                        #     logger.warning("Skipping expired order proposal")
-                        # else:
-                        #     order_proposals.append(action.message)
-                    else:
-                        logger.warning(
-                            f"OrderProposal query returned non OrderProposal action: {action.message.model_dump_json(indent=2)}"
-                        )
+                    action = SendOrderProposal.model_validate(
+                        row.data.request.parameters
+                    )
+                    logger.warning("Ignoring OrderProposal expiry time!")
+                    order_proposals.append(action)
+                    # TODO: Get LLMs to generate a decent expiry time, then bring this back:
+                    # if (
+                    #     action.message.expiry_time
+                    #     and action.message.expiry_time
+                    #     < datetime.now(action.message.expiry_time.tzinfo)
+                    # ):
+                    #     logger.warning("Skipping expired order proposal")
+                    # else:
+                    #     order_proposals.append(action.message)
                 except Exception as e:
                     logger.warning(
                         f"OrderProposal query returned non OrderProposal action: {e}",

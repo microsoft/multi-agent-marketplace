@@ -1,11 +1,12 @@
 """Response generation functionality for the business agent."""
 
 from collections.abc import Awaitable, Callable
+from datetime import UTC, datetime
 from typing import Any
 
 from magentic_marketplace.platform.logger import MarketplaceLogger
 
-from ...actions import OrderProposal, TextMessage
+from ...actions import SendOrderProposal, SendTextMessage
 from ...shared.models import Business
 from ..history_storage import HistoryStorage
 from ..proposal_storage import OrderProposalStorage
@@ -46,7 +47,7 @@ class ResponseHandler:
 
     async def generate_response_to_inquiry(
         self, customer_id: str, customer_message: str, context: str = ""
-    ) -> TextMessage | OrderProposal:
+    ) -> SendOrderProposal | SendTextMessage:
         """Generate a contextual response using LLM.
 
         Args:
@@ -77,7 +78,12 @@ class ResponseHandler:
             # Extract the response based on action type
             if action.action_type == "text":
                 if action.message:
-                    response = TextMessage(content=action.message)
+                    response = SendTextMessage(
+                        created_at=datetime.now(UTC),
+                        from_agent_id=self.agent_id,
+                        to_agent_id=customer_id,
+                        content=action.message,
+                    )
                     self.logger.info(
                         f"Generated text response to customer {customer_id} inquiry",
                         data=response,
@@ -101,7 +107,10 @@ class ResponseHandler:
                 deterministic_id = f"{self.agent_id}_{customer_id}_{proposal_count}"
 
                 # Create new proposal with deterministic ID
-                proposal_with_id = OrderProposal(
+                proposal_with_id = SendOrderProposal(
+                    created_at=datetime.now(UTC),
+                    from_agent_id=self.agent_id,
+                    to_agent_id=customer_id,
                     id=deterministic_id,
                     items=proposal.items,
                     total_price=proposal.total_price,
@@ -118,16 +127,20 @@ class ResponseHandler:
         except Exception:
             self.logger.exception("LLM response generation failed")
             # Fallback to simple text response
-            return TextMessage(
-                content="I'm sorry, I'm having trouble processing your request right now. Please try again."
+            return SendTextMessage(
+                created_at=datetime.now(UTC),
+                from_agent_id=self.agent_id,
+                to_agent_id=customer_id,
+                content="I'm sorry, I'm having trouble processing your request right now. Please try again.",
             )
 
     def generate_payment_confirmation(
-        self, proposal_id: str, total_price: float
-    ) -> TextMessage:
+        self, *, customer_id: str, proposal_id: str, total_price: float
+    ) -> SendTextMessage:
         """Generate a payment confirmation message.
 
         Args:
+            customer_id: The paying customer's id
             proposal_id: ID of the confirmed proposal
             total_price: Total price of the order
 
@@ -135,22 +148,31 @@ class ResponseHandler:
             Confirmation message
 
         """
-        return TextMessage(
+        return SendTextMessage(
+            created_at=datetime.now(UTC),
+            from_agent_id=self.agent_id,
+            to_agent_id=customer_id,
             content=f"Payment received! Your order for ${total_price} is confirmed. "
-            f"Order ID: {proposal_id}. Thank you for your business!"
+            f"Order ID: {proposal_id}. Thank you for your business!",
         )
 
-    def generate_proposal_not_found_error(self, proposal_id: str) -> TextMessage:
+    def generate_proposal_not_found_error(
+        self, *, customer_id: str, proposal_id: str
+    ) -> SendTextMessage:
         """Generate an error message for proposal not found.
 
         Args:
+            customer_id: The customer attempting to pay for a proposal.
             proposal_id: ID of the proposal that wasn't found
 
         Returns:
             Error message
 
         """
-        return TextMessage(
+        return SendTextMessage(
+            created_at=datetime.now(UTC),
+            from_agent_id=self.agent_id,
+            to_agent_id=customer_id,
             content=f"Sorry, I couldn't find proposal {proposal_id}. "
-            "Please check the proposal ID or request a new quote."
+            "Please check the proposal ID or request a new quote.",
         )

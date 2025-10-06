@@ -1,5 +1,7 @@
 """Simple marketplace protocol implementation."""
 
+from typing import get_args
+
 from magentic_marketplace.platform.database.base import BaseDatabaseController
 from magentic_marketplace.platform.protocol.base import BaseMarketplaceProtocol
 from magentic_marketplace.platform.shared.models import (
@@ -9,10 +11,11 @@ from magentic_marketplace.platform.shared.models import (
 )
 
 from ..actions import (
+    Action,
     ActionAdapter,
     FetchMessages,
     Search,
-    SendMessage,
+    SendMessageAction,
 )
 from .fetch_messages import execute_fetch_messages
 from .search import execute_search
@@ -27,7 +30,7 @@ class SimpleMarketplaceProtocol(BaseMarketplaceProtocol):
 
     def get_actions(self):
         """Define available actions in the marketplace."""
-        return [SendMessage, FetchMessages, Search]
+        return list(get_args(Action))
 
     async def execute_action(
         self,
@@ -39,7 +42,7 @@ class SimpleMarketplaceProtocol(BaseMarketplaceProtocol):
         """Execute an action."""
         parsed_action = ActionAdapter.validate_python(action.parameters)
 
-        if isinstance(parsed_action, SendMessage):
+        if isinstance(parsed_action, SendMessageAction):
             return await execute_send_message(parsed_action, database)
 
         elif isinstance(parsed_action, FetchMessages):

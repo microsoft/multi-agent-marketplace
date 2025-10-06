@@ -8,9 +8,8 @@ import pytest
 from magentic_marketplace.marketplace.actions import (
     FetchMessages,
     FetchMessagesResponse,
-    SendMessage,
+    SendTextMessage,
 )
-from magentic_marketplace.marketplace.actions.messaging import TextMessage
 from magentic_marketplace.platform.database.models import AgentRow
 from magentic_marketplace.platform.database.queries.base import QueryParams
 from magentic_marketplace.platform.shared.models import AgentProfile
@@ -30,18 +29,18 @@ class TestFetchMessages:
         database = agents["database"]
 
         # Send messages between agents
-        message_from_biz = SendMessage(
+        message_from_biz = SendTextMessage(
             from_agent_id=business.id,
             to_agent_id=customer.id,
             created_at=datetime.now(UTC),
-            message=TextMessage(content="Message to customer"),
+            content="Message to customer",
         )
 
-        message_from_customer = SendMessage(
+        message_from_customer = SendTextMessage(
             from_agent_id=customer.id,
             to_agent_id=business.id,
             created_at=datetime.now(UTC),
-            message=TextMessage(content="Message to business"),
+            content="Message to business",
         )
 
         # Execute messages through HTTP
@@ -111,21 +110,21 @@ class TestFetchMessages:
 
         # Send 3 messages from business to customer
         for i in range(3):
-            message = SendMessage(
+            message = SendTextMessage(
                 from_agent_id=business.id,
                 to_agent_id=customer.id,
                 created_at=datetime.now(UTC),
-                message=TextMessage(content=f"Business message {i + 1}"),
+                content=f"Business message {i + 1}",
             )
             await business.execute_action(message)
 
         # Send 2 messages from supplier to customer (simulate via customer agent)
         for i in range(2):
-            message = SendMessage(
+            message = SendTextMessage(
                 from_agent_id=test_agent_supplier.id,
                 to_agent_id=customer.id,
                 created_at=datetime.now(UTC),
-                message=TextMessage(content=f"Supplier message {i + 1}"),
+                content=f"Supplier message {i + 1}",
             )
             # Use customer agent to execute since we don't have a supplier agent client
             await customer.execute_action(message)

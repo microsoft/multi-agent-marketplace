@@ -3,6 +3,7 @@
 from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, SerializeAsAny
+from pydantic.json_schema import SkipJsonSchema
 
 
 # Core domain models
@@ -27,7 +28,7 @@ class ActionProtocol(BaseModel):
 class BaseAction(BaseModel):
     """Base class for marketplace actions."""
 
-    metadata: dict[str, Any] = Field(default_factory=dict)
+    metadata: SkipJsonSchema[dict[str, Any]] = Field(default_factory=dict)
 
     @classmethod
     def get_name(cls):

@@ -12,11 +12,11 @@ from magentic_marketplace.experiments.models import (
     CustomerSummary,
     TransactionSummary,
 )
-from magentic_marketplace.marketplace.actions import ActionAdapter, SendMessage
-from magentic_marketplace.marketplace.actions.messaging import (
-    Message,
-    OrderProposal,
-    Payment,
+from magentic_marketplace.marketplace.actions import (
+    ActionAdapter,
+    SendMessageAction,
+    SendOrderProposal,
+    SendPayment,
 )
 from magentic_marketplace.marketplace.shared.models import (
     BusinessAgentProfile,
@@ -57,14 +57,14 @@ class MarketplaceAnalytics:
         # Typed action and message tracking
         self.action_stats: Counter[str] = Counter()
         self.message_stats: Counter[str] = Counter()
-        self.customer_messages: dict[str, list[Message]] = defaultdict(list)
-        self.business_messages: dict[str, list[Message]] = defaultdict(list)
+        self.customer_messages: dict[str, list[SendMessageAction]] = defaultdict(list)
+        self.business_messages: dict[str, list[SendMessageAction]] = defaultdict(list)
 
         # Order and payment tracking
-        self.order_proposals: list[OrderProposal] = []
-        self.payments: list[Payment] = []
-        self.customer_orders: dict[str, list[OrderProposal]] = defaultdict(list)
-        self.customer_payments: dict[str, list[Payment]] = defaultdict(list)
+        self.order_proposals: list[SendOrderProposal] = []
+        self.payments: list[SendPayment] = []
+        self.customer_orders: dict[str, list[SendOrderProposal]] = defaultdict(list)
+        self.customer_payments: dict[str, list[SendPayment]] = defaultdict(list)
 
     async def load_data(self):
         """Load and parse agents data from database."""
@@ -106,7 +106,7 @@ class MarketplaceAnalytics:
         action = ActionAdapter.validate_python(action_request.parameters)
 
         # Process based on action type
-        if isinstance(action, SendMessage):
+        if isinstance(action, SendMessageAction):
             await self._process_send_message(action, action_result, agent_type)
         # Note: FetchMessages and Search are only counted, not processed for message content
 
@@ -120,7 +120,7 @@ class MarketplaceAnalytics:
 
     async def _process_send_message(
         self,
-        action: SendMessage,
+        message: SendMessageAction,
         result: ActionExecutionResult,
         agent_type: str,
     ):
@@ -129,31 +129,30 @@ class MarketplaceAnalytics:
             return
 
         try:
-            message = action.message
             # Count message types
             self.message_stats[message.type] += 1
 
             # Store messages by agent type
             if agent_type == "customer":
-                self.customer_messages[action.from_agent_id].append(message)
+                self.customer_messages[message.from_agent_id].append(message)
             elif agent_type == "business":
-                self.business_messages[action.from_agent_id].append(message)
+                self.business_messages[message.from_agent_id].append(message)
 
             # Process specific message types
-            if isinstance(message, OrderProposal):
+            if isinstance(message, SendOrderProposal):
                 self.order_proposals.append(message)
                 # Link to customer if this came from a business
                 if agent_type == "business":
-                    if action.to_agent_id in self.customer_agents:
-                        self.customer_orders[action.to_agent_id].append(message)
+                    if message.to_agent_id in self.customer_agents:
+                        self.customer_orders[message.to_agent_id].append(message)
                     else:
                         print("WARNING: order proposal to non-existing customer")
 
-            elif isinstance(message, Payment):
+            elif isinstance(message, SendPayment):
                 self.payments.append(message)
                 # Link to customer if this is a payment from customer
                 if agent_type == "customer":
-                    self.customer_payments[action.from_agent_id].append(message)
+                    self.customer_payments[message.from_agent_id].append(message)
 
         except Exception as e:
             print(f"Warning: Failed to parse message: {e}")
@@ -260,7 +259,7 @@ class MarketplaceAnalytics:
         """Find which business sent a specific proposal."""
         for business_agent_id, messages in self.business_messages.items():
             for msg in messages:
-                if isinstance(msg, OrderProposal) and msg.id == proposal_id:
+                if isinstance(msg, SendOrderProposal) and msg.id == proposal_id:
                     return business_agent_id
         return None
 
@@ -362,7 +361,7 @@ class MarketplaceAnalytics:
             proposals_sent = sum(
                 1
                 for msg in self.business_messages.get(business_agent_id, [])
-                if isinstance(msg, OrderProposal)
+                if isinstance(msg, SendOrderProposal)
             )
             utility = business_utilities.get(business_agent_id, 0.0)
 

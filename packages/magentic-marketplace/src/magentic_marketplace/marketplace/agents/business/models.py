@@ -4,7 +4,7 @@ from typing import Literal
 
 from pydantic import BaseModel, Field
 
-from ...actions import OrderProposal
+from ...actions import SendOrderProposal
 
 
 class BusinessAction(BaseModel):
@@ -16,7 +16,7 @@ class BusinessAction(BaseModel):
     message: str = Field(
         description="A message to send to the customer. Required if action_type is 'text'"
     )
-    order_proposal: OrderProposal | None = Field(
+    order_proposal: SendOrderProposal | None = Field(
         default=None,
         description="The proposed order to send to the customer. Required if action_type is 'order_proposal'.",
     )
