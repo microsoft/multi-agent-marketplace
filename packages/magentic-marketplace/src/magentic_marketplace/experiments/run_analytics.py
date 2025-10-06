@@ -681,7 +681,7 @@ class MarketplaceAnalytics:
             # Utility calculations
             print(f"\nCustomer utility: {customer.utility:.2f}")
             adams_welfare, needs_met = self.calculate_customer_utility_adams_welfare(customer_agent_id)
-            needs_status = "✓" if needs_met else "✗"
+            needs_status = "Yes" if needs_met else "No"
             print(f"Adam's welfare utility: {adams_welfare:.2f} (needs met: {needs_status})")
 
         # Final summary
