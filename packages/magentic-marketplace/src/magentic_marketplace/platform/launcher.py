@@ -114,7 +114,8 @@ class MarketplaceLauncher:
                         f"MarketplaceServer is running and healthy at {self.server_url}"
                     )
                     return
-            except Exception:
+            except Exception as e:
+                last_exception = e
                 await asyncio.sleep(current_delay)
                 current_delay = min(current_delay * 2, max_delay)  # Exponential backoff
 
