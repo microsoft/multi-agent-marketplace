@@ -45,7 +45,9 @@ class SimpleMarketplaceProtocol(BaseMarketplaceProtocol):
         elif isinstance(parsed_action, FetchMessages):
             return await execute_fetch_messages(parsed_action, agent, database)
 
-        elif isinstance(parsed_action, Search):  # pyright: ignore[reportUnnecessaryIsInstance]
-            return await execute_search(parsed_action, database)
+        elif isinstance(parsed_action, Search):
+            return await execute_search(
+                search=parsed_action, agent=agent, database=database
+            )
         else:
             raise ValueError(f"Unknown action type: {parsed_action.type}")

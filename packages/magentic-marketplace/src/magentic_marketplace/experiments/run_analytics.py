@@ -549,8 +549,49 @@ class MarketplaceAnalytics:
                 f"{customer.proposals_received} proposals received, {customer.payments_made} payments made"
             )
 
+            # Payment and order details
+            payments = self.customer_payments.get(customer_agent_id, [])
+            if payments:
+                print(f"\n{GREEN_COLOR}Payments Made:{RESET_COLOR}")
+                for payment in payments:
+                    # Find the corresponding proposal
+                    proposals_received = self.customer_orders.get(customer_agent_id, [])
+                    proposal = next(
+                        (
+                            p
+                            for p in proposals_received
+                            if p.id == payment.proposal_message_id
+                        ),
+                        None,
+                    )
+                    if proposal:
+                        # Find which business sent this proposal
+                        business_agent_id = self._find_business_for_proposal(
+                            proposal.id
+                        )
+                        business_name = "Unknown"
+                        if (
+                            business_agent_id
+                            and business_agent_id in self.business_agents
+                        ):
+                            business_name = self.business_agents[
+                                business_agent_id
+                            ].business.name
+
+                        print(
+                            f"  → Paid ${proposal.total_price:.2f} to {business_name}"
+                        )
+                        print("    Order items:")
+                        for item in proposal.items:
+                            print(
+                                f"      - {item.item_name}: ${item.unit_price:.2f} x {item.quantity}"
+                            )
+                        print(f"    Proposal ID: {proposal.id}")
+                    else:
+                        print("  → Payment (no matching proposal found)")
+
             # Utility calculation
-            print(f"Customer utility: {customer.utility:.2f}")
+            print(f"\nCustomer utility: {customer.utility:.2f}")
 
         # Final summary
         print(f"\n{CYAN_COLOR}FINAL SUMMARY:{RESET_COLOR}")
