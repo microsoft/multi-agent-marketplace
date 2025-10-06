@@ -27,7 +27,7 @@ def shingle_overlap_score(
     def normalize_text(s: str) -> str:
         # Lowercase and remove non-alphanumeric characters
         s = s.lower()
-        s = re.sub(r"\W", "", s)
+        s = re.sub(r"[^\w\s]", "", s)
         s = re.sub(r"\s+", " ", s).strip()
         return s
 
