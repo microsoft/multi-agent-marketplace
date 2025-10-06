@@ -63,6 +63,7 @@ class SearchAlgorithm(str, Enum):
     RNR = "rnr"
     FILTERED = "filtered"
     LEXICAL = "lexical"
+    OPTIMAL = "optimal"
 
 
 class Search(BaseAction):

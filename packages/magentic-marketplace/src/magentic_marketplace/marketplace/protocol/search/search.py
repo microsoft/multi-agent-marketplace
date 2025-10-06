@@ -6,8 +6,10 @@ from magentic_marketplace.platform.database.base import BaseDatabaseController
 from magentic_marketplace.platform.shared.models import ActionExecutionResult
 
 from ...actions import Search, SearchAlgorithm, SearchResponse
+from ...shared.models import AgentProfile, CustomerAgentProfile
 from .filtered import execute_filtered_search
 from .lexical import execute_lexical_search
+from .optimal import execute_optimal_search
 from .rnr import execute_rnr_search
 from .simple import execute_simple_search
 
@@ -15,7 +17,9 @@ logger = logging.getLogger(__name__)
 
 
 async def execute_search(
+    *,
     search: Search,
+    agent: AgentProfile | None,
     database: BaseDatabaseController,
 ) -> ActionExecutionResult:
     """Execute a search action to find businesses in the marketplace.
@@ -25,7 +29,9 @@ async def execute_search(
 
     Args:
         search: The search action containing query parameters
+        customer: The customer executing the search (needed for optimal search, None for other algorithms)
         database: Database controller for accessing data
+        agent: Optional. The agent calling this search method. Required for some search algorithms e.g. optimal.
 
     Returns:
         ActionExecutionResult with the action result
@@ -39,6 +45,14 @@ async def execute_search(
             businesses = await execute_rnr_search(search, database)
         elif search.search_algorithm == SearchAlgorithm.LEXICAL:
             businesses = await execute_lexical_search(search, database)
+        elif search.search_algorithm == SearchAlgorithm.OPTIMAL:
+            if agent is None:
+                raise ValueError("agent is required to perform optimal search")
+            # Parse agent as CustomerAgentProfile to extract customer
+            customer_agent = CustomerAgentProfile.model_validate(agent.model_dump())
+            businesses = await execute_optimal_search(
+                search=search, customer=customer_agent.customer, database=database
+            )
         elif search.search_algorithm == SearchAlgorithm.SIMPLE:
             businesses = await execute_simple_search(search, database)
         else:
