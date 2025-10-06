@@ -209,6 +209,62 @@ class MarketplaceAnalytics:
 
         return required_amenities.issubset(available_amenities)
 
+    def calculate_customer_utility_adams_welfare(self, customer_agent_id: str) -> tuple[float, bool]:
+        """Calculate customer utility using Adam's welfare formula from original repo.
+
+        This implements the utility calculation from the original agentic-economics repo
+        where match_score is only counted once if ANY payment meets the customer's needs.
+
+        Args:
+            customer_agent_id: ID of the customer
+
+        Returns:
+            Tuple of (utility, needs_met) where needs_met indicates if customer got what they wanted
+
+        """
+        if customer_agent_id not in self.customer_agents:
+            return 0.0, False
+
+        customer = self.customer_agents[customer_agent_id].customer
+        payments = self.customer_payments.get(customer_agent_id, [])
+        proposals_received = self.customer_orders.get(customer_agent_id, [])
+
+        total_payments = 0.0
+        needs_met = False
+
+        for payment in payments:
+            # Find the corresponding proposal
+            proposal = next(
+                (p for p in proposals_received if p.id == payment.proposal_message_id),
+                None,
+            )
+            if proposal:
+                # Check if proposal matches customer's desired items
+                proposal_items = {item.item_name for item in proposal.items}
+                requested_items = set(customer.menu_features.keys())
+                price_paid = proposal.total_price
+                total_payments += price_paid
+
+                # Find which business sent this proposal to check amenities
+                business_agent_id = self._find_business_for_proposal(proposal.id)
+
+                # Check if this payment meets the customer's needs
+                if proposal_items == requested_items:
+                    # Items match - now check amenities
+                    if business_agent_id and self.check_amenity_match(
+                        customer_agent_id, business_agent_id
+                    ):
+                        # Items AND amenities match - needs are met!
+                        needs_met = True
+
+        # Calculate utility: match_score counted only ONCE if needs were met
+        match_score = 0.0
+        if needs_met:
+            match_score = 2 * sum(customer.menu_features.values())
+
+        utility = match_score - total_payments
+        return round(utility, 2), needs_met
+
     def calculate_customer_utility(self, customer_agent_id: str) -> float:
         """Calculate utility for a customer based on their payments and received proposals."""
         if customer_agent_id not in self.customer_agents:
@@ -549,13 +605,18 @@ class MarketplaceAnalytics:
                 f"{customer.proposals_received} proposals received, {customer.payments_made} payments made"
             )
 
-            # Payment and order details
+            # Payment and order details with Adam's welfare analysis
             payments = self.customer_payments.get(customer_agent_id, [])
+            proposals_received = self.customer_orders.get(customer_agent_id, [])
+
+            # Get optimal price for comparison
+            menu_matches = self.calculate_menu_matches(customer_agent_id)
+            optimal_price = menu_matches[0][1] if menu_matches else None
+
             if payments:
-                print(f"\n{GREEN_COLOR}Payments Made:{RESET_COLOR}")
+                print(f"\n{GREEN_COLOR}{len(payments)} payment(s) made:{RESET_COLOR}")
                 for payment in payments:
                     # Find the corresponding proposal
-                    proposals_received = self.customer_orders.get(customer_agent_id, [])
                     proposal = next(
                         (
                             p
@@ -578,20 +639,50 @@ class MarketplaceAnalytics:
                                 business_agent_id
                             ].business.name
 
-                        print(
-                            f"  → Paid ${proposal.total_price:.2f} to {business_name}"
-                        )
+                        price_paid = proposal.total_price
+                        print(f"  - Paid ${price_paid:.2f} to {business_name}, ", end="")
+
+                        # Check item matching
+                        proposal_items = {item.item_name for item in proposal.items}
+                        requested_items = set(customer_data.menu_features.keys())
+
+                        if proposal_items != requested_items:
+                            print("which does NOT match the requested menu items.")
+                            print(f"    (Ordered items: {', '.join(sorted(proposal_items))})")
+                        elif business_agent_id and self.check_amenity_match(
+                            customer_agent_id, business_agent_id
+                        ):
+                            print("which matches all requested amenities, ", end="")
+                            if optimal_price is not None:
+                                if price_paid < optimal_price:
+                                    print(
+                                        f"and is BETTER than the optimal posted price by ${round(optimal_price - price_paid, 2)}."
+                                    )
+                                elif price_paid == optimal_price:
+                                    print(f"and is the optimal price of ${optimal_price:.2f}.")
+                                else:
+                                    print(
+                                        f"but is NOT the optimal price of ${optimal_price:.2f}."
+                                    )
+                            else:
+                                print("")
+                        else:
+                            print("which does NOT match all requested amenities.")
+
+                        # Show order details
                         print("    Order items:")
                         for item in proposal.items:
                             print(
                                 f"      - {item.item_name}: ${item.unit_price:.2f} x {item.quantity}"
                             )
-                        print(f"    Proposal ID: {proposal.id}")
                     else:
-                        print("  → Payment (no matching proposal found)")
+                        print("  - Payment (no matching proposal found)")
 
-            # Utility calculation
+            # Utility calculations
             print(f"\nCustomer utility: {customer.utility:.2f}")
+            adams_welfare, needs_met = self.calculate_customer_utility_adams_welfare(customer_agent_id)
+            needs_status = "✓" if needs_met else "✗"
+            print(f"Adam's welfare utility: {adams_welfare:.2f} (needs met: {needs_status})")
 
         # Final summary
         print(f"\n{CYAN_COLOR}FINAL SUMMARY:{RESET_COLOR}")
@@ -608,7 +699,25 @@ class MarketplaceAnalytics:
                 f"Average utility per active customer: {results.average_utility_per_active_customer:.2f}"
             )
 
-        print(f"Purchase completion rate: {results.purchase_completion_rate:.1f}%")
+        # Calculate Adam's welfare metrics
+        total_adams_welfare = 0.0
+        customers_with_needs_met = 0
+        for customer_agent_id in self.customer_agents.keys():
+            adams_welfare, needs_met = self.calculate_customer_utility_adams_welfare(customer_agent_id)
+            total_adams_welfare += adams_welfare
+            if needs_met:
+                customers_with_needs_met += 1
+
+        avg_adams_welfare_per_active = None
+        if results.customers_who_made_purchases > 0:
+            avg_adams_welfare_per_active = total_adams_welfare / results.customers_who_made_purchases
+
+        print(f"\nTotal Adam's welfare: {total_adams_welfare:.2f}")
+        if avg_adams_welfare_per_active is not None:
+            print(f"Average Adam's welfare per active customer: {avg_adams_welfare_per_active:.2f}")
+        print(f"Customers with needs met: {customers_with_needs_met}/{results.total_customers}")
+
+        print(f"\nPurchase completion rate: {results.purchase_completion_rate:.1f}%")
 
 
 async def run_analytics(
