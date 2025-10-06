@@ -208,7 +208,12 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
             if not search_result.is_error:
                 search_response = SearchResponse.model_validate(search_result.content)
                 business_ids = [ba.id for ba in search_response.businesses]
+
+                self.logger.info(
+                    f"Number of Search Results: {len(business_ids)} business(es) found."
+                )
                 self.known_business_ids.extend(business_ids)
+
         # Check for new messages
         elif action.action_type == "check_messages":
             fetch_response = await self.fetch_messages()

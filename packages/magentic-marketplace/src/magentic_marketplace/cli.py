@@ -70,6 +70,7 @@ def run_experiment_command(args):
             data_dir=data_dir,
             experiment_name=args.experiment_name,
             search_algorithm=args.search_algorithm,
+            search_bandwidth=args.search_bandwidth,
             customer_max_steps=args.customer_max_steps,
             postgres_host=args.postgres_host,
             postgres_port=args.postgres_port,
@@ -115,6 +116,13 @@ def main():
         type=str,
         default="simple",
         help="Search algorithm for customer agents (default: simple)",
+    )
+
+    experiment_parser.add_argument(
+        "--search-bandwidth",
+        type=int,
+        default=10,
+        help="Search bandwidth for customer agents (default: 10)",
     )
 
     experiment_parser.add_argument(
