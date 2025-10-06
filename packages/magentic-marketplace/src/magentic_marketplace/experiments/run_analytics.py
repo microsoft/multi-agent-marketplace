@@ -209,7 +209,9 @@ class MarketplaceAnalytics:
 
         return required_amenities.issubset(available_amenities)
 
-    def calculate_customer_utility_adams_welfare(self, customer_agent_id: str) -> tuple[float, bool]:
+    def calculate_customer_utility_adams_welfare(
+        self, customer_agent_id: str
+    ) -> tuple[float, bool]:
         """Calculate customer utility using Adam's welfare formula from original repo.
 
         This implements the utility calculation from the original agentic-economics repo
@@ -640,7 +642,9 @@ class MarketplaceAnalytics:
                             ].business.name
 
                         price_paid = proposal.total_price
-                        print(f"  - Paid ${price_paid:.2f} to {business_name}, ", end="")
+                        print(
+                            f"  - Paid ${price_paid:.2f} to {business_name}, ", end=""
+                        )
 
                         # Check item matching
                         proposal_items = {item.item_name for item in proposal.items}
@@ -648,7 +652,9 @@ class MarketplaceAnalytics:
 
                         if proposal_items != requested_items:
                             print("which does NOT match the requested menu items.")
-                            print(f"    (Ordered items: {', '.join(sorted(proposal_items))})")
+                            print(
+                                f"    (Ordered items: {', '.join(sorted(proposal_items))})"
+                            )
                         elif business_agent_id and self.check_amenity_match(
                             customer_agent_id, business_agent_id
                         ):
@@ -659,7 +665,9 @@ class MarketplaceAnalytics:
                                         f"and is BETTER than the optimal posted price by ${round(optimal_price - price_paid, 2)}."
                                     )
                                 elif price_paid == optimal_price:
-                                    print(f"and is the optimal price of ${optimal_price:.2f}.")
+                                    print(
+                                        f"and is the optimal price of ${optimal_price:.2f}."
+                                    )
                                 else:
                                     print(
                                         f"but is NOT the optimal price of ${optimal_price:.2f}."
@@ -680,9 +688,13 @@ class MarketplaceAnalytics:
 
             # Utility calculations
             print(f"\nCustomer utility: {customer.utility:.2f}")
-            adams_welfare, needs_met = self.calculate_customer_utility_adams_welfare(customer_agent_id)
+            adams_welfare, needs_met = self.calculate_customer_utility_adams_welfare(
+                customer_agent_id
+            )
             needs_status = "Yes" if needs_met else "No"
-            print(f"Adam's welfare utility: {adams_welfare:.2f} (needs met: {needs_status})")
+            print(
+                f"Adam's welfare utility: {adams_welfare:.2f} (needs met: {needs_status})"
+            )
 
         # Final summary
         print(f"\n{CYAN_COLOR}FINAL SUMMARY:{RESET_COLOR}")
@@ -703,19 +715,27 @@ class MarketplaceAnalytics:
         total_adams_welfare = 0.0
         customers_with_needs_met = 0
         for customer_agent_id in self.customer_agents.keys():
-            adams_welfare, needs_met = self.calculate_customer_utility_adams_welfare(customer_agent_id)
+            adams_welfare, needs_met = self.calculate_customer_utility_adams_welfare(
+                customer_agent_id
+            )
             total_adams_welfare += adams_welfare
             if needs_met:
                 customers_with_needs_met += 1
 
         avg_adams_welfare_per_active = None
         if results.customers_who_made_purchases > 0:
-            avg_adams_welfare_per_active = total_adams_welfare / results.customers_who_made_purchases
+            avg_adams_welfare_per_active = (
+                total_adams_welfare / results.customers_who_made_purchases
+            )
 
         print(f"\nTotal Adam's welfare: {total_adams_welfare:.2f}")
         if avg_adams_welfare_per_active is not None:
-            print(f"Average Adam's welfare per active customer: {avg_adams_welfare_per_active:.2f}")
-        print(f"Customers with needs met: {customers_with_needs_met}/{results.total_customers}")
+            print(
+                f"Average Adam's welfare per active customer: {avg_adams_welfare_per_active:.2f}"
+            )
+        print(
+            f"Customers with needs met: {customers_with_needs_met}/{results.total_customers}"
+        )
 
         print(f"\nPurchase completion rate: {results.purchase_completion_rate:.1f}%")
 
