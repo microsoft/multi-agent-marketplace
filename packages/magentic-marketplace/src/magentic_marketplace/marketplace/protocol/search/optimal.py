@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 def is_subset(customer: Customer, business: Business) -> bool:
     """Check if what the customer wants is completely available in the menu.
 
-    This is used to implement optimal search - it only returns businesses
+    This is used to implement optimal search - it only returns True for businesses
     that can completely fulfill the customer's order.
 
     Args:
