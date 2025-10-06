@@ -209,7 +209,7 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
                 search_response = SearchResponse.model_validate(search_result.content)
                 business_ids = [ba.id for ba in search_response.businesses]
                 self.known_business_ids.extend(business_ids)
-        # Search for new messages
+        # Check for new messages
         elif action.action_type == "check_messages":
             fetch_response = await self.fetch_messages()
             messages = fetch_response.messages
