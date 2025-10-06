@@ -22,7 +22,7 @@ class TestShingleOverlapScore:
 
     def test_partial_match(self):
         """Test partial match gives score between 0 and 1."""
-        score = shingle_overlap_score("sweet dreams", "sweet dreams bakery")
+        score = shingle_overlap_score("sweet dreams bakery", "sweet dreams")
         assert 0.0 < score < 1.0
 
     def test_no_match(self):
