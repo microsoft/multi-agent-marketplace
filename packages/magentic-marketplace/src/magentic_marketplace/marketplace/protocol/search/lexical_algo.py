@@ -1,6 +1,7 @@
 """Retrieve and rerank search results using lexical similarity.
 
-The implementation is ported from the original agentic-economics codebase.
+The implementation roughly follows what is described here:
+https://www.sbert.net/examples/sentence_transformer/applications/retrieve_rerank/README.html.
 """
 
 import re
