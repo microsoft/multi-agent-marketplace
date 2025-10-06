@@ -74,8 +74,21 @@ class MarketplaceLauncher:
         self.server_url = f"http://{host}:{port}"
         self._exit_stack: AsyncExitStack | None = None
 
-    async def start_server(self) -> None:
-        """Start the marketplace server."""
+    async def start_server(
+        self,
+        *,
+        max_retries: int = 10,
+        retry_delay: float = 0.1,
+        max_delay: float = 5.0,
+    ) -> None:
+        """Start the marketplace server.
+
+        Args:
+            max_retries: Maximum number of health check attempts
+            retry_delay: Initial delay between retries in seconds
+            max_delay: Maximum delay between retries in seconds
+
+        """
         # Create and configure server
         self.server = MarketplaceServer(
             database_factory=self.database_factory,
@@ -83,16 +96,32 @@ class MarketplaceLauncher:
             title=self.title,
             description=self.description,
         )
-        print("Created MarketplaceServer")
+        print("Creating MarketplaceServer...")
 
         # Start server in background
         self.server_task, self._stop_server_fn = self.server.create_server_task(
             host=self.host, port=self.port, log_level=self.server_log_level
         )
 
-        # Wait for server to start
-        await asyncio.sleep(1)
-        print(f"Server started on {self.server_url}")
+        # Wait for server to start with health check and backoff
+        last_exception = None
+        current_delay = retry_delay
+        for _ in range(max_retries):
+            try:
+                async with MarketplaceClient(self.server_url) as client:
+                    await client.health_check()
+                    print(
+                        f"MarketplaceServer is running and healthy at {self.server_url}"
+                    )
+                    return
+            except Exception:
+                await asyncio.sleep(current_delay)
+                current_delay = min(current_delay * 2, max_delay)  # Exponential backoff
+
+        # Failed to connect
+        raise RuntimeError(
+            f"Server failed to become healthy after {max_retries} attempts"
+        ) from last_exception
 
     async def stop_server(self) -> None:
         """Stop the marketplace server."""
