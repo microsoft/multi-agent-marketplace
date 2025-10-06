@@ -25,18 +25,20 @@ async def execute_lexical_search(
     # Convert to BusinessAgentProfile objects
     businesses = await convert_agent_rows_to_businesses(all_agent_rows)
 
+    # Rating rank before lexical rank to help with:
+    # 1. Tie breaking in lexical search
+    # 2. Handle sort in no-query case
+    businesses = sorted(
+        businesses,
+        key=lambda b: b.business.rating,
+        reverse=True,
+    )
+
     # Rank by lexical similarity if query provided
     if search.query:
         from .lexical_algo import lexical_rank
 
-        ranked_businesses = lexical_rank(search.query, businesses)
-    else:
-        # No query: sort by rating
-        ranked_businesses = sorted(
-            businesses,
-            key=lambda b: b.business.rating,
-            reverse=True,
-        )
+        businesses = lexical_rank(search.query, businesses)
 
     # Apply limit
-    return ranked_businesses[: search.limit] if search.limit else ranked_businesses
+    return businesses[: search.limit] if search.limit else businesses

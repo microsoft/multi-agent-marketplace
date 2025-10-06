@@ -2,7 +2,7 @@
 
 from typing import Annotated, Any, Literal
 
-from pydantic import BaseModel, Field, TypeAdapter, computed_field
+from pydantic import BaseModel, Field, TypeAdapter
 
 from magentic_marketplace.platform.shared.models import AgentProfile
 
@@ -37,24 +37,45 @@ class Business(BaseModel):
     amenity_features: dict[str, bool] = Field(description="Amenity name -> available")
     min_price_factor: float = Field(description="Minimum price factor for pricing")
 
-    @computed_field  # type: ignore[misc]
-    @property
-    def searchable_text(self) -> str:
-        """Generate searchable text from business attributes for lexical ranking."""
-        parts = [
-            self.name,
-            self.description,
-        ]
+    def get_searchable_text(
+        self,
+        index_name: bool = True,
+        index_menu_prices: bool = False,
+        index_amenities: bool = False,
+    ) -> str:
+        """Format the business metadata for ranking.
 
-        # Add menu item names
-        parts.extend(self.menu_features.keys())
+        Args:
+            business (BusinessMetadata): The business metadata to format.
+            index_name (bool): Whether to include the business name in the formatted output.
+            index_menu_prices (bool): Whether to include menu item prices in the formatted output.
+            index_amenities (bool): Whether to include amenities in the formatted output.
 
-        # Add amenities that are available
-        parts.extend(
-            amenity for amenity, available in self.amenity_features.items() if available
-        )
+        Returns:
+            str: The formatted business metadata.
 
-        return ", ".join(parts)
+        """
+        if index_name:
+            formatted_business = (self.name).strip() + ", "
+        else:
+            formatted_business = ""
+
+        formatted_business += self.description.strip() + ", "
+
+        # Add in menu item descriptors
+        for item_name, item_price in self.menu_features.items():
+            if index_menu_prices:
+                formatted_business += f"({item_name.strip()}: {item_price}), "
+            else:
+                formatted_business += f"{item_name.strip()}, "
+
+        if index_amenities:
+            # Add in amenities
+            for feature, value in self.amenity_features.items():
+                if value:
+                    formatted_business += f"{feature.strip()}, "
+
+        return formatted_business
 
 
 MarketplaceParticipantType = Annotated[Customer | Business, Field(discriminator="type")]

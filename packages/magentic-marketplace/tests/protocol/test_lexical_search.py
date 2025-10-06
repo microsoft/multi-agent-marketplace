@@ -83,22 +83,23 @@ class TestLexicalSearch:
         assert parsed_response.businesses[0].id == business.id
 
     @pytest.mark.asyncio
-    async def test_search_lexical_amenity_match(
+    async def test_search_lexical_description_match(
         self, test_agents_with_client: dict[str, Any]
     ):
-        """Test lexical search matching amenities in searchable text."""
+        """Test lexical search matching terms in description."""
         agents = test_agents_with_client
         customer = agents["customer"]
         business = agents["business"]
 
-        # Test amenity match (delivery is True in amenity_features)
-        search_amenity = Search(
+        # Test description match (business description includes "with delivery")
+        # Note: amenities are not indexed by default, but "delivery" appears in description
+        search_description = Search(
             query="delivery",
             search_algorithm=SearchAlgorithm.LEXICAL,
             limit=50,
             constraints=None,
         )
-        result = await customer.execute_action(search_amenity)
+        result = await customer.execute_action(search_description)
 
         assert result.is_error is False
         parsed_response = SearchResponse.model_validate(result.content)

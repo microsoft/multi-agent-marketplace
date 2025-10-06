@@ -54,12 +54,18 @@ def shingle_overlap_score(
 def lexical_rank(
     query: str,
     businesses: list[BusinessAgentProfile],
+    index_name: bool = True,
+    index_menu_prices: bool = False,
+    index_amenities: bool = False,
 ) -> list[BusinessAgentProfile]:
     """Rerank search results using lexical similarity.
 
     Args:
         query: The search query string
         businesses: List of business agent profiles to rank
+        index_name (bool): Whether to include the business name in the searchable text.
+        index_menu_prices (bool): Whether to include menu item prices in the searchable text.
+        index_amenities (bool): Whether to include amenities in the searchable text.
 
     Returns:
         Ranked list of business agent profiles
@@ -73,7 +79,11 @@ def lexical_rank(
     # Compute shingle overlap scores
     shingle_score_tuples: list[tuple[str, float]] = []
     for business in businesses:
-        searchable_text = business.business.searchable_text
+        searchable_text = business.business.get_searchable_text(
+            index_name=index_name,
+            index_menu_prices=index_menu_prices,
+            index_amenities=index_amenities,
+        )
         shingle_score = shingle_overlap_score(query, searchable_text)
         shingle_score_tuples.append((business.id, shingle_score))
 
