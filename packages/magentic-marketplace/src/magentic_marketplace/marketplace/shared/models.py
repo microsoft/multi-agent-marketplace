@@ -2,7 +2,7 @@
 
 from typing import Annotated, Any, Literal
 
-from pydantic import BaseModel, Field, TypeAdapter
+from pydantic import BaseModel, Field, TypeAdapter, computed_field
 
 from magentic_marketplace.platform.shared.models import AgentProfile
 
@@ -36,6 +36,25 @@ class Business(BaseModel):
     menu_features: dict[str, float] = Field(description="Menu item name -> price")
     amenity_features: dict[str, bool] = Field(description="Amenity name -> available")
     min_price_factor: float = Field(description="Minimum price factor for pricing")
+
+    @computed_field  # type: ignore[misc]
+    @property
+    def searchable_text(self) -> str:
+        """Generate searchable text from business attributes for lexical ranking."""
+        parts = [
+            self.name,
+            self.description,
+        ]
+
+        # Add menu item names
+        parts.extend(self.menu_features.keys())
+
+        # Add amenities that are available
+        parts.extend(
+            amenity for amenity, available in self.amenity_features.items() if available
+        )
+
+        return ", ".join(parts)
 
 
 MarketplaceParticipantType = Annotated[Customer | Business, Field(discriminator="type")]
