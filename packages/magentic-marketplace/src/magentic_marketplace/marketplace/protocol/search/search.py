@@ -7,6 +7,7 @@ from magentic_marketplace.platform.shared.models import ActionExecutionResult
 
 from ...actions import Search, SearchAlgorithm, SearchResponse
 from .filtered import execute_filtered_search
+from .lexical import execute_lexical_search
 from .rnr import execute_rnr_search
 from .simple import execute_simple_search
 
@@ -36,6 +37,8 @@ async def execute_search(
             businesses = await execute_filtered_search(search, database)
         elif search.search_algorithm == SearchAlgorithm.RNR:
             businesses = await execute_rnr_search(search, database)
+        elif search.search_algorithm == SearchAlgorithm.LEXICAL:
+            businesses = await execute_lexical_search(search, database)
         elif search.search_algorithm == SearchAlgorithm.SIMPLE:
             businesses = await execute_simple_search(search, database)
         else:

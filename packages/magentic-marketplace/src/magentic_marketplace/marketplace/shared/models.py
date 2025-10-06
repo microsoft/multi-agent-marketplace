@@ -37,6 +37,46 @@ class Business(BaseModel):
     amenity_features: dict[str, bool] = Field(description="Amenity name -> available")
     min_price_factor: float = Field(description="Minimum price factor for pricing")
 
+    def get_searchable_text(
+        self,
+        index_name: bool = True,
+        index_menu_prices: bool = False,
+        index_amenities: bool = False,
+    ) -> str:
+        """Format the business metadata for ranking.
+
+        Args:
+            business (BusinessMetadata): The business metadata to format.
+            index_name (bool): Whether to include the business name in the formatted output.
+            index_menu_prices (bool): Whether to include menu item prices in the formatted output.
+            index_amenities (bool): Whether to include amenities in the formatted output.
+
+        Returns:
+            str: The formatted business metadata.
+
+        """
+        if index_name:
+            formatted_business = (self.name).strip() + ", "
+        else:
+            formatted_business = ""
+
+        formatted_business += self.description.strip() + ", "
+
+        # Add in menu item descriptors
+        for item_name, item_price in self.menu_features.items():
+            if index_menu_prices:
+                formatted_business += f"({item_name.strip()}: {item_price}), "
+            else:
+                formatted_business += f"{item_name.strip()}, "
+
+        if index_amenities:
+            # Add in amenities
+            for feature, value in self.amenity_features.items():
+                if value:
+                    formatted_business += f"{feature.strip()}, "
+
+        return formatted_business
+
 
 MarketplaceParticipantType = Annotated[Customer | Business, Field(discriminator="type")]
 MarketplaceParticipantAdapter: TypeAdapter[MarketplaceParticipantType] = TypeAdapter(

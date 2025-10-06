@@ -97,18 +97,13 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
         """
         self.conversation_step += 1
 
-        # 1. Check for new messages from businesses
-        fetch_result = await self.fetch_messages()
-
-        # 2. Process received messages: store events and proposals
-        await self._process_new_messages(fetch_result.messages)
-
         # 3. Decide what to do next
         action = await self._generate_customer_action()
 
+        new_messages = False
         if action:
             # 4. Execute the action (handles messaging internally)
-            await self._execute_customer_action(action)
+            new_messages = await self._execute_customer_action(action)
 
         # 5a. Check if transaction completed
         if len(self.completed_transactions) > 0:
@@ -122,10 +117,11 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
             self.shutdown()
             return
 
-        if len(fetch_result.messages) == 0:
+        if not new_messages:
             # 6. Wait before next decision
             await asyncio.sleep(self._polling_interval)
         else:
+            # Go straight into next decision if received new messages
             await asyncio.sleep(0)
 
     async def on_started(self):
@@ -213,6 +209,12 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
                 search_response = SearchResponse.model_validate(search_result.content)
                 business_ids = [ba.id for ba in search_response.businesses]
                 self.known_business_ids.extend(business_ids)
+        # Check for new messages
+        elif action.action_type == "check_messages":
+            fetch_response = await self.fetch_messages()
+            messages = fetch_response.messages
+            await self._process_new_messages(messages)
+            return len(messages) > 0
         elif action.action_type == "send_messages":
             # Send messages directly with proper error handling
             if action.target_business_ids and action.message_content:
@@ -291,6 +293,9 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
                 self.history.record_error(
                     "Error: proposal_to_accept missing. proposal_to_accept is required when action_type is end_transaction."
                 )
+
+        # No new messages
+        return False
 
     def get_transaction_summary(self) -> CustomerSummary:
         """Get a summary of completed transactions.

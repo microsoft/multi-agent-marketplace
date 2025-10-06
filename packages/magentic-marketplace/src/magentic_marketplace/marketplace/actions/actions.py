@@ -62,6 +62,7 @@ class SearchAlgorithm(str, Enum):
     SIMPLE = "simple"
     RNR = "rnr"
     FILTERED = "filtered"
+    LEXICAL = "lexical"
 
 
 class Search(BaseAction):
