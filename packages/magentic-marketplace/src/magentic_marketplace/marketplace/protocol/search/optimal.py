@@ -4,7 +4,6 @@ import logging
 
 from magentic_marketplace.platform.database.base import BaseDatabaseController
 from magentic_marketplace.platform.database.queries.agents import query as agent_query
-from magentic_marketplace.platform.database.queries.base import RangeQueryParams
 
 from ...actions import Search
 from ...shared.models import Business, BusinessAgentProfile, Customer
@@ -16,7 +15,7 @@ logger = logging.getLogger(__name__)
 def is_subset(customer: Customer, business: Business) -> bool:
     """Check if what the customer wants is completely available in the menu.
 
-    This is used to implement optimal search - it only returns businesses
+    This is used to implement optimal search - it only returns True for businesses
     that can completely fulfill the customer's order.
 
     Args:
@@ -60,7 +59,7 @@ async def execute_optimal_search(
     """
     # Get all business agents
     business_filter = agent_query(path="$.business", value=None, operator="!=")
-    all_agent_rows = await database.agents.find(business_filter, RangeQueryParams())
+    all_agent_rows = await database.agents.find(business_filter)
 
     # Convert to BusinessAgentProfile objects
     all_businesses = await convert_agent_rows_to_businesses(all_agent_rows)

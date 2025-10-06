@@ -28,10 +28,9 @@ async def execute_search(
     controller's proper abstractions instead of raw SQL queries.
 
     Args:
-        search: The search action containing query parameters
-        customer: The customer executing the search (needed for optimal search, None for other algorithms)
-        database: Database controller for accessing data
-        agent: Optional. The agent calling this search method. Required for some search algorithms e.g. optimal.
+        search: The search action containing query parameters.
+        agent: The agent executing the search. Required for the optimal search algorithm; optional for others.
+        database: Database controller for accessing data.
 
     Returns:
         ActionExecutionResult with the action result
