@@ -12,6 +12,7 @@ class CustomerSummary(BaseModel):
     proposals_received: int
     payments_made: int
     utility: float
+    needs_met: bool
 
 
 class BusinessSummary(BaseModel):
@@ -55,6 +56,7 @@ class AnalyticsResults(BaseModel):
 
     # Final summary metrics
     customers_who_made_purchases: int
+    customers_with_needs_met: int
     total_marketplace_customer_utility: float
     average_utility_per_active_customer: float | None = None
     purchase_completion_rate: float
