@@ -605,7 +605,7 @@ class SQLiteActionController(ActionTableController, _BoundedSqliteConnectionMixI
         if where_clauses:
             sql += " WHERE " + " AND ".join(where_clauses)
 
-        sql += " ORDER BY created_at"
+        sql += " ORDER BY row_index, created_at"
 
         if params and params.limit:
             sql += " LIMIT ? OFFSET ?"
