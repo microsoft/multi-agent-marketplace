@@ -38,4 +38,7 @@ else
     echo "Warning: .venv directory not created"
 fi
 
+# Setup docker for the database server
+docker compose up -d
+
 echo "Development environment setup complete!"
