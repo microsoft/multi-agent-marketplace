@@ -18,6 +18,7 @@ async def execute_lexical_search(
     database: BaseDatabaseController,
 ) -> list[BusinessAgentProfile]:
     """Execute lexical search using shingle overlap ranking."""
+
     # Get all business agents
     business_filter = agent_query(path="$.business", value=None, operator="!=")
     all_agent_rows = await database.agents.find(business_filter, RangeQueryParams())

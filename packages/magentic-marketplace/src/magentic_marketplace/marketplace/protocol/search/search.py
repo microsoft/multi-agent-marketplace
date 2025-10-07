@@ -38,6 +38,9 @@ async def execute_search(
     """
     try:
         # Execute the appropriate search algorithm
+        logger.info(
+            f'Search: "{search.query}", "{search.constraints}", {search.search_algorithm}'
+        )
         if search.search_algorithm == SearchAlgorithm.FILTERED:
             businesses = await execute_filtered_search(search, database)
         elif search.search_algorithm == SearchAlgorithm.RNR:
