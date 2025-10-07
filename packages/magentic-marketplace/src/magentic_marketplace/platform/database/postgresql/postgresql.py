@@ -159,7 +159,8 @@ CREATE TABLE IF NOT EXISTS {schema}.agents (
 CREATE TABLE IF NOT EXISTS {schema}.actions (
     id TEXT PRIMARY KEY,
     created_at TIMESTAMPTZ NOT NULL,
-    data JSONB NOT NULL
+    data JSONB NOT NULL,
+    row_index BIGINT GENERATED ALWAYS AS IDENTITY UNIQUE
 );
 
 CREATE TABLE IF NOT EXISTS {schema}.logs (
@@ -171,6 +172,7 @@ CREATE TABLE IF NOT EXISTS {schema}.logs (
 -- Add indexes for better performance
 CREATE INDEX IF NOT EXISTS agents_created_at_idx ON {schema}.agents(created_at);
 CREATE INDEX IF NOT EXISTS actions_created_at_idx ON {schema}.actions(created_at);
+CREATE INDEX IF NOT EXISTS actions_row_index_idx ON {schema}.actions(row_index);
 CREATE INDEX IF NOT EXISTS logs_created_at_idx ON {schema}.logs(created_at);
 
 -- Add GIN indexes for JSONB columns for fast JSON queries
@@ -391,7 +393,7 @@ class PostgreSQLActionController(
         where_clause, query_params = _convert_query_to_postgres(query)
 
         sql = f"""
-        SELECT id, created_at, data FROM {self._schema}.actions
+        SELECT row_index, id, created_at, data FROM {self._schema}.actions
         WHERE {where_clause}
         """
         sql_params = query_params[:]
@@ -403,6 +405,14 @@ class PostgreSQLActionController(
         if params.before:
             sql += f" AND created_at < ${len(sql_params) + 1}"
             sql_params.append(params.before)
+
+        # Add index range filters
+        if params.after_index is not None:
+            sql += f" AND row_index > ${len(sql_params) + 1}"
+            sql_params.append(params.after_index)
+        if params.before_index is not None:
+            sql += f" AND row_index < ${len(sql_params) + 1}"
+            sql_params.append(params.before_index)
 
         sql += " ORDER BY created_at"
 
@@ -421,7 +431,9 @@ class PostgreSQLActionController(
             ActionRow(
                 id=row["id"],
                 created_at=row["created_at"],
-                data=ActionRowData.model_validate_json(row["data"]),
+                data=ActionRowData.model_validate_json(row["data"]).model_copy(
+                    update={"index": row["row_index"]}
+                ),
             )
             for row in rows
         ]
@@ -432,8 +444,9 @@ class PostgreSQLActionController(
         action_json = json.dumps(item.data.model_dump())
 
         async with self.connection(is_write=True) as conn:
-            await conn.execute(
-                f"INSERT INTO {self._schema}.actions (id, created_at, data) VALUES ($1, $2, $3)",
+            # The row_index will be automatically set by the DEFAULT nextval()
+            row_index = await conn.fetchval(
+                f"INSERT INTO {self._schema}.actions (id, created_at, data) VALUES ($1, $2, $3) RETURNING row_index",
                 action_id,
                 item.created_at,
                 action_json,
@@ -442,21 +455,23 @@ class PostgreSQLActionController(
         return ActionRow(
             id=action_id,
             created_at=item.created_at,
-            data=item.data,
+            data=item.data.model_copy(update={"index": row_index}),
         )
 
     async def get_by_id(self, item_id: str) -> ActionRow | None:
         """Get action by ID."""
         async with self.connection() as conn:
             row = await conn.fetchrow(
-                f"SELECT id, created_at, data FROM {self._schema}.actions WHERE id = $1",
+                f"SELECT row_index, id, created_at, data FROM {self._schema}.actions WHERE id = $1",
                 item_id,
             )
 
         if not row:
             return None
 
-        action_data = ActionRowData.model_validate_json(row["data"])
+        action_data = ActionRowData.model_validate_json(row["data"]).model_copy(
+            update={"index": row["row_index"]}
+        )
         return ActionRow(
             id=row["id"],
             created_at=row["created_at"],
@@ -465,14 +480,29 @@ class PostgreSQLActionController(
 
     async def get_all(self, params: RangeQueryParams | None = None) -> list[ActionRow]:
         """Get all actions with pagination."""
-        sql = f"SELECT id, created_at, data FROM {self._schema}.actions ORDER BY created_at"
+        sql = f"SELECT row_index, id, created_at, data FROM {self._schema}.actions"
         sql_params = []
+        where_clauses = []
+
+        # Add index range filters
+        if params:
+            if params.after_index is not None:
+                where_clauses.append(f"row_index > ${len(sql_params) + 1}")
+                sql_params.append(params.after_index)
+            if params.before_index is not None:
+                where_clauses.append(f"row_index < ${len(sql_params) + 1}")
+                sql_params.append(params.before_index)
+
+        if where_clauses:
+            sql += " WHERE " + " AND ".join(where_clauses)
+
+        sql += " ORDER BY created_at"
 
         if params and params.limit:
-            sql += " LIMIT $1 OFFSET $2"
+            sql += f" LIMIT ${len(sql_params) + 1} OFFSET ${len(sql_params) + 2}"
             sql_params.extend([params.limit, params.offset])
         elif params and params.offset:
-            sql += " OFFSET $1"
+            sql += f" OFFSET ${len(sql_params) + 1}"
             sql_params.append(params.offset)
 
         async with self.connection() as conn:
@@ -482,7 +512,9 @@ class PostgreSQLActionController(
             ActionRow(
                 id=row["id"],
                 created_at=row["created_at"],
-                data=ActionRowData.model_validate_json(row["data"]),
+                data=ActionRowData.model_validate_json(row["data"]).model_copy(
+                    update={"index": row["row_index"]}
+                ),
             )
             for row in rows
         ]

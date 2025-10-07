@@ -34,6 +34,7 @@ class ActionRowData(BaseModel):
     agent_id: str
     request: ActionExecutionRequest
     result: ActionExecutionResult
+    index: int | None = None
 
 
 class ActionRow(Row[ActionRowData]):

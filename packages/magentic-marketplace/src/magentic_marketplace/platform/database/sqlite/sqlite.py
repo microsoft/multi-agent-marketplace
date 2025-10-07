@@ -149,8 +149,19 @@ CREATE TABLE IF NOT EXISTS agents (
 CREATE TABLE IF NOT EXISTS actions (
     id TEXT PRIMARY KEY,
     created_at TEXT NOT NULL,
-    data TEXT NOT NULL
+    data TEXT NOT NULL,
+    row_index INTEGER
 );
+
+CREATE INDEX IF NOT EXISTS actions_row_index_idx ON actions(row_index);
+
+CREATE TRIGGER IF NOT EXISTS actions_row_index_trigger
+AFTER INSERT ON actions
+FOR EACH ROW
+WHEN NEW.row_index IS NULL
+BEGIN
+    UPDATE actions SET row_index = (SELECT COALESCE(MAX(row_index), 0) + 1 FROM actions WHERE rowid != NEW.rowid) WHERE rowid = NEW.rowid;
+END;
 
 CREATE TABLE IF NOT EXISTS logs (
     id TEXT PRIMARY KEY,
@@ -419,7 +430,7 @@ class SQLiteActionController(ActionTableController, _BoundedSqliteConnectionMixI
         """Find actions using JSONQuery objects."""
         params = params or RangeQueryParams()
         sql = f"""
-        SELECT id, created_at, data FROM actions
+        SELECT row_index, id, created_at, data FROM actions
         WHERE {_convert_query_to_sql(query)}
         """
         sql_params: list[Any] = []
@@ -431,6 +442,14 @@ class SQLiteActionController(ActionTableController, _BoundedSqliteConnectionMixI
         if params.before:
             sql += " AND created_at < ?"
             sql_params.append(params.before.isoformat())
+
+        # Add index range filters
+        if params.after_index is not None:
+            sql += " AND row_index > ?"
+            sql_params.append(params.after_index)
+        if params.before_index is not None:
+            sql += " AND row_index < ?"
+            sql_params.append(params.before_index)
 
         sql += " ORDER BY created_at"
 
@@ -448,9 +467,11 @@ class SQLiteActionController(ActionTableController, _BoundedSqliteConnectionMixI
 
         return [
             ActionRow(
-                id=row[0],
-                created_at=row[1],  # type: ignore  # Pydantic handles datetime string parsing
-                data=ActionRowData.model_validate_json(row[2]),
+                id=row[1],
+                created_at=row[2],  # type: ignore  # Pydantic handles datetime string parsing
+                data=ActionRowData.model_validate_json(row[3]).model_copy(
+                    update={"index": row[0]}
+                ),
             )
             for row in rows
         ]
@@ -473,18 +494,26 @@ class SQLiteActionController(ActionTableController, _BoundedSqliteConnectionMixI
             )
             await db.commit()
 
-        # Return the created action
+            # Get the row_index that was set by the trigger
+            async with db.execute(
+                "SELECT row_index FROM actions WHERE id = ?",
+                (action_id,),
+            ) as cursor:
+                row = await cursor.fetchone()
+                row_index = row[0] if row else None
+
+        # Return the created action with index
         return ActionRow(
             id=action_id,
             created_at=item.created_at,
-            data=item.data,
+            data=item.data.model_copy(update={"index": row_index}),
         )
 
     async def get_by_id(self, item_id: str) -> ActionRow | None:
         """Get action by ID."""
         async with self.connection as db:
             async with db.execute(
-                "SELECT id, created_at, data FROM actions WHERE id = ?",
+                "SELECT row_index, id, created_at, data FROM actions WHERE id = ?",
                 (item_id,),
             ) as cursor:
                 row = await cursor.fetchone()
@@ -493,17 +522,34 @@ class SQLiteActionController(ActionTableController, _BoundedSqliteConnectionMixI
             return None
 
         # Reconstruct action from JSON
-        action_data = ActionRowData.model_validate_json(row[2])
+        action_data = ActionRowData.model_validate_json(row[3]).model_copy(
+            update={"index": row[0]}
+        )
         return ActionRow(
-            id=row[0],
-            created_at=row[1],  # type: ignore  # Pydantic handles datetime string parsing
+            id=row[1],
+            created_at=row[2],  # type: ignore  # Pydantic handles datetime string parsing
             data=action_data,
         )
 
     async def get_all(self, params: RangeQueryParams | None = None) -> list[ActionRow]:
         """Get all actions with pagination."""
-        sql = "SELECT id, created_at, data FROM actions ORDER BY created_at"
+        sql = "SELECT row_index, id, created_at, data FROM actions"
         sql_params: list[Any] = []
+        where_clauses: list[str] = []
+
+        # Add index range filters
+        if params:
+            if params.after_index is not None:
+                where_clauses.append("row_index > ?")
+                sql_params.append(params.after_index)
+            if params.before_index is not None:
+                where_clauses.append("row_index < ?")
+                sql_params.append(params.before_index)
+
+        if where_clauses:
+            sql += " WHERE " + " AND ".join(where_clauses)
+
+        sql += " ORDER BY created_at"
 
         if params and params.limit:
             sql += " LIMIT ? OFFSET ?"
@@ -518,9 +564,11 @@ class SQLiteActionController(ActionTableController, _BoundedSqliteConnectionMixI
 
         return [
             ActionRow(
-                id=row[0],
-                created_at=row[1],  # type: ignore  # Pydantic handles datetime string parsing
-                data=ActionRowData.model_validate_json(row[2]),
+                id=row[1],
+                created_at=row[2],  # type: ignore  # Pydantic handles datetime string parsing
+                data=ActionRowData.model_validate_json(row[3]).model_copy(
+                    update={"index": row[0]}
+                ),
             )
             for row in rows
         ]

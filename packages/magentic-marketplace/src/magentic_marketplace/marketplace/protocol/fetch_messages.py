@@ -78,7 +78,7 @@ async def _fetch_messages_from_database(
     if fetch_messages.from_agent_id is not None:
         query &= queries.actions.send_message.from_agent(fetch_messages.from_agent_id)
 
-    # Setup query parameters with pagination and date filtering
+    # Setup query parameters with pagination and index filtering
     limit = (
         fetch_messages.limit + 1 if fetch_messages.limit else None
     )  # +1 to check for has_more
@@ -86,6 +86,7 @@ async def _fetch_messages_from_database(
         offset=fetch_messages.offset or 0,
         limit=limit,
         after=fetch_messages.after,
+        after_index=fetch_messages.after_index,
     )
 
     # Execute the query
@@ -130,4 +131,5 @@ def _convert_action_to_received_message(
         to_agent_id=params["to_agent_id"],
         created_at=action_row.created_at,
         message=message,
+        index=action_row.data.index,
     )
