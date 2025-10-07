@@ -181,9 +181,9 @@ class BaseClient:
         delay = min(delay, self.retry_config.max_delay)
 
         if self.retry_config.jitter:
-            # Add jitter: ±25% of the delay
+            # Add jitter: [0%, 25%] of the delay
             jitter_range = delay * self.retry_config.jitter_size
-            delay += random.uniform(-jitter_range, jitter_range)
+            delay += random.uniform(0, jitter_range)
 
         return max(0, delay)
 
