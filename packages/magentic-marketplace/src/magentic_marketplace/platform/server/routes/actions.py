@@ -64,6 +64,11 @@ async def execute_action(
             action=request,
             database=db,
         )
+    except DatabaseTooBusyError as e:
+        # Convert database busy errors to HTTP 429
+        raise HTTPException(
+            status_code=429, detail=f"Database too busy: {e.message}"
+        ) from e
     except Exception as ex:
         result = ActionExecutionResult(content=str(ex), is_error=True)
 
