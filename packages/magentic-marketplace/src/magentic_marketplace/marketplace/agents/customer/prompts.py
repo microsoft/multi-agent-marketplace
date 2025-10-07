@@ -58,10 +58,6 @@ Current Time: {current_time}
 You are an autonomous agent working for customer {self.customer.name}.
 They have the following request: {self.customer.request}
 
-Customer preferences:
-- Interested menu items: {", ".join(f"{item} (${price})" for item, price in self.customer.menu_features.items())}
-- Required amenities: {", ".join(self.customer.amenity_features)}
-
 IMPORTANT: You must fulfill their request using only the available actions.
 
 Available Actions:
