@@ -25,7 +25,7 @@ from ..base import (
     LogTableController,
 )
 from ..models import ActionRow, ActionRowData, AgentRow, LogRow
-from ..queries import AndQuery, JSONQuery, OrQuery, Query, RangeQueryParams
+from ..queries import AndQuery, JSONQuery, OrQuery, Query, QueryParams, RangeQueryParams
 
 # Global metrics tracking
 _connection_metrics = {
@@ -135,6 +135,56 @@ def _convert_query_to_sql(query: Query) -> str:
         return f"json_extract(data, '{query.path}') {sql_operator} {escaped_value}"
     else:
         return f"json_extract(data, '{query.path}') {sql_operator} {escaped_value}"
+
+
+def _convert_query_params_to_sql(
+    *,
+    sql: str,
+    query: Query | None = None,
+    params: QueryParams | None = None,
+    sql_params: list[Any] | None = None,
+):
+    sql_params = list(sql_params or [])
+    where_clauses: list[str] = []
+
+    # Add query filter if provided
+    if query is not None:
+        where_clauses.append(_convert_query_to_sql(query))
+
+    # Add time range filters
+    if params and isinstance(params, RangeQueryParams):
+        if params.after:
+            where_clauses.append("created_at > ?")
+            sql_params.append(params.after.isoformat())
+        if params.before:
+            where_clauses.append("created_at < ?")
+            sql_params.append(params.before.isoformat())
+
+        # Add index range filters
+        if params.after_index is not None:
+            where_clauses.append("rowid > ?")
+            sql_params.append(params.after_index)
+        if params.before_index is not None:
+            where_clauses.append("rowid < ?")
+            sql_params.append(params.before_index)
+
+    if where_clauses:
+        # Check if WHERE already exists in sql
+        if "WHERE" in sql.upper():
+            sql += " AND " + " AND ".join(where_clauses)
+        else:
+            sql += " WHERE " + " AND ".join(where_clauses)
+
+    sql += " ORDER BY rowid"
+
+    if params and params.limit:
+        sql += " LIMIT ? OFFSET ?"
+        sql_params.extend([params.limit, params.offset])
+    elif params and params.offset:
+        sql += " LIMIT -1 OFFSET ?"
+        sql_params.append(params.offset)
+
+    return sql, sql_params
 
 
 # SQL DDL for table creation
@@ -285,30 +335,10 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
 
     async def get_all(self, params: RangeQueryParams | None = None) -> list[AgentRow]:
         """Get all agents with pagination."""
-        sql = "SELECT rowid, id, created_at, data, agent_embedding FROM agents"
-        sql_params: list[Any] = []
-        where_clauses: list[str] = []
-
-        # Add index range filters
-        if params:
-            if params.after_index is not None:
-                where_clauses.append("rowid > ?")
-                sql_params.append(params.after_index)
-            if params.before_index is not None:
-                where_clauses.append("rowid < ?")
-                sql_params.append(params.before_index)
-
-        if where_clauses:
-            sql += " WHERE " + " AND ".join(where_clauses)
-
-        sql += " ORDER BY rowid"
-
-        if params and params.limit:
-            sql += " LIMIT ? OFFSET ?"
-            sql_params.extend([params.limit, params.offset])
-        elif params and params.offset:
-            sql += " OFFSET ?"
-            sql_params.append(params.offset)
+        sql, sql_params = _convert_query_params_to_sql(
+            sql="SELECT rowid, id, created_at, data, agent_embedding FROM agents",
+            params=params,
+        )
 
         async with self.connection as db:
             async with db.execute(sql, sql_params) as cursor:
@@ -329,38 +359,11 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
         self, query: Query, params: RangeQueryParams | None = None
     ) -> list[AgentRow]:
         """Find agents using JSONQuery objects."""
-        params = params or RangeQueryParams()
-        sql = f"""
-        SELECT rowid, id, created_at, data, agent_embedding FROM agents
-        WHERE {_convert_query_to_sql(query)}
-        """
-        sql_params: list[Any] = []
-
-        # Add time range filters
-        if params.after:
-            sql += " AND created_at > ?"
-            sql_params.append(params.after.isoformat())
-        if params.before:
-            sql += " AND created_at < ?"
-            sql_params.append(params.before.isoformat())
-
-        # Add index range filters
-        if params.after_index is not None:
-            sql += " AND rowid > ?"
-            sql_params.append(params.after_index)
-        if params.before_index is not None:
-            sql += " AND rowid < ?"
-            sql_params.append(params.before_index)
-
-        sql += " ORDER BY rowid"
-
-        # Add pagination
-        if params.limit:
-            sql += " LIMIT ? OFFSET ?"
-            sql_params.extend([params.limit, params.offset])
-        elif params.offset:
-            sql += " OFFSET ?"
-            sql_params.append(params.offset)
+        sql, sql_params = _convert_query_params_to_sql(
+            sql="SELECT rowid, id, created_at, data, agent_embedding FROM agents",
+            query=query,
+            params=params,
+        )
 
         async with self.connection as db:
             async with db.execute(sql, sql_params) as cursor:
@@ -452,38 +455,11 @@ class SQLiteActionController(ActionTableController, _BoundedSqliteConnectionMixI
         self, query: Query, params: RangeQueryParams | None = None
     ) -> list[ActionRow]:
         """Find actions using JSONQuery objects."""
-        params = params or RangeQueryParams()
-        sql = f"""
-        SELECT rowid, id, created_at, data FROM actions
-        WHERE {_convert_query_to_sql(query)}
-        """
-        sql_params: list[Any] = []
-
-        # Add time range filters
-        if params.after:
-            sql += " AND created_at > ?"
-            sql_params.append(params.after.isoformat())
-        if params.before:
-            sql += " AND created_at < ?"
-            sql_params.append(params.before.isoformat())
-
-        # Add index range filters
-        if params.after_index is not None:
-            sql += " AND rowid > ?"
-            sql_params.append(params.after_index)
-        if params.before_index is not None:
-            sql += " AND rowid < ?"
-            sql_params.append(params.before_index)
-
-        sql += " ORDER BY rowid"
-
-        # Add pagination
-        if params.limit:
-            sql += " LIMIT ? OFFSET ?"
-            sql_params.extend([params.limit, params.offset])
-        elif params.offset:
-            sql += " OFFSET ?"
-            sql_params.append(params.offset)
+        sql, sql_params = _convert_query_params_to_sql(
+            sql="SELECT rowid, id, created_at, data FROM actions",
+            query=query,
+            params=params,
+        )
 
         async with self.connection as db:
             async with db.execute(sql, sql_params) as cursor:
@@ -556,30 +532,10 @@ class SQLiteActionController(ActionTableController, _BoundedSqliteConnectionMixI
 
     async def get_all(self, params: RangeQueryParams | None = None) -> list[ActionRow]:
         """Get all actions with pagination."""
-        sql = "SELECT rowid, id, created_at, data FROM actions"
-        sql_params: list[Any] = []
-        where_clauses: list[str] = []
-
-        # Add index range filters
-        if params:
-            if params.after_index is not None:
-                where_clauses.append("rowid > ?")
-                sql_params.append(params.after_index)
-            if params.before_index is not None:
-                where_clauses.append("rowid < ?")
-                sql_params.append(params.before_index)
-
-        if where_clauses:
-            sql += " WHERE " + " AND ".join(where_clauses)
-
-        sql += " ORDER BY rowid"
-
-        if params and params.limit:
-            sql += " LIMIT ? OFFSET ?"
-            sql_params.extend([params.limit, params.offset])
-        elif params and params.offset:
-            sql += " OFFSET ?"
-            sql_params.append(params.offset)
+        sql, sql_params = _convert_query_params_to_sql(
+            sql="SELECT rowid, id, created_at, data FROM actions",
+            params=params,
+        )
 
         async with self.connection as db:
             async with db.execute(sql, sql_params) as cursor:
@@ -656,38 +612,11 @@ class SQLiteLogController(LogTableController, _BoundedSqliteConnectionMixIn):
         self, query: Query, params: RangeQueryParams | None = None
     ) -> list[LogRow]:
         """Find logs using JSONQuery objects."""
-        params = params or RangeQueryParams()
-        sql = f"""
-        SELECT rowid, id, created_at, data FROM logs
-        WHERE {_convert_query_to_sql(query)}
-        """
-        sql_params: list[Any] = []
-
-        # Add time range filters
-        if params.after:
-            sql += " AND created_at > ?"
-            sql_params.append(params.after.isoformat())
-        if params.before:
-            sql += " AND created_at < ?"
-            sql_params.append(params.before.isoformat())
-
-        # Add index range filters
-        if params.after_index is not None:
-            sql += " AND rowid > ?"
-            sql_params.append(params.after_index)
-        if params.before_index is not None:
-            sql += " AND rowid < ?"
-            sql_params.append(params.before_index)
-
-        sql += " ORDER BY rowid"
-
-        # Add pagination
-        if params.limit:
-            sql += " LIMIT ? OFFSET ?"
-            sql_params.extend([params.limit, params.offset])
-        elif params.offset:
-            sql += " OFFSET ?"
-            sql_params.append(params.offset)
+        sql, sql_params = _convert_query_params_to_sql(
+            sql="SELECT rowid, id, created_at, data FROM logs",
+            query=query,
+            params=params,
+        )
 
         async with self.connection as db:
             async with db.execute(sql, sql_params) as cursor:
@@ -754,30 +683,10 @@ class SQLiteLogController(LogTableController, _BoundedSqliteConnectionMixIn):
 
     async def get_all(self, params: RangeQueryParams | None = None) -> list[LogRow]:
         """Get all logs with pagination."""
-        sql = "SELECT rowid, id, created_at, data FROM logs"
-        sql_params: list[Any] = []
-        where_clauses: list[str] = []
-
-        # Add index range filters
-        if params:
-            if params.after_index is not None:
-                where_clauses.append("rowid > ?")
-                sql_params.append(params.after_index)
-            if params.before_index is not None:
-                where_clauses.append("rowid < ?")
-                sql_params.append(params.before_index)
-
-        if where_clauses:
-            sql += " WHERE " + " AND ".join(where_clauses)
-
-        sql += " ORDER BY rowid"
-
-        if params and params.limit:
-            sql += " LIMIT ? OFFSET ?"
-            sql_params.extend([params.limit, params.offset])
-        elif params and params.offset:
-            sql += " OFFSET ?"
-            sql_params.append(params.offset)
+        sql, sql_params = _convert_query_params_to_sql(
+            sql="SELECT rowid, id, created_at, data FROM logs",
+            params=params,
+        )
 
         async with self.connection as db:
             async with db.execute(sql, sql_params) as cursor:

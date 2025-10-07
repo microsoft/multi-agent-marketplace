@@ -1,6 +1,7 @@
 """Tests for row_index functionality across all database tables."""
 
 import asyncio
+import os
 import tempfile
 from collections.abc import AsyncGenerator
 from datetime import UTC, datetime
@@ -8,6 +9,7 @@ from datetime import UTC, datetime
 import pytest
 import pytest_asyncio
 
+from magentic_marketplace.platform.database.base import BaseDatabaseController
 from magentic_marketplace.platform.database.models import (
     ActionRow,
     ActionRowData,
@@ -16,9 +18,6 @@ from magentic_marketplace.platform.database.models import (
 )
 from magentic_marketplace.platform.database.queries import RangeQueryParams
 from magentic_marketplace.platform.database.sqlite import create_sqlite_database
-from magentic_marketplace.platform.database.sqlite.sqlite import (
-    SQLiteDatabaseController,
-)
 from magentic_marketplace.platform.shared.models import (
     ActionExecutionRequest,
     ActionExecutionResult,
@@ -26,23 +25,69 @@ from magentic_marketplace.platform.shared.models import (
     Log,
 )
 
+# Check if PostgreSQL is available
+POSTGRESQL_AVAILABLE = False
+try:
+    from magentic_marketplace.platform.database.postgresql import (
+        create_postgresql_database,
+    )
 
-@pytest_asyncio.fixture
-async def database() -> AsyncGenerator[SQLiteDatabaseController]:
-    """Create a test database."""
-    with tempfile.NamedTemporaryFile(suffix=".db", delete=False) as temp_file:
-        db_path = temp_file.name
+    POSTGRESQL_AVAILABLE = True
+except ImportError:
+    pass
 
-    async with create_sqlite_database(db_path) as db:
-        yield db
 
-    # Cleanup
-    try:
-        import os
+@pytest_asyncio.fixture(
+    params=["sqlite", "postgresql"] if POSTGRESQL_AVAILABLE else ["sqlite"],
+    ids=lambda x: f"db={x}",
+)
+async def database(request) -> AsyncGenerator[BaseDatabaseController]:
+    """Create a test database - parameterized to test both SQLite and PostgreSQL."""
+    db_type = request.param
 
-        os.unlink(db_path)
-    except Exception:
-        pass
+    if db_type == "sqlite":
+        # SQLite setup
+        with tempfile.NamedTemporaryFile(suffix=".db", delete=False) as temp_file:
+            db_path = temp_file.name
+
+        async with create_sqlite_database(db_path) as db:
+            yield db
+
+        # Cleanup
+        try:
+            os.unlink(db_path)
+        except Exception:
+            pass
+
+    elif db_type == "postgresql":
+        # PostgreSQL setup - check for connection info from environment
+        host = os.environ.get("POSTGRES_HOST", "localhost")
+        port = int(os.environ.get("POSTGRES_PORT", "5432"))
+        database = os.environ.get("POSTGRES_DB", "marketplace_test")
+        user = os.environ.get("POSTGRES_USER", "postgres")
+        password = os.environ.get("POSTGRES_PASSWORD", None)
+
+        # Generate unique schema name for this test run
+        import uuid
+
+        schema = f"test_{uuid.uuid4().hex[:16]}"
+
+        try:
+            async with create_postgresql_database(  # pyright: ignore[reportPossiblyUnboundVariable]
+                schema=schema,
+                host=host,
+                port=port,
+                database=database,
+                user=user,
+                password=password,
+                min_size=1,
+                max_size=2,
+            ) as db:
+                yield db
+        except Exception as e:
+            pytest.skip(f"PostgreSQL not available: {e}")
+    else:
+        raise ValueError(f"Unknown database type: {db_type}")
 
 
 class TestRowIndexIncrement:
