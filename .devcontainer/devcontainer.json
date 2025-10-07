@@ -29,5 +29,5 @@
             ]
         }
     },
-    "postStartCommand": "chmod +x scripts/codespaces.sh && ./scripts/codespaces.sh"
+    "postStartCommand": "chmod +x codespaces.sh && ./codespaces.sh"
 }
