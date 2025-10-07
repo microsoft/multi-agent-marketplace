@@ -47,6 +47,7 @@ class BaseSimpleMarketplaceAgent(BaseAgent[TProfile]):
         # Track last fetch index
         self.last_fetch_index: int | None = None
         self.llm_config = llm_config or BaseLLMConfig()
+        self._seen_message_indexes: set[int] = set()
 
     async def send_message(self, to_agent_id: str, message: Message):
         """Send a message to another agent.
@@ -91,7 +92,7 @@ class BaseSimpleMarketplaceAgent(BaseAgent[TProfile]):
 
         """
         action = FetchMessages(
-            after_index=self.last_fetch_index,
+            # after_index=self.last_fetch_index,
         )
 
         result = await self.execute_action(action)
@@ -106,17 +107,24 @@ class BaseSimpleMarketplaceAgent(BaseAgent[TProfile]):
         # TODO: Fetch next page if has_more
         response = FetchMessagesResponse.model_validate(result.content)
 
-        # Update last_fetch_index to the highest index from the response
-        if response.messages:
-            max_index = max(msg.index for msg in response.messages)
-            if self.last_fetch_index:
-                if any(msg.index <= self.last_fetch_index for msg in response.messages):
-                    self.logger.error(
-                        "Fetched a message with index less than or equal to last_fetch_index!"
-                    )
-            self.last_fetch_index = max_index
+        new_messages = []
+        for message in response.messages:
+            if message.index not in self._seen_message_indexes:
+                new_messages.append(message)
+                self._seen_message_indexes.add(message.index)
 
-        return response
+        return response.model_copy(update={"messages": new_messages})
+        # # Update last_fetch_index to the highest index from the response
+        # if response.messages:
+        #     max_index = max(msg.index for msg in response.messages)
+        #     if self.last_fetch_index:
+        #         if any(msg.index <= self.last_fetch_index for msg in response.messages):
+        #             self.logger.error(
+        #                 "Fetched a message with index less than or equal to last_fetch_index!"
+        #             )
+        #     self.last_fetch_index = max_index
+
+        # return response
 
     async def generate(self, prompt: str, **kwargs: Any) -> tuple[str, Any]:
         """Generate LLM response with automatic logging.
