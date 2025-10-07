@@ -334,7 +334,7 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
         if where_clauses:
             sql += " WHERE " + " AND ".join(where_clauses)
 
-        sql += " ORDER BY created_at"
+        sql += " ORDER BY row_index"
 
         if params and params.limit:
             sql += " LIMIT ? OFFSET ?"
@@ -385,7 +385,7 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
             sql += " AND row_index < ?"
             sql_params.append(params.before_index)
 
-        sql += " ORDER BY created_at"
+        sql += " ORDER BY row_index"
 
         # Add pagination
         if params.limit:
@@ -508,7 +508,7 @@ class SQLiteActionController(ActionTableController, _BoundedSqliteConnectionMixI
             sql += " AND row_index < ?"
             sql_params.append(params.before_index)
 
-        sql += " ORDER BY created_at"
+        sql += " ORDER BY row_index"
 
         # Add pagination
         if params.limit:
@@ -605,7 +605,7 @@ class SQLiteActionController(ActionTableController, _BoundedSqliteConnectionMixI
         if where_clauses:
             sql += " WHERE " + " AND ".join(where_clauses)
 
-        sql += " ORDER BY row_index, created_at"
+        sql += " ORDER BY row_index"
 
         if params and params.limit:
             sql += " LIMIT ? OFFSET ?"
@@ -712,7 +712,7 @@ class SQLiteLogController(LogTableController, _BoundedSqliteConnectionMixIn):
             sql += " AND row_index < ?"
             sql_params.append(params.before_index)
 
-        sql += " ORDER BY created_at"
+        sql += " ORDER BY row_index"
 
         # Add pagination
         if params.limit:
@@ -803,7 +803,7 @@ class SQLiteLogController(LogTableController, _BoundedSqliteConnectionMixIn):
         if where_clauses:
             sql += " WHERE " + " AND ".join(where_clauses)
 
-        sql += " ORDER BY created_at"
+        sql += " ORDER BY row_index"
 
         if params and params.limit:
             sql += " LIMIT ? OFFSET ?"

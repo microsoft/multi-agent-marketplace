@@ -265,7 +265,7 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
 
     async def get_all(self, params: RangeQueryParams | None = None) -> list[AgentRow]:
         """Get all agents with pagination."""
-        sql = f"SELECT id, created_at, data, agent_embedding FROM {self._schema}.agents ORDER BY created_at"
+        sql = f"SELECT id, created_at, data, agent_embedding FROM {self._schema}.agents ORDER BY row_index"
         sql_params = []
 
         if params and params.limit:
@@ -309,7 +309,7 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
             sql += f" AND created_at < ${len(sql_params) + 1}"
             sql_params.append(params.before)
 
-        sql += " ORDER BY created_at"
+        sql += " ORDER BY row_index"
 
         # Add pagination
         if params.limit:
@@ -418,7 +418,7 @@ class PostgreSQLActionController(
             sql += f" AND row_index < ${len(sql_params) + 1}"
             sql_params.append(params.before_index)
 
-        sql += " ORDER BY created_at"
+        sql += " ORDER BY row_index"
 
         # Add pagination
         if params.limit:
@@ -501,7 +501,7 @@ class PostgreSQLActionController(
         if where_clauses:
             sql += " WHERE " + " AND ".join(where_clauses)
 
-        sql += " ORDER BY created_at"
+        sql += " ORDER BY row_index"
 
         if params and params.limit:
             sql += f" LIMIT ${len(sql_params) + 1} OFFSET ${len(sql_params) + 2}"
@@ -603,7 +603,7 @@ class PostgreSQLLogController(LogTableController, _BoundedPostgresConnectionMixI
             sql += f" AND created_at < ${len(sql_params) + 1}"
             sql_params.append(params.before)
 
-        sql += " ORDER BY created_at"
+        sql += " ORDER BY row_index"
 
         # Add pagination
         if params.limit:
@@ -659,9 +659,7 @@ class PostgreSQLLogController(LogTableController, _BoundedPostgresConnectionMixI
 
     async def get_all(self, params: RangeQueryParams | None = None) -> list[LogRow]:
         """Get all logs with pagination."""
-        sql = (
-            f"SELECT id, created_at, data FROM {self._schema}.logs ORDER BY created_at"
-        )
+        sql = f"SELECT id, created_at, data FROM {self._schema}.logs ORDER BY row_index"
         sql_params = []
 
         if params and params.limit:
