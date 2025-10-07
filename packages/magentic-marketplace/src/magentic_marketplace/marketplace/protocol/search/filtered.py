@@ -1,5 +1,7 @@
 """Filtered search implementation for the simple marketplace."""
 
+import math
+
 from magentic_marketplace.platform.database.base import BaseDatabaseController
 from magentic_marketplace.platform.database.queries.agents import (
     query as agent_query,
@@ -9,15 +11,15 @@ from magentic_marketplace.platform.database.queries.base import (
     RangeQueryParams,
 )
 
-from ...actions import Search
-from ...shared.models import BusinessAgentProfile, SearchConstraints
+from ...actions import Search, SearchResponse
+from ...shared.models import SearchConstraints
 from .utils import convert_agent_rows_to_businesses
 
 
 async def execute_filtered_search(
     search: Search,
     database: BaseDatabaseController,
-) -> list[BusinessAgentProfile]:
+) -> SearchResponse:
     """Execute filtered search using constraints and text matching."""
     # Start with base business filter
     query = agent_query(path="$.business", value=None, operator="!=")
@@ -37,15 +39,30 @@ async def execute_filtered_search(
     if search.constraints:
         query = _add_constraint_query(query, search.constraints)
 
-    # Execute query
-    params = RangeQueryParams(limit=search.limit)
+    # Execute query without limiting so we can compute total counts
+    params = RangeQueryParams()
     agent_rows = await database.agents.find(query, params)
 
     # Convert and sort results
     businesses = await convert_agent_rows_to_businesses(agent_rows)
     businesses.sort(key=lambda b: b.business.rating, reverse=True)
 
-    return businesses
+    total_possible_results = len(businesses)
+    paginated_businesses = businesses
+    total_pages = 1
+
+    if search.limit and search.limit > 0:
+        start = (search.page - 1) * search.limit
+        end = start + search.limit
+        paginated_businesses = businesses[start:end]
+        total_pages = math.ceil(total_possible_results / search.limit)
+
+    return SearchResponse(
+        businesses=paginated_businesses,
+        search_algorithm=search.search_algorithm,
+        total_possible_results=total_possible_results,
+        total_pages=total_pages,
+    )
 
 
 def _add_constraint_query(input_query: Query, constraints: SearchConstraints) -> Query:

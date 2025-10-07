@@ -184,6 +184,10 @@ class BusinessAgent(BaseSimpleMarketplaceAgent[BusinessAgentProfile]):
         # Check for new messages
         messages = await self.fetch_messages()
 
+        # self.logger.info(
+        #     f"handling business step. Num messages: {len(messages.messages)}"
+        # )
+
         # Group new messages by customer
         new_messages_by_customer: dict[str, list[ReceivedMessage]] = defaultdict(list)
         for received_message in messages.messages:

@@ -164,7 +164,7 @@ class HistoryStorage:
             try:
                 search_response = SearchResponse.model_validate(result.content)
                 formatted_entries.append(
-                    f"✅ Found {len(search_response.businesses)} businesses:"
+                    f"✅ Searched {search_response.total_possible_results} business(es). Showing page {action.page} of {search_response.total_pages}"
                 )
                 for business in search_response.businesses:
                     formatted_entries.append(

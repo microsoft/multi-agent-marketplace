@@ -76,6 +76,7 @@ class Search(BaseAction):
         default=None, description="Search constraints"
     )
     limit: int = Field(default=10, description="Maximum number of results to return")
+    page: int = Field(default=1, description="Page number for pagination")
 
 
 class SearchResponse(BaseModel):
@@ -83,6 +84,12 @@ class SearchResponse(BaseModel):
 
     businesses: list[BusinessAgentProfile]
     search_algorithm: str
+    total_possible_results: int | None = Field(
+        default=None, description="Total number of possible results"
+    )
+    total_pages: int | None = Field(
+        default=None, description="Total number of pages available"
+    )
 
 
 # Action is a union type of the action types

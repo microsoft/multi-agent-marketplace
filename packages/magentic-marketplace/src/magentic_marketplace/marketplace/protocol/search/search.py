@@ -5,7 +5,7 @@ import logging
 from magentic_marketplace.platform.database.base import BaseDatabaseController
 from magentic_marketplace.platform.shared.models import ActionExecutionResult
 
-from ...actions import Search, SearchAlgorithm, SearchResponse
+from ...actions import Search, SearchAlgorithm
 from ...shared.models import AgentProfile, CustomerAgentProfile
 from .filtered import execute_filtered_search
 from .lexical import execute_lexical_search
@@ -39,29 +39,23 @@ async def execute_search(
     try:
         # Execute the appropriate search algorithm
         if search.search_algorithm == SearchAlgorithm.FILTERED:
-            businesses = await execute_filtered_search(search, database)
+            response = await execute_filtered_search(search, database)
         elif search.search_algorithm == SearchAlgorithm.RNR:
-            businesses = await execute_rnr_search(search, database)
+            response = await execute_rnr_search(search, database)
         elif search.search_algorithm == SearchAlgorithm.LEXICAL:
-            businesses = await execute_lexical_search(search, database)
+            response = await execute_lexical_search(search, database)
         elif search.search_algorithm == SearchAlgorithm.OPTIMAL:
             if agent is None:
                 raise ValueError("agent is required to perform optimal search")
             # Parse agent as CustomerAgentProfile to extract customer
             customer_agent = CustomerAgentProfile.model_validate(agent.model_dump())
-            businesses = await execute_optimal_search(
+            response = await execute_optimal_search(
                 search=search, customer=customer_agent.customer, database=database
             )
         elif search.search_algorithm == SearchAlgorithm.SIMPLE:
-            businesses = await execute_simple_search(search, database)
+            response = await execute_simple_search(search, database)
         else:
             raise ValueError(f"Unknown search algorithm: {search.search_algorithm}")
-
-        # Create response
-        response = SearchResponse(
-            businesses=businesses,
-            search_algorithm=search.search_algorithm,
-        )
 
         logger.debug(f"SearchResponse: {response.model_dump_json(indent=2)}")
 

@@ -202,6 +202,7 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
                 search_algorithm=self._search_algorithm,
                 constraints=action.search_constraints,
                 limit=self._search_bandwidth,
+                page=action.search_page,
             )
             search_result = await self.execute_action(search_action)
 
@@ -210,7 +211,7 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
                 business_ids = [ba.id for ba in search_response.businesses]
 
                 self.logger.info(
-                    f"Number of Search Results: {len(business_ids)} business(es) found."
+                    f'Search query: "{search_action.query}", resulting in {len(search_response.businesses)} business(es) found out of {search_response.total_possible_results} total business(es). Showing page {action.search_page} of {search_response.total_pages}.'
                 )
                 self.known_business_ids.extend(business_ids)
 

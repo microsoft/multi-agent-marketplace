@@ -24,6 +24,9 @@ class CustomerAction(BaseModel):
         None,
         description="Search constraints. Either search_query or search_constraints are required when action_type is 'search_businesses'.",
     )
+    search_page: int = Field(
+        1, description="Page number to retrieve for the search results (default: 1)"
+    )
 
     # Send messages-specific fields
     target_business_ids: list[str] | None = Field(
