@@ -131,5 +131,5 @@ def _convert_action_to_received_message(
         to_agent_id=params["to_agent_id"],
         created_at=action_row.created_at,
         message=message,
-        index=action_row.data.index,
+        index=action_row.index,
     )

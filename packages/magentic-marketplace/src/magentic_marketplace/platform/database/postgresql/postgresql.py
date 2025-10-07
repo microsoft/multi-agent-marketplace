@@ -153,7 +153,8 @@ CREATE TABLE IF NOT EXISTS {schema}.agents (
     id TEXT PRIMARY KEY,
     created_at TIMESTAMPTZ NOT NULL,
     data JSONB NOT NULL,
-    agent_embedding BYTEA
+    agent_embedding BYTEA,
+    row_index BIGINT GENERATED ALWAYS AS IDENTITY UNIQUE
 );
 
 CREATE TABLE IF NOT EXISTS {schema}.actions (
@@ -166,14 +167,17 @@ CREATE TABLE IF NOT EXISTS {schema}.actions (
 CREATE TABLE IF NOT EXISTS {schema}.logs (
     id TEXT PRIMARY KEY,
     created_at TIMESTAMPTZ NOT NULL,
-    data JSONB NOT NULL
+    data JSONB NOT NULL,
+    row_index BIGINT GENERATED ALWAYS AS IDENTITY UNIQUE
 );
 
 -- Add indexes for better performance
 CREATE INDEX IF NOT EXISTS agents_created_at_idx ON {schema}.agents(created_at);
+CREATE INDEX IF NOT EXISTS agents_row_index_idx ON {schema}.agents(row_index);
 CREATE INDEX IF NOT EXISTS actions_created_at_idx ON {schema}.actions(created_at);
 CREATE INDEX IF NOT EXISTS actions_row_index_idx ON {schema}.actions(row_index);
 CREATE INDEX IF NOT EXISTS logs_created_at_idx ON {schema}.logs(created_at);
+CREATE INDEX IF NOT EXISTS logs_row_index_idx ON {schema}.logs(row_index);
 
 -- Add GIN indexes for JSONB columns for fast JSON queries
 CREATE INDEX IF NOT EXISTS agents_data_gin_idx ON {schema}.agents USING GIN(data);
@@ -455,7 +459,8 @@ class PostgreSQLActionController(
         return ActionRow(
             id=action_id,
             created_at=item.created_at,
-            data=item.data.model_copy(update={"index": row_index}),
+            data=item.data,
+            index=row_index,
         )
 
     async def get_by_id(self, item_id: str) -> ActionRow | None:

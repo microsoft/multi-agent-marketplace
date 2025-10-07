@@ -20,6 +20,7 @@ class Row(BaseModel, Generic[T]):
     id: str
     created_at: AwareDatetime
     data: T
+    index: int | None = None
 
 
 class AgentRow(Row[AgentProfile]):
@@ -34,7 +35,6 @@ class ActionRowData(BaseModel):
     agent_id: str
     request: ActionExecutionRequest
     result: ActionExecutionResult
-    index: int | None = None
 
 
 class ActionRow(Row[ActionRowData]):
