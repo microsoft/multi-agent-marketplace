@@ -143,53 +143,20 @@ CREATE TABLE IF NOT EXISTS agents (
     id TEXT PRIMARY KEY,
     created_at TEXT NOT NULL,
     data TEXT NOT NULL,
-    agent_embedding BLOB,
-    row_index INTEGER
+    agent_embedding BLOB
 );
-
-CREATE INDEX IF NOT EXISTS agents_row_index_idx ON agents(row_index);
-
-CREATE TRIGGER IF NOT EXISTS agents_row_index_trigger
-AFTER INSERT ON agents
-FOR EACH ROW
-WHEN NEW.row_index IS NULL
-BEGIN
-    UPDATE agents SET row_index = (SELECT COALESCE(MAX(row_index), 0) + 1 FROM agents WHERE rowid != NEW.rowid) WHERE rowid = NEW.rowid;
-END;
 
 CREATE TABLE IF NOT EXISTS actions (
     id TEXT PRIMARY KEY,
     created_at TEXT NOT NULL,
-    data TEXT NOT NULL,
-    row_index INTEGER
+    data TEXT NOT NULL
 );
-
-CREATE INDEX IF NOT EXISTS actions_row_index_idx ON actions(row_index);
-
-CREATE TRIGGER IF NOT EXISTS actions_row_index_trigger
-AFTER INSERT ON actions
-FOR EACH ROW
-WHEN NEW.row_index IS NULL
-BEGIN
-    UPDATE actions SET row_index = (SELECT COALESCE(MAX(row_index), 0) + 1 FROM actions WHERE rowid != NEW.rowid) WHERE rowid = NEW.rowid;
-END;
 
 CREATE TABLE IF NOT EXISTS logs (
     id TEXT PRIMARY KEY,
     created_at TEXT NOT NULL,
-    data TEXT NOT NULL,
-    row_index INTEGER
+    data TEXT NOT NULL
 );
-
-CREATE INDEX IF NOT EXISTS logs_row_index_idx ON logs(row_index);
-
-CREATE TRIGGER IF NOT EXISTS logs_row_index_trigger
-AFTER INSERT ON logs
-FOR EACH ROW
-WHEN NEW.row_index IS NULL
-BEGIN
-    UPDATE logs SET row_index = (SELECT COALESCE(MAX(row_index), 0) + 1 FROM logs WHERE rowid != NEW.rowid) WHERE rowid = NEW.rowid;
-END;
 """
 
 
@@ -277,9 +244,9 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
             )
             await db.commit()
 
-            # Get the row_index that was set by the trigger
+            # Get the rowid that was automatically assigned
             async with db.execute(
-                "SELECT row_index FROM agents WHERE id = ?",
+                "SELECT rowid FROM agents WHERE id = ?",
                 (agent_id,),
             ) as cursor:
                 row = await cursor.fetchone()
@@ -298,7 +265,7 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
         """Get agent by ID."""
         async with self.connection as db:
             async with db.execute(
-                "SELECT row_index, id, created_at, data, agent_embedding FROM agents WHERE id = ?",
+                "SELECT rowid, id, created_at, data, agent_embedding FROM agents WHERE id = ?",
                 (item_id,),
             ) as cursor:
                 row = await cursor.fetchone()
@@ -318,23 +285,23 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
 
     async def get_all(self, params: RangeQueryParams | None = None) -> list[AgentRow]:
         """Get all agents with pagination."""
-        sql = "SELECT row_index, id, created_at, data, agent_embedding FROM agents"
+        sql = "SELECT rowid, id, created_at, data, agent_embedding FROM agents"
         sql_params: list[Any] = []
         where_clauses: list[str] = []
 
         # Add index range filters
         if params:
             if params.after_index is not None:
-                where_clauses.append("row_index > ?")
+                where_clauses.append("rowid > ?")
                 sql_params.append(params.after_index)
             if params.before_index is not None:
-                where_clauses.append("row_index < ?")
+                where_clauses.append("rowid < ?")
                 sql_params.append(params.before_index)
 
         if where_clauses:
             sql += " WHERE " + " AND ".join(where_clauses)
 
-        sql += " ORDER BY row_index"
+        sql += " ORDER BY rowid"
 
         if params and params.limit:
             sql += " LIMIT ? OFFSET ?"
@@ -364,7 +331,7 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
         """Find agents using JSONQuery objects."""
         params = params or RangeQueryParams()
         sql = f"""
-        SELECT row_index, id, created_at, data, agent_embedding FROM agents
+        SELECT rowid, id, created_at, data, agent_embedding FROM agents
         WHERE {_convert_query_to_sql(query)}
         """
         sql_params: list[Any] = []
@@ -379,13 +346,13 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
 
         # Add index range filters
         if params.after_index is not None:
-            sql += " AND row_index > ?"
+            sql += " AND rowid > ?"
             sql_params.append(params.after_index)
         if params.before_index is not None:
-            sql += " AND row_index < ?"
+            sql += " AND rowid < ?"
             sql_params.append(params.before_index)
 
-        sql += " ORDER BY row_index"
+        sql += " ORDER BY rowid"
 
         # Add pagination
         if params.limit:
@@ -487,7 +454,7 @@ class SQLiteActionController(ActionTableController, _BoundedSqliteConnectionMixI
         """Find actions using JSONQuery objects."""
         params = params or RangeQueryParams()
         sql = f"""
-        SELECT row_index, id, created_at, data FROM actions
+        SELECT rowid, id, created_at, data FROM actions
         WHERE {_convert_query_to_sql(query)}
         """
         sql_params: list[Any] = []
@@ -502,13 +469,13 @@ class SQLiteActionController(ActionTableController, _BoundedSqliteConnectionMixI
 
         # Add index range filters
         if params.after_index is not None:
-            sql += " AND row_index > ?"
+            sql += " AND rowid > ?"
             sql_params.append(params.after_index)
         if params.before_index is not None:
-            sql += " AND row_index < ?"
+            sql += " AND rowid < ?"
             sql_params.append(params.before_index)
 
-        sql += " ORDER BY row_index"
+        sql += " ORDER BY rowid"
 
         # Add pagination
         if params.limit:
@@ -550,9 +517,9 @@ class SQLiteActionController(ActionTableController, _BoundedSqliteConnectionMixI
             )
             await db.commit()
 
-            # Get the row_index that was set by the trigger
+            # Get the rowid that was automatically assigned
             async with db.execute(
-                "SELECT row_index FROM actions WHERE id = ?",
+                "SELECT rowid FROM actions WHERE id = ?",
                 (action_id,),
             ) as cursor:
                 row = await cursor.fetchone()
@@ -570,7 +537,7 @@ class SQLiteActionController(ActionTableController, _BoundedSqliteConnectionMixI
         """Get action by ID."""
         async with self.connection as db:
             async with db.execute(
-                "SELECT row_index, id, created_at, data FROM actions WHERE id = ?",
+                "SELECT rowid, id, created_at, data FROM actions WHERE id = ?",
                 (item_id,),
             ) as cursor:
                 row = await cursor.fetchone()
@@ -589,23 +556,23 @@ class SQLiteActionController(ActionTableController, _BoundedSqliteConnectionMixI
 
     async def get_all(self, params: RangeQueryParams | None = None) -> list[ActionRow]:
         """Get all actions with pagination."""
-        sql = "SELECT row_index, id, created_at, data FROM actions"
+        sql = "SELECT rowid, id, created_at, data FROM actions"
         sql_params: list[Any] = []
         where_clauses: list[str] = []
 
         # Add index range filters
         if params:
             if params.after_index is not None:
-                where_clauses.append("row_index > ?")
+                where_clauses.append("rowid > ?")
                 sql_params.append(params.after_index)
             if params.before_index is not None:
-                where_clauses.append("row_index < ?")
+                where_clauses.append("rowid < ?")
                 sql_params.append(params.before_index)
 
         if where_clauses:
             sql += " WHERE " + " AND ".join(where_clauses)
 
-        sql += " ORDER BY row_index"
+        sql += " ORDER BY rowid"
 
         if params and params.limit:
             sql += " LIMIT ? OFFSET ?"
@@ -691,7 +658,7 @@ class SQLiteLogController(LogTableController, _BoundedSqliteConnectionMixIn):
         """Find logs using JSONQuery objects."""
         params = params or RangeQueryParams()
         sql = f"""
-        SELECT row_index, id, created_at, data FROM logs
+        SELECT rowid, id, created_at, data FROM logs
         WHERE {_convert_query_to_sql(query)}
         """
         sql_params: list[Any] = []
@@ -706,13 +673,13 @@ class SQLiteLogController(LogTableController, _BoundedSqliteConnectionMixIn):
 
         # Add index range filters
         if params.after_index is not None:
-            sql += " AND row_index > ?"
+            sql += " AND rowid > ?"
             sql_params.append(params.after_index)
         if params.before_index is not None:
-            sql += " AND row_index < ?"
+            sql += " AND rowid < ?"
             sql_params.append(params.before_index)
 
-        sql += " ORDER BY row_index"
+        sql += " ORDER BY rowid"
 
         # Add pagination
         if params.limit:
@@ -751,9 +718,9 @@ class SQLiteLogController(LogTableController, _BoundedSqliteConnectionMixIn):
             )
             await db.commit()
 
-            # Get the row_index that was set by the trigger
+            # Get the rowid that was automatically assigned
             async with db.execute(
-                "SELECT row_index FROM logs WHERE id = ?",
+                "SELECT rowid FROM logs WHERE id = ?",
                 (log_id,),
             ) as cursor:
                 row = await cursor.fetchone()
@@ -768,7 +735,7 @@ class SQLiteLogController(LogTableController, _BoundedSqliteConnectionMixIn):
         """Get log by ID."""
         async with self.connection as db:
             async with db.execute(
-                "SELECT row_index, id, created_at, data FROM logs WHERE id = ?",
+                "SELECT rowid, id, created_at, data FROM logs WHERE id = ?",
                 (item_id,),
             ) as cursor:
                 row = await cursor.fetchone()
@@ -787,23 +754,23 @@ class SQLiteLogController(LogTableController, _BoundedSqliteConnectionMixIn):
 
     async def get_all(self, params: RangeQueryParams | None = None) -> list[LogRow]:
         """Get all logs with pagination."""
-        sql = "SELECT row_index, id, created_at, data FROM logs"
+        sql = "SELECT rowid, id, created_at, data FROM logs"
         sql_params: list[Any] = []
         where_clauses: list[str] = []
 
         # Add index range filters
         if params:
             if params.after_index is not None:
-                where_clauses.append("row_index > ?")
+                where_clauses.append("rowid > ?")
                 sql_params.append(params.after_index)
             if params.before_index is not None:
-                where_clauses.append("row_index < ?")
+                where_clauses.append("rowid < ?")
                 sql_params.append(params.before_index)
 
         if where_clauses:
             sql += " WHERE " + " AND ".join(where_clauses)
 
-        sql += " ORDER BY row_index"
+        sql += " ORDER BY rowid"
 
         if params and params.limit:
             sql += " LIMIT ? OFFSET ?"
