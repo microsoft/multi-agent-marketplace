@@ -142,6 +142,9 @@ async def _validate_message_content(
                     "message": f"No unexpired order proposals found with id {proposal_id}",
                 }
 
+        except DatabaseTooBusyError:
+            # Re-raise database busy errors so they can be converted to HTTP 429
+            raise
         except Exception as e:
             return {
                 "error_type": "database_error",

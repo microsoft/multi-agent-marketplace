@@ -208,6 +208,168 @@ class TestRowIndexUniqueness:
         assert set(indices) == set(range(1, 11))
 
 
+class TestRowIndexAlwaysSet:
+    """Test that index is always set when fetching from database."""
+
+    @pytest.mark.asyncio
+    async def test_action_get_by_id_has_index(self, database):
+        """Test that get_by_id always returns action with index set."""
+        # Create an action
+        action = ActionRow(
+            id="action-1",
+            created_at=datetime.now(UTC),
+            data=ActionRowData(
+                agent_id="test-agent",
+                request=ActionExecutionRequest(
+                    name="TestAction", parameters={"test": 1}
+                ),
+                result=ActionExecutionResult(is_error=False, content={}),
+            ),
+        )
+        created_action = await database.actions.create(action)
+        assert created_action.index is not None
+
+        # Fetch by ID
+        fetched_action = await database.actions.get_by_id("action-1")
+        assert fetched_action is not None
+        assert fetched_action.index is not None, (
+            "get_by_id must return action with index set"
+        )
+
+    @pytest.mark.asyncio
+    async def test_action_get_all_has_index(self, database):
+        """Test that get_all always returns actions with index set."""
+        # Create multiple actions
+        for i in range(3):
+            await database.actions.create(
+                ActionRow(
+                    id=f"action-{i}",
+                    created_at=datetime.now(UTC),
+                    data=ActionRowData(
+                        agent_id="test-agent",
+                        request=ActionExecutionRequest(
+                            name="TestAction", parameters={"test": i}
+                        ),
+                        result=ActionExecutionResult(is_error=False, content={}),
+                    ),
+                )
+            )
+
+        # Fetch all
+        actions = await database.actions.get_all()
+        assert len(actions) == 3
+        for action in actions:
+            assert action.index is not None, (
+                "get_all must return actions with index set"
+            )
+
+    @pytest.mark.asyncio
+    async def test_action_find_has_index(self, database):
+        """Test that find always returns actions with index set."""
+        from magentic_marketplace.platform.database.queries import (
+            actions as action_queries,
+        )
+
+        # Create multiple actions
+        for i in range(3):
+            await database.actions.create(
+                ActionRow(
+                    id=f"action-{i}",
+                    created_at=datetime.now(UTC),
+                    data=ActionRowData(
+                        agent_id="test-agent",
+                        request=ActionExecutionRequest(
+                            name="TestAction", parameters={"test": i}
+                        ),
+                        result=ActionExecutionResult(is_error=False, content={}),
+                    ),
+                )
+            )
+
+        # Find actions
+        query = action_queries.agent_id(value="test-agent", operator="=")
+        actions = await database.actions.find(query)
+        assert len(actions) == 3
+        for action in actions:
+            assert action.index is not None, "find must return actions with index set"
+
+    @pytest.mark.asyncio
+    async def test_agent_get_by_id_has_index(self, database):
+        """Test that get_by_id always returns agent with index set."""
+        # Create an agent
+        agent = AgentRow(
+            id="agent-1",
+            created_at=datetime.now(UTC),
+            data=AgentProfile(id="agent-1", metadata={}),
+        )
+        created_agent = await database.agents.create(agent)
+        assert created_agent.index is not None
+
+        # Fetch by ID
+        fetched_agent = await database.agents.get_by_id("agent-1")
+        assert fetched_agent is not None
+        assert fetched_agent.index is not None, (
+            "get_by_id must return agent with index set"
+        )
+
+    @pytest.mark.asyncio
+    async def test_agent_get_all_has_index(self, database):
+        """Test that get_all always returns agents with index set."""
+        # Create multiple agents
+        for i in range(3):
+            await database.agents.create(
+                AgentRow(
+                    id=f"agent-{i}",
+                    created_at=datetime.now(UTC),
+                    data=AgentProfile(id=f"agent-{i}", metadata={}),
+                )
+            )
+
+        # Fetch all
+        agents = await database.agents.get_all()
+        assert len(agents) == 3
+        for agent in agents:
+            assert agent.index is not None, "get_all must return agents with index set"
+
+    @pytest.mark.asyncio
+    async def test_log_get_by_id_has_index(self, database):
+        """Test that get_by_id always returns log with index set."""
+        # Create a log
+        log = LogRow(
+            id="log-1",
+            created_at=datetime.now(UTC),
+            data=Log(level="info", name="test_log", message="Test log"),
+        )
+        created_log = await database.logs.create(log)
+        assert created_log.index is not None
+
+        # Fetch by ID
+        fetched_log = await database.logs.get_by_id("log-1")
+        assert fetched_log is not None
+        assert fetched_log.index is not None, "get_by_id must return log with index set"
+
+    @pytest.mark.asyncio
+    async def test_log_get_all_has_index(self, database):
+        """Test that get_all always returns logs with index set."""
+        # Create multiple logs
+        for i in range(3):
+            await database.logs.create(
+                LogRow(
+                    id=f"log-{i}",
+                    created_at=datetime.now(UTC),
+                    data=Log(
+                        level="info", name=f"test_log_{i}", message=f"Test log {i}"
+                    ),
+                )
+            )
+
+        # Fetch all
+        logs = await database.logs.get_all()
+        assert len(logs) == 3
+        for log in logs:
+            assert log.index is not None, "get_all must return logs with index set"
+
+
 class TestRowIndexRangeQueries:
     """Test that before_index and after_index range queries work correctly."""
 

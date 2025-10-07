@@ -108,12 +108,13 @@ class BaseSimpleMarketplaceAgent(BaseAgent[TProfile]):
 
         # Update last_fetch_index to the highest index from the response
         if response.messages:
-            max_index = max(
-                (msg.index for msg in response.messages if msg.index is not None),
-                default=None,
-            )
-            if max_index is not None:
-                self.last_fetch_index = max_index
+            max_index = max(msg.index for msg in response.messages)
+            if self.last_fetch_index:
+                if any(msg.index <= self.last_fetch_index for msg in response.messages):
+                    self.logger.error(
+                        "Fetched a message with index less than or equal to last_fetch_index!"
+                    )
+            self.last_fetch_index = max_index
 
         return response
 

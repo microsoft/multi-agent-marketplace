@@ -2,7 +2,10 @@
 
 import logging
 
-from magentic_marketplace.platform.database.base import BaseDatabaseController
+from magentic_marketplace.platform.database.base import (
+    BaseDatabaseController,
+    DatabaseTooBusyError,
+)
 from magentic_marketplace.platform.shared.models import ActionExecutionResult
 
 from ...actions import Search, SearchAlgorithm, SearchResponse
@@ -66,6 +69,9 @@ async def execute_search(
         logger.debug(f"SearchResponse: {response.model_dump_json(indent=2)}")
 
         return ActionExecutionResult(content=response.model_dump(mode="json"))
+    except DatabaseTooBusyError:
+        # Let DatabaseTooBusyError bubble up so server converts it to HTTP 429
+        raise
     except Exception as e:
         return ActionExecutionResult(
             content={"error": str(e)},

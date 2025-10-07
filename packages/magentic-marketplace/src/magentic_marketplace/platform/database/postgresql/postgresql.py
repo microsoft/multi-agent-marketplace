@@ -228,8 +228,8 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
         agent_id = item.id or str(uuid.uuid4())
 
         async with self.connection(is_write=True) as conn:
-            await conn.execute(
-                f"INSERT INTO {self._schema}.agents (id, created_at, data, agent_embedding) VALUES ($1, $2, $3, $4)",
+            row_index = await conn.fetchval(
+                f"INSERT INTO {self._schema}.agents (id, created_at, data, agent_embedding) VALUES ($1, $2, $3, $4) RETURNING row_index",
                 agent_id,
                 item.created_at,
                 json.dumps(item.data.model_dump()),
@@ -241,13 +241,14 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
             created_at=item.created_at,
             data=item.data,
             agent_embedding=item.agent_embedding,
+            index=row_index,
         )
 
     async def get_by_id(self, item_id: str) -> AgentRow | None:
         """Get agent by ID."""
         async with self.connection() as conn:
             row = await conn.fetchrow(
-                f"SELECT id, created_at, data, agent_embedding FROM {self._schema}.agents WHERE id = $1",
+                f"SELECT row_index, id, created_at, data, agent_embedding FROM {self._schema}.agents WHERE id = $1",
                 item_id,
             )
 
@@ -261,11 +262,12 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
             created_at=row["created_at"],
             data=agent_data,
             agent_embedding=row["agent_embedding"],
+            index=row["row_index"],
         )
 
     async def get_all(self, params: RangeQueryParams | None = None) -> list[AgentRow]:
         """Get all agents with pagination."""
-        sql = f"SELECT id, created_at, data, agent_embedding FROM {self._schema}.agents ORDER BY row_index"
+        sql = f"SELECT row_index, id, created_at, data, agent_embedding FROM {self._schema}.agents ORDER BY row_index"
         sql_params = []
 
         if params and params.limit:
@@ -284,6 +286,7 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
                 created_at=row["created_at"],
                 data=AgentProfile.model_validate_json(row["data"]),
                 agent_embedding=row["agent_embedding"],
+                index=row["row_index"],
             )
             for row in rows
         ]
@@ -296,7 +299,7 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
         where_clause, query_params = _convert_query_to_postgres(query)
 
         sql = f"""
-        SELECT id, created_at, data, agent_embedding FROM {self._schema}.agents
+        SELECT row_index, id, created_at, data, agent_embedding FROM {self._schema}.agents
         WHERE {where_clause}
         """
         sql_params = query_params[:]
@@ -328,6 +331,7 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
                 created_at=row["created_at"],
                 data=AgentProfile.model_validate_json(row["data"]),
                 agent_embedding=row["agent_embedding"],
+                index=row["row_index"],
             )
             for row in rows
         ]
@@ -435,9 +439,8 @@ class PostgreSQLActionController(
             ActionRow(
                 id=row["id"],
                 created_at=row["created_at"],
-                data=ActionRowData.model_validate_json(row["data"]).model_copy(
-                    update={"index": row["row_index"]}
-                ),
+                data=ActionRowData.model_validate_json(row["data"]),
+                index=row["row_index"],
             )
             for row in rows
         ]
@@ -474,13 +477,12 @@ class PostgreSQLActionController(
         if not row:
             return None
 
-        action_data = ActionRowData.model_validate_json(row["data"]).model_copy(
-            update={"index": row["row_index"]}
-        )
+        action_data = ActionRowData.model_validate_json(row["data"])
         return ActionRow(
             id=row["id"],
             created_at=row["created_at"],
             data=action_data,
+            index=row["row_index"],
         )
 
     async def get_all(self, params: RangeQueryParams | None = None) -> list[ActionRow]:
@@ -517,9 +519,8 @@ class PostgreSQLActionController(
             ActionRow(
                 id=row["id"],
                 created_at=row["created_at"],
-                data=ActionRowData.model_validate_json(row["data"]).model_copy(
-                    update={"index": row["row_index"]}
-                ),
+                data=ActionRowData.model_validate_json(row["data"]),
+                index=row["row_index"],
             )
             for row in rows
         ]
@@ -590,7 +591,7 @@ class PostgreSQLLogController(LogTableController, _BoundedPostgresConnectionMixI
         where_clause, query_params = _convert_query_to_postgres(query)
 
         sql = f"""
-        SELECT id, created_at, data FROM {self._schema}.logs
+        SELECT row_index, id, created_at, data FROM {self._schema}.logs
         WHERE {where_clause}
         """
         sql_params = query_params[:]
@@ -621,6 +622,7 @@ class PostgreSQLLogController(LogTableController, _BoundedPostgresConnectionMixI
                 id=row["id"],
                 created_at=row["created_at"],
                 data=Log.model_validate_json(row["data"]),
+                index=row["row_index"],
             )
             for row in rows
         ]
@@ -630,20 +632,22 @@ class PostgreSQLLogController(LogTableController, _BoundedPostgresConnectionMixI
         log_id = item.id or str(uuid.uuid4())
 
         async with self.connection(is_write=True) as conn:
-            await conn.execute(
-                f"INSERT INTO {self._schema}.logs (id, created_at, data) VALUES ($1, $2, $3)",
+            row_index = await conn.fetchval(
+                f"INSERT INTO {self._schema}.logs (id, created_at, data) VALUES ($1, $2, $3) RETURNING row_index",
                 log_id,
                 item.created_at,
                 json.dumps(item.data.model_dump()),
             )
 
-        return LogRow(id=log_id, created_at=item.created_at, data=item.data)
+        return LogRow(
+            id=log_id, created_at=item.created_at, data=item.data, index=row_index
+        )
 
     async def get_by_id(self, item_id: str) -> LogRow | None:
         """Get log by ID."""
         async with self.connection() as conn:
             row = await conn.fetchrow(
-                f"SELECT id, created_at, data FROM {self._schema}.logs WHERE id = $1",
+                f"SELECT row_index, id, created_at, data FROM {self._schema}.logs WHERE id = $1",
                 item_id,
             )
 
@@ -655,11 +659,12 @@ class PostgreSQLLogController(LogTableController, _BoundedPostgresConnectionMixI
             id=row["id"],
             created_at=row["created_at"],
             data=log_data,
+            index=row["row_index"],
         )
 
     async def get_all(self, params: RangeQueryParams | None = None) -> list[LogRow]:
         """Get all logs with pagination."""
-        sql = f"SELECT id, created_at, data FROM {self._schema}.logs ORDER BY row_index"
+        sql = f"SELECT row_index, id, created_at, data FROM {self._schema}.logs ORDER BY row_index"
         sql_params = []
 
         if params and params.limit:
@@ -677,6 +682,7 @@ class PostgreSQLLogController(LogTableController, _BoundedPostgresConnectionMixI
                 id=row["id"],
                 created_at=row["created_at"],
                 data=Log.model_validate_json(row["data"]),
+                index=row["row_index"],
             )
             for row in rows
         ]

@@ -67,8 +67,6 @@ class MarketplaceLogger:
             self.python_logger.error(
                 f"Failed to log to database: {traceback.format_exc()}"
             )
-            # Raise so any awaiters can handle it appropriately
-            raise
 
     def debug(
         self,

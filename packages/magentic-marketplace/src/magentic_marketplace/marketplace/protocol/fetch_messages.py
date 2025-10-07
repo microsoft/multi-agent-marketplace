@@ -1,6 +1,9 @@
 """FetchMessages action implementation for the simple marketplace."""
 
-from magentic_marketplace.platform.database.base import BaseDatabaseController
+from magentic_marketplace.platform.database.base import (
+    BaseDatabaseController,
+    DatabaseTooBusyError,
+)
 from magentic_marketplace.platform.database.models import ActionRow
 from magentic_marketplace.platform.database.queries.base import (
     RangeQueryParams,
@@ -46,6 +49,9 @@ async def execute_fetch_messages(
 
         return ActionExecutionResult(content=response.model_dump(mode="json"))
 
+    except DatabaseTooBusyError:
+        # Let DatabaseTooBusyError bubble up so server converts it to HTTP 429
+        raise
     except Exception as e:
         return ActionExecutionResult(
             content={"error": str(e)},
@@ -125,6 +131,11 @@ def _convert_action_to_received_message(
     params = action_row.data.request.parameters
     message_data = params.get("message", {})
     message = MessageAdapter.validate_python(message_data)
+
+    if action_row.index is None:
+        raise ValueError(
+            "action_row.index must not be None, i.e. it must be returned from a database operation."
+        )
 
     return ReceivedMessage(
         from_agent_id=params["from_agent_id"],
