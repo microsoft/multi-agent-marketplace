@@ -132,6 +132,11 @@ def _convert_action_to_received_message(
     message_data = params.get("message", {})
     message = MessageAdapter.validate_python(message_data)
 
+    if action_row.index is None:
+        raise ValueError(
+            "action_row.index must not be None, i.e. it must be returned from a database operation."
+        )
+
     return ReceivedMessage(
         from_agent_id=params["from_agent_id"],
         to_agent_id=params["to_agent_id"],
