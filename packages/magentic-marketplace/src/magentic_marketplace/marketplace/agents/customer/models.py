@@ -18,11 +18,11 @@ class CustomerAction(BaseModel):
     # Search-specific fields
     search_query: str | None = Field(
         None,
-        description="Search query for businesses. Either search_query or search_constraints are required when action_type is 'search_businesses'",
+        description="Search query for businesses. Required when action_type is 'search_businesses'",
     )
     search_constraints: SearchConstraints | None = Field(
         None,
-        description="Search constraints. Either search_query or search_constraints are required when action_type is 'search_businesses'.",
+        description="Search constraints. Optional when action_type is 'search_businesses'.",
     )
     search_page: int = Field(
         1, description="Page number to retrieve for the search results (default: 1)"
