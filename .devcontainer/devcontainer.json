@@ -29,5 +29,8 @@
             ]
         }
     },
-    "postStartCommand": "chmod +x codespaces.sh && ./codespaces.sh"
+    "postStartCommand": "chmod +x codespaces.sh && ./codespaces.sh",
+    "features": {
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+    }
 }
