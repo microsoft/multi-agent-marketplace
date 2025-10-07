@@ -1,6 +1,5 @@
 {
-    "name": "Agentic Marketplace Dev Container",
-    // "image": "mcr.microsoft.com/devcontainers/universal:2",
+    "name": "Magentic Marketplace Dev Container",
     "secrets": {
         "LLM_PROVIDER": "LLM_PROVIDER",
         "LLM_MODEL": "LLM_MODEL",
