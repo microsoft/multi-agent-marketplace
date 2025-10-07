@@ -75,14 +75,18 @@ def _stop_client_metrics_timer():
 class RetryConfig:
     """Configuration for HTTP request retry logic."""
 
-    max_attempts: int = 10
+    max_attempts: int | None = None
     base_delay: float = 1.0  # seconds
     max_delay: float = 30.0
     backoff_multiplier: float = 2.0
     jitter: bool = True
     jitter_size: float = 0.25
     retry_on_status: set[int] = field(default_factory=lambda: {429, 503})
-    retry_on_exceptions: set[type] = field(default_factory=set)
+    retry_on_exceptions: set[type] = field(
+        default_factory=lambda: {
+            TimeoutError,
+        }
+    )
 
 
 class ClientError(Exception):
@@ -208,8 +212,11 @@ class BaseClient:
             request_headers["Authorization"] = f"Bearer {self._auth_token}"
 
         last_exception: Exception | None = None
-
-        for attempt in range(self.retry_config.max_attempts):
+        attempt = 0
+        while (
+            self.retry_config.max_attempts is None
+            or attempt < self.retry_config.max_attempts
+        ):
             if attempt > 0:
                 # Delay before retry
                 delay = self._calculate_delay(attempt)
@@ -259,6 +266,7 @@ class BaseClient:
                     _client_metrics["retries_by_exception"].get(exception_key, 0) + 1
                 )
 
+            attempt += 1
             # Track total retries
             _client_metrics["total_retries"] += 1
 
