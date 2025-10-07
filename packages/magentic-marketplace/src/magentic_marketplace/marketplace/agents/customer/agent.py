@@ -198,7 +198,7 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
         # Execute search and update known businesses
         if action.action_type == "search_businesses":
             search_action = Search(
-                query=action.search_query or self.customer.request,
+                query=action.search_query,
                 search_algorithm=self._search_algorithm,
                 constraints=action.search_constraints,
                 limit=self._search_bandwidth,
