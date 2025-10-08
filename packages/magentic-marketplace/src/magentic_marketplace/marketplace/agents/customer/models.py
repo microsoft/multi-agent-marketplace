@@ -4,8 +4,6 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, Field, model_validator
 
-from ...shared.models import SearchConstraints
-
 
 class CustomerAction(BaseModel):
     """Actions the Assistant can take."""
@@ -20,9 +18,8 @@ class CustomerAction(BaseModel):
         None,
         description="Search query for businesses. Required when action_type is 'search_businesses'",
     )
-    search_constraints: SearchConstraints | None = Field(
-        None,
-        description="Search constraints. Optional when action_type is 'search_businesses'.",
+    search_page: int = Field(
+        1, description="Page number to retrieve for the search results (default: 1)"
     )
 
     # Send messages-specific fields
@@ -45,9 +42,9 @@ class CustomerAction(BaseModel):
     def validate_model(self):
         """Validate the BaseModel structure."""
         if self.action_type == "search_businesses":
-            if not self.search_query and not self.search_constraints:
+            if not self.search_query:
                 raise ValueError(
-                    "At least one of search_query or search_constraints is required when action_type is search_businesses"
+                    "Search_query is required when action_type is search_businesses"
                 )
         elif self.action_type == "send_messages":
             if not self.target_business_ids:

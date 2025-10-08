@@ -32,7 +32,7 @@ def search_businesses_action():
         action_type="search_businesses",
         reason="test",
         search_query="test",
-        search_constraints=None,
+        search_page=1,
         target_business_ids=None,
         message_content=None,
         proposal_to_accept=None,

@@ -1,11 +1,12 @@
 """Optimal search implementation for the simple marketplace."""
 
 import logging
+import math
 
 from magentic_marketplace.platform.database.base import BaseDatabaseController
 from magentic_marketplace.platform.database.queries.agents import query as agent_query
 
-from ...actions import Search
+from ...actions import Search, SearchResponse
 from ...shared.models import Business, BusinessAgentProfile, Customer
 from .utils import convert_agent_rows_to_businesses
 
@@ -41,7 +42,7 @@ async def execute_optimal_search(
     search: Search,
     customer: Customer,
     database: BaseDatabaseController,
-) -> list[BusinessAgentProfile]:
+) -> SearchResponse:
     """Execute optimal search that only returns businesses that can completely fulfill customer's order.
 
     This search algorithm filters businesses to only include those that have ALL
@@ -74,5 +75,19 @@ async def execute_optimal_search(
     # Sort by rating (descending) for consistent ordering
     filtered_businesses.sort(key=lambda b: b.business.rating, reverse=True)
 
-    # Apply limit
-    return filtered_businesses[: search.limit] if search.limit else filtered_businesses
+    total_possible_results = len(filtered_businesses)
+    paginated_businesses = filtered_businesses
+    total_pages = 1
+
+    if search.limit and search.limit > 0:
+        start = (search.page - 1) * search.limit
+        end = start + search.limit
+        paginated_businesses = filtered_businesses[start:end]
+        total_pages = math.ceil(len(filtered_businesses) / search.limit)
+
+    return SearchResponse(
+        businesses=paginated_businesses,
+        search_algorithm=search.search_algorithm,
+        total_possible_results=total_possible_results,
+        total_pages=total_pages,
+    )

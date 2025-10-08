@@ -200,15 +200,24 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
             search_action = Search(
                 query=action.search_query or self.customer.request,
                 search_algorithm=self._search_algorithm,
-                constraints=action.search_constraints,
                 limit=self._search_bandwidth,
+                page=action.search_page,
             )
             search_result = await self.execute_action(search_action)
 
             if not search_result.is_error:
                 search_response = SearchResponse.model_validate(search_result.content)
                 business_ids = [ba.id for ba in search_response.businesses]
+                business_names = [ba.business.name for ba in search_response.businesses]
+                business_names_str = ",".join(business_names)
+
+                self.logger.info(
+                    f'Search: "{search_action.query}", {search_action.search_algorithm}, resulting in {len(search_response.businesses)} business(es) found out of {search_response.total_possible_results} total business(es). Showing page {action.search_page} of {search_response.total_pages}.'
+                )
+                self.logger.info(f"Search Result: {business_names_str}")
+
                 self.known_business_ids.extend(business_ids)
+
         # Check for new messages
         elif action.action_type == "check_messages":
             fetch_response = await self.fetch_messages()
