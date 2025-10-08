@@ -106,5 +106,6 @@ dev = [
     "pyright>=1.1.403",
     "pytest>=8.4.1",
     "pytest-asyncio>=1.2.0",
+    "pytest-dotenv>=0.5.2",
     "ruff>=0.13.0",
 ]
