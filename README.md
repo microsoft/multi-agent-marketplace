@@ -34,3 +34,6 @@ You can configure business and customer agents that transact and then run simula
     # Analyze the results
     magentic-marketplace analyze test_exp
     ```
+## More information
+
+For more info on dev setup and debugging see [DEV.md](DEV.md)
