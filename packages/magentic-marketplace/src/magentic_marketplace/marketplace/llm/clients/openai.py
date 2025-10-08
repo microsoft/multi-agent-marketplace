@@ -29,8 +29,9 @@ from ..config import BaseLLMConfig, EnvField
 class OpenAIConfig(BaseLLMConfig):
     """Configuration for OpenAI provider."""
 
-    provider: Literal["openai"] = EnvField("LLM_PROVIDER", default="openai")  # pyright: ignore[reportIncompatibleVariableOverride]
+    provider: Literal["openai", "vllm"] = EnvField("LLM_PROVIDER", default="openai")  # pyright: ignore[reportIncompatibleVariableOverride]
     api_key: str = EnvField("OPENAI_API_KEY", exclude=True)
+    base_url: str | None = EnvField("OPENAI_BASE_URL", default=None)
 
 
 class OpenAIClient(ProviderClient[OpenAIConfig]):
@@ -59,7 +60,10 @@ class OpenAIClient(ProviderClient[OpenAIConfig]):
                 "OpenAI API key not found. Set OPENAI_API_KEY environment variable "
                 "or pass api_key in config."
             )
-        self.client = AsyncOpenAI(api_key=self.config.api_key)
+        if config.provider == "openai":
+            self.client = AsyncOpenAI(api_key=self.config.api_key)
+        elif config.provider == "vllm":
+            self.client = AsyncOpenAI(base_url=self.config.base_url, api_key="dummy")
 
     @staticmethod
     def _get_cache_key(config: OpenAIConfig) -> str:
