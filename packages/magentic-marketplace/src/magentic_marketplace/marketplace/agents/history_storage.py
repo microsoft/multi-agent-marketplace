@@ -121,6 +121,8 @@ class HistoryStorage:
                         steps_in_group=len(consecutive_empty_fetch_messages),
                     )
                 )
+                # Increment step counter by the number of empty fetches
+                step_counter += len(consecutive_empty_fetch_messages)
                 consecutive_empty_fetch_messages.clear()
             # If we made it here then the current entry is not a text message, flush any pending.
             elif consecutive_text_messages:
@@ -143,7 +145,7 @@ class HistoryStorage:
                 # First, group any consecutive messages, these if-elses contain continue statements
                 if isinstance(first, FetchMessages):
                     try:
-                        response = FetchMessagesResponse.model_validate(second)
+                        response = FetchMessagesResponse.model_validate(second.content)
                         if not response.messages:
                             consecutive_empty_fetch_messages.append((first, second))
                             continue
@@ -184,7 +186,7 @@ class HistoryStorage:
         formatted_entries: list[str] = []
         if steps_in_group:
             formatted_entries.append(
-                f"=== STEPS {current_step - steps_in_group}-{current_step} [{step_header}] ==="
+                f"=== STEPS {current_step - steps_in_group + 1}-{current_step} [{step_header}] ==="
             )
         else:
             formatted_entries.append(f"\n=== STEP {current_step} [{step_header}] ===")
