@@ -5,6 +5,7 @@ from unittest.mock import AsyncMock, MagicMock, patch
 
 import aiohttp
 import pytest
+import pytest_asyncio
 
 from magentic_marketplace.platform.client.base import RetryConfig
 from magentic_marketplace.platform.client.client import MarketplaceClient
@@ -13,7 +14,7 @@ from magentic_marketplace.platform.client.client import MarketplaceClient
 class TestMarketplaceClientRetry:
     """Test suite for MarketplaceClient retry behavior."""
 
-    @pytest.fixture
+    @pytest_asyncio.fixture
     async def client(self):
         """Create a MarketplaceClient instance with custom retry config for testing."""
         retry_config = RetryConfig(
@@ -30,7 +31,7 @@ class TestMarketplaceClientRetry:
         yield client
         await client.close()
 
-    @pytest.fixture
+    @pytest_asyncio.fixture
     async def client_with_exception_retries(self):
         """Create a MarketplaceClient instance that retries on exceptions."""
         retry_config = RetryConfig(

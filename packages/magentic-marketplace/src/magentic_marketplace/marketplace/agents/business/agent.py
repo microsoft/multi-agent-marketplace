@@ -243,9 +243,15 @@ class BusinessAgent(BaseSimpleMarketplaceAgent[BusinessAgentProfile]):
             )
             return confirmation
         else:
-            self.logger.error(
-                f"Failed to process payment for proposal {proposal_id} from customer {customer_id}. Proposal is missing or not pending."
-            )
+            if stored_proposal:
+                self.logger.error(
+                    f"Failed to process payment for proposal {proposal_id} from customer {customer_id}. Proposal status is not pending: {stored_proposal.status}."
+                )
+            else:
+                self.logger.error(
+                    f"Failed to process payment for proposal {proposal_id} from customer {customer_id}. No proposals match that id."
+                )
+
             # Generate error message using ResponseHandler
             error_message = self._responses.generate_proposal_not_found_error(
                 proposal_id
