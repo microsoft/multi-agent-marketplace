@@ -12,7 +12,7 @@ from magentic_marketplace.experiments.models import (
     CustomerSummary,
     TransactionSummary,
 )
-from magentic_marketplace.marketplace.actions import ActionAdapter, SendMessage
+from magentic_marketplace.marketplace.actions import ActionAdapter, SendMessage, Search
 from magentic_marketplace.marketplace.actions.messaging import (
     Message,
     OrderProposal,
@@ -66,6 +66,9 @@ class MarketplaceAnalytics:
         self.customer_orders: dict[str, list[OrderProposal]] = defaultdict(list)
         self.customer_payments: dict[str, list[Payment]] = defaultdict(list)
 
+        # Search tracking
+        self.customer_searches: dict[str, list[Search]] = defaultdict(list)
+
     async def load_data(self):
         """Load and parse agents data from database."""
         agents = await self.db.agents.get_all()
@@ -108,6 +111,10 @@ class MarketplaceAnalytics:
         # Process based on action type
         if isinstance(action, SendMessage):
             await self._process_send_message(action, action_result, agent_type)
+
+        if isinstance(action, Search):
+            self.customer_searches[agent_id].append(action)
+
         # Note: FetchMessages and Search are only counted, not processed for message content
 
     def _get_agent_type(self, agent_id: str) -> str:
@@ -344,6 +351,7 @@ class MarketplaceAnalytics:
             messages_sent = len(self.customer_messages.get(customer_agent_id, []))
             orders_received = len(self.customer_orders.get(customer_agent_id, []))
             payments_made = len(self.customer_payments.get(customer_agent_id, []))
+            searches_made = len(self.customer_searches.get(customer_agent_id, []))
             utility, needs_met = self.calculate_customer_utility(customer_agent_id)
 
             customer_summaries.append(
@@ -351,6 +359,7 @@ class MarketplaceAnalytics:
                     customer_id=customer_agent_id,
                     customer_name=customer.name,
                     messages_sent=messages_sent,
+                    searches_made=searches_made,
                     proposals_received=orders_received,
                     payments_made=payments_made,
                     utility=utility,
@@ -557,8 +566,19 @@ class MarketplaceAnalytics:
             # Customer activity (from collected results)
             print(
                 f"\nActivity: {customer.messages_sent} messages sent, "
-                f"{customer.proposals_received} proposals received, {customer.payments_made} payments made"
+                f"{customer.proposals_received} proposals received, {customer.payments_made} payments made."
             )
+
+            # Search activity
+            print("Search:\n")
+            searches = self.customer_searches.get(customer_agent_id, [])
+            if searches:
+                # Get unique search queries
+                unique_queries = set([search.query for search in searches])
+                for query in unique_queries:
+                    print(f"  - Query: '{query}'")
+                print(f"Total searches made: {len(searches)}")
+                print(f"Unique queries tried: {len(unique_queries)}")
 
             # Payment and order details with welfare analysis
             payments = self.customer_payments.get(customer_agent_id, [])
