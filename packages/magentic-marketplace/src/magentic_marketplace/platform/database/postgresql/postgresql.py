@@ -785,7 +785,6 @@ class PostgreSQLDatabaseController(BaseDatabaseController):
         Args:
             mode: Schema initialization mode
 
-
         """
         async with self._pool.acquire() as conn:
             # Check if schema already exists
