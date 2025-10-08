@@ -11,7 +11,7 @@ from magentic_marketplace.experiments.utils import (
 from magentic_marketplace.marketplace.agents import BusinessAgent, CustomerAgent
 from magentic_marketplace.marketplace.protocol.protocol import SimpleMarketplaceProtocol
 from magentic_marketplace.platform.database import (
-    create_postgresql_database,
+    connect_to_postgresql_database,
 )
 from magentic_marketplace.platform.launcher import AgentLauncher, MarketplaceLauncher
 
@@ -24,6 +24,7 @@ async def run_marketplace_experiment(
     postgres_host: str = "localhost",
     postgres_port: int = 5432,
     postgres_password: str = "postgres",
+    override: bool = False,
 ):
     """Run a marketplace experiment using YAML configuration files."""
     # Load businesses and customers from YAML files
@@ -40,11 +41,12 @@ async def run_marketplace_experiment(
         experiment_name = f"marketplace_{len(customers)}_{len(businesses)}_{int(datetime.now().timestamp() * 1000)}"
 
     def database_factory():
-        return create_postgresql_database(
+        return connect_to_postgresql_database(
             schema=experiment_name,
             host=postgres_host,
             port=postgres_port,
             password=postgres_password,
+            mode="override" if override else "create_new",
         )
 
     marketplace_launcher = MarketplaceLauncher(

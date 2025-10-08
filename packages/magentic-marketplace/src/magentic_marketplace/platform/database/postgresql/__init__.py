@@ -5,7 +5,7 @@ from .postgresql import (
     PostgreSQLAgentController,
     PostgreSQLDatabaseController,
     PostgreSQLLogController,
-    create_postgresql_database,
+    connect_to_postgresql_database,
 )
 
 __all__ = [
@@ -13,5 +13,5 @@ __all__ = [
     "PostgreSQLAgentController",
     "PostgreSQLActionController",
     "PostgreSQLLogController",
-    "create_postgresql_database",
+    "connect_to_postgresql_database",
 ]

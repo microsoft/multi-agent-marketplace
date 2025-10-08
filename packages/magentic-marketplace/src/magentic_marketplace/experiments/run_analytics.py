@@ -24,7 +24,7 @@ from magentic_marketplace.marketplace.shared.models import (
     MarketplaceAgentProfileAdapter,
 )
 from magentic_marketplace.platform.database import (
-    create_postgresql_database,
+    connect_to_postgresql_database,
 )
 from magentic_marketplace.platform.database.base import BaseDatabaseController
 from magentic_marketplace.platform.database.models import ActionRow
@@ -691,11 +691,12 @@ async def run_analytics(
         analytics = MarketplaceAnalytics(db_controller)
         await analytics.generate_report(save_to_json=save_to_json, db_name=db_name)
     elif db_type == "postgres":
-        async with create_postgresql_database(
+        async with connect_to_postgresql_database(
             schema=db_path_or_schema,
             host="localhost",
             port=5432,
             password="postgres",
+            mode="existing",
         ) as db_controller:
             analytics = MarketplaceAnalytics(db_controller)
             await analytics.generate_report(

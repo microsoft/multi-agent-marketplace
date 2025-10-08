@@ -6,6 +6,7 @@ import logging
 import threading
 import uuid
 from contextlib import asynccontextmanager
+from enum import Enum
 from typing import Any
 
 import asyncpg
@@ -23,6 +24,15 @@ from ..base import (
 )
 from ..models import ActionRow, ActionRowData, AgentRow, LogRow
 from ..queries import AndQuery, JSONQuery, OrQuery, Query, RangeQueryParams
+
+
+class SchemaMode(str, Enum):
+    """Schema creation mode for database initialization."""
+
+    EXISTING = "existing"
+    OVERRIDE = "override"
+    CREATE_NEW = "create_new"
+
 
 logger = logging.getLogger(__name__)
 
@@ -720,6 +730,7 @@ class PostgreSQLDatabaseController(BaseDatabaseController):
         max_size: int = 50,
         command_timeout: float = 60,
         db_timeout: float = 5,
+        mode: SchemaMode = SchemaMode.CREATE_NEW,
     ):
         """Create a new controller for the given schema.
 
@@ -734,6 +745,7 @@ class PostgreSQLDatabaseController(BaseDatabaseController):
             max_size: Maximum connections in pool
             command_timeout: Command timeout in seconds
             db_timeout: Database timeout in seconds
+            mode: schema creation mode
 
         Returns:
             PostgreSQLDatabaseController instance
@@ -752,7 +764,7 @@ class PostgreSQLDatabaseController(BaseDatabaseController):
         )
 
         controller = PostgreSQLDatabaseController(pool, db_timeout, schema)
-        await controller.initialize()
+        await controller.initialize(mode=mode)
         return controller
 
     @property
@@ -775,8 +787,14 @@ class PostgreSQLDatabaseController(BaseDatabaseController):
         async with self._pool.acquire() as conn:
             return await conn.execute(command)
 
-    async def initialize(self):
-        """Initialize the database tables."""
+    async def initialize(self, mode: SchemaMode = SchemaMode.CREATE_NEW):
+        """Initialize the database tables.
+
+        Args:
+            mode: Schema initialization mode
+
+
+        """
         async with self._pool.acquire() as conn:
             # Check if schema already exists
             exists = await conn.fetchval(
@@ -784,9 +802,26 @@ class PostgreSQLDatabaseController(BaseDatabaseController):
                 self._schema,
             )
 
-            if not exists:
-                # Create the new schema
+            if mode == SchemaMode.EXISTING:
+                if not exists:
+                    raise ValueError(f"Schema '{self._schema}' does not exist")
+                return
+
+            elif mode == SchemaMode.CREATE_NEW:
+                if exists:
+                    raise ValueError(f"Schema '{self._schema}' already exists")
                 await conn.execute(f"CREATE SCHEMA {self._schema}")
+
+            elif mode == SchemaMode.OVERRIDE:
+                if exists:
+                    await conn.execute(f"DROP SCHEMA {self._schema} CASCADE")
+                    logger.info(f"Dropped existing schema '{self._schema}'")
+                await conn.execute(f"CREATE SCHEMA {self._schema}")
+
+            else:
+                raise ValueError(
+                    f"Invalid mode '{mode}'. Must be one of {list(SchemaMode)}."
+                )
 
             # Create tables in the schema (will be skipped if they already exist due to IF NOT EXISTS)
             await conn.execute(create_tables_sql(self._schema))
@@ -800,7 +835,7 @@ class PostgreSQLDatabaseController(BaseDatabaseController):
 
 
 @asynccontextmanager
-async def create_postgresql_database(
+async def connect_to_postgresql_database(
     schema: str,
     host: str = "localhost",
     port: int = 5432,
@@ -810,6 +845,7 @@ async def create_postgresql_database(
     min_size: int = 50,
     max_size: int = 50,
     command_timeout: float = 60,
+    mode: SchemaMode = SchemaMode.CREATE_NEW,
 ):
     """Create PostgreSQL database controller with connection pooling.
 
@@ -823,6 +859,7 @@ async def create_postgresql_database(
         min_size: Minimum connections in pool
         max_size: Maximum connections in pool
         command_timeout: Command timeout in seconds
+        mode: Schema creation mode (default: 'create_new')
 
     """
     pool = await asyncpg.create_pool(
@@ -837,7 +874,7 @@ async def create_postgresql_database(
     )
 
     controller = PostgreSQLDatabaseController(pool, schema=schema)
-    await controller.initialize()
+    await controller.initialize(mode=mode)
     try:
         yield controller
     finally:
