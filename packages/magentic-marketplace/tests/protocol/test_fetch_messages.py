@@ -12,7 +12,6 @@ from magentic_marketplace.marketplace.actions import (
 )
 from magentic_marketplace.marketplace.actions.messaging import TextMessage
 from magentic_marketplace.platform.database.models import AgentRow
-from magentic_marketplace.platform.database.queries.base import QueryParams
 from magentic_marketplace.platform.shared.models import AgentProfile
 
 
@@ -49,7 +48,7 @@ class TestFetchMessages:
         await customer.execute_action(message_from_customer)
 
         # Verify messages were logged
-        curr_db_state = await database.actions.get_all(None)
+        curr_db_state = await database.actions.get_all()
         assert len(curr_db_state) == 2, (
             "Should have 2 send_message actions in the database"
         )
@@ -80,7 +79,7 @@ class TestFetchMessages:
         )
 
         # Verify fetch actions were logged
-        all_actions = await database.actions.get_all(QueryParams())
+        all_actions = await database.actions.get_all()
         assert len(all_actions) == 4, (
             "Should have 2 send_message + 2 fetch_messages actions"
         )
@@ -184,7 +183,7 @@ class TestFetchMessages:
             )
 
         # Verify all actions were logged (5 send_message + 3 fetch_messages)
-        all_actions = await database.actions.get_all(QueryParams())
+        all_actions = await database.actions.get_all()
         assert len(all_actions) == 8, (
             "Should have 5 send_message + 3 fetch_messages actions"
         )

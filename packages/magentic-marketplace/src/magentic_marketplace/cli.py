@@ -121,7 +121,7 @@ def main():
     experiment_parser.add_argument(
         "--customer-max-steps",
         type=int,
-        default=None,
+        default=100,
         help="Maximum number of steps a customer agent can take before stopping.",
     )
 

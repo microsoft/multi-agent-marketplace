@@ -34,23 +34,16 @@ async def execute_fetch_messages(
         ActionExecutionResult containing the fetched messages
 
     """
-    try:
-        messages, has_more = await _fetch_messages_from_database(
-            fetch_messages, agent, database
-        )
+    messages, has_more = await _fetch_messages_from_database(
+        fetch_messages, agent, database
+    )
 
-        response = FetchMessagesResponse(
-            messages=messages,
-            has_more=has_more,
-        )
+    response = FetchMessagesResponse(
+        messages=messages,
+        has_more=has_more,
+    )
 
-        return ActionExecutionResult(content=response.model_dump(mode="json"))
-
-    except Exception as e:
-        return ActionExecutionResult(
-            content={"error": str(e)},
-            is_error=True,
-        )
+    return ActionExecutionResult(content=response.model_dump(mode="json"))
 
 
 async def _fetch_messages_from_database(
@@ -78,7 +71,7 @@ async def _fetch_messages_from_database(
     if fetch_messages.from_agent_id is not None:
         query &= queries.actions.send_message.from_agent(fetch_messages.from_agent_id)
 
-    # Setup query parameters with pagination and date filtering
+    # Setup query parameters with pagination and index filtering
     limit = (
         fetch_messages.limit + 1 if fetch_messages.limit else None
     )  # +1 to check for has_more
@@ -86,6 +79,7 @@ async def _fetch_messages_from_database(
         offset=fetch_messages.offset or 0,
         limit=limit,
         after=fetch_messages.after,
+        after_index=fetch_messages.after_index,
     )
 
     # Execute the query
@@ -125,9 +119,15 @@ def _convert_action_to_received_message(
     message_data = params.get("message", {})
     message = MessageAdapter.validate_python(message_data)
 
+    if action_row.index is None:
+        raise ValueError(
+            "action_row.index must not be None, i.e. it must be returned from a database operation."
+        )
+
     return ReceivedMessage(
         from_agent_id=params["from_agent_id"],
         to_agent_id=params["to_agent_id"],
         created_at=action_row.created_at,
         message=message,
+        index=action_row.index,
     )
