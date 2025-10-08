@@ -29,7 +29,9 @@ class PromptsHandler:
         self.customer_histories = customer_histories
         self.logger = logger
 
-    def format_conversation_from_event_history(self, customer_id: str) -> str:
+    def format_conversation_from_event_history(
+        self, customer_id: str
+    ) -> tuple[str, int]:
         """Format conversation history from event_history for a specific customer.
 
         Args:
@@ -41,9 +43,11 @@ class PromptsHandler:
         """
         customer_history = self.customer_histories.get(customer_id)
         if customer_history:
-            return customer_history.format_conversation_text()
+            return customer_history.format_conversation_text(
+                f"agent-{self.business.name} ({self.business.id})"
+            )
         else:
-            return ""
+            return "", 1
 
     def format_response_prompt(
         self, customer_id: str, customer_message: str, context: str = ""
@@ -60,7 +64,9 @@ class PromptsHandler:
 
         """
         # Get conversation history from event_history
-        conversation = self.format_conversation_from_event_history(customer_id)
+        conversation, step_counter = self.format_conversation_from_event_history(
+            customer_id
+        )
 
         # Derive delivery availability from amenity features
         delivery_available = (

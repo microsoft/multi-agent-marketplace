@@ -105,11 +105,11 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
             # 4. Execute the action (handles messaging internally)
             new_messages = await self._execute_customer_action(action)
 
-        # 5a. Check if transaction completed
-        if len(self.completed_transactions) > 0:
-            self.logger.info("Completed a transaction, shutting down!")
-            self.shutdown()
-            return
+        # # 5a. Check if transaction completed
+        # if len(self.completed_transactions) > 0:
+        #     self.logger.info("Completed a transaction, shutting down!")
+        #     self.shutdown()
+        #     return
 
         # 5b. Early-stopping if max steps exceeded
         if self._max_steps is not None and self.conversation_step >= self._max_steps:
@@ -164,10 +164,12 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
         # Build prompt using prompts handler
         prompts = self._get_prompts_handler()
         system_prompt = prompts.format_system_prompt()
-        state_context = prompts.format_state_context()
-        step_prompt = prompts.format_step_prompt()
+        state_context, step_counter = prompts.format_state_context()
+        step_prompt = prompts.format_step_prompt(step_counter)
 
-        full_prompt = system_prompt + state_context + step_prompt
+        full_prompt = "\n\n\n\n".join(
+            map(str.strip, (system_prompt, state_context, step_prompt))
+        )
 
         # Use LLM to decide next action
         try:
@@ -200,7 +202,7 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
             search_action = Search(
                 query=action.search_query or self.customer.request,
                 search_algorithm=self._search_algorithm,
-                constraints=action.search_constraints,
+                # constraints=action.search_constraints,
                 limit=self._search_bandwidth,
             )
             search_result = await self.execute_action(search_action)
@@ -217,55 +219,54 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
             return len(messages) > 0
         elif action.action_type == "send_messages":
             # Send messages directly with proper error handling
-            if action.target_business_ids and action.message_content:
-                for business_id in action.target_business_ids:
-                    message = TextMessage(content=action.message_content)
-
-                    try:
-                        result = await self.send_message(business_id, message)
-                        if result.is_error:
-                            self.logger.error(
-                                f"Failed to send message to {business_id}: {result.content}"
-                            )
-                    except Exception as e:
-                        self.logger.exception(
-                            f"Failed to send message to {business_id}"
-                        )
-                        self.history.record_error(
-                            f"Failed to send message to {business_id}", e
-                        )
-        elif action.action_type == "end_transaction":
-            # Accept the proposal specified by the LLM
-            if action.proposal_to_accept:
-                stored_proposal = self.proposal_storage.get_proposal(
-                    action.proposal_to_accept
+            if action.messages is None:
+                raise ValueError(
+                    "messages cannot be empty when action_type is send_messages"
                 )
 
+            for text_message in action.messages.text_messages:
+                business_id = text_message.to_business_id
+                message = TextMessage(content=text_message.content)
+                try:
+                    result = await self.send_message(business_id, message)
+                    if result.is_error:
+                        self.logger.error(
+                            f"Failed to send message to {business_id}: {result.content}"
+                        )
+                except Exception as e:
+                    self.logger.exception(f"Failed to send message to {business_id}")
+                    self.history.record_error(
+                        f"Failed to send message to {business_id}", e
+                    )
+
+            for pay_message in action.messages.pay_messages:
+                business_id = pay_message.to_business_id
+                proposal_to_accept = pay_message.proposal_message_id
+                stored_proposal = self.proposal_storage.get_proposal(proposal_to_accept)
+
                 if stored_proposal:
-                    payment_message = Payment(
-                        proposal_message_id=action.proposal_to_accept,
-                        payment_method="credit_card",
-                        payment_message=action.message_content
+                    payment = Payment(
+                        proposal_message_id=proposal_to_accept,
+                        payment_method=pay_message.payment_method or "credit_card",
+                        payment_message=pay_message.payment_message
                         or f"Accepting your proposal for {len(stored_proposal.proposal.items)} items",
                     )
 
                     self.logger.info(
-                        f"Sending ${stored_proposal.proposal.total_price} payment to {stored_proposal.business_id} for proposal id {action.proposal_to_accept}",
+                        f"Sending ${stored_proposal.proposal.total_price} payment to {stored_proposal.business_id} for proposal id {proposal_to_accept}",
                     )
 
                     try:
                         result = await self.send_message(
-                            stored_proposal.business_id, payment_message
+                            stored_proposal.business_id, payment
                         )
                         if not result.is_error:
                             # Mark proposal as accepted
                             success = self.proposal_storage.update_proposal_status(
-                                action.proposal_to_accept, "accepted"
+                                proposal_to_accept, "accepted"
                             )
                             if success:
-                                self.completed_transactions.append(
-                                    action.proposal_to_accept
-                                )
+                                self.completed_transactions.append(proposal_to_accept)
                         else:
                             self.logger.error(
                                 f"Failed to send payment: {result.content}"
@@ -281,18 +282,15 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
 
                 else:
                     self.logger.warning(
-                        f"Error: proposal_to_accept '{action.proposal_to_accept}' does not match any known proposals."
+                        f"Error: proposal_to_accept '{proposal_to_accept}' does not match any known proposals."
                     )
                     self.history.record_error(
-                        f"Error: proposal_to_accept '{action.proposal_to_accept}' does not match any known proposals."
+                        f"Error: proposal_to_accept '{proposal_to_accept}' does not match any known proposals."
                     )
-            else:
-                self.logger.warning(
-                    "Error: proposal_to_accept missing. proposal_to_accept is required when action_type is end_transaction."
-                )
-                self.history.record_error(
-                    "Error: proposal_to_accept missing. proposal_to_accept is required when action_type is end_transaction."
-                )
+
+        elif action.action_type == "end_transaction":
+            # Accept the proposal specified by the LLM
+            self.shutdown()
 
         # No new messages
         return False

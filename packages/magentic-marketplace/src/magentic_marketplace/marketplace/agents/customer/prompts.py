@@ -1,7 +1,5 @@
 """Prompt generation for the customer agent."""
 
-from datetime import datetime
-
 from magentic_marketplace.platform.logger import MarketplaceLogger
 
 from ...shared.models import Customer
@@ -48,69 +46,84 @@ class PromptsHandler:
 
         """
         # Get current date and time
-        now = datetime.now()
-        current_date = now.strftime("%B %d, %Y")
-        current_time = now.strftime("%I:%M%p").lower()
+        # now = datetime.now()
+        # current_date = now.strftime("%B %d, %Y")
+        # current_time = now.strftime("%I:%M%p").lower()
 
-        return f"""Current Date: {current_date}
-Current Time: {current_time}
+        return f"""
+You are an autonomous agent working for customer {self.customer.name}. They have the following request: {self.customer.request}
 
-You are an autonomous agent working for customer {self.customer.name}.
-They have the following request: {self.customer.request}
+Your agent ID is: "{self.customer.id}" and your name is "agent-{self.customer.name} ({self.customer.id})".
 
-IMPORTANT: You must fulfill their request using only the available actions.
+IMPORTANT: You do NOT have access to the customer directly. You must fulfill their request using only the tools available to you.
 
-Available Actions:
-- search_businesses: Find businesses matching criteria (use when you need to find businesses)
-- send_messages: Contact businesses with text messages (use to ask questions or express interest)
-- check_messages: Check for responses from businesses (use to get proposals and replies)
-- end_transaction: Complete after successfully paying for a proposal
+# Available Tools (these are your ONLY available actions)
+- search_businesses(search_query, search_page): Find businesses matching criteria
+- send_messages: Contact businesses (text for questions, pay to accept proposals)
+- check_messages(): Get responses from businesses
+- end_transaction: Complete after paying for a proposal
 
-Shopping Strategy:
-1. Search for relevant businesses if you haven't found any yet
-2. Send inquiry messages to promising businesses
-3. Check for responses and proposals
-4. Pay for the best proposal that meets requirements
-5. End transaction after successful payment
+# Shopping Strategy
+1. **Understand** - Carefully analyze the customer's specific requirements (what to buy, quantities, preferences, constraints)
+2. **Search** - Find businesses matching those exact needs
+3. **Inquire** - Contact ALL promising businesses with "text" messages for details
+4. **Wait for Proposals** - Services will send "order_proposal" messages with specific offers
+5. **Compare** - Compare all proposals for price/quality
+6. **Pay** - Send "pay" messages to accept the best proposal that meets requirements within budget
+7. **Confirm** - End transaction ONLY after successfully paying for a proposal
 
-You MUST complete the purchase by paying for a proposal. Do not wait for the customer - you ARE acting for them.
-"""
+# Important Notes:
+- Services create proposals, you pay to accept them
+- Use "text" messages to inquire, "pay" messages to accept proposals
+- You CANNOT create orders anymore - only accept proposals by paying
+- Must complete the purchase by paying for a proposal. Do not wait for the customer - you ARE acting for them.
 
-    def format_state_context(self) -> str:
+""".strip()
+
+    def format_state_context(self) -> tuple[str, int]:
         """Format the current state context for the agent.
 
         Returns:
-            Formatted state context
+            Formatted state context and integer step counter
 
         """
         # Format available proposals with IDs
-        pending_proposals = self.proposal_storage.get_pending_proposals()
-        proposals_text = ""
-        if pending_proposals:
-            proposals_text = "\nAvailable Proposals to Accept:\n"
-            for proposal in pending_proposals:
-                proposals_text += f"  - Proposal ID: {proposal.proposal_id} from {proposal.business_id} (${proposal.proposal.total_price})\n"
+        #         pending_proposals = self.proposal_storage.get_pending_proposals()
+        #         proposals_text = ""
+        #         if pending_proposals:
+        #             proposals_text = "\nAvailable Proposals to Accept:\n"
+        #             for proposal in pending_proposals:
+        #                 proposals_text += f"  - Proposal ID: {proposal.proposal_id} from {proposal.business_id} (${proposal.proposal.total_price})\n"
 
-        return f"""
-Known Businesses: {len(self.known_business_ids)} businesses found
-Received Proposals: {len(self.proposal_storage.proposals)} proposals
-Completed Transactions: {len(self.completed_transactions)} transactions{proposals_text}
+        #         return f"""
+        # Known Businesses: {len(self.known_business_ids)} businesses found
+        # Received Proposals: {len(self.proposal_storage.proposals)} proposals
+        # Completed Transactions: {len(self.completed_transactions)} transactions{proposals_text}
+        conversation, step_counter = self.history_storage.format_conversation_text(
+            step_header=f"agent-{self.customer.name} ({self.customer.id})"
+        )
+        return (
+            f"""
 
-Recent conversation history:
-{self.history_storage.format_conversation_text()}
-"""
+# Action Trajectory
 
-    def format_step_prompt(self) -> str:
+{conversation}
+""",
+            step_counter,
+        )
+
+    def format_step_prompt(self, last_step: int) -> str:
         """Format the step prompt for the current decision.
 
         Returns:
             Formatted step prompt
 
         """
-        return """
----
+        return f"""
 
-What action should you take next?
+Step {last_step + 1}: What action should you take?
 
-Choose your action carefully based on the current state and your goal to fulfill the customer's request.
+Send "text" messages to ask questions or express interest. Services will send "order_proposal" messages with offers. Send "pay" messages to accept proposals you want to purchase. When you receive an order_proposal message, use its message_id as the proposal_id in your payment. Always check for responses after sending messages. You must pay for proposals when you have sufficient information - do not wait for the customer. Only end the transaction after successfully paying for a proposal.
+
+Choose your action carefully.
 """
