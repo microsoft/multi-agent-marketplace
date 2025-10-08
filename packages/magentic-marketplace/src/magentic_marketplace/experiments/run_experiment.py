@@ -34,16 +34,11 @@ async def run_marketplace_experiment(
     businesses = load_businesses_from_yaml(businesses_dir)
     customers = load_customers_from_yaml(customers_dir)
 
-    print(f"Loaded {len(businesses)} businesses and {len(customers)} customers")
+    print(f"Loaded {len(customers)} customers and {len(businesses)} businesses")
 
     if experiment_name is None:
-        # Auto-generate schema name if not provided
-        now = datetime.now()
-        experiment_name = now.strftime(
-            f"marketplace_{len(businesses)}_businesses_{len(customers)}_customers_%Y_%m_%d_%H_%M"
-        )
+        experiment_name = f"marketplace_{len(customers)}_{len(businesses)}_{int(datetime.now().timestamp() * 1000)}"
 
-    # Create the marketplace launcher
     def database_factory():
         return create_postgresql_database(
             schema=experiment_name,
