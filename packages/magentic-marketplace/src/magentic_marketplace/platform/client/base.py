@@ -115,7 +115,7 @@ class BaseClient:
         self.timeout = aiohttp.ClientTimeout(total=timeout) if timeout else None
         self.retry_config = retry_config or RetryConfig()
         self._session: aiohttp.ClientSession | None = None
-        self._auth_token: str | None = None
+        self._ref_count: int = 0
 
         # Start periodic metrics dumping
         _start_client_metrics_timer(self.base_url)
@@ -135,18 +135,21 @@ class BaseClient:
         await self.close()
 
     async def connect(self):
-        """Create the aiohttp session."""
+        """Create the aiohttp session and increment reference count."""
         if self._session is None:
             self._session = aiohttp.ClientSession(timeout=self.timeout)
-        else:
-            raise RuntimeError("Attempting to reconnect to existing ClientSession.")
+        self._ref_count += 1
 
     async def close(self):
-        """Close the aiohttp session."""
-        if self._session:
-            await self._session.close()
-        else:
-            raise RuntimeError("Attempting to close unconnected ClientSession.")
+        """Close the aiohttp session when reference count reaches zero."""
+        # Don't let ref count go below 0
+        self._ref_count = max(self._ref_count - 1, 0)
+
+        # Only actually close the session when no more references exist
+        if self._ref_count == 0 and self._session:
+            session = self._session
+            self._session = None
+            await session.close()
 
     def __del__(self):
         """Write metrics to file when client is destroyed."""
@@ -202,10 +205,7 @@ class BaseClient:
 
         url = self._build_url(path, params)
 
-        # Add auth header if token is set
         request_headers = headers or {}
-        if self._auth_token:
-            request_headers["Authorization"] = f"Bearer {self._auth_token}"
 
         last_exception: Exception | None = None
 
@@ -268,15 +268,6 @@ class BaseClient:
             raise last_exception
         else:
             raise RuntimeError("Maximum retries exceeded: Unknown error.")
-
-    def set_token(self, token: str) -> None:
-        """Set the authentication token for requests."""
-        self._auth_token = token
-
-    @property
-    def auth_token(self) -> str | None:
-        """Get the current authentication token."""
-        return self._auth_token
 
     async def request(
         self,

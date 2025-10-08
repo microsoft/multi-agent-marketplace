@@ -240,7 +240,7 @@ class MarketplaceMCPServer(Server[State, Any]):
         # Execute via the client's request method directly since we need name/parameters
         logger.debug(f"Sending action request to marketplace for {name}")
         try:
-            result = await state.client.actions.request(action_request)
+            result = await state.client.actions.execute_request(action_request)
             logger.info(f"Successfully executed tool {name}")
             logger.debug(f"Tool {name} result: {result}")
         except Exception as e:
