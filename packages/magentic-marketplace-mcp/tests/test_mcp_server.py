@@ -26,7 +26,7 @@ from magentic_marketplace.marketplace.shared.models import (
     CustomerAgentProfile,
 )
 from magentic_marketplace.platform.client import MarketplaceClient
-from magentic_marketplace.platform.database.sqlite import create_sqlite_database
+from magentic_marketplace.platform.database.sqlite import connect_to_sqlite_database
 from magentic_marketplace.platform.server import MarketplaceServer
 from magentic_marketplace.platform.shared.models import ActionExecutionResult
 from mcp.client.session import ClientSession
@@ -88,7 +88,7 @@ async def marketplace_server(business_agent_profile: BusinessAgentProfile):
         db_path = temp_file.name
 
     def database_factory():
-        return create_sqlite_database(db_path)
+        return connect_to_sqlite_database(db_path)
 
     server = MarketplaceServer(database_factory, SimpleMarketplaceProtocol())
 

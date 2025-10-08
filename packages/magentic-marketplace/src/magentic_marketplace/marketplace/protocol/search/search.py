@@ -36,35 +36,29 @@ async def execute_search(
         ActionExecutionResult with the action result
 
     """
-    try:
-        # Execute the appropriate search algorithm
-        logger.info(
-            f'Search: "{search.query}", "{search.constraints}", {search.search_algorithm}'
+    # Execute the appropriate search algorithm
+    logger.info(
+        f'Search: "{search.query}", "{search.constraints}", {search.search_algorithm}'
+    )
+    if search.search_algorithm == SearchAlgorithm.FILTERED:
+        response = await execute_filtered_search(search, database)
+    elif search.search_algorithm == SearchAlgorithm.RNR:
+        response = await execute_rnr_search(search, database)
+    elif search.search_algorithm == SearchAlgorithm.LEXICAL:
+        response = await execute_lexical_search(search, database)
+    elif search.search_algorithm == SearchAlgorithm.OPTIMAL:
+        if agent is None:
+            raise ValueError("agent is required to perform optimal search")
+        # Parse agent as CustomerAgentProfile to extract customer
+        customer_agent = CustomerAgentProfile.model_validate(agent.model_dump())
+        response = await execute_optimal_search(
+            search=search, customer=customer_agent.customer, database=database
         )
-        if search.search_algorithm == SearchAlgorithm.FILTERED:
-            response = await execute_filtered_search(search, database)
-        elif search.search_algorithm == SearchAlgorithm.RNR:
-            response = await execute_rnr_search(search, database)
-        elif search.search_algorithm == SearchAlgorithm.LEXICAL:
-            response = await execute_lexical_search(search, database)
-        elif search.search_algorithm == SearchAlgorithm.OPTIMAL:
-            if agent is None:
-                raise ValueError("agent is required to perform optimal search")
-            # Parse agent as CustomerAgentProfile to extract customer
-            customer_agent = CustomerAgentProfile.model_validate(agent.model_dump())
-            response = await execute_optimal_search(
-                search=search, customer=customer_agent.customer, database=database
-            )
-        elif search.search_algorithm == SearchAlgorithm.SIMPLE:
-            response = await execute_simple_search(search, database)
-        else:
-            raise ValueError(f"Unknown search algorithm: {search.search_algorithm}")
+    elif search.search_algorithm == SearchAlgorithm.SIMPLE:
+        response = await execute_simple_search(search, database)
+    else:
+        raise ValueError(f"Unknown search algorithm: {search.search_algorithm}")
 
-        logger.debug(f"SearchResponse: {response.model_dump_json(indent=2)}")
+    logger.debug(f"SearchResponse: {response.model_dump_json(indent=2)}")
 
-        return ActionExecutionResult(content=response.model_dump(mode="json"))
-    except Exception as e:
-        return ActionExecutionResult(
-            content={"error": str(e)},
-            is_error=True,
-        )
+    return ActionExecutionResult(content=response.model_dump(mode="json"))

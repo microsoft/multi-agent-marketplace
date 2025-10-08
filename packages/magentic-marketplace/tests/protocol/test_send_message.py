@@ -12,7 +12,6 @@ from magentic_marketplace.marketplace.actions.messaging import (
     Payment,
     TextMessage,
 )
-from magentic_marketplace.platform.database.queries.base import QueryParams
 
 
 class TestSendMessage:
@@ -29,7 +28,7 @@ class TestSendMessage:
         database = agents["database"]
 
         # Verify clean state
-        all_actions_before = await database.actions.get_all(QueryParams())
+        all_actions_before = await database.actions.get_all()
         assert len(all_actions_before) == 0, (
             "Precondition failed: expected empty action table."
         )
@@ -48,7 +47,7 @@ class TestSendMessage:
         assert result.is_error is False, f"Action should succeed. Failed with: {result}"
 
         # Verify action was logged in database
-        all_actions_after = await database.actions.get_all(QueryParams())
+        all_actions_after = await database.actions.get_all()
         assert len(all_actions_after) == 1, "Action table should have 1 entry"
         action_entry = all_actions_after[0]
         assert action_entry.data.agent_id == customer.id, (
@@ -68,7 +67,7 @@ class TestSendMessage:
         database = agents["database"]
 
         # Verify clean state
-        all_actions_before = await database.actions.get_all(QueryParams())
+        all_actions_before = await database.actions.get_all()
         assert len(all_actions_before) == 0, (
             "Precondition failed: expected empty action table."
         )
@@ -88,7 +87,7 @@ class TestSendMessage:
         assert result.is_error is True, f"Action should fail. Succeeded with: {result}"
 
         # Verify action was still logged even though it failed
-        all_actions_after = await database.actions.get_all(QueryParams())
+        all_actions_after = await database.actions.get_all()
         assert len(all_actions_after) == 1, "Failed action should still be logged"
         action_entry = all_actions_after[0]
         assert action_entry.data.agent_id == customer.id
@@ -105,7 +104,7 @@ class TestSendMessage:
         database = agents["database"]
 
         # Verify clean state
-        all_actions_before = await database.actions.get_all(QueryParams())
+        all_actions_before = await database.actions.get_all()
         assert len(all_actions_before) == 0, (
             "Precondition failed: expected empty action table."
         )
@@ -133,7 +132,7 @@ class TestSendMessage:
         )
 
         # Verify proposal action was logged
-        all_actions_after = await database.actions.get_all(QueryParams())
+        all_actions_after = await database.actions.get_all()
         assert len(all_actions_after) == 1, "Action table should have 1 entry"
 
         # Use the OrderProposal's own ID for payment reference
@@ -153,7 +152,7 @@ class TestSendMessage:
         )
 
         # Verify both actions were logged
-        all_actions_final = await database.actions.get_all(QueryParams())
+        all_actions_final = await database.actions.get_all()
         assert len(all_actions_final) == 2, "Action table should have 2 entries"
 
         # Verify correct agent IDs for each action
@@ -191,7 +190,7 @@ class TestSendMessage:
         )
 
         # Verify failed action was logged
-        actions_after_bad_payment = await database.actions.get_all(QueryParams())
+        actions_after_bad_payment = await database.actions.get_all()
         assert len(actions_after_bad_payment) == 1
         assert actions_after_bad_payment[0].data.result.is_error is True
 
@@ -210,7 +209,7 @@ class TestSendMessage:
         assert result_text.is_error is False
 
         # Get the text message action ID from database since the protocol doesn't return it
-        text_actions = await database.actions.get_all(QueryParams())
+        text_actions = await database.actions.get_all()
         text_message_action = [
             a for a in text_actions if a.data.request.name == "SendMessage"
         ][-1]  # Get the latest SendMessage
@@ -234,5 +233,5 @@ class TestSendMessage:
         )
 
         # Verify all actions were logged (2 successful, 2 failed)
-        all_actions_final = await database.actions.get_all(QueryParams())
+        all_actions_final = await database.actions.get_all()
         assert len(all_actions_final) == 3  # 1 failed + 1 text + 1 failed payment

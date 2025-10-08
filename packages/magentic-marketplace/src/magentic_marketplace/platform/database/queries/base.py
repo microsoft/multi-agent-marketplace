@@ -19,6 +19,8 @@ class RangeQueryParams(QueryParams):
 
     after: AwareDatetime | None = None
     before: AwareDatetime | None = None
+    before_index: int | None = None
+    after_index: int | None = None
 
 
 Operator = (

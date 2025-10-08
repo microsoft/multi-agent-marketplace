@@ -38,6 +38,9 @@ class FetchMessages(BaseAction):
     after: AwareDatetime | None = Field(
         default=None, description="Only return messages sent after this timestamp"
     )
+    after_index: int | None = Field(
+        default=None, description="Only return messages with index greater than this"
+    )
 
 
 class ReceivedMessage(BaseModel):
@@ -47,6 +50,7 @@ class ReceivedMessage(BaseModel):
     to_agent_id: str = Field(description="ID of the agent who received the message")
     created_at: AwareDatetime = Field(description="When the message was created")
     message: Message = Field(description="The actual message content")
+    index: int = Field(description="The row index of the message")
 
 
 class FetchMessagesResponse(BaseModel):

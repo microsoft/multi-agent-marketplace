@@ -49,4 +49,4 @@ class BaseLLMConfig(BaseModel):
     )
     temperature: float = EnvField("LLM_TEMPERATURE", default=0.0)
     max_tokens: int = EnvField("LLM_MAX_TOKENS", default=2000)
-    max_concurrency: int | None = EnvField("LLM_MAX_CONCURRENCY", default=None)
+    max_concurrency: int = EnvField("LLM_MAX_CONCURRENCY", default=64)

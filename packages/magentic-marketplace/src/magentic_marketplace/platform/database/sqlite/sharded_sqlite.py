@@ -1146,7 +1146,7 @@ class ShardedSQLiteDatabaseController(BaseDatabaseController):
 
 
 @asynccontextmanager
-async def create_sharded_sqlite_database(
+async def connect_to_sharded_sqlite_database(
     base_path: str = "marketplace_sharded",
     agent_shards: int = 4,
     action_shards: int = 4,

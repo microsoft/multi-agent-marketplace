@@ -25,7 +25,7 @@ from ..base import (
     LogTableController,
 )
 from ..models import ActionRow, ActionRowData, AgentRow, LogRow
-from ..queries import AndQuery, JSONQuery, OrQuery, Query, RangeQueryParams
+from ..queries import AndQuery, JSONQuery, OrQuery, Query, QueryParams, RangeQueryParams
 
 # Global metrics tracking
 _connection_metrics = {
@@ -137,6 +137,56 @@ def _convert_query_to_sql(query: Query) -> str:
         return f"json_extract(data, '{query.path}') {sql_operator} {escaped_value}"
 
 
+def _convert_query_params_to_sql(
+    *,
+    sql: str,
+    query: Query | None = None,
+    params: QueryParams | None = None,
+    sql_params: list[Any] | None = None,
+):
+    sql_params = list(sql_params or [])
+    where_clauses: list[str] = []
+
+    # Add query filter if provided
+    if query is not None:
+        where_clauses.append(_convert_query_to_sql(query))
+
+    # Add time range filters
+    if params and isinstance(params, RangeQueryParams):
+        if params.after:
+            where_clauses.append("created_at > ?")
+            sql_params.append(params.after.isoformat())
+        if params.before:
+            where_clauses.append("created_at < ?")
+            sql_params.append(params.before.isoformat())
+
+        # Add index range filters
+        if params.after_index is not None:
+            where_clauses.append("rowid > ?")
+            sql_params.append(params.after_index)
+        if params.before_index is not None:
+            where_clauses.append("rowid < ?")
+            sql_params.append(params.before_index)
+
+    if where_clauses:
+        # Check if WHERE already exists in sql
+        if "WHERE" in sql.upper():
+            sql += " AND " + " AND ".join(where_clauses)
+        else:
+            sql += " WHERE " + " AND ".join(where_clauses)
+
+    sql += " ORDER BY rowid"
+
+    if params and params.limit:
+        sql += " LIMIT ? OFFSET ?"
+        sql_params.extend([params.limit, params.offset])
+    elif params and params.offset:
+        sql += " LIMIT -1 OFFSET ?"
+        sql_params.append(params.offset)
+
+    return sql, sql_params
+
+
 # SQL DDL for table creation
 CREATE_TABLES_SQL = """
 CREATE TABLE IF NOT EXISTS agents (
@@ -244,19 +294,28 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
             )
             await db.commit()
 
+            # Get the rowid that was automatically assigned
+            async with db.execute(
+                "SELECT rowid FROM agents WHERE id = ?",
+                (agent_id,),
+            ) as cursor:
+                row = await cursor.fetchone()
+                row_index = row[0] if row else None
+
         # Return the created agent
         return AgentRow(
             id=agent_id,
             created_at=item.created_at,
             data=item.data,
             agent_embedding=item.agent_embedding,
+            index=row_index,
         )
 
     async def get_by_id(self, item_id: str) -> AgentRow | None:
         """Get agent by ID."""
         async with self.connection as db:
             async with db.execute(
-                "SELECT id, created_at, data, agent_embedding FROM agents WHERE id = ?",
+                "SELECT rowid, id, created_at, data, agent_embedding FROM agents WHERE id = ?",
                 (item_id,),
             ) as cursor:
                 row = await cursor.fetchone()
@@ -265,25 +324,21 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
             return None
 
         # Reconstruct agent from JSON
-        agent_data = AgentProfile.model_validate_json(row[2])
+        agent_data = AgentProfile.model_validate_json(row[3])
         return AgentRow(
-            id=row[0],
-            created_at=row[1],  # type: ignore  # Pydantic handles datetime string parsing
+            id=row[1],
+            created_at=row[2],  # type: ignore  # Pydantic handles datetime string parsing
             data=agent_data,
-            agent_embedding=row[3],  # BLOB data or None
+            agent_embedding=row[4],  # BLOB data or None
+            index=row[0],
         )
 
     async def get_all(self, params: RangeQueryParams | None = None) -> list[AgentRow]:
         """Get all agents with pagination."""
-        sql = "SELECT id, created_at, data, agent_embedding FROM agents ORDER BY created_at"
-        sql_params: list[Any] = []
-
-        if params and params.limit:
-            sql += " LIMIT ? OFFSET ?"
-            sql_params.extend([params.limit, params.offset])
-        elif params and params.offset:
-            sql += " OFFSET ?"
-            sql_params.append(params.offset)
+        sql, sql_params = _convert_query_params_to_sql(
+            sql="SELECT rowid, id, created_at, data, agent_embedding FROM agents",
+            params=params,
+        )
 
         async with self.connection as db:
             async with db.execute(sql, sql_params) as cursor:
@@ -291,10 +346,11 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
 
         return [
             AgentRow(
-                id=row[0],
-                created_at=row[1],  # type: ignore  # Pydantic handles datetime string parsing
-                data=AgentProfile.model_validate_json(row[2]),
-                agent_embedding=row[3],  # BLOB data or None
+                id=row[1],
+                created_at=row[2],  # type: ignore  # Pydantic handles datetime string parsing
+                data=AgentProfile.model_validate_json(row[3]),
+                agent_embedding=row[4],  # BLOB data or None
+                index=row[0],
             )
             for row in rows
         ]
@@ -303,30 +359,11 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
         self, query: Query, params: RangeQueryParams | None = None
     ) -> list[AgentRow]:
         """Find agents using JSONQuery objects."""
-        params = params or RangeQueryParams()
-        sql = f"""
-        SELECT id, created_at, data, agent_embedding FROM agents
-        WHERE {_convert_query_to_sql(query)}
-        """
-        sql_params: list[Any] = []
-
-        # Add time range filters
-        if params.after:
-            sql += " AND created_at > ?"
-            sql_params.append(params.after.isoformat())
-        if params.before:
-            sql += " AND created_at < ?"
-            sql_params.append(params.before.isoformat())
-
-        sql += " ORDER BY created_at"
-
-        # Add pagination
-        if params.limit:
-            sql += " LIMIT ? OFFSET ?"
-            sql_params.extend([params.limit, params.offset])
-        elif params.offset:
-            sql += " OFFSET ?"
-            sql_params.append(params.offset)
+        sql, sql_params = _convert_query_params_to_sql(
+            sql="SELECT rowid, id, created_at, data, agent_embedding FROM agents",
+            query=query,
+            params=params,
+        )
 
         async with self.connection as db:
             async with db.execute(sql, sql_params) as cursor:
@@ -334,10 +371,11 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
 
         return [
             AgentRow(
-                id=row[0],
-                created_at=row[1],  # type: ignore  # Pydantic handles datetime string parsing
-                data=AgentProfile.model_validate_json(row[2]),
-                agent_embedding=row[3],  # BLOB data or None
+                id=row[1],
+                created_at=row[2],  # type: ignore  # Pydantic handles datetime string parsing
+                data=AgentProfile.model_validate_json(row[3]),
+                agent_embedding=row[4],  # BLOB data or None
+                index=row[0],
             )
             for row in rows
         ]
@@ -417,30 +455,11 @@ class SQLiteActionController(ActionTableController, _BoundedSqliteConnectionMixI
         self, query: Query, params: RangeQueryParams | None = None
     ) -> list[ActionRow]:
         """Find actions using JSONQuery objects."""
-        params = params or RangeQueryParams()
-        sql = f"""
-        SELECT id, created_at, data FROM actions
-        WHERE {_convert_query_to_sql(query)}
-        """
-        sql_params: list[Any] = []
-
-        # Add time range filters
-        if params.after:
-            sql += " AND created_at > ?"
-            sql_params.append(params.after.isoformat())
-        if params.before:
-            sql += " AND created_at < ?"
-            sql_params.append(params.before.isoformat())
-
-        sql += " ORDER BY created_at"
-
-        # Add pagination
-        if params.limit:
-            sql += " LIMIT ? OFFSET ?"
-            sql_params.extend([params.limit, params.offset])
-        elif params.offset:
-            sql += " OFFSET ?"
-            sql_params.append(params.offset)
+        sql, sql_params = _convert_query_params_to_sql(
+            sql="SELECT rowid, id, created_at, data FROM actions",
+            query=query,
+            params=params,
+        )
 
         async with self.connection as db:
             async with db.execute(sql, sql_params) as cursor:
@@ -448,9 +467,10 @@ class SQLiteActionController(ActionTableController, _BoundedSqliteConnectionMixI
 
         return [
             ActionRow(
-                id=row[0],
-                created_at=row[1],  # type: ignore  # Pydantic handles datetime string parsing
-                data=ActionRowData.model_validate_json(row[2]),
+                id=row[1],
+                created_at=row[2],  # type: ignore  # Pydantic handles datetime string parsing
+                data=ActionRowData.model_validate_json(row[3]),
+                index=row[0],
             )
             for row in rows
         ]
@@ -473,18 +493,27 @@ class SQLiteActionController(ActionTableController, _BoundedSqliteConnectionMixI
             )
             await db.commit()
 
-        # Return the created action
+            # Get the rowid that was automatically assigned
+            async with db.execute(
+                "SELECT rowid FROM actions WHERE id = ?",
+                (action_id,),
+            ) as cursor:
+                row = await cursor.fetchone()
+                row_index = row[0] if row else None
+
+        # Return the created action with index
         return ActionRow(
             id=action_id,
             created_at=item.created_at,
             data=item.data,
+            index=row_index,
         )
 
     async def get_by_id(self, item_id: str) -> ActionRow | None:
         """Get action by ID."""
         async with self.connection as db:
             async with db.execute(
-                "SELECT id, created_at, data FROM actions WHERE id = ?",
+                "SELECT rowid, id, created_at, data FROM actions WHERE id = ?",
                 (item_id,),
             ) as cursor:
                 row = await cursor.fetchone()
@@ -493,24 +522,20 @@ class SQLiteActionController(ActionTableController, _BoundedSqliteConnectionMixI
             return None
 
         # Reconstruct action from JSON
-        action_data = ActionRowData.model_validate_json(row[2])
+        action_data = ActionRowData.model_validate_json(row[3])
         return ActionRow(
-            id=row[0],
-            created_at=row[1],  # type: ignore  # Pydantic handles datetime string parsing
+            id=row[1],
+            created_at=row[2],  # type: ignore  # Pydantic handles datetime string parsing
             data=action_data,
+            index=row[0],
         )
 
     async def get_all(self, params: RangeQueryParams | None = None) -> list[ActionRow]:
         """Get all actions with pagination."""
-        sql = "SELECT id, created_at, data FROM actions ORDER BY created_at"
-        sql_params: list[Any] = []
-
-        if params and params.limit:
-            sql += " LIMIT ? OFFSET ?"
-            sql_params.extend([params.limit, params.offset])
-        elif params and params.offset:
-            sql += " OFFSET ?"
-            sql_params.append(params.offset)
+        sql, sql_params = _convert_query_params_to_sql(
+            sql="SELECT rowid, id, created_at, data FROM actions",
+            params=params,
+        )
 
         async with self.connection as db:
             async with db.execute(sql, sql_params) as cursor:
@@ -518,9 +543,10 @@ class SQLiteActionController(ActionTableController, _BoundedSqliteConnectionMixI
 
         return [
             ActionRow(
-                id=row[0],
-                created_at=row[1],  # type: ignore  # Pydantic handles datetime string parsing
-                data=ActionRowData.model_validate_json(row[2]),
+                id=row[1],
+                created_at=row[2],  # type: ignore  # Pydantic handles datetime string parsing
+                data=ActionRowData.model_validate_json(row[3]),
+                index=row[0],
             )
             for row in rows
         ]
@@ -586,30 +612,11 @@ class SQLiteLogController(LogTableController, _BoundedSqliteConnectionMixIn):
         self, query: Query, params: RangeQueryParams | None = None
     ) -> list[LogRow]:
         """Find logs using JSONQuery objects."""
-        params = params or RangeQueryParams()
-        sql = f"""
-        SELECT id, created_at, data FROM logs
-        WHERE {_convert_query_to_sql(query)}
-        """
-        sql_params: list[Any] = []
-
-        # Add time range filters
-        if params.after:
-            sql += " AND created_at > ?"
-            sql_params.append(params.after.isoformat())
-        if params.before:
-            sql += " AND created_at < ?"
-            sql_params.append(params.before.isoformat())
-
-        sql += " ORDER BY created_at"
-
-        # Add pagination
-        if params.limit:
-            sql += " LIMIT ? OFFSET ?"
-            sql_params.extend([params.limit, params.offset])
-        elif params.offset:
-            sql += " OFFSET ?"
-            sql_params.append(params.offset)
+        sql, sql_params = _convert_query_params_to_sql(
+            sql="SELECT rowid, id, created_at, data FROM logs",
+            query=query,
+            params=params,
+        )
 
         async with self.connection as db:
             async with db.execute(sql, sql_params) as cursor:
@@ -617,9 +624,10 @@ class SQLiteLogController(LogTableController, _BoundedSqliteConnectionMixIn):
 
         return [
             LogRow(
-                id=row[0],
-                created_at=row[1],  # type: ignore  # Pydantic handles datetime string parsing
-                data=Log.model_validate_json(row[2]),
+                id=row[1],
+                created_at=row[2],  # type: ignore  # Pydantic handles datetime string parsing
+                data=Log.model_validate_json(row[3]),
+                index=row[0],
             )
             for row in rows
         ]
@@ -639,14 +647,24 @@ class SQLiteLogController(LogTableController, _BoundedSqliteConnectionMixIn):
             )
             await db.commit()
 
+            # Get the rowid that was automatically assigned
+            async with db.execute(
+                "SELECT rowid FROM logs WHERE id = ?",
+                (log_id,),
+            ) as cursor:
+                row = await cursor.fetchone()
+                row_index = row[0] if row else None
+
         # Return the created log
-        return LogRow(id=log_id, created_at=item.created_at, data=item.data)
+        return LogRow(
+            id=log_id, created_at=item.created_at, data=item.data, index=row_index
+        )
 
     async def get_by_id(self, item_id: str) -> LogRow | None:
         """Get log by ID."""
         async with self.connection as db:
             async with db.execute(
-                "SELECT id, created_at, data FROM logs WHERE id = ?",
+                "SELECT rowid, id, created_at, data FROM logs WHERE id = ?",
                 (item_id,),
             ) as cursor:
                 row = await cursor.fetchone()
@@ -655,24 +673,20 @@ class SQLiteLogController(LogTableController, _BoundedSqliteConnectionMixIn):
             return None
 
         # Reconstruct log from JSON
-        log_data = Log.model_validate_json(row[2])
+        log_data = Log.model_validate_json(row[3])
         return LogRow(
-            id=row[0],
-            created_at=row[1],  # type: ignore  # Pydantic handles datetime string parsing
+            id=row[1],
+            created_at=row[2],  # type: ignore  # Pydantic handles datetime string parsing
             data=log_data,
+            index=row[0],
         )
 
     async def get_all(self, params: RangeQueryParams | None = None) -> list[LogRow]:
         """Get all logs with pagination."""
-        sql = "SELECT id, created_at, data FROM logs ORDER BY created_at"
-        sql_params: list[Any] = []
-
-        if params and params.limit:
-            sql += " LIMIT ? OFFSET ?"
-            sql_params.extend([params.limit, params.offset])
-        elif params and params.offset:
-            sql += " OFFSET ?"
-            sql_params.append(params.offset)
+        sql, sql_params = _convert_query_params_to_sql(
+            sql="SELECT rowid, id, created_at, data FROM logs",
+            params=params,
+        )
 
         async with self.connection as db:
             async with db.execute(sql, sql_params) as cursor:
@@ -680,9 +694,10 @@ class SQLiteLogController(LogTableController, _BoundedSqliteConnectionMixIn):
 
         return [
             LogRow(
-                id=row[0],
-                created_at=row[1],  # type: ignore  # Pydantic handles datetime string parsing
-                data=Log.model_validate_json(row[2]),
+                id=row[1],
+                created_at=row[2],  # type: ignore  # Pydantic handles datetime string parsing
+                data=Log.model_validate_json(row[3]),
+                index=row[0],
             )
             for row in rows
         ]
@@ -823,7 +838,7 @@ class SQLiteDatabaseController(BaseDatabaseController, _BoundedSqliteConnectionM
 
 
 @asynccontextmanager
-async def create_sqlite_database(database_path: str = "marketplace.db"):
+async def connect_to_sqlite_database(database_path: str = "marketplace.db"):
     """Create SQLite database controller."""
     controller = SQLiteDatabaseController(database_path)
     await controller.initialize()

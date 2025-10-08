@@ -75,6 +75,7 @@ def run_experiment_command(args):
             postgres_host=args.postgres_host,
             postgres_port=args.postgres_port,
             postgres_password=args.postgres_password,
+            override=args.override_db,
         )
     )
 
@@ -168,6 +169,12 @@ def main():
         default="INFO",
         choices=["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"],
         help="Set the logging level (default: INFO)",
+    )
+
+    experiment_parser.add_argument(
+        "--override-db",
+        action="store_true",
+        help="Override the existing database schema if it exists.",
     )
 
     # analytics subcommand
