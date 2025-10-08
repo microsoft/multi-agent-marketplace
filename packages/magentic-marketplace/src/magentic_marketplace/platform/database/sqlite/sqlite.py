@@ -823,7 +823,7 @@ class SQLiteDatabaseController(BaseDatabaseController, _BoundedSqliteConnectionM
 
 
 @asynccontextmanager
-async def create_sqlite_database(database_path: str = "marketplace.db"):
+async def connect_to_sqlite_database(database_path: str = "marketplace.db"):
     """Create SQLite database controller."""
     controller = SQLiteDatabaseController(database_path)
     await controller.initialize()

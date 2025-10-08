@@ -20,7 +20,7 @@ from magentic_marketplace.marketplace.shared.models import (
 )
 from magentic_marketplace.platform.agent.base import BaseAgent
 from magentic_marketplace.platform.database.models import AgentRow
-from magentic_marketplace.platform.database.sqlite import create_sqlite_database
+from magentic_marketplace.platform.database.sqlite import connect_to_sqlite_database
 from magentic_marketplace.platform.database.sqlite.sqlite import (
     SQLiteDatabaseController,
 )
@@ -54,7 +54,7 @@ async def test_database() -> AsyncGenerator[SQLiteDatabaseController]:
     with tempfile.NamedTemporaryFile(suffix=".db", delete=False) as temp_file:
         db_path = temp_file.name
 
-    async with create_sqlite_database(db_path) as database:
+    async with connect_to_sqlite_database(db_path) as database:
         yield database
 
     # Cleanup
@@ -116,7 +116,7 @@ async def integration_test_setup() -> AsyncGenerator[dict[str, Any]]:
         db_path = temp_file.name
 
     def database_factory():
-        return create_sqlite_database(db_path)
+        return connect_to_sqlite_database(db_path)
 
     # Find a free port for testing
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -138,7 +138,7 @@ async def integration_test_setup() -> AsyncGenerator[dict[str, Any]]:
         actual_server_url = launcher.server_url
 
         # Create database connection for verification
-        async with create_sqlite_database(db_path) as database:
+        async with connect_to_sqlite_database(db_path) as database:
             yield {
                 "launcher": launcher,
                 "database": database,
