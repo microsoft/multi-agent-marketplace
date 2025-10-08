@@ -3,7 +3,7 @@
 from datetime import UTC, datetime
 from typing import Any, TypeVar
 
-from pydantic import AwareDatetime, BaseModel
+from pydantic import BaseModel
 
 from magentic_marketplace.platform.agent.base import BaseAgent, TProfile
 
@@ -44,9 +44,9 @@ class BaseSimpleMarketplaceAgent(BaseAgent[TProfile]):
     ):
         """Initialize the simple marketplace agent."""
         super().__init__(profile, base_url)
-        # Track last fetch time
-        self.last_fetch_time: AwareDatetime | None = None
+        self.last_fetch_index: int | None = None
         self.llm_config = llm_config or BaseLLMConfig()
+        self._seen_message_indexes: set[int] = set()
 
     async def send_message(self, to_agent_id: str, message: Message):
         """Send a message to another agent.
@@ -84,17 +84,13 @@ class BaseSimpleMarketplaceAgent(BaseAgent[TProfile]):
             from_agent_id: Filter by sender agent ID
             limit: Maximum number of messages to retrieve
             offset: Number of messages to skip for pagination
-            after: Only return messages sent after this timestamp
+            after_index: Only return messages with index greater than this
 
         Returns:
             Response containing the fetched messages
 
         """
-        action = FetchMessages(
-            after=self.last_fetch_time,
-        )
-
-        self.last_fetch_time = datetime.now(UTC)
+        action = FetchMessages()
 
         result = await self.execute_action(action)
 
@@ -104,11 +100,21 @@ class BaseSimpleMarketplaceAgent(BaseAgent[TProfile]):
             self.logger.warning(f"Failed to fetch messages: {result.content}")
             return FetchMessagesResponse(messages=[], has_more=False)
 
-        # Validate the ActionExecutionResult.content as a FetchMessagesResponse
-        # TODO: Fetch next page if has_more
         response = FetchMessagesResponse.model_validate(result.content)
 
-        return response
+        new_messages = []
+        for message in response.messages:
+            if message.index not in self._seen_message_indexes:
+                new_messages.append(message)
+                self._seen_message_indexes.add(message.index)
+
+                if (
+                    self.last_fetch_index is None
+                    or message.index > self.last_fetch_index
+                ):
+                    self.last_fetch_index = message.index
+
+        return response.model_copy(update={"messages": new_messages})
 
     async def generate(self, prompt: str, **kwargs: Any) -> tuple[str, Any]:
         """Generate LLM response with automatic logging.

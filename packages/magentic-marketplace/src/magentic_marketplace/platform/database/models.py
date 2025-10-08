@@ -20,6 +20,7 @@ class Row(BaseModel, Generic[T]):
     id: str
     created_at: AwareDatetime
     data: T
+    index: int | None = None
 
 
 class AgentRow(Row[AgentProfile]):
