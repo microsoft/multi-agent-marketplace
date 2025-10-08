@@ -6,8 +6,7 @@ import logging
 import threading
 import uuid
 from contextlib import asynccontextmanager
-from enum import Enum
-from typing import Any
+from typing import Any, Literal
 
 import asyncpg
 
@@ -25,14 +24,7 @@ from ..base import (
 from ..models import ActionRow, ActionRowData, AgentRow, LogRow
 from ..queries import AndQuery, JSONQuery, OrQuery, Query, RangeQueryParams
 
-
-class SchemaMode(str, Enum):
-    """Schema creation mode for database initialization."""
-
-    EXISTING = "existing"
-    OVERRIDE = "override"
-    CREATE_NEW = "create_new"
-
+SchemaMode = Literal["existing", "override", "create_new"]
 
 logger = logging.getLogger(__name__)
 
@@ -730,7 +722,7 @@ class PostgreSQLDatabaseController(BaseDatabaseController):
         max_size: int = 50,
         command_timeout: float = 60,
         db_timeout: float = 5,
-        mode: SchemaMode = SchemaMode.CREATE_NEW,
+        mode: SchemaMode = "create_new",
     ):
         """Create a new controller for the given schema.
 
@@ -787,7 +779,7 @@ class PostgreSQLDatabaseController(BaseDatabaseController):
         async with self._pool.acquire() as conn:
             return await conn.execute(command)
 
-    async def initialize(self, mode: SchemaMode = SchemaMode.CREATE_NEW):
+    async def initialize(self, mode: SchemaMode = "create_new"):
         """Initialize the database tables.
 
         Args:
@@ -802,26 +794,24 @@ class PostgreSQLDatabaseController(BaseDatabaseController):
                 self._schema,
             )
 
-            if mode == SchemaMode.EXISTING:
+            if mode == "existing":
                 if not exists:
                     raise ValueError(f"Schema '{self._schema}' does not exist")
                 return
 
-            elif mode == SchemaMode.CREATE_NEW:
+            elif mode == "create_new":
                 if exists:
                     raise ValueError(f"Schema '{self._schema}' already exists")
                 await conn.execute(f"CREATE SCHEMA {self._schema}")
 
-            elif mode == SchemaMode.OVERRIDE:
+            elif mode == "override":
                 if exists:
                     await conn.execute(f"DROP SCHEMA {self._schema} CASCADE")
                     logger.info(f"Dropped existing schema '{self._schema}'")
                 await conn.execute(f"CREATE SCHEMA {self._schema}")
 
             else:
-                raise ValueError(
-                    f"Invalid mode '{mode}'. Must be one of {list(SchemaMode)}."
-                )
+                raise ValueError(f"Invalid mode '{mode}'. Must be one of {SchemaMode}.")
 
             # Create tables in the schema (will be skipped if they already exist due to IF NOT EXISTS)
             await conn.execute(create_tables_sql(self._schema))
@@ -845,7 +835,7 @@ async def connect_to_postgresql_database(
     min_size: int = 50,
     max_size: int = 50,
     command_timeout: float = 60,
-    mode: SchemaMode = SchemaMode.CREATE_NEW,
+    mode: SchemaMode = "create_new",
 ):
     """Create PostgreSQL database controller with connection pooling.
 
