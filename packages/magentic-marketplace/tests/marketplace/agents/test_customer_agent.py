@@ -49,6 +49,7 @@ def llm_config():
     )
 
 
+@pytest.mark.asyncio
 async def test_max_steps_1(
     integration_test_setup,
     customer: Customer,
@@ -74,6 +75,7 @@ async def test_max_steps_1(
         assert agent.conversation_step == 1
 
 
+@pytest.mark.asyncio
 async def test_max_steps_none(
     integration_test_setup,
     customer: Customer,
@@ -98,6 +100,7 @@ async def test_max_steps_none(
             assert agent.will_shutdown is False
 
 
+@pytest.mark.asyncio
 async def test_max_steps_default(customer: Customer, llm_config: OpenAIConfig):
     """Tests that the default value for max_steps is None."""
     agent = CustomerAgent(
