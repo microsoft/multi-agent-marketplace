@@ -84,8 +84,13 @@ async def get_agent(agent_id: str, fastapi_request: Request) -> AgentGetResponse
     """Get a specific agent by ID."""
     db = get_database(fastapi_request)
 
-    db_agent = await db.agents.get_by_id(agent_id)
-    if not db_agent:
-        raise HTTPException(status_code=404, detail="Agent not found")
-    agent = AgentProfile.model_validate(db_agent.data)
-    return AgentGetResponse(agent=agent)
+    try:
+        db_agent = await db.agents.get_by_id(agent_id)
+        if not db_agent:
+            raise HTTPException(status_code=404, detail="Agent not found")
+        agent = AgentProfile.model_validate(db_agent.data)
+        return AgentGetResponse(agent=agent)
+    except DatabaseTooBusyError as e:
+        raise HTTPException(
+            status_code=429, detail=f"Database too busy: {e.message}"
+        ) from e

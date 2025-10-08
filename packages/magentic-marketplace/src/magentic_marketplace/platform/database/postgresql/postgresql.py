@@ -22,7 +22,7 @@ from ..base import (
     LogTableController,
 )
 from ..models import ActionRow, ActionRowData, AgentRow, LogRow
-from ..queries import AndQuery, JSONQuery, OrQuery, Query, RangeQueryParams
+from ..queries import AndQuery, JSONQuery, OrQuery, Query, QueryParams, RangeQueryParams
 
 SchemaMode = Literal["existing", "override", "create_new"]
 
@@ -89,9 +89,21 @@ def _stop_metrics_timer():
         _metrics_timer = None
 
 
-def _convert_query_to_postgres(query: Query) -> tuple[str, list[Any]]:
-    """Convert abstract JSONQuery to PostgreSQL-specific SQL with parameters."""
+def _convert_query_to_postgres(
+    query: Query, sql_params: list[Any] | None = None
+) -> tuple[str, list[Any]]:
+    """Convert abstract JSONQuery to PostgreSQL-specific SQL with parameters.
+
+    Args:
+        query: Query object to convert
+        sql_params: Existing SQL parameters to maintain numbering consistency
+
+    Returns:
+        Tuple of (SQL string, list of all parameters including new ones)
+
+    """
     params = []
+    param_offset = len(sql_params or [])
 
     def build_query(q: Query) -> str:
         nonlocal params
@@ -124,28 +136,90 @@ def _convert_query_to_postgres(query: Query) -> tuple[str, list[Any]]:
             else:
                 # For other operators with NULL, use NULL as is
                 params.append(None)
-                return f"jsonb_path_query_first(data, '{q.path}') {q.operator} ${len(params)}"
+                return f"jsonb_path_query_first(data, '{q.path}') {q.operator} ${param_offset + len(params)}"
         else:
             # For jsonb_path_query_first, we need to wrap string values in JSON quotes
             if isinstance(q.value, str):
                 params.append(f'"{q.value}"')
             else:
                 params.append(json.dumps(q.value))
-            param_idx = len(params)
+            param_idx = param_offset + len(params)
 
             # Generate SQL using jsonb_path_query_first
             if q.operator.upper() == "LIKE":
                 # For LIKE operations, we need to extract as text first
-                # Use the string value without JSON quotes for LIKE operations
-                params[param_idx - 1] = (
-                    q.value
-                )  # Replace the JSON-quoted value with plain string
+                # Use the string value without JSON quotes and add wildcards
+                params[-1] = f"%{q.value}%"  # Add wildcards for LIKE
                 return f"jsonb_path_query_first(data, '{q.path}') #>> '{{}}' ILIKE ${param_idx}"
             else:
                 return f"jsonb_path_query_first(data, '{q.path}') {q.operator} ${param_idx}"
 
     sql = build_query(query)
     return sql, params
+
+
+def _convert_query_params_to_postgres(
+    *,
+    sql: str,
+    query: Query | None = None,
+    params: QueryParams | RangeQueryParams | None = None,
+    sql_params: list[Any] | None = None,
+):
+    """Convert query params to PostgreSQL SQL with filters, ordering, and pagination.
+
+    Args:
+        sql: Base SQL query
+        query: Optional Query object for filtering
+        params: Query parameters for filtering and pagination
+        sql_params: Existing SQL parameters (for queries that already have WHERE conditions)
+
+    Returns:
+        Tuple of (complete SQL string, list of parameters)
+
+    """
+    sql_params = list(sql_params or [])
+    where_clauses = []
+
+    # Add query filter if provided
+    if query is not None:
+        query_sql, query_params = _convert_query_to_postgres(query, sql_params)
+        where_clauses.append(query_sql)
+        sql_params.extend(query_params)
+
+    if params and isinstance(params, RangeQueryParams):
+        # Add time range filters
+        if params.after:
+            where_clauses.append(f"created_at > ${len(sql_params) + 1}")
+            sql_params.append(params.after)
+        if params.before:
+            where_clauses.append(f"created_at < ${len(sql_params) + 1}")
+            sql_params.append(params.before)
+
+        # Add index range filters
+        if params.after_index is not None:
+            where_clauses.append(f"row_index > ${len(sql_params) + 1}")
+            sql_params.append(params.after_index)
+        if params.before_index is not None:
+            where_clauses.append(f"row_index < ${len(sql_params) + 1}")
+            sql_params.append(params.before_index)
+
+    if where_clauses:
+        # Check if WHERE already exists in sql
+        if "WHERE" in sql.upper():
+            sql += " AND " + " AND ".join(where_clauses)
+        else:
+            sql += " WHERE " + " AND ".join(where_clauses)
+
+    sql += " ORDER BY row_index"
+
+    if params and params.limit:
+        sql += f" LIMIT ${len(sql_params) + 1} OFFSET ${len(sql_params) + 2}"
+        sql_params.extend([params.limit, params.offset])
+    elif params and params.offset:
+        sql += f" OFFSET ${len(sql_params) + 1}"
+        sql_params.append(params.offset)
+
+    return sql, sql_params
 
 
 def create_tables_sql(schema: str) -> str:
@@ -155,25 +229,31 @@ CREATE TABLE IF NOT EXISTS {schema}.agents (
     id TEXT PRIMARY KEY,
     created_at TIMESTAMPTZ NOT NULL,
     data JSONB NOT NULL,
-    agent_embedding BYTEA
+    agent_embedding BYTEA,
+    row_index BIGINT GENERATED ALWAYS AS IDENTITY UNIQUE
 );
 
 CREATE TABLE IF NOT EXISTS {schema}.actions (
     id TEXT PRIMARY KEY,
     created_at TIMESTAMPTZ NOT NULL,
-    data JSONB NOT NULL
+    data JSONB NOT NULL,
+    row_index BIGINT GENERATED ALWAYS AS IDENTITY UNIQUE
 );
 
 CREATE TABLE IF NOT EXISTS {schema}.logs (
     id TEXT PRIMARY KEY,
     created_at TIMESTAMPTZ NOT NULL,
-    data JSONB NOT NULL
+    data JSONB NOT NULL,
+    row_index BIGINT GENERATED ALWAYS AS IDENTITY UNIQUE
 );
 
 -- Add indexes for better performance
 CREATE INDEX IF NOT EXISTS agents_created_at_idx ON {schema}.agents(created_at);
+CREATE INDEX IF NOT EXISTS agents_row_index_idx ON {schema}.agents(row_index);
 CREATE INDEX IF NOT EXISTS actions_created_at_idx ON {schema}.actions(created_at);
+CREATE INDEX IF NOT EXISTS actions_row_index_idx ON {schema}.actions(row_index);
 CREATE INDEX IF NOT EXISTS logs_created_at_idx ON {schema}.logs(created_at);
+CREATE INDEX IF NOT EXISTS logs_row_index_idx ON {schema}.logs(row_index);
 
 -- Add GIN indexes for JSONB columns for fast JSON queries
 CREATE INDEX IF NOT EXISTS agents_data_gin_idx ON {schema}.agents USING GIN(data);
@@ -224,8 +304,8 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
         agent_id = item.id or str(uuid.uuid4())
 
         async with self.connection(is_write=True) as conn:
-            await conn.execute(
-                f"INSERT INTO {self._schema}.agents (id, created_at, data, agent_embedding) VALUES ($1, $2, $3, $4)",
+            row_index = await conn.fetchval(
+                f"INSERT INTO {self._schema}.agents (id, created_at, data, agent_embedding) VALUES ($1, $2, $3, $4) RETURNING row_index",
                 agent_id,
                 item.created_at,
                 json.dumps(item.data.model_dump()),
@@ -237,13 +317,14 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
             created_at=item.created_at,
             data=item.data,
             agent_embedding=item.agent_embedding,
+            index=row_index,
         )
 
     async def get_by_id(self, item_id: str) -> AgentRow | None:
         """Get agent by ID."""
         async with self.connection() as conn:
             row = await conn.fetchrow(
-                f"SELECT id, created_at, data, agent_embedding FROM {self._schema}.agents WHERE id = $1",
+                f"SELECT row_index, id, created_at, data, agent_embedding FROM {self._schema}.agents WHERE id = $1",
                 item_id,
             )
 
@@ -257,20 +338,15 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
             created_at=row["created_at"],
             data=agent_data,
             agent_embedding=row["agent_embedding"],
+            index=row["row_index"],
         )
 
     async def get_all(self, params: RangeQueryParams | None = None) -> list[AgentRow]:
         """Get all agents with pagination."""
-        sql = f"SELECT id, created_at, data, agent_embedding FROM {self._schema}.agents ORDER BY created_at"
-        sql_params = []
-
-        if params and params.limit:
-            sql += " LIMIT $1 OFFSET $2"
-            sql_params.extend([params.limit, params.offset])
-        elif params and params.offset:
-            sql += " OFFSET $1"
-            sql_params.append(params.offset)
-
+        sql, sql_params = _convert_query_params_to_postgres(
+            sql=f"SELECT row_index, id, created_at, data, agent_embedding FROM {self._schema}.agents",
+            params=params,
+        )
         async with self.connection() as conn:
             rows = await conn.fetch(sql, *sql_params)
 
@@ -280,6 +356,7 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
                 created_at=row["created_at"],
                 data=AgentProfile.model_validate_json(row["data"]),
                 agent_embedding=row["agent_embedding"],
+                index=row["row_index"],
             )
             for row in rows
         ]
@@ -288,32 +365,11 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
         self, query: Query, params: RangeQueryParams | None = None
     ) -> list[AgentRow]:
         """Find agents using JSONQuery objects."""
-        params = params or RangeQueryParams()
-        where_clause, query_params = _convert_query_to_postgres(query)
-
-        sql = f"""
-        SELECT id, created_at, data, agent_embedding FROM {self._schema}.agents
-        WHERE {where_clause}
-        """
-        sql_params = query_params[:]
-
-        # Add time range filters
-        if params.after:
-            sql += f" AND created_at > ${len(sql_params) + 1}"
-            sql_params.append(params.after)
-        if params.before:
-            sql += f" AND created_at < ${len(sql_params) + 1}"
-            sql_params.append(params.before)
-
-        sql += " ORDER BY created_at"
-
-        # Add pagination
-        if params.limit:
-            sql += f" LIMIT ${len(sql_params) + 1} OFFSET ${len(sql_params) + 2}"
-            sql_params.extend([params.limit, params.offset])
-        elif params.offset:
-            sql += f" OFFSET ${len(sql_params) + 1}"
-            sql_params.append(params.offset)
+        sql, sql_params = _convert_query_params_to_postgres(
+            sql=f"SELECT row_index, id, created_at, data, agent_embedding FROM {self._schema}.agents",
+            query=query,
+            params=params,
+        )
 
         async with self.connection() as conn:
             rows = await conn.fetch(sql, *sql_params)
@@ -324,6 +380,7 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
                 created_at=row["created_at"],
                 data=AgentProfile.model_validate_json(row["data"]),
                 agent_embedding=row["agent_embedding"],
+                index=row["row_index"],
             )
             for row in rows
         ]
@@ -389,32 +446,11 @@ class PostgreSQLActionController(
         self, query: Query, params: RangeQueryParams | None = None
     ) -> list[ActionRow]:
         """Find actions using JSONQuery objects."""
-        params = params or RangeQueryParams()
-        where_clause, query_params = _convert_query_to_postgres(query)
-
-        sql = f"""
-        SELECT id, created_at, data FROM {self._schema}.actions
-        WHERE {where_clause}
-        """
-        sql_params = query_params[:]
-
-        # Add time range filters
-        if params.after:
-            sql += f" AND created_at > ${len(sql_params) + 1}"
-            sql_params.append(params.after)
-        if params.before:
-            sql += f" AND created_at < ${len(sql_params) + 1}"
-            sql_params.append(params.before)
-
-        sql += " ORDER BY created_at"
-
-        # Add pagination
-        if params.limit:
-            sql += f" LIMIT ${len(sql_params) + 1} OFFSET ${len(sql_params) + 2}"
-            sql_params.extend([params.limit, params.offset])
-        elif params.offset:
-            sql += f" OFFSET ${len(sql_params) + 1}"
-            sql_params.append(params.offset)
+        sql, sql_params = _convert_query_params_to_postgres(
+            sql=f"SELECT row_index, id, created_at, data FROM {self._schema}.actions",
+            query=query,
+            params=params,
+        )
 
         async with self.connection() as conn:
             rows = await conn.fetch(sql, *sql_params)
@@ -424,6 +460,7 @@ class PostgreSQLActionController(
                 id=row["id"],
                 created_at=row["created_at"],
                 data=ActionRowData.model_validate_json(row["data"]),
+                index=row["row_index"],
             )
             for row in rows
         ]
@@ -434,8 +471,9 @@ class PostgreSQLActionController(
         action_json = json.dumps(item.data.model_dump())
 
         async with self.connection(is_write=True) as conn:
-            await conn.execute(
-                f"INSERT INTO {self._schema}.actions (id, created_at, data) VALUES ($1, $2, $3)",
+            # The row_index will be automatically set by the DEFAULT nextval()
+            row_index = await conn.fetchval(
+                f"INSERT INTO {self._schema}.actions (id, created_at, data) VALUES ($1, $2, $3) RETURNING row_index",
                 action_id,
                 item.created_at,
                 action_json,
@@ -445,13 +483,14 @@ class PostgreSQLActionController(
             id=action_id,
             created_at=item.created_at,
             data=item.data,
+            index=row_index,
         )
 
     async def get_by_id(self, item_id: str) -> ActionRow | None:
         """Get action by ID."""
         async with self.connection() as conn:
             row = await conn.fetchrow(
-                f"SELECT id, created_at, data FROM {self._schema}.actions WHERE id = $1",
+                f"SELECT row_index, id, created_at, data FROM {self._schema}.actions WHERE id = $1",
                 item_id,
             )
 
@@ -463,19 +502,15 @@ class PostgreSQLActionController(
             id=row["id"],
             created_at=row["created_at"],
             data=action_data,
+            index=row["row_index"],
         )
 
     async def get_all(self, params: RangeQueryParams | None = None) -> list[ActionRow]:
         """Get all actions with pagination."""
-        sql = f"SELECT id, created_at, data FROM {self._schema}.actions ORDER BY created_at"
-        sql_params = []
-
-        if params and params.limit:
-            sql += " LIMIT $1 OFFSET $2"
-            sql_params.extend([params.limit, params.offset])
-        elif params and params.offset:
-            sql += " OFFSET $1"
-            sql_params.append(params.offset)
+        sql, sql_params = _convert_query_params_to_postgres(
+            sql=f"SELECT row_index, id, created_at, data FROM {self._schema}.actions",
+            params=params,
+        )
 
         async with self.connection() as conn:
             rows = await conn.fetch(sql, *sql_params)
@@ -485,6 +520,7 @@ class PostgreSQLActionController(
                 id=row["id"],
                 created_at=row["created_at"],
                 data=ActionRowData.model_validate_json(row["data"]),
+                index=row["row_index"],
             )
             for row in rows
         ]
@@ -551,32 +587,11 @@ class PostgreSQLLogController(LogTableController, _BoundedPostgresConnectionMixI
         self, query: Query, params: RangeQueryParams | None = None
     ) -> list[LogRow]:
         """Find logs using JSONQuery objects."""
-        params = params or RangeQueryParams()
-        where_clause, query_params = _convert_query_to_postgres(query)
-
-        sql = f"""
-        SELECT id, created_at, data FROM {self._schema}.logs
-        WHERE {where_clause}
-        """
-        sql_params = query_params[:]
-
-        # Add time range filters
-        if params.after:
-            sql += f" AND created_at > ${len(sql_params) + 1}"
-            sql_params.append(params.after)
-        if params.before:
-            sql += f" AND created_at < ${len(sql_params) + 1}"
-            sql_params.append(params.before)
-
-        sql += " ORDER BY created_at"
-
-        # Add pagination
-        if params.limit:
-            sql += f" LIMIT ${len(sql_params) + 1} OFFSET ${len(sql_params) + 2}"
-            sql_params.extend([params.limit, params.offset])
-        elif params.offset:
-            sql += f" OFFSET ${len(sql_params) + 1}"
-            sql_params.append(params.offset)
+        sql, sql_params = _convert_query_params_to_postgres(
+            sql=f"SELECT row_index, id, created_at, data FROM {self._schema}.logs",
+            query=query,
+            params=params,
+        )
 
         async with self.connection() as conn:
             rows = await conn.fetch(sql, *sql_params)
@@ -586,6 +601,7 @@ class PostgreSQLLogController(LogTableController, _BoundedPostgresConnectionMixI
                 id=row["id"],
                 created_at=row["created_at"],
                 data=Log.model_validate_json(row["data"]),
+                index=row["row_index"],
             )
             for row in rows
         ]
@@ -595,20 +611,22 @@ class PostgreSQLLogController(LogTableController, _BoundedPostgresConnectionMixI
         log_id = item.id or str(uuid.uuid4())
 
         async with self.connection(is_write=True) as conn:
-            await conn.execute(
-                f"INSERT INTO {self._schema}.logs (id, created_at, data) VALUES ($1, $2, $3)",
+            row_index = await conn.fetchval(
+                f"INSERT INTO {self._schema}.logs (id, created_at, data) VALUES ($1, $2, $3) RETURNING row_index",
                 log_id,
                 item.created_at,
                 json.dumps(item.data.model_dump()),
             )
 
-        return LogRow(id=log_id, created_at=item.created_at, data=item.data)
+        return LogRow(
+            id=log_id, created_at=item.created_at, data=item.data, index=row_index
+        )
 
     async def get_by_id(self, item_id: str) -> LogRow | None:
         """Get log by ID."""
         async with self.connection() as conn:
             row = await conn.fetchrow(
-                f"SELECT id, created_at, data FROM {self._schema}.logs WHERE id = $1",
+                f"SELECT row_index, id, created_at, data FROM {self._schema}.logs WHERE id = $1",
                 item_id,
             )
 
@@ -620,21 +638,15 @@ class PostgreSQLLogController(LogTableController, _BoundedPostgresConnectionMixI
             id=row["id"],
             created_at=row["created_at"],
             data=log_data,
+            index=row["row_index"],
         )
 
     async def get_all(self, params: RangeQueryParams | None = None) -> list[LogRow]:
         """Get all logs with pagination."""
-        sql = (
-            f"SELECT id, created_at, data FROM {self._schema}.logs ORDER BY created_at"
+        sql, sql_params = _convert_query_params_to_postgres(
+            sql=f"SELECT row_index, id, created_at, data FROM {self._schema}.logs",
+            params=params,
         )
-        sql_params = []
-
-        if params and params.limit:
-            sql += " LIMIT $1 OFFSET $2"
-            sql_params.extend([params.limit, params.offset])
-        elif params and params.offset:
-            sql += " OFFSET $1"
-            sql_params.append(params.offset)
 
         async with self.connection() as conn:
             rows = await conn.fetch(sql, *sql_params)
@@ -644,6 +656,7 @@ class PostgreSQLLogController(LogTableController, _BoundedPostgresConnectionMixI
                 id=row["id"],
                 created_at=row["created_at"],
                 data=Log.model_validate_json(row["data"]),
+                index=row["row_index"],
             )
             for row in rows
         ]
