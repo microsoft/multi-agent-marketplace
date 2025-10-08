@@ -107,10 +107,23 @@ class HistoryStorage:
             tuple[FetchMessages, ActionExecutionResult]
         ] = []
 
-        def flush_consecutive_buffers():
+        def flush_consecutive_send_messages():
             nonlocal step_counter
+            if consecutive_text_messages:
+                # Increment step counter first
+                step_counter += 1
+                formatted_entries.extend(
+                    self._format_send_message_actions(
+                        consecutive_text_messages,
+                        step_header=step_header,
+                        current_step=step_counter,
+                        # Do not include step_count because all of these messages were sent in the same step
+                    )
+                )
+                consecutive_text_messages.clear()
 
-            # If we made it here then the current entry is not an empty fetch message, so flush any pending.
+        def flush_consecutive_fetch_messages():
+            nonlocal step_counter
             if consecutive_empty_fetch_messages:
                 formatted_entries.extend(
                     self._format_fetch_messages_action(
@@ -124,19 +137,12 @@ class HistoryStorage:
                 # Increment step counter by the number of empty fetches
                 step_counter += len(consecutive_empty_fetch_messages)
                 consecutive_empty_fetch_messages.clear()
-            # If we made it here then the current entry is not a text message, flush any pending.
-            elif consecutive_text_messages:
-                formatted_entries.extend(
-                    self._format_send_message_actions(
-                        consecutive_text_messages,
-                        step_header=step_header,
-                        current_step=step_counter,
-                        # Do not include step_count because all of these messages were sent in the same step
-                    )
-                )
-                # Need to incremement step counter
-                step_counter += 1
-                consecutive_text_messages.clear()
+
+        def flush_consecutive_buffers():
+            nonlocal step_counter
+            # Flush both buffers (only one should have items at a time)
+            flush_consecutive_fetch_messages()
+            flush_consecutive_send_messages()
 
         for entry in self.event_history:
             if isinstance(entry, tuple) and len(entry) == 2:
@@ -147,6 +153,8 @@ class HistoryStorage:
                     try:
                         response = FetchMessagesResponse.model_validate(second.content)
                         if not response.messages:
+                            # Flush text messages before starting fetch messages
+                            flush_consecutive_send_messages()
                             consecutive_empty_fetch_messages.append((first, second))
                             continue
                     except Exception:
@@ -154,13 +162,15 @@ class HistoryStorage:
                         pass
                 # Group consecutive SendMessage to better reflect how the CustomerAction is formatted (multiple messages per action)
                 elif isinstance(first, SendMessage) and first.message.type == "text":
+                    # Flush empty fetches before starting text messages
+                    flush_consecutive_fetch_messages()
                     consecutive_text_messages.append((first, second))
                     continue
 
-                step_counter += 1
-
                 # Handle the current/ungrouped entry, but first flush the groups
                 flush_consecutive_buffers()
+
+                step_counter += 1
 
                 formatted_entries.extend(
                     self._format_action_entry(
@@ -184,7 +194,7 @@ class HistoryStorage:
         self, *, step_header: str, current_step: int, steps_in_group: int | None = None
     ):
         formatted_entries: list[str] = []
-        if steps_in_group:
+        if steps_in_group and steps_in_group > 1:
             formatted_entries.append(
                 f"=== STEPS {current_step - steps_in_group + 1}-{current_step} [{step_header}] ==="
             )
