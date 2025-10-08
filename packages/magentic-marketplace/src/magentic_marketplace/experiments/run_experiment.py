@@ -13,6 +13,7 @@ from magentic_marketplace.marketplace.protocol.protocol import SimpleMarketplace
 from magentic_marketplace.platform.database import (
     connect_to_postgresql_database,
 )
+from magentic_marketplace.platform.database.converter import convert_postgres_to_sqlite
 from magentic_marketplace.platform.launcher import AgentLauncher, MarketplaceLauncher
 
 
@@ -90,3 +91,11 @@ async def run_marketplace_experiment(
                 )
             except KeyboardInterrupt:
                 logger.warning("Simulation interrupted by user")
+
+        # Convert PostgreSQL database to SQLite
+        sqlite_path = Path(f"{experiment_name}.db")
+        logger.info(f"Converting database to SQLite: {sqlite_path}")
+        if marketplace_launcher.server:
+            db = marketplace_launcher.server.state.database_controller
+            await convert_postgres_to_sqlite(db, sqlite_path)
+            logger.info(f"Database conversion complete: {sqlite_path}")

@@ -1,6 +1,7 @@
 """Tests for database converter (PostgreSQL to SQLite)."""
 
 import tempfile
+import uuid
 from collections.abc import AsyncGenerator
 from datetime import UTC, datetime
 from pathlib import Path
@@ -18,7 +19,7 @@ from magentic_marketplace.platform.database.models import (
 from magentic_marketplace.platform.database.postgresql.postgresql import (
     PostgreSQLDatabaseController,
 )
-from magentic_marketplace.platform.database.sqlite import create_sqlite_database
+from magentic_marketplace.platform.database.sqlite import connect_to_sqlite_database
 from magentic_marketplace.platform.shared.models import (
     ActionExecutionRequest,
     ActionExecutionResult,
@@ -38,12 +39,12 @@ pytestmark = pytest.mark.postgres
 async def postgres_test_db() -> AsyncGenerator[PostgreSQLDatabaseController]:
     """Create a test PostgreSQL database."""
     # Import here to avoid import errors if asyncpg is not installed
-    from magentic_marketplace.platform.database import create_postgresql_database
+    from magentic_marketplace.platform.database import connect_to_postgresql_database
 
-    test_schema = f"test_converter_{datetime.now().timestamp()}"
+    test_schema = f"test_converter_{uuid.uuid4().hex}"
 
     try:
-        async with create_postgresql_database(
+        async with connect_to_postgresql_database(
             schema=test_schema,
             host="localhost",
             port=5432,
@@ -87,7 +88,7 @@ class TestDatabaseConverter:
             assert sqlite_path.exists()
 
             # Verify the SQLite database is empty
-            async with create_sqlite_database(str(sqlite_path)) as sqlite_db:
+            async with connect_to_sqlite_database(str(sqlite_path)) as sqlite_db:
                 agents = await sqlite_db.agents.get_all()
                 actions = await sqlite_db.actions.get_all()
                 logs = await sqlite_db.logs.get_all()
@@ -154,7 +155,7 @@ class TestDatabaseConverter:
             assert sqlite_path.exists()
 
             # Verify the SQLite database has the data
-            async with create_sqlite_database(str(sqlite_path)) as sqlite_db:
+            async with connect_to_sqlite_database(str(sqlite_path)) as sqlite_db:
                 agents = await sqlite_db.agents.get_all()
                 actions = await sqlite_db.actions.get_all()
                 logs = await sqlite_db.logs.get_all()
@@ -199,7 +200,7 @@ class TestDatabaseConverter:
             await convert_postgres_to_sqlite(postgres_test_db, sqlite_path)
 
             # Verify order is preserved
-            async with create_sqlite_database(str(sqlite_path)) as sqlite_db:
+            async with connect_to_sqlite_database(str(sqlite_path)) as sqlite_db:
                 agents = await sqlite_db.agents.get_all()
 
                 # Check that rowids are sequential

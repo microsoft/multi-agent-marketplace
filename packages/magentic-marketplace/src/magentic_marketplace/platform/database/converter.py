@@ -5,7 +5,7 @@ from pathlib import Path
 
 from .models import ActionRow, AgentRow, LogRow
 from .postgresql.postgresql import PostgreSQLDatabaseController
-from .sqlite import create_sqlite_database
+from .sqlite import connect_to_sqlite_database
 from .sqlite.sqlite import SQLiteDatabaseController
 
 logger = logging.getLogger(__name__)
@@ -45,7 +45,7 @@ class DatabaseConverter:
         self.target_path.parent.mkdir(parents=True, exist_ok=True)
 
         # Create SQLite database
-        async with create_sqlite_database(str(self.target_path)) as target_db:
+        async with connect_to_sqlite_database(str(self.target_path)) as target_db:
             # Copy data in order
             await self._copy_agents(target_db)
             await self._copy_actions(target_db)
