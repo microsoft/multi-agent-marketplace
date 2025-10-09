@@ -141,6 +141,8 @@ class TestOptimalSearch:
         assert len(parsed_response.businesses) == 1
         assert parsed_response.businesses[0].id == business.id
         assert parsed_response.search_algorithm == SearchAlgorithm.OPTIMAL
+        assert parsed_response.total_possible_results == 1
+        assert parsed_response.total_pages == 1
 
     @pytest.mark.asyncio
     async def test_optimal_search_sorts_by_rating(
@@ -165,3 +167,5 @@ class TestOptimalSearch:
         # Verify results are sorted by rating (descending)
         ratings = [b.business.rating for b in parsed_response.businesses]
         assert ratings == sorted(ratings, reverse=True)
+        assert parsed_response.total_possible_results == 1
+        assert parsed_response.total_pages == 1

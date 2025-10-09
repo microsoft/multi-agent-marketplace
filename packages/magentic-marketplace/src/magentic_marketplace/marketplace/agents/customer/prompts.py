@@ -189,7 +189,7 @@ Choose your action carefully.
 
         if isinstance(result, SearchResponse):
             lines.append(
-                f"Step {step_number} result: Searched {len(result.businesses)} business(es)."
+                f"Step {step_number} result: Searched {result.total_possible_results} business(es). Showing page {action.search_page} of {result.total_pages} search results."
             )
             for business in result.businesses:
                 lines.append(

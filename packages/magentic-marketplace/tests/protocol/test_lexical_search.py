@@ -105,6 +105,8 @@ class TestLexicalSearch:
         parsed_response = SearchResponse.model_validate(result.content)
         assert len(parsed_response.businesses) == 1
         assert parsed_response.businesses[0].id == business.id
+        assert parsed_response.total_possible_results == 1
+        assert parsed_response.total_pages == 1
 
     @pytest.mark.asyncio
     async def test_search_lexical_no_match(

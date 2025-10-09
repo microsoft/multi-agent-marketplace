@@ -11,6 +11,7 @@ class CustomerSummary(BaseModel):
     messages_sent: int
     proposals_received: int
     payments_made: int
+    searches_made: int
     utility: float
     needs_met: bool
 

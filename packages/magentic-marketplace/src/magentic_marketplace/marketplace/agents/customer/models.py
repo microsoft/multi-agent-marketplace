@@ -65,12 +65,12 @@ class CustomerAction(BaseModel):
     # Search-specific fields
     search_query: str | None = Field(
         default=None,
-        description="Search query for businesses'",
+        description="Search query for businesses.",
     )
-    # search_constraints: SearchConstraints | None = Field(
-    #     None,
-    #     description="Search constraints. Optional when action_type is 'search_businesses'.",
-    # )
+    search_page: int = Field(
+        default=1,
+        description="Page number to retrieve for the search results (default: 1)",
+    )
 
     messages: Messages | None = Field(
         default=None,
