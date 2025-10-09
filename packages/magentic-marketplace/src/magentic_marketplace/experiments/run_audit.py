@@ -18,6 +18,11 @@ from magentic_marketplace.marketplace.actions.messaging import (
 )
 from magentic_marketplace.marketplace.database.queries.logs import llm_call
 from magentic_marketplace.marketplace.llm.base import LLMCallLog
+from magentic_marketplace.marketplace.shared.models import (
+    BusinessAgentProfile,
+    CustomerAgentProfile,
+    MarketplaceAgentProfileAdapter,
+)
 from magentic_marketplace.platform.database import (
     connect_to_postgresql_database,
 )
@@ -49,6 +54,10 @@ class MarketplaceAudit:
         """Initialize audit with database controller."""
         self.db = db_controller
 
+        # Agent profiles
+        self.customer_agents: dict[str, CustomerAgentProfile] = {}
+        self.business_agents: dict[str, BusinessAgentProfile] = {}
+
         # Order and payment tracking
         self.order_proposals: list[OrderProposal] = []
         self.payments: list[Payment] = []
@@ -58,6 +67,9 @@ class MarketplaceAudit:
 
         # Map customer_agent_id -> list of proposals they received
         self.customer_proposals: dict[str, list[OrderProposal]] = defaultdict(list)
+
+        # Track payments by customer
+        self.customer_payments: dict[str, list[Payment]] = defaultdict(list)
 
         # Track all messages for context with timestamps
         self.customer_messages: dict[str, list[tuple[str, Message, str]]] = defaultdict(
@@ -81,7 +93,21 @@ class MarketplaceAudit:
         ] = defaultdict(list)  # customer_id -> [(index, message_data)]
 
     async def load_data(self):
-        """Load and parse actions data from database."""
+        """Load and parse actions data and agent profiles from database."""
+        # Load agent profiles
+        agents = await self.db.agents.get_all()
+        for agent_row in agents:
+            agent_data = agent_row.data
+            agent = MarketplaceAgentProfileAdapter.validate_python(
+                agent_data.model_dump()
+            )
+
+            if isinstance(agent, CustomerAgentProfile):
+                self.customer_agents[agent.id] = agent
+            elif isinstance(agent, BusinessAgentProfile):
+                self.business_agents[agent.id] = agent
+
+        # Load actions
         actions = await self.db.actions.get_all()
 
         for action_row in actions:
@@ -178,6 +204,9 @@ class MarketplaceAudit:
 
             elif isinstance(message, Payment):
                 self.payments.append(message)
+                # Link to customer if this is a payment from customer
+                if "customer" in agent_id.lower():
+                    self.customer_payments[action.from_agent_id].append(message)
 
         except Exception as e:
             print(f"Warning: Failed to parse message: {e}")
@@ -307,6 +336,157 @@ class MarketplaceAudit:
         customer_logs.sort(key=lambda x: x[0])
         return (customer_logs[-1][1], customer_logs[-1][2])
 
+    def calculate_menu_matches(self, customer_agent_id: str) -> list[tuple[str, float]]:
+        """Calculate which businesses can fulfill customer's menu requirements.
+
+        Args:
+            customer_agent_id: The customer agent ID
+
+        Returns:
+            List of (business_agent_id, total_price) tuples, sorted by price
+
+        """
+        if customer_agent_id not in self.customer_agents:
+            return []
+
+        customer_agent = self.customer_agents[customer_agent_id]
+        customer = customer_agent.customer
+        requested_items = customer.menu_features
+        matches: list[tuple[str, float]] = []
+
+        for business_agent_id, business_agent in self.business_agents.items():
+            business = business_agent.business
+
+            total_price = 0.0
+            can_fulfill = True
+
+            for item_name in requested_items:
+                if item_name in business.menu_features:
+                    total_price += business.menu_features[item_name]
+                else:
+                    can_fulfill = False
+                    break
+
+            if can_fulfill:
+                matches.append((business_agent_id, round(total_price, 2)))
+
+        matches.sort(key=lambda x: x[1])
+        return matches
+
+    def check_amenity_match(
+        self, customer_agent_id: str, business_agent_id: str
+    ) -> bool:
+        """Check if business provides all required amenities for customer.
+
+        Args:
+            customer_agent_id: The customer agent ID
+            business_agent_id: The business agent ID
+
+        Returns:
+            True if business provides all required amenities
+
+        """
+        if (
+            customer_agent_id not in self.customer_agents
+            or business_agent_id not in self.business_agents
+        ):
+            return False
+
+        customer = self.customer_agents[customer_agent_id].customer
+        business = self.business_agents[business_agent_id].business
+
+        required_amenities = set(customer.amenity_features)
+        available_amenities = {
+            amenity
+            for amenity, available in business.amenity_features.items()
+            if available
+        }
+
+        return required_amenities.issubset(available_amenities)
+
+    def calculate_customer_utility(
+        self, customer_agent_id: str
+    ) -> tuple[float, bool, float | None]:
+        """Calculate customer utility and whether they achieved optimal utility.
+
+        Args:
+            customer_agent_id: ID of the customer
+
+        Returns:
+            Tuple of (utility, needs_met, optimal_utility) where needs_met indicates
+            if customer got what they wanted, and optimal_utility is the best possible
+            utility (None if no matching businesses exist)
+
+        """
+        if customer_agent_id not in self.customer_agents:
+            return 0.0, False, None
+
+        customer = self.customer_agents[customer_agent_id].customer
+        payments = self.customer_payments.get(customer_agent_id, [])
+        proposals_received = self.customer_proposals.get(customer_agent_id, [])
+
+        # Calculate optimal utility (best case scenario)
+        menu_matches = self.calculate_menu_matches(customer_agent_id)
+        optimal_utility = None
+        if menu_matches:
+            # Find the optimal match (cheapest with amenities)
+            for business_agent_id, price in menu_matches:
+                if self.check_amenity_match(customer_agent_id, business_agent_id):
+                    match_score = 2 * sum(customer.menu_features.values())
+                    optimal_utility = round(match_score - price, 2)
+                    break
+
+        # Calculate actual utility
+        total_payments = 0.0
+        needs_met = False
+
+        for payment in payments:
+            # Find the corresponding proposal
+            proposal = next(
+                (p for p in proposals_received if p.id == payment.proposal_message_id),
+                None,
+            )
+            if proposal:
+                # Check if proposal matches customer's desired items
+                proposal_items = {item.item_name for item in proposal.items}
+                requested_items = set(customer.menu_features.keys())
+                price_paid = proposal.total_price
+                total_payments += price_paid
+
+                # Find which business sent this proposal to check amenities
+                business_agent_id = self._find_business_for_proposal(proposal.id)
+
+                # Check if this payment meets the customer's needs
+                if proposal_items == requested_items:
+                    # Items match - now check amenities
+                    if business_agent_id and self.check_amenity_match(
+                        customer_agent_id, business_agent_id
+                    ):
+                        # Items AND amenities match - needs are met!
+                        needs_met = True
+
+        # Calculate utility: match_score counted only ONCE if needs were met
+        match_score = 0.0
+        if needs_met:
+            match_score = 2 * sum(customer.menu_features.values())
+
+        utility = round(match_score - total_payments, 2)
+        return utility, needs_met, optimal_utility
+
+    def _find_business_for_proposal(self, proposal_id: str) -> str | None:
+        """Find which business sent a specific proposal."""
+        # First check in proposal_metadata which is more direct
+        if proposal_id in self.proposal_metadata:
+            business_id, _, _ = self.proposal_metadata[proposal_id]
+            return business_id
+
+        # Fallback to searching through messages
+        for business_agent_id, messages in self.business_messages.items():
+            for _, msg, _ in messages:
+                if isinstance(msg, OrderProposal) and msg.id == proposal_id:
+                    return business_agent_id
+        return None
+
     def check_proposal_in_log(self, proposal_id: str, llm_log: LLMCallLog) -> bool:
         """Check if a proposal ID appears in the LLM log.
 
@@ -341,7 +521,7 @@ class MarketplaceAudit:
 
         return False
 
-    async def audit_proposals(self) -> dict:
+    async def audit_proposals(self, db_name: str = "unknown") -> dict:
         """Audit all proposals to verify they appear in customer LLM logs.
 
         Returns:
@@ -360,6 +540,9 @@ class MarketplaceAudit:
             "unique_customers": set(),
             "unique_businesses": set(),
             "missing_reasons": defaultdict(int),
+            "customers_with_suboptimal_utility": [],
+            "customers_who_made_purchases": 0,
+            "customers_with_needs_met": 0,
         }
 
         print(f"{CYAN_COLOR}{'=' * 60}")
@@ -519,6 +702,94 @@ class MarketplaceAudit:
                     f"{RED_COLOR}Missing:{RESET_COLOR} Proposal {proposal_id} NOT in {customer_id}'s last LLM log (from {business_id})"
                 )
 
+        # Calculate utility statistics for all customers
+        for customer_id in self.customer_agents.keys():
+            payments = self.customer_payments.get(customer_id, [])
+
+            if payments:
+                results["customers_who_made_purchases"] += 1
+
+            utility, needs_met, optimal_utility = self.calculate_customer_utility(
+                customer_id
+            )
+
+            if needs_met:
+                results["customers_with_needs_met"] += 1
+
+            # Check if customer achieved suboptimal utility
+            if optimal_utility is not None and payments:
+                if utility < optimal_utility:
+                    customer_name = self.customer_agents[customer_id].customer.name
+
+                    # Construct customer trace path
+                    customer_trace_path = (
+                        f"{db_name}-agent-llm-traces/customers/{customer_id}-0.md"
+                    )
+
+                    # Find which business(es) the customer transacted with
+                    proposals_received = self.customer_proposals.get(customer_id, [])
+                    businesses_transacted = []
+                    for payment in payments:
+                        proposal = next(
+                            (
+                                p
+                                for p in proposals_received
+                                if p.id == payment.proposal_message_id
+                            ),
+                            None,
+                        )
+                        if proposal:
+                            business_id = self._find_business_for_proposal(proposal.id)
+                            if business_id:
+                                business_name = (
+                                    self.business_agents[business_id].business.name
+                                    if business_id in self.business_agents
+                                    else "Unknown"
+                                )
+                                # Construct business-customer trace path
+                                business_trace_path = f"{db_name}-agent-llm-traces/businesses/{business_id}-{customer_id}-0.md"
+
+                                businesses_transacted.append(
+                                    {
+                                        "business_id": business_id,
+                                        "business_name": business_name,
+                                        "price_paid": proposal.total_price,
+                                        "trace_path": business_trace_path,
+                                    }
+                                )
+
+                    # Count proposals in final LLM log
+                    proposals_in_final_log = 0
+                    llm_log_result = await self.get_last_llm_log_for_customer(
+                        customer_id
+                    )
+                    if llm_log_result is not None:
+                        llm_log, _ = llm_log_result
+                        # Check each proposal received to see if it's in the log
+                        for proposal in proposals_received:
+                            if self.check_proposal_in_log(proposal.id, llm_log):
+                                proposals_in_final_log += 1
+
+                    results["customers_with_suboptimal_utility"].append(
+                        {
+                            "customer_id": customer_id,
+                            "customer_name": customer_name,
+                            "actual_utility": utility,
+                            "optimal_utility": optimal_utility,
+                            "utility_gap": round(optimal_utility - utility, 2),
+                            "needs_met": needs_met,
+                            "businesses_transacted": businesses_transacted,
+                            "proposals_received_total": len(proposals_received),
+                            "proposals_in_final_llm_log": proposals_in_final_log,
+                            "trace_path": customer_trace_path,
+                        }
+                    )
+
+        # Sort suboptimal utility customers by utility gap (largest gap first)
+        results["customers_with_suboptimal_utility"].sort(
+            key=lambda x: x["utility_gap"], reverse=True
+        )
+
         return results
 
     async def generate_report(
@@ -532,7 +803,7 @@ class MarketplaceAudit:
         )
 
         # Run the audit
-        results = await self.audit_proposals()
+        results = await self.audit_proposals(db_name=db_name)
 
         # Print summary
         print(f"\n{CYAN_COLOR}{'=' * 60}")
@@ -625,6 +896,48 @@ class MarketplaceAudit:
         print(
             f"\n{YELLOW_COLOR}Unique customers without LLM logs: {len(results['customers_without_logs'])}{RESET_COLOR}"
         )
+
+        # Utility analysis summary
+        print(f"\n{CYAN_COLOR}UTILITY ANALYSIS:{RESET_COLOR}")
+        print(
+            f"Customers who made purchases: {results['customers_who_made_purchases']}/{len(self.customer_agents)}"
+        )
+        print(
+            f"Customers with needs met: {results['customers_with_needs_met']}/{results['customers_who_made_purchases'] if results['customers_who_made_purchases'] > 0 else len(self.customer_agents)}"
+        )
+
+        if results["customers_with_suboptimal_utility"]:
+            print(
+                f"\n{YELLOW_COLOR}Customers with less than optimal utility: {len(results['customers_with_suboptimal_utility'])}{RESET_COLOR}"
+            )
+            for customer_data in results["customers_with_suboptimal_utility"]:
+                print(
+                    f"  - {customer_data['customer_name']} (ID: {customer_data['customer_id']})"
+                )
+                print(
+                    f"    Actual utility: {customer_data['actual_utility']:.2f}, "
+                    f"Optimal utility: {customer_data['optimal_utility']:.2f}, "
+                    f"Gap: {customer_data['utility_gap']:.2f}"
+                )
+                print(f"    Needs met: {customer_data['needs_met']}")
+                print(
+                    f"    Proposals in final LLM log: {customer_data.get('proposals_in_final_llm_log', 0)}/{customer_data.get('proposals_received_total', 0)}"
+                )
+                if customer_data.get("trace_path"):
+                    print(f"    Customer trace: {customer_data['trace_path']}")
+                if customer_data.get("businesses_transacted"):
+                    print("    Transacted with:")
+                    for biz in customer_data["businesses_transacted"]:
+                        print(
+                            f"      - {biz['business_name']} (ID: {biz['business_id']}) - "
+                            f"Paid: ${biz['price_paid']:.2f}"
+                        )
+                        if biz.get("trace_path"):
+                            print(f"        Business trace: {biz['trace_path']}")
+        else:
+            print(
+                f"\n{GREEN_COLOR}All customers who made purchases achieved optimal utility!{RESET_COLOR}"
+            )
 
         # Print details of missing proposals
         if results["missing_details"]:
@@ -808,11 +1121,19 @@ class MarketplaceAudit:
             # Convert sets to lists for JSON serialization
             json_results = {
                 **results,
-                "unique_customers": list(results["unique_customers"]),
-                "unique_businesses": list(results["unique_businesses"]),
-                "customers_without_logs": list(results["customers_without_logs"]),
+                "unique_customers": sorted(results["unique_customers"]),
+                "unique_businesses": sorted(results["unique_businesses"]),
+                "customers_without_logs": sorted(results["customers_without_logs"]),
                 "customer_stats": dict(results["customer_stats"]),
                 "missing_reasons": dict(results["missing_reasons"]),
+                "customers_with_suboptimal_utility": results[
+                    "customers_with_suboptimal_utility"
+                ],
+                "customers_with_suboptimal_utility_count": len(
+                    results["customers_with_suboptimal_utility"]
+                ),
+                "customers_who_made_purchases": results["customers_who_made_purchases"],
+                "customers_with_needs_met": results["customers_with_needs_met"],
                 "fetch_messages_stats": {
                     "total_fetch_actions": total_fetch_actions,
                     "customers_with_fetches": customers_with_fetches,
