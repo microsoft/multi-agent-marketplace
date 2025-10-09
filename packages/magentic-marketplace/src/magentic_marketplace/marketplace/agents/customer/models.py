@@ -112,6 +112,4 @@ CustomerActionResult = (
     | SearchResponse
     | CustomerSendMessageResults
     | FetchMessagesResponse
-    | None
 )
-CustomerEvent = tuple[CustomerAction, CustomerActionResult] | str

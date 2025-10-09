@@ -22,7 +22,7 @@ from ..base import BaseSimpleMarketplaceAgent
 from ..proposal_storage import OrderProposalStorage
 from .models import (
     CustomerAction,
-    CustomerEvent,
+    CustomerActionResult,
     CustomerSendMessageResults,
     CustomerSummary,
 )
@@ -62,7 +62,9 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
         self.completed_transactions: list[str] = []
         self.conversation_step: int = 0
 
-        self._event_history: list[CustomerEvent] = []
+        self._event_history: list[
+            tuple[CustomerAction, CustomerActionResult] | str
+        ] = []
         self._search_algorithm = SearchAlgorithm(search_algorithm)
         self._search_bandwidth = search_bandwidth
 

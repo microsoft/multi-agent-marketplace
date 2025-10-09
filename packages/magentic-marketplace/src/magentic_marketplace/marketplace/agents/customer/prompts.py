@@ -11,7 +11,6 @@ from ..proposal_storage import OrderProposalStorage
 from .models import (
     CustomerAction,
     CustomerActionResult,
-    CustomerEvent,
     CustomerSendMessageResults,
 )
 
@@ -24,7 +23,7 @@ class PromptsHandler:
         customer: Customer,
         proposal_storage: OrderProposalStorage,
         completed_transactions: list[str],
-        event_history: list[CustomerEvent],
+        event_history: list[tuple[CustomerAction, CustomerActionResult] | str],
         logger: MarketplaceLogger,
     ):
         """Initialize the prompts handler.
