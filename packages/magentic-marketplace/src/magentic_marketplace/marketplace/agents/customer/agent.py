@@ -167,13 +167,12 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
         """
         # Build prompt using prompts handler
         prompts = self._get_prompts_handler()
-        system_prompt = prompts.format_system_prompt()
+        system_prompt = prompts.format_system_prompt().strip()
         state_context, step_counter = prompts.format_state_context()
-        step_prompt = prompts.format_step_prompt(step_counter)
+        state_context = state_context.strip()
+        step_prompt = prompts.format_step_prompt(step_counter).strip()
 
-        full_prompt = "\n\n\n\n".join(
-            map(str.strip, (system_prompt, state_context, step_prompt))
-        )
+        full_prompt = f"{system_prompt}\n\n\n\n{state_context}\n\n{step_prompt}"
 
         # Use LLM to decide next action
         try:
