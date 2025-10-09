@@ -56,7 +56,7 @@ class PromptsHandler:
         # current_time = now.strftime("%I:%M%p").lower()
 
         return f"""
-You are an autonomous agent working for customer {self.customer.name}. They have the following request: {self.customer.request}
+You are an autonomous agent working for customer {self.customer.name} ({self.customer.id}). They have the following request: {self.customer.request}
 
 Your agent ID is: "{self.customer.id}" and your name is "agent-{self.customer.name} ({self.customer.id})".
 
