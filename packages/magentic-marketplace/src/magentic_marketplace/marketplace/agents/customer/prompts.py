@@ -255,7 +255,9 @@ Choose your action carefully.
         for text_message, text_message_result in zip(
             text_messages, message_results.text_message_results, strict=True
         ):
-            send_message_result_lines.append(text_message.model_dump_json())
+            send_message_result_lines.append(
+                f"Sent to {text_message.to_business_id}: {text_message.content}"
+            )
             is_success, error_message = text_message_result
             if is_success:
                 send_message_result_lines.append("✅ Message sent successfully")
@@ -267,7 +269,14 @@ Choose your action carefully.
         for pay_message, pay_message_result in zip(
             pay_messages, message_results.pay_message_results, strict=True
         ):
-            send_message_result_lines.append(pay_message.model_dump_json())
+            send_message_result_lines.append(
+                f"Sent to {pay_message.to_business_id}: {
+                    pay_message.model_dump_json(
+                        exclude={'type'},
+                        exclude_none=True,
+                    )
+                }"
+            )
             is_success, error_message = pay_message_result
             if is_success:
                 send_message_result_lines.append(
