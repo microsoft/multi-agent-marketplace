@@ -33,7 +33,6 @@ class AssistantPayMessageRequest(Payment):
     to_business_id: str = Field(
         description="The id of the business this message should be sent to."
     )
-    content: str | None = Field(description="A message to include with the payment.")
 
 
 class Messages(BaseModel):
