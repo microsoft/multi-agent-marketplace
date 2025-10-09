@@ -1,0 +1,8 @@
+id: customer_0001
+name: Customer 1
+request: I want to buy...
+menu_features:
+  - Item_00: 0.00
+  - Item_01: 0.00
+amenity_features:
+- Amenity_03
