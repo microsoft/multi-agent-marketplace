@@ -1,10 +1,18 @@
 """Prompt generation for the customer agent."""
 
-from magentic_marketplace.platform.logger import MarketplaceLogger
+from typing import cast
 
+from magentic_marketplace.platform.logger import MarketplaceLogger
+from magentic_marketplace.platform.shared.models import ActionExecutionResult
+
+from ...actions.actions import FetchMessagesResponse, SearchResponse
 from ...shared.models import Customer
-from ..history_storage import HistoryEntry, HistoryStorage
 from ..proposal_storage import OrderProposalStorage
+from .models import (
+    CustomerAction,
+    CustomerActionResult,
+    CustomerSendMessageResults,
+)
 
 
 class PromptsHandler:
@@ -13,10 +21,9 @@ class PromptsHandler:
     def __init__(
         self,
         customer: Customer,
-        known_business_ids: list[str],
         proposal_storage: OrderProposalStorage,
         completed_transactions: list[str],
-        event_history: list[HistoryEntry],
+        event_history: list[tuple[CustomerAction, CustomerActionResult] | str],
         logger: MarketplaceLogger,
     ):
         """Initialize the prompts handler.
@@ -31,12 +38,10 @@ class PromptsHandler:
 
         """
         self.customer = customer
-        self.known_business_ids = known_business_ids
         self.proposal_storage = proposal_storage
         self.completed_transactions = completed_transactions
-        # Create a HistoryStorage instance for formatting
-        self.history_storage = HistoryStorage(logger)
-        self.history_storage.event_history = event_history
+        self.event_history = event_history
+        self.logger = logger
 
     def format_system_prompt(self) -> str:
         """Format the system prompt for customer agent decision making.
@@ -51,7 +56,7 @@ class PromptsHandler:
         # current_time = now.strftime("%I:%M%p").lower()
 
         return f"""
-You are an autonomous agent working for customer {self.customer.name}. They have the following request: {self.customer.request}
+You are an autonomous agent working for customer {self.customer.name} ({self.customer.id}). They have the following request: {self.customer.request}
 
 Your agent ID is: "{self.customer.id}" and your name is "agent-{self.customer.name} ({self.customer.id})".
 
@@ -99,9 +104,7 @@ IMPORTANT: You do NOT have access to the customer directly. You must fulfill the
         # Known Businesses: {len(self.known_business_ids)} businesses found
         # Received Proposals: {len(self.proposal_storage.proposals)} proposals
         # Completed Transactions: {len(self.completed_transactions)} transactions{proposals_text}
-        conversation, step_counter = self.history_storage.format_conversation_text(
-            step_header=f"agent-{self.customer.name} ({self.customer.id})"
-        )
+        conversation, step_counter = self.format_event_history()
         return (
             f"""
 
@@ -127,3 +130,169 @@ Send "text" messages to ask questions or express interest. Services will send "o
 
 Choose your action carefully.
 """
+
+    def format_event_history(self):
+        """Format the event history for the prompt."""
+        lines: list[str] = []
+        step_number = 0
+
+        for event in self.event_history:
+            step_number += 1
+            if isinstance(event, tuple):
+                lines.extend(
+                    self._format_customer_action_event(*event, step_number=step_number)
+                )
+            else:
+                lines.extend(self._format_log_event(event, step_number=step_number))
+
+        return "\n".join(lines).strip(), step_number
+
+    def _format_customer_action_event(
+        self, action: CustomerAction, result: CustomerActionResult, step_number: int
+    ) -> list[str]:
+        if action.action_type == "search_businesses":
+            return self._format_customer_search_businesses_event(
+                action, result, step_number
+            )
+        elif action.action_type == "check_messages":
+            return self._format_customer_check_messages_event(
+                action, result, step_number
+            )
+        elif action.action_type == "send_messages":
+            return self._format_customer_send_messages_event(
+                action, result, step_number
+            )
+        else:
+            self.logger.warning(f"Unrecognized action type: {action.action_type}")
+            return []
+
+    def _format_step_header(
+        self, *, current_step: int, steps_in_group: int | None = None
+    ):
+        formatted_entries: list[str] = []
+        step_header = f"agent-{self.customer.name} ({self.customer.id})"
+        if steps_in_group and steps_in_group > 1:
+            formatted_entries.append(
+                f"=== STEPS {current_step - steps_in_group + 1}-{current_step} [{step_header}] ==="
+            )
+        else:
+            formatted_entries.append(f"\n=== STEP {current_step} [{step_header}] ===")
+        return formatted_entries
+
+    def _format_customer_search_businesses_event(
+        self, action: CustomerAction, result: CustomerActionResult, step_number: int
+    ) -> list[str]:
+        lines: list[str] = self._format_step_header(current_step=step_number)
+        lines.append(
+            f"Action: search_businesses: {action.model_dump_json(include={'search_query', 'search_page'})}"
+        )
+
+        if isinstance(result, SearchResponse):
+            lines.append(
+                f"Step {step_number} result: Searched {len(result.businesses)} business(es)."
+            )
+            for business in result.businesses:
+                lines.append(
+                    f"Found business: {business.business.name} (ID: {business.id}):\n"
+                    f"  Description: {business.business.description}\n"
+                    f"  Rating: {business.business.rating:.2f}\n"
+                    "\n"
+                )
+            if not result.businesses:
+                lines.append("No businesses found")
+        elif isinstance(result, ActionExecutionResult):
+            lines.append(f"Failed to search businesses. {result.content}")
+        else:
+            lines.append("Failed to search businesses.")
+
+        return lines
+
+    def _format_customer_check_messages_event(
+        self, action: CustomerAction, result: CustomerActionResult, step_number: int
+    ) -> list[str]:
+        lines = self._format_step_header(current_step=step_number)
+        lines.append("Action: check_messages (checking for responses)")
+
+        if isinstance(result, FetchMessagesResponse):
+            message_count = len(result.messages)
+            if message_count == 0:
+                lines.append(f"Step {step_number} result: 📭 No new messages")
+            else:
+                formatted_results: list[str] = []
+                # Add received messages to conversation
+                for received_message in result.messages:
+                    message_content = received_message.message
+                    formatted_results.append(
+                        f"📨 Received {message_content.type} from {received_message.from_agent_id}: "
+                        f"{message_content.model_dump_json(exclude={'type', 'expiry_time'}, exclude_none=True)}"
+                    )
+                lines.append(f"Step {step_number} result: {formatted_results}")
+        elif isinstance(result, ActionExecutionResult):
+            lines.append(
+                f"Step {step_number} result: Failed to fetch messages. {result.content}"
+            )
+        else:
+            lines.append(f"Step {step_number} result: Failed to fetch messages.")
+
+        return lines
+
+    def _format_customer_send_messages_event(
+        self, action: CustomerAction, result: CustomerActionResult, step_number: int
+    ) -> list[str]:
+        lines: list[str] = self._format_step_header(current_step=step_number)
+
+        text_messages = action.messages.text_messages if action.messages else []
+        pay_messages = action.messages.pay_messages if action.messages else []
+
+        # Add message-specific details
+        lines.append(
+            f"Action: send_messages message_count={len(text_messages) + len(pay_messages)}"
+        )
+
+        message_results = cast(CustomerSendMessageResults, result)
+
+        send_message_result_lines: list[str] = []
+
+        for text_message, text_message_result in zip(
+            text_messages, message_results.text_message_results, strict=True
+        ):
+            send_message_result_lines.append(
+                f"Sent to {text_message.to_business_id}: {text_message.content}"
+            )
+            is_success, error_message = text_message_result
+            if is_success:
+                send_message_result_lines.append("✅ Message sent successfully")
+            else:
+                send_message_result_lines.append(
+                    f"Message failed to send: {error_message}"
+                )
+
+        for pay_message, pay_message_result in zip(
+            pay_messages, message_results.pay_message_results, strict=True
+        ):
+            send_message_result_lines.append(
+                f"Sent to {pay_message.to_business_id}: {
+                    pay_message.model_dump_json(
+                        exclude={'type', 'to_business_id'},
+                        exclude_none=True,
+                    )
+                }"
+            )
+            is_success, error_message = pay_message_result
+            if is_success:
+                send_message_result_lines.append(
+                    "🎉 PAYMENT COMPLETED SUCCESSFULLY! Transaction accepted by platform. The purchase has been finalized."
+                )
+            else:
+                send_message_result_lines.append(
+                    f"Message failed to send: {error_message}"
+                )
+
+        lines.append(f"Step {step_number} result: {send_message_result_lines}")
+
+        return lines
+
+    def _format_log_event(self, event: str, step_number: int):
+        lines = self._format_step_header(current_step=step_number)
+        lines.append(f"Error: {event}")
+        return lines
