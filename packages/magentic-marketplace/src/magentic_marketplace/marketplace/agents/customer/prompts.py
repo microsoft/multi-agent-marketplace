@@ -41,6 +41,7 @@ class PromptsHandler:
         self.proposal_storage = proposal_storage
         self.completed_transactions = completed_transactions
         self.event_history = event_history
+        self.logger = logger
 
     def format_system_prompt(self) -> str:
         """Format the system prompt for customer agent decision making.
@@ -162,6 +163,7 @@ Choose your action carefully.
                 action, result, step_number
             )
         else:
+            self.logger.warning(f"Unrecognized action type: {action.action_type}")
             return []
 
     def _format_step_header(
