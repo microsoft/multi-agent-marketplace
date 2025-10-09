@@ -230,6 +230,10 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
                     "messages cannot be empty when action_type is send_messages"
                 )
 
+            # The CustomerAction creates two lists: one for text messages and one for payment messages
+            # Each message is sent independently to the Marketplace, and can each have an independent error
+            # This class is used to keep the results of sending each individual message in an identical format to CustomerAction,
+            # so that it is easier to format them for prompting later.
             send_message_results = CustomerSendMessageResults()
 
             for text_message in action.messages.text_messages:
