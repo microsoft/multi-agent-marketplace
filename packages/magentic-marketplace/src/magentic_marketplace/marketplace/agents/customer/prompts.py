@@ -183,7 +183,9 @@ Choose your action carefully.
         self, action: CustomerAction, result: CustomerActionResult, step_number: int
     ) -> list[str]:
         lines: list[str] = self._format_step_header(current_step=step_number)
-        lines.append(f"Action: search_businesses: {action.model_dump_json()}")
+        lines.append(
+            f"Action: search_businesses: {action.model_dump_json(include={'search_query', 'search_page'})}"
+        )
 
         if isinstance(result, SearchResponse):
             lines.append(
