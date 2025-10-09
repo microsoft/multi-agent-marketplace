@@ -1,10 +1,22 @@
 """Data models for the customer agent."""
 
+from dataclasses import dataclass, field
 from typing import Any, Literal
 
 from pydantic import BaseModel, Field, model_validator
 
+from magentic_marketplace.platform.shared.models import ActionExecutionResult
+
+from ...actions.actions import FetchMessagesResponse, SearchResponse
 from ...actions.messaging import Payment, TextMessage
+
+
+@dataclass
+class CustomerSendMessageResults:
+    """Internal dataclass for storing the results of sending messages in CustomerAction format."""
+
+    text_message_results: list[tuple[bool, str]] = field(default_factory=list)
+    pay_message_results: list[tuple[bool, str]] = field(default_factory=list)
 
 
 class AssistantTextMessageRequest(TextMessage):
@@ -93,3 +105,13 @@ class CustomerSummary(BaseModel):
     proposals_received: int = Field(description="Number of proposals received")
     transactions_completed: int = Field(description="Number of completed transactions")
     completed_proposal_ids: list[str] = Field(description="IDs of completed proposals")
+
+
+CustomerActionResult = (
+    ActionExecutionResult
+    | SearchResponse
+    | CustomerSendMessageResults
+    | FetchMessagesResponse
+    | None
+)
+CustomerEvent = tuple[CustomerAction, CustomerActionResult] | str
