@@ -5,7 +5,6 @@ from datetime import datetime
 from magentic_marketplace.platform.logger import MarketplaceLogger
 
 from ...shared.models import Business
-from ..history_storage import HistoryStorage
 
 
 class PromptsHandler:
@@ -14,60 +13,31 @@ class PromptsHandler:
     def __init__(
         self,
         business: Business,
-        customer_histories: dict[str, HistoryStorage],
         logger: MarketplaceLogger,
     ):
         """Initialize the prompts handler.
 
         Args:
             business: Business data
-            customer_histories: Per-customer history storage instances
             logger: Logger instance
 
         """
         self.business = business
-        self.customer_histories = customer_histories
         self.logger = logger
 
-    def format_conversation_from_event_history(
-        self, customer_id: str
-    ) -> tuple[str, int]:
-        """Format conversation history from event_history for a specific customer.
-
-        Args:
-            customer_id: ID of the customer to get conversation for
-
-        Returns:
-            Formatted conversation string matching run_service.py style
-
-        """
-        customer_history = self.customer_histories.get(customer_id)
-        if customer_history:
-            return customer_history.format_conversation_text(
-                f"agent-{self.business.name} ({self.business.id})"
-            )
-        else:
-            return "", 1
-
     def format_response_prompt(
-        self, customer_id: str, customer_message: str, context: str = ""
+        self, conversation_history: str, context: str = ""
     ) -> str:
         """Format the prompt for generating responses to customer inquiries.
 
         Args:
-            customer_id: ID of the customer
-            customer_message: The customer's message
+            conversation_history: convo history as string
             context: Additional context for the prompt
 
         Returns:
             Formatted prompt for LLM
 
         """
-        # Get conversation history from event_history
-        conversation, step_counter = self.format_conversation_from_event_history(
-            customer_id
-        )
-
         # Derive delivery availability from amenity features
         delivery_available = (
             "Yes" if self.business.amenity_features.get("delivery", False) else "No"
@@ -120,7 +90,7 @@ Your business:
 ONLY tell potential customers what you have on the menu with CORRECT PRICES.
 
 Conversation so far:
-{conversation}
+{conversation_history}
 
 Context: {context}
 
