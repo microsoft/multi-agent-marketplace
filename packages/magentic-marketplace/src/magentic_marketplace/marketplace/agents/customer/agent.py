@@ -22,7 +22,6 @@ from ..base import BaseSimpleMarketplaceAgent
 from ..proposal_storage import OrderProposalStorage
 from .models import (
     CustomerAction,
-    CustomerActionResult,
     CustomerEvent,
     CustomerSendMessageResults,
     CustomerSummary,
@@ -132,12 +131,6 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
         """Handle when the customer agent starts."""
         self.logger.info("Starting autonomous shopping agent")
 
-    def _record_action(self, event: CustomerAction, result: CustomerActionResult):
-        self._event_history.append((event, result))
-
-    def _record_log(self, log: str):
-        self._event_history.append(log)
-
     async def _process_new_messages(self, messages: list[ReceivedMessage]):
         for message in messages:
             # Note: ReceivedMessages are now captured in the FetchMessages ActionExecutionResult
@@ -224,7 +217,7 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
         # Check for new messages
         elif action.action_type == "check_messages":
             fetch_response = await self.fetch_messages()
-            self._record_action(action, fetch_response)
+            self._event_history.append((action, fetch_response))
             messages = fetch_response.messages
             await self._process_new_messages(messages)
             return len(messages) > 0
@@ -320,7 +313,7 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
                         )
                     )
 
-            self._record_action(action, send_message_results)
+            self._event_history.append((action, send_message_results))
 
         elif action.action_type == "end_transaction":
             # Accept the proposal specified by the LLM
