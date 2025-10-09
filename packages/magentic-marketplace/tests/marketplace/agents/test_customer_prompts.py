@@ -73,11 +73,11 @@ def prompts_handler(customer, proposal_storage, logger):
 
 
 def test_format_event_history_empty(prompts_handler: PromptsHandler):
-    """Test that empty event history returns empty string and step 1."""
+    """Test that empty event history returns empty string and step 0."""
     formatted_text, step_count = prompts_handler.format_event_history()
 
     assert formatted_text == ""
-    assert step_count == 1
+    assert step_count == 0
 
 
 def test_format_search_businesses_event_success(prompts_handler: PromptsHandler):
@@ -121,7 +121,7 @@ def test_format_search_businesses_event_success(prompts_handler: PromptsHandler)
     formatted_text, step_count = prompts_handler.format_event_history()
 
     # Verify step count
-    assert step_count == 2  # Should be 2 after processing 1 event
+    assert step_count == 1  # Should be 1 after processing 1 event
 
     # Verify content
     assert "STEP 1" in formatted_text
@@ -147,7 +147,7 @@ def test_format_search_businesses_event_no_results(prompts_handler: PromptsHandl
     prompts_handler.event_history = [(action, result)]  # type: ignore[assignment]  # type: ignore[assignment]
     formatted_text, step_count = prompts_handler.format_event_history()
 
-    assert step_count == 2
+    assert step_count == 1
     assert "STEP 1" in formatted_text
     assert "search_businesses" in formatted_text
     assert "No businesses found" in formatted_text
@@ -169,7 +169,7 @@ def test_format_search_businesses_event_error(prompts_handler: PromptsHandler):
     prompts_handler.event_history = [(action, result)]  # type: ignore[assignment]  # type: ignore[assignment]
     formatted_text, step_count = prompts_handler.format_event_history()
 
-    assert step_count == 2
+    assert step_count == 1
     assert "STEP 1" in formatted_text
     assert "Failed to search businesses" in formatted_text
     assert "Network error" in formatted_text
@@ -187,7 +187,7 @@ def test_format_check_messages_event_no_messages(prompts_handler: PromptsHandler
     prompts_handler.event_history = [(action, result)]  # type: ignore[assignment]
     formatted_text, step_count = prompts_handler.format_event_history()
 
-    assert step_count == 2
+    assert step_count == 1
     assert "STEP 1" in formatted_text
     assert "check_messages" in formatted_text
     assert "📭 No new messages" in formatted_text
@@ -215,10 +215,10 @@ def test_format_check_messages_event_with_text_messages(
     prompts_handler.event_history = [(action, result)]  # type: ignore[assignment]
     formatted_text, step_count = prompts_handler.format_event_history()
 
-    assert step_count == 2
+    assert step_count == 1
     assert "STEP 1" in formatted_text
     assert "check_messages" in formatted_text
-    assert "✉️ Received text from business-001" in formatted_text
+    assert "📨 Received text from business-001" in formatted_text
     assert "Hello! We have fresh bread today." in formatted_text
 
 
@@ -257,9 +257,9 @@ def test_format_check_messages_event_with_order_proposal(
     prompts_handler.event_history = [(action, result)]  # type: ignore[assignment]
     formatted_text, step_count = prompts_handler.format_event_history()
 
-    assert step_count == 2
+    assert step_count == 1
     assert "STEP 1" in formatted_text
-    assert "✉️ Received order_proposal from business-001" in formatted_text
+    assert "📨 Received order_proposal from business-001" in formatted_text
     assert "proposal-123" in formatted_text
     assert "10.0" in formatted_text
 
@@ -279,7 +279,7 @@ def test_format_check_messages_event_error(prompts_handler: PromptsHandler):
     prompts_handler.event_history = [(action, result)]  # type: ignore[assignment]
     formatted_text, step_count = prompts_handler.format_event_history()
 
-    assert step_count == 2
+    assert step_count == 1
     assert "STEP 1" in formatted_text
     assert "Failed to fetch messages" in formatted_text
     assert "Connection timeout" in formatted_text
@@ -312,7 +312,7 @@ def test_format_send_messages_event_text_only(prompts_handler: PromptsHandler):
     prompts_handler.event_history = [(action, result)]  # type: ignore[assignment]
     formatted_text, step_count = prompts_handler.format_event_history()
 
-    assert step_count == 2
+    assert step_count == 1
     assert "STEP 1" in formatted_text
     assert "send_messages message_count=2" in formatted_text
     assert "Do you have fresh bread?" in formatted_text
@@ -328,7 +328,7 @@ def test_format_send_messages_event_payment_success(prompts_handler: PromptsHand
         type="payment",
         proposal_message_id="proposal-123",
         to_business_id="business-001",
-        content="Thanks for the great offer!",
+        payment_message="Thanks for the great offer!",
     )
 
     action = CustomerAction(
@@ -345,7 +345,7 @@ def test_format_send_messages_event_payment_success(prompts_handler: PromptsHand
     prompts_handler.event_history = [(action, result)]  # type: ignore[assignment]
     formatted_text, step_count = prompts_handler.format_event_history()
 
-    assert step_count == 2
+    assert step_count == 1
     assert "STEP 1" in formatted_text
     assert "send_messages message_count=1" in formatted_text
     assert "proposal-123" in formatted_text
@@ -358,7 +358,7 @@ def test_format_send_messages_event_payment_failure(prompts_handler: PromptsHand
         type="payment",
         proposal_message_id="proposal-123",
         to_business_id="business-001",
-        content="Accepting your proposal",
+        payment_message="Accepting your proposal",
     )
 
     action = CustomerAction(
@@ -375,7 +375,7 @@ def test_format_send_messages_event_payment_failure(prompts_handler: PromptsHand
     prompts_handler.event_history = [(action, result)]  # type: ignore[assignment]
     formatted_text, step_count = prompts_handler.format_event_history()
 
-    assert step_count == 2
+    assert step_count == 1
     assert "STEP 1" in formatted_text
     assert "send_messages message_count=1" in formatted_text
     assert "Message failed to send: Insufficient funds" in formatted_text
@@ -392,7 +392,7 @@ def test_format_send_messages_event_mixed(prompts_handler: PromptsHandler):
         type="payment",
         proposal_message_id="proposal-123",
         to_business_id="business-001",
-        content="Payment for order",
+        payment_message="Payment for order",
     )
 
     action = CustomerAction(
@@ -409,7 +409,7 @@ def test_format_send_messages_event_mixed(prompts_handler: PromptsHandler):
     prompts_handler.event_history = [(action, result)]  # type: ignore[assignment]
     formatted_text, step_count = prompts_handler.format_event_history()
 
-    assert step_count == 2
+    assert step_count == 1
     assert "STEP 1" in formatted_text
     assert "send_messages message_count=2" in formatted_text
     assert "Thanks for the proposal!" in formatted_text
@@ -425,7 +425,7 @@ def test_format_log_event(prompts_handler: PromptsHandler):
     prompts_handler.event_history = [log_msg]  # type: ignore[assignment]
     formatted_text, step_count = prompts_handler.format_event_history()
 
-    assert step_count == 2
+    assert step_count == 1
     assert "STEP 1" in formatted_text
     assert "Error: Something went wrong in the system" in formatted_text
 
@@ -489,7 +489,7 @@ def test_format_multiple_events(prompts_handler: PromptsHandler):
     formatted_text, step_count = prompts_handler.format_event_history()
 
     # Verify step count
-    assert step_count == 4  # Should be 4 after processing 3 events
+    assert step_count == 3  # Should be 3 after processing 3 events
 
     # Verify all steps are present
     assert "STEP 1" in formatted_text
@@ -537,7 +537,7 @@ def test_format_state_context(prompts_handler: PromptsHandler):
 
     assert "# Action Trajectory" in state_context
     assert "STEP 1" in state_context
-    assert step_count == 2
+    assert step_count == 1
 
 
 def test_format_system_prompt(prompts_handler: PromptsHandler):
