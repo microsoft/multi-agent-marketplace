@@ -68,14 +68,11 @@ async def execute_rnr_search(
 
     if not agents_with_embeddings:
         logger.warning("No agents with embeddings found")
-        total_pages = (
-            math.ceil(0 / search.limit) if search.limit and search.limit > 0 else 1
-        )
         return SearchResponse(
             businesses=[],
             search_algorithm=search.search_algorithm,
             total_possible_results=0,
-            total_pages=total_pages,
+            total_pages=0,
         )
 
     # Use RNR to rank the results
