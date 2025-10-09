@@ -138,9 +138,9 @@ class BusinessAgent(BaseSimpleMarketplaceAgent[BusinessAgentProfile]):
         elif isinstance(message, TextMessage):
             formatted_message = f"{prefix}: {message.content}"
         elif isinstance(message, Payment):
-            formatted_message = f"{prefix}: {message.model_dump()}"
+            formatted_message = f"{prefix}: {message.model_dump(exclude_none=True)}"
         elif isinstance(message, OrderProposal):
-            formatted_message = f"{prefix}: {message.model_dump()}"
+            formatted_message = f"{prefix}: {message.model_dump(exclude_none=True)}"
         else:
             self.logger.warning(
                 "Ignoring message in Business add_to_history: ", message
