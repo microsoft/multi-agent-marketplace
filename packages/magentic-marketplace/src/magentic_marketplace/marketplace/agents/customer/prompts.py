@@ -223,7 +223,8 @@ Choose your action carefully.
                 for received_message in result.messages:
                     message_content = received_message.message
                     formatted_results.append(
-                        f"📨 Received {message_content.type} from {received_message.from_agent_id}: {message_content.model_dump_json(exclude_none=True)}"
+                        f"📨 Received {message_content.type} from {received_message.from_agent_id}: "
+                        f"{message_content.model_dump_json(exclude={'type', 'expiry_time'}, exclude_none=True)}"
                     )
                 lines.append(f"Step {step_number} result: {formatted_results}")
         elif isinstance(result, ActionExecutionResult):
