@@ -272,7 +272,7 @@ Choose your action carefully.
             send_message_result_lines.append(
                 f"Sent to {pay_message.to_business_id}: {
                     pay_message.model_dump_json(
-                        exclude={'type'},
+                        exclude={'type', 'to_business_id'},
                         exclude_none=True,
                     )
                 }"
