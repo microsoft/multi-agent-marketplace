@@ -13,10 +13,10 @@ from pydantic import BaseModel, Field
 
 logger = logging.getLogger(__name__)
 
-LLM_PROVIDER = Literal["openai", "trapi", "gemini", "anthropic", "vllm"]
+LLM_PROVIDER = Literal["openai", "trapi", "gemini", "anthropic"]
 ALLOWED_LLM_PROVIDERS = get_args(LLM_PROVIDER)
 # Exclude these fields when dumping for concrete client completions
-EXCLUDE_FIELDS = {"provider", "max_concurrency", "api_key", "base_url"}
+EXCLUDE_FIELDS = {"provider", "max_concurrency", "base_url"}
 
 TField = TypeVar("TField")
 

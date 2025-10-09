@@ -132,7 +132,7 @@ async def generate(
     match config.provider:
         case "anthropic":
             client = AnthropicClient.from_cache(config)
-        case "openai" | "vllm":
+        case "openai":
             client = OpenAIClient.from_cache(config)
         case "trapi":
             client = TrapiClient.from_cache(config)
