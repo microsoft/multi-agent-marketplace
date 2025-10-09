@@ -41,7 +41,7 @@ class ResponseHandler:
         self.prompts = PromptsHandler(business, logger)
 
     async def generate_response_to_inquiry(
-        self, customer_id: str, conversation_history: str, context: str = ""
+        self, customer_id: str, conversation_history: str
     ) -> TextMessage | OrderProposal:
         """Generate a contextual response using LLM.
 
@@ -57,7 +57,7 @@ class ResponseHandler:
         self.logger.info(f"Generating response to customer {customer_id} inquiry.")
 
         # Get prompt from prompts handler
-        prompt = self.prompts.format_response_prompt(conversation_history, context)
+        prompt = self.prompts.format_response_prompt(conversation_history, customer_id)
 
         try:
             action, _ = await self.generate_struct_fn(prompt, BusinessAction)
@@ -67,8 +67,8 @@ class ResponseHandler:
 
             # Extract the response based on action type
             if action.action_type == "text":
-                if action.message:
-                    response = TextMessage(content=action.message)
+                if action.text_message:
+                    response = TextMessage(content=action.text_message.content)
                     self.logger.info(
                         f"Generated text response to customer {customer_id} inquiry",
                         data=response,
@@ -78,13 +78,13 @@ class ResponseHandler:
                     raise ValueError("Text action must have string content")
 
             elif action.action_type == "order_proposal":
-                if not action.order_proposal:
+                if not action.order_proposal_message:
                     raise ValueError(
                         "Order proposal action must have OrderProposal content"
                     )
 
                 # Generate deterministic proposal ID before returning
-                proposal = action.order_proposal
+                proposal = action.order_proposal_message
                 current_count = self.proposal_storage.customer_proposal_counts.get(
                     customer_id, 0
                 )
