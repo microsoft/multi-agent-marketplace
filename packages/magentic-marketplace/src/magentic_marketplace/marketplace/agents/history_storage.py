@@ -164,7 +164,7 @@ class HistoryStorage:
             try:
                 search_response = SearchResponse.model_validate(result.content)
                 formatted_entries.append(
-                    f"✅ Found {len(search_response.businesses)} businesses:"
+                    f"Searched {search_response.total_possible_results} business(es). Showing page {action.page} of {search_response.total_pages}"
                 )
                 for business in search_response.businesses:
                     formatted_entries.append(
@@ -230,7 +230,7 @@ class HistoryStorage:
         formatted_entries.append("Action: Fetch messages")
         formatted_entries.append("\nResult:")
         if result.is_error:
-            formatted_entries.append(f"❌ Action failed: {result.content}")
+            formatted_entries.append(f" Action failed: {result.content}")
         else:
             try:
                 content = FetchMessagesResponse.model_validate(result.content)
@@ -247,7 +247,7 @@ class HistoryStorage:
                     )
             except Exception:
                 formatted_entries.append(
-                    f"❌ Error parsing fetch response: {result.content}"
+                    f" Error parsing fetch response: {result.content}"
                 )
 
         return formatted_entries
