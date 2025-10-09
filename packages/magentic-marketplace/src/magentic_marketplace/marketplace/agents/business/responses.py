@@ -41,7 +41,7 @@ class ResponseHandler:
         self.prompts = PromptsHandler(business, logger)
 
     async def generate_response_to_inquiry(
-        self, customer_id: str, conversation_history: str
+        self, customer_id: str, conversation_history: list[str]
     ) -> TextMessage | OrderProposal:
         """Generate a contextual response using LLM.
 

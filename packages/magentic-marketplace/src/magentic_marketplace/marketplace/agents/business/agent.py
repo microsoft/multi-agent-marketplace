@@ -87,10 +87,8 @@ class BusinessAgent(BaseSimpleMarketplaceAgent[BusinessAgentProfile]):
 
         # Generate a text response if there are any text messages
         if last_text_message is not None:
-            conversation_history = "\n".join(self.customer_histories[customer_id])
-
             response_message = await self._responses.generate_response_to_inquiry(
-                customer_id, conversation_history
+                customer_id, self.customer_histories[customer_id]
             )
             messages_to_send.append((customer_id, response_message))
 
@@ -100,18 +98,17 @@ class BusinessAgent(BaseSimpleMarketplaceAgent[BusinessAgentProfile]):
             if isinstance(message, OrderProposal):
                 self.proposal_storage.add_proposal(message, self.id, customer_id)
 
+            # FUTURE -- add retries on message fail.
             try:
                 result = await self.send_message(customer_id, message)
                 if result.is_error:
-                    # TODO -- is this right way to handle errors in llm context?
                     error_msg = f"Error: Failed to send message to {customer_id}: {result.content}"
-                    self.logger.exception(error_msg)
+                    self.logger.error(error_msg)
                     self.add_to_history(customer_id, error_msg, "business")
 
                 else:
                     self.add_to_history(customer_id, message, "business")
             except Exception as e:
-                # TODO -- is this right way to handle errors in llm context?
                 error_msg = f"Error: Failed to send message to {customer_id}: {e}"
                 self.logger.exception(error_msg)
                 self.add_to_history(customer_id, error_msg, "business")

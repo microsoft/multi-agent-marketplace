@@ -24,13 +24,17 @@ class PromptsHandler:
         self.logger = logger
 
     def format_response_prompt(
-        self, conversation_history: str, customer_id: str
+        self,
+        conversation_history: list[str],
+        customer_id: str,
+        context: str | None = None,
     ) -> str:
         """Format the prompt for generating responses to customer inquiries.
 
         Args:
             conversation_history: convo history as string
             customer_id: the customer id
+            context: extra context with error or instructions
 
         Returns:
             Formatted prompt for LLM
@@ -72,6 +76,15 @@ class PromptsHandler:
 
         business_info = "\n".join(business_info_parts)
 
+        last_message = conversation_history[-1] if conversation_history else ""
+        earlier_conversation_history = (
+            "\n".join(conversation_history[:-1])
+            if len(conversation_history) > 1
+            else ""
+        )
+        if context is None:
+            context = "Customer is making an inquiry. Use text action to respond, or create an order_proposal if they want to purchase something specific."
+
         # Get current date and time
         prompt = f"""You are a business owner responding to a customer inquiry. Be helpful, professional, and try to make a sale.
 
@@ -84,9 +97,11 @@ Your business:
 ONLY tell potential customers what you have on the menu with CORRECT PRICES.
 
 Conversation so far:
-{conversation_history}
+{earlier_conversation_history}
 
-Context: Customer is making an inquiry. Use text action to respond, or create an order_proposal if they want to purchase something specific.
+Customer just said: "{last_message}"
+
+Context: {context}
 
 Generate a BusinessAction with:
 - action_type: "text" for general inquiries/questions, "order_proposal" for creating structured proposals
