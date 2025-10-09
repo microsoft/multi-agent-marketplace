@@ -1,0 +1,10 @@
+id: customer_0002
+name: Jackson Miller
+request: Could you please assist me in finding a business that offers a 'Jalapeno
+  Infused Tequila Sunrise' and takes reservations? I am looking to purchase 1 of the
+  mentioned drink and would appreciate your help in identifying a suitable establishment.
+  Thank you.
+menu_features:
+  Jalapeno Infused Tequila Sunrise: 9.29
+amenity_features:
+- Takes Reservations
