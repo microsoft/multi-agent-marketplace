@@ -6,8 +6,11 @@ import os
 from collections.abc import Sequence
 from pathlib import Path
 
+from dotenv import load_dotenv
 from magentic_marketplace.experiments.run_analytics import run_analytics
 from magentic_marketplace.experiments.run_experiment import run_marketplace_experiment
+
+load_dotenv()
 
 DEFAULT_SEARCH_LIMITS = [1, 2, 3]
 MODEL_PROVIDER_MAP = {
@@ -16,6 +19,9 @@ MODEL_PROVIDER_MAP = {
     "gpt-5": "openai",
     "gemini-2.5-flash": "gemini",
     "claude-sonnet-4-20250514": "anthropic",
+    "Qwen/Qwen3-4B-Instruct-2507": "openai",
+    "openai/gpt-oss-20b": "openai",
+    "Qwen/Qwen3-14B": "openai",
 }
 
 
@@ -36,21 +42,6 @@ def parse_search_limits(raw: str) -> list[int]:
 def sanitize_model_name(model: str) -> str:
     """Remove characters not allowed in experiment identifiers."""
     return model.replace("-", "").replace(".", "")
-
-
-def run_experiment(
-    *, dataset_path: Path, experiment_name: str, search_limit: int
-) -> None:
-    """Run a single marketplace experiment synchronously."""
-    asyncio.run(
-        run_marketplace_experiment(
-            data_dir=Path(dataset_path),
-            experiment_name=experiment_name,
-            search_algorithm="lexical",
-            search_bandwidth=search_limit,
-            override=True,
-        )
-    )
 
 
 def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
@@ -75,7 +66,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
 
     parser.add_argument(
         "--model",
-        default="gpt-4o",
+        default=None,
         help="Model name used by agents",
     )
 
@@ -95,22 +86,26 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     return parser.parse_args(argv)
 
 
-def main(argv: Sequence[str] | None = None) -> int:
+async def main(argv: Sequence[str] | None = None) -> int:
     """Program entry point."""
     args = parse_args(argv)
 
     search_limits = parse_search_limits(args.search_limits)
-    model_provider = args.model_provider or model_provider_for(args.model)
 
-    os.environ["LLM_MODEL"] = args.model
-    os.environ["LLM_PROVIDER"] = model_provider
+    model_provider = args.model_provider or os.environ.get("LLM_PROVIDER")
+    if args.model is not None:
+        model_provider = args.model_provider or model_provider_for(args.model)
+        os.environ["LLM_MODEL"] = args.model
+        os.environ["LLM_PROVIDER"] = model_provider
 
     model_clean = sanitize_model_name(args.model)
 
     print("======================================")
     print("Running consideration set size experiments with the following parameters:")
     print(f"Dataset: {args.dataset}")
-    print(f"Model: {args.model}")
+    print(
+        f"Model: {args.model if args.model is not None else os.environ.get('LLM_MODEL')}"
+    )
     print(f"Model Provider: {model_provider}")
     print(f"Search Limits: {' '.join(str(limit) for limit in search_limits)}")
     print(f"Runs per setting: {args.runs}")
@@ -132,15 +127,15 @@ def main(argv: Sequence[str] | None = None) -> int:
 
             print(f"Experiment Name: {experiment_name}")
 
-            run_experiment(
-                dataset_path=args.dataset,
+            await run_marketplace_experiment(
+                data_dir=Path(args.dataset),
                 experiment_name=experiment_name,
-                search_limit=search_limit,
+                search_algorithm="lexical",
+                search_bandwidth=search_limit,
+                override=True,
             )
 
-            asyncio.run(
-                run_analytics(experiment_name, db_type="postgres", save_to_json=True)
-            )
+            await run_analytics(experiment_name, db_type="postgres", save_to_json=True)
 
             cwd = Path.cwd()
             source = cwd / f"analytics_results_{experiment_name}.json"
@@ -156,4 +151,4 @@ def main(argv: Sequence[str] | None = None) -> int:
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
