@@ -17,7 +17,7 @@ from magentic_marketplace.platform.launcher import AgentLauncher, MarketplaceLau
 
 
 async def run_marketplace_experiment(
-    data_dir: Path,
+    data_dir: str | Path,
     experiment_name: str | None = None,
     search_algorithm: str = "simple",
     search_bandwidth: int = 10,
@@ -29,6 +29,7 @@ async def run_marketplace_experiment(
 ):
     """Run a marketplace experiment using YAML configuration files."""
     # Load businesses and customers from YAML files
+    data_dir = Path(data_dir)
     businesses_dir = data_dir / "businesses"
     customers_dir = data_dir / "customers"
 
