@@ -274,7 +274,7 @@ def main():
 
     # list-experiments subcommand
     list_experiments_parser = subparsers.add_parser(
-        "list-experiments",
+        "list",
         help="List all marketplace experiments stored in PostgreSQL",
     )
     list_experiments_parser.set_defaults(func=list_experiments_command)
