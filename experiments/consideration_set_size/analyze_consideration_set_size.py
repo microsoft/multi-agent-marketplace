@@ -55,17 +55,25 @@ def compile_results_csv(input_dir):
             )
 
     for dataset, results in all_results.items():
-        with open(f"output_{dataset}.csv", "w") as f:
-            f.write("Model,Dataset,Welfare Type,Limit,Run,Welfare,Welfare Optimal\n")
-            for result in results:
-                model = result["model"]
-                dataset = result["dataset"]
-                limit = result["limit"]
-                run = result["run"]
-                customer_utility = result["customer_utility"]
+        # Get the optimal welfare value for this dataset
+        dataset_path = os.path.join("../..", "data", dataset, "baseline_utilities.json")
+        with open(dataset_path) as f:
+            baseline_data = json.load(f)
+            baseline_utility = baseline_data["pick_optimal_baseline"]["constant"]
+
+            with open(f"output_{dataset}.csv", "w") as f:
                 f.write(
-                    f"{model},{dataset},customer,{limit},{run},{customer_utility}\n"
+                    "Model,Dataset,Welfare Type,Limit,Run,Welfare,Welfare Optimal\n"
                 )
+                for result in results:
+                    model = result["model"]
+                    dataset = result["dataset"]
+                    limit = result["limit"]
+                    run = result["run"]
+                    customer_utility = result["customer_utility"]
+                    f.write(
+                        f"{model},{dataset},customer,{limit},{run},{customer_utility},{baseline_utility}\n"
+                    )
 
 
 if __name__ == "__main__":
