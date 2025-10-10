@@ -1,0 +1,44 @@
+id: business_0260
+name: Blackstone Residential Improvements
+description: "Blackstone Residential Improvements provides reliable home repair, remodeling,\
+  \ and exterior enhancement services for local homeowners. Our skilled team delivers\
+  \ quality workmanship and practical solutions tailored to your property\u2019s needs."
+rating: 1.0
+progenitor_customer: customer_0087
+menu_features:
+  Staircase Refinishing: 302.63
+  Lawn Irrigation Startup: 281.09
+  Custom Cabinet Assembly: 368.94
+  Brick Pathway Repair: 355.47
+  Kitchen Countertop Replacement: 531.75
+  Lawn Sodding: 181.97
+  Porch Step Replacement: 388.4
+  Basic Tile Flooring Install: 207.42
+  Smoke Detector Setup: 238.6
+  Home Network Setup: 223.04
+  Granite Countertop Fabrication: 463.5
+  Patio Paver Setup: 290.38
+  Door Lock Repair: 227.04
+  Tile Repair: 142.87
+  Tree Trimming: 153.3
+  Bathroom Exhaust Fan Upgrade: 342.03
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: true
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.75

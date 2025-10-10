@@ -1,0 +1,42 @@
+id: business_0116
+name: Suncrest Residential Improvements
+description: Suncrest Residential Improvements provides reliable home maintenance,
+  light remodeling, and property enhancement services to homeowners seeking quality
+  workmanship and attentive customer care. Our team handles a range of interior and
+  exterior projects for houses in the local area.
+rating: 1.0
+progenitor_customer: customer_0039
+menu_features:
+  Stone Patio Sealing: 423.58
+  Garage Cabinet Assembly: 143.49
+  Porch Step Replacement: 312.24
+  Lighting Fixture Upgrade: 231.25
+  Walkway Repair: 208.84
+  Entry Door Repainting: 157.05
+  Light Fixture Upgrading: 293.77
+  Air Conditioner Tuneup: 339.38
+  Minor Plumbing Repair: 148.09
+  Lawn Sodding: 144.81
+  Central Air Maintenance: 398.02
+  Sheetrock Installation: 442.59
+  Small Room Remodeling: 308.13
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.65

@@ -1,0 +1,46 @@
+id: business_0019
+name: Rockford Home Services
+description: Rockford Home Services provides comprehensive residential repairs, installations,
+  and improvements for homeowners seeking reliable local expertise. Our team delivers
+  efficient solutions across interior and exterior maintenance to keep your property
+  in top condition.
+rating: 1.0
+progenitor_customer: customer_0007
+menu_features:
+  Front Door Lock Change: 161.83
+  Light Fixture Wiring: 243.41
+  Granite Countertop Replacement: 425.17
+  Concrete Step Pouring: 425.34
+  Lawn Fertilization: 138.83
+  Kitchen Sink Plumbing: 225.72
+  Leak Repair: 190.81
+  Closet Organizer Installation: 492.96
+  Air Duct Sealing: 333.53
+  Lawn Irrigation Startup: 290.18
+  Concrete Path Repair: 264.18
+  Concrete Crack Sealing: 348.27
+  Insulation Addition: 423.42
+  Install Base Cabinets: 390.06
+  Outlet Replacement: 224.5
+  Sump Pump Replacement: 466.28
+  Furniture Assembly: 179.95
+amenity_features:
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  accepts digital payments: false
+  licensed: true
+  appointment only: false
+  business accepts credit cards: false
+  same day service: false
+  flexible hours: false
+  free estimate: false
+  background checked crew: false
+  insured: true
+  weekend availability: false
+  eco friendly materials: true
+  responsiveness: false
+  post install inspection: false
+  free followup visit: true
+  after hours service: false
+min_price_factor: 0.88

@@ -1,0 +1,41 @@
+id: business_0117
+name: Redfern Home Services
+description: Redfern Home Services provides professional residential maintenance,
+  repair, and improvement solutions for homeowners seeking reliable workmanship. Our
+  team is dedicated to enhancing the safety, efficiency, and appearance of your home
+  through a range of interior and exterior services.
+rating: 1.0
+progenitor_customer: customer_0039
+menu_features:
+  Dryer Vent Cleaning: 221.3
+  Hardwood Floor Sanding: 313.37
+  Light Fixture Upgrading: 298.81
+  Built-in Shelving Installation: 385.86
+  Shrub Trimming: 311.71
+  Brick Step Repointing: 483.28
+  Full Exterior House Painting: 491.33
+  Stone Walkway Paving: 455.51
+  Lighting Fixture Upgrade: 214.39
+  Furnace Tune-Up: 505.46
+  Brick Chimney Pointing: 470.57
+  A/C Blower Motor Replacement: 384.47
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.79

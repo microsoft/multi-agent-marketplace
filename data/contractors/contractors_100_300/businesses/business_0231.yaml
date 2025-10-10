@@ -1,0 +1,42 @@
+id: business_0231
+name: Northfield Home Solutions Group
+description: Serving homeowners with reliable interior and exterior repair, improvement,
+  and maintenance services. Our team is dedicated to delivering quality workmanship
+  for residential projects, ensuring your home is safe, functional, and well cared
+  for.
+rating: 1.0
+progenitor_customer: customer_0077
+menu_features:
+  Roof Leak Inspection: 399.04
+  Custom Closet Build: 396.25
+  Vanity Setup: 214.97
+  Garage Door Adjustment: 174.92
+  Granite Countertop Polishing: 459.9
+  Closet Cabinet Assembly: 430.22
+  Electrical Panel Inspection: 471.82
+  Siding Repair: 559.8
+  Walkway Repair: 275.12
+  Drain Clearing: 236.85
+  Roof Inspection: 324.05
+  Kitchen Countertop Replacement: 527.25
+  Shower Door Fitting: 304.5
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.7

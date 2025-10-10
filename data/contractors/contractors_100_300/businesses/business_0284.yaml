@@ -1,0 +1,42 @@
+id: business_0284
+name: Northvale Home Projects
+description: Northvale Home Projects delivers reliable residential improvement and
+  maintenance services for homeowners seeking straightforward solutions. Our team
+  is committed to quality work across interior upgrades and exterior enhancements,
+  with a focus on customer satisfaction.
+rating: 1.0
+progenitor_customer: customer_0095
+menu_features:
+  Garage Shelving Assembly: 232.07
+  Garage Door Opener Replacement: 249.66
+  Sprinkler System Installation: 511.41
+  Smart Thermostat Setup: 256.96
+  Bathroom Vanity Fitting: 378.74
+  Wall Repair: 189.71
+  Garage Shelving Installation: 198.56
+  Bush Trimming: 157.84
+  Fence Installation: 465.8
+  Brick Step Repointing: 495.06
+  Engineered Wood Floor Installation: 419.45
+  Closet Cabinet Assembly: 384.42
+  Outlet Upgrade: 317.28
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: true
+  appointment only: true
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: true
+  accepts digital payments: true
+min_price_factor: 0.79

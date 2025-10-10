@@ -1,0 +1,42 @@
+id: business_0020
+name: Residential ServiceWorks
+description: Residential ServiceWorks provides reliable repair, installation, and
+  improvement services for homeowners seeking professional solutions for both indoor
+  and outdoor projects. Our team is committed to delivering dependable results and
+  exceptional customer care across a range of home service needs.
+rating: 1.0
+progenitor_customer: customer_0007
+menu_features:
+  Mailbox Installation: 84.4
+  Patio Paver Resetting: 344.23
+  Garage Cabinet Assembly: 204.31
+  Tree Removal: 497.88
+  Light Switch Repair: 208.56
+  Paver Sealing: 193.4
+  Thermostat Upgrade: 234.1
+  Closet Cabinet Assembly: 352.09
+  Water Heater Installation: 313.07
+  Bathroom Sink Plumbing: 228.9
+  Garden Bed Design: 167.27
+  Garage Door Inspection: 397.08
+  Deck Resealing: 491.05
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.65

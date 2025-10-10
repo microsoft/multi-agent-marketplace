@@ -1,0 +1,46 @@
+id: business_0043
+name: Stonefield Home Projects
+description: Stonefield Home Projects provides reliable residential improvement and
+  maintenance services for homeowners seeking quality workmanship. Our team handles
+  a variety of interior and exterior projects, focusing on practical solutions for
+  everyday home needs.
+rating: 1.0
+progenitor_customer: customer_0015
+menu_features:
+  Sod Lawn Installation: 420.4
+  Brick Chimney Sealing: 355.07
+  Sod Placement: 261.06
+  Custom Shelf Mounting: 274.41
+  Water Heater Flush: 261.83
+  Mailbox Replacement: 373.78
+  Faucet Installation: 222.01
+  Fence Gate Repair: 385.87
+  Hardwood Refinishing: 377.4
+  Door Weatherstripping: 99.63
+  Shower Caulking: 261.94
+  Sprinkler System Winterization: 404.64
+  Shed Assembly: 295.87
+  Cabinet Handle Replacement: 402.87
+  Vanity Plumbing Repair: 243.27
+  Retaining Wall Construction: 357.59
+  Garage Organization: 380.78
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: true
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: true
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: true
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.82

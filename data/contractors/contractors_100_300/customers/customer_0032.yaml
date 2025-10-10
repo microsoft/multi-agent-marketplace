@@ -1,0 +1,13 @@
+id: customer_0032
+name: Emma Taylor
+request: 'Please help me find a contractor who provides all of the following services:
+  Masonry Tuckpointing (1), Air Conditioner Inspection (1), and Hardwood Floor Screening
+  (1), and who also offers weekend availability. Once you have identified a contractor
+  that meets these requirements, I am ready to hire them and proceed with scheduling
+  the work exactly as specified. Thank you for facilitating this process.'
+menu_features:
+  Masonry Tuckpointing: 347.49
+  Air Conditioner Inspection: 515.99
+  Hardwood Floor Screening: 404.25
+amenity_features:
+- weekend availability

@@ -1,0 +1,43 @@
+id: business_0018
+name: Redwood Residential Services
+description: Redwood Residential Services delivers reliable contracting and maintenance
+  solutions for homeowners, specializing in both interior and exterior home improvements.
+  Our team focuses on quality workmanship and attentive service to help you maintain
+  and enhance your property.
+rating: 1.0
+progenitor_customer: customer_0006
+menu_features:
+  Cedar Fence Building: 472.32
+  Paver Sealing: 217.26
+  Kitchen Countertop Replacement: 493.01
+  Tile Installation: 443.59
+  Garage Floor Coating: 292.53
+  Shrub Removal: 135.56
+  Smoke Detector Installation: 113.44
+  Stone Walkway Installation: 324.81
+  Kitchen Cabinet Realignment: 386.81
+  Central Air Maintenance: 483.74
+  Central Heating Repair: 417.67
+  Flagstone Walkway: 512.89
+  Chimney Cap Replacement: 413.08
+  Baseboard Repair: 114.45
+amenity_features:
+  flexible hours: true
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: true
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.64

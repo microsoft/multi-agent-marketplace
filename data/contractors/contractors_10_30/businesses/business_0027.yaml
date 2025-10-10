@@ -1,0 +1,43 @@
+id: business_0027
+name: Millstone Residential Contractors
+description: Millstone Residential Contractors provides reliable home improvement
+  and maintenance services for local homeowners, specializing in interior renovation
+  and exterior updates. Our team is committed to quality workmanship and attentive
+  customer service with every project.
+rating: 1.0
+progenitor_customer: customer_0009
+menu_features:
+  Refrigerator Hookup: 284.59
+  Shrub Removal: 139.08
+  Fireplace Refurbishing: 433.86
+  Faucet Repair: 202.68
+  Flooring Installation: 385.15
+  Landscape Planting: 239.87
+  Shed Roof Replacement: 445.67
+  Recessed Lighting Setup: 150.98
+  Hardwood Floor Repair: 267.14
+  Brick Path Restoration: 583.62
+  Grout Cleaning: 292.58
+  Carpet Replacement: 391.53
+  Lock Set Change: 239.47
+  Window Frame Restoration: 426.92
+amenity_features:
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  accepts digital payments: true
+  licensed: true
+  appointment only: true
+  business accepts credit cards: false
+  same day service: false
+  flexible hours: false
+  free estimate: false
+  background checked crew: false
+  insured: false
+  weekend availability: false
+  eco friendly materials: false
+  responsiveness: true
+  post install inspection: false
+  free followup visit: false
+  after hours service: true
+min_price_factor: 0.88

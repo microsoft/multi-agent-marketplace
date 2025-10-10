@@ -1,0 +1,46 @@
+id: business_0089
+name: Foundation Residential Services
+description: Foundation Residential Services provides reliable repair and improvement
+  solutions for homeowners, specializing in interior finishes, general contracting,
+  and essential home system maintenance. Our team is committed to efficient service
+  and quality workmanship for residential projects of all sizes.
+rating: 1.0
+progenitor_customer: customer_0030
+menu_features:
+  Leak Detection: 204.77
+  Garage Door Spring Repair: 327.75
+  Basement Drywall Finishing: 471.45
+  Custom Closet Cabinetry: 465.82
+  Drywall Patch: 313.49
+  Replace Electrical Outlet: 195.66
+  Hardwood Floor Buffing: 546.74
+  Central AC Inspection: 335.14
+  Furnace Service: 467.91
+  Brick Walkway Restoration: 322.62
+  Radiator Servicing: 400.78
+  Garage Door Weatherproofing: 439.76
+  Door Repair: 148.2
+  Chimney Repointing: 481.36
+  Electrical Panel Inspection: 480.6
+  Brick Path Restoration: 377.31
+  Retaining Wall Patch: 372.16
+amenity_features:
+  eco friendly materials: true
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: false
+  same day service: true
+  weekend availability: true
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: true
+min_price_factor: 0.76

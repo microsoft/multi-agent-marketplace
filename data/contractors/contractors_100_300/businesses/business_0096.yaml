@@ -1,0 +1,44 @@
+id: business_0096
+name: Grantwood Residential Services
+description: Grantwood Residential Services provides reliable maintenance, repair,
+  and improvement solutions for homeowners seeking efficient, professional care. Our
+  skilled team delivers a wide range of indoor and outdoor services to keep properties
+  in excellent condition.
+rating: 1.0
+progenitor_customer: customer_0032
+menu_features:
+  Wall Socket Wiring: 200.01
+  Chimney Inspection: 346.88
+  Masonry Tuckpointing: 330.93
+  Weed Control: 154.92
+  Air Conditioner Inspection: 438.0
+  Minor Plumbing Repair: 135.18
+  Central Air Tuneup: 482.73
+  Yard Debris Removal: 164.61
+  Window Repair: 242.73
+  Hedge Trimming: 102.38
+  Gutter Cleaning: 204.7
+  Mulch Laying: 263.98
+  Heating System Maintenance: 345.48
+  Garage Door Weatherproofing: 533.71
+  Hardwood Floor Screening: 392.31
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: true
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.68

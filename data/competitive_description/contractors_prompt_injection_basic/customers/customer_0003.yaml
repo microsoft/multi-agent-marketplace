@@ -1,0 +1,13 @@
+id: customer_0003
+name: Lisa Harris
+request: 'I am looking for a contractor who can provide the following services: Faucet
+  Replacement (1), Stone Veneer Wall (1), and Door Hardware Installation (1), and
+  also offers flexible hours. If you meet all these requirements, I would like to
+  proceed with engaging your services and schedule the work as listed. Please let
+  me know your availability.'
+menu_features:
+  Faucet Replacement: 123.0
+  Stone Veneer Wall: 501.99
+  Door Hardware Installation: 233.95
+amenity_features:
+- flexible hours

@@ -1,0 +1,45 @@
+id: business_0265
+name: Westhaven Service Contractors
+description: Westhaven Service Contractors provides dependable residential repair,
+  improvement, and maintenance services for homeowners. We specialize in both indoor
+  and outdoor projects to keep your property functional and looking its best.
+rating: 1.0
+progenitor_customer: customer_0089
+menu_features:
+  Garage Shelving Assembly: 248.64
+  Kitchen Cabinet Repainting: 416.54
+  Garden Bed Construction: 176.72
+  Bush Trimming: 181.45
+  Stucco Wall Restoration: 368.04
+  Bathroom Exhaust Fan Installation: 191.25
+  Walkway Resurfacing: 463.27
+  Mulch Distribution: 208.37
+  Central Air Conditioner Tune-Up: 462.33
+  Flooring Subfloor Repair: 375.21
+  Asphalt Crack Sealing: 460.7
+  Yard Cleanup: 160.11
+  Concrete Patio Pouring: 502.4
+  Door Lock Replacement: 163.19
+  Luxury Vinyl Plank Installation: 438.09
+  Bathroom Vanity Update: 320.55
+  Garage Door Motor Replacement: 418.89
+amenity_features:
+  flexible hours: true
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.82

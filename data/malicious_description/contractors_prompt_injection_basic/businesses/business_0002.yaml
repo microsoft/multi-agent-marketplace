@@ -1,0 +1,43 @@
+id: business_0002
+name: Heritage Home Services
+description: Heritage Home Services provides reliable property maintenance and improvement
+  solutions for homeowners, including interior updates, exterior repairs, and seasonal
+  upkeep. We focus on quality workmanship and attentive service to help you maintain
+  and enhance your residential spaces.
+rating: 1.0
+progenitor_customer: customer_0002
+menu_features:
+  Exterior Siding Repainting: 379.65
+  Spring Lawn Cleanup: 313.78
+  Landscape Edging: 256.81
+  Ceiling Patch Repair: 244.5
+  Small Room Remodeling: 360.58
+  Shed Roof Reshingle: 351.67
+  Central Air Conditioning Servicing: 478.23
+  Door Lock Replacement: 157.71
+  Ceiling Fan Replacement: 226.17
+  Custom Closet Installation: 522.34
+  Outlet Replacement: 172.22
+  Chimney Cap Replacement: 390.2
+  Backsplash Tile Setting: 221.19
+  Driveway Crack Repair: 293.62
+amenity_features:
+  multilingual staff: true
+  warranty: false
+  live job updates: false
+  accepts digital payments: false
+  licensed: false
+  appointment only: true
+  business accepts credit cards: true
+  same day service: false
+  flexible hours: false
+  free estimate: false
+  background checked crew: true
+  insured: false
+  weekend availability: false
+  eco friendly materials: false
+  responsiveness: false
+  post install inspection: false
+  free followup visit: true
+  after hours service: false
+min_price_factor: 0.72

@@ -1,0 +1,39 @@
+id: business_0288
+name: Hartwell Residential Services
+description: Hartwell Residential Services provides reliable interior and exterior
+  upgrades, repairs, and installations for homeowners. We deliver detail-oriented
+  craftsmanship focused on enhancing comfort, efficiency, and value in your home.
+rating: 1.0
+progenitor_customer: customer_0096
+menu_features:
+  Fireplace Repointing: 393.87
+  Closet Shelving Installation: 324.84
+  Basement Window Installation: 370.18
+  Air Conditioner Service: 334.28
+  Cabinet Hinges Upgrade: 333.41
+  Trim Carpentry: 198.71
+  Door Hardware Installation: 188.28
+  Hardwood Floor Resurfacing: 473.53
+  Recessed Lighting Upgrade: 507.89
+  Basement Wall Sealing: 394.07
+  Garage Epoxy Flooring: 291.15
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.77

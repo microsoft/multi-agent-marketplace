@@ -1,0 +1,45 @@
+id: business_0040
+name: Cornerbrook Home Services
+description: "Cornerbrook Home Services provides reliable residential maintenance,\
+  \ repair, and improvement solutions for homeowners. Our experienced team delivers\
+  \ quality workmanship on a wide range of interior and exterior projects to enhance\
+  \ your property\u2019s comfort and value."
+rating: 1.0
+progenitor_customer: customer_0014
+menu_features:
+  French Drain Installation: 377.98
+  Porch Resurfacing: 260.11
+  Drywall Installation: 315.63
+  Ceiling Light Installation: 144.55
+  Radiator Repair: 268.09
+  Entry Door Repainting: 169.67
+  Sprinkler Head Repair: 205.52
+  Carpet Stretching: 431.65
+  Bathroom Vanity Fitting: 408.08
+  Fence Repair: 473.0
+  Cabinet Handle Replacement: 401.19
+  Granite Countertop Installation: 550.84
+  Garage Door Spring Fix: 630.81
+  Deck Sanding: 336.44
+  Brick Chimney Repair: 200.1
+  AC Tune-Up: 328.09
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: true
+  flexible hours: false
+  insured: false
+  free followup visit: true
+  accepts digital payments: true
+  business accepts credit cards: false
+  after hours service: true
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.93

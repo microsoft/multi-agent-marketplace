@@ -1,0 +1,43 @@
+id: business_0059
+name: Brighton Residential Services
+description: Brighton Residential Services provides reliable upkeep, repair, and improvement
+  solutions for homeowners, helping to maintain and enhance property value. Our experienced
+  team focuses on quality service across indoor and outdoor residential needs.
+rating: 1.0
+progenitor_customer: customer_0020
+menu_features:
+  Tile Grout Restoration: 249.13
+  Lawn Aeration: 149.39
+  Brick Path Repair: 186.97
+  Flat Roof Sealant Application: 353.05
+  Shower Base Replacement: 354.84
+  Deck Cleaning: 317.25
+  Refrigerant Recharge: 369.03
+  Recessed Lighting Setup: 200.11
+  Gutter Replacement: 500.49
+  Shrub Trimming: 286.22
+  Carpet Laying: 356.89
+  Carpet Stretching: 387.1
+  Garage Door Tune-Up: 312.49
+  Water Heater Setup: 377.54
+  Deck Railing Installation: 468.4
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: true
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.69

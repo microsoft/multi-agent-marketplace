@@ -8,7 +8,11 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
+from magentic_marketplace.experiments.extract_agent_llm_traces import (
+    run_extract_traces,
+)
 from magentic_marketplace.experiments.run_analytics import run_analytics
+from magentic_marketplace.experiments.run_audit import run_audit
 from magentic_marketplace.experiments.run_experiment import run_marketplace_experiment
 from magentic_marketplace.experiments.utils import setup_logging
 
@@ -70,6 +74,7 @@ def run_experiment_command(args):
             data_dir=data_dir,
             experiment_name=args.experiment_name,
             search_algorithm=args.search_algorithm,
+            search_bandwidth=args.search_bandwidth,
             customer_max_steps=args.customer_max_steps,
             postgres_host=args.postgres_host,
             postgres_port=args.postgres_port,
@@ -85,6 +90,17 @@ def run_analysis_command(args):
     asyncio.run(
         run_analytics(args.database_name, args.db_type, save_to_json=save_to_json)
     )
+
+
+def run_extract_traces_command(args):
+    """Handle the extract-traces subcommand."""
+    asyncio.run(run_extract_traces(args.database_name, args.db_type))
+
+
+def run_audit_command(args):
+    """Handle the audit subcommand."""
+    save_to_json = not args.no_save_json
+    asyncio.run(run_audit(args.database_name, args.db_type, save_to_json=save_to_json))
 
 
 def main():
@@ -114,8 +130,15 @@ def main():
     experiment_parser.add_argument(
         "--search-algorithm",
         type=str,
-        default="simple",
-        help="Search algorithm for customer agents (default: simple)",
+        default="lexical",
+        help="Search algorithm for customer agents (default: lexical)",
+    )
+
+    experiment_parser.add_argument(
+        "--search-bandwidth",
+        type=int,
+        default=10,
+        help="Search bandwidth for customer agents (default: 10)",
     )
 
     experiment_parser.add_argument(
@@ -190,6 +213,48 @@ def main():
         "--no-save-json",
         action="store_true",
         help="Disable saving analytics to JSON file",
+    )
+
+    # extract-traces subcommand
+    extract_traces_parser = subparsers.add_parser(
+        "extract-traces",
+        help="Extract LLM traces from marketplace simulation and save to markdown files",
+    )
+    extract_traces_parser.set_defaults(func=run_extract_traces_command)
+
+    extract_traces_parser.add_argument(
+        "database_name", help="Postgres schema name or path to the SQLite database file"
+    )
+
+    extract_traces_parser.add_argument(
+        "--db-type",
+        choices=["sqlite", "postgres"],
+        default="postgres",
+        help="Type of database to use (default: postgres)",
+    )
+
+    # audit subcommand
+    audit_parser = subparsers.add_parser(
+        "audit",
+        help="Audit marketplace simulation to verify customers received all proposals",
+    )
+    audit_parser.set_defaults(func=run_audit_command)
+
+    audit_parser.add_argument(
+        "database_name", help="Postgres schema name or path to the SQLite database file"
+    )
+
+    audit_parser.add_argument(
+        "--db-type",
+        choices=["sqlite", "postgres"],
+        default="postgres",
+        help="Type of database to use (default: postgres)",
+    )
+
+    audit_parser.add_argument(
+        "--no-save-json",
+        action="store_true",
+        help="Disable saving audit results to JSON file",
     )
 
     # Parse arguments and execute the appropriate function

@@ -1,0 +1,47 @@
+id: business_0103
+name: Residential Renewal Contractors
+description: Residential Renewal Contractors provides reliable home improvement and
+  maintenance services for homeowners seeking quality upgrades and repairs. Our team
+  delivers solutions for interiors, exteriors, and landscaping to enhance the comfort
+  and value of your property.
+rating: 1.0
+progenitor_customer: customer_0035
+menu_features:
+  Carpet Installation: 409.52
+  Landscape Lighting Setup: 335.13
+  Brick Patio Installation: 474.4
+  Light Switch Repair: 153.01
+  Garage Door Opener Install: 233.58
+  Hardwood Refinishing: 511.25
+  Paver Path Installation: 372.76
+  Bathroom Tile Setting: 380.48
+  Walkway Construction: 543.07
+  Closet Shelving Assembly: 425.86
+  Landscaping Design: 165.95
+  Vinyl Siding Patch: 411.17
+  Fireplace Refurbishing: 369.55
+  Furnace Tune-Up: 417.06
+  Garage Door Inspection: 289.67
+  Chimney Repointing: 484.62
+  Outdoor Fence Painting: 382.62
+  Cabinet Door Adjustment: 277.74
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.87

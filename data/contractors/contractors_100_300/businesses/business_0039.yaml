@@ -1,0 +1,43 @@
+id: business_0039
+name: Craftline Residential Services
+description: Craftline Residential Services delivers quality repairs and improvements
+  for homeowners, offering interior and exterior solutions tailored to enhance and
+  maintain your property. Our experienced team is committed to professional workmanship
+  and reliable results across a range of home projects.
+rating: 1.0
+progenitor_customer: customer_0013
+menu_features:
+  Mulching: 264.49
+  Vanity Setup: 241.8
+  Deck Restoration: 521.38
+  Masonry Brick Restoration: 388.33
+  Entry Door Repainting: 161.29
+  Window Repair: 254.36
+  Basic Electrical Troubleshooting: 249.27
+  Backsplash Tile Setting: 218.24
+  Landscaping Bed Creation: 345.5
+  Shower Tile Regrouting: 329.26
+  Exterior Painting: 363.2
+  Bathroom Fan Installation: 313.05
+  Mailbox Replacement: 347.71
+  Brick Patio Sealing: 302.62
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: true
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.86

@@ -1,0 +1,44 @@
+id: business_0196
+name: Prairie Lane Contracting
+description: Prairie Lane Contracting provides reliable residential improvement and
+  maintenance solutions for local homeowners, delivering quality craftsmanship across
+  a range of interior and exterior projects. Our team is dedicated to timely, detail-oriented
+  service tailored to your property's needs.
+rating: 1.0
+progenitor_customer: customer_0066
+menu_features:
+  Ceramic Tile Floor Install: 346.36
+  Cabinet Installation: 180.14
+  Kitchen Cabinet Repainting: 393.88
+  Walkway Resurfacing: 455.21
+  Deck Sanding: 333.42
+  Tile Repair: 199.83
+  Bookshelf Assembly: 155.29
+  HVAC Diagnostics: 460.26
+  Custom Cabinet Hanging: 513.12
+  Flooring Subfloor Repair: 376.23
+  Walkway Bricklaying: 587.6
+  Baseboard Painting: 265.62
+  Outdoor Fence Painting: 453.46
+  Pergola Construction: 317.64
+  Door Hardware Replacement: 252.07
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: true
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.9

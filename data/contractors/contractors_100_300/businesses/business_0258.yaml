@@ -1,0 +1,45 @@
+id: business_0258
+name: Redbridge Residential Services
+description: Redbridge Residential Services assists homeowners with a range of interior
+  and exterior projects, including repairs, upgrades, and landscaping enhancements.
+  Our team is committed to reliable, quality service for homes throughout the local
+  area.
+rating: 1.0
+progenitor_customer: customer_0086
+menu_features:
+  Hardwood Floor Resurfacing: 446.9
+  Garage Door Spring Repair: 285.6
+  Retaining Wall Installation: 584.6
+  Sprinkler System Tuneup: 233.95
+  Furniture Assembly: 198.31
+  Door Hardware Upgrade: 217.18
+  Basement Wall Waterproofing: 342.86
+  Flower Bed Planting: 202.17
+  Hydronic Radiator Service: 298.66
+  Bathroom Fixture Swap: 288.55
+  Shower Glass Installation: 520.37
+  Bathroom Exhaust Fan Upgrade: 289.27
+  Custom Shelf Mounting: 288.0
+  Roof Vent Replacement: 407.59
+  Shed Roof Replacement: 414.89
+  Granite Countertop Cutting: 373.25
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: true
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.84

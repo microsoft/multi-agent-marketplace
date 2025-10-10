@@ -1,0 +1,44 @@
+id: business_0297
+name: Granite Lane Contracting
+description: Granite Lane Contracting provides reliable residential repairs and upgrades
+  for homeowners seeking quality craftsmanship and attentive service. We focus on
+  interior and exterior improvements to keep your home safe, functional, and well-maintained.
+rating: 1.0
+progenitor_customer: customer_0099
+menu_features:
+  Stone Fireplace Facade: 443.98
+  Baseboard Repair: 130.19
+  Concrete Step Pouring: 382.68
+  Drywall Patch: 269.44
+  Porch Railing Replacement: 375.19
+  Electrical Panel Update: 390.71
+  Chimney Flashing Repair: 402.52
+  Lighting Fixture Upgrade: 263.17
+  AC Annual Maintenance: 438.27
+  Shower Caulking: 260.76
+  Tile Grouting: 152.96
+  Garage Door Opener Setup: 560.03
+  Shed Roof Reshingle: 417.9
+  Lock Set Change: 192.13
+  Shower Head Replacement: 284.76
+  Mailbox Replacement: 310.21
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: true
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.6

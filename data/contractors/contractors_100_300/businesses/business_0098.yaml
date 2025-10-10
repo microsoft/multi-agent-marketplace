@@ -1,0 +1,41 @@
+id: business_0098
+name: Residential Precision Services
+description: Serving homeowners with a range of interior and exterior improvements,
+  Residential Precision Services delivers reliable solutions for comfort, function,
+  and curb appeal. Our team focuses on quality workmanship for projects in renovation,
+  repair, and installation.
+rating: 1.0
+progenitor_customer: customer_0033
+menu_features:
+  Concrete Pathway Pouring: 331.54
+  Full Bathroom Caulking: 353.74
+  Garage Door Motor Replacement: 356.6
+  Granite Countertop Fabrication: 430.74
+  HVAC Diagnostics: 507.86
+  Walkway Concrete Pour: 395.81
+  Sod Installation: 349.17
+  Central Air Conditioning Servicing: 410.49
+  Exterior Door Weatherproofing: 244.58
+  Custom Closet Cabinetry: 502.99
+  Window Replacement: 414.67
+  Mini Split AC Service: 463.86
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.66

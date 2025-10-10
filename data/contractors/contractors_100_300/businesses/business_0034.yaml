@@ -1,0 +1,44 @@
+id: business_0034
+name: Riverbend Home Contractors
+description: Riverbend Home Contractors provides reliable residential repair and improvement
+  services to homeowners, focusing on quality workmanship and attention to detail.
+  Our team is dedicated to enhancing and maintaining your home's comfort, function,
+  and appearance.
+rating: 1.0
+progenitor_customer: customer_0012
+menu_features:
+  Step Repair: 168.89
+  Granite Countertop Replacement: 530.37
+  Pergola Construction: 372.01
+  Shed Assembly: 208.17
+  Cabinet Installation: 189.06
+  Chimney Cap Replacement: 371.33
+  Tree Removal: 397.72
+  Wall Rewiring: 394.13
+  Bathtub Caulking: 306.76
+  Baseboard Installation: 193.25
+  Door Repair: 145.31
+  AC System Tune-Up: 391.07
+  Foundation Crack Repair: 230.08
+  Roof Leak Seal: 156.73
+  Bathtub Refinishing: 447.43
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: true
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.83

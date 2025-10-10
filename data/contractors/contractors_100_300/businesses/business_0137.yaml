@@ -1,0 +1,42 @@
+id: business_0137
+name: Granite Hill Home Services
+description: Granite Hill Home Services provides reliable residential upgrades and
+  maintenance for homeowners seeking quality work and attention to detail. Our dedicated
+  team handles a broad range of interior and exterior improvements to help you enhance
+  and protect your property.
+rating: 1.0
+progenitor_customer: customer_0046
+menu_features:
+  Laminate Floor Replacement: 488.07
+  Appliance Installation: 117.69
+  Exterior Trim Repair: 337.36
+  Fireplace Stonework: 407.69
+  Floorboard Replacement: 328.68
+  Duct Cleaning: 367.07
+  Heating System Maintenance: 368.76
+  Smoke Detector Upgrade: 260.11
+  Entry Door Repainting: 162.78
+  Cabinet Handle Replacement: 394.16
+  Basement Water Proofing: 548.76
+  Landscape Design: 134.93
+  Basement Stair Carpeting: 284.56
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: true
+  accepts digital payments: true
+min_price_factor: 0.86

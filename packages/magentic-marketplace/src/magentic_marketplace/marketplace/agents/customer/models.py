@@ -1,14 +1,61 @@
 """Data models for the customer agent."""
 
+from dataclasses import dataclass, field
 from typing import Any, Literal
 
 from pydantic import BaseModel, Field, model_validator
 
-from ...shared.models import SearchConstraints
+from magentic_marketplace.platform.shared.models import ActionExecutionResult
+
+from ...actions.actions import FetchMessagesResponse, SearchResponse
+from ...actions.messaging import Payment, TextMessage
+
+
+@dataclass
+class CustomerSendMessageResults:
+    """Internal dataclass for storing the results of sending messages in CustomerAction format."""
+
+    text_message_results: list[tuple[bool, str]] = field(default_factory=list)
+    pay_message_results: list[tuple[bool, str]] = field(default_factory=list)
+
+
+class AssistantTextMessageRequest(TextMessage):
+    """Request for sending a text message."""
+
+    to_business_id: str = Field(
+        description="The id of the business this message should be sent to."
+    )
+
+
+class AssistantPayMessageRequest(Payment):
+    """Request for sending a payment message to accept an order proposal."""
+
+    to_business_id: str = Field(
+        description="The id of the business this message should be sent to."
+    )
+
+
+class Messages(BaseModel):
+    """Messages to be sent to services.
+
+    Use text messages for general inquiries and pay messages to accept order proposals.
+    """
+
+    text_messages: list[AssistantTextMessageRequest]
+    pay_messages: list[AssistantPayMessageRequest]
 
 
 class CustomerAction(BaseModel):
-    """Actions the Assistant can take."""
+    """Actions the Assistant can take.
+
+    Use:
+        - search_businesses to search for businesses.
+        - send_messages to send messages to some businesses.
+        - check_messages to check for new responses from businesses.
+        - end_transaction if you have paid for an order or received confirmation.
+
+    Do not end if you haven't completed a purchase transaction.
+    """
 
     action_type: Literal[
         "search_businesses", "send_messages", "check_messages", "end_transaction"
@@ -17,51 +64,31 @@ class CustomerAction(BaseModel):
 
     # Search-specific fields
     search_query: str | None = Field(
-        None,
-        description="Search query for businesses. Required when action_type is 'search_businesses'",
+        default=None,
+        description="Search query for businesses.",
     )
-    search_constraints: SearchConstraints | None = Field(
-        None,
-        description="Search constraints. Optional when action_type is 'search_businesses'.",
-    )
-
-    # Send messages-specific fields
-    target_business_ids: list[str] | None = Field(
-        None,
-        description="Business IDs to send messages to. Required when action_type is 'send_messages'.",
-    )
-    message_content: str | None = Field(
-        None,
-        description="Content of text message to send. Required when action_type is 'send_messages'.",
+    search_page: int = Field(
+        default=1,
+        description="Page number to retrieve for the search results (default: 1)",
     )
 
-    # Payment-specific fields
-    proposal_to_accept: str | None = Field(
-        None,
-        description="Proposal ID to accept with payment. Required when action_type is 'end_transaction'.",
+    messages: Messages | None = Field(
+        default=None,
+        description="Messages container with text and pay message lists",
     )
 
     @model_validator(mode="after")
     def validate_model(self):
         """Validate the BaseModel structure."""
         if self.action_type == "search_businesses":
-            if not self.search_query and not self.search_constraints:
+            if not self.search_query:
                 raise ValueError(
-                    "At least one of search_query or search_constraints is required when action_type is search_businesses"
+                    "search_query is required when action_type is search_businesses"
                 )
         elif self.action_type == "send_messages":
-            if not self.target_business_ids:
+            if not self.messages:
                 raise ValueError(
-                    "target_business_ids must contain at least one element when action_type is send_messages"
-                )
-            if not self.message_content:
-                raise ValueError(
-                    "message_content must not be empty when action_type is send_messages"
-                )
-        elif self.action_type == "end_transaction":
-            if not self.proposal_to_accept:
-                raise ValueError(
-                    "proposal_to_accept must not be empty when action_type is end_transaction"
+                    "messages must have at least one element when action_type is send_messages"
                 )
 
         return self
@@ -77,3 +104,11 @@ class CustomerSummary(BaseModel):
     proposals_received: int = Field(description="Number of proposals received")
     transactions_completed: int = Field(description="Number of completed transactions")
     completed_proposal_ids: list[str] = Field(description="IDs of completed proposals")
+
+
+CustomerActionResult = (
+    ActionExecutionResult
+    | SearchResponse
+    | CustomerSendMessageResults
+    | FetchMessagesResponse
+)

@@ -1,0 +1,46 @@
+id: business_0283
+name: Majestic Home Solutions
+description: Majestic Home Solutions provides reliable residential repair, remodeling,
+  and seasonal maintenance services for local homeowners. Our team delivers quality
+  improvements for your indoor and outdoor spaces with a focus on dependable craftsmanship
+  and customer satisfaction.
+rating: 1.0
+progenitor_customer: customer_0095
+menu_features:
+  Garage Door Opener Replacement: 470.57
+  Vanity Plumbing Repair: 215.9
+  Spring Lawn Cleanup: 207.55
+  Subpanel Upgrade: 418.98
+  Small Closet Remodeling: 262.9
+  Wall Socket Wiring: 249.82
+  Built-In Shelf Construction: 497.22
+  Exterior Wall Patching: 382.65
+  Foundation Crack Sealing: 291.73
+  Mulch Spreading: 221.59
+  Lawn Sprinkler Repair: 211.74
+  Garden Bed Preparation: 126.71
+  Bathroom Remodel: 416.5
+  Smart Thermostat Setup: 287.08
+  Deck Railing Installation: 364.29
+  Brick Walkway Installation: 304.41
+  Basic Tile Flooring Install: 217.36
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: true
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.81

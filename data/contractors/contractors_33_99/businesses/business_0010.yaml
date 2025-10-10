@@ -1,0 +1,42 @@
+id: business_0010
+name: Cedarway Home Services
+description: Cedarway Home Services provides reliable residential improvements and
+  general repairs for homeowners seeking quality workmanship. We offer a wide range
+  of interior and exterior solutions to keep your home comfortable and looking its
+  best.
+rating: 1.0
+progenitor_customer: customer_0004
+menu_features:
+  Furnace Inspection: 502.85
+  Garden Bed Building: 394.99
+  Custom Bookcase Build: 427.02
+  Garage Door Spring Fix: 511.74
+  Shower Faucet Upgrade: 259.95
+  Window Trim Replacement: 385.37
+  Air Duct Sealing: 271.94
+  Wood Flooring Refinishing: 342.29
+  Kitchen Countertop Replacement: 533.98
+  Ceiling Fan Setup: 162.04
+  Walkway Resurfacing: 462.02
+  Door Frame Repair: 242.92
+  Mini-Split Maintenance: 206.8
+amenity_features:
+  eco friendly materials: true
+  multilingual staff: true
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: true
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: true
+min_price_factor: 0.83

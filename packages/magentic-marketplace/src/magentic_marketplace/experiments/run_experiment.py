@@ -21,6 +21,7 @@ async def run_marketplace_experiment(
     data_dir: Path,
     experiment_name: str | None = None,
     search_algorithm: str = "simple",
+    search_bandwidth: int = 10,
     customer_max_steps: int | None = None,
     postgres_host: str = "localhost",
     postgres_port: int = 5432,
@@ -78,6 +79,7 @@ async def run_marketplace_experiment(
                 customer,
                 marketplace_launcher.server_url,
                 search_algorithm=search_algorithm,
+                search_bandwidth=search_bandwidth,
                 max_steps=customer_max_steps,
             )
             for customer in customers

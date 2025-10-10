@@ -1,0 +1,45 @@
+id: business_0287
+name: Pioneer Residential Services
+description: Pioneer Residential Services delivers a reliable range of home improvement
+  and maintenance solutions for local homeowners, specializing in interior upgrades,
+  exterior repairs, and seasonal servicing. Our professional team is dedicated to
+  quality craftsmanship and dependable service for your residential projects.
+rating: 1.0
+progenitor_customer: customer_0096
+menu_features:
+  Hardwood Floor Sanding: 319.09
+  Brick Walkway Installation: 476.13
+  AC System Tune-Up: 393.52
+  Basement Window Installation: 299.48
+  Attic Ladder Installation: 221.03
+  Gutter Cleaning: 201.32
+  Furnace Maintenance: 377.28
+  Window Frame Restoration: 433.13
+  Custom Cabinet Fabrication: 375.7
+  Single Room Vinyl Flooring: 347.18
+  Refrigerant Recharge: 244.33
+  Brick Pathway Restoration: 350.8
+  Recessed Lighting Upgrade: 448.5
+  Central Air Conditioning Servicing: 441.46
+  Drain Pipe Repair: 188.22
+  Fence Post Setting: 426.78
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.65

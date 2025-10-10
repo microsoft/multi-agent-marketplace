@@ -1,0 +1,41 @@
+id: business_0171
+name: Eastbrook General Contracting
+description: Eastbrook General Contracting provides reliable home maintenance, repairs,
+  and light remodeling services for residential clients. We focus on delivering timely,
+  quality solutions to keep your home functional, comfortable, and looking its best.
+rating: 1.0
+progenitor_customer: customer_0057
+menu_features:
+  Small Bathroom Plumbing Repair: 192.54
+  Exterior House Washing: 489.44
+  Shower Faucet Upgrade: 219.46
+  Landscaping Cleanup: 174.14
+  Water Heater Tune-Up: 486.82
+  Small Room Remodeling: 410.63
+  Bathtub Recaulking: 307.61
+  Tile Replacement: 139.11
+  Basement Water Proofing: 444.23
+  Deck Railing Installation: 457.92
+  Drain Unclogging: 156.83
+  Landscape Lighting Installation: 468.33
+  Drywall Hole Patching: 457.53
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: false
+  after hours service: true
+  appointment only: false
+  live job updates: true
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.87

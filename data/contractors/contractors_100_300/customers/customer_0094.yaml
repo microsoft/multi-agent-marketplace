@@ -1,0 +1,12 @@
+id: customer_0094
+name: Mia Garcia
+request: I'm looking to hire a contractor who can provide Baseboard Mold Remediation
+  (1) and Closet System Installation (1), and who operates by appointment only. Once
+  a contractor matching these requirements is identified, I would like to engage their
+  services and arrange to confirm and schedule the work as outlined. Please assist
+  with finding and connecting me to such a contractor.
+menu_features:
+  Baseboard Mold Remediation: 293.0
+  Closet System Installation: 493.99
+amenity_features:
+- appointment only

@@ -1,0 +1,42 @@
+id: business_0194
+name: Foundation Works Contractors
+description: Foundation Works Contractors provides reliable residential repair and
+  maintenance services for homeowners seeking quality solutions for indoor and outdoor
+  projects. Our team is dedicated to supporting the long-term comfort and function
+  of your property through attentive service and skilled craftsmanship.
+rating: 1.0
+progenitor_customer: customer_0065
+menu_features:
+  Drain Pipe Repair: 176.91
+  Wooden Stair Repair: 227.62
+  Garage Door Inspection: 440.25
+  Deck Staining: 384.38
+  Water Heater Repair: 362.45
+  Deck Repair: 346.19
+  Basic Plumbing Repair: 128.09
+  Walkway Concrete Pour: 420.09
+  Furnace Maintenance: 377.09
+  Dryer Vent Cleaning: 253.17
+  Sod Installation: 248.77
+  Washer Hookup Installation: 345.98
+  Water Heater Upgrade: 346.35
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.9

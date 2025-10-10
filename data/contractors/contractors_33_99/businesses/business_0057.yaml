@@ -1,0 +1,44 @@
+id: business_0057
+name: Westmark Home Contractors
+description: Westmark Home Contractors provides residential remodeling, repair, and
+  improvement services for homeowners seeking reliable solutions for both interior
+  and exterior projects. Our team focuses on quality workmanship and efficient results
+  across a range of home maintenance needs.
+rating: 1.0
+progenitor_customer: customer_0019
+menu_features:
+  Full-Bath Remodeling: 416.82
+  Exterior Door Install: 248.2
+  Chandelier Installation: 353.68
+  Roof Leak Patch: 372.23
+  Lawn Sprinkler Repair: 207.06
+  Mulch Delivery: 270.55
+  Asphalt Patch Repair: 388.7
+  Garage Door Tune-Up: 288.11
+  Baseboard Mold Remediation: 307.54
+  Roof Leak Inspection: 406.25
+  Gutter Repair: 279.53
+  Exterior Door Mounting: 256.42
+  Brick Repair: 194.41
+  Stone Patio Restoration: 528.62
+  Subpanel Upgrade: 520.58
+amenity_features:
+  eco friendly materials: true
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: true
+  appointment only: false
+min_price_factor: 0.79

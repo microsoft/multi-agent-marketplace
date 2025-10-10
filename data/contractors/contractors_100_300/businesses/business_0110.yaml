@@ -1,0 +1,43 @@
+id: business_0110
+name: Oakview Home Maintenance
+description: Serving local homeowners with reliable home improvement, maintenance,
+  and repair services. Our experienced team delivers prompt, quality work for a wide
+  range of residential projects.
+rating: 1.0
+progenitor_customer: customer_0037
+menu_features:
+  Bathroom Remodel: 506.95
+  Roof Leak Inspection: 304.71
+  Replace Heating Thermostat: 452.09
+  Air Conditioner Tuneup: 351.82
+  Water Heater Inspection: 184.53
+  Bathroom Vanity Install: 392.58
+  Replace Electrical Outlet: 270.62
+  Stucco Wall Restoration: 484.93
+  Foundation Crack Repair: 161.59
+  Deck Board Replacement: 524.71
+  Foundation Crack Sealing: 404.73
+  Floorboard Replacement: 283.03
+  Leaf Removal: 266.74
+  Faucet Replacement: 138.07
+  Electrical Panel Upgrade: 428.5
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.9

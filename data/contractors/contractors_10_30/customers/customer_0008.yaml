@@ -1,0 +1,15 @@
+id: customer_0008
+name: Mia Robinson
+request: 'Please help me find a contractor who can provide the following services:
+  Wood Floor Refinishing (1), Sink Installation (1), and Walkway Stone Laying (1).
+  It is essential that the business accepts credit cards and has a background checked
+  crew. Once a suitable contractor is identified, I intend to hire and schedule the
+  work as specified above. I look forward to confirming the project details and moving
+  forward as soon as possible.'
+menu_features:
+  Wood Floor Refinishing: 350.99
+  Sink Installation: 255.99
+  Walkway Stone Laying: 418.5
+amenity_features:
+- business accepts credit cards
+- background checked crew

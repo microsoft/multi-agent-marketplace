@@ -1,0 +1,41 @@
+id: business_0167
+name: Northbridge Residential Services
+description: Northbridge Residential Services provides reliable solutions for homeowners
+  seeking interior and exterior upgrades, maintenance, and repairs. Our skilled team
+  delivers efficient service tailored for residential properties and neighborhoods.
+rating: 1.0
+progenitor_customer: customer_0056
+menu_features:
+  Sprinkler System Startup: 413.33
+  Exterior Door Mounting: 217.28
+  Bathroom Vanity Install: 466.73
+  Flower Bed Redesign: 233.18
+  Pressure Washing: 195.38
+  Heat Pump Service: 457.98
+  Kitchen Faucet Upgrade: 221.39
+  Security System Setup: 318.76
+  Closet Cabinet Assembly: 443.95
+  Electrical Panel Update: 477.27
+  Shingle Repair: 472.25
+  Basement Water Proofing: 431.77
+  Laminate Flooring: 327.07
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.6

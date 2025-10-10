@@ -1,0 +1,11 @@
+id: customer_0039
+name: James Lee
+request: Please help me find a contractor who can provide Light Fixture Upgrading
+  (1), and offers both warranty and multilingual staff. These amenities are essential
+  for me to consider hiring. Once a suitable contractor is identified, I would like
+  to confirm the engagement and proceed to schedule the work as specified.
+menu_features:
+  Light Fixture Upgrading: 257.99
+amenity_features:
+- warranty
+- multilingual staff

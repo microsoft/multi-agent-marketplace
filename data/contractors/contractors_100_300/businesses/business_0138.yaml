@@ -1,0 +1,42 @@
+id: business_0138
+name: Birchwood Service Specialists
+description: Birchwood Service Specialists provides reliable residential repair, maintenance,
+  and improvement solutions for homeowners. Our skilled team delivers quality workmanship
+  in projects both inside and outside the home.
+rating: 1.0
+progenitor_customer: customer_0046
+menu_features:
+  Roof Shingle Patch: 342.63
+  Window Repair: 263.01
+  A/C Blower Motor Replacement: 344.59
+  Stone Patio Sealing: 372.46
+  Install Base Cabinets: 460.77
+  Tile Backsplash: 393.75
+  Duct Cleaning: 386.97
+  Laminate Floor Replacement: 464.21
+  Radiator Repair: 297.12
+  Tile Shower Installation: 526.7
+  Security Light Installation: 323.17
+  Mailbox Post Setting: 258.37
+  Kitchen Wall Tile: 202.32
+  Lawn Fertilization: 163.03
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.73

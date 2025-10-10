@@ -1,0 +1,45 @@
+id: business_0151
+name: Williamsburg Service Group
+description: Williamsburg Service Group provides reliable residential improvement
+  and maintenance solutions for homeowners, focusing on timely, quality workmanship
+  across interior upgrades, exterior upkeep, and general home repairs. Our experienced
+  team is committed to delivering practical service for homes in need of professional
+  attention.
+rating: 1.0
+progenitor_customer: customer_0051
+menu_features:
+  Fixture Assembly: 324.53
+  Garage Door Spring Replacement: 473.86
+  Cabinet Handle Replacement: 357.56
+  Door Lock Replacement: 162.52
+  Furnace Inspection: 418.4
+  Shrub Trimming: 360.37
+  Bathroom Exhaust Fan Upgrade: 331.56
+  Garage Remodeling: 544.35
+  Door Installation: 184.64
+  Sprinkler System Startup: 496.35
+  Recessed Lighting Install: 224.86
+  Dishwasher Installation: 179.25
+  Fence Post Setting: 337.26
+  Heating System Maintenance: 306.7
+  Ceramic Tile Floor Install: 475.97
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.78

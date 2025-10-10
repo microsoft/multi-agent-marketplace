@@ -1,0 +1,12 @@
+id: customer_0031
+name: Isabella Lee
+request: 'I am looking for a contractor who can provide Baseboard Installation (quantity:
+  1) and offers both free estimate and live job updates. Once a contractor meeting
+  these requirements is found, I intend to hire them and would like to proceed with
+  scheduling the installation at the earliest convenience. Please assist in finding
+  and confirming the service provider.'
+menu_features:
+  Baseboard Installation: 209.99
+amenity_features:
+- free estimate
+- live job updates

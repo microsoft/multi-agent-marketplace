@@ -1,0 +1,40 @@
+id: business_0129
+name: Clearview Residential Maintenance
+description: Clearview Residential Maintenance serves homeowners with reliable solutions
+  for interior repairs, seasonal startup, and routine exterior upkeep. We focus on
+  delivering quality workmanship to keep homes functional and comfortable throughout
+  the year.
+rating: 1.0
+progenitor_customer: customer_0043
+menu_features:
+  Garage Door Inspection: 386.74
+  Stone Patio Cleaning: 232.23
+  Baseboard Repair: 136.45
+  Wood Floor Refinishing: 375.6
+  Door Repair: 203.37
+  Central Air Conditioning Inspection: 392.93
+  Porch Step Replacement: 276.99
+  Concrete Patio Resurfacing: 490.91
+  Sprinkler System Startup: 564.74
+  Basic Tile Flooring Install: 181.92
+  Bathroom Ventilation Fan Install: 245.45
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.7

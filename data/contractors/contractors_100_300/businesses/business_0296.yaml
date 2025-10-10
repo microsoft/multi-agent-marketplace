@@ -1,0 +1,42 @@
+id: business_0296
+name: Oakcrest Service Solutions
+description: Oakcrest Service Solutions provides trusted residential upkeep and improvement
+  services for homeowners. We deliver quality exterior maintenance and home repair
+  to help keep your property in top condition.
+rating: 1.0
+progenitor_customer: customer_0099
+menu_features:
+  Garden Maintenance: 147.59
+  Garage Door Spring Fix: 452.24
+  Granite Countertop Polishing: 434.54
+  Concrete Path Repair: 215.02
+  Shingle Repair: 462.88
+  Mulch Distribution: 157.95
+  Small Patio Paving: 265.53
+  Shed Roof Reshingle: 355.58
+  Air Duct Sealing: 360.82
+  Light Switch Repair: 189.87
+  Shower Caulking: 270.23
+  Drain Cleaning: 200.82
+  Mulch Spreading: 221.09
+  Washer Hookup Installation: 347.66
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: true
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.7

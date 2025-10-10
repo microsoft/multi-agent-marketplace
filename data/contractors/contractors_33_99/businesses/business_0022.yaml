@@ -1,0 +1,41 @@
+id: business_0022
+name: Willow Point Residential Services
+description: Serving homeowners with reliable interior and exterior improvement solutions,
+  Willow Point Residential Services specializes in repairs, maintenance, and enhancements
+  for living spaces. Our skilled team is dedicated to delivering quality workmanship
+  for a wide range of residential needs.
+rating: 1.0
+progenitor_customer: customer_0008
+menu_features:
+  Vanity Plumbing Repair: 231.31
+  Air Conditioner Service: 422.84
+  Garden Bed Installation: 124.26
+  Closet Cabinet Assembly: 344.21
+  Mulch Laying: 250.6
+  Stone Walkway Restoration: 453.58
+  Cabinet Repair: 165.92
+  Water Heater Upgrade: 415.35
+  French Drain Installation: 458.27
+  Basement Stair Carpeting: 308.31
+  Luxury Vinyl Plank Installation: 394.45
+  Outdoor Fence Painting: 442.94
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: false
+  same day service: true
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: true
+  business accepts credit cards: true
+  after hours service: true
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.88

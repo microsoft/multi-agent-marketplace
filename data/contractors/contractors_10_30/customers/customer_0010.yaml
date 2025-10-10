@@ -1,0 +1,10 @@
+id: customer_0010
+name: David Lee
+request: 'I''m looking for a contractor who can provide Hedge Trimming (quantity:
+  1) and includes a warranty. Once such a contractor is identified, I would like to
+  hire them and arrange for the work to be scheduled accordingly. Please assist with
+  finding and confirming this service.'
+menu_features:
+  Hedge Trimming: 111.95
+amenity_features:
+- warranty

@@ -1,0 +1,44 @@
+id: business_0080
+name: Prospect Residential Services
+description: Prospect Residential Services provides reliable solutions for homeowners
+  needing repair, improvement, and installation projects. Our team is dedicated to
+  enhancing your living space with quality workmanship and attention to detail.
+rating: 1.0
+progenitor_customer: customer_0027
+menu_features:
+  Dryer Vent Cleaning: 254.14
+  Fireplace Repointing: 494.02
+  Ceiling Fan Installation: 226.75
+  Heat Pump Servicing: 475.12
+  Shower Remodel: 449.38
+  Attic Insulation: 363.32
+  Custom Closet Shelving: 432.63
+  Light Fixture Installation: 170.44
+  Bathroom Vanity Fitting: 420.93
+  Patio Paver Setup: 367.33
+  Brick Path Repair: 212.32
+  Fence Installation: 527.15
+  Security System Setup: 265.86
+  Kitchen Wall Tile: 240.83
+  Furniture Assembly: 242.75
+  Carpet Cleaning: 612.7
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: true
+  licensed: false
+  same day service: false
+  weekend availability: true
+  post install inspection: true
+  flexible hours: true
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.71

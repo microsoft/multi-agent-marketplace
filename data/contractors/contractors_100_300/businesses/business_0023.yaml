@@ -1,0 +1,42 @@
+id: business_0023
+name: Fairhaven Home Services
+description: Fairhaven Home Services provides professional residential maintenance,
+  repair, and improvement solutions for homeowners seeking quality workmanship and
+  dependable service. We deliver a range of interior and exterior upgrades tailored
+  to meet your home's needs.
+rating: 1.0
+progenitor_customer: customer_0008
+menu_features:
+  Wood Stair Refinishing: 457.28
+  Wooden Stair Repair: 239.99
+  Gutter Replacement: 543.41
+  Cabinet Repair: 165.04
+  Basic Lawn Care: 125.26
+  Water Heater Maintenance: 298.13
+  Granite Countertop Fabrication: 395.25
+  Central AC Inspection: 332.93
+  Garden Bed Installation: 129.84
+  Basement Wall Waterproofing: 296.35
+  Porch Railing Repair: 285.11
+  Dimmer Switch Installation: 313.34
+  Exterior Siding Repainting: 367.17
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.9

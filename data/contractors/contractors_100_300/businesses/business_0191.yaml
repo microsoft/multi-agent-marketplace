@@ -1,0 +1,40 @@
+id: business_0191
+name: Lindenwood Service Group
+description: Lindenwood Service Group provides practical home improvement and maintenance
+  solutions for local homeowners. Our team specializes in interior and exterior residential
+  projects, offering reliable service focused on enhancing your property's safety,
+  appeal, and function.
+rating: 1.0
+progenitor_customer: customer_0064
+menu_features:
+  Smoke Detector Upgrade: 258.26
+  Grout Cleaning: 232.03
+  Door Hanging: 334.37
+  Window Caulking: 97.51
+  Walkway Resurfacing: 390.8
+  Stone Pathway Repair: 167.88
+  Deck Refinishing: 397.84
+  Shrub Removal: 129.32
+  Shower Valve Repair: 243.4
+  Sod Lawn Installation: 430.73
+  Mulch Spreading: 250.41
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: true
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.75

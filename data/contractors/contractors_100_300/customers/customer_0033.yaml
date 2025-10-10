@@ -1,0 +1,9 @@
+id: customer_0033
+name: Hannah Scott
+request: I'm looking for a licensed contractor who can perform 1 Mini Split AC Service.
+  Once you confirm that all requirements are met, I would like to proceed with hiring
+  and scheduling the service. Please let me know the next steps.
+menu_features:
+  Mini Split AC Service: 450.25
+amenity_features:
+- licensed

@@ -1,0 +1,10 @@
+id: customer_0001
+name: Nancy Lewis
+request: 'I''m looking to hire a contractor who can perform Deck Board Replacement
+  (quantity: 1) and offers after hours service. Please help me find a contractor who
+  meets these requirements, as I am ready to engage them and schedule the work as
+  soon as possible.'
+menu_features:
+  Deck Board Replacement: 435.95
+amenity_features:
+- after hours service

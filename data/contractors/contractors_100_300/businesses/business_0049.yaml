@@ -1,0 +1,44 @@
+id: business_0049
+name: Crestfield Residential Services
+description: Crestfield Residential Services provides reliable home maintenance and
+  improvement solutions for local homeowners. Our skilled team is dedicated to enhancing
+  and preserving residential properties with high-quality workmanship across a range
+  of interior and exterior service needs.
+rating: 1.0
+progenitor_customer: customer_0017
+menu_features:
+  Lawn Fertilization: 167.17
+  Handrail Installation: 358.81
+  Roof Inspection: 320.91
+  Deck Repair: 304.51
+  Patio Cover Installation: 442.68
+  Laminate Floor Repair: 165.77
+  Subpanel Upgrade: 483.84
+  Drain Pipe Repair: 201.69
+  Hardwood Floor Sanding: 314.73
+  Refrigerator Water Line Install: 282.97
+  Garden Bed Design: 171.61
+  Fencing Repair: 490.25
+  Shingle Roof Cleaning: 445.08
+  Brick Chimney Repair: 191.78
+  Central Air Inspection: 347.97
+amenity_features:
+  flexible hours: true
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: true
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.9

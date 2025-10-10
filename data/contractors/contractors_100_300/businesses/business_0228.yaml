@@ -1,0 +1,44 @@
+id: business_0228
+name: Oakwood Home Improvements
+description: Oakwood Home Improvements provides residential clients with reliable
+  solutions for remodeling, repairs, and property updates, focusing on interior and
+  exterior enhancements. Our team delivers quality service tailored to homeowners
+  seeking professional workmanship for a variety of home improvement needs.
+rating: 1.0
+progenitor_customer: customer_0076
+menu_features:
+  Brick Step Repointing: 396.88
+  Landscaping Service: 163.02
+  Central Air Conditioning Inspection: 443.16
+  Patio Paver Installation: 403.61
+  Brick Repair: 156.45
+  Kitchen Wall Tile: 252.45
+  Dishwasher Installation: 169.55
+  Kitchen Remodel Consultation: 389.69
+  Subpanel Upgrade: 481.43
+  Ceiling Patch Repair: 202.22
+  Kitchen Countertop Installation: 435.58
+  Thermostat Replacement: 276.72
+  Laminate Flooring: 301.65
+  Kitchen Cabinet Replacement: 472.51
+  Window Frame Restoration: 477.24
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: true
+  free estimate: true
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.88

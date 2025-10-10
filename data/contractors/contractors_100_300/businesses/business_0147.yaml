@@ -1,0 +1,46 @@
+id: business_0147
+name: Sterling Residential Remodeling
+description: Sterling Residential Remodeling provides reliable home improvement and
+  outdoor services for local homeowners, delivering professional craftsmanship across
+  renovation, repair, and landscaping projects. We help maintain and enhance your
+  property's comfort, function, and curb appeal.
+rating: 1.0
+progenitor_customer: customer_0049
+menu_features:
+  Full Exterior House Painting: 486.5
+  Sprinkler System Installation: 468.11
+  Brick Pathway Construction: 256.26
+  Bathroom Floor Tiling: 400.3
+  Shed Roof Reshingle: 462.75
+  Bathroom Sink Plumbing: 232.16
+  Sodding Service: 398.69
+  Custom Cabinet Hanging: 562.04
+  Bathroom Ventilation Fan Install: 217.02
+  Patio Repair: 296.56
+  Drain Pipe Repair: 158.95
+  Sod Lawn Installation: 601.59
+  Landscaping Design: 155.3
+  Brick Step Restoration: 279.18
+  Shrub Removal: 96.9
+  Door Hardware Replacement: 343.21
+  AC Unit Tune-Up: 585.65
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: true
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: true
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.89

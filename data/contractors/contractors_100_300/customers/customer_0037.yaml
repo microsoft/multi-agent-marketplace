@@ -1,0 +1,13 @@
+id: customer_0037
+name: Alexander Kim
+request: 'I''m looking to hire a contractor who can provide the following services:
+  Roof Leak Inspection (1) and Electrical Panel Upgrade (1). It''s important that
+  the contractor accepts digital payments and offers live job updates. Once you identify
+  a contractor meeting all these requirements, please proceed to schedule the work
+  for me. I am ready to move forward and confirm the engagement.'
+menu_features:
+  Roof Leak Inspection: 323.99
+  Electrical Panel Upgrade: 356.95
+amenity_features:
+- accepts digital payments
+- live job updates

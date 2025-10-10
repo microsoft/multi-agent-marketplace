@@ -1,0 +1,46 @@
+id: business_0077
+name: MetroCraft Contracting
+description: MetroCraft Contracting provides reliable residential improvement and
+  repair services for homeowners seeking quality workmanship and prompt solutions.
+  Our experienced team handles a range of interior and exterior projects focused on
+  enhancing comfort and value for your home.
+rating: 1.0
+progenitor_customer: customer_0026
+menu_features:
+  Porch Stair Carpentry: 303.78
+  Ceiling Fan Upgrade: 306.54
+  Landscaping Bed Creation: 433.9
+  Kitchen Wall Tile: 195.27
+  Shingle Replacement: 405.95
+  Fireplace Refacing: 342.19
+  Fireplace Refurbishing: 336.74
+  Washer Hookup Installation: 437.09
+  Furnace Tune-Up: 365.6
+  Fence Gate Installation: 501.72
+  Ceiling Fan Installation: 221.79
+  Garage Door Spring Replacement: 357.12
+  Wood Stair Refinishing: 397.55
+  Brick Path Repair: 211.15
+  Kitchen Cabinet Realignment: 355.26
+  Bathroom Vanity Fitting: 404.72
+  Basement Drywall Finishing: 556.41
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: true
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.88

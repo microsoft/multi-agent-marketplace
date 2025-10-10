@@ -1,0 +1,47 @@
+id: business_0076
+name: Hawthorne Residential Contractors
+description: Hawthorne Residential Contractors provides reliable home improvement
+  and repair services for homeowners seeking quality workmanship and attentive service.
+  Our team specializes in a wide range of interior and exterior projects designed
+  to enhance residential properties.
+rating: 1.0
+progenitor_customer: customer_0026
+menu_features:
+  Bathroom Tile Setting: 370.71
+  Brick Repair: 211.85
+  Porch Stair Carpentry: 332.4
+  Patio Paver Cleaning: 229.64
+  Sheetrock Installation: 381.11
+  Baseboard Painting: 294.04
+  Wall Socket Wiring: 289.82
+  Fireplace Refacing: 415.72
+  Step Repair: 196.05
+  Custom Cabinet Hardware Install: 388.88
+  Garage Door Inspection: 422.45
+  Hardwood Floor Buffing: 464.94
+  Retaining Wall Construction: 345.69
+  Shower Valve Replacement: 381.4
+  Gutter Replacement: 465.76
+  Deck Cleaning: 240.37
+  Light Fixture Repair: 160.21
+  Fence Gate Installation: 449.56
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: true
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.84

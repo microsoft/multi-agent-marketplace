@@ -1,0 +1,41 @@
+id: business_0273
+name: Edgeview Residential Services
+description: Edgeview Residential Services provides reliable solutions for homeowners
+  seeking improvements, repairs, and upgrades for their properties. Our team focuses
+  on quality workmanship and responsive service to support a range of interior and
+  exterior projects.
+rating: 1.0
+progenitor_customer: customer_0091
+menu_features:
+  Walkway Paver Setting: 350.56
+  Bathtub Replacement: 477.19
+  Full Exterior House Painting: 499.89
+  Garage Epoxy Flooring: 390.29
+  Outdoor Lighting Installation: 288.54
+  Leak Detection: 192.77
+  Install New Garage Door Opener: 428.82
+  Air Conditioner Tuneup: 246.29
+  Bathroom Vanity Update: 250.08
+  Single Room Vinyl Flooring: 347.88
+  Furnace Service: 500.71
+  Backsplash Installation: 349.56
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: true
+  eco friendly materials: true
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.89

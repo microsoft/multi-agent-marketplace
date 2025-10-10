@@ -1,0 +1,13 @@
+id: customer_0048
+name: Liam Patel
+request: Please help me find a contractor who can provide Granite Countertop Resurfacing
+  (1), Faucet Installation (1), and Wallpaper Removal (1), and who accepts digital
+  payments. If you find a contractor meeting all these essential requirements, I am
+  ready to hire them and would like to schedule the work as soon as possible. Kindly
+  let me know when the appointment can be confirmed.
+menu_features:
+  Granite Countertop Resurfacing: 408.95
+  Faucet Installation: 223.99
+  Wallpaper Removal: 216.99
+amenity_features:
+- accepts digital payments

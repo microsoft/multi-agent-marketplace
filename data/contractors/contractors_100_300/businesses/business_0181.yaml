@@ -1,0 +1,46 @@
+id: business_0181
+name: Reliant Residential Contractors
+description: Providing homeowners with reliable solutions for repairs, upgrades, and
+  maintenance across electrical, plumbing, and general contracting needs. Our team
+  is committed to quality workmanship and timely service for all your residential
+  improvement projects.
+rating: 1.0
+progenitor_customer: customer_0061
+menu_features:
+  Shed Roof Re-Shingling: 505.17
+  Appliance Hookup: 236.12
+  Smoke Detector Upgrade: 250.14
+  Faucet Repair: 234.86
+  Porch Repair: 430.21
+  Window Trim Replacement: 296.84
+  Advanced Electrical Troubleshooting: 242.48
+  Light Switch Upgrade: 235.3
+  Vanity Setup: 210.71
+  AC Filter Replacement: 331.21
+  Concrete Driveway Repair: 158.75
+  Hardwood Floor Resurfacing: 495.18
+  Landscape Lighting Setup: 453.53
+  Basement Water Proofing: 375.67
+  Sprinkler System Activation: 228.61
+  AC Maintenance: 445.05
+  Radiator Servicing: 336.95
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.91

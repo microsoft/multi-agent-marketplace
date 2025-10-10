@@ -1,0 +1,11 @@
+id: customer_0051
+name: Noah Gonzalez
+request: I'm looking for a contractor who can provide Recessed Lighting Install (1)
+  and meets the requirements of accepting digital payments and offering a warranty.
+  Once confirmed, I intend to hire and schedule the work as specified. Please help
+  me find a suitable contractor so we can proceed with booking the service.
+menu_features:
+  Recessed Lighting Install: 218.95
+amenity_features:
+- accepts digital payments
+- warranty

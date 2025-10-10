@@ -1,0 +1,40 @@
+id: business_0085
+name: Horizon Peak Home Services
+description: Horizon Peak Home Services provides reliable solutions for residential
+  maintenance, repairs, and improvements. Serving homeowners with a focus on quality
+  workmanship and efficient project completion for both interior and exterior needs.
+rating: 1.0
+progenitor_customer: customer_0029
+menu_features:
+  Garage Door Motor Replacement: 372.27
+  Power Washing: 253.64
+  Sump Pump Installation: 469.34
+  Basic Tile Flooring Install: 264.01
+  Kitchen Plumbing Repair: 273.31
+  Bathroom Vanity Install: 405.76
+  Mulch Delivery: 190.31
+  Concrete Walkway: 323.78
+  Solar Panel Cleaning: 362.3
+  Drain Unclogging: 147.78
+  Garden Bed Design: 188.29
+  Baseboard Molding: 240.51
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: true
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.69

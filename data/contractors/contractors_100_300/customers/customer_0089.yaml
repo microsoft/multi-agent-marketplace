@@ -1,0 +1,13 @@
+id: customer_0089
+name: David Schwartz
+request: I'm looking to hire a contractor who can provide Concrete Patio Pouring (1)
+  and Bathroom Exhaust Fan Installation (1), and also offers live job updates. Please
+  help me find a contractor that meets all these requirements, as I am ready to engage
+  their services and arrange for the scheduled work as specified above. Let me know
+  as soon as such a contractor is identified so we can proceed with confirming the
+  job.
+menu_features:
+  Concrete Patio Pouring: 508.99
+  Bathroom Exhaust Fan Installation: 222.0
+amenity_features:
+- live job updates

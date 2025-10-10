@@ -1,0 +1,42 @@
+id: business_0077
+name: Sunnyside Residential Services
+description: Sunnyside Residential Services provides reliable home improvement and
+  maintenance solutions for homeowners seeking quality workmanship. Our team specializes
+  in a range of interior and exterior upgrades to enhance comfort and value in your
+  living space.
+rating: 1.0
+progenitor_customer: customer_0026
+menu_features:
+  Wood Floor Refinishing: 371.3
+  Appliance Installation: 168.42
+  Basement Stair Carpeting: 273.41
+  Whole-Home Re-caulking: 486.62
+  Stone Veneer Installation: 319.86
+  Walkway Stone Laying: 398.92
+  Wood Stair Refinishing: 521.82
+  Floorboard Replacement: 336.84
+  Central Air Conditioning Inspection: 338.6
+  Dryer Vent Cleaning: 318.17
+  Kitchen Wall Tile: 239.76
+  Garage Door Alignment: 452.39
+  Water Heater Setup: 528.29
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: true
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: true
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: true
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.75

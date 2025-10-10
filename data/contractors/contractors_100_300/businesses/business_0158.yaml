@@ -1,0 +1,43 @@
+id: business_0158
+name: Morningside Home Services
+description: Morningside Home Services provides reliable residential repairs, upgrades,
+  and exterior improvements for homeowners seeking quality craftsmanship and attentive
+  service. Our experienced team specializes in interior and exterior projects tailored
+  to enhance your living space and property value.
+rating: 1.0
+progenitor_customer: customer_0053
+menu_features:
+  Trim Carpentry: 185.16
+  Exterior Wall Patching: 356.06
+  Kitchen Plumbing Repair: 217.11
+  Landscape Planting: 202.15
+  Cabinet Hardware Upgrade: 583.01
+  Garage Door Spring Repair: 326.09
+  Air Conditioning Tune-Up: 243.68
+  Air Conditioner Maintenance: 356.24
+  Ceramic Tile Setting: 407.2
+  Mulching: 261.04
+  Radiator Maintenance: 334.23
+  Walkway Bricklaying: 496.03
+  Stone Fireplace Repair: 293.32
+  Fireplace Inspection: 317.19
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.88

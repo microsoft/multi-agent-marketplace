@@ -1,0 +1,44 @@
+id: business_0278
+name: Brightside Residential Services
+description: Brightside Residential Services provides comprehensive home maintenance
+  and improvement solutions for homeowners seeking reliable quality and attention
+  to detail. Our team is dedicated to enhancing your living spaces both inside and
+  out with professional, straightforward service.
+rating: 1.0
+progenitor_customer: customer_0093
+menu_features:
+  Lawn Sprinkler Repair: 235.59
+  Wall Repair: 216.24
+  Bush Trimming: 138.84
+  Interior Painting: 104.63
+  Granite Countertop Polishing: 554.77
+  Engineered Wood Floor Installation: 426.37
+  Patio Repair: 276.34
+  Custom Shelving Installation: 418.69
+  Faucet Repair: 159.8
+  Garden Bed Installation: 124.53
+  Porch Resurfacing: 362.75
+  Baseboard Installation: 204.21
+  Shed Roof Replacement: 548.56
+  Full Exterior House Painting: 435.37
+  Vinyl Siding Patch: 401.63
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: true
+  appointment only: true
+  live job updates: false
+  licensed: false
+  free estimate: true
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.75

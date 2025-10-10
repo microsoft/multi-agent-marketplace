@@ -1,0 +1,11 @@
+id: customer_0046
+name: Marcus Lee
+request: I'm looking for a contractor who can provide Laminate Floor Replacement (1)
+  and Duct Cleaning (1), with a proven track record of responsiveness. Once these
+  requirements are confirmed, I am ready to hire and schedule the services. Please
+  help me find a suitable contractor so we can proceed with booking the work.
+menu_features:
+  Laminate Floor Replacement: 480.99
+  Duct Cleaning: 372.25
+amenity_features:
+- responsiveness

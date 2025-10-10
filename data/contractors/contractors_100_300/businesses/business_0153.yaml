@@ -1,0 +1,43 @@
+id: business_0153
+name: Allied Structure & Home Services
+description: Serving local homeowners, Allied Structure & Home Services provides comprehensive
+  home improvement, repair, and exterior upkeep solutions. We focus on practical updates
+  and maintenance to enhance the functionality, safety, and appearance of your property.
+rating: 1.0
+progenitor_customer: customer_0051
+menu_features:
+  Retaining Wall Masonry: 413.53
+  Laminate Flooring: 297.4
+  Structural Beam Reinforcement: 468.42
+  Drywall Hole Repair: 270.61
+  Sprinkler System Setup: 587.36
+  Garage Remodeling: 372.21
+  Closet Shelving Installation: 362.5
+  Patio Paver Cleaning: 222.01
+  Roof Shingle Patch: 365.8
+  Exterior Door Weatherproofing: 199.67
+  Stone Pathway Repair: 125.84
+  Lock Set Change: 188.51
+  Deck Repair: 322.75
+  Shrub Planting: 151.99
+  Recessed Lighting Install: 172.34
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.63

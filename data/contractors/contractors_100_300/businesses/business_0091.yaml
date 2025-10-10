@@ -1,0 +1,45 @@
+id: business_0091
+name: Brunswick Residential Services
+description: Brunswick Residential Services provides reliable repair, improvement,
+  and maintenance solutions for homeowners. Our experienced team is dedicated to enhancing
+  the comfort, safety, and appearance of residential properties with efficient, quality
+  workmanship.
+rating: 1.0
+progenitor_customer: customer_0031
+menu_features:
+  Bush Trimming: 140.57
+  Garbage Disposal Installation: 233.53
+  Exterior Siding Cleaning: 398.22
+  Step Repair: 149.71
+  Flooring Installation: 409.21
+  Replace Electrical Outlet: 296.33
+  Lawn Sodding: 149.19
+  Electrical Panel Tune-Up: 326.88
+  Cabinet Handle Replacement: 377.27
+  Bathtub Caulking: 309.33
+  Retaining Wall Installation: 553.75
+  Septic Tank Pumping: 417.4
+  Roof Inspection: 291.86
+  Drywall Hole Repair: 240.07
+  Shed Roof Replacement: 458.45
+  Central AC Inspection: 421.92
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.7

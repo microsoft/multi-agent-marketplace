@@ -1,0 +1,43 @@
+id: business_0030
+name: Stonehill Residential Services
+description: Stonehill Residential Services provides homeowners with reliable solutions
+  for exterior and interior maintenance, improvement, and upkeep. Our team specializes
+  in a range of property services designed to enhance the function and appearance
+  of your home.
+rating: 1.0
+progenitor_customer: customer_0010
+menu_features:
+  Flower Bed Redesign: 264.22
+  Tile Floor Cleaning: 324.85
+  Deck Waterproofing: 429.12
+  AC System Inspection: 362.36
+  Heat Pump Inspection: 311.5
+  Mailbox Installation: 103.02
+  Concrete Patio Slab Pour: 437.94
+  Backsplash Installation: 444.49
+  Basement Wall Sealing: 532.79
+  Patio Paver Cleaning: 193.55
+  Vanity Sink Plumbing: 209.29
+  Deck Refinishing: 349.19
+  Sprinkler System Activation: 233.48
+  Lawn Edging: 172.76
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: true
+  background checked crew: false
+  licensed: true
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: true
+  free followup visit: false
+  accepts digital payments: true
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.74

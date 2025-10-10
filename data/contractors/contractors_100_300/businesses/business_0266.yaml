@@ -1,0 +1,44 @@
+id: business_0266
+name: Stonebriar Home Repair
+description: Stonebriar Home Repair provides reliable residential maintenance and
+  improvement services for homeowners seeking quality workmanship and responsive support.
+  Our team specializes in a range of interior and exterior repairs designed to keep
+  your property safe, functional, and attractive.
+rating: 1.0
+progenitor_customer: customer_0089
+menu_features:
+  Bathtub Caulking: 305.2
+  Carpet Removal: 346.06
+  Radiator Maintenance: 223.96
+  Window Trim Replacement: 400.14
+  Window Frame Restoration: 426.96
+  Outlet Addition: 258.76
+  Lock Set Change: 213.69
+  Vinyl Siding Patch: 346.32
+  Bathroom Exhaust Fan Installation: 263.45
+  Brick Repair: 178.23
+  Roof Vent Replacement: 492.5
+  Fencing Repair: 451.69
+  Concrete Patio Pouring: 495.88
+  Shrub Removal: 141.45
+  Sprinkler System Inspection: 265.4
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: true
+  appointment only: false
+  live job updates: true
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.78

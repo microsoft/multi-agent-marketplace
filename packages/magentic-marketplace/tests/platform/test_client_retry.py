@@ -75,10 +75,10 @@ class TestMarketplaceClientRetry:
         )
         mock_response.json = AsyncMock(return_value={"status": "ok"})
 
-        with patch.object(client._session, "request") as mock_request:
+        with patch.object(client._base_client._session, "request") as mock_request:
             mock_request.return_value.__aenter__ = AsyncMock(return_value=mock_response)
 
-            result = await client.request("GET", "/test")
+            result = await client._base_client.request("GET", "/test")
 
             assert result == {"status": "ok"}
             assert mock_request.call_count == 3  # Initial + 2 retries
@@ -100,10 +100,10 @@ class TestMarketplaceClientRetry:
         )
         mock_response.json = AsyncMock(return_value={"status": "ok"})
 
-        with patch.object(client._session, "request") as mock_request:
+        with patch.object(client._base_client._session, "request") as mock_request:
             mock_request.return_value.__aenter__ = AsyncMock(return_value=mock_response)
 
-            result = await client.request("GET", "/test")
+            result = await client._base_client.request("GET", "/test")
 
             assert result == {"status": "ok"}
             assert mock_request.call_count == 2  # Initial + 1 retry
@@ -111,13 +111,13 @@ class TestMarketplaceClientRetry:
     @pytest.mark.asyncio
     async def test_no_retry_on_connection_error_by_default(self, client):
         """Test that client does NOT retry on connection errors by default."""
-        with patch.object(client._session, "request") as mock_request:
+        with patch.object(client._base_client._session, "request") as mock_request:
             mock_request.return_value.__aenter__ = AsyncMock(
                 side_effect=aiohttp.ClientConnectionError("Connection failed")
             )
 
             with pytest.raises(aiohttp.ClientConnectionError) as exc_info:
-                await client.request("GET", "/test")
+                await client._base_client.request("GET", "/test")
 
             assert str(exc_info.value) == "Connection failed"
             assert mock_request.call_count == 1  # No retries
@@ -125,13 +125,13 @@ class TestMarketplaceClientRetry:
     @pytest.mark.asyncio
     async def test_no_retry_on_timeout_by_default(self, client):
         """Test that client does NOT retry on timeout errors by default."""
-        with patch.object(client._session, "request") as mock_request:
+        with patch.object(client._base_client._session, "request") as mock_request:
             mock_request.return_value.__aenter__ = AsyncMock(
                 side_effect=TimeoutError("Request timed out")
             )
 
             with pytest.raises(asyncio.TimeoutError) as exc_info:
-                await client.request("GET", "/test")
+                await client._base_client.request("GET", "/test")
 
             assert str(exc_info.value) == "Request timed out"
             assert mock_request.call_count == 1  # No retries
@@ -149,11 +149,11 @@ class TestMarketplaceClientRetry:
             )
         )
 
-        with patch.object(client._session, "request") as mock_request:
+        with patch.object(client._base_client._session, "request") as mock_request:
             mock_request.return_value.__aenter__ = AsyncMock(return_value=mock_response)
 
             with pytest.raises(aiohttp.ClientResponseError) as exc_info:
-                await client.request("GET", "/test")
+                await client._base_client.request("GET", "/test")
 
             assert exc_info.value.status == 400
             assert mock_request.call_count == 1  # No retries
@@ -171,11 +171,11 @@ class TestMarketplaceClientRetry:
             )
         )
 
-        with patch.object(client._session, "request") as mock_request:
+        with patch.object(client._base_client._session, "request") as mock_request:
             mock_request.return_value.__aenter__ = AsyncMock(return_value=mock_response)
 
             with pytest.raises(aiohttp.ClientResponseError) as exc_info:
-                await client.request("GET", "/test")
+                await client._base_client.request("GET", "/test")
 
             assert exc_info.value.status == 401
             assert mock_request.call_count == 1  # No retries
@@ -193,11 +193,11 @@ class TestMarketplaceClientRetry:
             )
         )
 
-        with patch.object(client._session, "request") as mock_request:
+        with patch.object(client._base_client._session, "request") as mock_request:
             mock_request.return_value.__aenter__ = AsyncMock(return_value=mock_response)
 
             with pytest.raises(aiohttp.ClientResponseError) as exc_info:
-                await client.request("GET", "/test")
+                await client._base_client.request("GET", "/test")
 
             assert exc_info.value.status == 403
             assert mock_request.call_count == 1  # No retries
@@ -215,11 +215,11 @@ class TestMarketplaceClientRetry:
             )
         )
 
-        with patch.object(client._session, "request") as mock_request:
+        with patch.object(client._base_client._session, "request") as mock_request:
             mock_request.return_value.__aenter__ = AsyncMock(return_value=mock_response)
 
             with pytest.raises(aiohttp.ClientResponseError) as exc_info:
-                await client.request("GET", "/test")
+                await client._base_client.request("GET", "/test")
 
             assert exc_info.value.status == 404
             assert mock_request.call_count == 1  # No retries
@@ -227,13 +227,13 @@ class TestMarketplaceClientRetry:
     @pytest.mark.asyncio
     async def test_no_retry_on_value_error(self, client):
         """Test that client does NOT retry on ValueError (non-network error)."""
-        with patch.object(client._session, "request") as mock_request:
+        with patch.object(client._base_client._session, "request") as mock_request:
             mock_request.return_value.__aenter__ = AsyncMock(
                 side_effect=ValueError("Invalid input")
             )
 
             with pytest.raises(ValueError) as exc_info:
-                await client.request("GET", "/test")
+                await client._base_client.request("GET", "/test")
 
             assert str(exc_info.value) == "Invalid input"
             assert mock_request.call_count == 1  # No retries
@@ -251,11 +251,11 @@ class TestMarketplaceClientRetry:
             )
         )
 
-        with patch.object(client._session, "request") as mock_request:
+        with patch.object(client._base_client._session, "request") as mock_request:
             mock_request.return_value.__aenter__ = AsyncMock(return_value=mock_response)
 
             with pytest.raises(aiohttp.ClientResponseError) as exc_info:
-                await client.request("GET", "/test")
+                await client._base_client.request("GET", "/test")
 
             assert exc_info.value.status == 429
             assert mock_request.call_count == 3  # Max attempts reached
@@ -273,14 +273,14 @@ class TestMarketplaceClientRetry:
             )
         )
 
-        with patch.object(client._session, "request") as mock_request:
+        with patch.object(client._base_client._session, "request") as mock_request:
             mock_request.return_value.__aenter__ = AsyncMock(return_value=mock_response)
 
             with patch("asyncio.sleep") as mock_sleep:
                 mock_sleep.return_value = None
 
                 with pytest.raises(aiohttp.ClientResponseError):
-                    await client.request("GET", "/test")
+                    await client._base_client.request("GET", "/test")
 
                 # Verify exponential backoff delays
                 # With max_attempts=3, all failing: sleep occurs before retry attempts 1 and 2 (i.e., two sleep calls)
@@ -303,7 +303,7 @@ class TestMarketplaceClientRetry:
         mock_response.json = AsyncMock(return_value={"status": "ok"})
 
         with patch.object(
-            client_with_exception_retries._session, "request"
+            client_with_exception_retries._base_client._session, "request"
         ) as mock_request:
             mock_request.return_value.__aenter__ = AsyncMock(
                 side_effect=[
@@ -313,7 +313,9 @@ class TestMarketplaceClientRetry:
                 ]
             )
 
-            result = await client_with_exception_retries.request("GET", "/test")
+            result = await client_with_exception_retries._base_client.request(
+                "GET", "/test"
+            )
 
             assert result == {"status": "ok"}
             assert mock_request.call_count == 3  # Initial + 2 retries
@@ -321,13 +323,13 @@ class TestMarketplaceClientRetry:
     @pytest.mark.asyncio
     async def test_no_server_timeout_error_retry_by_default(self, client):
         """Test that client does NOT retry on ServerTimeoutError by default."""
-        with patch.object(client._session, "request") as mock_request:
+        with patch.object(client._base_client._session, "request") as mock_request:
             mock_request.return_value.__aenter__ = AsyncMock(
                 side_effect=aiohttp.ServerTimeoutError("Server timeout")
             )
 
             with pytest.raises(aiohttp.ServerTimeoutError) as exc_info:
-                await client.request("GET", "/test")
+                await client._base_client.request("GET", "/test")
 
             assert str(exc_info.value) == "Server timeout"
             assert mock_request.call_count == 1  # No retries
@@ -345,11 +347,11 @@ class TestMarketplaceClientRetry:
             )
         )
 
-        with patch.object(client._session, "request") as mock_request:
+        with patch.object(client._base_client._session, "request") as mock_request:
             mock_request.return_value.__aenter__ = AsyncMock(return_value=mock_response)
 
             with pytest.raises(aiohttp.ClientResponseError) as exc_info:
-                await client.request("GET", "/test")
+                await client._base_client.request("GET", "/test")
 
             assert exc_info.value.status == 500
             assert (

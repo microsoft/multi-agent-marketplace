@@ -1,0 +1,45 @@
+id: business_0002
+name: Maple Ridge Contracting
+description: Maple Ridge Contracting provides reliable residential repair, installation,
+  and improvement services for homeowners seeking quality workmanship. Our team delivers
+  projects across interior and exterior home maintenance with attention to detail
+  and customer satisfaction.
+rating: 1.0
+progenitor_customer: customer_0001
+menu_features:
+  Tile Floor Cleaning: 289.75
+  Tile Installation: 311.62
+  Insulation Addition: 370.22
+  Kitchen Faucet Install: 363.61
+  Retaining Wall Build: 527.03
+  AC Unit Tune-Up: 544.89
+  Deck Board Replacement: 397.47
+  Brick Path Restoration: 537.33
+  Roof Vent Installation: 395.52
+  Install Base Cabinets: 435.87
+  Driveway Crack Repair: 273.97
+  Drain Unclogging: 134.84
+  Lawn Irrigation Startup: 322.04
+  Garden Bed Building: 407.71
+  Stone Pathway Installation: 282.0
+  Basement Window Well Cover Installation: 498.95
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: true
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: true
+  business accepts credit cards: false
+  after hours service: true
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.8
