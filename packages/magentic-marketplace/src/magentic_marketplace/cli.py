@@ -313,7 +313,7 @@ def main():
     list_experiments_parser.add_argument(
         "--limit",
         type=int,
-        default=10,
+        default=None,
         help="Maximum number of experiments to display",
     )
 
