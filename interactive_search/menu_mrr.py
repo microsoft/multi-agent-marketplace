@@ -12,11 +12,8 @@ from search_launcher import SearchMarketLauncher
 
 def has_items(items: list[str], business: BusinessAgentProfile) -> bool:
     """Check if the business has all the specified menu items."""
-    menu_items = business.business.menu_features.keys()
-    for item in items:
-        if item not in menu_items:
-            return False
-    return True
+    menu_items = set(business.business.menu_features.keys())
+    return set(items).issubset(menu_items)
 
 
 async def main(
