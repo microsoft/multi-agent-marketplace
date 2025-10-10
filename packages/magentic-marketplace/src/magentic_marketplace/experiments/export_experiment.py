@@ -13,6 +13,7 @@ async def export_experiment(
     output_filename: str | None = None,
     postgres_host: str = "localhost",
     postgres_port: int = 5432,
+    postgres_user: str = "postgres",
     postgres_password: str = "postgres",
 ):
     """Export a PostgreSQL experiment database to SQLite.
@@ -23,6 +24,7 @@ async def export_experiment(
         output_filename: Optional output filename (defaults to <experiment_name>.db)
         postgres_host: PostgreSQL host (default: localhost)
         postgres_port: PostgreSQL port (default: 5432)
+        postgres_user: PostgreSQL user (default: postgres)
         postgres_password: PostgreSQL password (default: postgres)
 
     """
@@ -51,6 +53,7 @@ async def export_experiment(
             schema=experiment_name,
             host=postgres_host,
             port=postgres_port,
+            user=postgres_user,
             password=postgres_password,
             mode="existing",
         ) as db_controller:
