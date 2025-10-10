@@ -6,15 +6,22 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
-from magentic_marketplace.marketplace.actions import ActionAdapter, SendMessage
+from pydantic import BaseModel
+
+from magentic_marketplace.marketplace.actions import (
+    ActionAdapter,
+    Search,
+    SearchResponse,
+    SendMessage,
+)
 from magentic_marketplace.marketplace.actions.actions import (
     FetchMessages,
     FetchMessagesResponse,
 )
 from magentic_marketplace.marketplace.actions.messaging import (
-    Message,
     OrderProposal,
     Payment,
+    TextMessage,
 )
 from magentic_marketplace.marketplace.database.queries.logs import llm_call
 from magentic_marketplace.marketplace.llm.base import LLMCallLog
@@ -30,7 +37,7 @@ from magentic_marketplace.platform.database.base import (
     BaseDatabaseController,
     RangeQueryParams,
 )
-from magentic_marketplace.platform.database.models import ActionRow
+from magentic_marketplace.platform.database.models import ActionRow, LogRow
 from magentic_marketplace.platform.database.sqlite.sqlite import (
     SQLiteDatabaseController,
 )
@@ -47,6 +54,103 @@ CYAN_COLOR = "\033[96m" if sys.stdout.isatty() else ""
 RESET_COLOR = "\033[0m" if sys.stdout.isatty() else ""
 
 
+class CustomerUtility(BaseModel):
+    """Utility metrics for a customer."""
+
+    customer_id: str
+    actual_utility: float
+    optimal_utility: float | None
+    utility_gap: float
+    needs_met: bool
+    paid_businesses: dict[
+        str, tuple[ActionRow, Payment]
+    ] = {}  # business_id -> (action_row, payment)
+
+
+class CustomerAudit(BaseModel):
+    """Complete audit data for a customer."""
+
+    customer: CustomerAgentProfile
+    utility: CustomerUtility
+    timeline: list[ActionRow | LogRow]  # All actions and logs combined
+    timeline_length: int
+    llm_calls: list[LogRow]  # LLM call logs
+    llm_calls_length: int
+    logs: list[LogRow]  # All logs
+    logs_length: int
+    sent_actions: list[ActionRow]
+    received_actions: list[ActionRow]
+    all_actions: list[ActionRow]
+    proposals_received: list[ActionRow]
+    proposals_received_length: int
+    payments_made: list[ActionRow]
+    payments_made_length: int
+    searches_made: list[ActionRow]
+    searches_made_length: int
+
+
+class BusinessAudit(BaseModel):
+    """Complete audit data for a business."""
+
+    business: BusinessAgentProfile
+    timeline: list[ActionRow | LogRow]  # All actions and logs combined
+    timeline_length: int
+    llm_calls: list[LogRow]
+    llm_calls_length: int
+    logs: list[LogRow]
+    logs_length: int
+    sent_actions: list[ActionRow]
+    received_actions: list[ActionRow]
+    all_actions: list[ActionRow]
+
+
+class AuditResult(BaseModel):
+    """Top-level audit results."""
+
+    customers: dict[str, CustomerAudit]
+    customers_length: int
+    businesses: dict[str, BusinessAudit]
+    businesses_length: int
+    suboptimal_customers: dict[str, CustomerUtility]
+    suboptimal_customers_length: int
+    optimal_customers: dict[str, CustomerUtility]
+    optimal_customers_length: int
+    superoptimal_customers: dict[str, CustomerUtility]
+    superoptimal_customers_length: int
+    actual_customer_utility: float
+    optimal_customer_utility: float
+    customer_utility_gap: float
+
+    # Utility gap breakdown by proposal visibility
+    utility_gap_needs_not_met_had_all_proposals: float
+    count_needs_not_met_had_all_proposals: int
+    utility_gap_needs_not_met_missing_proposals: float
+    count_needs_not_met_missing_proposals: int
+    utility_gap_needs_met_had_all_proposals: float
+    count_needs_met_had_all_proposals: int
+    utility_gap_needs_met_missing_proposals: float
+    count_needs_met_missing_proposals: int
+
+    customers_made_no_payment: list[str]  # customer_ids
+    customers_made_no_payment_length: int
+    customers_with_no_optimal_business: list[
+        str
+    ]  # customer_ids where no business can optimally serve them
+    customers_with_no_optimal_business_length: int
+    customers_missing_optimal_proposal_in_llm: list[
+        str
+    ]  # customer_ids where optimal business exists but proposal not in final LLM log (either not sent or not in log)
+    customers_missing_optimal_proposal_in_llm_length: int
+    businesses_received_no_messages: list[str]  # business_ids
+    businesses_received_no_messages_length: int
+    businesses_sent_no_proposals: list[str]  # business_ids
+    businesses_sent_no_proposals_length: int
+    failed_llm_calls: list[
+        tuple[LogRow, LLMCallLog, str]
+    ]  # [(log_row, llm_call_log, agent_id)]
+    failed_llm_calls_length: int
+
+
 class MarketplaceAudit:
     """Audit engine to verify customers received all proposals in their LLM context."""
 
@@ -58,43 +162,119 @@ class MarketplaceAudit:
         self.customer_agents: dict[str, CustomerAgentProfile] = {}
         self.business_agents: dict[str, BusinessAgentProfile] = {}
 
-        # Order and payment tracking
-        self.order_proposals: list[OrderProposal] = []
-        self.payments: list[Payment] = []
+        # Order and payment tracking - store ActionRow for full context
+        self.order_proposals: dict[
+            str, tuple[ActionRow, SendMessage, OrderProposal]
+        ] = {}  # proposal_id -> (action_row, send_message, order_proposal)
+        self.payments: list[tuple[ActionRow, SendMessage, Payment]] = []
 
-        # Map proposal_id -> (business_agent_id, customer_agent_id, timestamp)
-        self.proposal_metadata: dict[str, tuple[str, str, str]] = {}
+        # Track customer utility metrics
+        self.customer_utility: dict[
+            str, CustomerUtility
+        ] = {}  # customer_id -> utility metrics
 
-        # Map customer_agent_id -> list of proposals they received
-        self.customer_proposals: dict[str, list[OrderProposal]] = defaultdict(list)
-
-        # Track payments by customer
-        self.customer_payments: dict[str, list[Payment]] = defaultdict(list)
-
-        # Track all messages for context with timestamps
-        self.customer_messages: dict[str, list[tuple[str, Message, str]]] = defaultdict(
+        # Track all customer and business actions - store ActionRow for full context
+        self.customer_actions: dict[str, list[ActionRow]] = defaultdict(
             list
-        )  # customer_id -> [(to_agent_id, message, timestamp)]
-        self.business_messages: dict[str, list[tuple[str, Message, str]]] = defaultdict(
+        )  # customer_id -> [action_rows]
+        self.business_actions: dict[str, list[ActionRow]] = defaultdict(
             list
-        )  # business_id -> [(to_agent_id, message, timestamp)]
+        )  # business_id -> [action_rows]
 
-        # Track FetchMessages actions per customer (only non-zero results)
-        self.customer_fetch_actions: dict[str, list[dict]] = defaultdict(
+        # Track messages sent by customers (by type)
+        self.customer_sent_text_messages: dict[
+            str, list[tuple[ActionRow, SendMessage, TextMessage]]
+        ] = defaultdict(
             list
-        )  # customer_id -> [fetch_action_data]
+        )  # customer_id -> [(action_row, send_message, text_message)]
+        self.customer_sent_payments: dict[
+            str, list[tuple[ActionRow, SendMessage, Payment]]
+        ] = defaultdict(list)  # customer_id -> [(action_row, send_message, payment)]
 
-        # Track all customer actions and business messages to customers with indices
-        self.customer_actions: dict[str, list[tuple[int | None, dict]]] = defaultdict(
+        # Track messages received by customers (by type)
+        self.customer_received_text_messages: dict[
+            str, list[tuple[ActionRow, SendMessage, TextMessage]]
+        ] = defaultdict(
             list
-        )  # customer_id -> [(index, action_data)]
-        self.business_messages_to_customers: dict[
-            str, list[tuple[int | None, dict]]
-        ] = defaultdict(list)  # customer_id -> [(index, message_data)]
+        )  # customer_id -> [(action_row, send_message, text_message)]
+        self.customer_received_order_proposals: dict[
+            str, list[tuple[ActionRow, SendMessage, OrderProposal]]
+        ] = defaultdict(
+            list
+        )  # customer_id -> [(action_row, send_message, order_proposal)]
+
+        # Track messages sent by businesses (by type)
+        self.business_sent_text_messages: dict[
+            str, list[tuple[ActionRow, SendMessage, TextMessage]]
+        ] = defaultdict(
+            list
+        )  # business_id -> [(action_row, send_message, text_message)]
+        self.business_sent_order_proposals: dict[
+            str, list[tuple[ActionRow, SendMessage, OrderProposal]]
+        ] = defaultdict(
+            list
+        )  # business_id -> [(action_row, send_message, order_proposal)]
+
+        # Track messages received by businesses (by type)
+        self.business_received_text_messages: dict[
+            str, list[tuple[ActionRow, SendMessage, TextMessage]]
+        ] = defaultdict(
+            list
+        )  # business_id -> [(action_row, send_message, text_message)]
+        self.business_received_payments: dict[
+            str, list[tuple[ActionRow, SendMessage, Payment]]
+        ] = defaultdict(list)  # business_id -> [(action_row, send_message, payment)]
+
+        # Track FetchMessages actions per customer and business (only non-zero results)
+        self.customer_fetch_actions: dict[
+            str, list[tuple[ActionRow, FetchMessages, FetchMessagesResponse]]
+        ] = defaultdict(
+            list
+        )  # customer_id -> [(action_row, fetch_action, fetch_response)]
+        self.business_fetch_actions: dict[
+            str, list[tuple[ActionRow, FetchMessages, FetchMessagesResponse]]
+        ] = defaultdict(
+            list
+        )  # business_id -> [(action_row, fetch_action, fetch_response)]
+
+        # Track Search actions per customer and business
+        self.customer_searches: dict[
+            str, list[tuple[ActionRow, Search, SearchResponse]]
+        ] = defaultdict(
+            list
+        )  # customer_id -> [(action_row, search_action, search_response)]
+        self.business_searches: dict[
+            str, list[tuple[ActionRow, Search, SearchResponse]]
+        ] = defaultdict(
+            list
+        )  # business_id -> [(action_row, search_action, search_response)]
+
+        # Cache all LLM logs organized by agent to avoid multiple database queries
+        self.agent_llm_logs: dict[str, list[tuple[LogRow, LLMCallLog]]] = defaultdict(
+            list
+        )  # agent_id -> [(log_row, parsed_log)]
+
+        # Cache failed LLM logs separately for quick access
+        self.failed_llm_logs: list[
+            tuple[LogRow, LLMCallLog, str]
+        ] = []  # [(log_row, parsed_log, agent_id)]
 
     async def load_data(self):
         """Load and parse actions data and agent profiles from database."""
         # Load agent profiles
+        await self._load_agents()
+        # Load all LLM logs once (cached for reuse)
+        await self._load_llm_logs()
+        # Load actions
+        await self._load_actions()
+
+    async def _load_actions(self):
+        actions = await self.db.actions.get_all()
+
+        for action_row in actions:
+            await self._process_action_row(action_row)
+
+    async def _load_agents(self):
         agents = await self.db.agents.get_all()
         for agent_row in agents:
             agent_data = agent_row.data
@@ -107,56 +287,59 @@ class MarketplaceAudit:
             elif isinstance(agent, BusinessAgentProfile):
                 self.business_agents[agent.id] = agent
 
-        # Load actions
-        actions = await self.db.actions.get_all()
+    async def _load_llm_logs(self):
+        """Load all LLM call logs from database and cache them organized by agent."""
+        query = llm_call.all()
+        params = RangeQueryParams()
+        logs = await self.db.logs.find(query, params)
 
-        for action_row in actions:
-            await self._process_action_row(action_row)
+        for log_row in logs:
+            log = log_row.data
+            try:
+                llm_call_log = LLMCallLog.model_validate(log.data)
+                agent_id = (log.metadata or {}).get("agent_id", "unknown")
+
+                self.agent_llm_logs[agent_id].append((log_row, llm_call_log))
+
+                # Also track failures separately for quick access
+                if not llm_call_log.success:
+                    self.failed_llm_logs.append((log_row, llm_call_log, agent_id))
+            except Exception as e:
+                print(f"Warning: Could not parse LLM call log: {e}")
+                continue
 
     async def _process_action_row(self, action_row: ActionRow):
         """Process a single action row to extract proposals and payments."""
         action_request: ActionExecutionRequest = action_row.data.request
         action_result: ActionExecutionResult = action_row.data.result
         agent_id = action_row.data.agent_id
-        timestamp = action_row.created_at.isoformat()
-        index = action_row.index  # type: ignore[attr-defined]
 
         action = ActionAdapter.validate_python(action_request.parameters)
 
-        # Track all customer actions
+        # Track ALL customer and business actions
         if "customer" in agent_id.lower():
-            action_data = {
-                "index": index,
-                "timestamp": timestamp,
-                "agent_id": agent_id,
-                "action_type": action_request.name,
-                "action": action.model_dump(mode="json"),
-                "result": {
-                    "is_error": action_result.is_error,
-                    "content": action_result.content
-                    if not action_result.is_error
-                    else str(action_result.content),
-                },
-            }
-            self.customer_actions[agent_id].append((index, action_data))
+            self.customer_actions[agent_id].append(action_row)
+        elif "business" in agent_id.lower():
+            self.business_actions[agent_id].append(action_row)
 
         # Process SendMessage actions
         if isinstance(action, SendMessage):
             await self._process_send_message(
-                action, action_result, agent_id, timestamp, index
+                action, action_result, agent_id, action_row
             )
         elif isinstance(action, FetchMessages):
             await self._process_fetch_messages(
-                action, action_result, agent_id, timestamp
+                action, action_result, agent_id, action_row
             )
+        elif isinstance(action, Search):
+            await self._process_search(action, action_result, agent_id, action_row)
 
     async def _process_send_message(
         self,
         action: SendMessage,
         result: ActionExecutionResult,
         agent_id: str,
-        timestamp: str,
-        index: int | None,
+        action_row: ActionRow,
     ):
         """Process SendMessage actions and parse message content."""
         if result.is_error:
@@ -165,48 +348,57 @@ class MarketplaceAudit:
         try:
             message = action.message
 
-            # Track all messages by sender type with timestamps
+            # Track customer sent messages by type
             if "customer" in agent_id.lower():
-                self.customer_messages[action.from_agent_id].append(
-                    (action.to_agent_id, message, timestamp)
-                )
-            elif "business" in agent_id.lower():
-                self.business_messages[action.from_agent_id].append(
-                    (action.to_agent_id, message, timestamp)
-                )
+                if isinstance(message, TextMessage):
+                    self.customer_sent_text_messages[action.from_agent_id].append(
+                        (action_row, action, message)
+                    )
+                elif isinstance(message, Payment):
+                    self.customer_sent_payments[action.from_agent_id].append(
+                        (action_row, action, message)
+                    )
 
-                # Track business messages to customers with index
-                if "customer" in action.to_agent_id.lower():
-                    message_data = {
-                        "index": index,
-                        "timestamp": timestamp,
-                        "from_agent_id": action.from_agent_id,
-                        "to_agent_id": action.to_agent_id,
-                        "message": message.model_dump(mode="json"),
-                    }
-                    self.business_messages_to_customers[action.to_agent_id].append(
-                        (index, message_data)
+            # Track customer received messages by type
+            if "customer" in action.to_agent_id.lower():
+                if isinstance(message, TextMessage):
+                    self.customer_received_text_messages[action.to_agent_id].append(
+                        (action_row, action, message)
+                    )
+                elif isinstance(message, OrderProposal):
+                    self.customer_received_order_proposals[action.to_agent_id].append(
+                        (action_row, action, message)
+                    )
+
+            # Track business sent messages by type
+            if "business" in agent_id.lower():
+                if isinstance(message, TextMessage):
+                    self.business_sent_text_messages[action.from_agent_id].append(
+                        (action_row, action, message)
+                    )
+                elif isinstance(message, OrderProposal):
+                    self.business_sent_order_proposals[action.from_agent_id].append(
+                        (action_row, action, message)
+                    )
+
+            # Track business received messages by type
+            if "business" in action.to_agent_id.lower():
+                if isinstance(message, TextMessage):
+                    self.business_received_text_messages[action.to_agent_id].append(
+                        (action_row, action, message)
+                    )
+                elif isinstance(message, Payment):
+                    self.business_received_payments[action.to_agent_id].append(
+                        (action_row, action, message)
                     )
 
             # Process OrderProposal messages
             if isinstance(message, OrderProposal):
-                self.order_proposals.append(message)
-
-                # Store metadata: proposal_id -> (business_id, customer_id, timestamp)
-                self.proposal_metadata[message.id] = (
-                    action.from_agent_id,  # business
-                    action.to_agent_id,  # customer
-                    timestamp,
-                )
-
-                # Track proposals received by each customer
-                self.customer_proposals[action.to_agent_id].append(message)
+                # Store full context keyed by proposal_id
+                self.order_proposals[message.id] = (action_row, action, message)
 
             elif isinstance(message, Payment):
-                self.payments.append(message)
-                # Link to customer if this is a payment from customer
-                if "customer" in agent_id.lower():
-                    self.customer_payments[action.from_agent_id].append(message)
+                self.payments.append((action_row, action, message))
 
         except Exception as e:
             print(f"Warning: Failed to parse message: {e}")
@@ -216,68 +408,59 @@ class MarketplaceAudit:
         action: FetchMessages,
         result: ActionExecutionResult,
         agent_id: str,
-        timestamp: str,
+        action_row: ActionRow,
     ):
         """Process FetchMessages actions and track non-zero results."""
         if result.is_error:
             return
 
         try:
-            # Only track for customers
-            if "customer" not in agent_id.lower():
-                return
-
             # Parse the result as FetchMessagesResponse
             if result.content:
                 fetch_response = FetchMessagesResponse.model_validate(result.content)
 
                 # Only track if there are messages
                 if fetch_response.messages:
-                    # Serialize the fetch action data
-                    fetch_data = {
-                        "timestamp": timestamp,
-                        "from_agent_id_filter": action.from_agent_id,
-                        "limit": action.limit,
-                        "offset": action.offset,
-                        "after": action.after.isoformat() if action.after else None,
-                        "after_index": getattr(action, "after_index", None),
-                        "num_messages_fetched": len(fetch_response.messages),
-                        "messages": [
-                            {
-                                "from_agent_id": msg.from_agent_id,
-                                "to_agent_id": msg.to_agent_id,
-                                "created_at": msg.created_at.isoformat(),
-                                "message": msg.message.model_dump(mode="json"),
-                                "index": getattr(msg, "index", None),
-                            }
-                            for msg in fetch_response.messages
-                        ],
-                    }
-                    self.customer_fetch_actions[agent_id].append(fetch_data)
+                    # Store ActionRow, action, and response
+                    if "customer" in agent_id.lower():
+                        self.customer_fetch_actions[agent_id].append(
+                            (action_row, action, fetch_response)
+                        )
+                    elif "business" in agent_id.lower():
+                        self.business_fetch_actions[agent_id].append(
+                            (action_row, action, fetch_response)
+                        )
 
         except Exception as e:
             print(f"Warning: Failed to parse FetchMessages result: {e}")
 
-    def get_customer_messages_to_business(
-        self, customer_id: str, business_id: str
-    ) -> list[tuple[Message, str]]:
-        """Get all messages a customer sent to a specific business with timestamps.
+    async def _process_search(
+        self,
+        action: Search,
+        result: ActionExecutionResult,
+        agent_id: str,
+        action_row: ActionRow,
+    ):
+        """Process Search actions and track results."""
+        if result.is_error:
+            return
 
-        Args:
-            customer_id: The customer agent ID
-            business_id: The business agent ID
+        try:
+            # Parse the result as SearchResponse
+            if result.content:
+                search_response = SearchResponse.model_validate(result.content)
+                # Store ActionRow, action, and response
+                if "customer" in agent_id.lower():
+                    self.customer_searches[agent_id].append(
+                        (action_row, action, search_response)
+                    )
+                elif "business" in agent_id.lower():
+                    self.business_searches[agent_id].append(
+                        (action_row, action, search_response)
+                    )
 
-        Returns:
-            List of (message, timestamp) tuples the customer sent to the business
-
-        """
-        messages = []
-        for to_agent_id, message, timestamp in self.customer_messages.get(
-            customer_id, []
-        ):
-            if to_agent_id == business_id:
-                messages.append((message, timestamp))
-        return messages
+        except Exception as e:
+            print(f"Warning: Failed to parse Search result: {e}")
 
     def get_payment_for_proposal(self, proposal_id: str) -> Payment | None:
         """Get the payment message for a specific proposal.
@@ -289,15 +472,63 @@ class MarketplaceAudit:
             Payment message if found, None otherwise
 
         """
-        for payment in self.payments:
+        for _, _, payment in self.payments:
             if payment.proposal_message_id == proposal_id:
                 return payment
         return None
 
-    async def get_last_llm_log_for_customer(
+    def get_llm_failures(self) -> list[dict]:
+        """Get all failed LLM calls from cached failed logs.
+
+        Returns:
+            List of dictionaries containing failure details
+
+        """
+        failures = []
+        for log_row, llm_call_log, agent_id in self.failed_llm_logs:
+            # Serialize the LLM prompt
+            llm_prompt = None
+            if isinstance(llm_call_log.prompt, str):
+                llm_prompt = llm_call_log.prompt
+            else:
+                llm_prompt = llm_call_log.prompt
+
+            # Serialize the LLM response
+            llm_response = None
+            if isinstance(llm_call_log.response, str):
+                try:
+                    llm_response = json.loads(llm_call_log.response)
+                except json.JSONDecodeError:
+                    llm_response = llm_call_log.response
+            else:
+                llm_response = llm_call_log.response
+
+            failures.append(
+                {
+                    "agent_id": agent_id,
+                    "llm_model": llm_call_log.model
+                    if llm_call_log.model
+                    else "unknown",
+                    "llm_provider": llm_call_log.provider
+                    if llm_call_log.provider
+                    else "unknown",
+                    "llm_prompt": llm_prompt,
+                    "llm_response": llm_response,
+                    "llm_timestamp": log_row.created_at.isoformat(),
+                    "error_message": llm_call_log.error_message,
+                    "duration_ms": llm_call_log.duration_ms,
+                }
+            )
+
+        # Sort failures by timestamp (earliest first)
+        failures.sort(key=lambda x: x["llm_timestamp"])
+
+        return failures
+
+    def get_last_llm_log_for_customer(
         self, customer_id: str
     ) -> tuple[LLMCallLog, str] | None:
-        """Get the last LLM log for a specific customer with timestamp.
+        """Get the last LLM log for a specific customer with timestamp from cached logs.
 
         Args:
             customer_id: The customer agent ID
@@ -306,35 +537,22 @@ class MarketplaceAudit:
             Tuple of (LLMCallLog, timestamp) for the most recent log, or None if not found
 
         """
-        # Query for all LLM logs for this customer
-        query = llm_call.all()
-        params = RangeQueryParams()
-        logs = await self.db.logs.find(query, params)
-
-        if not logs:
-            return None
-
-        # Filter logs by customer_id and find the most recent
-        customer_logs = []
-        for log_row in logs:
-            log = log_row.data
-            agent_id = (log.metadata or {}).get("agent_id", None)
-
-            if agent_id == customer_id:
-                try:
-                    llm_call_log = LLMCallLog.model_validate(log.data)
-                    timestamp = log_row.created_at.isoformat()
-                    customer_logs.append((log_row.index, llm_call_log, timestamp))  # type: ignore[attr-defined]
-                except Exception as e:
-                    print(f"Warning: Could not parse LLM call log: {e}")
-                    continue
+        # Get cached logs for this customer
+        customer_logs = self.agent_llm_logs.get(customer_id, [])
 
         if not customer_logs:
             return None
 
+        # Build list with indices for sorting
+        indexed_logs = []
+        for log_row, llm_call_log in customer_logs:
+            index = log_row.index  # type: ignore[attr-defined]
+            timestamp = log_row.created_at.isoformat()
+            indexed_logs.append((index, llm_call_log, timestamp))
+
         # Sort by index and return the most recent (log, timestamp)
-        customer_logs.sort(key=lambda x: x[0])
-        return (customer_logs[-1][1], customer_logs[-1][2])
+        indexed_logs.sort(key=lambda x: x[0])
+        return (indexed_logs[-1][1], indexed_logs[-1][2])
 
     def calculate_menu_matches(self, customer_agent_id: str) -> list[tuple[str, float]]:
         """Calculate which businesses can fulfill customer's menu requirements.
@@ -404,26 +622,35 @@ class MarketplaceAudit:
 
         return required_amenities.issubset(available_amenities)
 
-    def calculate_customer_utility(
-        self, customer_agent_id: str
-    ) -> tuple[float, bool, float | None]:
+    def calculate_customer_utility(self, customer_agent_id: str) -> CustomerUtility:
         """Calculate customer utility and whether they achieved optimal utility.
 
         Args:
             customer_agent_id: ID of the customer
 
         Returns:
-            Tuple of (utility, needs_met, optimal_utility) where needs_met indicates
-            if customer got what they wanted, and optimal_utility is the best possible
-            utility (None if no matching businesses exist)
+            CustomerUtility object with all utility metrics
 
         """
         if customer_agent_id not in self.customer_agents:
-            return 0.0, False, None
+            return CustomerUtility(
+                customer_id=customer_agent_id,
+                actual_utility=0.0,
+                optimal_utility=None,
+                utility_gap=0.0,
+                needs_met=False,
+                paid_businesses={},
+            )
 
         customer = self.customer_agents[customer_agent_id].customer
-        payments = self.customer_payments.get(customer_agent_id, [])
-        proposals_received = self.customer_proposals.get(customer_agent_id, [])
+        payment_tuples = self.customer_sent_payments.get(customer_agent_id, [])
+        # Extract OrderProposal objects from typed tuples
+        proposals_received = [
+            proposal
+            for _, _, proposal in self.customer_received_order_proposals.get(
+                customer_agent_id, []
+            )
+        ]
 
         # Calculate optimal utility (best case scenario)
         menu_matches = self.calculate_menu_matches(customer_agent_id)
@@ -436,11 +663,12 @@ class MarketplaceAudit:
                     optimal_utility = round(match_score - price, 2)
                     break
 
-        # Calculate actual utility
+        # Calculate actual utility and build paid_businesses dict
         total_payments = 0.0
         needs_met = False
+        paid_businesses: dict[str, tuple[ActionRow, Payment]] = {}
 
-        for payment in payments:
+        for action_row, _send_message, payment in payment_tuples:
             # Find the corresponding proposal
             proposal = next(
                 (p for p in proposals_received if p.id == payment.proposal_message_id),
@@ -456,14 +684,18 @@ class MarketplaceAudit:
                 # Find which business sent this proposal to check amenities
                 business_agent_id = self._find_business_for_proposal(proposal.id)
 
-                # Check if this payment meets the customer's needs
-                if proposal_items == requested_items:
-                    # Items match - now check amenities
-                    if business_agent_id and self.check_amenity_match(
-                        customer_agent_id, business_agent_id
-                    ):
-                        # Items AND amenities match - needs are met!
-                        needs_met = True
+                if business_agent_id:
+                    # Track which business was paid
+                    paid_businesses[business_agent_id] = (action_row, payment)
+
+                    # Check if this payment meets the customer's needs
+                    if proposal_items == requested_items:
+                        # Items match - now check amenities
+                        if self.check_amenity_match(
+                            customer_agent_id, business_agent_id
+                        ):
+                            # Items AND amenities match - needs are met!
+                            needs_met = True
 
         # Calculate utility: match_score counted only ONCE if needs were met
         match_score = 0.0
@@ -471,20 +703,25 @@ class MarketplaceAudit:
             match_score = 2 * sum(customer.menu_features.values())
 
         utility = round(match_score - total_payments, 2)
-        return utility, needs_met, optimal_utility
+        utility_gap = 0.0
+        if optimal_utility is not None:
+            utility_gap = round(optimal_utility - utility, 2)
+
+        return CustomerUtility(
+            customer_id=customer_agent_id,
+            actual_utility=utility,
+            optimal_utility=optimal_utility,
+            utility_gap=utility_gap,
+            needs_met=needs_met,
+            paid_businesses=paid_businesses,
+        )
 
     def _find_business_for_proposal(self, proposal_id: str) -> str | None:
         """Find which business sent a specific proposal."""
-        # First check in proposal_metadata which is more direct
-        if proposal_id in self.proposal_metadata:
-            business_id, _, _ = self.proposal_metadata[proposal_id]
-            return business_id
-
-        # Fallback to searching through messages
-        for business_agent_id, messages in self.business_messages.items():
-            for _, msg, _ in messages:
-                if isinstance(msg, OrderProposal) and msg.id == proposal_id:
-                    return business_agent_id
+        # Direct lookup in order_proposals dict
+        if proposal_id in self.order_proposals:
+            _, send_message, _ = self.order_proposals[proposal_id]
+            return send_message.from_agent_id
         return None
 
     def check_proposal_in_log(self, proposal_id: str, llm_log: LLMCallLog) -> bool:
@@ -543,28 +780,23 @@ class MarketplaceAudit:
             "customers_with_suboptimal_utility": [],
             "customers_who_made_purchases": 0,
             "customers_with_needs_met": 0,
+            "llm_failures": [],
         }
 
-        print(f"{CYAN_COLOR}{'=' * 60}")
-        print("MARKETPLACE PROPOSAL AUDIT")
-        print(f"{'=' * 60}{RESET_COLOR}\n")
-
-        print(f"Total proposals to audit: {results['total_proposals']}\n")
+        # Get LLM failures from cached logs
+        llm_failures = self.get_llm_failures()
+        results["llm_failures"] = llm_failures
 
         # Check each proposal
-        for proposal in self.order_proposals:
-            proposal_id = proposal.id
-
-            # Get metadata about this proposal
-            if proposal_id not in self.proposal_metadata:
-                print(
-                    f"{YELLOW_COLOR}Warning: No metadata found for proposal {proposal_id}{RESET_COLOR}"
-                )
-                continue
-
-            business_id, customer_id, proposal_timestamp = self.proposal_metadata[
-                proposal_id
-            ]
+        for proposal_id, (
+            action_row,
+            send_message,
+            proposal,
+        ) in self.order_proposals.items():
+            # Extract metadata from the stored context
+            business_id = send_message.from_agent_id
+            customer_id = send_message.to_agent_id
+            proposal_timestamp = action_row.created_at.isoformat()
 
             # Track unique customers and businesses
             results["unique_customers"].add(customer_id)
@@ -572,12 +804,9 @@ class MarketplaceAudit:
             results["customer_stats"][customer_id]["received"] += 1
 
             # Get the last LLM log for this customer
-            llm_log_result = await self.get_last_llm_log_for_customer(customer_id)
+            llm_log_result = self.get_last_llm_log_for_customer(customer_id)
 
             if llm_log_result is None:
-                print(
-                    f"{YELLOW_COLOR}Customer {customer_id} has no LLM logs{RESET_COLOR}"
-                )
                 results["customers_without_logs"].add(customer_id)
                 results["proposals_missing"] += 1
                 results["customer_stats"][customer_id]["missing"] += 1
@@ -599,9 +828,6 @@ class MarketplaceAudit:
             if self.check_proposal_in_log(proposal_id, llm_log):
                 results["proposals_found"] += 1
                 results["customer_stats"][customer_id]["found"] += 1
-                print(
-                    f"{GREEN_COLOR}Found:{RESET_COLOR} Proposal {proposal_id} in {customer_id}'s last LLM log"
-                )
             else:
                 results["proposals_missing"] += 1
                 results["customer_stats"][customer_id]["missing"] += 1
@@ -631,16 +857,24 @@ class MarketplaceAudit:
                 llm_model = llm_log.model if llm_log.model else "unknown"
                 llm_provider = llm_log.provider if llm_log.provider else "unknown"
 
-                # Get the customer messages to this business
-                customer_msgs_with_timestamps = self.get_customer_messages_to_business(
-                    customer_id, business_id
-                )
-
-                # Serialize customer messages with timestamps (use mode='json' to handle datetime)
-                customer_messages_serialized = [
-                    {"message": msg.model_dump(mode="json"), "timestamp": ts}
-                    for msg, ts in customer_msgs_with_timestamps
-                ]
+                # Get the customer messages to this business and serialize
+                customer_messages_serialized = []
+                # Include text messages sent by customer to this business
+                for action_row, send_message, _ in self.customer_sent_text_messages.get(
+                    customer_id, []
+                ):
+                    if send_message.to_agent_id == business_id:
+                        customer_messages_serialized.append(
+                            action_row.model_dump(mode="json")
+                        )
+                # Include payments sent by customer to this business
+                for action_row, send_message, _ in self.customer_sent_payments.get(
+                    customer_id, []
+                ):
+                    if send_message.to_agent_id == business_id:
+                        customer_messages_serialized.append(
+                            action_row.model_dump(mode="json")
+                        )
 
                 # Get the payment message for this proposal
                 payment_msg = self.get_payment_for_proposal(proposal_id)
@@ -648,30 +882,57 @@ class MarketplaceAudit:
                     payment_msg.model_dump(mode="json") if payment_msg else None
                 )
 
-                # Get all FetchMessages actions for this customer
-                fetch_actions = self.customer_fetch_actions.get(customer_id, [])
+                # Get all FetchMessages actions for this customer and serialize them
+                fetch_actions_serialized = []
+                for action_row, _, fetch_response in self.customer_fetch_actions.get(
+                    customer_id, []
+                ):
+                    fetch_data = action_row.model_dump(mode="json")
+                    fetch_data["num_messages_fetched"] = len(fetch_response.messages)
+                    fetch_actions_serialized.append(fetch_data)
 
                 # Build combined timeline of customer actions and business messages
                 timeline_items = []
 
-                # Add customer actions
-                for idx, action_data in self.customer_actions.get(customer_id, []):
+                # Add customer actions - serialize from ActionRow
+                for action_row in self.customer_actions.get(customer_id, []):
+                    index = action_row.index  # type: ignore[attr-defined]
+                    action_data = action_row.model_dump(mode="json")
+
                     timeline_items.append(
                         {
                             "type": "customer_action",
-                            "index": idx,
+                            "index": index,
                             "data": action_data,
                         }
                     )
 
-                # Add business messages to this customer
-                for idx, message_data in self.business_messages_to_customers.get(
+                # Add business messages to this customer - serialize from typed tuples
+                # Include text messages received by customer
+                for action_row, _, _ in self.customer_received_text_messages.get(
                     customer_id, []
                 ):
+                    index = action_row.index  # type: ignore[attr-defined]
+                    message_data = action_row.model_dump(mode="json")
+
                     timeline_items.append(
                         {
                             "type": "business_message",
-                            "index": idx,
+                            "index": index,
+                            "data": message_data,
+                        }
+                    )
+                # Include order proposals received by customer
+                for action_row, _, _ in self.customer_received_order_proposals.get(
+                    customer_id, []
+                ):
+                    index = action_row.index  # type: ignore[attr-defined]
+                    message_data = action_row.model_dump(mode="json")
+
+                    timeline_items.append(
+                        {
+                            "type": "business_message",
+                            "index": index,
                             "data": message_data,
                         }
                     )
@@ -694,31 +955,54 @@ class MarketplaceAudit:
                         "proposal_timestamp": proposal_timestamp,
                         "customer_messages_to_business": customer_messages_serialized,
                         "payment": payment_serialized,
-                        "fetch_messages_actions": fetch_actions,
+                        "fetch_messages_actions": fetch_actions_serialized,
                         "customer_timeline": timeline_items,
                     }
                 )
-                print(
-                    f"{RED_COLOR}Missing:{RESET_COLOR} Proposal {proposal_id} NOT in {customer_id}'s last LLM log (from {business_id})"
-                )
 
         # Calculate utility statistics for all customers
+        theoretical_optimal_total_utility = 0.0
+        actual_total_utility = 0.0
+        total_suboptimal_utility = 0.0
+        total_optimal_utility = 0.0
+        total_superoptimal_utility = 0.0
+        utility_gap_from_non_purchasers = 0.0
+
         for customer_id in self.customer_agents.keys():
-            payments = self.customer_payments.get(customer_id, [])
+            payments = self.customer_sent_payments.get(customer_id, [])
 
             if payments:
                 results["customers_who_made_purchases"] += 1
 
-            utility, needs_met, optimal_utility = self.calculate_customer_utility(
-                customer_id
-            )
+            # Calculate and store CustomerUtility object
+            customer_util = self.calculate_customer_utility(customer_id)
+            self.customer_utility[customer_id] = customer_util
 
-            if needs_met:
+            # Track total utilities
+            actual_total_utility += customer_util.actual_utility
+            if customer_util.optimal_utility is not None:
+                theoretical_optimal_total_utility += customer_util.optimal_utility
+
+                # Track utility gap from customers who didn't purchase
+                if not payments:
+                    # No purchase means actual_utility = 0, so gap = optimal_utility - 0
+                    utility_gap_from_non_purchasers += customer_util.utility_gap
+
+                # Categorize by whether customer achieved optimal or better (only for purchasers)
+                if payments:
+                    if customer_util.actual_utility < customer_util.optimal_utility:
+                        total_suboptimal_utility += customer_util.actual_utility
+                    elif customer_util.actual_utility == customer_util.optimal_utility:
+                        total_optimal_utility += customer_util.actual_utility
+                    else:  # utility > optimal_utility
+                        total_superoptimal_utility += customer_util.actual_utility
+
+            if customer_util.needs_met:
                 results["customers_with_needs_met"] += 1
 
             # Check if customer achieved suboptimal utility
-            if optimal_utility is not None and payments:
-                if utility < optimal_utility:
+            if customer_util.optimal_utility is not None and payments:
+                if customer_util.actual_utility < customer_util.optimal_utility:
                     customer_name = self.customer_agents[customer_id].customer.name
 
                     # Construct customer trace path
@@ -727,9 +1011,15 @@ class MarketplaceAudit:
                     )
 
                     # Find which business(es) the customer transacted with
-                    proposals_received = self.customer_proposals.get(customer_id, [])
+                    # Extract OrderProposal objects from typed tuples
+                    proposals_received = [
+                        proposal
+                        for _, _, proposal in self.customer_received_order_proposals.get(
+                            customer_id, []
+                        )
+                    ]
                     businesses_transacted = []
-                    for payment in payments:
+                    for _, _send_message, payment in payments:
                         proposal = next(
                             (
                                 p
@@ -760,9 +1050,7 @@ class MarketplaceAudit:
 
                     # Count proposals in final LLM log
                     proposals_in_final_log = 0
-                    llm_log_result = await self.get_last_llm_log_for_customer(
-                        customer_id
-                    )
+                    llm_log_result = self.get_last_llm_log_for_customer(customer_id)
                     if llm_log_result is not None:
                         llm_log, _ = llm_log_result
                         # Check each proposal received to see if it's in the log
@@ -770,18 +1058,61 @@ class MarketplaceAudit:
                             if self.check_proposal_in_log(proposal.id, llm_log):
                                 proposals_in_final_log += 1
 
+                    # For customers with needs not met, check if optimal business proposal was in LLM log
+                    optimal_business_proposal_status = "needs_met"
+                    if not customer_util.needs_met:
+                        # Find the optimal business
+                        menu_matches = self.calculate_menu_matches(customer_id)
+                        optimal_business_id = None
+
+                        for business_id, _price in menu_matches:
+                            if self.check_amenity_match(customer_id, business_id):
+                                optimal_business_id = business_id
+                                break
+
+                        if not optimal_business_id:
+                            # No business can optimally serve this customer
+                            optimal_business_proposal_status = "no_optimal_business"
+                        else:
+                            # Check if optimal business sent a proposal
+                            optimal_proposal_id = None
+                            for proposal in proposals_received:
+                                proposal_business_id = self._find_business_for_proposal(
+                                    proposal.id
+                                )
+                                if proposal_business_id == optimal_business_id:
+                                    optimal_proposal_id = proposal.id
+                                    break
+
+                            if not optimal_proposal_id:
+                                # Optimal business exists but didn't send a proposal
+                                optimal_business_proposal_status = (
+                                    "no_proposal_from_optimal_business"
+                                )
+                            elif llm_log_result is None:
+                                # Customer has no LLM logs
+                                optimal_business_proposal_status = "no_llm_logs"
+                            else:
+                                # Check if the proposal is in the log
+                                llm_log, _ = llm_log_result
+                                if self.check_proposal_in_log(
+                                    optimal_proposal_id, llm_log
+                                ):
+                                    optimal_business_proposal_status = "proposal_in_log"
+                                else:
+                                    optimal_business_proposal_status = (
+                                        "proposal_not_in_log"
+                                    )
+
                     results["customers_with_suboptimal_utility"].append(
                         {
-                            "customer_id": customer_id,
+                            **customer_util.model_dump(),
                             "customer_name": customer_name,
-                            "actual_utility": utility,
-                            "optimal_utility": optimal_utility,
-                            "utility_gap": round(optimal_utility - utility, 2),
-                            "needs_met": needs_met,
                             "businesses_transacted": businesses_transacted,
                             "proposals_received_total": len(proposals_received),
                             "proposals_in_final_llm_log": proposals_in_final_log,
                             "trace_path": customer_trace_path,
+                            "optimal_business_proposal_status": optimal_business_proposal_status,
                         }
                     )
 
@@ -790,358 +1121,544 @@ class MarketplaceAudit:
             key=lambda x: x["utility_gap"], reverse=True
         )
 
+        # Count optimal business proposal status values and sum utility gaps by status
+        optimal_business_proposal_status_counts = defaultdict(int)
+        optimal_business_proposal_status_utility_gaps = defaultdict(float)
+        for customer_data in results["customers_with_suboptimal_utility"]:
+            status = customer_data.get("optimal_business_proposal_status", "unknown")
+            utility_gap = customer_data.get("utility_gap", 0.0)
+            optimal_business_proposal_status_counts[status] += 1
+            optimal_business_proposal_status_utility_gaps[status] += utility_gap
+
+        results["optimal_business_proposal_status_counts"] = dict(
+            optimal_business_proposal_status_counts
+        )
+        results["optimal_business_proposal_status_utility_gaps"] = {
+            k: round(v, 2)
+            for k, v in optimal_business_proposal_status_utility_gaps.items()
+        }
+
+        # Find businesses that received no messages from customers
+        businesses_with_no_messages = []
+        for business_id, business_profile in self.business_agents.items():
+            # Check if business received any text messages or payments
+            has_text_messages = business_id in self.business_received_text_messages
+            has_payments = business_id in self.business_received_payments
+            if not has_text_messages and not has_payments:
+                businesses_with_no_messages.append(
+                    {
+                        "business_id": business_id,
+                        "business_name": business_profile.business.name,
+                    }
+                )
+
+        # Sort by business ID for consistency
+        businesses_with_no_messages.sort(key=lambda x: x["business_id"])
+        results["businesses_with_no_messages"] = businesses_with_no_messages
+
+        # Add utility totals
+        results["theoretical_optimal_total_utility"] = round(
+            theoretical_optimal_total_utility, 2
+        )
+        results["actual_total_utility"] = round(actual_total_utility, 2)
+        results["total_utility_gap"] = round(
+            theoretical_optimal_total_utility - actual_total_utility, 2
+        )
+        results["total_suboptimal_utility"] = round(total_suboptimal_utility, 2)
+        results["total_optimal_utility"] = round(total_optimal_utility, 2)
+        results["total_superoptimal_utility"] = round(total_superoptimal_utility, 2)
+        results["utility_gap_from_non_purchasers"] = round(
+            utility_gap_from_non_purchasers, 2
+        )
+
         return results
+
+    def build_audit_result(self, db_name: str) -> AuditResult:
+        """Build complete AuditResult from analyzed data.
+
+        Args:
+            db_name: Name of the database being audited
+
+        Returns:
+            AuditResult with all customer and business audit data
+
+        """
+        # Build CustomerAudit objects
+        customers_audit = {}
+        for customer_id, customer_profile in self.customer_agents.items():
+            # Get all actions for this customer
+            all_actions = self.customer_actions.get(customer_id, [])
+
+            # Get sent actions (SendMessage actions where from_agent_id matches)
+            sent_actions = [
+                action_row
+                for action_row in all_actions
+                if action_row.data.request.parameters.get("from_agent_id")
+                == customer_id
+            ]
+
+            # Get received actions (combine text messages and order proposals)
+            received_actions = []
+            for action_row, _, _ in self.customer_received_text_messages.get(
+                customer_id, []
+            ):
+                received_actions.append(action_row)
+            for action_row, _, _ in self.customer_received_order_proposals.get(
+                customer_id, []
+            ):
+                received_actions.append(action_row)
+
+            # Get LLM logs for this customer
+            llm_logs_with_data = self.agent_llm_logs.get(customer_id, [])
+            logs = [log_row for log_row, _ in llm_logs_with_data]
+
+            # Filter for only LLM call logs (all in agent_llm_logs are LLM calls)
+            llm_calls = logs.copy()
+
+            # Build timeline: combine all_actions + logs, sorted by index
+            timeline = []
+            timeline.extend(all_actions)
+            timeline.extend(logs)
+            timeline.sort(key=lambda x: x.index)
+
+            # Get utility for this customer
+            utility = self.customer_utility.get(customer_id)
+            if not utility:
+                utility = CustomerUtility(
+                    customer_id=customer_id,
+                    actual_utility=0.0,
+                    optimal_utility=None,
+                    utility_gap=0.0,
+                    needs_met=False,
+                    paid_businesses={},
+                )
+
+            # Get proposals received
+            proposals_received = [
+                action_row
+                for action_row, _, _ in self.customer_received_order_proposals.get(
+                    customer_id, []
+                )
+            ]
+
+            # Get payments made
+            payments_made = [
+                action_row
+                for action_row, _, _ in self.customer_sent_payments.get(customer_id, [])
+            ]
+
+            # Get searches made
+            searches_made = [
+                action_row
+                for action_row, _, _ in self.customer_searches.get(customer_id, [])
+            ]
+
+            customers_audit[customer_id] = CustomerAudit(
+                customer=customer_profile,
+                utility=utility,
+                timeline=timeline,
+                timeline_length=len(timeline),
+                llm_calls=llm_calls,
+                llm_calls_length=len(llm_calls),
+                logs=logs,
+                logs_length=len(logs),
+                sent_actions=sent_actions,
+                received_actions=received_actions,
+                all_actions=all_actions,
+                proposals_received=proposals_received,
+                proposals_received_length=len(proposals_received),
+                payments_made=payments_made,
+                payments_made_length=len(payments_made),
+                searches_made=searches_made,
+                searches_made_length=len(searches_made),
+            )
+
+        # Build BusinessAudit objects
+        businesses_audit = {}
+        for business_id, business_profile in self.business_agents.items():
+            # Get all actions for this business
+            all_actions = self.business_actions.get(business_id, [])
+
+            # Get sent actions (SendMessage actions where from_agent_id matches)
+            sent_actions = [
+                action_row
+                for action_row in all_actions
+                if action_row.data.request.parameters.get("from_agent_id")
+                == business_id
+            ]
+
+            # Get received actions (combine text messages and payments)
+            received_actions = []
+            for action_row, _, _ in self.business_received_text_messages.get(
+                business_id, []
+            ):
+                received_actions.append(action_row)
+            for action_row, _, _ in self.business_received_payments.get(
+                business_id, []
+            ):
+                received_actions.append(action_row)
+
+            # Get LLM logs for this business
+            llm_logs_with_data = self.agent_llm_logs.get(business_id, [])
+            logs = [log_row for log_row, _ in llm_logs_with_data]
+
+            # Filter for only LLM call logs (all in agent_llm_logs are LLM calls)
+            llm_calls = logs.copy()
+
+            # Build timeline: combine all_actions + logs, sorted by created_at
+            timeline = []
+            timeline.extend(all_actions)
+            timeline.extend(logs)
+            timeline.sort(key=lambda x: x.created_at)
+
+            businesses_audit[business_id] = BusinessAudit(
+                business=business_profile,
+                timeline=timeline,
+                timeline_length=len(timeline),
+                llm_calls=llm_calls,
+                llm_calls_length=len(llm_calls),
+                logs=logs,
+                logs_length=len(logs),
+                sent_actions=sent_actions,
+                received_actions=received_actions,
+                all_actions=all_actions,
+            )
+
+        # Categorize customers by utility
+        suboptimal_customers = {}
+        optimal_customers = {}
+        superoptimal_customers = {}
+
+        for customer_id, utility in self.customer_utility.items():
+            if utility.optimal_utility is not None:
+                if utility.actual_utility < utility.optimal_utility:
+                    suboptimal_customers[customer_id] = utility
+                elif utility.actual_utility == utility.optimal_utility:
+                    optimal_customers[customer_id] = utility
+                else:  # utility.actual_utility > utility.optimal_utility
+                    superoptimal_customers[customer_id] = utility
+
+        # Calculate total utilities
+        actual_customer_utility = sum(
+            u.actual_utility for u in self.customer_utility.values()
+        )
+        optimal_customer_utility = sum(
+            u.optimal_utility
+            for u in self.customer_utility.values()
+            if u.optimal_utility is not None
+        )
+        customer_utility_gap = optimal_customer_utility - actual_customer_utility
+
+        # Find businesses that received no messages
+        businesses_received_no_messages = []
+        for business_id in self.business_agents.keys():
+            has_text_messages = business_id in self.business_received_text_messages
+            has_payments = business_id in self.business_received_payments
+            if not has_text_messages and not has_payments:
+                businesses_received_no_messages.append(business_id)
+
+        # Find businesses that sent no proposals
+        businesses_sent_no_proposals = [
+            business_id
+            for business_id in self.business_agents.keys()
+            if business_id not in self.business_sent_order_proposals
+        ]
+
+        # Find customers that made no payment
+        customers_made_no_payment = [
+            customer_id
+            for customer_id in self.customer_agents.keys()
+            if customer_id not in self.customer_sent_payments
+        ]
+
+        # Find customers with no optimal business
+        customers_with_no_optimal_business = []
+
+        # Find customers missing optimal business proposal in their final LLM log
+        customers_missing_optimal_proposal_in_llm = []
+
+        for customer_id, utility in self.customer_utility.items():
+            if utility.optimal_utility is None:
+                customers_with_no_optimal_business.append(customer_id)
+                continue
+
+            # Find the optimal business
+            menu_matches = self.calculate_menu_matches(customer_id)
+            optimal_business_id = None
+            for business_id, _ in menu_matches:
+                if self.check_amenity_match(customer_id, business_id):
+                    optimal_business_id = business_id
+                    break
+
+            if not optimal_business_id:
+                customers_with_no_optimal_business.append(customer_id)
+                continue
+
+            # Check if optimal business sent a proposal to this customer
+            optimal_proposal_id = None
+            for proposal_id, (_, send_msg, _) in self.order_proposals.items():
+                if (
+                    send_msg.from_agent_id == optimal_business_id
+                    and send_msg.to_agent_id == customer_id
+                ):
+                    optimal_proposal_id = proposal_id
+                    break
+
+            if not optimal_proposal_id:
+                # Optimal business exists but never sent a proposal - this is a problem
+                customers_missing_optimal_proposal_in_llm.append(customer_id)
+                continue
+
+            # Check if the proposal is in the customer's final LLM log
+            llm_log_result = self.get_last_llm_log_for_customer(customer_id)
+            if llm_log_result is not None:
+                llm_log, _ = llm_log_result
+                if not self.check_proposal_in_log(optimal_proposal_id, llm_log):
+                    customers_missing_optimal_proposal_in_llm.append(customer_id)
+            else:
+                # Customer has no LLM logs - can't verify
+                customers_missing_optimal_proposal_in_llm.append(customer_id)
+
+        # Calculate utility gap breakdown by proposal visibility
+        utility_gap_needs_not_met_had_all_proposals = 0.0
+        utility_gap_needs_not_met_missing_proposals = 0.0
+        utility_gap_needs_met_had_all_proposals = 0.0
+        utility_gap_needs_met_missing_proposals = 0.0
+
+        # Track counts for each category
+        count_needs_not_met_had_all_proposals = 0
+        count_needs_not_met_missing_proposals = 0
+        count_needs_met_had_all_proposals = 0
+        count_needs_met_missing_proposals = 0
+
+        for customer_id, utility in self.customer_utility.items():
+            if utility.optimal_utility is None:
+                continue
+
+            # Find all businesses this customer contacted
+            contacted_businesses = set()
+            for _, send_message, _ in self.customer_sent_text_messages.get(
+                customer_id, []
+            ):
+                if "business" in send_message.to_agent_id.lower():
+                    contacted_businesses.add(send_message.to_agent_id)
+            for _, send_message, _ in self.customer_sent_payments.get(customer_id, []):
+                if "business" in send_message.to_agent_id.lower():
+                    contacted_businesses.add(send_message.to_agent_id)
+
+            # Check if customer had all proposals from contacted businesses in last LLM log
+            had_all_proposals = True
+            if contacted_businesses:
+                llm_log_result = self.get_last_llm_log_for_customer(customer_id)
+                if llm_log_result is not None:
+                    llm_log, _ = llm_log_result
+                    # For each contacted business, check if they sent a proposal and if it's in the log
+                    for business_id in contacted_businesses:
+                        # Check if this business sent any proposals to this customer
+                        business_sent_proposals = [
+                            proposal_id
+                            for proposal_id, (
+                                _,
+                                send_msg,
+                                _,
+                            ) in self.order_proposals.items()
+                            if send_msg.from_agent_id == business_id
+                            and send_msg.to_agent_id == customer_id
+                        ]
+                        # If business sent proposals, check if they're all in the log
+                        for proposal_id in business_sent_proposals:
+                            if not self.check_proposal_in_log(proposal_id, llm_log):
+                                had_all_proposals = False
+                                break
+                        if not had_all_proposals:
+                            break
+                else:
+                    had_all_proposals = False
+
+            # Categorize based on needs_met and proposal visibility
+            if not utility.needs_met:
+                if had_all_proposals:
+                    utility_gap_needs_not_met_had_all_proposals += utility.utility_gap
+                    count_needs_not_met_had_all_proposals += 1
+                else:
+                    utility_gap_needs_not_met_missing_proposals += utility.utility_gap
+                    count_needs_not_met_missing_proposals += 1
+            else:
+                if had_all_proposals:
+                    utility_gap_needs_met_had_all_proposals += utility.utility_gap
+                    count_needs_met_had_all_proposals += 1
+                else:
+                    utility_gap_needs_met_missing_proposals += utility.utility_gap
+                    count_needs_met_missing_proposals += 1
+
+        return AuditResult(
+            customers=customers_audit,
+            customers_length=len(customers_audit),
+            businesses=businesses_audit,
+            businesses_length=len(businesses_audit),
+            suboptimal_customers=suboptimal_customers,
+            suboptimal_customers_length=len(suboptimal_customers),
+            optimal_customers=optimal_customers,
+            optimal_customers_length=len(optimal_customers),
+            superoptimal_customers=superoptimal_customers,
+            superoptimal_customers_length=len(superoptimal_customers),
+            actual_customer_utility=round(actual_customer_utility, 2),
+            optimal_customer_utility=round(optimal_customer_utility, 2),
+            customer_utility_gap=round(customer_utility_gap, 2),
+            utility_gap_needs_not_met_had_all_proposals=round(
+                utility_gap_needs_not_met_had_all_proposals, 2
+            ),
+            count_needs_not_met_had_all_proposals=count_needs_not_met_had_all_proposals,
+            utility_gap_needs_not_met_missing_proposals=round(
+                utility_gap_needs_not_met_missing_proposals, 2
+            ),
+            count_needs_not_met_missing_proposals=count_needs_not_met_missing_proposals,
+            utility_gap_needs_met_had_all_proposals=round(
+                utility_gap_needs_met_had_all_proposals, 2
+            ),
+            count_needs_met_had_all_proposals=count_needs_met_had_all_proposals,
+            utility_gap_needs_met_missing_proposals=round(
+                utility_gap_needs_met_missing_proposals, 2
+            ),
+            count_needs_met_missing_proposals=count_needs_met_missing_proposals,
+            customers_made_no_payment=customers_made_no_payment,
+            customers_made_no_payment_length=len(customers_made_no_payment),
+            customers_with_no_optimal_business=customers_with_no_optimal_business,
+            customers_with_no_optimal_business_length=len(
+                customers_with_no_optimal_business
+            ),
+            customers_missing_optimal_proposal_in_llm=customers_missing_optimal_proposal_in_llm,
+            customers_missing_optimal_proposal_in_llm_length=len(
+                customers_missing_optimal_proposal_in_llm
+            ),
+            businesses_received_no_messages=businesses_received_no_messages,
+            businesses_received_no_messages_length=len(businesses_received_no_messages),
+            businesses_sent_no_proposals=businesses_sent_no_proposals,
+            businesses_sent_no_proposals_length=len(businesses_sent_no_proposals),
+            failed_llm_calls=self.failed_llm_logs,
+            failed_llm_calls_length=len(self.failed_llm_logs),
+        )
 
     async def generate_report(
         self, save_to_json: bool = True, db_name: str = "unknown"
     ):
         """Generate comprehensive audit report."""
+        print("Running audit...")
         await self.load_data()
 
+        # Run the audit to populate customer_utility
+        await self.audit_proposals(db_name=db_name)
+
+        # Build the complete audit result
+        audit_result = self.build_audit_result(db_name)
+
+        # Print summary statistics
+        print(f"\n{CYAN_COLOR}=== AUDIT SUMMARY ==={RESET_COLOR}")
+        print(f"Total customer utility: {audit_result.actual_customer_utility:.2f}")
+        print(f"Optimal customer utility: {audit_result.optimal_customer_utility:.2f}")
+        print(f"Customer utility gap: {audit_result.customer_utility_gap:.2f}")
         print(
-            f"Loaded {len(self.order_proposals)} proposals and {len(self.payments)} payments\n"
+            f"Marketplace efficiency: {(audit_result.actual_customer_utility / audit_result.optimal_customer_utility * 100):.1f}%"
+            if audit_result.optimal_customer_utility > 0
+            else "Marketplace efficiency: N/A"
         )
 
-        # Run the audit
-        results = await self.audit_proposals(db_name=db_name)
-
-        # Print summary
-        print(f"\n{CYAN_COLOR}{'=' * 60}")
-        print("AUDIT SUMMARY")
-        print(f"{'=' * 60}{RESET_COLOR}\n")
-
-        # Overall statistics
-        print(f"{CYAN_COLOR}OVERALL STATISTICS:{RESET_COLOR}")
-        print(f"Total proposals sent: {results['total_proposals']}")
+        # Print utility gap breakdown
+        print("\nUtility gap breakdown:")
         print(
-            f"{GREEN_COLOR}Proposals found in customer logs: {results['proposals_found']}{RESET_COLOR}"
-        )
-        print(
-            f"{RED_COLOR}Proposals missing from customer logs: {results['proposals_missing']}{RESET_COLOR}"
-        )
-
-        if results["total_proposals"] > 0:
-            success_rate = (
-                results["proposals_found"] / results["total_proposals"]
-            ) * 100
-            print(f"Success rate: {success_rate:.1f}%")
-
-        # Customer and business statistics
-        print(f"\n{CYAN_COLOR}CUSTOMER & BUSINESS STATISTICS:{RESET_COLOR}")
-        print(
-            f"Unique customers who received proposals: {len(results['unique_customers'])}"
+            f"  Needs NOT met + had all proposals ({audit_result.count_needs_not_met_had_all_proposals} customers): {audit_result.utility_gap_needs_not_met_had_all_proposals:.2f}"
         )
         print(
-            f"Unique businesses who sent proposals: {len(results['unique_businesses'])}"
+            f"  Needs NOT met + missing proposals ({audit_result.count_needs_not_met_missing_proposals} customers): {audit_result.utility_gap_needs_not_met_missing_proposals:.2f}"
         )
-
-        if results["unique_customers"]:
-            avg_proposals_per_customer = results["total_proposals"] / len(
-                results["unique_customers"]
-            )
-            print(f"Average proposals per customer: {avg_proposals_per_customer:.1f}")
-
-        # FetchMessages statistics
-        print(f"\n{CYAN_COLOR}FETCHMESSAGES STATISTICS:{RESET_COLOR}")
-        total_fetch_actions = sum(
-            len(fetches) for fetches in self.customer_fetch_actions.values()
-        )
-        customers_with_fetches = len(self.customer_fetch_actions)
         print(
-            f"Total FetchMessages actions with non-zero results: {total_fetch_actions}"
+            f"  Needs met + had all proposals ({audit_result.count_needs_met_had_all_proposals} customers): {audit_result.utility_gap_needs_met_had_all_proposals:.2f}"
         )
-        print(f"Customers who fetched messages: {customers_with_fetches}")
-        if customers_with_fetches > 0:
-            avg_fetches_per_customer = total_fetch_actions / customers_with_fetches
+        print(
+            f"  Needs met + missing proposals ({audit_result.count_needs_met_missing_proposals} customers): {audit_result.utility_gap_needs_met_missing_proposals:.2f}"
+        )
+
+        # Print warnings
+        print(f"\n{YELLOW_COLOR}=== AUDIT WARNINGS ==={RESET_COLOR}")
+
+        # Warning 1: Customers that made no payment
+        if audit_result.customers_made_no_payment:
             print(
-                f"Average fetches per active customer: {avg_fetches_per_customer:.1f}"
+                f"{YELLOW_COLOR}  {audit_result.customers_made_no_payment_length} customers made no payment{RESET_COLOR}"
             )
-
-        # Customer delivery status
-        customers_with_all = sum(
-            1
-            for stats in results["customer_stats"].values()
-            if stats["missing"] == 0 and stats["received"] > 0
-        )
-        customers_with_partial = sum(
-            1
-            for stats in results["customer_stats"].values()
-            if 0 < stats["missing"] < stats["received"]
-        )
-        customers_with_none = sum(
-            1
-            for stats in results["customer_stats"].values()
-            if stats["found"] == 0 and stats["received"] > 0
-        )
-
-        print(f"\n{CYAN_COLOR}CUSTOMER DELIVERY STATUS:{RESET_COLOR}")
-        print(
-            f"{GREEN_COLOR}Customers who received all proposals in LLM logs: {customers_with_all}{RESET_COLOR}"
-        )
-        print(
-            f"{YELLOW_COLOR}Customers who received some proposals in LLM logs: {customers_with_partial}{RESET_COLOR}"
-        )
-        print(
-            f"{RED_COLOR}Customers who received no proposals in LLM logs: {customers_with_none}{RESET_COLOR}"
-        )
-
-        # Missing reasons breakdown
-        if results["missing_reasons"]:
-            print(f"\n{CYAN_COLOR}MISSING PROPOSAL REASONS:{RESET_COLOR}")
-            for reason, count in sorted(
-                results["missing_reasons"].items(), key=lambda x: x[1], reverse=True
-            ):
-                print(f"  {reason}: {count}")
-
-        print(
-            f"\n{YELLOW_COLOR}Unique customers without LLM logs: {len(results['customers_without_logs'])}{RESET_COLOR}"
-        )
-
-        # Utility analysis summary
-        print(f"\n{CYAN_COLOR}UTILITY ANALYSIS:{RESET_COLOR}")
-        print(
-            f"Customers who made purchases: {results['customers_who_made_purchases']}/{len(self.customer_agents)}"
-        )
-        print(
-            f"Customers with needs met: {results['customers_with_needs_met']}/{results['customers_who_made_purchases'] if results['customers_who_made_purchases'] > 0 else len(self.customer_agents)}"
-        )
-
-        if results["customers_with_suboptimal_utility"]:
-            print(
-                f"\n{YELLOW_COLOR}Customers with less than optimal utility: {len(results['customers_with_suboptimal_utility'])}{RESET_COLOR}"
-            )
-            for customer_data in results["customers_with_suboptimal_utility"]:
-                print(
-                    f"  - {customer_data['customer_name']} (ID: {customer_data['customer_id']})"
-                )
-                print(
-                    f"    Actual utility: {customer_data['actual_utility']:.2f}, "
-                    f"Optimal utility: {customer_data['optimal_utility']:.2f}, "
-                    f"Gap: {customer_data['utility_gap']:.2f}"
-                )
-                print(f"    Needs met: {customer_data['needs_met']}")
-                print(
-                    f"    Proposals in final LLM log: {customer_data.get('proposals_in_final_llm_log', 0)}/{customer_data.get('proposals_received_total', 0)}"
-                )
-                if customer_data.get("trace_path"):
-                    print(f"    Customer trace: {customer_data['trace_path']}")
-                if customer_data.get("businesses_transacted"):
-                    print("    Transacted with:")
-                    for biz in customer_data["businesses_transacted"]:
-                        print(
-                            f"      - {biz['business_name']} (ID: {biz['business_id']}) - "
-                            f"Paid: ${biz['price_paid']:.2f}"
-                        )
-                        if biz.get("trace_path"):
-                            print(f"        Business trace: {biz['trace_path']}")
         else:
             print(
-                f"\n{GREEN_COLOR}All customers who made purchases achieved optimal utility!{RESET_COLOR}"
+                f"{GREEN_COLOR}  All customers made at least one payment{RESET_COLOR}"
             )
 
-        # Print details of missing proposals
-        if results["missing_details"]:
-            print(f"\n{RED_COLOR}MISSING PROPOSAL DETAILS:{RESET_COLOR}")
-            for detail in results["missing_details"]:
-                print(f"  Proposal: {detail['proposal_id']}")
-                print(f"    Business: {detail['business_id']}")
-                print(f"    Customer: {detail['customer_id']}")
-                print(f"    Reason: {detail['reason']}")
+        # Warning 2: Customers with no optimal business
+        if audit_result.customers_with_no_optimal_business:
+            print(
+                f"{RED_COLOR}  {audit_result.customers_with_no_optimal_business_length} customers have no business that can optimally serve them{RESET_COLOR}"
+            )
+        else:
+            print(
+                f"{GREEN_COLOR}  All customers have at least one business that can optimally serve them{RESET_COLOR}"
+            )
 
-                # Print customer messages to business
-                if detail.get("customer_messages_to_business"):
-                    print(
-                        f"    Customer Messages to Business: {len(detail['customer_messages_to_business'])}"
-                    )
-                    for i, msg_data in enumerate(
-                        detail["customer_messages_to_business"], 1
-                    ):
-                        msg = msg_data.get("message", {})
-                        timestamp = msg_data.get("timestamp", "unknown")
-                        msg_type = msg.get("type", "unknown")
-                        print(
-                            f"      Message {i} (type: {msg_type}, timestamp: {timestamp}):"
-                        )
-                        msg_str = json.dumps(msg, indent=8)
-                        if len(msg_str) > 300:
-                            print(f"        {msg_str[:300]}...")
-                        else:
-                            print(f"        {msg_str}")
+        # Warning 3: Customers missing optimal proposal in LLM log
+        if audit_result.customers_missing_optimal_proposal_in_llm:
+            print(
+                f"{YELLOW_COLOR}  {audit_result.customers_missing_optimal_proposal_in_llm_length} customers did not have optimal business proposal in final LLM log{RESET_COLOR}"
+            )
+        else:
+            print(
+                f"{GREEN_COLOR}  All customers had optimal proposals in their LLM logs{RESET_COLOR}"
+            )
 
-                # Print proposal details
-                if detail.get("proposal"):
-                    proposal_timestamp = detail.get("proposal_timestamp", "unknown")
-                    print(f"    Proposal Details (timestamp: {proposal_timestamp}):")
-                    proposal_str = json.dumps(detail["proposal"], indent=6)
-                    if len(proposal_str) > 500:
-                        print(f"      {proposal_str[:500]}...")
-                    else:
-                        print(f"      {proposal_str}")
+        # Warning 4: Businesses that never sent order proposals
+        if audit_result.businesses_sent_no_proposals:
+            print(
+                f"{YELLOW_COLOR}  {audit_result.businesses_sent_no_proposals_length} businesses never sent any order proposals{RESET_COLOR}"
+            )
+        else:
+            print(
+                f"{GREEN_COLOR}  All businesses sent at least one order proposal{RESET_COLOR}"
+            )
 
-                # Print payment details
-                if detail.get("payment"):
-                    print("    Payment Message:")
-                    payment_str = json.dumps(detail["payment"], indent=6)
-                    if len(payment_str) > 300:
-                        print(f"      {payment_str[:300]}...")
-                    else:
-                        print(f"      {payment_str}")
-                else:
-                    print(
-                        "    Payment Message: None (customer did not pay for this proposal)"
-                    )
+        # Warning 5: Businesses that received no messages
+        if audit_result.businesses_received_no_messages:
+            print(
+                f"{YELLOW_COLOR}  {audit_result.businesses_received_no_messages_length} businesses received no messages from customers{RESET_COLOR}"
+            )
+        else:
+            print(
+                f"{GREEN_COLOR}  All businesses received at least one message{RESET_COLOR}"
+            )
 
-                # Print FetchMessages actions
-                if detail.get("fetch_messages_actions"):
-                    fetch_actions = detail["fetch_messages_actions"]
-                    print(
-                        f"    FetchMessages Actions: {len(fetch_actions)} calls with non-zero results"
-                    )
-                    for i, fetch in enumerate(fetch_actions, 1):
-                        num_msgs = fetch.get("num_messages_fetched", 0)
-                        timestamp = fetch.get("timestamp", "unknown")
-                        from_filter = fetch.get("from_agent_id_filter", "None")
-                        print(f"      Fetch {i} (timestamp: {timestamp}):")
-                        print(
-                            f"        Fetched {num_msgs} messages (from_agent_id_filter: {from_filter})"
-                        )
-                        # Show proposal IDs in fetched messages
-                        proposal_ids_in_fetch = []
-                        for msg_data in fetch.get("messages", []):
-                            msg = msg_data.get("message", {})
-                            if msg.get("type") == "order_proposal":
-                                proposal_ids_in_fetch.append(msg.get("id", "unknown"))
-                        if proposal_ids_in_fetch:
-                            print(
-                                f"        Proposal IDs in fetch: {', '.join(proposal_ids_in_fetch)}"
-                            )
+        # Warning 6: Suboptimal customers
+        if audit_result.suboptimal_customers:
+            total_suboptimal_gap = sum(
+                u.utility_gap for u in audit_result.suboptimal_customers.values()
+            )
+            print(
+                f"{YELLOW_COLOR}  {audit_result.suboptimal_customers_length} customers achieved suboptimal utility (total gap: {total_suboptimal_gap:.2f}){RESET_COLOR}"
+            )
+        else:
+            print(
+                f"{GREEN_COLOR}  All customers achieved optimal or better utility{RESET_COLOR}"
+            )
 
-                # Print customer timeline summary
-                if detail.get("customer_timeline"):
-                    timeline = detail["customer_timeline"]
-                    print(
-                        f"    Customer Timeline: {len(timeline)} events (actions + messages received)"
-                    )
-                    print("      (Full timeline available in JSON output)")
-                    # Show first few and last few for context
-                    num_to_show = min(3, len(timeline))
-                    if num_to_show > 0:
-                        print(f"      First {num_to_show} events:")
-                        for item in timeline[:num_to_show]:
-                            event_type = item.get("type")
-                            event_data = item.get("data", {})
-                            idx = item.get("index")
-                            ts = event_data.get("timestamp", "unknown")
-                            if event_type == "customer_action":
-                                action_type = event_data.get("action_type", "unknown")
-                                print(
-                                    f"        [{idx}] {ts}: Customer action: {action_type}"
-                                )
-                            else:
-                                from_agent = event_data.get("from_agent_id", "unknown")
-                                msg_type = event_data.get("message", {}).get(
-                                    "type", "unknown"
-                                )
-                                print(
-                                    f"        [{idx}] {ts}: Received {msg_type} from {from_agent}"
-                                )
-                    if len(timeline) > num_to_show * 2:
-                        print(
-                            f"      ... ({len(timeline) - num_to_show * 2} more events)"
-                        )
-                        print(f"      Last {num_to_show} events:")
-                        for item in timeline[-num_to_show:]:
-                            event_type = item.get("type")
-                            event_data = item.get("data", {})
-                            idx = item.get("index")
-                            ts = event_data.get("timestamp", "unknown")
-                            if event_type == "customer_action":
-                                action_type = event_data.get("action_type", "unknown")
-                                print(
-                                    f"        [{idx}] {ts}: Customer action: {action_type}"
-                                )
-                            else:
-                                from_agent = event_data.get("from_agent_id", "unknown")
-                                msg_type = event_data.get("message", {}).get(
-                                    "type", "unknown"
-                                )
-                                print(
-                                    f"        [{idx}] {ts}: Received {msg_type} from {from_agent}"
-                                )
+        # Warning 7: Failed LLM calls
+        if audit_result.failed_llm_calls:
+            print(
+                f"{RED_COLOR}  {audit_result.failed_llm_calls_length} LLM calls failed{RESET_COLOR}"
+            )
+        else:
+            print(f"{GREEN_COLOR}  No LLM call failures{RESET_COLOR}")
 
-                # Print LLM prompt if available
-                if detail.get("llm_prompt"):
-                    llm_timestamp = detail.get("llm_timestamp", "unknown")
-                    llm_model = detail.get("llm_model", "unknown")
-                    llm_provider = detail.get("llm_provider", "unknown")
-                    print(
-                        f"    LLM Prompt (model: {llm_model}, provider: {llm_provider}, timestamp: {llm_timestamp}, truncated to 1000 chars):"
-                    )
-
-                    if isinstance(detail["llm_prompt"], str):
-                        prompt_text = detail["llm_prompt"]
-                    else:
-                        # For message sequences, format nicely
-                        prompt_text = json.dumps(detail["llm_prompt"], indent=6)
-
-                    if len(prompt_text) > 1000:
-                        print(f"      {prompt_text[:1000]}...")
-                    else:
-                        print(f"      {prompt_text}")
-
-                # Print LLM response if available
-                if detail.get("llm_response"):
-                    print("    LLM Response (truncated to 500 chars):")
-                    response_text = (
-                        json.dumps(detail["llm_response"], indent=6)
-                        if isinstance(detail["llm_response"], dict)
-                        else str(detail["llm_response"])
-                    )
-                    if len(response_text) > 500:
-                        print(f"      {response_text[:500]}...")
-                    else:
-                        print(f"      {response_text}")
-                print()
+        print()
 
         # Save to JSON if requested
         if save_to_json:
             output_path = f"audit_results_{db_name}.json"
-
-            # Calculate FetchMessages statistics
-            total_fetch_actions = sum(
-                len(fetches) for fetches in self.customer_fetch_actions.values()
-            )
-            customers_with_fetches = len(self.customer_fetch_actions)
-            avg_fetches_per_customer = (
-                total_fetch_actions / customers_with_fetches
-                if customers_with_fetches > 0
-                else 0
-            )
-
-            # Convert sets to lists for JSON serialization
-            json_results = {
-                **results,
-                "unique_customers": sorted(results["unique_customers"]),
-                "unique_businesses": sorted(results["unique_businesses"]),
-                "customers_without_logs": sorted(results["customers_without_logs"]),
-                "customer_stats": dict(results["customer_stats"]),
-                "missing_reasons": dict(results["missing_reasons"]),
-                "customers_with_suboptimal_utility": results[
-                    "customers_with_suboptimal_utility"
-                ],
-                "customers_with_suboptimal_utility_count": len(
-                    results["customers_with_suboptimal_utility"]
-                ),
-                "customers_who_made_purchases": results["customers_who_made_purchases"],
-                "customers_with_needs_met": results["customers_with_needs_met"],
-                "fetch_messages_stats": {
-                    "total_fetch_actions": total_fetch_actions,
-                    "customers_with_fetches": customers_with_fetches,
-                    "avg_fetches_per_customer": avg_fetches_per_customer,
-                },
-            }
             with open(output_path, "w") as f:
-                json.dump(json_results, f, indent=2)
+                json.dump(audit_result.model_dump(mode="json"), f, indent=2)
             print(f"Audit results saved to: {output_path}")
 
 
