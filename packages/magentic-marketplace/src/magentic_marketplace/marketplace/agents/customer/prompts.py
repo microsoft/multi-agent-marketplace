@@ -270,13 +270,12 @@ Choose your action carefully.
         for pay_message, pay_message_result in zip(
             pay_messages, message_results.pay_message_results, strict=True
         ):
+            pay_message_str = pay_message.model_dump_json(
+                exclude={"type", "to_business_id"},
+                exclude_none=True,
+            )
             send_message_result_lines.append(
-                f"Sent to {pay_message.to_business_id}: {
-                    pay_message.model_dump_json(
-                        exclude={'type', 'to_business_id'},
-                        exclude_none=True,
-                    )
-                }"
+                f"Sent to {pay_message.to_business_id}: {pay_message_str}"
             )
             is_success, error_message = pay_message_result
             if is_success:
