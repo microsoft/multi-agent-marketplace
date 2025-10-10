@@ -56,7 +56,7 @@ def compile_results_csv(input_dir):
 
     for dataset, results in all_results.items():
         with open(f"output_{dataset}.csv", "w") as f:
-            f.write("Model,Dataset,Welfare Type,Limit,Run,Welfare\n")
+            f.write("Model,Dataset,Welfare Type,Limit,Run,Welfare,Welfare Optimal\n")
             for result in results:
                 model = result["model"]
                 dataset = result["dataset"]
