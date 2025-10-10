@@ -128,7 +128,7 @@ class SearchMarketLauncher:
             customer_agent = CustomerAgent(
                 self.customer_profiles[0],
                 self.marketplace_launcher.server_url,
-                search_algorithm=SearchAlgorithm.LEXICAL,
+                search_algorithm=self.search_algorithm,
             )
             self.customer_agent = customer_agent
 
@@ -174,7 +174,7 @@ class SearchMarketLauncher:
             response = await self.customer_agent.execute_action(
                 Search(
                     query=query,
-                    search_algorithm=SearchAlgorithm.LEXICAL,
+                    search_algorithm=self.search_algorithm,
                     limit=10,
                     page=1,
                 )
@@ -204,7 +204,7 @@ class SearchMarketLauncher:
                 response = await self.customer_agent.execute_action(
                     Search(
                         query=query,
-                        search_algorithm=SearchAlgorithm.LEXICAL,
+                        search_algorithm=self.search_algorithm,
                         limit=10,
                         page=1,
                     )
