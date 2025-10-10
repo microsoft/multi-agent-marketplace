@@ -1,8 +1,11 @@
 """Main customer agent implementation."""
 
 import asyncio
+import traceback
 
-from magentic_marketplace.platform.shared.models import BaseAction
+from magentic_marketplace.platform.shared.models import (
+    BaseAction,
+)
 
 from ...actions import (
     OrderProposal,
@@ -16,9 +19,13 @@ from ...actions import (
 from ...llm.config import BaseLLMConfig
 from ...shared.models import Customer, CustomerAgentProfile
 from ..base import BaseSimpleMarketplaceAgent
-from ..history_storage import HistoryStorage
 from ..proposal_storage import OrderProposalStorage
-from .models import CustomerAction, CustomerSummary
+from .models import (
+    CustomerAction,
+    CustomerActionResult,
+    CustomerSendMessageResults,
+    CustomerSummary,
+)
 from .prompts import PromptsHandler
 
 
@@ -51,12 +58,13 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
         super().__init__(profile, base_url, llm_config)
 
         # Initialize customer agent state
-        self.history = HistoryStorage(self.logger)
         self.proposal_storage = OrderProposalStorage()
         self.completed_transactions: list[str] = []
-        self.known_business_ids: list[str] = []
         self.conversation_step: int = 0
 
+        self._event_history: list[
+            tuple[CustomerAction, CustomerActionResult] | str
+        ] = []
         self._search_algorithm = SearchAlgorithm(search_algorithm)
         self._search_bandwidth = search_bandwidth
 
@@ -81,9 +89,6 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
         # Execute the action through the parent class
         result = await super().execute_action(action)
 
-        # Record the action-result pair in event history
-        self.history.record_event(action, result)
-
         return result
 
     async def step(self):
@@ -105,11 +110,11 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
             # 4. Execute the action (handles messaging internally)
             new_messages = await self._execute_customer_action(action)
 
-        # 5a. Check if transaction completed
-        if len(self.completed_transactions) > 0:
-            self.logger.info("Completed a transaction, shutting down!")
-            self.shutdown()
-            return
+        # # 5a. Check if transaction completed
+        # if len(self.completed_transactions) > 0:
+        #     self.logger.info("Completed a transaction, shutting down!")
+        #     self.shutdown()
+        #     return
 
         # 5b. Early-stopping if max steps exceeded
         if self._max_steps is not None and self.conversation_step >= self._max_steps:
@@ -147,10 +152,9 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
         """Get a fresh PromptsHandler with current state."""
         return PromptsHandler(
             customer=self.customer,
-            known_business_ids=self.known_business_ids,
             proposal_storage=self.proposal_storage,
             completed_transactions=self.completed_transactions,
-            event_history=self.history.event_history,
+            event_history=self._event_history,
             logger=self.logger,
         )
 
@@ -163,11 +167,12 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
         """
         # Build prompt using prompts handler
         prompts = self._get_prompts_handler()
-        system_prompt = prompts.format_system_prompt()
-        state_context = prompts.format_state_context()
-        step_prompt = prompts.format_step_prompt()
+        system_prompt = prompts.format_system_prompt().strip()
+        state_context, step_counter = prompts.format_state_context()
+        state_context = state_context.strip()
+        step_prompt = prompts.format_step_prompt(step_counter).strip()
 
-        full_prompt = system_prompt + state_context + step_prompt
+        full_prompt = f"{system_prompt}\n\n\n\n{state_context}\n\n{step_prompt}"
 
         # Use LLM to decide next action
         try:
@@ -182,10 +187,10 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
 
             return action
 
-        except Exception as e:
+        except Exception:
             self.logger.exception("LLM decision failed")
             # Record the event so the LLM can recover next time (hopefully)
-            self.history.record_error("LLM decision failed", e)
+            self._event_history.append(f"LLM decision failed: {traceback.format_exc()}")
             return None
 
     async def _execute_customer_action(self, action: CustomerAction):
@@ -207,7 +212,6 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
 
             if not search_result.is_error:
                 search_response = SearchResponse.model_validate(search_result.content)
-                business_ids = [ba.id for ba in search_response.businesses]
                 business_names = [ba.business.name for ba in search_response.businesses]
                 business_names_str = ",".join(business_names)
 
@@ -215,93 +219,117 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
                     f'Search: "{search_action.query}", {search_action.search_algorithm}, resulting in {len(search_response.businesses)} business(es) found out of {search_response.total_possible_results} total business(es). Showing page {action.search_page} of {search_response.total_pages}.'
                 )
                 self.logger.info(f"Search Result: {business_names_str}")
-
-                self.known_business_ids.extend(business_ids)
-
+                self._event_history.append((action, search_response))
+            else:
+                self._event_history.append((action, search_result))
         # Check for new messages
         elif action.action_type == "check_messages":
             fetch_response = await self.fetch_messages()
+            self._event_history.append((action, fetch_response))
             messages = fetch_response.messages
             await self._process_new_messages(messages)
             return len(messages) > 0
         elif action.action_type == "send_messages":
             # Send messages directly with proper error handling
-            if action.target_business_ids and action.message_content:
-                for business_id in action.target_business_ids:
-                    message = TextMessage(content=action.message_content)
-
-                    try:
-                        result = await self.send_message(business_id, message)
-                        if result.is_error:
-                            self.logger.error(
-                                f"Failed to send message to {business_id}: {result.content}"
-                            )
-                    except Exception as e:
-                        self.logger.exception(
-                            f"Failed to send message to {business_id}"
-                        )
-                        self.history.record_error(
-                            f"Failed to send message to {business_id}", e
-                        )
-        elif action.action_type == "end_transaction":
-            # Accept the proposal specified by the LLM
-            if action.proposal_to_accept:
-                stored_proposal = self.proposal_storage.get_proposal(
-                    action.proposal_to_accept
+            if action.messages is None:
+                raise ValueError(
+                    "messages cannot be empty when action_type is send_messages"
                 )
 
+            # The CustomerAction creates two lists: one for text messages and one for payment messages
+            # Each message is sent independently to the Marketplace, and can each have an independent error
+            # This class is used to keep the results of sending each individual message in an identical format to CustomerAction,
+            # so that it is easier to format them for prompting later.
+            send_message_results = CustomerSendMessageResults()
+
+            for text_message in action.messages.text_messages:
+                business_id = text_message.to_business_id
+                message = TextMessage(content=text_message.content)
+                try:
+                    result = await self.send_message(business_id, message)
+                    if result.is_error:
+                        self.logger.error(
+                            f"Failed to send message to {business_id}: {result.content}"
+                        )
+                    send_message_results.text_message_results.append((True, "Success!"))
+                except Exception:
+                    self.logger.exception(f"Failed to send message to {business_id}")
+                    send_message_results.text_message_results.append(
+                        (
+                            False,
+                            f"Failed to send message to {business_id}. {traceback.format_exc()}",
+                        )
+                    )
+
+            for pay_message in action.messages.pay_messages:
+                business_id = pay_message.to_business_id
+                proposal_to_accept = pay_message.proposal_message_id
+                stored_proposal = self.proposal_storage.get_proposal(proposal_to_accept)
+
                 if stored_proposal:
-                    payment_message = Payment(
-                        proposal_message_id=action.proposal_to_accept,
-                        payment_method="credit_card",
-                        payment_message=action.message_content
+                    payment = Payment(
+                        proposal_message_id=proposal_to_accept,
+                        payment_method=pay_message.payment_method or "credit_card",
+                        payment_message=pay_message.payment_message
                         or f"Accepting your proposal for {len(stored_proposal.proposal.items)} items",
                     )
 
                     self.logger.info(
-                        f"Sending ${stored_proposal.proposal.total_price} payment to {stored_proposal.business_id} for proposal id {action.proposal_to_accept}",
+                        f"Sending ${stored_proposal.proposal.total_price} payment to {stored_proposal.business_id} for proposal id {proposal_to_accept}",
                     )
 
                     try:
                         result = await self.send_message(
-                            stored_proposal.business_id, payment_message
+                            stored_proposal.business_id, payment
                         )
                         if not result.is_error:
                             # Mark proposal as accepted
                             success = self.proposal_storage.update_proposal_status(
-                                action.proposal_to_accept, "accepted"
+                                proposal_to_accept, "accepted"
                             )
                             if success:
-                                self.completed_transactions.append(
-                                    action.proposal_to_accept
+                                send_message_results.pay_message_results.append(
+                                    (True, "Payment accepted!")
+                                )
+                                self.completed_transactions.append(proposal_to_accept)
+                            else:
+                                send_message_results.pay_message_results.append(
+                                    (False, "Failed to update order proposal status.")
                                 )
                         else:
                             self.logger.error(
                                 f"Failed to send payment: {result.content}"
                             )
-                    except Exception as e:
+                            send_message_results.pay_message_results.append(
+                                (False, f"Failed to send payment: {result.content}")
+                            )
+                    except Exception:
                         self.logger.exception(
                             f"Failed to send payment for proposal {stored_proposal.proposal_id}"
                         )
-                        self.history.record_error(
-                            f"Failed to send payment for proposal {stored_proposal.proposal_id}",
-                            e,
+                        send_message_results.pay_message_results.append(
+                            (
+                                False,
+                                f"Failed to send payment for proposal {stored_proposal.proposal_id}: {traceback.format_exc()}",
+                            )
                         )
 
                 else:
                     self.logger.warning(
-                        f"Error: proposal_to_accept '{action.proposal_to_accept}' does not match any known proposals."
+                        f"Error: proposal_to_accept '{proposal_to_accept}' does not match any known proposals."
                     )
-                    self.history.record_error(
-                        f"Error: proposal_to_accept '{action.proposal_to_accept}' does not match any known proposals."
+                    send_message_results.pay_message_results.append(
+                        (
+                            False,
+                            f"Error: proposal_to_accept '{proposal_to_accept}' does not match any known proposals.",
+                        )
                     )
-            else:
-                self.logger.warning(
-                    "Error: proposal_to_accept missing. proposal_to_accept is required when action_type is end_transaction."
-                )
-                self.history.record_error(
-                    "Error: proposal_to_accept missing. proposal_to_accept is required when action_type is end_transaction."
-                )
+
+            self._event_history.append((action, send_message_results))
+
+        elif action.action_type == "end_transaction":
+            # Accept the proposal specified by the LLM
+            self.shutdown()
 
         # No new messages
         return False
