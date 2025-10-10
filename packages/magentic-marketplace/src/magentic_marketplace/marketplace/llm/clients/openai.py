@@ -60,7 +60,9 @@ class OpenAIClient(ProviderClient[OpenAIConfig]):
                 "OpenAI API key not found. Set OPENAI_API_KEY environment variable "
                 "or pass api_key in config."
             )
-        self.client = AsyncOpenAI(api_key=self.config.api_key, base_url=self.config.base_url)
+        self.client = AsyncOpenAI(
+            api_key=self.config.api_key, base_url=self.config.base_url
+        )
 
     @staticmethod
     def _get_cache_key(config: OpenAIConfig) -> str:
