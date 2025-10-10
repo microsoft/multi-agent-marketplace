@@ -1,0 +1,159 @@
+"""Run consideration set size experiments using the Magentic Marketplace package."""
+
+import argparse
+import asyncio
+import os
+from collections.abc import Sequence
+from pathlib import Path
+
+from magentic_marketplace.experiments.run_analytics import run_analytics
+from magentic_marketplace.experiments.run_experiment import run_marketplace_experiment
+
+DEFAULT_SEARCH_LIMITS = [1, 2, 3]
+MODEL_PROVIDER_MAP = {
+    "gpt-4o": "openai",
+    "gpt-4.1": "openai",
+    "gpt-5": "openai",
+    "gemini-2.5-flash": "gemini",
+    "claude-sonnet-4-20250514": "anthropic",
+}
+
+
+def model_provider_for(model: str) -> str:
+    """Return the default provider for a given model name."""
+    return MODEL_PROVIDER_MAP.get(model, "openai")
+
+
+def parse_search_limits(raw: str) -> list[int]:
+    """Parse search limits supplied either as a string or a sequence of strings."""
+    print(raw)
+    if raw is None:
+        return DEFAULT_SEARCH_LIMITS
+
+    return [int(x) for x in raw.split(",") if x.strip().isdigit()]
+
+
+def sanitize_model_name(model: str) -> str:
+    """Remove characters not allowed in experiment identifiers."""
+    return model.replace("-", "").replace(".", "")
+
+
+def run_experiment(
+    *, dataset_path: Path, experiment_name: str, search_limit: int
+) -> None:
+    """Run a single marketplace experiment synchronously."""
+    asyncio.run(
+        run_marketplace_experiment(
+            data_dir=Path(dataset_path),
+            experiment_name=experiment_name,
+            search_algorithm="lexical",
+            search_bandwidth=search_limit,
+            override=True,
+        )
+    )
+
+
+def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
+    """Parse command-line arguments."""
+    parser = argparse.ArgumentParser(
+        description="Run consideration set size experiments using Magentic Marketplace",
+    )
+
+    parser.add_argument(
+        "--dataset",
+        default=None,
+        help="Path to the dataset directory (relative to repository root unless absolute)",
+        required=True,
+    )
+
+    parser.add_argument(
+        "--runs",
+        type=int,
+        default=5,
+        help="Number of runs per search limit",
+    )
+
+    parser.add_argument(
+        "--model",
+        default="gpt-4o",
+        help="Model name used by agents",
+    )
+
+    parser.add_argument(
+        "--model-provider",
+        dest="model_provider",
+        default=None,
+        help="Optional override for the LLM provider",
+    )
+
+    parser.add_argument(
+        "--search-limits",
+        type=str,
+        help="Comma separated list of search bandwidth limits",
+    )
+
+    return parser.parse_args(argv)
+
+
+def main(argv: Sequence[str] | None = None) -> int:
+    """Program entry point."""
+    args = parse_args(argv)
+
+    search_limits = parse_search_limits(args.search_limits)
+    model_provider = args.model_provider or model_provider_for(args.model)
+
+    os.environ["LLM_MODEL"] = args.model
+    os.environ["LLM_PROVIDER"] = model_provider
+
+    model_clean = sanitize_model_name(args.model)
+
+    print("======================================")
+    print("Running consideration set size experiments with the following parameters:")
+    print(f"Dataset: {args.dataset}")
+    print(f"Model: {args.model}")
+    print(f"Model Provider: {model_provider}")
+    print(f"Search Limits: {' '.join(str(limit) for limit in search_limits)}")
+    print(f"Runs per setting: {args.runs}")
+
+    # Get only the last part of the dataset path
+    dataset_clean = Path(args.dataset).name
+
+    for search_limit in search_limits:
+        print("\n======================================")
+        print(f"Running with search limit: {search_limit}")
+
+        for run_number in range(1, args.runs + 1):
+            print(f"\nRun {run_number}/{args.runs}\n")
+
+            experiment_name = (
+                f"search_limit_{model_clean}_{dataset_clean}_limit_"
+                f"{search_limit}_run_{run_number}"
+            )
+
+            print(f"Experiment Name: {experiment_name}")
+
+            run_experiment(
+                dataset_path=args.dataset,
+                experiment_name=experiment_name,
+                search_limit=search_limit,
+            )
+
+            asyncio.run(
+                run_analytics(experiment_name, db_type="postgres", save_to_json=True)
+            )
+
+            cwd = Path.cwd()
+            source = cwd / f"analytics_results_{experiment_name}.json"
+            target = cwd / (
+                f"analytics_results_search_limit_{args.model}_{dataset_clean}_"
+                f"limit_{search_limit}_run_{run_number}.json"
+            )
+
+            source.rename(target)
+
+    print("\nAll consideration set size experiments completed.")
+    return 0
+
+
+if __name__ == "__main__":
+    main()
