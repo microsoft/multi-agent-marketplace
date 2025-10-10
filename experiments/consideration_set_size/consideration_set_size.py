@@ -25,11 +25,6 @@ MODEL_PROVIDER_MAP = {
 }
 
 
-def model_provider_for(model: str) -> str:
-    """Return the default provider for a given model name."""
-    return MODEL_PROVIDER_MAP.get(model, "openai")
-
-
 def parse_search_limits(raw: str) -> list[int]:
     """Parse search limits supplied either as a string or a sequence of strings."""
     print(raw)
@@ -94,7 +89,7 @@ async def main(argv: Sequence[str] | None = None) -> int:
 
     model_provider = args.model_provider or os.environ.get("LLM_PROVIDER")
     if args.model is not None:
-        model_provider = args.model_provider or model_provider_for(args.model)
+        model_provider = args.model_provider or MODEL_PROVIDER_MAP.get(args.model)
         os.environ["LLM_MODEL"] = args.model
         os.environ["LLM_PROVIDER"] = model_provider
 
