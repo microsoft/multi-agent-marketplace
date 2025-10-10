@@ -1,0 +1,46 @@
+id: business_0038
+name: Westfield Home Improvement Group
+description: Westfield Home Improvement Group provides comprehensive residential maintenance,
+  repair, and remodeling solutions tailored to homeowners seeking reliability and
+  quality craftsmanship. Our experienced team delivers prompt and professional service
+  across a wide range of interior and exterior home projects.
+rating: 1.0
+progenitor_customer: customer_0013
+menu_features:
+  Radiator Maintenance: 202.44
+  Brick Veneer Installation: 382.36
+  Kitchen Cabinet Realignment: 525.06
+  Deck Waterproofing: 464.56
+  Window Trim Replacement: 273.14
+  Porch Step Replacement: 326.85
+  Kitchen Remodel Consultation: 516.45
+  Stone Pathway Construction: 355.02
+  Custom Cabinet Build: 420.65
+  Garage Door Maintenance: 228.78
+  Heat Pump Inspection: 398.63
+  Garage Shelving Installation: 253.34
+  Flower Bed Redesign: 328.84
+  Shower Tile Regrouting: 261.91
+  Deck Restoration: 488.66
+  Exterior Painting: 305.2
+  Leak Detection: 239.21
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: true
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.9

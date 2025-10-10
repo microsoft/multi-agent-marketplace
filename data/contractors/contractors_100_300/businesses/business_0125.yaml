@@ -1,0 +1,46 @@
+id: business_0125
+name: Riverside Project Services
+description: Riverside Project Services offers comprehensive home improvement and
+  maintenance solutions for residential clients. Our team delivers reliable workmanship
+  for interior and exterior projects, focusing on quality and customer satisfaction
+  throughout every phase of your home's upkeep and upgrades.
+rating: 1.0
+progenitor_customer: customer_0042
+menu_features:
+  Garage Shelving Assembly: 194.58
+  Power Washing: 225.33
+  Closet Organization System: 445.49
+  Attic Insulation: 392.18
+  Garden Bed Construction: 194.88
+  Radiator Servicing: 347.95
+  Cabinet Installation: 193.78
+  Custom Cabinet Build: 443.02
+  Appliance Hookup: 252.55
+  Patio Paver Setup: 343.04
+  Furnace Tune-Up: 445.47
+  Roof Leak Assessment: 351.82
+  Porch Resurfacing: 376.23
+  Patio Repair: 429.31
+  Fireplace Mantel Installation: 395.86
+  Sprinkler Head Repair: 193.07
+  Closet Cabinet Assembly: 369.52
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.68

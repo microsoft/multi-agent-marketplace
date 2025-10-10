@@ -1,0 +1,41 @@
+id: business_0120
+name: Masonwood Contracting
+description: Masonwood Contracting provides reliable residential improvement and exterior
+  enhancement services for homeowners seeking quality workmanship. Our team specializes
+  in a variety of home upgrades and property repair solutions tailored to your needs.
+rating: 1.0
+progenitor_customer: customer_0040
+menu_features:
+  Asphalt Crack Sealing: 388.73
+  Cabinet Installation: 144.04
+  Basement Door Framing: 352.77
+  Deck Railing Installation: 403.74
+  Garage Floor Coating: 285.56
+  Mulch Delivery: 238.57
+  Custom Cabinet Modification: 516.98
+  Patio Repair: 308.76
+  Retaining Wall Installation: 433.79
+  Custom Cabinet Assembly: 396.7
+  Kitchen Plumbing Repair: 279.45
+  Walkway Bricklaying: 478.32
+  Mulch Refresh: 257.89
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.74

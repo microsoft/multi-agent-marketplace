@@ -1,0 +1,45 @@
+id: business_0058
+name: Eastview Residential Contractors
+description: Eastview Residential Contractors provides reliable home improvement and
+  maintenance services for homeowners seeking quality workmanship. Our team offers
+  a broad range of solutions for interior and exterior projects to keep your property
+  in top condition.
+rating: 1.0
+progenitor_customer: customer_0020
+menu_features:
+  Bathroom Floor Tiling: 394.58
+  Deck Repair: 299.16
+  Porch Railing Repair: 281.67
+  Stone Fireplace Facade: 509.05
+  Basement Wall Sealing: 586.25
+  Garage Organization: 356.21
+  Brick Veneer Installation: 498.32
+  Bathroom Vanity Upgrade: 238.55
+  Light Switch Replacement: 272.68
+  Kitchen Sink Plumbing: 233.05
+  Bathtub Caulking: 242.6
+  Water Heater Flush: 480.52
+  Sprinkler System Winterization: 461.06
+  Central Air Conditioner Tune-Up: 485.76
+  Drain Cleaning: 162.58
+  Security Camera Wiring: 224.55
+amenity_features:
+  eco friendly materials: true
+  multilingual staff: false
+  warranty: true
+  live job updates: false
+  responsiveness: true
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.77

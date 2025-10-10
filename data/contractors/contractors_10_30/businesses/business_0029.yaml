@@ -1,0 +1,40 @@
+id: business_0029
+name: HomeCraft Service Group
+description: HomeCraft Service Group provides reliable residential improvement and
+  maintenance solutions for homeowners seeking quality workmanship. Our team is dedicated
+  to delivering prompt, professional service for a wide range of interior and exterior
+  needs.
+rating: 1.0
+progenitor_customer: customer_0010
+menu_features:
+  Hedge Trimming: 107.04
+  Deck Board Replacement: 443.62
+  Brick Wall Repointing: 384.09
+  Carpet Replacement: 337.06
+  Water Heater Upgrade: 359.35
+  Sod Placement: 333.11
+  Carpet Stretching: 391.65
+  Shingle Repair: 423.48
+  Patio Paver Leveling: 311.98
+  Washer Hookup Installation: 420.2
+  Central Air Conditioning Inspection: 400.91
+amenity_features:
+  multilingual staff: false
+  warranty: true
+  live job updates: false
+  accepts digital payments: true
+  licensed: false
+  appointment only: false
+  business accepts credit cards: false
+  same day service: false
+  flexible hours: false
+  free estimate: true
+  background checked crew: false
+  insured: false
+  weekend availability: true
+  eco friendly materials: false
+  responsiveness: false
+  post install inspection: false
+  free followup visit: false
+  after hours service: true
+min_price_factor: 0.9

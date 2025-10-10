@@ -1,0 +1,12 @@
+id: customer_0042
+name: Amy Walker
+request: I'm looking for a contractor who can provide Sprinkler Head Repair (1) and
+  Fireplace Mantel Installation (1), and has multilingual staff available. Please
+  help me find a contractor who meets all these requirements. I am ready to hire and
+  confirm the scheduling of these services once the contractor is identified. Thank
+  you for your assistance.
+menu_features:
+  Sprinkler Head Repair: 224.5
+  Fireplace Mantel Installation: 453.0
+amenity_features:
+- multilingual staff

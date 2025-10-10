@@ -1,0 +1,45 @@
+id: business_0017
+name: Hillside Home Contractors
+description: Hillside Home Contractors provides reliable maintenance, repair, and
+  improvement services for residential properties, serving homeowners seeking quality
+  solutions for exterior and interior updates. Our skilled team delivers professional
+  results across a range of home and yard projects.
+rating: 1.0
+progenitor_customer: customer_0006
+menu_features:
+  Toilet Repair: 201.06
+  Brick Pathway Installation: 415.32
+  Brick Wall Repointing: 411.16
+  Small Wall Demo: 298.52
+  Roof Leak Fix: 239.24
+  Brick Patio Sealing: 227.45
+  Smoke Detector Installation: 99.54
+  Brick Chimney Pointing: 335.4
+  Garden Bed Edging: 210.55
+  Asphalt Patching: 506.86
+  Sodding Service: 354.76
+  Lawn Sodding: 171.23
+  Shrub Trimming: 297.88
+  Leak Detection: 217.33
+  Chimney Inspection: 267.05
+  Laminate Floor Installation: 336.49
+amenity_features:
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  accepts digital payments: false
+  licensed: false
+  appointment only: true
+  business accepts credit cards: false
+  same day service: true
+  flexible hours: true
+  free estimate: false
+  background checked crew: false
+  insured: false
+  weekend availability: true
+  eco friendly materials: true
+  responsiveness: false
+  post install inspection: true
+  free followup visit: false
+  after hours service: false
+min_price_factor: 0.65

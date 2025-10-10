@@ -1,0 +1,41 @@
+id: business_0030
+name: Trellis Residential Services
+description: Trellis Residential Services provides reliable home improvement and general
+  repair solutions for local homeowners, focusing on both interior updates and routine
+  maintenance. Our team is committed to delivering efficient service and quality workmanship
+  for a range of everyday household needs.
+rating: 1.0
+progenitor_customer: customer_0010
+menu_features:
+  Small Room Remodeling: 390.2
+  Dryer Vent Cleaning: 295.5
+  Whole House Re-caulking: 394.34
+  Closet Organizer Installation: 475.31
+  Outlet Wiring: 227.06
+  Light Switch Repair: 186.48
+  Drain Pipe Replacement: 222.5
+  Hedge Trimming: 118.8
+  Kitchen Backsplash: 405.2
+  Furnace Service: 413.53
+  Home Network Setup: 249.42
+  Vanity Setup: 214.11
+amenity_features:
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  accepts digital payments: false
+  licensed: true
+  appointment only: false
+  business accepts credit cards: true
+  same day service: true
+  flexible hours: false
+  free estimate: false
+  background checked crew: false
+  insured: false
+  weekend availability: false
+  eco friendly materials: false
+  responsiveness: false
+  post install inspection: false
+  free followup visit: false
+  after hours service: false
+min_price_factor: 0.83

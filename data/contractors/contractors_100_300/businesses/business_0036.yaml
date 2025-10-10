@@ -1,0 +1,44 @@
+id: business_0036
+name: Stonehaven Residential Services
+description: Stonehaven Residential Services provides reliable home maintenance, interior
+  upgrades, and exterior care for homeowners seeking professional, quality-focused
+  solutions. Our team specializes in a broad range of residential improvement and
+  repair services tailored to meet neighborhood needs.
+rating: 1.0
+progenitor_customer: customer_0012
+menu_features:
+  Masonry Brick Restoration: 520.06
+  Roof Leak Seal: 155.19
+  Central Air Conditioning Servicing: 404.43
+  Ceramic Tile Flooring: 243.19
+  Air Conditioner Service: 419.58
+  Tree Removal: 515.47
+  Faucet Replacement: 119.46
+  Hydronic Radiator Service: 365.76
+  Garage Door Adjustment: 230.66
+  Door Weatherstripping: 109.8
+  Closet Shelving Installation: 376.92
+  Deck Refinishing: 323.89
+  Sprinkler System Installation: 405.29
+  Basic Lawn Care: 101.84
+  Kitchen Faucet Upgrade: 219.35
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: true
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.84

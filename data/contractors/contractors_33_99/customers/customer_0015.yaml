@@ -1,0 +1,13 @@
+id: customer_0015
+name: Ethan Lee
+request: 'I am looking to hire a contractor who can provide the following services:
+  Sod Lawn Installation (1), Hardwood Refinishing (1), and Fence Gate Repair (1).
+  It is essential that the contractor has multilingual staff. Once such a contractor
+  is found, I am ready to move forward with scheduling and confirming these services.
+  Please assist me in finding a suitable professional to begin the work promptly.'
+menu_features:
+  Sod Lawn Installation: 501.99
+  Hardwood Refinishing: 395.25
+  Fence Gate Repair: 345.95
+amenity_features:
+- multilingual staff

@@ -1,0 +1,40 @@
+id: business_0062
+name: Residential Solutions Group
+description: Residential Solutions Group provides reliable home improvement and maintenance
+  services for homeowners seeking quality workmanship and personalized attention.
+  Our team delivers a variety of solutions for interior upgrades and essential property
+  care.
+rating: 1.0
+progenitor_customer: customer_0021
+menu_features:
+  Exterior Window Cleaning: 120.35
+  Custom Closet Shelving: 474.19
+  Sprinkler System Inspection: 339.58
+  Sump Pump Installation: 527.3
+  Small Room Remodeling: 328.35
+  Air Conditioner Service: 470.84
+  Sump Pump Service: 371.5
+  Hardwood Floor Refinish: 172.54
+  Concrete Repair: 192.45
+  Basic Closet Shelving: 198.08
+  Full-Bath Remodeling: 395.23
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: true
+  live job updates: false
+  responsiveness: true
+  background checked crew: false
+  licensed: false
+  same day service: true
+  weekend availability: true
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: true
+  appointment only: true
+min_price_factor: 0.63

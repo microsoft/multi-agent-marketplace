@@ -1,0 +1,42 @@
+id: business_0172
+name: Horizon Crest Contracting
+description: Horizon Crest Contracting provides residential improvement and repair
+  services for homeowners seeking reliable solutions for interior upgrades and exterior
+  maintenance. Our team is committed to quality workmanship designed to enhance the
+  value and appearance of your home.
+rating: 1.0
+progenitor_customer: customer_0058
+menu_features:
+  Pressure Washing: 166.52
+  Fireplace Cleaning: 227.11
+  Concrete Pathway Repair: 390.97
+  Stone Pathway Repair: 151.98
+  Bathroom Vanity Cabinet Install: 289.1
+  Brick Path Restoration: 402.76
+  Brick Chimney Pointing: 348.42
+  Kitchen Sink Plumbing: 254.61
+  Staircase Refinishing: 282.27
+  Fireplace Repointing: 430.6
+  Small Closet Remodeling: 374.09
+  Patio Paver Resanding: 294.63
+  Engineered Wood Floor Installation: 336.13
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.84

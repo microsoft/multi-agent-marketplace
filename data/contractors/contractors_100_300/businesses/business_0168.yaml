@@ -1,0 +1,43 @@
+id: business_0168
+name: Valiant Residential Services
+description: Valiant Residential Services provides dependable home improvement, maintenance,
+  and repair solutions for homeowners seeking quality workmanship and prompt service.
+  Our team is dedicated to enhancing property value and comfort through expert attention
+  to every project.
+rating: 1.0
+progenitor_customer: customer_0056
+menu_features:
+  Landscaping Service: 146.45
+  Heating System Tune-Up: 307.97
+  Garage Shelving Assembly: 210.8
+  Step Repair: 190.45
+  Water Heater Replacement: 359.37
+  Laminate Floor Installation: 467.87
+  Security Camera Wiring: 253.32
+  Shower Base Replacement: 373.04
+  Heat Pump Service: 368.12
+  Porch Resurfacing: 375.76
+  Asphalt Crack Sealing: 327.98
+  Subpanel Upgrade: 370.52
+  A/C Blower Motor Replacement: 325.43
+  Subfloor Reinforcement: 320.76
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: true
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.89

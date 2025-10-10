@@ -1,0 +1,46 @@
+id: business_0157
+name: Platinum Residential Services
+description: Platinum Residential Services provides professional home improvement
+  and maintenance for homeowners seeking reliable workmanship and timely project completion.
+  We specialize in a range of interior and exterior repairs and upgrades designed
+  to enhance residential properties.
+rating: 1.0
+progenitor_customer: customer_0053
+menu_features:
+  Roof Repair: 479.54
+  Door Replacement: 304.16
+  Patio Paver Resetting: 548.96
+  Patio Paver Setup: 408.93
+  Attic Ladder Installation: 279.16
+  Stone Fireplace Repair: 383.48
+  Exterior Door Weatherproofing: 215.68
+  Cabinet Repair: 126.38
+  Concrete Patio Staining: 303.13
+  Custom Cabinet Modification: 593.27
+  Room Painting: 313.23
+  Smoke Detector Installation: 89.98
+  Light Switch Upgrade: 260.72
+  Tile Backsplash: 413.03
+  Air Conditioning Tune-Up: 237.32
+  Garage Door Motor Replacement: 285.03
+  Kitchen Faucet Install: 365.76
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.93

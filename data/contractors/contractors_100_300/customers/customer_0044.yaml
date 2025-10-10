@@ -1,0 +1,11 @@
+id: customer_0044
+name: Noah Nguyen
+request: I am looking for a contractor who can provide Electrical Switch Installation
+  (1) and Basement Leak Inspection (1), and also offers a warranty. If you meet these
+  requirements, I would like to proceed with hiring your services and schedule the
+  work accordingly. Please let me know your availability so we can confirm the appointment.
+menu_features:
+  Electrical Switch Installation: 244.49
+  Basement Leak Inspection: 284.99
+amenity_features:
+- warranty

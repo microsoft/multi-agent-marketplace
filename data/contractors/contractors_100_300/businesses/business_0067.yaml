@@ -1,0 +1,44 @@
+id: business_0067
+name: Stonebrook Contracting Group
+description: Stonebrook Contracting Group provides residential property owners with
+  reliable solutions for home repair, improvement, and maintenance projects. Our team
+  is dedicated to delivering quality craftsmanship and attentive service across a
+  diverse range of interior and exterior needs.
+rating: 1.0
+progenitor_customer: customer_0023
+menu_features:
+  Water Heater Repair: 418.32
+  Bathroom Sink Plumbing: 203.76
+  Garage Door Motor Replacement: 378.82
+  Walkway Paver Resetting: 388.19
+  Faucet Installation: 223.92
+  Basic Tile Flooring Install: 209.7
+  Bush Trimming: 160.1
+  Deck Railing Installation: 378.12
+  Driveway Resurfacing: 332.02
+  Subpanel Installation: 478.22
+  Baseboard Installation: 202.81
+  Garden Maintenance: 170.0
+  Septic Tank Pumping: 444.48
+  Bathroom Vanity Cabinet Install: 439.56
+  Custom Cabinet Fabrication: 389.07
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: true
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.73

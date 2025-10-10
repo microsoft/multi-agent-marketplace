@@ -1,0 +1,43 @@
+id: business_0164
+name: Columbia Residential Services
+description: Columbia Residential Services provides homeowners with reliable solutions
+  for general repairs, home improvement, and outdoor projects. Our team specializes
+  in both property maintenance and enhancement, offering professional service for
+  a range of residential needs.
+rating: 1.0
+progenitor_customer: customer_0055
+menu_features:
+  Garbage Disposal Repair: 246.93
+  Tree Pruning: 308.88
+  Dryer Vent Cleaning: 222.56
+  Foundation Crack Sealing: 291.45
+  Mulch Delivery: 232.34
+  Ceiling Fan Installation: 298.42
+  Brick Wall Repointing: 476.83
+  Concrete Step Pouring: 435.75
+  Ceiling Light Installation: 188.63
+  Custom Bookcase Build: 401.75
+  Garden Bed Installation: 148.64
+  Stone Patio Installation: 529.78
+  Landscape Lighting Installation: 435.73
+  Slate Patio Construction: 515.03
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: true
+  live job updates: false
+  licensed: false
+  free estimate: true
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.85

@@ -1,0 +1,40 @@
+id: business_0199
+name: Sterling Home Projects
+description: Sterling Home Projects provides homeowners with reliable solutions for
+  maintenance, repair, and improvements, offering expertise in both indoor and outdoor
+  residential projects. We focus on delivering professional service for a wide range
+  of home upgrade and upkeep needs.
+rating: 1.0
+progenitor_customer: customer_0067
+menu_features:
+  Mulch Laying: 243.91
+  Window Frame Restoration: 491.11
+  Retaining Wall Masonry: 510.21
+  Concrete Repair: 174.77
+  Mulch Delivery: 248.57
+  Walkway Concrete Pour: 500.96
+  Garage Door Weatherproofing: 445.85
+  Porch Resurfacing: 367.72
+  Brick Step Rebuilding: 545.1
+  Ceramic Tile Floor Install: 446.72
+  Wall Socket Wiring: 258.3
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: true
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.86

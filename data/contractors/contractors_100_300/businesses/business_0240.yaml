@@ -1,0 +1,43 @@
+id: business_0240
+name: Claremont Home Repair Services
+description: Serving homeowners with reliable maintenance, repair, and improvement
+  solutions, Claremont Home Repair Services delivers professional workmanship for
+  a wide range of residential needs. Our team focuses on quality and efficiency to
+  help keep your home in excellent condition.
+rating: 1.0
+progenitor_customer: customer_0080
+menu_features:
+  Fireplace Tuckpointing: 327.81
+  Stone Patio Installation: 476.93
+  Window Caulking: 152.28
+  Foundation Crack Repair: 188.25
+  Patio Paver Cleaning: 197.03
+  Light Fixture Installation: 173.7
+  Roof Repair: 441.09
+  Leaky Pipe Repair: 178.19
+  Basement Water Proofing: 500.62
+  Garbage Disposal Repair: 278.93
+  Garage Door Servicing: 572.07
+  Ceramic Tile Floor Install: 372.28
+  Concrete Crack Repair: 382.18
+  Basement Wall Sealing: 504.08
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.75

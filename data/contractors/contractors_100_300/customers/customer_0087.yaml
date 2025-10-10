@@ -1,0 +1,12 @@
+id: customer_0087
+name: Daniel Moore
+request: 'Please help me find a contractor who can provide the following services:
+  Tree Trimming (1), Lawn Irrigation Startup (1), and Smoke Detector Setup (1). It
+  is essential that they offer same day service. Once a qualified contractor is identified,
+  I would like to hire them and proceed to schedule and confirm the work as described.'
+menu_features:
+  Tree Trimming: 180.99
+  Lawn Irrigation Startup: 280.99
+  Smoke Detector Setup: 282.99
+amenity_features:
+- same day service

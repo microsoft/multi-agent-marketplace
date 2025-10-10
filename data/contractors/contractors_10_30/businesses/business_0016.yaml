@@ -1,0 +1,39 @@
+id: business_0016
+name: Silvercrest Home Repair
+description: Silvercrest Home Repair provides comprehensive residential maintenance
+  and improvement services for local homeowners. Our skilled team delivers reliable,
+  quality solutions for interior projects and exterior upkeep.
+rating: 1.0
+progenitor_customer: customer_0006
+menu_features:
+  Outlet Repair: 233.97
+  Masonry Brick Restoration: 543.9
+  Sprinkler System Winterization: 503.71
+  Hardwood Floor Resurfacing: 546.18
+  Landscaping Trimming: 260.07
+  Sprinkler System Setup: 600.67
+  Built-in Shelving Installation: 418.62
+  Laminate Floor Installation: 378.19
+  Bathroom Vanity Cabinet Install: 372.96
+  Bathtub Re-glazing: 458.57
+  Chimney Sweep: 380.85
+amenity_features:
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  accepts digital payments: true
+  licensed: false
+  appointment only: true
+  business accepts credit cards: false
+  same day service: false
+  flexible hours: true
+  free estimate: false
+  background checked crew: false
+  insured: false
+  weekend availability: true
+  eco friendly materials: false
+  responsiveness: false
+  post install inspection: true
+  free followup visit: false
+  after hours service: false
+min_price_factor: 0.9

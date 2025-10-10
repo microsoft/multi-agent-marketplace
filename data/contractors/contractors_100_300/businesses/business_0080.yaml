@@ -1,0 +1,43 @@
+id: business_0080
+name: Stonewall Residential Improvements
+description: Stonewall Residential Improvements provides reliable home maintenance
+  and upgrade services for homeowners seeking quality workmanship and attention to
+  detail. We specialize in interior and exterior enhancements, delivering professional
+  results to help you upkeep and improve your property.
+rating: 1.0
+progenitor_customer: customer_0027
+menu_features:
+  Crown Molding Installation: 421.66
+  Replace Heating Thermostat: 435.27
+  Cabinet Hardware Upgrade: 447.29
+  Foundation Crack Sealing: 346.34
+  Light Switch Replacement: 290.44
+  Heat Pump Maintenance: 339.58
+  Central Air Conditioning Maintenance: 347.82
+  Lighting Fixture Upgrade: 272.34
+  Central Air Conditioner Tune-Up: 478.93
+  Cabinet Refacing: 497.48
+  Brick Patio Replacement: 486.24
+  Brick Step Repointing: 414.77
+  Ceiling Fan Installation: 256.86
+  Bathtub Recaulking: 291.72
+amenity_features:
+  flexible hours: true
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.86

@@ -1,0 +1,43 @@
+id: business_0134
+name: Union Heights Contracting
+description: Union Heights Contracting provides reliable residential repair and improvement
+  services for homeowners seeking quality results. Our experienced team covers a wide
+  range of general home maintenance and upgrades with a focus on professional workmanship
+  and customer service.
+rating: 1.0
+progenitor_customer: customer_0045
+menu_features:
+  Water Heater Upgrade: 352.77
+  Replace Electrical Outlet: 229.88
+  Basement Water Proofing: 475.93
+  Tile Grout Restoration: 216.59
+  Tile Grouting: 138.45
+  Drywall Hole Repair: 275.12
+  Fence Post Setting: 350.02
+  Granite Countertop Fabrication: 581.1
+  Basic Electrical Troubleshooting: 263.21
+  Water Heater Setup: 487.5
+  Chimney Sweep: 487.23
+  Chimney Flashing Repair: 449.57
+  Refrigerator Water Line Install: 187.19
+  Door Frame Repair: 270.42
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: true
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.86

@@ -1,0 +1,43 @@
+id: business_0012
+name: Eastgate Residential Contractors
+description: Eastgate Residential Contractors provides reliable home improvement and
+  maintenance services for local homeowners. Our team delivers professional solutions
+  for interior upgrades, exterior restoration, and essential systems care to enhance
+  your property's value and functionality.
+rating: 1.0
+progenitor_customer: customer_0004
+menu_features:
+  Air Conditioner Inspection: 516.44
+  Security Camera Wiring: 249.06
+  Heat Pump Service: 459.8
+  Deck Restoration: 562.3
+  Thermostat Installation: 159.23
+  Circuit Breaker Panel Update: 274.98
+  Walkway Bricklaying: 440.37
+  Brick Pathway Installation: 458.01
+  Custom Shelf Assembly: 356.83
+  Cabinet Installation: 196.09
+  Full Exterior House Painting: 516.19
+  Sump Pump Service: 377.91
+  Driveway Resurfacing: 276.62
+  Furnace Inspection: 390.76
+amenity_features:
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  accepts digital payments: false
+  licensed: false
+  appointment only: false
+  business accepts credit cards: false
+  same day service: false
+  flexible hours: false
+  free estimate: false
+  background checked crew: false
+  insured: true
+  weekend availability: false
+  eco friendly materials: false
+  responsiveness: true
+  post install inspection: false
+  free followup visit: false
+  after hours service: false
+min_price_factor: 0.81

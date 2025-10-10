@@ -1,0 +1,13 @@
+id: customer_0068
+name: Christopher Walker
+request: I'm looking for a contractor who can provide Basement Remodeling (1), Sprinkler
+  System Start-Up (1), and Stone Patio Laying (1). The contractor must offer a warranty
+  and have weekend availability. Once you find a contractor meeting all of these requirements,
+  please proceed to engage them so we can schedule and confirm the work.
+menu_features:
+  Basement Remodeling: 480.5
+  Sprinkler System Start-Up: 424.95
+  Stone Patio Laying: 490.37
+amenity_features:
+- warranty
+- weekend availability

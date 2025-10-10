@@ -1,0 +1,44 @@
+id: business_0015
+name: Riverbend Home Services
+description: Riverbend Home Services provides reliable contractor support for residential
+  customers, offering skilled solutions in maintenance, repairs, and small-scale improvements.
+  Our team is dedicated to enhancing home functionality and curb appeal with quality
+  workmanship.
+rating: 1.0
+progenitor_customer: customer_0005
+menu_features:
+  Light Switch Replacement: 199.67
+  Garage Door Alignment: 304.08
+  Stone Walkway Paving: 491.42
+  Kitchen Sink Plumbing: 304.23
+  Walkway Paver Resetting: 369.52
+  Bush Trimming: 147.66
+  Basement Wall Sealing: 497.46
+  Concrete Patio Staining: 293.55
+  Ceiling Light Installation: 196.99
+  Garage Door Weatherproofing: 384.52
+  Heat Pump Service: 367.97
+  Cedar Fence Building: 598.29
+  Heat Pump Inspection: 396.01
+  Vinyl Plank Flooring: 485.62
+  Built-In Bookshelf Construction: 510.17
+amenity_features:
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  accepts digital payments: false
+  licensed: false
+  appointment only: true
+  business accepts credit cards: false
+  same day service: false
+  flexible hours: false
+  free estimate: false
+  background checked crew: false
+  insured: false
+  weekend availability: false
+  eco friendly materials: false
+  responsiveness: false
+  post install inspection: true
+  free followup visit: true
+  after hours service: true
+min_price_factor: 0.69

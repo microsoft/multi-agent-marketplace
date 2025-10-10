@@ -1,0 +1,45 @@
+id: business_0082
+name: Riverstone Home Maintenance
+description: Riverstone Home Maintenance provides reliable residential improvement
+  and upkeep services for homeowners seeking quality workmanship and timely solutions.
+  Our team specializes in both interior and exterior projects to help maintain and
+  enhance your property.
+rating: 1.0
+progenitor_customer: customer_0028
+menu_features:
+  Lawn Mowing: 213.22
+  Cabinet Handle Replacement: 375.58
+  Basement Stair Carpeting: 307.84
+  Toilet Replacement: 129.84
+  Brick Repair: 178.71
+  Bush Trimming: 120.95
+  Garage Door Weatherproofing: 444.12
+  Furnace Maintenance: 284.99
+  Mailbox Installation: 125.32
+  Basement Remodeling: 497.56
+  Sprinkler System Start-Up: 450.06
+  Brick Step Repointing: 428.06
+  Shingle Roof Cleaning: 366.55
+  Kitchen Cabinet Realignment: 436.69
+  Drain Unclogging: 115.08
+  Exterior Trim Repair: 505.74
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: true
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.66

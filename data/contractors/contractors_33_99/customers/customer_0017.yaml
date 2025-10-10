@@ -1,0 +1,11 @@
+id: customer_0017
+name: Oliver Nguyen
+request: Please help me find a contractor who can provide Walkway Resurfacing (1)
+  and Carpet Installation (1), and is known for responsiveness. I am ready to hire
+  and schedule these services as soon as a suitable contractor is identified. Let
+  me know as soon as you can confirm availability.
+menu_features:
+  Walkway Resurfacing: 454.0
+  Carpet Installation: 324.95
+amenity_features:
+- responsiveness

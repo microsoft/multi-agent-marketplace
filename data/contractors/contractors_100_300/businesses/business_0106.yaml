@@ -1,0 +1,44 @@
+id: business_0106
+name: Northfield Residential Improvements
+description: Northfield Residential Improvements provides comprehensive repair and
+  upgrade services for local homeowners, specializing in interior updates, essential
+  home maintenance, and custom additions. Our team is committed to delivering reliable,
+  quality work for a wide range of residential improvement needs.
+rating: 1.0
+progenitor_customer: customer_0036
+menu_features:
+  Porch Railing Installation: 422.02
+  Small Closet Remodeling: 358.58
+  Cabinet Repair: 142.14
+  Furnace Service: 514.79
+  Garage Door Weatherproofing: 491.66
+  Granite Countertop Cutting: 355.91
+  Electrical Panel Update: 517.73
+  Garage Door Opener Repair: 406.98
+  Foundation Crack Repair: 221.69
+  Wall Grouting: 181.69
+  Air Conditioner Servicing: 456.17
+  Garage Shelving Installation: 224.28
+  Garden Bed Building: 354.79
+  Door Hardware Replacement: 297.29
+  Shower Caulking: 282.63
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: true
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.87

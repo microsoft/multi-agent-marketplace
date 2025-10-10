@@ -1,0 +1,42 @@
+id: business_0257
+name: Cardinal Home Services
+description: Cardinal Home Services provides reliable repair and improvement solutions
+  for local homeowners, specializing in essential interior and exterior maintenance.
+  We deliver prompt, quality service for a range of residential needs.
+rating: 1.0
+progenitor_customer: customer_0086
+menu_features:
+  Hardwood Floor Repair: 286.88
+  Front Door Lock Change: 191.39
+  A/C Blower Motor Replacement: 370.98
+  Wall Socket Wiring: 244.69
+  Radiator Servicing: 502.19
+  Electric Outlet Update: 219.54
+  Concrete Pathway Repair: 284.96
+  Roof Inspection: 298.73
+  Water Heater Replacement: 434.38
+  Central Air Conditioning Inspection: 428.35
+  Cabinet Hardware Upgrade: 521.48
+  Custom Shelf Assembly: 364.01
+  Custom Shelf Mounting: 252.89
+  Small Patio Paving: 302.99
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: true
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.92

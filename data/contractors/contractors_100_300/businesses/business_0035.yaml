@@ -1,0 +1,40 @@
+id: business_0035
+name: Ironwood Home Solutions
+description: Ironwood Home Solutions provides dependable residential repair, maintenance,
+  and improvement services for local homeowners. Our team is dedicated to delivering
+  quality workmanship across a wide range of interior and exterior projects.
+rating: 1.0
+progenitor_customer: customer_0012
+menu_features:
+  Sprinkler System Winterization: 435.08
+  Pathway Paver Installation: 204.96
+  Roof Leak Seal: 141.31
+  Mulch Laying: 230.23
+  AC System Inspection: 390.21
+  Fireplace Refurbishing: 381.58
+  Tree Removal: 422.08
+  Patio Paver Resanding: 358.14
+  Vanity Sink Plumbing: 180.44
+  Granite Countertop Installation: 465.43
+  Circuit Breaker Upgrade: 232.77
+  Ceiling Patch Repair: 234.07
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: true
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: true
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.95

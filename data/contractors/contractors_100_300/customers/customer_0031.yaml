@@ -1,0 +1,10 @@
+id: customer_0031
+name: Zoe Kim
+request: 'I''m looking to hire a contractor who is licensed and can provide Flooring
+  Installation (quantity: 1). Once a qualified contractor is identified, I would like
+  to proceed with hiring them and scheduling the work as specified. Please assist
+  me in finding such a professional so I can confirm the services and timing.'
+menu_features:
+  Flooring Installation: 393.5
+amenity_features:
+- licensed

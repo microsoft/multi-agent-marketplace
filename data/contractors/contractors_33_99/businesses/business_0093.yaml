@@ -1,0 +1,44 @@
+id: business_0093
+name: Clarity Residential Services
+description: Clarity Residential Services provides professional repair, installation,
+  and improvement solutions for homeowners seeking reliable, high-quality work. Our
+  experienced team is dedicated to enhancing comfort, safety, and value across a range
+  of interior and exterior home projects.
+rating: 1.0
+progenitor_customer: customer_0031
+menu_features:
+  Laminate Floor Installation: 393.03
+  Shower Tile Regrouting: 315.77
+  Install New Garage Door Opener: 611.67
+  Baseboard Installation: 174.64
+  Chimney Inspection: 353.08
+  Exterior Painting: 354.5
+  Custom Shelving Installation: 413.24
+  Fireplace Mantel Installation: 480.25
+  Roof Flashing Replacement: 310.17
+  HVAC Spring Tune-Up: 322.28
+  Planting Flower Beds: 311.12
+  HVAC Diagnostics: 490.99
+  Central AC Inspection: 413.76
+  Shower Head Replacement: 244.76
+  Refrigerator Water Line Install: 190.78
+amenity_features:
+  eco friendly materials: true
+  multilingual staff: false
+  warranty: false
+  live job updates: true
+  responsiveness: true
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.81

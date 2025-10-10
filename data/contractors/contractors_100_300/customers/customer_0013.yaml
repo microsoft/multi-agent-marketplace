@@ -1,0 +1,13 @@
+id: customer_0013
+name: Benjamin Jackson
+request: 'I''m looking to hire a contractor who can handle the following services:
+  Deck Restoration (1), Exterior Painting (1), and Shower Tile Regrouting (1). It''s
+  essential that the contractor also offers flexible hours. Once a contractor meeting
+  these requirements is found, I''d like to engage them and arrange for the work to
+  be scheduled as specified. Please assist in finding and confirming such a contractor.'
+menu_features:
+  Deck Restoration: 462.25
+  Exterior Painting: 312.5
+  Shower Tile Regrouting: 366.0
+amenity_features:
+- flexible hours

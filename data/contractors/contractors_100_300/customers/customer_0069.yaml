@@ -1,0 +1,13 @@
+id: customer_0069
+name: Anna Kim
+request: 'I''m looking for a contractor who can provide the following services: Ceiling
+  Fan Mounting (1), Stone Walkway Restoration (1), and Ceiling Light Installation
+  (1). It''s essential that the contractor has multilingual staff. Once you identify
+  a contractor that meets all these requirements, please proceed to arrange for their
+  hire and help me schedule the work. Thank you for assisting with this booking.'
+menu_features:
+  Ceiling Fan Mounting: 314.0
+  Stone Walkway Restoration: 428.0
+  Ceiling Light Installation: 171.25
+amenity_features:
+- multilingual staff

@@ -1,0 +1,43 @@
+id: business_0159
+name: Coreway Residential Services
+description: Coreway Residential Services provides homeowners with reliable solutions
+  for property maintenance, repair, and upgrades. Our experienced team delivers professional
+  service for a wide range of interior and exterior residential projects.
+rating: 1.0
+progenitor_customer: customer_0053
+menu_features:
+  Air Duct Sealing: 285.26
+  Minor Plumbing Repair: 122.7
+  Landscaping Trimming: 258.41
+  Custom Cabinet Fabrication: 578.83
+  Water Heater Repair: 480.5
+  Concrete Pathway Pouring: 348.28
+  Garage Door Motor Replacement: 374.26
+  Chimney Cleaning: 449.06
+  Air Conditioning Tune-Up: 278.09
+  Door Weatherstripping: 130.12
+  Garage Door Inspection: 399.77
+  Outdoor Lighting Installation: 251.77
+  Stone Fireplace Repair: 355.19
+  Concrete Sidewalk Pouring: 547.19
+  Asphalt Driveway Patch: 354.48
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.78

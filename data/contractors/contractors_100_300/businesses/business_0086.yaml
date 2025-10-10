@@ -1,0 +1,45 @@
+id: business_0086
+name: Allied Residential Services
+description: Allied Residential Services provides comprehensive home improvement and
+  repair solutions for homeowners seeking reliable craftsmanship and attentive project
+  management. We specialize in a broad range of interior and exterior upgrades, serving
+  local families with a focus on quality, safety, and value.
+rating: 1.0
+progenitor_customer: customer_0029
+menu_features:
+  Wall Socket Wiring: 249.48
+  Structural Beam Reinforcement: 446.59
+  Gutter Replacement: 452.78
+  Water Heater Replacement: 396.47
+  Custom Closet Shelving: 376.45
+  Garage Remodeling: 548.57
+  Deck Staining: 342.42
+  Door Hardware Installation: 264.4
+  Security Camera Wiring: 196.28
+  Chimney Inspection: 315.33
+  Patio Paver Resetting: 471.93
+  Sprinkler System Activation: 257.39
+  Custom Cabinet Fabrication: 366.55
+  Concrete Walkway: 567.67
+  Shower Base Replacement: 381.78
+  Garbage Disposal Replacement: 327.54
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: false
+  after hours service: true
+  appointment only: true
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.79

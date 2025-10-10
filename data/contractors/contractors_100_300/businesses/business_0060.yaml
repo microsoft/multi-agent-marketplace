@@ -1,0 +1,42 @@
+id: business_0060
+name: Cornerstone Residential Improvements
+description: Cornerstone Residential Improvements provides reliable and professional
+  services for homeowners seeking upgrades, repairs, and general improvements. We
+  deliver quality solutions for interior and exterior home projects with a focus on
+  lasting results and customer satisfaction.
+rating: 1.0
+progenitor_customer: customer_0020
+menu_features:
+  Circuit Breaker Panel Update: 287.13
+  Cabinet Hardware Replacement: 472.04
+  Bush Trimming: 173.05
+  Bathroom Vanity Upgrade: 319.74
+  Fence Repair: 404.82
+  Basement Window Well Cover Installation: 633.03
+  Carpet Laying: 319.62
+  Front Door Painting: 263.15
+  Brick Patio Sealing: 211.49
+  Tile Grout Restoration: 222.71
+  Bathroom Floor Tiling: 411.48
+  Water Heater Setup: 595.58
+  Garage Shelving Installation: 236.16
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: true
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.64

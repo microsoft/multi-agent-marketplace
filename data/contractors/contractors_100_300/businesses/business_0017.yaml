@@ -1,0 +1,45 @@
+id: business_0017
+name: Silverwood Residential Solutions
+description: Silverwood Residential Solutions provides reliable home improvement and
+  repair services for local homeowners, specializing in interior upgrades and exterior
+  enhancements. Dedicated to quality workmanship and prompt service, we help customers
+  maintain and improve their living spaces.
+rating: 1.0
+progenitor_customer: customer_0006
+menu_features:
+  Central AC Inspection: 331.05
+  Washer Hookup Installation: 407.24
+  Custom Closet Assembly: 430.47
+  Light Switch Repair: 211.92
+  Fixture Replacement: 243.63
+  Light Fixture Installation: 189.43
+  Concrete Patio Slab Pour: 484.64
+  Ceiling Fan Setup: 126.33
+  Leak Repair: 187.38
+  Engineered Wood Floor Installation: 329.91
+  Closet Cabinet Assembly: 486.42
+  Small Brick Patio: 137.72
+  Cabinet Installation: 200.79
+  Stone Walkway Installation: 460.91
+  Closet Shelving Installation: 297.53
+  Smoke Detector Upgrade: 259.32
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: true
+  appointment only: true
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.73

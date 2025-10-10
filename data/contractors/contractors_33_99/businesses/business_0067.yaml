@@ -1,0 +1,40 @@
+id: business_0067
+name: Greenford Residential Services
+description: Greenford Residential Services provides reliable interior and exterior
+  improvements for homeowners seeking quality workmanship and efficient solutions.
+  Our team specializes in residential property upgrades and maintenance to enhance
+  comfort, curb appeal, and functionality.
+rating: 1.0
+progenitor_customer: customer_0023
+menu_features:
+  Tree Removal: 387.48
+  Laminate Flooring: 304.47
+  Brick Walkway Installation: 391.88
+  Sod Installation: 346.72
+  Sink Replacement: 140.82
+  Light Fixture Repair: 220.55
+  Thermostat Upgrade: 258.54
+  Exterior Trim Repair: 484.78
+  Mulch Application: 232.22
+  Refrigerant Recharge: 297.73
+  Mulching: 258.02
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: true
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: true
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: true
+  insured: false
+  free followup visit: true
+  accepts digital payments: false
+  business accepts credit cards: true
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.65

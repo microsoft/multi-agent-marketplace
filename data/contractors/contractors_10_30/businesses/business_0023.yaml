@@ -1,0 +1,44 @@
+id: business_0023
+name: Westwood Home Services
+description: Westwood Home Services provides reliable maintenance, improvement, and
+  repair solutions for residential properties. Our team delivers quality workmanship
+  across a wide range of home and yard projects for homeowners seeking professional
+  results.
+rating: 1.0
+progenitor_customer: customer_0008
+menu_features:
+  Fence Repair: 354.28
+  Sink Installation: 241.65
+  AC Maintenance: 516.6
+  Wood Floor Refinishing: 382.16
+  Water Heater Descaling: 433.76
+  Walkway Paver Resetting: 374.18
+  Sprinkler System Startup: 420.0
+  Walkway Stone Laying: 464.47
+  Patio Paver Cleaning: 200.92
+  Window Caulking: 138.81
+  Sod Lawn Installation: 503.26
+  Garage Shelving Installation: 235.55
+  Air Duct Sealing: 305.37
+  Custom Cabinet Build: 550.47
+  Leaky Faucet Fix: 298.83
+amenity_features:
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  accepts digital payments: true
+  licensed: true
+  appointment only: false
+  business accepts credit cards: true
+  same day service: true
+  flexible hours: false
+  free estimate: false
+  background checked crew: true
+  insured: false
+  weekend availability: false
+  eco friendly materials: false
+  responsiveness: false
+  post install inspection: false
+  free followup visit: true
+  after hours service: false
+min_price_factor: 0.85

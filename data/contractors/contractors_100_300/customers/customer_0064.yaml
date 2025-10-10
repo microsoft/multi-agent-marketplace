@@ -1,0 +1,9 @@
+id: customer_0064
+name: Dario Rossi
+request: I'm looking to hire a contractor who can provide Grout Cleaning (1) and offers
+  same day service. Please help me find a qualified contractor who meets these requirements
+  so I can proceed to schedule and confirm the work as soon as possible. Thank you!
+menu_features:
+  Grout Cleaning: 277.0
+amenity_features:
+- same day service

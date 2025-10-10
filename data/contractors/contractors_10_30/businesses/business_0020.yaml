@@ -1,0 +1,42 @@
+id: business_0020
+name: Metro Residential Contractors
+description: Metro Residential Contractors delivers quality home improvement and maintenance
+  services for homeowners seeking reliable solutions and craftsmanship. Our team handles
+  a range of interior, exterior, and mechanical projects to keep your property in
+  top condition.
+rating: 1.0
+progenitor_customer: customer_0007
+menu_features:
+  Air Conditioner Inspection: 508.24
+  Garbage Disposal Installation: 229.34
+  Room Painting: 181.41
+  Kitchen Sink Plumbing: 273.73
+  Brick Step Rebuilding: 578.08
+  Garage Floor Epoxy: 380.81
+  Structural Beam Reinforcement: 333.88
+  Built-In Shelf Construction: 484.51
+  HVAC Diagnostics: 513.25
+  Landscape Lighting Installation: 519.32
+  Lawn Fertilization: 142.51
+  Brick Path Repair: 173.28
+  Landscaping Planting: 358.39
+amenity_features:
+  multilingual staff: true
+  warranty: false
+  live job updates: false
+  accepts digital payments: false
+  licensed: true
+  appointment only: false
+  business accepts credit cards: false
+  same day service: false
+  flexible hours: true
+  free estimate: false
+  background checked crew: false
+  insured: true
+  weekend availability: false
+  eco friendly materials: true
+  responsiveness: true
+  post install inspection: false
+  free followup visit: false
+  after hours service: false
+min_price_factor: 0.68

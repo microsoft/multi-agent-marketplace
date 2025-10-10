@@ -1,0 +1,45 @@
+id: business_0007
+name: Cedar Valley Home Renovations
+description: Cedar Valley Home Renovations provides professional residential improvement
+  and maintenance services. We help homeowners enhance, restore, and maintain their
+  properties with reliable craftsmanship and attention to detail.
+rating: 1.0
+progenitor_customer: customer_0003
+menu_features:
+  Water Heater Servicing: 379.28
+  Stucco Wall Restoration: 372.11
+  Walkway Bricklaying: 569.52
+  Granite Countertop Cutting: 370.74
+  Ceramic Tile Setting: 343.93
+  Concrete Patio Cleaning: 273.69
+  Tile Backsplash: 461.45
+  Patio Paver Cleaning: 207.88
+  Custom Cabinet Hanging: 438.41
+  Hardwood Refinishing: 422.68
+  Door Hardware Replacement: 295.2
+  Lawn Sprinkler Repair: 295.47
+  Sink Installation: 236.19
+  Chandelier Installation: 397.55
+  Custom Cabinet Fabrication: 447.41
+  Garage Door Spring Repair: 361.89
+  Chimney Cleaning: 583.3
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.83

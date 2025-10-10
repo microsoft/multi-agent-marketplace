@@ -1,0 +1,40 @@
+id: business_0300
+name: Redfern Ridge Home Services
+description: Redfern Ridge Home Services provides reliable interior and exterior improvements
+  for residential properties. We focus on quality workmanship and timely service for
+  homeowners seeking professional upgrades and maintenance.
+rating: 1.0
+progenitor_customer: customer_0100
+menu_features:
+  Kitchen Cabinet Realignment: 385.77
+  Accent Wall Painting: 166.39
+  Patio Paver Installation: 450.64
+  Kitchen Cabinet Repainting: 391.23
+  Window Replacement: 394.78
+  Wall Grouting: 169.2
+  Garden Bed Edging: 160.85
+  Concrete Crack Sealing: 288.08
+  Exterior Door Mounting: 253.7
+  Gravel Driveway Refresh: 347.16
+  Concrete Patio Cleaning: 235.73
+  Sprinkler System Activation: 184.4
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: true
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.67

@@ -1,0 +1,45 @@
+id: business_0021
+name: Southgate Residential Contracting
+description: Southgate Residential Contracting provides reliable home improvement
+  and maintenance services to local homeowners. Our team focuses on quality craftsmanship
+  and prompt solutions for a wide range of interior and exterior residential needs.
+rating: 1.0
+progenitor_customer: customer_0007
+menu_features:
+  Cedar Fence Building: 540.69
+  Subfloor Reinforcement: 232.13
+  Radiator Repair: 313.81
+  Dishwasher Installation: 188.62
+  Fireplace Cleaning: 277.18
+  Lawn Edging: 267.64
+  Weatherproof Electrical Outlet Install: 134.88
+  Water Heater Installation: 296.78
+  Small Bathroom Plumbing Repair: 136.42
+  Bathroom Vanity Upgrade: 218.46
+  Solar Panel Cleaning: 482.8
+  Basement Wall Waterproofing: 218.3
+  Custom Cabinet Build: 524.38
+  Retaining Wall Patch: 375.53
+  Tree Removal: 466.9
+  Wooden Stair Repair: 329.0
+  Chimney Flashing Repair: 389.79
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.87

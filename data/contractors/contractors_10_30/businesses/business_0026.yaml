@@ -1,0 +1,44 @@
+id: business_0026
+name: Northfield Residential Services
+description: Northfield Residential Services provides reliable solutions for homeowners
+  seeking skilled improvements, repairs, and upgrades for their living spaces. We
+  specialize in a range of interior and exterior residential services delivered with
+  professionalism and attention to detail.
+rating: 1.0
+progenitor_customer: customer_0009
+menu_features:
+  Lock Set Change: 198.13
+  Garage Cabinet Assembly: 222.75
+  Brick Path Restoration: 490.99
+  Front Door Lock Change: 203.16
+  Wood Flooring Refinishing: 392.05
+  Closet Cabinet Assembly: 350.41
+  Mailbox Replacement: 342.51
+  Walkway Paver Installation: 324.59
+  Sink Replacement: 153.51
+  Grout Cleaning: 301.64
+  Stone Walkway Installation: 545.32
+  Chimney Repointing: 414.2
+  New Thermostat Setup: 244.28
+  Basement Window Installation: 311.89
+  Mini Split AC Service: 580.96
+amenity_features:
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  accepts digital payments: false
+  licensed: true
+  appointment only: false
+  business accepts credit cards: false
+  same day service: false
+  flexible hours: false
+  free estimate: false
+  background checked crew: false
+  insured: true
+  weekend availability: false
+  eco friendly materials: true
+  responsiveness: false
+  post install inspection: true
+  free followup visit: true
+  after hours service: false
+min_price_factor: 0.88

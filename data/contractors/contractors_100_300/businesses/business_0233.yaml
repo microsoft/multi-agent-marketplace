@@ -1,0 +1,46 @@
+id: business_0233
+name: Bridgeport Home Services
+description: Bridgeport Home Services provides reliable residential improvements,
+  repairs, and installations for homeowners seeking skilled, efficient solutions for
+  interior, exterior, and landscape projects. We deliver quality workmanship to enhance
+  and maintain your living space.
+rating: 1.0
+progenitor_customer: customer_0078
+menu_features:
+  Fixture Assembly: 283.17
+  Subpanel Installation: 484.83
+  Landscaping Trimming: 254.85
+  Sprinkler System Adjustment: 257.0
+  Exterior Door Mounting: 254.77
+  Stone Veneer Repair: 313.8
+  Garage Door Opener Setup: 481.77
+  Washer Dryer Hookup: 376.37
+  Shed Roof Re-Shingling: 356.89
+  Basement Drywall Finishing: 481.7
+  Hardwood Flooring: 456.07
+  Bathroom Vanity Fitting: 363.17
+  Walkway Paver Resetting: 480.09
+  Brick Step Restoration: 410.52
+  Garbage Disposal Replacement: 346.97
+  Garage Cabinet Assembly: 222.68
+  Window Frame Restoration: 465.15
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.85

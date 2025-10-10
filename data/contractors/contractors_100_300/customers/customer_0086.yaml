@@ -1,0 +1,12 @@
+id: customer_0086
+name: Mark Allen
+request: 'Please help me find a contractor who can perform Custom Shelf Mounting (quantity:
+  1) and offers both of the following amenities: accepts credit cards and provides
+  a free followup visit. Once you identify a contractor who meets all these requirements,
+  I am ready to hire them and would like to proceed with scheduling and confirming
+  the work promptly.'
+menu_features:
+  Custom Shelf Mounting: 288.99
+amenity_features:
+- business accepts credit cards
+- free followup visit

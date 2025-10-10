@@ -1,0 +1,11 @@
+id: customer_0081
+name: Benjamin Rivera
+request: I'm looking for a contractor who can perform Sink Replacement (1) and offers
+  both background checked crew and eco friendly materials. Once you confirm these
+  requirements are met, I'd like to hire the contractor and proceed with scheduling
+  the work as outlined. Please let me know the next steps for booking.
+menu_features:
+  Sink Replacement: 143.99
+amenity_features:
+- background checked crew
+- eco friendly materials

@@ -1,0 +1,44 @@
+id: business_0150
+name: Oakridge Residential Projects
+description: Oakridge Residential Projects delivers reliable home improvement and
+  maintenance solutions for homeowners seeking quality workmanship and professional
+  service. Our experienced team provides a broad range of interior and exterior upgrades
+  to enhance the value and comfort of your home.
+rating: 1.0
+progenitor_customer: customer_0050
+menu_features:
+  Outlet Upgrade: 303.51
+  Hardwood Floor Refinish: 177.58
+  Granite Countertop Installation: 521.65
+  Deck Board Replacement: 504.97
+  Wood Fence Painting: 474.88
+  Shingle Roof Replacement: 437.92
+  Stone Pathway Installation: 284.76
+  Landscaping Design: 131.45
+  Concrete Crack Repair: 369.53
+  Bathroom Ventilation Fan Install: 232.57
+  Furnace Inspection: 524.04
+  Hydronic Radiator Service: 310.36
+  Door Hardware Upgrade: 210.63
+  Heat Pump Inspection: 351.7
+  Stone Patio Sealing: 442.65
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.87

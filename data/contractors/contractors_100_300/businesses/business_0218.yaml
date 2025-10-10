@@ -1,0 +1,40 @@
+id: business_0218
+name: Horizon Crest Services
+description: Horizon Crest Services provides reliable home maintenance and improvement
+  solutions for residential customers, specializing in interior upgrades, outdoor
+  enhancements, and essential repairs. Our commitment is to quality workmanship and
+  professional service for homeowners seeking trusted local expertise.
+rating: 1.0
+progenitor_customer: customer_0073
+menu_features:
+  Attic Ladder Installation: 329.09
+  Outlet Repair: 203.81
+  Heat Pump Tune-Up: 270.82
+  Full Bathroom Caulking: 420.54
+  Bathtub Caulking: 312.17
+  Bathroom Fan Replacement: 524.93
+  Garden Bed Design: 131.46
+  Walkway Repair: 270.05
+  Sprinkler System Repair: 430.78
+  Concrete Patio Staining: 355.7
+  Central Air System Tune-Up: 470.72
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: true
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.93

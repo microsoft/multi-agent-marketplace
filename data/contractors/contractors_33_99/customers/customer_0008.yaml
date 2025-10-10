@@ -1,0 +1,11 @@
+id: customer_0008
+name: Aiden Bell
+request: Please help me find a contractor who can provide Closet Cabinet Assembly
+  (1) and Outdoor Fence Painting (1), and accepts credit cards. I am ready to hire
+  and schedule these services as soon as a suitable contractor is found. Let me know
+  how I can confirm the appointment.
+menu_features:
+  Closet Cabinet Assembly: 418.25
+  Outdoor Fence Painting: 465.95
+amenity_features:
+- business accepts credit cards

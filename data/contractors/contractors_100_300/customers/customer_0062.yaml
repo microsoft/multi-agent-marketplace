@@ -1,0 +1,13 @@
+id: customer_0062
+name: Elena Petrova
+request: I'm looking for a contractor who can provide Hardwood Floor Screening (1),
+  Walk-In Closet Shelving (1), and Shower Remodel (1), and uses eco friendly materials.
+  If you can connect me with a contractor that meets all of these requirements, I
+  am ready to hire and proceed with scheduling the work as outlined. Please let me
+  know how we can confirm and move forward.
+menu_features:
+  Hardwood Floor Screening: 404.25
+  Walk-In Closet Shelving: 420.99
+  Shower Remodel: 413.5
+amenity_features:
+- eco friendly materials

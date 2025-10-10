@@ -1,0 +1,11 @@
+id: customer_0004
+name: Charles Lewis
+request: Please help me find a contractor who can provide Furnace Inspection (1) and
+  Walkway Resurfacing (1), and uses eco friendly materials. Once such a contractor
+  is identified, I intend to hire them and proceed with scheduling the work as specified.
+  Kindly assist me in confirming these arrangements at your earliest convenience.
+menu_features:
+  Furnace Inspection: 443.0
+  Walkway Resurfacing: 454.0
+amenity_features:
+- eco friendly materials

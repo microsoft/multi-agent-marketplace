@@ -1,0 +1,42 @@
+id: business_0291
+name: AccentPoint Residential Services
+description: AccentPoint Residential Services specializes in quality interior and
+  exterior home improvements for local homeowners. Our team is dedicated to delivering
+  reliable upgrades and repairs to enhance both functionality and comfort in your
+  living spaces.
+rating: 1.0
+progenitor_customer: customer_0097
+menu_features:
+  Closet Renovation: 406.7
+  Stone Veneer Application: 195.77
+  Laminate Floor Installation: 424.53
+  Cabinet Handle Replacement: 418.11
+  Faucet Replacement: 114.11
+  Advanced Electrical Troubleshooting: 252.56
+  Stone Fireplace Facade: 444.62
+  Gutter Repair: 339.05
+  Laminate Floor Replacement: 470.21
+  Brick Patio Replacement: 485.85
+  Kitchen Backsplash: 387.48
+  Shower Enclosure Replacement: 482.52
+  Heat Pump Tune-Up: 310.68
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.74

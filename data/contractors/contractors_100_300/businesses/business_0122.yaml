@@ -1,0 +1,43 @@
+id: business_0122
+name: Crafted Residential Solutions
+description: Crafted Residential Solutions provides dependable home improvement and
+  repair services tailored to homeowners seeking quality workmanship and efficient
+  project delivery. Our team specializes in interior upgrades, exterior enhancements,
+  and general maintenance to keep your home functional and inviting.
+rating: 1.0
+progenitor_customer: customer_0041
+menu_features:
+  Window Caulking: 134.51
+  Walkway Brick Paving: 174.79
+  Porch Resurfacing: 308.16
+  New Cabinet Handles: 317.34
+  Shower Base Replacement: 416.32
+  Gravel Driveway Refresh: 388.04
+  Small Closet Remodeling: 291.08
+  Door Hanging: 279.32
+  Kitchen Faucet Update: 209.02
+  Central Heating Repair: 493.69
+  Kitchen Cabinet Removal: 337.32
+  Walkway Paver Setting: 318.34
+  Drain Pipe Replacement: 180.46
+  Custom Shelf Assembly: 460.83
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: true
+  warranty: false
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.67
