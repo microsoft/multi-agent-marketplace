@@ -165,7 +165,7 @@ class OpenAIClient(ProviderClient[OpenAIConfig]):
                             token_count=response.usage.total_tokens
                             if response.usage
                             else 0,
-                            provider="openai",
+                            provider=self.provider,
                             model=model,
                         )
                         return parsed, usage

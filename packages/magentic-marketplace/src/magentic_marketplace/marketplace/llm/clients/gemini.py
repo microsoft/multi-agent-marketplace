@@ -9,6 +9,7 @@ from typing import Any, Literal, overload
 import google.genai as genai
 import google.genai.types
 import pydantic
+from pydantic_core import to_json
 
 from ..base import (
     AllowedChatCompletionMessageParams,
@@ -201,7 +202,6 @@ class GeminiClient(ProviderClient[GeminiConfig]):
         temperature: float | None = None,
         max_tokens: int | None = None,
         reasoning_effort: str | int | None = None,
-        **kwargs: Any,
     ) -> tuple[TResponseModel, Usage]:
         """Generate structured output using Gemini API with retry logic."""
         # Convert messages to Gemini format
@@ -239,19 +239,15 @@ class GeminiClient(ProviderClient[GeminiConfig]):
         if system_prompt:
             config.system_instruction = system_prompt
 
-        args: dict[str, Any] = {
-            "model": model,
-            "contents": contents,
-            "config": config,
-        }
-
         # Make 3 attempts while recovering from errors
         for attempt in range(3):
             try:
                 # Add any additional kwargs
-                args.update(kwargs)
-
-                response = await self.client.aio.models.generate_content(**args)
+                response = await self.client.aio.models.generate_content(
+                    model=model,
+                    contents=contents,
+                    config=config,
+                )
 
                 token_count = 0
                 if (
@@ -268,65 +264,62 @@ class GeminiClient(ProviderClient[GeminiConfig]):
 
                 # Parse structured response
                 if response.parsed:
+                    # Add model response to conversation for potential retry
+                    contents.append(
+                        google.genai.types.Content(
+                            role="model",
+                            parts=[
+                                google.genai.types.Part(
+                                    text=to_json(response.parsed).decode()
+                                )
+                            ],
+                        )
+                    )
                     return response_format.model_validate(response.parsed), usage
                 elif response.text:
-                    try:
-                        return response_format.model_validate_json(response.text), usage
-                    except (json.JSONDecodeError, pydantic.ValidationError) as e:
-                        import traceback
-
-                        tb_str = traceback.format_exc()
-                        error_message = (
-                            f"Error parsing response: {e}\nTraceback:\n{tb_str}"
+                    # Add model response to conversation for potential retry
+                    contents.append(
+                        google.genai.types.Content(
+                            role="model",
+                            parts=[google.genai.types.Part(text=response.text)],
                         )
-                        exceptions.append(error_message)
+                    )
+                    return response_format.model_validate_json(response.text), usage
 
-                        # Add error context to conversation for retry
-                        if attempt < 2:
-                            contents.append(
-                                google.genai.types.Content(
-                                    role="user",
-                                    parts=[google.genai.types.Part(text=error_message)],
-                                )
-                            )
-                        continue
                 else:
                     error_message = f"No response content available from Gemini on attempt {attempt + 1}"
                     exceptions.append(error_message)
 
-                    # Add context for retry
-                    if attempt < 2:
-                        contents.append(
-                            google.genai.types.Content(
-                                role="user",
-                                parts=[
-                                    google.genai.types.Part(
-                                        text="No response received. Please provide a JSON response that matches the required schema."
-                                    )
-                                ],
-                            )
-                        )
-                    continue
-
-            except Exception as e:
-                error_message = (
-                    f"Gemini API call failed on attempt {attempt + 1}: {str(e)}"
-                )
-                exceptions.append(error_message)
-
-                # Add error context to conversation for retry
-                if attempt < 2:
+                    # Add user message for retry
                     contents.append(
                         google.genai.types.Content(
                             role="user",
                             parts=[
                                 google.genai.types.Part(
-                                    text=f"Error: {str(e)}. Please try again with a valid JSON response."
+                                    text="No response received. Please provide a JSON response that matches the required schema."
                                 )
                             ],
                         )
                     )
-                continue
+            except (json.JSONDecodeError, pydantic.ValidationError) as e:
+                import traceback
+
+                tb_str = traceback.format_exc()
+                error_message = f"Error parsing response: {e}\nTraceback:\n{tb_str}"
+                exceptions.append(error_message)
+
+                # Add error context to conversation for retry
+                contents.append(
+                    google.genai.types.Content(
+                        role="user",
+                        parts=[google.genai.types.Part(text=error_message)],
+                    )
+                )
+            except Exception as e:
+                error_message = (
+                    f"Gemini API call failed on attempt {attempt + 1}: {str(e)}"
+                )
+                exceptions.append(error_message)
 
         raise Exception(
             "Failed to _generate_struct: Exceeded maximum retries. Inner exceptions: "
@@ -335,7 +328,7 @@ class GeminiClient(ProviderClient[GeminiConfig]):
 
     def _convert_messages(
         self, messages: Sequence[AllowedChatCompletionMessageParams]
-    ) -> tuple[list[google.genai.types.Content], str | None]:
+    ) -> tuple[list[google.genai.types.ContentUnion], str | None]:
         """Convert OpenAI messages to Gemini Content format.
 
         Returns:
@@ -344,7 +337,7 @@ class GeminiClient(ProviderClient[GeminiConfig]):
             or None if there are no system messages.
 
         """
-        gemini_contents: list[google.genai.types.Content] = []
+        gemini_contents: list[google.genai.types.ContentUnion] = []
         system_messages: list[str] = []
 
         for message in messages:

@@ -1,12 +1,14 @@
 """Anthropic model client implementation."""
 
+import json
 import threading
 from collections.abc import Sequence
 from hashlib import sha256
-from typing import Any, Literal, cast, overload
+from typing import Any, Literal, overload
 
 import anthropic
 import anthropic.types
+import pydantic
 
 from ..base import (
     AllowedChatCompletionMessageParams,
@@ -102,25 +104,19 @@ class AnthropicClient(ProviderClient[AnthropicConfig]):
         max_tokens: int | None = None,
         reasoning_effort: str | int | None = None,
         response_format: type[TResponseModel] | None = None,
+        stream: Literal[False] = False,
         **kwargs: Any,
     ) -> tuple[str, Usage] | tuple[TResponseModel, Usage]:
         """Generate completion using Anthropic API."""
         # Convert OpenAI messages to Anthropic format
         anthropic_messages, system_prompt = self._convert_messages(messages)
 
-        # Build base arguments
-        args: dict[str, Any] = {
-            "model": model,
-            "messages": anthropic_messages,
-            "max_tokens": max_tokens or 2000,
-        }
+        anthropic_max_tokens = max_tokens or 2000
 
-        # Add system prompt if we have system messages
-        if system_prompt:
-            args["system"] = system_prompt
+        anthropic_system = system_prompt or anthropic.NOT_GIVEN
 
         # Handle reasoning effort -> thinking config
-        thinking_config = None
+        anthropic_thinking = anthropic.NOT_GIVEN
         if reasoning_effort is not None:
             if reasoning_effort == "minimal":
                 reasoning_effort = 0
@@ -129,31 +125,42 @@ class AnthropicClient(ProviderClient[AnthropicConfig]):
                 reasoning_effort = 0  # Fallback for unsupported string values
 
             if reasoning_effort == 0:
-                thinking_config = anthropic.types.ThinkingConfigDisabledParam(
+                anthropic_thinking = anthropic.types.ThinkingConfigDisabledParam(
                     type="disabled"
                 )
             else:
                 # Temperature not supported for thinking mode
                 temperature = None
-                thinking_config = anthropic.types.ThinkingConfigEnabledParam(
+                anthropic_thinking = anthropic.types.ThinkingConfigEnabledParam(
                     type="enabled", budget_tokens=reasoning_effort
                 )
 
-        if thinking_config:
-            args["thinking"] = thinking_config
-
-        if temperature is not None:
-            args["temperature"] = temperature
-
-        # Add any additional kwargs
-        args.update(kwargs)
+        anthropic_temperature = (
+            temperature if temperature is not None else anthropic.NOT_GIVEN
+        )
 
         # Handle structured output via tool calling
         if response_format is not None:
-            return await self._generate_structured(args, response_format, model)
+            return await self._generate_structured(
+                model=model,
+                response_format=response_format,
+                messages=anthropic_messages,
+                max_tokens=anthropic_max_tokens,
+                temperature=anthropic_temperature,
+                system=anthropic_system,
+                **kwargs,
+            )
         else:
             # Regular completion
-            response = await self.client.messages.create(**args, stream=False)
+            response = await self.client.messages.create(
+                model=model,
+                max_tokens=anthropic_max_tokens,
+                messages=anthropic_messages,
+                temperature=anthropic_temperature,
+                system=anthropic_system,
+                thinking=anthropic_thinking,
+                stream=False,
+            )
 
             # Create usage object
             usage = Usage(
@@ -235,11 +242,18 @@ class AnthropicClient(ProviderClient[AnthropicConfig]):
 
     async def _generate_structured(
         self,
-        base_args: dict[str, Any],
-        response_format: type[TResponseModel],
         model: str,
+        response_format: type[TResponseModel],
+        messages: Sequence[anthropic.types.MessageParam],
+        max_tokens: int,
+        temperature: float | anthropic.NotGiven = anthropic.NOT_GIVEN,
+        system: str | anthropic.NotGiven = anthropic.NOT_GIVEN,
+        **kwargs: Any,
     ) -> tuple[TResponseModel, Usage]:
         """Generate structured output using tool calling."""
+        # Make local copy so we can push retry messages to it.
+        messages = list(messages)
+
         # Create tool for the response format
         tool = anthropic.types.ToolParam(
             name=f"generate{response_format.__name__}",
@@ -247,20 +261,16 @@ class AnthropicClient(ProviderClient[AnthropicConfig]):
             input_schema=response_format.model_json_schema(),
         )
 
+        tools = [tool]
         tool_choice = anthropic.types.ToolChoiceToolParam(
             name=tool["name"], type="tool", disable_parallel_tool_use=True
         )
 
-        # Update args for tool use
-        args = base_args.copy()
-        args["tools"] = [tool]
-        args["tool_choice"] = tool_choice
-
         # Thinking not allowed when forcing tool use
-        if "thinking" in args:
-            args["thinking"] = anthropic.types.ThinkingConfigDisabledParam(
-                type="disabled"
-            )
+        thinking = anthropic.types.ThinkingConfigDisabledParam(type="disabled")
+
+        # Stream not allowed for tool use
+        kwargs.pop("stream", None)
 
         # Track exception messages for final error
         exceptions: list[str] = []
@@ -268,8 +278,23 @@ class AnthropicClient(ProviderClient[AnthropicConfig]):
         # Make up to 3 attempts
         for attempt in range(3):
             try:
-                response = await self.client.messages.create(**args, stream=False)
-
+                response = await self.client.messages.create(
+                    model=model,
+                    messages=messages,
+                    tools=tools,
+                    tool_choice=tool_choice,
+                    max_tokens=max_tokens,
+                    temperature=temperature,
+                    thinking=thinking,
+                    system=system,
+                    stream=False,
+                )
+                messages.append(
+                    anthropic.types.MessageParam(
+                        role="assistant",
+                        content=response.content,
+                    )
+                )
                 # Find tool use block
                 for block in response.content:
                     if block.type == "tool_use":
@@ -282,82 +307,43 @@ class AnthropicClient(ProviderClient[AnthropicConfig]):
                             model=model,
                         )
 
-                        try:
-                            validated_response = response_format.model_validate(
-                                block.input
-                            )
-                            return validated_response, usage
-                        except Exception as e:
-                            import traceback
-
-                            tb_str = traceback.format_exc()
-                            error_message = f"Error parsing tool response: {e}\nTraceback:\n{tb_str}"
-                            exceptions.append(error_message)
-
-                            # Add error to conversation for retry
-                            if attempt < 2:
-                                current_messages = cast(
-                                    list[anthropic.types.MessageParam], args["messages"]
-                                )
-                                current_messages.append(
-                                    anthropic.types.MessageParam(
-                                        role="assistant",
-                                        content=response.content,
-                                    )
-                                )
-                                current_messages.append(
-                                    anthropic.types.MessageParam(
-                                        role="user",
-                                        content=error_message,
-                                    )
-                                )
-                            break
+                        validated_response = response_format.model_validate(block.input)
+                        return validated_response, usage
 
                 # No tool use found, add to conversation for retry
-                else:
-                    error_message = (
-                        f"No tool use found in response on attempt {attempt + 1}"
+                error_message = (
+                    f"No tool use found in response on attempt {attempt + 1}"
+                )
+                exceptions.append(error_message)
+
+                messages.append(
+                    anthropic.types.MessageParam(
+                        role="user",
+                        content="Please call the required tool to format your response.",
                     )
-                    exceptions.append(error_message)
+                )
+            except (json.JSONDecodeError, pydantic.ValidationError) as e:
+                import traceback
 
-                    if attempt < 2:
-                        # Get current messages and add assistant response
-                        current_messages = cast(
-                            list[anthropic.types.MessageParam], args["messages"]
-                        )
-                        current_messages.append(
-                            anthropic.types.MessageParam(
-                                role="assistant",
-                                content=response.content,
-                            )
-                        )
-                        current_messages.append(
-                            anthropic.types.MessageParam(
-                                role="user",
-                                content="Please use the required tool to format your response.",
-                            )
-                        )
+                tb_str = traceback.format_exc()
+                error_message = (
+                    f"Error parsing tool response: {e}\nTraceback:\n{tb_str}"
+                )
+                exceptions.append(error_message)
 
+                # Add error to conversation for retry
+                messages.append(
+                    anthropic.types.MessageParam(
+                        role="user",
+                        content=error_message,
+                    )
+                )
             except Exception as e:
                 import traceback
 
                 tb_str = traceback.format_exc()
                 error_message = f"API call failed on attempt {attempt + 1}: {e}\nTraceback:\n{tb_str}"
                 exceptions.append(error_message)
-
-                if attempt < 2:
-                    # Add error to conversation for retry
-                    current_messages = cast(
-                        list[anthropic.types.MessageParam], args["messages"]
-                    )
-                    current_messages.append(
-                        anthropic.types.MessageParam(
-                            role="user",
-                            content=error_message,
-                        )
-                    )
-                else:
-                    break
 
         raise Exception(
             "Failed to _generate_structured: Exceeded maximum retries. Inner exceptions: "
