@@ -11,6 +11,7 @@ from dotenv import load_dotenv
 from magentic_marketplace.experiments.extract_agent_llm_traces import (
     run_extract_traces,
 )
+from magentic_marketplace.experiments.list_experiments import list_experiments
 from magentic_marketplace.experiments.run_analytics import run_analytics
 from magentic_marketplace.experiments.run_audit import run_audit
 from magentic_marketplace.experiments.run_experiment import run_marketplace_experiment
@@ -101,6 +102,20 @@ def run_audit_command(args):
     """Handle the audit subcommand."""
     save_to_json = not args.no_save_json
     asyncio.run(run_audit(args.database_name, args.db_type, save_to_json=save_to_json))
+
+
+def list_experiments_command(args):
+    """Handle the list-experiments subcommand."""
+    asyncio.run(
+        list_experiments(
+            host=args.postgres_host,
+            port=args.postgres_port,
+            database=args.postgres_database,
+            user=args.postgres_user,
+            password=args.postgres_password,
+            limit=args.limit,
+        )
+    )
 
 
 def main():
@@ -255,6 +270,51 @@ def main():
         "--no-save-json",
         action="store_true",
         help="Disable saving audit results to JSON file",
+    )
+
+    # list-experiments subcommand
+    list_experiments_parser = subparsers.add_parser(
+        "list-experiments",
+        help="List all marketplace experiments stored in PostgreSQL",
+    )
+    list_experiments_parser.set_defaults(func=list_experiments_command)
+
+    list_experiments_parser.add_argument(
+        "--postgres-host",
+        default="localhost",
+        help="PostgreSQL host (default: localhost)",
+    )
+
+    list_experiments_parser.add_argument(
+        "--postgres-port",
+        type=int,
+        default=5432,
+        help="PostgreSQL port (default: 5432)",
+    )
+
+    list_experiments_parser.add_argument(
+        "--postgres-database",
+        default="marketplace",
+        help="PostgreSQL database name (default: marketplace)",
+    )
+
+    list_experiments_parser.add_argument(
+        "--postgres-user",
+        default="postgres",
+        help="PostgreSQL user (default: postgres)",
+    )
+
+    list_experiments_parser.add_argument(
+        "--postgres-password",
+        default="postgres",
+        help="PostgreSQL password (default: postgres)",
+    )
+
+    list_experiments_parser.add_argument(
+        "--limit",
+        type=int,
+        default=None,
+        help="Maximum number of experiments to display",
     )
 
     # Parse arguments and execute the appropriate function
