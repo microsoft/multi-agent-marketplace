@@ -1,0 +1,42 @@
+id: business_0214
+name: Neighborhood Pro Contracting
+description: Serving local homeowners, Neighborhood Pro Contracting delivers reliable
+  property maintenance, light remodeling, and outdoor improvement services for convenient
+  home upgrades and repairs.
+rating: 1.0
+progenitor_customer: customer_0072
+menu_features:
+  Mulch Delivery: 218.0
+  Vinyl Siding Patch: 287.13
+  Basic Lawn Care: 99.8
+  Shrub Removal: 134.45
+  Walkway Paver Installation: 303.87
+  Leaf Removal: 211.39
+  Mailbox Replacement: 340.81
+  Air Conditioner Service: 398.91
+  Custom Cabinet Fabrication: 443.12
+  Small Room Flooring: 256.94
+  Recessed Lighting Setup: 163.67
+  Stone Patio Construction: 306.48
+  Cabinet Handle Replacement: 436.51
+  AC System Inspection: 372.16
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: true
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.82

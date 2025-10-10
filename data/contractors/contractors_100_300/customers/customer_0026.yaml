@@ -1,0 +1,13 @@
+id: customer_0026
+name: Ryan Walker
+request: Please help me find a contractor who can perform Porch Stair Carpentry (1),
+  Fence Gate Installation (1), and Fireplace Refacing (1), and who offers a post install
+  inspection as part of their service. Once you identify a contractor who meets all
+  these requirements, I would like to proceed with hiring and confirming the scheduling
+  of the work described above. Thank you for your assistance.
+menu_features:
+  Porch Stair Carpentry: 326.95
+  Fence Gate Installation: 427.5
+  Fireplace Refacing: 358.95
+amenity_features:
+- post install inspection

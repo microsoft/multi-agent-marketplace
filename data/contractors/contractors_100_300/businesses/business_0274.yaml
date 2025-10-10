@@ -1,0 +1,44 @@
+id: business_0274
+name: Lindenford Home Services
+description: Lindenford Home Services provides reliable residential improvements and
+  maintenance for homeowners seeking quality, timely solutions. Our experienced team
+  delivers a range of services designed to enhance the comfort, function, and appearance
+  of your home.
+rating: 1.0
+progenitor_customer: customer_0092
+menu_features:
+  Patio Paver Resanding: 302.51
+  Brick Step Repointing: 509.47
+  Door Replacement: 305.33
+  Garage Floor Coating: 274.08
+  Garage Door Maintenance: 188.69
+  Granite Countertop Sealing: 424.75
+  Door Lock Repair: 230.91
+  Bathroom Vanity Replacement: 217.19
+  Insulation Addition: 414.81
+  Small Brick Patio: 233.89
+  Shrub Pruning: 246.8
+  Closet Shelving Installation: 354.13
+  Foundation Crack Repair: 168.31
+  Carpet Installation: 381.4
+  Shower Faucet Upgrade: 237.54
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.65

@@ -1,0 +1,45 @@
+id: business_0027
+name: DirectHome Contractors
+description: DirectHome Contractors provides reliable residential repair and improvement
+  services for homeowners seeking quality workmanship and efficient solutions. Our
+  team is dedicated to maintaining and enhancing your property through attentive project
+  management and clear communication.
+rating: 1.0
+progenitor_customer: customer_0009
+menu_features:
+  Shed Roof Replacement: 377.29
+  Sheetrock Installation: 340.22
+  Door Hardware Installation: 213.15
+  Deck Sealing: 318.57
+  Ceramic Tile Flooring: 339.61
+  Light Switch Replacement: 290.48
+  Drain Unclogging: 167.93
+  Concrete Driveway Repair: 198.04
+  Roof Leak Fix: 210.52
+  Motion Sensor Installation: 220.07
+  Room Painting: 243.22
+  Porch Rail Replacement: 192.79
+  Door Lock Replacement: 170.18
+  Full Exterior House Painting: 450.69
+  Garage Shelving Installation: 213.19
+  AC System Tune-Up: 480.71
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.62

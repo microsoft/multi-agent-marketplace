@@ -1,0 +1,41 @@
+id: business_0005
+name: Maple Ridge Contracting
+description: Maple Ridge Contracting provides dependable home improvement and maintenance
+  services for residential clients, focusing on both interior and exterior projects.
+  Our team is committed to delivering quality workmanship for homeowners seeking reliable
+  solutions for property enhancements and repairs.
+rating: 1.0
+progenitor_customer: customer_0002
+menu_features:
+  Appliance Installation: 151.58
+  Sprinkler System Inspection: 295.56
+  Brick Pathway Repair: 286.1
+  Garden Bed Construction: 193.07
+  Exterior Door Install: 216.17
+  Deck Railing Installation: 506.22
+  Stone Patio Construction: 379.49
+  Furniture Assembly: 241.29
+  Granite Countertop Cutting: 358.34
+  Basement Mold Remediation: 353.62
+  Wood Flooring Refinishing: 443.2
+  Roof Leak Fix: 234.53
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.94

@@ -1,0 +1,13 @@
+id: customer_0015
+name: Ethan Parker
+request: I'm looking to hire a contractor who can provide Hardwood Flooring (1), Ductless
+  AC Installation (1), and Subpanel Installation (1), and that uses eco friendly materials.
+  If you can find a contractor that meets all these criteria, I am ready to proceed
+  with engaging them and would like to schedule the work as outlined. Please help
+  me confirm availability and next steps.
+menu_features:
+  Hardwood Flooring: 415.49
+  Ductless AC Installation: 400.95
+  Subpanel Installation: 491.95
+amenity_features:
+- eco friendly materials

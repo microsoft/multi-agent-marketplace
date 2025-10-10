@@ -1,0 +1,46 @@
+id: business_0220
+name: Clearpoint Home Services
+description: Clearpoint Home Services provides reliable residential improvement and
+  maintenance solutions, specializing in interior upgrades, landscaping, and exterior
+  care for homeowners seeking quality and convenience.
+rating: 1.0
+progenitor_customer: customer_0074
+menu_features:
+  Landscape Design: 155.85
+  Ceiling Fan Setup: 116.89
+  Kitchen Cabinet Repainting: 522.98
+  Lawn Edging: 174.95
+  Structural Beam Reinforcement: 357.1
+  Exterior House Washing: 413.74
+  Minor Plumbing Repair: 141.27
+  Exterior Siding Cleaning: 387.57
+  Custom Bookcase Build: 431.42
+  Mulch Laying: 233.27
+  Air Conditioner Inspection: 548.99
+  Water Heater Inspection: 210.38
+  Lawn Sprinkler Repair: 270.19
+  Tree Pruning: 358.3
+  Door Refinishing: 219.44
+  Sod Installation: 283.72
+  Door Hardware Upgrade: 187.65
+  Sprinkler System Startup: 388.62
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: true
+  insured: false
+  background checked crew: false
+  eco friendly materials: true
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.8

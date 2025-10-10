@@ -1,0 +1,39 @@
+id: business_0014
+name: Residential Craft Contractors
+description: Serving homeowners with reliable interior and exterior updates, Residential
+  Craft Contractors delivers attentive workmanship for property improvements and maintenance.
+  Our team focuses on quality solutions for everyday residential needs.
+rating: 1.0
+progenitor_customer: customer_0005
+menu_features:
+  Custom Cabinet Modification: 541.47
+  Masonry Brick Restoration: 482.18
+  Door Replacement: 259.11
+  Faucet Replacement: 117.44
+  Central Air Conditioning Maintenance: 406.63
+  Bathroom Exhaust Fan Installation: 242.8
+  Weatherproof Electrical Outlet Install: 122.42
+  Shower Valve Replacement: 333.99
+  Kitchen Faucet Update: 316.6
+  Bathroom Shower Enclosure: 293.35
+  Mulch Application: 198.7
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: true
+  background checked crew: false
+  licensed: false
+  same day service: true
+  weekend availability: true
+  post install inspection: false
+  flexible hours: false
+  insured: true
+  free followup visit: true
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.77

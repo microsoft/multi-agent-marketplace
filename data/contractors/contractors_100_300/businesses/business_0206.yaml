@@ -1,0 +1,42 @@
+id: business_0206
+name: Marwood Residential Improvements
+description: Marwood Residential Improvements provides reliable home repair and renovation
+  services for homeowners, specializing in interior updates and exterior hardscape
+  projects. We are committed to delivering quality workmanship with an emphasis on
+  lasting results and customer satisfaction.
+rating: 1.0
+progenitor_customer: customer_0069
+menu_features:
+  Stone Walkway Restoration: 366.79
+  Baseboard Replacement: 412.22
+  Ceiling Light Installation: 167.1
+  Garage Door Weatherproofing: 557.92
+  Tile Backsplash: 360.5
+  Patio Paver Installation: 480.56
+  Door Installation: 170.95
+  Ceiling Fan Mounting: 325.84
+  Concrete Pathway Pouring: 372.6
+  Ceiling Patch Repair: 232.17
+  Basement Stair Carpeting: 332.82
+  Concrete Crack Repair: 473.4
+  Stone Pathway Repair: 110.72
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: true
+  business accepts credit cards: true
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.68

@@ -1,0 +1,11 @@
+id: customer_0008
+name: Christopher Kim
+request: I am looking to hire a contractor who can perform Dimmer Switch Installation
+  (1) and Water Heater Maintenance (1), and offers same day service. Please help me
+  find a qualified provider who meets all these requirements so I can confirm and
+  schedule the work as soon as possible.
+menu_features:
+  Dimmer Switch Installation: 309.95
+  Water Heater Maintenance: 275.95
+amenity_features:
+- same day service

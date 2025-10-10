@@ -1,0 +1,45 @@
+id: business_0088
+name: Ashland Home Services
+description: Ashland Home Services provides reliable repairs, maintenance, and improvements
+  for residential properties. Our team delivers professional workmanship across indoor
+  and outdoor projects for homeowners seeking attentive, quality service.
+rating: 1.0
+progenitor_customer: customer_0030
+menu_features:
+  Air Conditioner Service: 343.63
+  Air Conditioner Maintenance: 313.19
+  Walkway Stone Laying: 373.24
+  Sprinkler System Inspection: 248.0
+  Drain Pipe Replacement: 169.19
+  Granite Countertop Polishing: 547.69
+  Furnace Service: 433.42
+  Basement Drywall Finishing: 438.05
+  Water Heater Servicing: 367.8
+  Shingle Replacement: 420.21
+  Drain Clearing: 190.09
+  Brick Walkway Restoration: 394.61
+  Replace Electrical Outlet: 249.0
+  Bathroom Ventilation Fan Install: 197.91
+  Floorboard Replacement: 352.28
+  Brick Tuckpointing: 485.04
+  New Thermostat Setup: 273.33
+amenity_features:
+  eco friendly materials: true
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: false
+  same day service: true
+  weekend availability: true
+  post install inspection: true
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.71

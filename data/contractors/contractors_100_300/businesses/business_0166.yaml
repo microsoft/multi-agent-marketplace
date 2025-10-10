@@ -1,0 +1,44 @@
+id: business_0166
+name: Wellstead Home Services
+description: Wellstead Home Services provides reliable residential maintenance and
+  improvement solutions for homeowners seeking professional workmanship. Our team
+  specializes in a range of indoor and outdoor upgrades, repairs, and seasonal tune-ups
+  designed to keep your home comfortable and well maintained.
+rating: 1.0
+progenitor_customer: customer_0056
+menu_features:
+  Garage Door Maintenance: 245.56
+  Furnace Tune-Up: 493.06
+  Washer Hose Replacement: 277.94
+  Shower Glass Installation: 531.0
+  Shrub Pruning: 250.87
+  Light Fixture Installation: 130.33
+  Water Heater Flush: 395.62
+  Small Roof Patch: 159.47
+  AC System Tune-Up: 328.21
+  Exterior Door Weatherproofing: 200.27
+  Backsplash Installation: 337.64
+  Concrete Patio Sealing: 274.64
+  Heat Pump Service: 293.15
+  Bathroom Vanity Cabinetry: 354.0
+  Leak Repair: 205.7
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: true
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.86

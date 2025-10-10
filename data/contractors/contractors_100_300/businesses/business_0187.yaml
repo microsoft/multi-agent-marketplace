@@ -1,0 +1,41 @@
+id: business_0187
+name: Cedarbrook Residential Services
+description: "Cedarbrook Residential Services provides reliable home repairs and updates\
+  \ for homeowners seeking skilled workmanship and responsive service. Our team specializes\
+  \ in general home maintenance, exterior repairs, and improvement projects tailored\
+  \ to your property\u2019s needs."
+rating: 1.0
+progenitor_customer: customer_0063
+menu_features:
+  French Drain Installation: 467.91
+  Masonry Brick Restoration: 503.16
+  Handrail Installation: 270.43
+  A/C Blower Motor Replacement: 411.86
+  Outlet Repair: 252.36
+  Shingle Repair: 328.09
+  Flower Bed Planting: 213.98
+  Outlet Replacement: 250.74
+  Brick Pathway Restoration: 404.93
+  Dimmer Switch Upgrade: 159.99
+  Radiator Servicing: 492.42
+  Replace Electrical Outlet: 261.06
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.64

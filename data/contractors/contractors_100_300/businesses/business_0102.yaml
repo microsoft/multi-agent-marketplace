@@ -1,0 +1,40 @@
+id: business_0102
+name: Stonewell Residential Contractors
+description: Stonewell Residential Contractors provides reliable home repair and improvement
+  solutions for homeowners seeking quality workmanship and prompt service. We specialize
+  in a range of interior and exterior projects to keep your property maintained, updated,
+  and protected.
+rating: 1.0
+progenitor_customer: customer_0034
+menu_features:
+  Staircase Refinishing: 308.47
+  Chimney Inspection: 375.03
+  Fixture Assembly: 331.42
+  Patio Repair: 355.8
+  Garage Door Tune-Up: 243.01
+  Central Heating Repair: 337.38
+  Ductwork Sealing: 359.5
+  Tile Grout Renewal: 221.32
+  Walk-in Shower Retrofit: 453.32
+  Basement Water Proofing: 396.87
+  Mulch Installation: 178.55
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: true
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.82

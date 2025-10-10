@@ -1,0 +1,11 @@
+id: customer_0007
+name: Ava Rodriguez
+request: I am looking to hire a licensed contractor who can provide both Tree Removal
+  (1) and Water Heater Installation (1). Please help me find someone who meets these
+  requirements, as I would like to confirm and schedule these services as soon as
+  possible.
+menu_features:
+  Tree Removal: 466.0
+  Water Heater Installation: 321.95
+amenity_features:
+- licensed

@@ -1,0 +1,12 @@
+id: customer_0011
+name: Lucas Ferreira
+request: I am looking to hire a contractor who can provide Water Heater Installation
+  (1) and Deck Resealing (1), and has multilingual staff. Once you identify a contractor
+  that meets all these requirements, please help me engage them and arrange for the
+  work to be scheduled as specified. I am ready to move forward once the criteria
+  are confirmed.
+menu_features:
+  Water Heater Installation: 321.95
+  Deck Resealing: 460.49
+amenity_features:
+- multilingual staff

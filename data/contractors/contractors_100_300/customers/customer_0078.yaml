@@ -1,0 +1,13 @@
+id: customer_0078
+name: Laura Fisher
+request: 'I''m looking to hire a contractor who can provide the following services:
+  Hardwood Flooring (1), Walkway Paver Resetting (1), and Subpanel Installation (1).
+  It''s essential that the contractor also offers a post install inspection. Once
+  a suitable contractor is identified, I am ready to engage them and schedule the
+  work. Please help me find and confirm such a contractor.'
+menu_features:
+  Hardwood Flooring: 415.49
+  Walkway Paver Resetting: 392.95
+  Subpanel Installation: 491.95
+amenity_features:
+- post install inspection

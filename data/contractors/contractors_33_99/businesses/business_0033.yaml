@@ -1,0 +1,42 @@
+id: business_0033
+name: Belmont Home Projects
+description: Belmont Home Projects serves local homeowners with reliable improvement
+  and maintenance services, including interior upgrades and exterior repairs. Our
+  team is committed to quality workmanship and responsive service for a wide range
+  of residential needs.
+rating: 1.0
+progenitor_customer: customer_0011
+menu_features:
+  Tile Installation: 287.33
+  Deck Resealing: 425.1
+  Fence Repair: 359.94
+  Deck Sanding: 339.83
+  Granite Countertop Sealing: 321.86
+  Baseboard Painting: 254.65
+  Closet Renovation: 427.0
+  Bathroom Sink Plumbing: 197.3
+  Water Heater Installation: 309.27
+  Shingle Roof Cleaning: 462.57
+  Smart Thermostat Setup: 296.5
+  Attic Insulation: 350.13
+  Basic Tile Flooring Install: 201.18
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: true
+  live job updates: false
+  responsiveness: false
+  background checked crew: true
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: true
+min_price_factor: 0.75

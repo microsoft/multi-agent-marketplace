@@ -1,0 +1,43 @@
+id: business_0036
+name: Westford Residential Services
+description: Westford Residential Services provides homeowners with reliable solutions
+  in home maintenance, light remodeling, and exterior improvements. Our team is committed
+  to delivering quality work and attentive service for a wide range of indoor and
+  outdoor projects.
+rating: 1.0
+progenitor_customer: customer_0012
+menu_features:
+  Small Roof Patch: 126.54
+  Heating System Tune-Up: 320.17
+  Smart Thermostat Setup: 354.52
+  Subpanel Installation: 586.8
+  Leak Repair: 189.21
+  Outdoor Lighting Setup: 458.7
+  Full Bathroom Caulking: 407.12
+  Shrub Removal: 116.96
+  Garage Remodeling: 452.36
+  Recessed Light Installation: 228.09
+  Cabinet Refinishing: 511.06
+  Leak Detection: 226.45
+  Flooring Subfloor Repair: 452.23
+  Shrub Planting: 183.51
+amenity_features:
+  eco friendly materials: true
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: true
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.78

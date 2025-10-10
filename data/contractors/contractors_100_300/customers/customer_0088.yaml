@@ -1,0 +1,12 @@
+id: customer_0088
+name: Mohammed Sheikh
+request: 'I am looking to hire a contractor who can provide both Gutter Installation
+  (quantity: 1) and Garden Bed Edging (quantity: 1), and who also offers flexible
+  hours. Please help me find a contractor who meets all these requirements, as I intend
+  to engage them and schedule the work accordingly. Let me know once the suitable
+  contractor is available so we can proceed with confirming the service.'
+menu_features:
+  Gutter Installation: 519.99
+  Garden Bed Edging: 177.99
+amenity_features:
+- flexible hours

@@ -1,0 +1,42 @@
+id: business_0156
+name: Westhaven Service Group
+description: "Westhaven Service Group provides reliable residential improvement and\
+  \ maintenance services for homeowners seeking quality upgrades and efficient project\
+  \ completion. Our team specializes in interior and exterior enhancements tailored\
+  \ to meet your property\u2019s needs."
+rating: 1.0
+progenitor_customer: customer_0052
+menu_features:
+  Carpet Removal: 220.47
+  Basic Tile Flooring Install: 210.31
+  Backsplash Installation: 389.53
+  Sprinkler System Activation: 188.33
+  Light Fixture Upgrade: 176.68
+  Mulch Distribution: 195.96
+  Landscape Edging: 285.16
+  Fixture Replacement: 199.64
+  Stone Walkway Paving: 534.95
+  Furnace Tune-Up: 346.03
+  Small Patio Paving: 279.29
+  Light Fixture Installation: 160.74
+  Fireplace Repointing: 325.53
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: true
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: true
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.63

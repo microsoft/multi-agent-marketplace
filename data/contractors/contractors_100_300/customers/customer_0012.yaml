@@ -1,0 +1,12 @@
+id: customer_0012
+name: Grace Turner
+request: Please help me find a contractor who can perform Tree Removal (1) and Roof
+  Leak Seal (1), and offers both post install inspection and accepts digital payments.
+  I would like to move forward with hiring and scheduling the work as soon as a suitable
+  contractor is identified. Looking forward to confirming the details.
+menu_features:
+  Tree Removal: 466.0
+  Roof Leak Seal: 146.95
+amenity_features:
+- post install inspection
+- accepts digital payments

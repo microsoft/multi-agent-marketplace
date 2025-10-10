@@ -1,0 +1,12 @@
+id: customer_0001
+name: Noah Turner
+request: Please help me find a contractor who can provide Asphalt Patch Repair (1)
+  and Patio Paver Laying (1), and offers weekend availability and free estimate. I
+  am ready to hire and confirm the scheduling of these services once a suitable contractor
+  is found.
+menu_features:
+  Asphalt Patch Repair: 406.49
+  Patio Paver Laying: 396.0
+amenity_features:
+- weekend availability
+- free estimate

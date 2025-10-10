@@ -1,0 +1,45 @@
+id: business_0028
+name: Greenway Residential Improvements
+description: Greenway Residential Improvements provides a wide range of repair, installation,
+  and maintenance services for homeowners seeking quality workmanship and dependable
+  service. Our team delivers reliable solutions for interior, exterior, and mechanical
+  projects tailored to residential needs.
+rating: 1.0
+progenitor_customer: customer_0010
+menu_features:
+  Water Heater Flush: 435.77
+  Vinyl Floor Installation: 171.23
+  Garage Door Opener Setup: 550.95
+  Central Air Tuneup: 418.43
+  Weatherproof Electrical Outlet Install: 131.28
+  Brick Patio Replacement: 512.85
+  Wall Rewiring: 385.53
+  Garden Bed Edging: 166.69
+  Drywall Installation: 440.36
+  Refrigerant Recharge: 250.77
+  Hedge Trimming: 93.15
+  Roof Leak Patch: 296.44
+  Basement Leak Inspection: 303.23
+  Garage Cabinet Assembly: 229.12
+  Carpet Removal: 322.49
+  Bathroom Vanity Fitting: 441.28
+amenity_features:
+  multilingual staff: false
+  warranty: true
+  live job updates: false
+  accepts digital payments: false
+  licensed: false
+  appointment only: false
+  business accepts credit cards: false
+  same day service: false
+  flexible hours: false
+  free estimate: false
+  background checked crew: true
+  insured: true
+  weekend availability: false
+  eco friendly materials: false
+  responsiveness: false
+  post install inspection: false
+  free followup visit: false
+  after hours service: false
+min_price_factor: 0.73

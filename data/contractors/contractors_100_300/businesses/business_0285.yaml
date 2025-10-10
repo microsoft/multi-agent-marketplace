@@ -1,0 +1,41 @@
+id: business_0285
+name: Brightline Property Services
+description: Brightline Property Services provides reliable home maintenance and improvement
+  solutions for residential clients. We specialize in a variety of repair, upgrade,
+  and installation services designed to keep your property safe, functional, and looking
+  its best.
+rating: 1.0
+progenitor_customer: customer_0095
+menu_features:
+  Garage Door Adjustment: 195.11
+  Bathroom Exhaust Fan Upgrade: 293.01
+  Radiator Repair: 448.47
+  Water Heater Repair: 522.96
+  Landscaping Mulch Spread: 279.19
+  Walkway Concrete Pour: 475.94
+  Smoke Detector Installation: 111.5
+  Cabinet Handle Replacement: 350.14
+  Fireplace Inspection: 384.6
+  Radiator Servicing: 428.53
+  Garage Door Opener Replacement: 337.26
+  Smart Thermostat Setup: 298.31
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.93

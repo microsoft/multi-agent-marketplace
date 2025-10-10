@@ -1,0 +1,10 @@
+id: customer_0047
+name: Lucas Gonzalez
+request: I'm looking for a contractor who can provide Cabinet Hardware Installation
+  (1) and is known for responsiveness. If you can find a contractor meeting these
+  requirements, I would like to hire them and proceed to schedule the work as detailed.
+  Please let me know when the appointment can be confirmed.
+menu_features:
+  Cabinet Hardware Installation: 461.25
+amenity_features:
+- responsiveness

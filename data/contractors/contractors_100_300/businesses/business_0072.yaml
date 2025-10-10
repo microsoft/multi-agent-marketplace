@@ -1,0 +1,44 @@
+id: business_0072
+name: Willowbrook Residential Contractors
+description: Willowbrook Residential Contractors provides quality home improvement
+  and maintenance services for homeowners seeking reliable upgrades and renovations.
+  Our team specializes in both interior and exterior projects, delivering dependable
+  craftsmanship for every job.
+rating: 1.0
+progenitor_customer: customer_0024
+menu_features:
+  Exterior Siding Repainting: 371.21
+  Stone Patio Construction: 376.07
+  Custom Cabinet Hanging: 459.57
+  Kitchen Cabinet Repainting: 600.67
+  Shower Base Replacement: 442.97
+  Insulation Upgrade: 401.26
+  Sprinkler System Activation: 193.38
+  Bathroom Floor Tiling: 339.58
+  Brick Step Restoration: 263.63
+  Luxury Vinyl Plank Installation: 378.41
+  Driveway Sealing: 289.91
+  Pergola Assembly: 349.01
+  HVAC Spring Tune-Up: 449.51
+  Fixture Assembly: 285.1
+  Cabinet Hardware Upgrade: 526.22
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: true
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.92

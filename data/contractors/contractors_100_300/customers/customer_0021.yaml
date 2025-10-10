@@ -1,0 +1,12 @@
+id: customer_0021
+name: Fatima Khan
+request: 'Please help me find a licensed contractor who can perform the following
+  services: Central AC Tuneup (1), Sprinkler Head Replacement (1), and Light Fixture
+  Wiring (1). I am ready to proceed with hiring and would like to schedule the work
+  once confirmed. Let me know when the arrangements can be finalized.'
+menu_features:
+  Central AC Tuneup: 461.49
+  Sprinkler Head Replacement: 203.99
+  Light Fixture Wiring: 258.0
+amenity_features:
+- licensed

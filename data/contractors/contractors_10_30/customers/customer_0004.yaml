@@ -1,0 +1,10 @@
+id: customer_0004
+name: Lucas Nguyen
+request: Please help me find a contractor who can provide Deck Restoration (1) and
+  accepts digital payments. I intend to hire a contractor that meets these requirements
+  and would like to schedule the Deck Restoration as soon as possible. Once a suitable
+  contractor is identified, I am ready to confirm and proceed with the work.
+menu_features:
+  Deck Restoration: 462.25
+amenity_features:
+- accepts digital payments

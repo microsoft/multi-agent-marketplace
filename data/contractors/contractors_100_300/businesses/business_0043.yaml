@@ -1,0 +1,43 @@
+id: business_0043
+name: Sycamore Residential Contractors
+description: Sycamore Residential Contractors provides reliable handyman and home
+  improvement services for local homeowners, specializing in repairs, upgrades, and
+  installations. Our skilled team delivers quality workmanship for a wide range of
+  interior and exterior projects.
+rating: 1.0
+progenitor_customer: customer_0015
+menu_features:
+  Water Heater Upgrade: 322.47
+  Central Air Conditioning Servicing: 524.55
+  AC Maintenance: 444.56
+  Driveway Patching: 239.12
+  Custom Cabinet Hanging: 581.74
+  Hardwood Flooring: 298.07
+  Concrete Patio Slab Pour: 457.27
+  Stone Fireplace Facade: 451.26
+  Ductless AC Installation: 430.26
+  Yard Cleanup: 180.77
+  Subpanel Installation: 467.72
+  Custom Cabinet Hardware Install: 520.78
+  Door Repair: 155.14
+  Bathroom Sink Plumbing: 205.56
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: true
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.66

@@ -1,0 +1,41 @@
+id: business_0099
+name: Claremont Residential Contracting
+description: Claremont Residential Contracting provides reliable home improvement
+  and repair services for homeowners seeking quality workmanship and professional
+  care. We specialize in interior and exterior upgrades, maintenance, and general
+  repair projects tailored to residential needs.
+rating: 1.0
+progenitor_customer: customer_0033
+menu_features:
+  Water Heater Installation: 330.44
+  Brick Chimney Pointing: 375.9
+  Masonry Repair: 304.29
+  Closet Shelving Installation: 315.54
+  Laminate Floor Replacement: 456.25
+  Kitchen Countertop Installation: 355.54
+  Brick Chimney Sealing: 427.01
+  Minor Plumbing Repair: 136.78
+  Structural Beam Reinforcement: 458.63
+  Power Washing: 247.8
+  Granite Countertop Fabrication: 407.23
+  Step Repair: 182.83
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: true
+  background checked crew: false
+  licensed: false
+  same day service: true
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: true
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: true
+min_price_factor: 0.92

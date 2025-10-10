@@ -1,0 +1,43 @@
+id: business_0262
+name: Pembroke Residential Services
+description: Pembroke Residential Services provides homeowners with dependable repair,
+  maintenance, and improvement solutions for interior and exterior spaces. Our team
+  specializes in small-scale renovations and property upkeep tailored to the needs
+  of local families.
+rating: 1.0
+progenitor_customer: customer_0088
+menu_features:
+  Bathtub Recaulking: 251.3
+  Brick Chimney Pointing: 411.92
+  Closet Shelving Installation: 305.12
+  Garage Door Weatherproofing: 412.69
+  Custom Cabinet Hardware Install: 475.52
+  Garden Bed Edging: 211.89
+  Masonry Repair: 278.88
+  Walkway Resurfacing: 508.63
+  Kitchen Cabinet Removal: 378.22
+  Flower Bed Redesign: 303.1
+  Gutter Installation: 522.14
+  Bathroom Vanity Update: 282.15
+  Asphalt Crack Sealing: 424.83
+  Ceiling Fan Installation: 251.65
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: true
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.76

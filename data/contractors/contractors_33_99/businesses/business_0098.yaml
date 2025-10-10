@@ -1,0 +1,45 @@
+id: business_0098
+name: Copperwood Residential Services
+description: Copperwood Residential Services provides reliable home improvement and
+  maintenance solutions for local homeowners. Our team is committed to delivering
+  quality workmanship across a range of interior and exterior residential projects.
+rating: 1.0
+progenitor_customer: customer_0033
+menu_features:
+  Water Heater Installation: 324.3
+  Water Heater Servicing: 446.33
+  Garage Cabinet Assembly: 248.85
+  Circuit Breaker Replacement: 362.15
+  Carpet Cleaning: 340.78
+  Patio Repair: 386.73
+  Step Repair: 194.33
+  Bathroom Vanity Install: 470.63
+  Walkway Construction: 425.63
+  Lawn Sodding: 181.79
+  Wood Flooring Refinishing: 279.68
+  Brick Step Replacement: 306.17
+  Granite Countertop Fabrication: 408.57
+  Sprinkler System Start-Up: 390.19
+  Garbage Disposal Replacement: 315.4
+  Granite Countertop Replacement: 370.57
+  Single Room Vinyl Flooring: 306.94
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: true
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: true
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: true
+  appointment only: false
+min_price_factor: 0.7

@@ -1,0 +1,45 @@
+id: business_0176
+name: Crafted Structure Services
+description: Trusted by local homeowners for reliable upgrades, repairs, and exterior
+  improvements, Crafted Structure Services delivers quality solutions for residential
+  properties. Our skilled team provides a range of general contracting services with
+  a focus on attention to detail and lasting results.
+rating: 1.0
+progenitor_customer: customer_0059
+menu_features:
+  Central Air Maintenance: 376.79
+  Retaining Wall Build: 487.03
+  Closet Shelving Installation: 280.89
+  Door Installation: 161.52
+  Shrub Trimming: 333.84
+  Exterior Siding Wash: 509.95
+  Security Light Installation: 324.07
+  Replace Heating Thermostat: 414.1
+  Walkway Resurfacing: 577.87
+  Siding Repair: 571.9
+  Walk-in Shower Retrofit: 450.88
+  Sump Pump Service: 389.05
+  Brick Step Repointing: 548.87
+  Garage Door Weatherproofing: 534.16
+  Brick Pathway Repair: 341.15
+  Stone Veneer Installation: 456.63
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: true
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.63

@@ -1,0 +1,13 @@
+id: customer_0013
+name: Noah Nguyen
+request: 'I am looking for a licensed contractor who can provide the following services:
+  Fence Gate Repair (1), Hardwood Refinishing (1), and Recessed Lighting Install (1).
+  Once a contractor meeting these requirements is identified, I am ready to engage
+  their services and proceed to schedule and confirm the work as listed above. Please
+  help me with this request at your earliest convenience.'
+menu_features:
+  Fence Gate Repair: 345.95
+  Hardwood Refinishing: 395.25
+  Recessed Lighting Install: 218.95
+amenity_features:
+- licensed

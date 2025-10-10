@@ -1,0 +1,45 @@
+id: business_0198
+name: Anchor Point Residential Services
+description: Anchor Point Residential Services provides reliable solutions for homeowners
+  seeking quality maintenance, outdoor enhancements, and general home improvement.
+  Our team focuses on timely, professional service for a wide range of interior and
+  exterior projects.
+rating: 1.0
+progenitor_customer: customer_0066
+menu_features:
+  AC Maintenance: 466.96
+  Deck Sanding: 335.93
+  Mulching: 280.78
+  Gutter Cleaning: 193.87
+  Fence Installation: 471.08
+  Concrete Pathway Pouring: 313.89
+  Backsplash Tile Setting: 249.97
+  Bookshelf Assembly: 274.91
+  Heat Pump Tune-Up: 375.21
+  Recessed Lighting Setup: 174.86
+  Attic Ladder Installation: 258.22
+  Brick Walkway Restoration: 421.87
+  Concrete Crack Sealing: 272.53
+  Whole-Home Re-caulking: 489.15
+  Sump Pump Service: 466.86
+  Paver Sealing: 213.87
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: true
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.93

@@ -1,0 +1,43 @@
+id: business_0024
+name: Residential Task Solutions
+description: Residential Task Solutions provides reliable repair, installation, and
+  improvement services to homeowners seeking prompt, professional assistance for projects
+  both inside and outside the home. Our team delivers quality craftsmanship across
+  a range of trades to maintain and enhance your property.
+rating: 1.0
+progenitor_customer: customer_0008
+menu_features:
+  Security System Setup: 306.94
+  Shed Roof Replacement: 512.34
+  Walkway Repair: 190.54
+  Closet Cabinet Assembly: 423.41
+  Leak Repair: 160.48
+  Slate Patio Construction: 573.34
+  Outdoor Fence Painting: 473.63
+  Flower Bed Planting: 255.12
+  Small Bathroom Plumbing Repair: 162.3
+  Garden Bed Preparation: 147.13
+  Mailbox Post Setting: 219.64
+  Yard Debris Removal: 175.09
+  Subpanel Installation: 358.38
+  Thermostat Replacement: 281.51
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: true
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.88

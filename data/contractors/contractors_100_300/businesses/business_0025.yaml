@@ -1,0 +1,42 @@
+id: business_0025
+name: Harborview Home Contractors
+description: Harborview Home Contractors provides reliable residential repair and
+  improvement services, helping homeowners maintain and enhance their living spaces
+  with quality workmanship and attentive customer care.
+rating: 1.0
+progenitor_customer: customer_0009
+menu_features:
+  Brick Pathway Repair: 383.36
+  Shed Assembly: 256.08
+  Deck Railing Installation: 430.92
+  Bathroom Floor Tiling: 282.58
+  Central Heating Repair: 486.73
+  Foundation Crack Repair: 190.38
+  Replace Heating Thermostat: 433.97
+  Deck Sealing: 350.39
+  Entry Door Repainting: 188.92
+  Radiator Maintenance: 230.99
+  Laminate Floor Installation: 354.74
+  Trim Carpentry: 255.08
+  Small Closet Remodeling: 320.97
+  Sod Installation: 289.8
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.76

@@ -1,0 +1,13 @@
+id: customer_0074
+name: James Wilson
+request: 'I''m looking for a contractor who can provide the following services: Custom
+  Bookcase Build (1), Tree Pruning (1), and Air Conditioner Inspection (1). It''s
+  essential that the contractor uses eco friendly materials. Once you confirm a contractor
+  who meets all these requirements, I''m ready to hire them and proceed with scheduling
+  the work. Please let me know the next steps to finalize everything.'
+menu_features:
+  Custom Bookcase Build: 463.99
+  Tree Pruning: 341.95
+  Air Conditioner Inspection: 515.99
+amenity_features:
+- eco friendly materials

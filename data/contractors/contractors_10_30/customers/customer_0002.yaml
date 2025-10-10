@@ -1,0 +1,12 @@
+id: customer_0002
+name: Alexander Chen
+request: Please help me find a contractor who can provide Brick Path Restoration (1)
+  and Patio Paver Laying (1), and offers appointment only services with a warranty.
+  Once such a contractor is identified, I would like to hire them and proceed to schedule
+  the work as specified. Looking forward to confirming the arrangements soon.
+menu_features:
+  Brick Path Restoration: 467.5
+  Patio Paver Laying: 396.0
+amenity_features:
+- appointment only
+- warranty

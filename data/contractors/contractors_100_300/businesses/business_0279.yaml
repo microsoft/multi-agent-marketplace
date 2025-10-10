@@ -1,0 +1,45 @@
+id: business_0279
+name: Reliance Neighborhood Services
+description: Reliance Neighborhood Services provides residential maintenance, repair,
+  and improvement solutions tailored for homeowners seeking dependable service. Our
+  team specializes in a range of interior, exterior, and technical projects to help
+  keep your home running smoothly.
+rating: 1.0
+progenitor_customer: customer_0093
+menu_features:
+  Sprinkler System Setup: 469.12
+  Shingle Replacement: 485.39
+  Roof Leak Assessment: 415.0
+  Home Network Setup: 264.6
+  Roof Flashing Replacement: 306.39
+  Dryer Vent Cleaning: 236.64
+  Sprinkler System Inspection: 300.2
+  Sprinkler System Maintenance: 218.66
+  Custom Shelving Installation: 325.13
+  AC Tune-Up: 344.56
+  Outdoor Lighting Installation: 275.31
+  Custom Cabinet Build: 551.45
+  Central Air Conditioner Tune-Up: 478.73
+  Interior Painting: 124.18
+  Vanity Sink Plumbing: 254.71
+  Flagstone Walkway: 473.89
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: true
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.76

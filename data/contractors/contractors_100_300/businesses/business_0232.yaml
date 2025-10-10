@@ -1,0 +1,41 @@
+id: business_0232
+name: StableHouse Contracting
+description: StableHouse Contracting provides residential improvement and maintenance
+  services for homeowners seeking reliable solutions for interior and exterior projects.
+  Our team delivers professional workmanship across a range of home upgrades and repairs.
+rating: 1.0
+progenitor_customer: customer_0078
+menu_features:
+  Patio Paver Resanding: 369.55
+  Shower Glass Installation: 505.21
+  Cabinet Refacing: 344.06
+  Sprinkler System Maintenance: 190.04
+  Walkway Paver Resetting: 411.58
+  Flat Roof Sealant Application: 431.95
+  Mailbox Post Replacement: 379.47
+  Subpanel Installation: 442.68
+  Sump Pump Replacement: 546.53
+  Hardwood Flooring: 414.39
+  Garage Floor Coating: 352.41
+  Refrigerator Hookup: 219.69
+  Sprinkler System Repair: 525.38
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: true
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.81

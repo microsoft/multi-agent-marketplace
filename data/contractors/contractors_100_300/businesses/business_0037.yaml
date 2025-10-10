@@ -1,0 +1,46 @@
+id: business_0037
+name: Strathmore Residential Contractors
+description: Strathmore Residential Contractors provides reliable home improvement
+  and repair services for homeowners seeking quality workmanship and dependable results.
+  We specialize in interior and exterior updates, small renovations, and maintenance
+  solutions for residential properties.
+rating: 1.0
+progenitor_customer: customer_0013
+menu_features:
+  Vinyl Siding Patch: 346.79
+  Shower Tile Regrouting: 338.36
+  Granite Countertop Installation: 519.01
+  Sheetrock Installation: 394.04
+  Insulation Addition: 404.29
+  Ceiling Fan Upgrade: 299.47
+  Exterior Painting: 207.48
+  Tile Grouting: 129.99
+  Drywall Hole Repair: 238.18
+  Concrete Pathway Pouring: 390.06
+  Fencing Repair: 537.24
+  Electrical Panel Update: 430.85
+  Wall Sconce Wiring: 272.58
+  Deck Restoration: 452.68
+  Driveway Patching: 294.81
+  Drywall Hole Patching: 569.22
+  Lawn Edging: 193.96
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.67

@@ -1,0 +1,42 @@
+id: business_0128
+name: Crafted Home Restoration
+description: Serving local homeowners with a comprehensive range of interior and exterior
+  upgrade, repair, and maintenance solutions. We deliver reliable workmanship tailored
+  to improve the quality, appearance, and function of residential spaces.
+rating: 1.0
+progenitor_customer: customer_0043
+menu_features:
+  Window Frame Restoration: 418.27
+  Driveway Patching: 330.21
+  Stone Patio Cleaning: 190.73
+  Garage Door Adjustment: 178.46
+  Ceiling Fan Replacement: 240.33
+  Bathroom Vanity Upgrade: 267.07
+  Custom Closet Cabinetry: 495.98
+  Brick Veneer Installation: 500.0
+  Mulch Distribution: 187.72
+  Brick Step Restoration: 315.38
+  Light Switch Replacement: 254.93
+  Brick Tuckpointing: 465.23
+  Baseboard Painting: 330.94
+  Central AC Inspection: 357.43
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.71

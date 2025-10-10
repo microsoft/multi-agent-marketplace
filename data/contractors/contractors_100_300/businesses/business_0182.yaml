@@ -1,0 +1,44 @@
+id: business_0182
+name: Glencourt Residential Contractors
+description: Glencourt Residential Contractors provides reliable solutions for homeowners
+  seeking improvements, repairs, and upgrades throughout their property. Our team
+  delivers quality workmanship for a wide range of interior and exterior residential
+  projects.
+rating: 1.0
+progenitor_customer: customer_0061
+menu_features:
+  Light Switch Upgrade: 249.71
+  Basement Waterproofing: 352.57
+  Kitchen Faucet Upgrade: 217.22
+  Roof Leak Patch: 318.55
+  Pergola Construction: 295.86
+  Water Heater Replacement: 323.72
+  Chimney Cleaning: 344.11
+  Laminate Floor Repair: 207.74
+  Ceiling Fan Upgrade: 248.95
+  Furnace Maintenance: 423.86
+  Sprinkler System Setup: 417.78
+  Tile Shower Installation: 473.95
+  Porch Repair: 353.81
+  AC Filter Replacement: 310.12
+  Custom Closet Assembly: 441.29
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.73

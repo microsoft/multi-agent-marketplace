@@ -1,0 +1,42 @@
+id: business_0011
+name: Cedarbrook Home Contractors
+description: Cedarbrook Home Contractors provides reliable improvement, repair, and
+  installation services for homeowners seeking quality solutions for their residences.
+  Our team is committed to delivering professional craftsmanship and attentive service
+  across a range of home maintenance and remodeling needs.
+rating: 1.0
+progenitor_customer: customer_0004
+menu_features:
+  Ceiling Light Installation: 206.06
+  Deck Restoration: 434.0
+  Whole House Re-caulking: 507.14
+  Cabinet Door Adjustment: 242.28
+  Thermostat Replacement: 227.66
+  Shingle Repair: 408.93
+  Bathroom Remodel: 516.16
+  Roof Repair: 508.21
+  Brick Patio Installation: 584.2
+  Front Door Lock Change: 148.43
+  Central Air Inspection: 329.1
+  Outdoor Lighting Installation: 314.4
+  Lock Set Change: 177.27
+amenity_features:
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  accepts digital payments: true
+  licensed: false
+  appointment only: false
+  business accepts credit cards: false
+  same day service: false
+  flexible hours: true
+  free estimate: false
+  background checked crew: false
+  insured: false
+  weekend availability: false
+  eco friendly materials: false
+  responsiveness: false
+  post install inspection: true
+  free followup visit: false
+  after hours service: false
+min_price_factor: 0.76

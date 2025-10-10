@@ -1,0 +1,45 @@
+id: business_0282
+name: Stonebrook Improvement Services
+description: Stonebrook Improvement Services provides reliable upgrades and repairs
+  for residential properties, specializing in interior and exterior maintenance projects.
+  We serve homeowners seeking trusted solutions for essential home improvements and
+  long-lasting results.
+rating: 1.0
+progenitor_customer: customer_0094
+menu_features:
+  Garage Door Motor Replacement: 349.25
+  Driveway Resurfacing: 338.39
+  Closet System Installation: 490.81
+  Central Air Conditioner Tune-Up: 509.41
+  Brick Pathway Installation: 305.11
+  Garage Door Inspection: 423.72
+  Concrete Driveway Repair: 212.89
+  Brick Path Repair: 209.88
+  Basement Wall Sealing: 533.19
+  Stone Patio Sealing: 425.47
+  Door Hardware Replacement: 291.01
+  Brick Repair: 178.15
+  Baseboard Mold Remediation: 311.38
+  Bathroom Faucet Upgrade: 254.15
+  Insulation Addition: 529.38
+  Granite Countertop Installation: 414.68
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: true
+  warranty: false
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.88

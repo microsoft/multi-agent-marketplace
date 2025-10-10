@@ -1,0 +1,12 @@
+id: customer_0020
+name: James Lee
+request: 'I''m looking to hire a contractor who can provide the following services:
+  Bathroom Vanity Upgrade (1) and Bathtub Caulking (1). It''s important that the contractor
+  demonstrates responsiveness. Once you identify a contractor meeting all of these
+  requirements, please help me schedule and confirm the work at the earliest convenience.
+  Thank you for facilitating this arrangement.'
+menu_features:
+  Bathroom Vanity Upgrade: 270.49
+  Bathtub Caulking: 305.95
+amenity_features:
+- responsiveness

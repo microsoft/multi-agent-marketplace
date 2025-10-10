@@ -1,0 +1,14 @@
+id: customer_0030
+name: Ava Nguyen
+request: "Please help me find a contractor who can provide the following services:\
+  \ Brick Walkway Restoration (1), Furnace Service (1), and Replace Electrical Outlet\
+  \ (1). It\u2019s essential that they offer same day service and use eco friendly\
+  \ materials. Once such a contractor is identified, I am ready to hire them and would\
+  \ like to promptly schedule and confirm the work."
+menu_features:
+  Brick Walkway Restoration: 411.99
+  Furnace Service: 478.49
+  Replace Electrical Outlet: 241.99
+amenity_features:
+- same day service
+- eco friendly materials

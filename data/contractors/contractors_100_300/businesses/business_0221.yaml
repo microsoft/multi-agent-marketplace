@@ -1,0 +1,43 @@
+id: business_0221
+name: Union Grove Home Contractors
+description: Union Grove Home Contractors provides reliable residential improvement
+  and maintenance services, specializing in interior and exterior updates for homeowners
+  seeking quality workmanship and attentive service. Our team delivers solutions tailored
+  to everyday property needs and enhancements.
+rating: 1.0
+progenitor_customer: customer_0074
+menu_features:
+  Custom Bookcase Build: 471.96
+  Air Conditioner Inspection: 439.74
+  Porch Resurfacing: 321.91
+  Exterior Siding Cleaning: 450.35
+  Asphalt Crack Sealing: 396.07
+  Ceiling Fan Repair: 291.5
+  Stone Pathway Construction: 364.17
+  Fixture Assembly: 238.68
+  Fireplace Tuckpointing: 446.78
+  Door Hardware Upgrade: 234.78
+  Gutter Replacement: 503.76
+  Bathroom Vanity Cabinet Install: 377.02
+  Recessed Light Installation: 234.71
+  Tree Pruning: 342.01
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: true
+  eco friendly materials: true
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.73

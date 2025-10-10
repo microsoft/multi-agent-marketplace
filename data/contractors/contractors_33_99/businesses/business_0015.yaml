@@ -1,0 +1,44 @@
+id: business_0015
+name: Riverbend Home Renovations
+description: Riverbend Home Renovations provides reliable residential improvement
+  and maintenance services for homeowners seeking professional upgrades and repairs.
+  Our team delivers quality workmanship across interior updates, exterior restoration,
+  and general home solutions.
+rating: 1.0
+progenitor_customer: customer_0005
+menu_features:
+  Tile Installation: 358.28
+  Bathroom Vanity Cabinetry: 485.89
+  Stucco Wall Restoration: 338.26
+  Smoke Detector Upgrade: 276.32
+  Washer Hookup Installation: 393.69
+  Door Replacement: 408.79
+  Shed Roof Re-Shingling: 463.54
+  Bathroom Fan Installation: 352.86
+  Radiator Maintenance: 238.17
+  Ceiling Fan Mounting: 323.24
+  Custom Shelf Mounting: 327.52
+  Roof Leak Fix: 165.2
+  Walkway Paver Installation: 287.86
+  Weatherproof Electrical Outlet Install: 109.24
+  Shrub Planting: 150.14
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: true
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: true
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.91

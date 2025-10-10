@@ -1,0 +1,41 @@
+id: business_0269
+name: Northway Home Improvements
+description: Northway Home Improvements provides reliable residential repair and upgrade
+  services for homeowners seeking expert solutions in flooring, plumbing, and general
+  home maintenance. Our team is dedicated to delivering quality workmanship for a
+  wide range of interior and exterior projects.
+rating: 1.0
+progenitor_customer: customer_0090
+menu_features:
+  Laminate Flooring: 276.28
+  Drain Cleaning: 234.9
+  Carpet Removal: 353.97
+  Garage Door Weatherproofing: 394.85
+  Small Room Flooring: 328.51
+  Water Heater Replacement: 390.02
+  Bathroom Exhaust Fan Upgrade: 358.13
+  Refrigerator Water Line Install: 230.19
+  Fence Repair: 510.99
+  Shower Enclosure Installation: 487.78
+  Brick Chimney Pointing: 418.07
+  Concrete Pathway Repair: 393.93
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: true
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.65

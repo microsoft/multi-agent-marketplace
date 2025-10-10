@@ -1,0 +1,10 @@
+id: customer_0024
+name: Charlotte Ivanov
+request: I'm looking to hire a contractor for an HVAC Spring Tune-Up (1), but it's
+  essential that the crew is background checked. Once you identify a contractor who
+  meets these requirements, please help me engage their services and proceed with
+  scheduling the work. Please confirm availability and next steps.
+menu_features:
+  HVAC Spring Tune-Up: 377.37
+amenity_features:
+- background checked crew

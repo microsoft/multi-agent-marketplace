@@ -1,0 +1,41 @@
+id: business_0061
+name: Northpoint Residential Services
+description: Serving local homeowners with expert solutions for maintenance, repair,
+  and improvement projects. Our team delivers quality workmanship across a range of
+  residential needs, including exterior enhancements and interior system care.
+rating: 1.0
+progenitor_customer: customer_0021
+menu_features:
+  Brick Walkway Restoration: 425.31
+  Air Duct Sealing: 259.02
+  Landscaping Bed Creation: 424.04
+  Concrete Driveway Repair: 181.41
+  Walkway Bricklaying: 473.91
+  Light Fixture Wiring: 237.22
+  Air Conditioner Servicing: 462.28
+  Sprinkler Head Replacement: 221.09
+  Bathroom Fan Installation: 366.33
+  Central AC Tuneup: 518.55
+  Radiator Maintenance: 234.01
+  Fireplace Inspection: 358.21
+  Small Bathroom Plumbing Repair: 152.73
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: true
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.87

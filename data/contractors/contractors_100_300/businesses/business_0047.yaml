@@ -1,0 +1,45 @@
+id: business_0047
+name: PrairieStone Home Solutions
+description: PrairieStone Home Solutions provides reliable residential maintenance
+  and improvement services, helping homeowners keep their properties in top condition.
+  Our team delivers value-focused support for a wide range of essential home upgrades
+  and repairs.
+rating: 1.0
+progenitor_customer: customer_0016
+menu_features:
+  Heat Pump Inspection: 358.04
+  Entry Door Repainting: 140.88
+  Basic Tile Flooring Install: 168.61
+  Shrub Removal: 171.11
+  Garage Door Maintenance: 237.82
+  Exterior Siding Wash: 486.79
+  Front Door Painting: 242.83
+  Garage Door Tune-Up: 275.69
+  Mulch Laying: 236.09
+  Furnace Tune-Up: 393.33
+  Smoke Detector Wiring: 344.0
+  Masonry Brick Restoration: 368.66
+  Closet Shelving Assembly: 394.73
+  Laminate Countertop Installation: 307.92
+  Insulation Upgrade: 441.66
+  Outlet Upgrade: 344.89
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: true
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.78

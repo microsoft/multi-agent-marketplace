@@ -1,0 +1,11 @@
+id: customer_0077
+name: Sarah Anderson
+request: I'm looking to hire a contractor who can provide Drain Clearing (1) and Roof
+  Leak Inspection (1), and also offers post install inspection. Please help me find
+  a professional meeting all these requirements, as I am ready to engage and schedule
+  the necessary work upon confirmation.
+menu_features:
+  Drain Clearing: 180.5
+  Roof Leak Inspection: 323.99
+amenity_features:
+- post install inspection

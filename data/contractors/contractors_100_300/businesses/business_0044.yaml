@@ -1,0 +1,42 @@
+id: business_0044
+name: Williamsburg Residential Contracting
+description: Williamsburg Residential Contracting provides reliable improvement and
+  maintenance services for homeowners, specializing in interior updates, exterior
+  repairs, and landscaping solutions. Our team is dedicated to enhancing residential
+  properties with professional workmanship and attentive service.
+rating: 1.0
+progenitor_customer: customer_0015
+menu_features:
+  Roof Leak Patch: 384.54
+  Lawn Aeration: 147.58
+  Shrub Planting: 126.32
+  Carpet Removal: 421.8
+  Fence Post Setting: 327.91
+  Fireplace Tuckpointing: 378.45
+  Subpanel Installation: 466.09
+  Shower Valve Replacement: 271.89
+  Hardwood Flooring: 443.95
+  Custom Cabinet Fabrication: 391.61
+  Brick Patio Replacement: 463.77
+  Ductless AC Installation: 344.5
+  Sump Pump Installation: 427.7
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: true
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.72

@@ -1,0 +1,44 @@
+id: business_0026
+name: Bluestone Home Services
+description: Bluestone Home Services provides reliable residential improvements, maintenance,
+  and repairs for homeowners seeking quality workmanship. Our team delivers a full
+  range of indoor and outdoor solutions to help you maintain and enhance your property.
+rating: 1.0
+progenitor_customer: customer_0009
+menu_features:
+  Garden Bed Installation: 134.78
+  Built-in Shelving Installation: 416.5
+  Mini-Split Maintenance: 224.6
+  Faucet Replacement: 110.67
+  Gutter Repair: 283.07
+  Central Air Conditioning Maintenance: 424.18
+  Septic Tank Pumping: 463.68
+  Room Painting: 275.15
+  Deck Sealing: 410.04
+  Garden Bed Creation: 115.62
+  Appliance Hookup: 218.95
+  Refrigerator Hookup: 261.9
+  Concrete Patio Resurfacing: 456.7
+  Circuit Breaker Panel Update: 280.93
+  Carpet Stretching: 408.89
+  Kitchen Cabinet Repainting: 454.77
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.75

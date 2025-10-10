@@ -1,0 +1,41 @@
+id: business_0124
+name: Oakwood Residential Services Group
+description: Oakwood Residential Services Group provides reliable solutions for homeowners
+  seeking skilled improvements, repairs, and maintenance for their homes and outdoor
+  spaces. Our team specializes in prompt, professional service for a wide range of
+  residential projects.
+rating: 1.0
+progenitor_customer: customer_0042
+menu_features:
+  Sprinkler Head Repair: 240.02
+  Refrigerator Hookup: 236.84
+  Staircase Refinishing: 327.42
+  Thermostat Replacement: 259.4
+  Bathroom Vanity Update: 303.43
+  Driveway Patching: 260.59
+  Brick Chimney Pointing: 359.41
+  Bathroom Sink Plumbing: 217.56
+  Fireplace Mantel Installation: 463.88
+  Cabinet Installation: 193.72
+  Mulch Spreading: 243.85
+  Garden Maintenance: 211.37
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: true
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.63

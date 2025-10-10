@@ -1,0 +1,45 @@
+id: business_0250
+name: HavenStone Contracting
+description: HavenStone Contracting provides comprehensive residential repair and
+  remodeling services for homeowners seeking reliable solutions for interior and exterior
+  improvements. We focus on quality workmanship and responsive customer service for
+  projects of all scopes.
+rating: 1.0
+progenitor_customer: customer_0084
+menu_features:
+  Shower Remodel: 410.53
+  Tile Repair: 151.97
+  Whole House Re-caulking: 447.98
+  Garbage Disposal Installation: 234.88
+  Concrete Path Repair: 153.13
+  Walk-In Closet Shelving: 436.21
+  Stone Patio Sealing: 376.27
+  Bathroom Vanity Replacement: 252.07
+  Wood Stair Refinishing: 486.02
+  Electrical Panel Tune-Up: 303.2
+  Exterior Door Mounting: 247.75
+  Baseboard Replacement: 383.45
+  Gutter Cleaning: 219.17
+  Garage Remodeling: 563.69
+  Retaining Wall Installation: 470.76
+  Roof Shingle Patch: 345.83
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: true
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.79

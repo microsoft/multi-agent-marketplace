@@ -1,0 +1,42 @@
+id: business_0013
+name: Pinecrest Home Contractors
+description: Pinecrest Home Contractors provides comprehensive residential improvement
+  and maintenance services for homeowners seeking reliable solutions for both interior
+  and exterior projects. Our team is committed to quality work and responsive customer
+  service in every aspect of home care and remodeling.
+rating: 1.0
+progenitor_customer: customer_0005
+menu_features:
+  Mulch Delivery: 238.17
+  Bathroom Fan Replacement: 479.59
+  Basement Remodeling: 442.87
+  Slate Patio Construction: 437.57
+  Kitchen Backsplash: 394.63
+  Exterior Wall Patching: 382.76
+  Shed Roof Re-Shingling: 439.23
+  Toilet Replacement: 138.1
+  Water Heater Inspection: 225.19
+  Leak Detection: 208.2
+  Closet Shelving Installation: 452.93
+  Kitchen Faucet Install: 359.04
+  Water Heater Descaling: 356.62
+amenity_features:
+  flexible hours: true
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.73

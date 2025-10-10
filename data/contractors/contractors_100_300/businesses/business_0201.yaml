@@ -1,0 +1,41 @@
+id: business_0201
+name: Residential Precision Solutions
+description: Serving homeowners with reliable indoor and outdoor repair, improvement,
+  and installation services. Our team delivers professional results for a wide range
+  of residential maintenance and upgrade projects.
+rating: 1.0
+progenitor_customer: customer_0067
+menu_features:
+  Central Air Tuneup: 485.53
+  Thermostat Installation: 105.7
+  Power Washing: 260.98
+  Brick Patio Replacement: 558.35
+  Roof Leak Fix: 179.09
+  Closet Shelving Installation: 334.15
+  Brick Step Rebuilding: 487.21
+  Custom Cabinet Assembly: 427.47
+  Stone Walkway Paving: 375.26
+  Concrete Crack Repair: 434.83
+  Garden Bed Installation: 107.27
+  Bathtub Reglazing: 321.78
+  Custom Cabinet Hanging: 389.19
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: true
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.88

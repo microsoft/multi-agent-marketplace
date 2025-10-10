@@ -1,0 +1,11 @@
+id: customer_0009
+name: Steven Hall
+request: 'I''m looking to hire a contractor who can provide Deck Sealing (quantity:
+  1) and offers both credit card payment and after hours service. Please help me find
+  a qualified contractor that meets these essential requirements so I can proceed
+  with scheduling and confirming the work.'
+menu_features:
+  Deck Sealing: 329.99
+amenity_features:
+- business accepts credit cards
+- after hours service

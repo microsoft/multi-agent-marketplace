@@ -1,0 +1,14 @@
+id: customer_0024
+name: Emma Wilson
+request: "Please help me find a contractor who can perform Brick Step Rebuilding (1),\
+  \ Recessed Lighting Install (1), and Fence Gate Repair (1), and who also offers\
+  \ free followup visit and weekend availability. Once you identify a contractor who\
+  \ meets all these requirements, I\u2019d like to hire them and proceed to schedule\
+  \ and confirm the work as listed above."
+menu_features:
+  Brick Step Rebuilding: 506.95
+  Recessed Lighting Install: 218.95
+  Fence Gate Repair: 345.95
+amenity_features:
+- free followup visit
+- weekend availability

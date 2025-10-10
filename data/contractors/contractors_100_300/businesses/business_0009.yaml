@@ -1,0 +1,42 @@
+id: business_0009
+name: Elmcrest Residential Services
+description: Elmcrest Residential Services provides reliable home improvement and
+  maintenance solutions for local homeowners, specializing in interior upgrades, exterior
+  enhancements, and essential repairs. Our team is committed to delivering practical,
+  professional work for residential projects of all sizes.
+rating: 1.0
+progenitor_customer: customer_0003
+menu_features:
+  Concrete Pathway Pouring: 382.48
+  Cabinet Installation: 187.15
+  Basic Tile Flooring Install: 216.14
+  Weatherproof Electrical Outlet Install: 168.87
+  Chandelier Installation: 209.02
+  Hardwood Floor Sanding: 280.46
+  Central Air Inspection: 374.23
+  Hardwood Floor Resurfacing: 415.63
+  Flower Bed Redesign: 261.29
+  Water Heater Servicing: 451.81
+  Shower Valve Repair: 254.43
+  Sprinkler System Repair: 482.07
+  Circuit Breaker Replacement: 379.67
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: true
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.63

@@ -1,0 +1,40 @@
+id: business_0155
+name: Granite Ridge Home Services
+description: Granite Ridge Home Services provides reliable residential upgrades, repairs,
+  and maintenance for homeowners seeking quality improvements and upkeep. Our team
+  delivers professional workmanship across projects ranging from interior enhancements
+  to exterior care.
+rating: 1.0
+progenitor_customer: customer_0052
+menu_features:
+  Custom Closet Installation: 395.96
+  Light Fixture Upgrade: 238.96
+  Concrete Path Repair: 225.44
+  Lawn Mowing: 176.57
+  Trim Carpentry: 237.9
+  Full Bathroom Caulking: 448.07
+  Entry Door Repainting: 181.17
+  Attic Ladder Installation: 324.43
+  Garage Door Maintenance: 212.2
+  Closet Organizer Installation: 493.95
+  Cabinet Installation: 170.71
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: true
+  live job updates: false
+  licensed: false
+  free estimate: true
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.74

@@ -1,0 +1,11 @@
+id: customer_0006
+name: Andrew Rivera
+request: 'I am looking to hire a contractor who can perform Laminate Floor Installation
+  (quantity: 1) and offers both weekend availability and a post install inspection.
+  Once a contractor meeting these requirements is found, I am ready to confirm and
+  schedule the work as specified.'
+menu_features:
+  Laminate Floor Installation: 375.0
+amenity_features:
+- weekend availability
+- post install inspection

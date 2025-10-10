@@ -1,0 +1,44 @@
+id: business_0195
+name: Sunbrook Home Improvement
+description: Sunbrook Home Improvement provides reliable residential remodeling and
+  essential repair services for homeowners, including interior upgrades, exterior
+  improvements, and landscaping solutions. We are dedicated to delivering quality
+  workmanship for a wide range of home projects.
+rating: 1.0
+progenitor_customer: customer_0065
+menu_features:
+  Landscaping Bed Creation: 385.71
+  Water Heater Replacement: 378.36
+  Bathroom Remodel: 435.94
+  Staircase Refinishing: 318.69
+  Smoke Detector Replacement: 184.09
+  Flooring Subfloor Repair: 430.16
+  Brick Pathway Installation: 422.52
+  Front Door Painting: 292.22
+  Refrigerator Water Line Install: 204.76
+  Cabinet Handle Replacement: 418.01
+  Basic Plumbing Repair: 156.05
+  Custom Closet Cabinetry: 520.8
+  Garden Bed Planting: 161.57
+  French Drain Installation: 424.72
+  Pathway Paver Installation: 270.0
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: true
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.74

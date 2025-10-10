@@ -1,0 +1,43 @@
+id: business_0208
+name: Reliance Home Contractors
+description: Reliance Home Contractors provides a range of residential repair and
+  improvement services, offering reliable solutions for homeowners seeking quality
+  workmanship. Our team is committed to maintaining and enhancing the function and
+  appearance of your home with timely, professional service.
+rating: 1.0
+progenitor_customer: customer_0070
+menu_features:
+  Deck Board Replacement: 468.17
+  Wood Floor Refinishing: 316.33
+  Mulch Installation: 186.34
+  Wall Grouting: 167.68
+  Shingle Roof Cleaning: 459.67
+  Ceiling Patch Repair: 288.42
+  Bathroom Tile Setting: 416.42
+  Fireplace Cleaning: 250.24
+  Fireplace Tuckpointing: 382.38
+  Masonry Brick Restoration: 479.5
+  Garage Door Adjustment: 239.14
+  Garden Bed Construction: 130.54
+  Furnace Service: 411.2
+  Outlet Installation: 159.11
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: true
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.65

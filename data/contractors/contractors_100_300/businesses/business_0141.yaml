@@ -1,0 +1,40 @@
+id: business_0141
+name: Crestmark Residential Services
+description: Crestmark Residential Services provides reliable solutions for homeowners
+  seeking improvements, repairs, and maintenance across various areas of the home.
+  Our team is committed to quality workmanship and attentive service for residential
+  projects both large and small.
+rating: 1.0
+progenitor_customer: customer_0047
+menu_features:
+  Drain Cleaning: 169.6
+  Window Repair: 236.84
+  Small Room Remodeling: 466.31
+  Weatherproof Electrical Outlet Install: 145.44
+  Outlet Wiring: 196.32
+  Kitchen Remodel Consultation: 462.69
+  Concrete Driveway Repair: 176.2
+  Cabinet Hardware Installation: 553.6
+  Cabinet Handle Replacement: 401.16
+  Built-in Shelving Installation: 308.2
+  Solar Panel Cleaning: 358.65
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: true
+  appointment only: true
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.87

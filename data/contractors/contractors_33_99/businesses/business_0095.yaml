@@ -1,0 +1,44 @@
+id: business_0095
+name: VistaSquare Home Services
+description: VistaSquare Home Services provides residential maintenance, repair, and
+  improvement solutions for homeowners seeking reliable, high-quality work. Our team
+  is committed to delivering efficient service for a variety of home projects and
+  upgrades.
+rating: 1.0
+progenitor_customer: customer_0032
+menu_features:
+  Replace Electrical Outlet: 245.49
+  Garage Remodeling: 421.73
+  Small Roof Patch: 120.33
+  Central Air System Tune-Up: 369.41
+  Refrigerator Hookup: 305.53
+  AC Tune-Up: 387.67
+  Baseboard Replacement: 304.17
+  Central Air Maintenance: 425.17
+  Driveway Crack Repair: 306.42
+  Ceramic Tile Flooring: 274.24
+  Ductwork Inspection: 377.09
+  Small Brick Patio: 218.71
+  Sprinkler System Adjustment: 227.37
+  Basement Window Well Cover Installation: 551.99
+  Furnace Service: 515.5
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: true
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: true
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: true
+min_price_factor: 0.87

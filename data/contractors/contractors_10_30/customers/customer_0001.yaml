@@ -1,0 +1,11 @@
+id: customer_0001
+name: Grace Wang
+request: I'm looking to hire a contractor who can perform Door Lock Replacement (1),
+  and who employs multilingual staff and accepts credit cards. If you can find a contractor
+  meeting all these requirements, please help me schedule and confirm the work. Thank
+  you for assisting with this arrangement.
+menu_features:
+  Door Lock Replacement: 168.99
+amenity_features:
+- multilingual staff
+- business accepts credit cards

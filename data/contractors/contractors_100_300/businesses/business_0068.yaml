@@ -1,0 +1,44 @@
+id: business_0068
+name: Brightstone Contracting Solutions
+description: Brightstone Contracting Solutions provides dependable residential repair
+  and improvement services for homeowners seeking quality workmanship and efficient
+  project completion. We specialize in a range of interior and exterior upgrades,
+  including general home repairs and enhancements.
+rating: 1.0
+progenitor_customer: customer_0023
+menu_features:
+  Roof Leak Assessment: 326.01
+  Custom Closet Shelving: 396.77
+  Kitchen Cabinet Removal: 325.97
+  Vanity Setup: 224.61
+  Small Brick Patio: 166.51
+  Vanity Plumbing Repair: 231.4
+  Basement Water Proofing: 491.85
+  Faucet Installation: 224.45
+  Subpanel Installation: 574.19
+  Stone Pathway Repair: 126.28
+  Walkway Paver Resetting: 477.15
+  Lawn Sprinkler Repair: 249.59
+  Bathroom Vanity Fitting: 396.02
+  Deck Staining: 345.8
+  Sheetrock Installation: 338.38
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: true
+  appointment only: true
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.87

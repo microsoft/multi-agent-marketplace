@@ -1,0 +1,43 @@
+id: business_0009
+name: Parkside Home Solutions
+description: Parkside Home Solutions specializes in residential repairs, upgrades,
+  and exterior improvements for homeowners seeking dependable, high-quality service.
+  Our experienced team delivers practical solutions for a wide range of home maintenance
+  and enhancement needs.
+rating: 1.0
+progenitor_customer: customer_0003
+menu_features:
+  Sprinkler Head Replacement: 160.42
+  Stone Paver Walkway: 281.18
+  Stone Veneer Wall: 462.53
+  Faucet Replacement: 124.63
+  Foundation Crack Sealing: 333.87
+  Door Hardware Installation: 257.9
+  Replace Heating Thermostat: 353.9
+  Patio Paver Resetting: 347.29
+  Ceiling Fan Repair: 303.99
+  Sump Pump Service: 466.14
+  Vinyl Siding Patch: 349.68
+  Mulch Application: 134.3
+  Air Conditioner Tuneup: 315.65
+  Custom Closet Build: 505.28
+amenity_features:
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  accepts digital payments: false
+  licensed: false
+  appointment only: false
+  business accepts credit cards: false
+  same day service: true
+  flexible hours: false
+  free estimate: false
+  background checked crew: false
+  insured: true
+  weekend availability: false
+  eco friendly materials: false
+  responsiveness: false
+  post install inspection: false
+  free followup visit: false
+  after hours service: false
+min_price_factor: 0.69

@@ -1,0 +1,43 @@
+id: business_0051
+name: Sterling Residential Services
+description: Sterling Residential Services delivers reliable solutions for homeowners,
+  specializing in maintenance, repair, and exterior improvements. Our team provides
+  professional service to keep your property in top condition.
+rating: 1.0
+progenitor_customer: customer_0017
+menu_features:
+  Air Conditioner Tuneup: 260.2
+  Retaining Wall Patch: 354.8
+  Yard Debris Removal: 203.82
+  Dimmer Switch Upgrade: 143.34
+  Concrete Repair: 185.7
+  Fence Installation: 457.32
+  Concrete Patio Resurfacing: 456.6
+  Garage Door Maintenance: 268.6
+  Sprinkler System Repair: 431.0
+  Vanity Installation: 265.99
+  Brick Chimney Repair: 191.82
+  Slate Patio Construction: 368.31
+  Brick Patio Sealing: 325.6
+  Bathroom Vanity Install: 505.54
+  Leaky Pipe Repair: 209.85
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.74
