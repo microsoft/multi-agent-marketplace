@@ -1,0 +1,46 @@
+id: business_0004
+name: Elmridge Home Improvement
+description: Elmridge Home Improvement provides reliable residential repair and upgrade
+  services, focused on enhancing home functionality and appearance. Serving local
+  homeowners, our team delivers professional workmanship for a variety of interior
+  and exterior projects.
+rating: 1.0
+progenitor_customer: customer_0004
+menu_features:
+  Exterior Door Mounting: 233.56
+  Shower Door Fitting: 332.73
+  Roof Vent Installation: 377.54
+  Motion Sensor Installation: 269.54
+  Closet Organization System: 393.55
+  Drywall Hole Repair: 287.95
+  Heating System Maintenance: 276.01
+  Roof Vent Replacement: 429.0
+  Gutter Replacement: 549.46
+  Patio Paver Laying: 448.71
+  Fireplace Mantel Installation: 460.26
+  Water Heater Tune-Up: 368.02
+  Basement Window Well Cover Installation: 495.19
+  Heating System Tune-Up: 275.49
+  Brick Path Restoration: 425.27
+  Brick Chimney Pointing: 472.5
+  Hardwood Refinishing: 509.63
+amenity_features:
+  multilingual staff: false
+  warranty: true
+  live job updates: true
+  accepts digital payments: false
+  licensed: true
+  appointment only: true
+  business accepts credit cards: false
+  same day service: false
+  flexible hours: false
+  free estimate: false
+  background checked crew: false
+  insured: false
+  weekend availability: false
+  eco friendly materials: true
+  responsiveness: false
+  post install inspection: false
+  free followup visit: false
+  after hours service: false
+min_price_factor: 0.62

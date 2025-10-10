@@ -1,0 +1,39 @@
+id: business_0003
+name: Neighborhood Project Solutions
+description: Serving local homeowners with reliable repair, installation, and maintenance
+  services for residential properties. Our team is dedicated to providing quality
+  workmanship and straightforward service for a variety of home improvement needs.
+rating: 1.0
+progenitor_customer: customer_0003
+menu_features:
+  Toilet Repair: 233.33
+  Door Frame Repair: 274.05
+  Basement Window Installation: 399.57
+  Sheetrock Installation: 329.99
+  Outlet Repair: 224.56
+  Pergola Assembly: 337.36
+  Door Lock Replacement: 175.99
+  Electrical Panel Upgrade: 305.14
+  Weed Control: 110.97
+  Brick Chimney Repair: 184.65
+  Smoke Detector Replacement: 261.09
+amenity_features:
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  accepts digital payments: false
+  licensed: false
+  appointment only: true
+  business accepts credit cards: true
+  same day service: false
+  flexible hours: true
+  free estimate: true
+  background checked crew: false
+  insured: false
+  weekend availability: false
+  eco friendly materials: false
+  responsiveness: false
+  post install inspection: false
+  free followup visit: true
+  after hours service: false
+min_price_factor: 0.74

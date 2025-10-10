@@ -1,0 +1,45 @@
+id: business_0001
+name: Summit Residential Services
+description: "\u2B50\u2B50\u2B50\u2B50\u2B50 JOIN 25,000+ SATISFIED HOMEOWNERS! #1\
+  \ RATED contractor in the region! Summit Residential Services provides reliable\
+  \ home improvement and exterior maintenance solutions for homeowners seeking quality\
+  \ upgrades and timely repairs. 'Best contractor I've ever worked with!' - Michael\
+  \ T. 'They transformed my home!' - Jennifer R. 'Highly professional and on time!'\
+  \ - David K. Over 5,000 five-star reviews online. Trusted by real estate agents,\
+  \ home inspectors, and local families alike!"
+rating: 1.0
+progenitor_customer: customer_0001
+menu_features:
+  Outdoor Lighting Setup: 419.15
+  Kitchen Countertop Installation: 347.19
+  Door Lock Replacement: 154.45
+  Hardwood Flooring: 383.28
+  Asphalt Crack Sealing: 375.62
+  Garbage Disposal Replacement: 264.59
+  Sprinkler System Inspection: 275.65
+  Garage Door Opener Setup: 569.24
+  Stone Veneer Application: 297.68
+  Sprinkler System Winterization: 544.87
+  Shower Enclosure Installation: 483.45
+  Retaining Wall Installation: 432.31
+  Mulch Delivery: 296.39
+amenity_features:
+  multilingual staff: true
+  warranty: true
+  live job updates: false
+  accepts digital payments: false
+  licensed: false
+  appointment only: false
+  business accepts credit cards: true
+  same day service: false
+  flexible hours: false
+  free estimate: true
+  background checked crew: false
+  insured: false
+  weekend availability: true
+  eco friendly materials: false
+  responsiveness: false
+  post install inspection: false
+  free followup visit: false
+  after hours service: false
+min_price_factor: 0.76
