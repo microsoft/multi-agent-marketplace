@@ -1,0 +1,42 @@
+id: business_0264
+name: Prairie Edge Contracting
+description: Prairie Edge Contracting provides reliable residential repair and improvement
+  services to homeowners seeking quality solutions for indoor and outdoor projects.
+  Our team delivers attentive service for home maintenance, upgrades, and restoration
+  throughout the local community.
+rating: 1.0
+progenitor_customer: customer_0088
+menu_features:
+  Deck Repair: 289.24
+  Fixture Replacement: 237.61
+  Mulch Application: 145.88
+  Fireplace Tuckpointing: 357.97
+  Garden Bed Edging: 166.48
+  Brick Pathway Restoration: 384.13
+  Kitchen Wall Tile: 236.39
+  Gutter Installation: 441.18
+  AC Annual Maintenance: 453.53
+  Door Hardware Upgrade: 208.06
+  Garage Door Opener Setup: 476.38
+  Central Air Conditioning Inspection: 409.78
+  Tile Installation: 286.43
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: true
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.93

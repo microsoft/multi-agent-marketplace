@@ -1,0 +1,47 @@
+id: business_0149
+name: Hillcrest Home Works
+description: Hillcrest Home Works provides residential improvement and maintenance
+  services for homeowners seeking reliable solutions in property upgrades, repairs,
+  and landscaping. Our team is focused on delivering quality craftsmanship and attentive
+  service for a wide range of interior and exterior projects.
+rating: 1.0
+progenitor_customer: customer_0050
+menu_features:
+  Sod Lawn Installation: 456.06
+  Shingle Repair: 492.79
+  Shingle Roof Replacement: 489.81
+  Basement Window Installation: 449.87
+  Brick Pathway Installation: 420.66
+  Backsplash Installation: 329.67
+  Brick Pathway Repair: 403.34
+  Flagstone Walkway: 620.42
+  Window Frame Restoration: 421.5
+  Hardwood Floor Refinish: 225.14
+  Wood Fence Painting: 512.52
+  Bathtub Re-glazing: 420.94
+  Chimney Cleaning: 418.02
+  Flower Bed Planting: 289.57
+  Landscape Planting: 201.68
+  Thermostat Installation: 163.2
+  Garage Floor Sealing: 289.74
+  Dimmer Switch Upgrade: 136.84
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: true
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.81

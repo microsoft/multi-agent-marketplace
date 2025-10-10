@@ -1,0 +1,47 @@
+id: business_0022
+name: Cornerfield Home Services
+description: Cornerfield Home Services delivers comprehensive residential repairs,
+  improvements, and installations with a focus on quality workmanship and dependable
+  client service. We support homeowners with a wide range of interior and exterior
+  solutions tailored to meet everyday maintenance and enhancement needs.
+rating: 1.0
+progenitor_customer: customer_0008
+menu_features:
+  Brick Wall Repointing: 540.52
+  AC Maintenance: 393.57
+  Outlet Wiring: 211.62
+  Custom Closet Installation: 527.18
+  Wood Floor Refinishing: 345.19
+  Gutter Replacement: 480.57
+  AC Tune-Up: 402.4
+  Landscaping Design: 148.81
+  Walkway Stone Laying: 416.99
+  Sink Installation: 243.95
+  Engineered Wood Floor Installation: 477.51
+  Asphalt Patch Repair: 415.54
+  Luxury Vinyl Plank Installation: 326.73
+  Shower Valve Repair: 232.9
+  Roof Shingle Patch: 361.98
+  Drywall Replacement: 501.83
+  Bathroom Fan Replacement: 645.54
+  Custom Cabinet Fabrication: 510.99
+amenity_features:
+  multilingual staff: false
+  warranty: false
+  live job updates: true
+  accepts digital payments: true
+  licensed: true
+  appointment only: false
+  business accepts credit cards: true
+  same day service: false
+  flexible hours: false
+  free estimate: false
+  background checked crew: true
+  insured: true
+  weekend availability: false
+  eco friendly materials: false
+  responsiveness: false
+  post install inspection: false
+  free followup visit: false
+  after hours service: false
+min_price_factor: 0.87

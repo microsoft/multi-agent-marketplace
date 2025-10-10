@@ -1,0 +1,44 @@
+id: business_0068
+name: Grantwood Residential Services
+description: Grantwood Residential Services provides reliable home improvement and
+  maintenance solutions for homeowners seeking quality workmanship and attentive service.
+  We specialize in a range of interior and exterior projects designed to enhance and
+  maintain your living space.
+rating: 1.0
+progenitor_customer: customer_0023
+menu_features:
+  Landscape Lighting Installation: 365.85
+  Refrigerant Recharge: 342.46
+  Built-In Shelf Construction: 390.03
+  Window Repair: 222.42
+  Roof Shingle Patch: 304.49
+  Garden Bed Construction: 225.33
+  Garage Door Servicing: 356.99
+  Exterior Painting: 339.05
+  Tile Installation: 300.66
+  Ceiling Patch Repair: 276.49
+  Flooring Subfloor Repair: 365.98
+  Exterior Siding Wash: 578.6
+  Garage Shelving Assembly: 260.65
+  Gutter Installation: 490.13
+  Small Room Remodeling: 403.94
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: true
+  warranty: true
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: true
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.79

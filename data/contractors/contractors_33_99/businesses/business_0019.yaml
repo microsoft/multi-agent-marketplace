@@ -1,0 +1,43 @@
+id: business_0019
+name: Haven Residential Contractors
+description: Haven Residential Contractors serves homeowners with professional maintenance,
+  improvement, and renovation services for both interior and exterior spaces. We focus
+  on reliable solutions tailored to your property's needs, enhancing comfort and long-term
+  value.
+rating: 1.0
+progenitor_customer: customer_0007
+menu_features:
+  Chimney Sweep: 346.29
+  Sod Laying: 211.59
+  Carpet Removal: 329.46
+  Fireplace Cleaning: 294.37
+  Hardwood Floor Resurfacing: 422.67
+  Ceiling Fan Upgrade: 286.71
+  Planting Flower Beds: 356.12
+  Patio Repair: 371.32
+  Central Air Conditioning Maintenance: 471.49
+  Water Heater Replacement: 319.64
+  Carpet Laying: 287.65
+  Foundation Crack Repair: 172.89
+  Garage Door Adjustment: 244.55
+  Bathroom Vanity Cabinetry: 422.06
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: true
+  responsiveness: true
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: true
+  insured: false
+  free followup visit: true
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: true
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.91

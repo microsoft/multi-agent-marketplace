@@ -1,0 +1,46 @@
+id: business_0018
+name: Redwood Property Solutions
+description: Redwood Property Solutions provides reliable residential repair and improvement
+  services for homeowners seeking quality workmanship and attentive service. Our team
+  specializes in interior and exterior maintenance and upgrades tailored to keep your
+  property in excellent condition.
+rating: 1.0
+progenitor_customer: customer_0006
+menu_features:
+  Tile Grouting: 131.65
+  Wood Flooring Refinishing: 316.92
+  Asphalt Patching: 395.9
+  Ceiling Light Installation: 175.33
+  Garage Door Weatherproofing: 573.87
+  Ductwork Sealing: 327.0
+  Lawn Edging: 171.49
+  Furnace Service: 325.02
+  Garage Door Opener Install: 239.85
+  Walkway Concrete Pour: 464.59
+  Vanity Installation: 268.43
+  Ceramic Tile Flooring: 353.13
+  Walkway Paver Resetting: 317.81
+  Hedge Trimming: 126.11
+  Garage Door Spring Fix: 529.68
+  Water Heater Inspection: 243.02
+  Stone Pathway Repair: 128.81
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: true
+  responsiveness: false
+  background checked crew: false
+  licensed: true
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: true
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.68

@@ -1,0 +1,41 @@
+id: business_0094
+name: Marston Residential Services
+description: Marston Residential Services provides reliable maintenance and improvement
+  solutions for homeowners seeking quality workmanship. Our team delivers a range
+  of interior and exterior services to keep your home in top condition.
+rating: 1.0
+progenitor_customer: customer_0032
+menu_features:
+  Exterior Wall Patching: 483.49
+  Concrete Patio Cleaning: 211.88
+  Exterior Siding Cleaning: 377.35
+  Cabinet Hardware Installation: 436.75
+  Bathroom Vanity Assembly: 375.8
+  Drywall Replacement: 455.04
+  Furnace Service: 468.26
+  Brick Pathway Repair: 346.55
+  Exterior Window Cleaning: 111.23
+  Fireplace Refurbishing: 400.95
+  Ceramic Tile Flooring: 296.45
+  Replace Electrical Outlet: 213.94
+  Walkway Construction: 488.41
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: true
+  background checked crew: false
+  licensed: true
+  same day service: false
+  weekend availability: true
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: true
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.62

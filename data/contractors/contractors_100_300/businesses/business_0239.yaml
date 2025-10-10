@@ -1,0 +1,43 @@
+id: business_0239
+name: Prairie Vista Contracting
+description: Prairie Vista Contracting delivers dependable residential repair, installation,
+  and outdoor services, tailored for homeowners seeking practical solutions for maintenance
+  and improvement needs. We focus on efficient, quality work across home interiors,
+  exteriors, and landscape projects.
+rating: 1.0
+progenitor_customer: customer_0080
+menu_features:
+  Shower Door Fitting: 357.87
+  Central Air Conditioning Maintenance: 482.29
+  Garage Door Servicing: 504.95
+  Mulch Installation: 221.19
+  Shrub Removal: 146.36
+  Appliance Installation: 198.96
+  Fencing Repair: 370.39
+  Air Conditioner Maintenance: 408.33
+  Drain Pipe Repair: 200.51
+  Basement Drywall Finishing: 541.9
+  Fixture Assembly: 295.13
+  Security Camera Wiring: 186.64
+  Door Installation: 176.37
+  Mulch Delivery: 235.71
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.61

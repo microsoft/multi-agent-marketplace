@@ -1,0 +1,42 @@
+id: business_0267
+name: Northfield Service Partners
+description: Northfield Service Partners provides homeowners with reliable solutions
+  for household improvements, repairs, and exterior enhancements. Our team delivers
+  quality workmanship for a variety of residential needs, with a focus on professionalism
+  and customer satisfaction.
+rating: 1.0
+progenitor_customer: customer_0089
+menu_features:
+  Garbage Disposal Installation: 253.62
+  Roof Flashing Replacement: 314.53
+  Stone Pathway Installation: 333.28
+  Exterior Door Weatherproofing: 243.43
+  Lock Set Change: 160.28
+  Door Hardware Upgrade: 218.65
+  Lighting Fixture Upgrade: 284.86
+  Concrete Patio Pouring: 543.17
+  Paver Sealing: 171.16
+  Thermostat Replacement: 182.69
+  Bathroom Exhaust Fan Installation: 229.55
+  Sink Installation: 241.08
+  Brick Repair: 177.4
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.6

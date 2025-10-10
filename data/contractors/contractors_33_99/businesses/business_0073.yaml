@@ -1,0 +1,45 @@
+id: business_0073
+name: Hilltop Residential Improvements
+description: Hilltop Residential Improvements provides reliable home repair and renovation
+  services for homeowners seeking quality craftsmanship and timely project completion.
+  Our skilled team specializes in a wide range of interior and exterior upgrades to
+  enhance and maintain your property.
+rating: 1.0
+progenitor_customer: customer_0025
+menu_features:
+  Cabinet Hardware Upgrade: 555.39
+  Flower Bed Redesign: 283.6
+  Attic Ladder Installation: 306.06
+  Power Washing: 242.41
+  Kitchen Faucet Update: 268.98
+  Porch Railing Replacement: 389.82
+  Wall Socket Wiring: 301.82
+  Built-In Shelf Construction: 375.86
+  Sheetrock Installation: 338.03
+  Gutter Installation: 516.79
+  Closet Cabinet Assembly: 387.25
+  Patio Repair: 319.72
+  Custom Cabinet Build: 422.55
+  Mailbox Post Replacement: 525.93
+  A/C Blower Motor Replacement: 330.34
+  Fireplace Mantel Installation: 472.61
+amenity_features:
+  eco friendly materials: true
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: true
+  licensed: true
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: true
+  appointment only: true
+min_price_factor: 0.89

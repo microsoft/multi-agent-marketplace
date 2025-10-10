@@ -1,0 +1,40 @@
+id: business_0140
+name: Residential Upgrade Services
+description: Residential Upgrade Services provides reliable home enhancement and maintenance
+  solutions for homeowners seeking expert assistance with interior and exterior projects.
+  We focus on quality craftsmanship and efficient service to improve the comfort,
+  function, and appearance of your property.
+rating: 1.0
+progenitor_customer: customer_0047
+menu_features:
+  Shrub Removal: 131.63
+  Air Conditioner Service: 346.92
+  Custom Cabinet Hardware Install: 294.34
+  Cabinet Hardware Installation: 466.64
+  Walkway Repair: 221.46
+  Custom Cabinet Hanging: 428.72
+  Ceiling Fan Setup: 128.71
+  Driveway Patching: 246.78
+  Paver Sealing: 187.24
+  Brick Step Replacement: 291.18
+  Custom Closet Build: 500.51
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.86

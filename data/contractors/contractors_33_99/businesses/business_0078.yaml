@@ -1,0 +1,45 @@
+id: business_0078
+name: Bayfield Residential Contractors
+description: Serving homeowners with specialized repair, installation, and improvement
+  services, Bayfield Residential Contractors focuses on reliable solutions for a wide
+  range of interior and exterior projects. We are committed to delivering quality
+  workmanship tailored to residential needs.
+rating: 1.0
+progenitor_customer: customer_0026
+menu_features:
+  Leak Detection: 206.23
+  Ceiling Patch Repair: 244.28
+  Engineered Wood Floor Installation: 413.72
+  Appliance Installation: 183.15
+  Light Fixture Repair: 215.24
+  Whole House Re-caulking: 343.74
+  Central Air Conditioning Inspection: 359.43
+  Fence Post Setting: 442.87
+  Landscaping Cleanup: 144.45
+  Ductless AC Installation: 427.8
+  Dryer Vent Cleaning: 259.9
+  Retaining Wall Patch: 295.98
+  Sink Installation: 213.34
+  Kitchen Cabinet Replacement: 460.87
+  Bathroom Vanity Replacement: 222.96
+  Vanity Installation: 227.86
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: true
+  background checked crew: false
+  licensed: false
+  same day service: true
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: true
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.9

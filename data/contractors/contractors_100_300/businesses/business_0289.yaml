@@ -1,0 +1,46 @@
+id: business_0289
+name: Riverstone Residential Projects
+description: Riverstone Residential Projects provides reliable repair, maintenance,
+  and improvement services for homeowners seeking to enhance and maintain their properties.
+  Our experienced team handles a range of interior and exterior projects with a commitment
+  to quality and professionalism.
+rating: 1.0
+progenitor_customer: customer_0097
+menu_features:
+  Walkway Concrete Pour: 407.28
+  Deck Staining: 322.83
+  Chimney Cap Replacement: 310.66
+  Mulch Installation: 197.26
+  Siding Repair: 662.45
+  Patio Paver Resetting: 378.07
+  Drywall Patch: 264.37
+  Door Hardware Replacement: 306.61
+  Granite Countertop Replacement: 401.69
+  Foundation Crack Sealing: 330.64
+  Laminate Floor Replacement: 372.4
+  Heat Pump Maintenance: 345.71
+  Chimney Inspection: 419.95
+  Closet Renovation: 457.19
+  Shower Valve Replacement: 346.62
+  Garage Epoxy Flooring: 416.78
+  Exterior Siding Cleaning: 339.6
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.67

@@ -1,0 +1,42 @@
+id: business_0046
+name: Cascade Residential Services
+description: Cascade Residential Services provides a reliable range of home improvement,
+  repair, and maintenance solutions for homeowners seeking quality workmanship. Our
+  team delivers professional service in interior upgrades, outdoor care, and essential
+  system support throughout the local area.
+rating: 1.0
+progenitor_customer: customer_0016
+menu_features:
+  Carpet Installation: 320.63
+  Water Heater Setup: 460.73
+  Hardwood Floor Screening: 409.24
+  Water Heater Maintenance: 278.39
+  Central Air Conditioner Tune-Up: 496.82
+  Chimney Repointing: 495.95
+  Ceiling Fan Installation: 289.04
+  Garage Door Alignment: 375.95
+  Stone Patio Cleaning: 191.61
+  Security System Setup: 308.97
+  Garden Bed Planting: 155.22
+  Home Office Wiring: 298.0
+  Roof Shingle Patch: 365.11
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: true
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: true
+  same day service: true
+  weekend availability: true
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: true
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: true
+  appointment only: false
+min_price_factor: 0.6

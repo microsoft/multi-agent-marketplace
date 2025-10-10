@@ -1,0 +1,45 @@
+id: business_0143
+name: Redway Home Services
+description: Redway Home Services provides dependable residential repair and improvement
+  solutions for homeowners seeking quality updates, maintenance, and installations.
+  Our team focuses on delivering efficient, detail-oriented service for both interior
+  and exterior projects.
+rating: 1.0
+progenitor_customer: customer_0048
+menu_features:
+  Granite Countertop Resurfacing: 433.21
+  Hydronic Radiator Service: 241.03
+  Recessed Light Installation: 226.07
+  Concrete Patio Cleaning: 239.09
+  Vinyl Siding Patch: 309.42
+  Stone Patio Installation: 433.7
+  Bathroom Faucet Upgrade: 277.5
+  Radiator Repair: 340.24
+  Stone Pathway Installation: 351.63
+  Exterior House Washing: 457.69
+  Wallpaper Removal: 209.94
+  Faucet Installation: 204.04
+  Stone Veneer Wall: 509.53
+  Sprinkler System Activation: 205.1
+  Tile Grout Renewal: 276.32
+  Custom Closet Build: 325.32
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: true
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.95

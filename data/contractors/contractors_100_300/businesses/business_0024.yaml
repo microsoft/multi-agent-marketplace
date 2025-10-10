@@ -1,0 +1,45 @@
+id: business_0024
+name: TerracePoint Home Services
+description: TerracePoint Home Services provides reliable residential improvement
+  and maintenance solutions, specializing in interior upgrades, exterior enhancements,
+  and landscaping for homeowners seeking quality work and lasting results.
+rating: 1.0
+progenitor_customer: customer_0008
+menu_features:
+  Dimmer Switch Installation: 355.0
+  Stone Patio Construction: 287.82
+  Driveway Sealing: 280.1
+  Exterior Door Install: 215.73
+  Circuit Breaker Replacement: 298.26
+  Walk-in Shower Retrofit: 446.47
+  Garden Bed Planting: 158.62
+  Lawn Aeration: 133.15
+  Driveway Resurfacing: 410.16
+  Water Heater Maintenance: 241.72
+  Engineered Wood Floor Installation: 378.34
+  Sod Laying: 271.7
+  Mailbox Installation: 92.61
+  Hedge Trimming: 104.96
+  Insulation Addition: 426.96
+  Hardwood Floor Resurfacing: 373.83
+  Porch Step Replacement: 336.2
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: true
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.81

@@ -1,0 +1,45 @@
+id: business_0242
+name: Lincoln Park Residential Services
+description: Serving homeowners in the community, Lincoln Park Residential Services
+  provides reliable solutions for property maintenance, improvement, and repair needs.
+  Our team delivers quality-focused work tailored to both interior and exterior residential
+  projects.
+rating: 1.0
+progenitor_customer: customer_0081
+menu_features:
+  Porch Railing Installation: 393.79
+  Wooden Stair Repair: 264.8
+  Siding Repair: 486.26
+  Drain Cleaning: 198.67
+  Power Washing: 291.59
+  Sink Replacement: 130.58
+  Garden Bed Preparation: 109.42
+  Outdoor Fence Painting: 507.39
+  Bathroom Vanity Update: 381.21
+  Whole-Home Re-caulking: 385.34
+  Refrigerant Recharge: 332.14
+  Small Closet Remodeling: 369.41
+  Shrub Planting: 172.54
+  Electrical Panel Inspection: 537.93
+  Central Air Tuneup: 436.94
+  Smoke Detector Replacement: 237.41
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: true
+  warranty: false
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.67

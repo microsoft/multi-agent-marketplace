@@ -1,0 +1,45 @@
+id: business_0066
+name: TerraCraft Residential Services
+description: TerraCraft Residential Services provides reliable home improvement, interior
+  upgrades, exterior repairs, and seasonal maintenance for homeowners seeking quality
+  results and attentive service. Our team helps you maintain and enhance every part
+  of your property, ensuring lasting value and comfort.
+rating: 1.0
+progenitor_customer: customer_0022
+menu_features:
+  Door Repair: 161.74
+  Sprinkler System Start-Up: 535.2
+  AC System Tune-Up: 358.71
+  Custom Closet Cabinetry: 346.49
+  Hardwood Floor Sanding: 300.16
+  Stone Patio Laying: 414.55
+  Closet Shelving Installation: 282.21
+  Shower Valve Replacement: 362.78
+  Small Bathroom Plumbing Repair: 143.13
+  Bathroom Vanity Upgrade: 275.91
+  Wooden Stair Repair: 285.47
+  Landscape Edging: 283.99
+  Concrete Patio Resurfacing: 550.44
+  Roof Repair: 481.02
+  Walkway Bricklaying: 511.8
+  Driveway Crack Filling: 282.38
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: true
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.88

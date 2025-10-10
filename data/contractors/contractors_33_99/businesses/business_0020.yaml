@@ -1,0 +1,41 @@
+id: business_0020
+name: Valley Residential Contractors
+description: Valley Residential Contractors provides reliable home improvement and
+  maintenance services for local homeowners, offering expertise in interior upgrades,
+  exterior repairs, and landscaping projects. Our team is dedicated to quality workmanship
+  and professional service tailored to your property's needs.
+rating: 1.0
+progenitor_customer: customer_0007
+menu_features:
+  Shingle Repair: 480.28
+  Sheetrock Installation: 301.63
+  Ceiling Fan Setup: 142.88
+  Bathtub Re-glazing: 577.33
+  Retaining Wall Build: 382.21
+  Garden Bed Preparation: 118.33
+  Garage Door Adjustment: 208.55
+  Mini-Split Maintenance: 175.96
+  Heat Pump Inspection: 336.72
+  Landscaping Planting: 407.76
+  Kitchen Remodel Consultation: 484.98
+  Patio Paver Laying: 287.9
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: true
+  warranty: false
+  live job updates: false
+  responsiveness: true
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: true
+  business accepts credit cards: false
+  after hours service: true
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.83

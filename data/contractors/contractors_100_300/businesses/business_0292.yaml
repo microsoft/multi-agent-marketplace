@@ -1,0 +1,43 @@
+id: business_0292
+name: Foundry Hill Contracting
+description: Foundry Hill Contracting provides reliable residential improvement and
+  maintenance services for homeowners seeking quality workmanship. Our team delivers
+  professional solutions for interior upgrades, exterior repairs, and seasonal property
+  care.
+rating: 1.0
+progenitor_customer: customer_0098
+menu_features:
+  Carbon Monoxide Detector Installation: 133.46
+  Built-in Shelving Installation: 403.84
+  Brick Chimney Pointing: 335.76
+  Roof Vent Installation: 386.25
+  Hardwood Refinishing: 434.41
+  Light Fixture Installation: 147.49
+  Sump Pump Installation: 479.66
+  Porch Stair Carpentry: 339.89
+  Bathtub Reglazing: 316.42
+  Door Replacement: 257.64
+  Landscaping Cleanup: 173.24
+  Ceiling Fan Setup: 138.94
+  Mulch Distribution: 227.43
+  Bathroom Vanity Cabinetry: 466.76
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: true
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.76

@@ -1,0 +1,42 @@
+id: business_0252
+name: Homestead Specialty Contracting
+description: Serving homeowners with reliable home improvement and maintenance solutions,
+  Homestead Specialty Contracting delivers high-quality interior and exterior upgrades.
+  Our experienced team provides attentive service for projects ranging from remodeling
+  to troubleshooting and repairs.
+rating: 1.0
+progenitor_customer: customer_0084
+menu_features:
+  Vanity Setup: 276.5
+  Advanced Electrical Troubleshooting: 249.38
+  Laminate Flooring: 269.34
+  Bathroom Vanity Replacement: 234.43
+  Washer Dryer Hookup: 386.23
+  Deck Resealing: 497.98
+  Walk-In Closet Shelving: 438.8
+  Shower Remodel: 422.98
+  Door Frame Repair: 329.27
+  Exterior Door Weatherproofing: 231.0
+  Deck Cleaning: 276.53
+  Security Camera Wiring: 257.06
+  Brick Patio Sealing: 270.69
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.94

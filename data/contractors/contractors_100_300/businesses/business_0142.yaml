@@ -1,0 +1,46 @@
+id: business_0142
+name: Strive Residential Contractors
+description: Strive Residential Contractors delivers quality maintenance, repair,
+  and improvement services for homeowners seeking reliable solutions for both interior
+  and exterior projects. Our team is dedicated to enhancing homes through attentive
+  workmanship and responsive service.
+rating: 1.0
+progenitor_customer: customer_0048
+menu_features:
+  Carpet Stretching: 298.06
+  Sod Laying: 239.69
+  Roof Leak Patch: 401.97
+  Sump Pump Installation: 443.23
+  Landscaping Service: 130.47
+  Power Washing: 259.43
+  Mulch Distribution: 186.8
+  Faucet Installation: 264.66
+  Vinyl Floor Installation: 180.16
+  Sodding Service: 415.38
+  Granite Countertop Resurfacing: 397.56
+  Exterior Siding Cleaning: 482.74
+  Brick Pathway Repair: 288.13
+  Brick Patio Construction: 355.32
+  Wallpaper Removal: 191.28
+  Brick Chimney Pointing: 465.59
+  Vinyl Plank Flooring: 393.31
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.95

@@ -1,0 +1,39 @@
+id: business_0219
+name: Residential CraftWorks
+description: Residential CraftWorks provides homeowners with a full range of maintenance,
+  improvement, and upgrade services for home interiors and outdoor spaces. Our team
+  is dedicated to delivering reliable solutions for everyday repairs and planned enhancements.
+rating: 1.0
+progenitor_customer: customer_0073
+menu_features:
+  Central Air System Tune-Up: 356.39
+  Landscape Lighting Setup: 468.36
+  Hardwood Floor Repair: 294.95
+  Walkway Paver Setting: 369.79
+  French Drain Installation: 368.37
+  Heat Pump Inspection: 378.78
+  Door Repair: 165.38
+  Sprinkler System Installation: 469.65
+  Sprinkler System Activation: 214.89
+  Concrete Patio Staining: 298.15
+  Full Bathroom Caulking: 411.63
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.89

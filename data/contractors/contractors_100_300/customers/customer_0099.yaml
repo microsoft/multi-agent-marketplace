@@ -1,0 +1,14 @@
+id: customer_0099
+name: Olivia Robinson
+request: "I'm looking for a contractor who can provide exactly the following services:\
+  \ Shed Roof Reshingle (quantity: 1) and Shower Caulking (quantity: 1). It's essential\
+  \ that the contractor offers both post install inspection and after hours service\
+  \ amenities. Once you identify a contractor that meets all these criteria, please\
+  \ proceed to engage them and help me schedule the work as specified. I\u2019d appreciate\
+  \ confirmation once the arrangements are in place."
+menu_features:
+  Shed Roof Reshingle: 374.99
+  Shower Caulking: 302.95
+amenity_features:
+- post install inspection
+- after hours service

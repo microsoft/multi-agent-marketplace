@@ -1,0 +1,13 @@
+id: customer_0045
+name: Jacob Hernandez
+request: I'm looking for a contractor who can handle Chimney Sweep (1), Water Heater
+  Setup (1), and Tile Grout Restoration (1), with weekend availability as an essential
+  amenity. My intention is to hire and schedule the services as soon as a qualified
+  contractor is found. Please help me locate such a professional so I can proceed
+  with confirming the work.
+menu_features:
+  Chimney Sweep: 417.99
+  Water Heater Setup: 467.99
+  Tile Grout Restoration: 251.99
+amenity_features:
+- weekend availability

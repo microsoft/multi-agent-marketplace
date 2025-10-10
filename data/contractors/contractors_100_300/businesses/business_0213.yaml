@@ -1,0 +1,42 @@
+id: business_0213
+name: Stoneleaf Contracting Group
+description: Stoneleaf Contracting Group provides reliable residential improvement
+  and maintenance services to homeowners seeking quality workmanship and efficient
+  project completion. We focus on a range of interior and exterior updates designed
+  to enhance comfort, functionality, and the lasting value of your home.
+rating: 1.0
+progenitor_customer: customer_0071
+menu_features:
+  Furnace Tune-Up: 510.74
+  Hardwood Floor Resurfacing: 460.86
+  Wood Stair Refinishing: 461.35
+  Drywall Installation: 323.85
+  Patio Paver Cleaning: 212.51
+  Stone Paver Walkway: 315.95
+  Cabinet Door Refacing: 304.07
+  Vinyl Siding Patch: 327.25
+  Stone Fireplace Facade: 469.24
+  Tile Shower Installation: 524.59
+  Garage Door Spring Repair: 296.15
+  Door Weatherstripping: 124.12
+  Garage Remodeling: 610.57
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: true
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.67

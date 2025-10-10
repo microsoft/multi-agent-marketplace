@@ -1,0 +1,45 @@
+id: business_0294
+name: Northshore Home Renewal
+description: Northshore Home Renewal provides reliable residential maintenance, repair,
+  and improvement services for homeowners seeking quality workmanship and timely project
+  completion. Our team specializes in a range of home updates, landscaping, and general
+  contracting solutions.
+rating: 1.0
+progenitor_customer: customer_0098
+menu_features:
+  Heat Pump Tune-Up: 277.39
+  Heating System Maintenance: 320.47
+  Roof Vent Installation: 368.08
+  Porch Stair Carpentry: 263.41
+  Landscaping Cleanup: 167.78
+  Whole House Re-caulking: 503.35
+  Kitchen Backsplash: 339.26
+  Bathroom Remodel: 477.71
+  Baseboard Installation: 219.6
+  Bathtub Recaulking: 318.59
+  Mailbox Post Replacement: 485.31
+  Concrete Patio Resurfacing: 402.64
+  Mulch Distribution: 234.96
+  Tile Backsplash: 356.38
+  Thermostat Upgrade: 188.65
+  Flower Bed Planting: 186.72
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: true
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.74

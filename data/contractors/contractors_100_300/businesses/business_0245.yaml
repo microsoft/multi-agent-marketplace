@@ -1,0 +1,42 @@
+id: business_0245
+name: Harrison Park Property Services
+description: Harrison Park Property Services provides reliable home repair and improvement
+  solutions for local homeowners. Our team delivers attentive workmanship across a
+  wide range of residential upgrade and maintenance needs.
+rating: 1.0
+progenitor_customer: customer_0082
+menu_features:
+  Outlet Addition: 314.54
+  Brick Path Repair: 178.21
+  Vanity Setup: 217.7
+  Wall Rewiring: 401.03
+  Leak Repair: 206.17
+  Custom Shelf Assembly: 436.97
+  Ceiling Fan Repair: 251.76
+  Built-in Shelving Installation: 384.59
+  Insulation Addition: 440.84
+  Floorboard Replacement: 387.73
+  Garage Organization: 259.41
+  Window Caulking: 134.06
+  Security System Setup: 303.79
+  Radiator Repair: 313.56
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: true
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.82

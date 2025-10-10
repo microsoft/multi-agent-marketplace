@@ -1,0 +1,43 @@
+id: business_0236
+name: Stonebridge Residential Improvement
+description: Stonebridge Residential Improvement delivers dependable repair and enhancement
+  services for homeowners seeking quality solutions. Our team specializes in interior
+  and exterior updates designed to maintain and modernize residential properties.
+rating: 1.0
+progenitor_customer: customer_0079
+menu_features:
+  Driveway Crack Repair: 364.67
+  Drywall Replacement: 572.05
+  Appliance Installation: 127.68
+  Patio Repair: 287.43
+  Wood Floor Refinishing: 353.25
+  Concrete Crack Repair: 406.29
+  Bathroom Vanity Install: 355.68
+  Basement Window Well Cover Installation: 549.17
+  Bathroom Vanity Cabinetry: 477.75
+  Fireplace Mantel Installation: 401.02
+  Outlet Repair: 263.09
+  Smart Thermostat Setup: 317.42
+  Hardwood Floor Sanding: 348.58
+  Vanity Installation: 200.59
+  Shower Glass Installation: 554.65
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: true
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.64

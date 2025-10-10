@@ -1,0 +1,11 @@
+id: customer_0018
+name: Charlotte Kim
+request: Please help me find a contractor who can provide exactly 1 Air Conditioning
+  Tune-Up. The contractor must be licensed and offer live job updates. Once you identify
+  a contractor meeting all these requirements, I am ready to hire them and would like
+  to arrange and confirm the scheduling of the service.
+menu_features:
+  Air Conditioning Tune-Up: 258.99
+amenity_features:
+- live job updates
+- licensed

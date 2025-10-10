@@ -1,0 +1,11 @@
+id: customer_0070
+name: Nina Ivanova
+request: Please help me find a contractor who can perform Outlet Installation (1),
+  and who is licensed and offers a warranty. I am ready to hire the contractor as
+  soon as these requirements are met and would like to proceed with scheduling the
+  work promptly.
+menu_features:
+  Outlet Installation: 171.99
+amenity_features:
+- warranty
+- licensed

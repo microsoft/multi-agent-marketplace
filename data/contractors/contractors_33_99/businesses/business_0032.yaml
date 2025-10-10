@@ -1,0 +1,43 @@
+id: business_0032
+name: Northfield Residential Services
+description: Serving homeowners with reliable property maintenance and improvement
+  solutions, Northfield Residential Services focuses on professional repairs, upgrades,
+  and exterior care for residential properties in the local community.
+rating: 1.0
+progenitor_customer: customer_0011
+menu_features:
+  Garage Floor Sealing: 317.12
+  Electric Outlet Update: 210.89
+  Yard Cleanup: 169.56
+  Deck Resealing: 428.99
+  Garage Door Spring Repair: 270.37
+  Brick Pathway Repair: 346.69
+  Landscaping Trimming: 288.7
+  Light Fixture Repair: 189.46
+  Wood Stair Refinishing: 536.18
+  Weed Control: 122.19
+  Mini-Split Maintenance: 206.48
+  Lawn Edging: 169.49
+  Central Air Conditioning Service: 488.04
+  Water Heater Installation: 374.16
+  Stone Veneer Repair: 348.71
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: true
+  warranty: true
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: true
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.9

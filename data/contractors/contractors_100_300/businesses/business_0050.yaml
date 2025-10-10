@@ -1,0 +1,40 @@
+id: business_0050
+name: Crosswinds Residential Services
+description: Crosswinds Residential Services provides professional property maintenance,
+  home improvement, and exterior care for homeowners seeking reliable workmanship
+  and clear communication. Our team delivers quality solutions for a range of repair
+  and upgrade needs throughout the home and outdoor spaces.
+rating: 1.0
+progenitor_customer: customer_0017
+menu_features:
+  Wooden Stair Repair: 280.72
+  Slate Patio Construction: 412.2
+  Central AC Inspection: 396.15
+  Lawn Aeration: 188.52
+  Concrete Patio Sealing: 403.38
+  Brick Chimney Repair: 215.04
+  Vanity Setup: 208.64
+  Fence Repair: 366.92
+  Pressure Washing: 164.63
+  Engineered Wood Floor Installation: 459.72
+  Brick Patio Construction: 364.98
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: true
+  appointment only: true
+  live job updates: true
+  licensed: true
+  free estimate: true
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.87

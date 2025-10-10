@@ -1,0 +1,14 @@
+id: customer_0050
+name: Ava Lee
+request: 'I am looking to hire a contractor who can provide the following services:
+  Wood Fence Painting (1), Hardwood Floor Refinish (1), and Shingle Roof Replacement
+  (1). It is essential that they accept digital payments. Once you find a contractor
+  who meets all these requirements, please let me know so I can proceed to engage
+  them and schedule the work as outlined. Thank you for your assistance in confirming
+  and arranging these services.'
+menu_features:
+  Wood Fence Painting: 504.99
+  Hardwood Floor Refinish: 200.95
+  Shingle Roof Replacement: 472.99
+amenity_features:
+- accepts digital payments

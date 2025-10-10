@@ -1,0 +1,13 @@
+id: customer_0027
+name: Christopher Nguyen
+request: 'Please help me find a contractor who can provide the following services:
+  Dryer Vent Cleaning (1), Light Fixture Installation (1), and Fireplace Repointing
+  (1), and has weekend availability. Once such a contractor is identified, I am ready
+  to proceed with hiring them and would like to schedule and confirm the work as described
+  above. Thank you for assisting with this search.'
+menu_features:
+  Dryer Vent Cleaning: 247.37
+  Light Fixture Installation: 168.99
+  Fireplace Repointing: 387.99
+amenity_features:
+- weekend availability

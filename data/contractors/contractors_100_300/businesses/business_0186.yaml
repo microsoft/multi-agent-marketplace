@@ -1,0 +1,41 @@
+id: business_0186
+name: Beacon Residential Projects
+description: Beacon Residential Projects provides a range of interior and exterior
+  improvement services for homeowners seeking dependable upgrades and maintenance.
+  We focus on enhancing residential spaces with timely and professional workmanship.
+rating: 1.0
+progenitor_customer: customer_0062
+menu_features:
+  Hardwood Floor Screening: 386.29
+  Garbage Disposal Replacement: 341.54
+  Exterior Siding Cleaning: 469.59
+  Garage Epoxy Flooring: 392.48
+  Staircase Carpeting: 305.16
+  Stone Patio Restoration: 345.74
+  Exterior House Washing: 420.97
+  Walk-In Closet Shelving: 492.17
+  Basement Water Proofing: 529.33
+  Light Switch Replacement: 229.21
+  Baseboard Molding: 206.4
+  Exterior Door Weatherproofing: 201.47
+  Shower Remodel: 475.24
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: true
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.72

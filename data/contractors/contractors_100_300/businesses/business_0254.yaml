@@ -1,0 +1,42 @@
+id: business_0254
+name: Sterling Home Service Solutions
+description: Sterling Home Service Solutions provides reliable residential contracting
+  for a wide range of home maintenance, improvement, and repair needs. Our team specializes
+  in efficient and quality solutions to help homeowners keep their properties safe,
+  functional, and comfortable.
+rating: 1.0
+progenitor_customer: customer_0085
+menu_features:
+  Appliance Installation: 157.54
+  Basic Electrical Troubleshooting: 208.99
+  Bathroom Vanity Fitting: 330.55
+  Subfloor Reinforcement: 287.55
+  Furnace Inspection: 400.6
+  Septic Tank Pumping: 412.76
+  Shower Tile Regrouting: 349.34
+  Garage Door Maintenance: 242.18
+  AC Maintenance: 366.56
+  Bathroom Shower Enclosure: 526.5
+  Drywall Hole Repair: 262.65
+  Sprinkler Head Replacement: 202.85
+  Central AC Tuneup: 465.48
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: true
+  insured: false
+  background checked crew: false
+  eco friendly materials: true
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.94

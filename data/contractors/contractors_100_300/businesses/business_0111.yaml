@@ -1,0 +1,41 @@
+id: business_0111
+name: Linden Square Contracting
+description: Linden Square Contracting provides comprehensive residential improvement
+  and repair services for homeowners seeking practical solutions and reliable workmanship.
+  We focus on interior upgrades, general home maintenance, and timely repairs to enhance
+  comfort and property value.
+rating: 1.0
+progenitor_customer: customer_0037
+menu_features:
+  Hardwood Floor Sanding: 327.83
+  Tile Grouting: 156.69
+  Mulch Spreading: 251.45
+  Roof Leak Inspection: 309.06
+  Roof Shingle Patch: 304.64
+  Bathtub Recaulking: 217.43
+  Smoke Detector Upgrade: 190.21
+  Carpet Replacement: 384.3
+  Electrical Panel Upgrade: 395.32
+  Shower Door Fitting: 255.01
+  Washer Dryer Hookup: 355.36
+  Cabinet Installation: 230.9
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: true
+  live job updates: true
+  licensed: false
+  free estimate: true
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.82

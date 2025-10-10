@@ -1,0 +1,11 @@
+id: customer_0002
+name: Emma Clark
+request: I'm looking to hire a contractor who can provide both AC Maintenance (1)
+  and Stone Patio Construction (1), and whose crew is background checked. Please help
+  me find such a contractor so that I can move forward with scheduling and confirming
+  the work as outlined.
+menu_features:
+  AC Maintenance: 449.49
+  Stone Patio Construction: 355.99
+amenity_features:
+- background checked crew

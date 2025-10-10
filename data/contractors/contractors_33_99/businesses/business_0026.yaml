@@ -1,0 +1,44 @@
+id: business_0026
+name: Fairview Residential Solutions
+description: Fairview Residential Solutions provides reliable home improvement and
+  maintenance services tailored for local homeowners. Our team delivers professional
+  support for residential projects spanning interior upgrades, exterior care, and
+  routine service needs.
+rating: 1.0
+progenitor_customer: customer_0009
+menu_features:
+  Security System Setup: 313.32
+  Small Closet Remodeling: 341.34
+  Washer Hose Replacement: 270.84
+  Mulch Application: 188.89
+  Granite Countertop Resurfacing: 399.98
+  New Cabinet Handles: 322.02
+  Radiator Maintenance: 248.34
+  Heat Pump Tune-Up: 384.41
+  Garden Bed Landscaping: 198.33
+  Deck Sealing: 335.13
+  Closet System Installation: 488.98
+  Planting Flower Beds: 224.46
+  Patio Paver Cleaning: 208.28
+  Ceiling Fan Installation: 265.92
+  Mailbox Post Setting: 226.32
+amenity_features:
+  eco friendly materials: true
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: true
+  flexible hours: false
+  insured: true
+  free followup visit: true
+  accepts digital payments: false
+  business accepts credit cards: true
+  after hours service: true
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.79

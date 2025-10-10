@@ -1,0 +1,45 @@
+id: business_0244
+name: Foundry Home Services
+description: Foundry Home Services provides reliable residential repairs, maintenance,
+  and upgrades for homeowners seeking quality workmanship and lasting results. Our
+  experienced team delivers personalized solutions for a wide range of interior and
+  exterior projects.
+rating: 1.0
+progenitor_customer: customer_0082
+menu_features:
+  Garage Organization: 290.8
+  Gutter Replacement: 497.58
+  Brick Walkway Installation: 463.07
+  Porch Resurfacing: 303.88
+  Washer Hose Replacement: 215.21
+  Window Repair: 254.39
+  Heating System Maintenance: 352.05
+  Heating System Tune-Up: 328.38
+  Custom Cabinet Fabrication: 498.83
+  Drywall Hole Patching: 371.05
+  Drywall Installation: 395.42
+  Bathtub Refinishing: 519.17
+  Brick Repair: 196.12
+  Stone Patio Construction: 386.11
+  Sprinkler System Tuneup: 240.59
+  Fireplace Inspection: 369.82
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: true
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.72

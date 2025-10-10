@@ -1,0 +1,44 @@
+id: business_0148
+name: Bridgepine Home Services
+description: "Bridgepine Home Services provides reliable residential contracting solutions\
+  \ for property owners seeking quality upgrades, repairs, and maintenance. Our team\
+  \ is committed to enhancing your home\u2019s value and comfort through attentive,\
+  \ timely service."
+rating: 1.0
+progenitor_customer: customer_0050
+menu_features:
+  Exterior Door Mounting: 200.12
+  Outdoor Lighting Installation: 220.35
+  Spring Lawn Cleanup: 267.45
+  Yard Debris Removal: 203.51
+  Replace Heating Thermostat: 428.79
+  Garage Cabinet Assembly: 254.81
+  Concrete Path Repair: 198.68
+  Hardwood Floor Refinish: 205.71
+  Brick Patio Construction: 350.16
+  Garage Floor Sealing: 276.31
+  Shingle Roof Replacement: 410.65
+  Bathroom Fixture Swap: 209.95
+  Garage Door Adjustment: 183.47
+  Wood Fence Painting: 594.94
+  Home Office Wiring: 399.24
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: true
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.88

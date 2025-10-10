@@ -1,0 +1,40 @@
+id: business_0200
+name: Granite Meadow Contractors
+description: Serving homeowners with reliable interior and exterior improvement projects,
+  Granite Meadow Contractors specializes in customized installations and repairs.
+  We deliver quality craftsmanship for a variety of residential upgrades tailored
+  to your needs.
+rating: 1.0
+progenitor_customer: customer_0067
+menu_features:
+  Custom Closet Assembly: 513.81
+  Shed Assembly: 244.97
+  Garden Bed Design: 154.69
+  Custom Cabinet Hanging: 412.67
+  Brick Step Rebuilding: 548.21
+  Brick Pathway Installation: 332.0
+  Garage Floor Sealing: 304.49
+  Brick Pathway Construction: 324.1
+  Door Hardware Upgrade: 287.65
+  Leaky Pipe Repair: 202.71
+  Stone Veneer Repair: 371.72
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: true
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: true
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.92

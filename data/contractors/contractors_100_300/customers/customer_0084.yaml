@@ -1,0 +1,13 @@
+id: customer_0084
+name: Grace Singh
+request: I'm looking for a contractor who offers Walk-In Closet Shelving (1), Bathroom
+  Vanity Replacement (1), and Shower Remodel (1), and operates on an appointment only
+  basis. Please locate such a contractor, as I am ready to hire and would like to
+  schedule and confirm the specified services promptly. Thank you for your assistance
+  with this arrangement.
+menu_features:
+  Walk-In Closet Shelving: 420.99
+  Bathroom Vanity Replacement: 218.5
+  Shower Remodel: 413.5
+amenity_features:
+- appointment only

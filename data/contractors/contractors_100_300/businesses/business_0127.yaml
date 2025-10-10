@@ -1,0 +1,43 @@
+id: business_0127
+name: Redwood Springs Home Solutions
+description: Serving homeowners with reliable improvements, repairs, and maintenance
+  for residential properties. We deliver straightforward, quality service for indoor
+  and outdoor home needs.
+rating: 1.0
+progenitor_customer: customer_0043
+menu_features:
+  Sump Pump Installation: 413.42
+  Gravel Driveway Refresh: 358.65
+  Mailbox Post Replacement: 561.07
+  Sod Installation: 332.06
+  Central Air Maintenance: 423.52
+  Electrical Panel Inspection: 497.98
+  Fence Repair: 476.75
+  Recessed Light Installation: 217.88
+  Mailbox Replacement: 341.2
+  Closet Shelving Assembly: 343.25
+  Stone Patio Cleaning: 237.86
+  Chimney Cap Replacement: 336.54
+  Cabinet Hardware Upgrade: 404.16
+  Door Hardware Upgrade: 201.07
+  Garbage Disposal Replacement: 260.36
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.74

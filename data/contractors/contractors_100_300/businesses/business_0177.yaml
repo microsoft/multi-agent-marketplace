@@ -1,0 +1,47 @@
+id: business_0177
+name: Beacon Residential Improvements
+description: Providing expert residential repairs, installations, and upgrades, Beacon
+  Residential Improvements serves homeowners with reliable solutions for interior
+  and exterior projects. Our team delivers quality craftsmanship and dependable service
+  for a broad range of home improvement needs.
+rating: 1.0
+progenitor_customer: customer_0059
+menu_features:
+  Engineered Wood Floor Installation: 305.63
+  Refrigerant Recharge: 332.49
+  Masonry Repair: 239.68
+  Brick Patio Construction: 355.55
+  Stone Veneer Installation: 339.81
+  Custom Cabinet Assembly: 360.03
+  Concrete Repair: 209.08
+  Bathroom Vanity Cabinetry: 467.57
+  Retaining Wall Build: 412.69
+  Exterior Siding Wash: 476.91
+  Carpet Patching: 248.72
+  Tile Grouting: 132.97
+  Stone Walkway Paving: 529.31
+  Bathroom Floor Tiling: 306.9
+  Custom Shelf Assembly: 394.87
+  Landscape Lighting Installation: 515.94
+  Walkway Construction: 580.88
+  Deck Railing Installation: 534.16
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.64

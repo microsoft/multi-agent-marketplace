@@ -1,0 +1,43 @@
+id: business_0145
+name: Crossline Home Services
+description: Crossline Home Services provides professional residential maintenance,
+  repairs, and improvement solutions for homeowners seeking quality and reliability.
+  We are committed to delivering timely service for a wide range of interior and exterior
+  home projects.
+rating: 1.0
+progenitor_customer: customer_0049
+menu_features:
+  Light Switch Upgrade: 257.47
+  Bathroom Fixture Swap: 249.01
+  Dryer Vent Cleaning: 246.77
+  Shed Roof Reshingle: 384.66
+  Chimney Flashing Repair: 372.72
+  Ductwork Inspection: 337.14
+  Yard Cleanup: 159.52
+  AC Unit Tune-Up: 478.44
+  Furnace Inspection: 465.39
+  Porch Railing Installation: 407.94
+  Roof Leak Patch: 362.18
+  Gutter Replacement: 467.55
+  Small Room Flooring: 291.74
+  Kitchen Remodel Consultation: 409.68
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: true
+  after hours service: true
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: true
+  warranty: false
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.73

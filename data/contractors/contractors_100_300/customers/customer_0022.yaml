@@ -1,0 +1,14 @@
+id: customer_0022
+name: Patricia King
+request: 'Please help me find a contractor who can provide the following services:
+  Stone Patio Laying (1), Driveway Crack Filling (1), and Sprinkler System Start-Up
+  (1), and who uses eco friendly materials. Once you identify a suitable contractor
+  meeting all these requirements, I would like to hire them and arrange to schedule
+  the work as described above. Thank you, and let me know next steps to confirm and
+  move forward.'
+menu_features:
+  Stone Patio Laying: 490.37
+  Driveway Crack Filling: 308.95
+  Sprinkler System Start-Up: 424.95
+amenity_features:
+- eco friendly materials

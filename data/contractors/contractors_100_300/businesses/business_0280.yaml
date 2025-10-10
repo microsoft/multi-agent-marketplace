@@ -1,0 +1,43 @@
+id: business_0280
+name: Residential Solutions Group
+description: Residential Solutions Group provides a range of maintenance, repair,
+  and improvement services tailored for homeowners. Our team delivers quality and
+  reliable workmanship for interior and exterior projects to help keep your home in
+  top condition.
+rating: 1.0
+progenitor_customer: customer_0094
+menu_features:
+  Garden Maintenance: 179.47
+  Fireplace Tuckpointing: 306.88
+  Closet System Installation: 484.71
+  Concrete Repair: 184.87
+  Landscaping Bed Creation: 381.26
+  Water Heater Flush: 316.39
+  Drain Cleaning: 196.84
+  Full Bathroom Caulking: 428.34
+  Air Conditioner Tuneup: 264.15
+  Baseboard Mold Remediation: 299.15
+  Stone Patio Construction: 401.65
+  Driveway Crack Repair: 270.34
+  Deck Waterproofing: 482.4
+  Shower Head Replacement: 312.17
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: true
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.6

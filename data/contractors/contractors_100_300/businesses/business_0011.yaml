@@ -1,0 +1,45 @@
+id: business_0011
+name: Oakmont Residential Services
+description: Oakmont Residential Services provides reliable general contracting and
+  home maintenance for homeowners seeking quality solutions for repairs, upgrades,
+  and seasonal upkeep. We specialize in prompt, professional service tailored to local
+  residential needs.
+rating: 1.0
+progenitor_customer: customer_0004
+menu_features:
+  Refrigerator Water Line Install: 209.71
+  Porch Step Replacement: 322.46
+  Small Room Flooring: 282.23
+  Central Air Conditioning Servicing: 474.06
+  New Thermostat Setup: 230.74
+  Vinyl Floor Installation: 187.75
+  Sprinkler System Adjustment: 232.95
+  Porch Railing Replacement: 382.32
+  Heat Pump Inspection: 327.65
+  Bush Trimming: 153.53
+  Fence Gate Repair: 366.08
+  Basic Tile Flooring Install: 243.42
+  Lawn Edging: 205.46
+  Kitchen Faucet Upgrade: 183.24
+  Gutter Repair: 390.29
+  Appliance Installation: 143.99
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: true
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: true
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.72

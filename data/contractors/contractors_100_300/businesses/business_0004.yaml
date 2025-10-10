@@ -1,0 +1,45 @@
+id: business_0004
+name: Lakeside Residential Solutions
+description: Lakeside Residential Solutions provides reliable repair, installation,
+  and maintenance services for homeowners. Our team delivers quality workmanship across
+  indoor and outdoor improvement projects, serving local residential needs with professionalism
+  and care.
+rating: 1.0
+progenitor_customer: customer_0002
+menu_features:
+  Custom Cabinet Hardware Install: 427.05
+  Fencing Repair: 434.96
+  Basement Mold Remediation: 378.28
+  Bathroom Vanity Assembly: 373.1
+  Wood Flooring Refinishing: 366.42
+  Radiator Maintenance: 210.74
+  Whole-Home Re-caulking: 492.94
+  Garbage Disposal Replacement: 310.12
+  Bathroom Tile Setting: 361.28
+  Garage Floor Epoxy: 365.81
+  Dimmer Switch Upgrade: 175.26
+  Baseboard Molding: 232.4
+  Washer Hookup Installation: 367.91
+  Weed Control: 159.13
+  Sprinkler System Installation: 406.84
+  Dryer Vent Cleaning: 224.71
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: true
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.74

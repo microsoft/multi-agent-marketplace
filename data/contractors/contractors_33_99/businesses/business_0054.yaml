@@ -1,0 +1,40 @@
+id: business_0054
+name: Granite Point Residential Services
+description: Granite Point Residential Services provides reliable solutions for homeowners,
+  specializing in property maintenance, home repairs, and upgrades. Our team is committed
+  to delivering quality workmanship for your interior, exterior, and comfort system
+  needs.
+rating: 1.0
+progenitor_customer: customer_0018
+menu_features:
+  Concrete Repair: 185.81
+  Stone Fireplace Facade: 430.05
+  Ductless AC Installation: 309.99
+  Central Air System Tune-Up: 374.21
+  Door Frame Repair: 296.87
+  Window Frame Restoration: 424.47
+  Air Conditioning Tune-Up: 249.06
+  Landscaping Design: 126.75
+  Door Hanging: 270.29
+  Circuit Breaker Panel Update: 313.94
+  Vinyl Siding Patch: 344.87
+amenity_features:
+  eco friendly materials: true
+  multilingual staff: false
+  warranty: true
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: true
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.9

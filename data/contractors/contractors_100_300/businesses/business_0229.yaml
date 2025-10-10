@@ -1,0 +1,43 @@
+id: business_0229
+name: Harborview Maintenance & Remodeling
+description: Serving residential clients with reliable interior and exterior improvements,
+  Harborview Maintenance & Remodeling delivers quality workmanship across home upgrade
+  and repair services. We focus on enhancing and maintaining your property through
+  timely, detail-oriented solutions.
+rating: 1.0
+progenitor_customer: customer_0077
+menu_features:
+  Brick Tuckpointing: 426.29
+  Closet Shelving Installation: 402.82
+  Kitchen Wall Tile: 290.42
+  Shed Assembly: 266.83
+  Deck Refinishing: 447.98
+  Drain Clearing: 162.95
+  Circuit Breaker Upgrade: 249.51
+  Fence Post Setting: 331.11
+  Roof Leak Inspection: 308.26
+  Garage Cabinet Assembly: 198.21
+  Mulching: 241.72
+  Brick Repair: 214.89
+  Bathroom Vanity Fitting: 328.24
+  Weed Control: 133.59
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.69

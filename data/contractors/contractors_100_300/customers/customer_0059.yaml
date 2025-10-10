@@ -1,0 +1,13 @@
+id: customer_0059
+name: Chloe Ramirez
+request: I'm looking for a contractor who can provide Stone Veneer Installation (1),
+  Retaining Wall Build (1), and Exterior Siding Wash (1), and who uses eco friendly
+  materials. Please help me find a contractor that meets all these requirements, as
+  I am ready to hire and schedule the work once such a provider is identified. Let
+  me know the next steps to confirm and arrange the services.
+menu_features:
+  Stone Veneer Installation: 373.99
+  Retaining Wall Build: 456.99
+  Exterior Siding Wash: 468.25
+amenity_features:
+- eco friendly materials

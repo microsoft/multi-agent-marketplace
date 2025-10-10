@@ -1,0 +1,13 @@
+id: customer_0049
+name: Alexander Clark
+request: 'I''m looking for a contractor who can provide the following services: Shed
+  Roof Reshingle (1) and AC Unit Tune-Up (1). It is essential that the business accepts
+  credit cards and uses eco friendly materials. If you find a contractor that meets
+  all these requirements, I am ready to hire them and would like to schedule and confirm
+  the work as soon as possible. Please let me know when this can be arranged.'
+menu_features:
+  Shed Roof Reshingle: 374.99
+  AC Unit Tune-Up: 468.99
+amenity_features:
+- business accepts credit cards
+- eco friendly materials

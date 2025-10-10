@@ -1,0 +1,40 @@
+id: business_0090
+name: Granite Avenue Contractors
+description: Granite Avenue Contractors provides reliable home improvement and exterior
+  maintenance services for residential clients. Our team is dedicated to quality workmanship
+  and efficient service for a range of home repair and enhancement needs.
+rating: 1.0
+progenitor_customer: customer_0030
+menu_features:
+  Garage Floor Epoxy: 352.08
+  Porch Resurfacing: 387.76
+  Driveway Resurfacing: 406.72
+  Cabinet Painting: 412.6
+  Concrete Patio Pouring: 518.19
+  Bathroom Fan Replacement: 540.11
+  Shower Enclosure Replacement: 469.52
+  Shrub Trimming: 323.76
+  Chimney Flashing Repair: 377.74
+  Sod Laying: 229.62
+  Mulching: 292.13
+  Masonry Brick Restoration: 415.3
+amenity_features:
+  flexible hours: true
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.89

@@ -1,0 +1,11 @@
+id: customer_0010
+name: Lucas Ferreira
+request: 'Please help me find a contractor who can provide Heat Pump Servicing (quantity:
+  1) and offers both weekend availability and post install inspection. Once identified,
+  I am ready to engage their services and would like to proceed with scheduling and
+  confirming the work as outlined.'
+menu_features:
+  Heat Pump Servicing: 499.0
+amenity_features:
+- weekend availability
+- post install inspection

@@ -1,0 +1,10 @@
+id: customer_0023
+name: Ethan Walker
+request: 'Please help me find a contractor who can provide Refrigerant Recharge (quantity:
+  1) and offers a warranty. I am ready to proceed with hiring and scheduling the service
+  once such a contractor is identified. Kindly assist with confirming availability
+  for this work.'
+menu_features:
+  Refrigerant Recharge: 321.99
+amenity_features:
+- warranty

@@ -1,0 +1,14 @@
+id: customer_0023
+name: Olivia Patel
+request: I'm looking for a contractor who can provide Subpanel Installation (1), Walkway
+  Paver Resetting (1), and Faucet Installation (1). It is essential that they accept
+  digital payments and offer after hours service. Once you find a contractor meeting
+  all of these requirements, I'd like to hire them and schedule the work as listed.
+  Please confirm when this can be arranged.
+menu_features:
+  Subpanel Installation: 491.95
+  Walkway Paver Resetting: 392.95
+  Faucet Installation: 223.99
+amenity_features:
+- accepts digital payments
+- after hours service

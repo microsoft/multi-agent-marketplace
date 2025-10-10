@@ -1,0 +1,14 @@
+id: customer_0057
+name: Liam Singh
+request: "I'm looking for a contractor who can provide Water Heater Tune-Up (1), Tile\
+  \ Replacement (1), and Landscaping Cleanup (1). It is essential that the contractor\
+  \ accepts digital payments and offers after hours service. Once a contractor meeting\
+  \ these criteria is found, I\u2019d like to hire them and proceed with scheduling\
+  \ all the required work. Please confirm availability and help me arrange the services."
+menu_features:
+  Water Heater Tune-Up: 417.99
+  Tile Replacement: 183.5
+  Landscaping Cleanup: 159.95
+amenity_features:
+- accepts digital payments
+- after hours service

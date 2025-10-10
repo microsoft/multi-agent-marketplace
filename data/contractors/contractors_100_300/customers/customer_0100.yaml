@@ -1,0 +1,11 @@
+id: customer_0100
+name: Zoe Sanchez
+request: 'I''m looking to hire a contractor who can provide the following services:
+  Garden Bed Edging (1) and Accent Wall Painting (1). It''s essential that the contractor
+  has a background checked crew. Once confirmed, I would like to proceed with scheduling
+  and finalizing the details for these services as soon as possible.'
+menu_features:
+  Garden Bed Edging: 177.99
+  Accent Wall Painting: 201.25
+amenity_features:
+- background checked crew

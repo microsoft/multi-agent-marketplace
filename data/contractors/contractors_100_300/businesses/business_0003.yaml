@@ -1,0 +1,44 @@
+id: business_0003
+name: Parkview Property Services
+description: Parkview Property Services provides reliable residential improvements
+  and maintenance, helping homeowners enhance their properties with efficient repairs
+  and quality upgrades inside and out. Our experienced team delivers professional
+  solutions tailored to your needs.
+rating: 1.0
+progenitor_customer: customer_0001
+menu_features:
+  Thermostat Replacement: 256.48
+  Yard Debris Removal: 188.24
+  Retaining Wall Masonry: 356.49
+  Asphalt Patch Repair: 415.34
+  Recessed Lighting Setup: 193.05
+  Kitchen Faucet Upgrade: 248.18
+  Brick Pathway Restoration: 365.91
+  Concrete Patio Sealing: 311.8
+  Patio Paver Laying: 434.35
+  Basement Waterproofing: 440.9
+  Shingle Roof Cleaning: 464.82
+  Chimney Cap Replacement: 344.44
+  Power Washing: 226.8
+  Weatherproof Electrical Outlet Install: 111.9
+  Water Heater Replacement: 364.28
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: true
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: true
+  accepts digital payments: true
+min_price_factor: 0.79

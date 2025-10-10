@@ -1,0 +1,41 @@
+id: business_0075
+name: Residential Repair & Improvement Group
+description: Providing homeowners with reliable solutions for property repairs, upgrades,
+  and general maintenance. Our team specializes in a wide range of interior and exterior
+  residential services, focused on quality workmanship and customer satisfaction.
+rating: 1.0
+progenitor_customer: customer_0025
+menu_features:
+  Drain Pipe Repair: 166.02
+  Walkway Bricklaying: 510.58
+  Garage Door Spring Repair: 292.63
+  Subfloor Reinforcement: 274.44
+  Smoke Detector Wiring: 275.68
+  Retaining Wall Build: 380.92
+  Garage Door Spring Fix: 443.01
+  Fence Post Setting: 395.22
+  Garage Door Motor Replacement: 313.47
+  Flower Bed Redesign: 269.18
+  Ductless AC Installation: 443.64
+  Closet Cabinet Assembly: 456.4
+  Masonry Brick Restoration: 437.48
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: true
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: true
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.81

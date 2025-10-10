@@ -1,0 +1,46 @@
+id: business_0046
+name: Ridgeview Residential Contractors
+description: Ridgeview Residential Contractors provides homeowners with reliable repair,
+  installation, and exterior maintenance solutions. Our team delivers quality workmanship
+  for a wide range of residential improvement and property care needs.
+rating: 1.0
+progenitor_customer: customer_0016
+menu_features:
+  Chimney Cleaning: 374.27
+  Security Camera Wiring: 249.37
+  Granite Countertop Polishing: 514.09
+  Faucet Replacement: 112.6
+  Cabinet Repair: 184.83
+  Garage Door Opener Repair: 333.31
+  Leaky Pipe Repair: 203.67
+  Engineered Wood Floor Installation: 392.41
+  Sodding Service: 406.63
+  Spring Lawn Cleanup: 246.16
+  Asphalt Crack Sealing: 483.89
+  Ceramic Tile Floor Install: 414.58
+  Outdoor Lighting Installation: 273.43
+  Landscaping Service: 124.09
+  Laminate Countertop Installation: 304.14
+  Stone Pathway Construction: 316.89
+  Smoke Detector Wiring: 311.5
+  Exterior Siding Wash: 396.04
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: true
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: true
+  accepts digital payments: true
+min_price_factor: 0.88

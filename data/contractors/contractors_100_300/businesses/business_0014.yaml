@@ -1,0 +1,45 @@
+id: business_0014
+name: Horizon Residential Improvements
+description: Horizon Residential Improvements provides a range of repair and renovation
+  services to homeowners, specializing in both interior updates and exterior restorations.
+  Our team is committed to delivering practical, reliable solutions for everyday property
+  maintenance and upgrades.
+rating: 1.0
+progenitor_customer: customer_0005
+menu_features:
+  Stucco Wall Restoration: 421.7
+  Brick Step Restoration: 329.53
+  Step Repair: 157.24
+  Washer Hookup Installation: 249.42
+  Shingle Replacement: 460.98
+  Mailbox Replacement: 321.29
+  Walkway Bricklaying: 520.48
+  Basement Remodeling: 513.88
+  Basement Water Proofing: 515.73
+  Garage Floor Epoxy: 354.82
+  Toilet Replacement: 153.52
+  Water Heater Descaling: 401.84
+  Deck Repair: 301.18
+  Laminate Floor Installation: 422.29
+  Washer Hose Replacement: 298.4
+  Shower Valve Replacement: 391.73
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: true
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.65

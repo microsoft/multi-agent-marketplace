@@ -1,0 +1,44 @@
+id: business_0293
+name: Briarwood Residential Projects
+description: Briarwood Residential Projects provides reliable home improvement and
+  maintenance services for local homeowners, focusing on interior and exterior upgrades,
+  repairs, and enhancements. Our team is committed to quality work and attentive service
+  for every residential project.
+rating: 1.0
+progenitor_customer: customer_0098
+menu_features:
+  AC Tune-Up: 378.24
+  Roof Vent Installation: 393.92
+  Porch Stair Carpentry: 325.44
+  Door Refinishing: 252.65
+  Hardwood Floor Buffing: 436.39
+  Chimney Cleaning: 341.16
+  Shower Glass Installation: 415.28
+  Concrete Patio Slab Pour: 428.55
+  Driveway Patching: 413.32
+  Motion Sensor Installation: 209.42
+  Landscaping Cleanup: 141.72
+  Brick Wall Repointing: 407.05
+  Garden Bed Construction: 194.62
+  Bathroom Shower Enclosure: 469.41
+  Replace Heating Thermostat: 281.14
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: true
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.95

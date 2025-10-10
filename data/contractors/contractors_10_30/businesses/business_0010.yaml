@@ -1,0 +1,42 @@
+id: business_0010
+name: Pinecrest Home Renewal
+description: Pinecrest Home Renewal provides a wide range of residential improvement
+  and maintenance services, helping homeowners enhance the functionality and appearance
+  of their properties. Our team focuses on dependable workmanship for interior and
+  exterior projects throughout the community.
+rating: 1.0
+progenitor_customer: customer_0004
+menu_features:
+  Water Heater Flush: 427.69
+  Wall Rewiring: 361.02
+  Wall Repair: 267.42
+  Custom Cabinet Build: 515.74
+  Washer Hookup Installation: 462.58
+  Radiator Maintenance: 263.57
+  Porch Railing Replacement: 411.93
+  Carpet Installation: 338.14
+  Recessed Lighting Setup: 151.09
+  Deck Restoration: 500.46
+  Basement Water Proofing: 383.74
+  Garden Bed Creation: 151.36
+  Brick Step Replacement: 313.64
+amenity_features:
+  multilingual staff: false
+  warranty: true
+  live job updates: false
+  accepts digital payments: true
+  licensed: false
+  appointment only: false
+  business accepts credit cards: false
+  same day service: true
+  flexible hours: false
+  free estimate: true
+  background checked crew: false
+  insured: false
+  weekend availability: false
+  eco friendly materials: false
+  responsiveness: false
+  post install inspection: false
+  free followup visit: true
+  after hours service: false
+min_price_factor: 0.63

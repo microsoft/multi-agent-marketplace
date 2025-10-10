@@ -1,0 +1,13 @@
+id: customer_0005
+name: Henry Robinson
+request: 'I''m looking to hire a contractor who is licensed and offers after hours
+  service for the following work: Built-In Bookshelf Construction (1) and Kitchen
+  Sink Plumbing (1). Once a contractor meeting all of these requirements is found,
+  I would like to engage them and confirm the scheduling of these services. Please
+  assist in arranging this.'
+menu_features:
+  Built-In Bookshelf Construction: 478.95
+  Kitchen Sink Plumbing: 266.49
+amenity_features:
+- licensed
+- after hours service

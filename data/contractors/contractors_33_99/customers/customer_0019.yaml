@@ -1,0 +1,10 @@
+id: customer_0019
+name: Christopher Walker
+request: 'I''m looking for a contractor who can perform a Garage Door Tune-Up (quantity:
+  1) and provides a post install inspection. Once such a contractor is identified,
+  I intend to hire them and schedule the service as described above. Please assist
+  me in finding a qualified professional so we can confirm and arrange the work.'
+menu_features:
+  Garage Door Tune-Up: 288.0
+amenity_features:
+- post install inspection

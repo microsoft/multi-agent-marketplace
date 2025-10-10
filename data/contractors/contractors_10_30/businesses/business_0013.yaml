@@ -1,0 +1,44 @@
+id: business_0013
+name: Redwood Home Services
+description: Redwood Home Services provides reliable residential repairs, interior
+  upgrades, and outdoor improvements for homeowners seeking quality workmanship. We
+  focus on enhancing the function and appearance of your home with timely, professional
+  service.
+rating: 1.0
+progenitor_customer: customer_0005
+menu_features:
+  Garage Remodeling: 539.04
+  Patio Paver Resetting: 387.04
+  Recessed Lighting Install: 169.34
+  Light Fixture Upgrade: 230.19
+  Shower Re-Caulking: 374.57
+  Toilet Installation: 214.78
+  Garden Bed Planting: 149.9
+  Kitchen Sink Plumbing: 260.06
+  Smoke Detector Wiring: 285.62
+  Mulching: 277.85
+  AC System Inspection: 364.55
+  Walkway Repair: 297.4
+  Built-In Bookshelf Construction: 452.49
+  Basic Closet Shelving: 201.46
+  Basic Tile Flooring Install: 240.71
+amenity_features:
+  multilingual staff: false
+  warranty: true
+  live job updates: false
+  accepts digital payments: false
+  licensed: true
+  appointment only: false
+  business accepts credit cards: false
+  same day service: false
+  flexible hours: false
+  free estimate: false
+  background checked crew: false
+  insured: false
+  weekend availability: false
+  eco friendly materials: false
+  responsiveness: false
+  post install inspection: true
+  free followup visit: false
+  after hours service: true
+min_price_factor: 0.72

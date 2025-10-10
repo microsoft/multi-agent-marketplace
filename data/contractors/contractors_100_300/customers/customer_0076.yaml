@@ -1,0 +1,11 @@
+id: customer_0076
+name: Aisha Khan
+request: I'm looking for a contractor who can perform Kitchen Countertop Installation
+  (1) and Kitchen Cabinet Replacement (1), and also accepts digital payments. Once
+  you find a contractor who meets these requirements, I would like to hire them and
+  schedule the work as soon as possible. Please let me know when this can be arranged.
+menu_features:
+  Kitchen Countertop Installation: 429.25
+  Kitchen Cabinet Replacement: 477.99
+amenity_features:
+- accepts digital payments

@@ -1,0 +1,41 @@
+id: business_0092
+name: Stonebrook Home Maintenance
+description: Stonebrook Home Maintenance provides reliable residential repair and
+  improvement services for local homeowners. Our team delivers quality workmanship
+  for a variety of interior and exterior home projects, ensuring your property stays
+  safe, functional, and attractive.
+rating: 1.0
+progenitor_customer: customer_0031
+menu_features:
+  Ceiling Fan Repair: 237.62
+  Handrail Installation: 375.28
+  Roof Inspection: 324.13
+  Granite Countertop Resurfacing: 427.58
+  Leaky Faucet Fix: 283.29
+  Baseboard Installation: 226.06
+  Retaining Wall Masonry: 509.98
+  Light Fixture Upgrading: 248.21
+  French Drain Installation: 426.26
+  Brick Pathway Repair: 282.61
+  New Thermostat Setup: 239.01
+  Smoke Detector Replacement: 221.24
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: true
+  responsiveness: false
+  background checked crew: true
+  licensed: false
+  same day service: true
+  weekend availability: false
+  post install inspection: true
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: true
+  appointment only: false
+min_price_factor: 0.67

@@ -1,0 +1,14 @@
+id: customer_0005
+name: Mia Fernandez
+request: 'I''m looking to hire a contractor who can provide the following services:
+  Water Heater Descaling (1), Basement Remodeling (1), and Toilet Replacement (1).
+  It''s essential that the contractor offers a free followup visit and is insured.
+  Once you identify a contractor who fulfills these exact requirements, please let
+  me know so I can proceed to schedule and confirm the work promptly.'
+menu_features:
+  Water Heater Descaling: 397.99
+  Basement Remodeling: 480.5
+  Toilet Replacement: 140.49
+amenity_features:
+- free followup visit
+- insured

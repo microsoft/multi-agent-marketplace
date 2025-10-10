@@ -1,0 +1,44 @@
+id: business_0011
+name: Clearview Property Solutions
+description: Clearview Property Solutions provides comprehensive residential maintenance
+  and improvement services for homeowners seeking reliable care and quality workmanship.
+  From exterior updates to interior repairs and upgrades, our team is dedicated to
+  enhancing the comfort and value of your home.
+rating: 1.0
+progenitor_customer: customer_0004
+menu_features:
+  Landscaping Trimming: 269.57
+  Walkway Resurfacing: 437.15
+  Siding Repair: 511.41
+  Shower Faucet Upgrade: 239.3
+  Ceiling Patch Repair: 224.15
+  Garbage Disposal Replacement: 319.65
+  Fireplace Tuckpointing: 392.77
+  Leaky Faucet Fix: 225.55
+  Furnace Inspection: 425.3
+  Shingle Roof Replacement: 486.63
+  Patio Repair: 322.93
+  Garden Bed Installation: 121.83
+  Refrigerator Hookup: 298.28
+  Landscape Edging: 263.79
+  Hardwood Floor Sanding: 347.79
+amenity_features:
+  eco friendly materials: true
+  multilingual staff: true
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: true
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: true
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.78

@@ -1,0 +1,45 @@
+id: business_0163
+name: Crossbridge Home Services
+description: Crossbridge Home Services provides reliable residential improvements,
+  repairs, and installations for homeowners seeking quality workmanship and attentive
+  service. Our team delivers a wide range of solutions to enhance comfort, function,
+  and value in your home.
+rating: 1.0
+progenitor_customer: customer_0055
+menu_features:
+  Kitchen Cabinet Repainting: 435.01
+  Garage Floor Coating: 273.9
+  Custom Bookcase Build: 423.82
+  Bathtub Reglazing: 298.84
+  Dishwasher Installation: 149.83
+  Ceiling Fan Setup: 139.38
+  AC Tune-Up: 471.9
+  Cabinet Hinges Upgrade: 296.42
+  Ceiling Light Installation: 157.75
+  Hydronic Radiator Service: 367.68
+  Tree Pruning: 275.83
+  Security Camera Wiring: 257.5
+  Custom Cabinet Hanging: 583.08
+  Sod Lawn Installation: 541.14
+  Washer Hookup Installation: 399.26
+  Appliance Hookup: 205.05
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: true
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.82

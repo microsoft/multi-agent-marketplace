@@ -1,0 +1,44 @@
+id: business_0165
+name: Stonebrook Home Solutions
+description: Stonebrook Home Solutions provides professional repair, maintenance,
+  and improvement services for homeowners seeking reliable upgrades to their living
+  spaces. Our team delivers expert craftsmanship across a range of residential projects,
+  including interior and exterior enhancements.
+rating: 1.0
+progenitor_customer: customer_0055
+menu_features:
+  Fireplace Cleaning: 252.91
+  Door Refinishing: 231.28
+  Toilet Repair: 229.78
+  Bathroom Remodel: 490.74
+  Tree Pruning: 335.99
+  Vanity Installation: 177.75
+  Custom Bookcase Build: 442.61
+  Kitchen Cabinet Realignment: 463.68
+  Garage Door Maintenance: 199.4
+  Small Patio Paving: 313.71
+  Door Lock Replacement: 170.08
+  Garbage Disposal Repair: 234.48
+  Planting Flower Beds: 321.61
+  Hedge Trimming: 119.55
+  Ceiling Light Installation: 178.19
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.94

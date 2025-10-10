@@ -1,0 +1,41 @@
+id: business_0001
+name: Summit Home Services
+description: Summit Home Services provides reliable repair, remodeling, and maintenance
+  solutions for residential clients. Our team is committed to enhancing the comfort,
+  durability, and appearance of your home.
+rating: 1.0
+progenitor_customer: customer_0001
+menu_features:
+  Basement Water Proofing: 394.22
+  Custom Shelf Assembly: 408.8
+  Step Repair: 205.87
+  Bathroom Floor Tiling: 362.76
+  Tile Replacement: 177.15
+  Stone Walkway Restoration: 364.08
+  Central Air Tuneup: 480.9
+  Kitchen Faucet Update: 334.85
+  Deck Board Replacement: 402.92
+  French Drain Installation: 331.2
+  Kitchen Cabinet Realignment: 488.14
+  Roof Leak Inspection: 315.84
+  Shower Remodel: 419.16
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: true
+  warranty: false
+  live job updates: true
+  responsiveness: false
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: true
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: true
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.91

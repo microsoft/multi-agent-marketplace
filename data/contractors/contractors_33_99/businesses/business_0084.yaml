@@ -1,0 +1,46 @@
+id: business_0084
+name: Integrity Home Solutions
+description: Integrity Home Solutions provides comprehensive residential repair and
+  improvement services, focusing on both interior upgrades and essential maintenance.
+  We serve homeowners seeking reliable, quality workmanship for a wide range of projects
+  in and around the home.
+rating: 1.0
+progenitor_customer: customer_0028
+menu_features:
+  Walk-In Closet Shelving: 453.91
+  Closet Organization System: 295.76
+  Asphalt Crack Sealing: 462.79
+  Chandelier Installation: 273.97
+  Water Heater Tune-Up: 458.33
+  AC System Tune-Up: 415.34
+  Built-In Bookshelf Construction: 506.88
+  Accent Wall Painting: 187.4
+  Gutter Replacement: 528.77
+  Laminate Floor Installation: 345.8
+  Flat Roof Sealant Application: 358.65
+  Shower Valve Repair: 251.36
+  Central Air Inspection: 353.23
+  Drywall Installation: 507.03
+  Small Room Remodeling: 399.32
+  Basement Drywall Finishing: 356.69
+  Brick Walkway Restoration: 429.67
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: true
+  responsiveness: false
+  background checked crew: true
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: true
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.89

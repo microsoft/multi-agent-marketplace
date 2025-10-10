@@ -1,0 +1,44 @@
+id: business_0152
+name: Meadowbrook Home Solutions
+description: Meadowbrook Home Solutions provides reliable repair, improvement, and
+  upgrade services for residential properties. We focus on helping homeowners keep
+  their spaces safe, functional, and comfortable with attentive, quality workmanship.
+rating: 1.0
+progenitor_customer: customer_0051
+menu_features:
+  Sump Pump Replacement: 486.39
+  Door Replacement: 304.33
+  Handrail Installation: 376.27
+  Kitchen Faucet Upgrade: 215.47
+  Door Hardware Replacement: 287.77
+  Carpet Patching: 262.26
+  Ceiling Fan Replacement: 258.71
+  Recessed Lighting Install: 202.66
+  Built-In Shelf Construction: 396.16
+  Garbage Disposal Repair: 305.57
+  Brick Wall Repointing: 429.18
+  Bathroom Ventilation Fan Install: 217.52
+  Small Roof Patch: 104.58
+  Whole House Re-caulking: 447.55
+  Porch Rail Replacement: 166.0
+  Sprinkler System Activation: 211.09
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: true
+  warranty: true
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.94

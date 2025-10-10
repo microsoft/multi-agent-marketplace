@@ -1,0 +1,41 @@
+id: business_0030
+name: Prospect Residential Services
+description: Prospect Residential Services provides reliable home maintenance and
+  improvement solutions for local homeowners, specializing in interior updates, general
+  repairs, and system servicing. Our team is committed to delivering quality workmanship
+  and attentive service for a range of residential needs.
+rating: 1.0
+progenitor_customer: customer_0010
+menu_features:
+  Carpet Stretching: 346.63
+  Closet Shelving Installation: 317.28
+  Carpet Removal: 294.5
+  Garage Floor Sealing: 267.75
+  Heat Pump Maintenance: 335.87
+  Flooring Subfloor Repair: 435.69
+  Appliance Hookup: 224.98
+  Thermostat Upgrade: 272.16
+  Roof Flashing Replacement: 377.0
+  Heat Pump Servicing: 511.15
+  Kitchen Faucet Upgrade: 251.25
+  Sprinkler System Tuneup: 277.77
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: true
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.73

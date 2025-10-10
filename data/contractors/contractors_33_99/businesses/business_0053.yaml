@@ -1,0 +1,42 @@
+id: business_0053
+name: Chatham Residential Contractors
+description: Chatham Residential Contractors provides reliable home improvement and
+  repair services for homeowners, specializing in interior updates, exterior enhancements,
+  and seasonal maintenance. Our team delivers practical solutions designed to keep
+  your property in excellent condition.
+rating: 1.0
+progenitor_customer: customer_0018
+menu_features:
+  Roof Leak Inspection: 245.98
+  Patio Cover Installation: 515.26
+  Lawn Sodding: 143.67
+  Recessed Light Installation: 202.6
+  Garage Door Opener Setup: 497.38
+  Shed Roof Reshingle: 376.21
+  Spring Lawn Cleanup: 251.63
+  Single Room Vinyl Flooring: 406.28
+  Concrete Driveway Repair: 181.85
+  Staircase Refinishing: 335.54
+  Electrical Panel Update: 410.38
+  Air Conditioning Tune-Up: 228.88
+  Vanity Plumbing Repair: 244.59
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: true
+  warranty: false
+  live job updates: true
+  responsiveness: false
+  background checked crew: false
+  licensed: true
+  same day service: false
+  weekend availability: true
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.81

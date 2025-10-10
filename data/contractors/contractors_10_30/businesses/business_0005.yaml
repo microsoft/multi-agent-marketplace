@@ -1,0 +1,43 @@
+id: business_0005
+name: Maple View Contracting
+description: Maple View Contracting provides reliable residential improvement and
+  landscaping services for homeowners seeking quality results and attention to detail.
+  Our team is committed to enhancing your living spaces with expert craftsmanship
+  and efficient service.
+rating: 1.0
+progenitor_customer: customer_0002
+menu_features:
+  Structural Beam Reinforcement: 479.28
+  Tile Grouting: 134.03
+  Kitchen Cabinet Repainting: 377.65
+  Staircase Refinishing: 295.77
+  Wall Grouting: 133.7
+  Landscaping Bed Creation: 394.61
+  Patio Paver Cleaning: 208.28
+  Landscaping Mulch Spread: 302.6
+  Bathroom Ventilation Fan Install: 228.01
+  Patio Paver Laying: 410.51
+  Stone Patio Laying: 390.6
+  Laminate Floor Repair: 170.1
+  Mailbox Installation: 139.92
+  Brick Path Restoration: 421.41
+amenity_features:
+  multilingual staff: false
+  warranty: true
+  live job updates: false
+  accepts digital payments: true
+  licensed: false
+  appointment only: true
+  business accepts credit cards: false
+  same day service: false
+  flexible hours: false
+  free estimate: false
+  background checked crew: false
+  insured: false
+  weekend availability: false
+  eco friendly materials: false
+  responsiveness: false
+  post install inspection: true
+  free followup visit: false
+  after hours service: false
+min_price_factor: 0.91

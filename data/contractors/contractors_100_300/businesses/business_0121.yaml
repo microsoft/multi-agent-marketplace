@@ -1,0 +1,42 @@
+id: business_0121
+name: Union Grove Contracting
+description: Union Grove Contracting provides reliable residential improvement and
+  maintenance services for homeowners seeking quality workmanship and efficient solutions.
+  Our team specializes in interior updates, repairs, and seasonal upkeep tailored
+  to your home's needs.
+rating: 1.0
+progenitor_customer: customer_0041
+menu_features:
+  Baseboard Painting: 271.11
+  Floorboard Replacement: 278.8
+  Basement Wall Sealing: 506.04
+  Custom Cabinet Build: 650.98
+  New Cabinet Handles: 325.5
+  Kitchen Faucet Install: 391.49
+  Heat Pump Maintenance: 373.61
+  Spring Lawn Cleanup: 332.8
+  Kitchen Faucet Update: 226.9
+  Porch Railing Repair: 301.74
+  Vinyl Floor Installation: 177.36
+  Drain Pipe Replacement: 162.79
+  Install Base Cabinets: 397.3
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: true
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: true
+  accepts digital payments: true
+min_price_factor: 0.7

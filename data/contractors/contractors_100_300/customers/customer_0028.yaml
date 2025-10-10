@@ -1,0 +1,15 @@
+id: customer_0028
+name: Lucas O'Brien
+request: 'Please help me find a contractor who can provide the following services:
+  Sprinkler System Start-Up (1), Basement Remodeling (1), and Toilet Replacement (1).
+  The contractor must offer both a free followup visit and after hours service. If
+  you identify a contractor who meets all these requirements, I am ready to hire them
+  and would like to schedule the work as soon as possible. Kindly let me know when
+  the arrangements can be confirmed.'
+menu_features:
+  Sprinkler System Start-Up: 424.95
+  Basement Remodeling: 480.5
+  Toilet Replacement: 140.49
+amenity_features:
+- free followup visit
+- after hours service

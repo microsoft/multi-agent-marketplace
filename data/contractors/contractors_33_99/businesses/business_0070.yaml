@@ -1,0 +1,43 @@
+id: business_0070
+name: Norwalk Residential Services
+description: Norwalk Residential Services provides high-quality home and property
+  maintenance for local homeowners, specializing in interior upgrades, exterior repairs,
+  and seasonal yard care. Our reliable team helps maintain and improve your residence
+  with attention to detail and timely service.
+rating: 1.0
+progenitor_customer: customer_0024
+menu_features:
+  Leaf Removal: 280.96
+  Mulch Refresh: 202.0
+  Bathroom Vanity Cabinetry: 479.19
+  Garage Door Spring Repair: 291.04
+  Hardwood Floor Sanding: 264.42
+  Light Fixture Repair: 269.8
+  Fence Gate Repair: 349.17
+  Brick Step Rebuilding: 527.99
+  Stone Walkway Restoration: 403.32
+  Concrete Patio Slab Pour: 438.82
+  Recessed Lighting Install: 232.39
+  Laminate Floor Replacement: 605.96
+  Water Heater Flush: 454.65
+  Heating System Tune-Up: 286.24
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: true
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: true
+  post install inspection: false
+  flexible hours: false
+  insured: true
+  free followup visit: true
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: true
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.71

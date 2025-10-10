@@ -1,0 +1,47 @@
+id: business_0063
+name: Masonfield Home Services
+description: Masonfield Home Services provides comprehensive residential repairs,
+  updates, and exterior improvements for homeowners seeking reliable and quality workmanship.
+  We specialize in a range of home maintenance and enhancement solutions tailored
+  to your needs.
+rating: 1.0
+progenitor_customer: customer_0021
+menu_features:
+  Sprinkler Head Replacement: 221.25
+  Mulching: 297.45
+  Stone Patio Construction: 386.96
+  Drain Unclogging: 131.95
+  Gutter Cleaning: 200.14
+  Recessed Lighting Setup: 148.14
+  Light Fixture Wiring: 309.38
+  Hydronic Radiator Service: 362.85
+  Shed Roof Re-Shingling: 471.85
+  Landscaping Planting: 360.55
+  Stone Veneer Wall: 609.42
+  Central AC Tuneup: 460.58
+  Replace Electrical Outlet: 245.48
+  Brick Wall Repointing: 386.53
+  Entry Door Repainting: 149.46
+  Small Roof Patch: 133.15
+  Garage Door Spring Repair: 270.87
+  Tile Shower Installation: 555.23
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: true
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.65

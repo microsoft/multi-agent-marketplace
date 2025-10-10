@@ -1,0 +1,45 @@
+id: business_0041
+name: Orchard Lane Home Services
+description: Orchard Lane Home Services provides reliable repair, installation, and
+  maintenance solutions for residential properties. We help homeowners with a wide
+  range of indoor and outdoor improvement projects, focusing on quality workmanship
+  and prompt service.
+rating: 1.0
+progenitor_customer: customer_0014
+menu_features:
+  Shower Re-Caulking: 306.41
+  Fireplace Repointing: 397.44
+  Gutter Replacement: 472.09
+  Lawn Sodding: 152.39
+  Sink Installation: 232.38
+  Mulch Laying: 259.84
+  Drain Pipe Repair: 165.72
+  Landscaping Mulch Spread: 270.73
+  Tile Grouting: 165.77
+  Light Switch Upgrade: 227.12
+  Exterior Door Install: 228.83
+  Fence Repair: 351.1
+  Sod Laying: 252.26
+  Shingle Roof Cleaning: 366.4
+  Fireplace Tuckpointing: 435.73
+  New Thermostat Setup: 237.19
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: true
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.89

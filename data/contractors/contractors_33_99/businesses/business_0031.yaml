@@ -1,0 +1,42 @@
+id: business_0031
+name: Harborview Home Solutions
+description: Harborview Home Solutions serves residential customers with a broad range
+  of maintenance, improvement, and repair services. Our team is committed to delivering
+  reliable workmanship for projects that enhance and protect your home.
+rating: 1.0
+progenitor_customer: customer_0011
+menu_features:
+  Fixture Replacement: 208.12
+  Home Network Setup: 239.44
+  Gutter Cleaning: 177.28
+  Foundation Crack Repair: 182.14
+  Door Refinishing: 242.45
+  Stone Walkway Paving: 583.0
+  Deck Resealing: 439.77
+  Shower Head Replacement: 260.33
+  Fireplace Stonework: 294.39
+  HVAC Diagnostics: 491.8
+  Water Heater Installation: 306.86
+  Stone Veneer Wall: 560.48
+  New Thermostat Setup: 281.81
+  Carpet Removal: 330.07
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: true
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: true
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: true
+  appointment only: false
+min_price_factor: 0.84
