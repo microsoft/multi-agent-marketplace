@@ -7,7 +7,11 @@ from search_launcher import SearchMarketLauncher
 
 
 async def main(
-    data_dir: str, postgres_host: str, postgres_port: int, postgres_password: str
+    data_dir: str,
+    postgres_host: str,
+    postgres_port: int,
+    postgres_password: str,
+    search_algorithm: str = "lexical",
 ) -> None:
     """Run a simple interactive search client for the agentic-economics marketplace."""
     search_launcher = SearchMarketLauncher(
@@ -15,6 +19,7 @@ async def main(
         postgres_host=postgres_host,
         postgres_port=postgres_port,
         postgres_password=postgres_password,
+        search_algorithm=search_algorithm,
     )
 
     async with search_launcher.start() as _:
@@ -32,6 +37,11 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--data-dir", help="Path to the dataset directory", required=True
+    )
+    parser.add_argument(
+        "--search-algorithm",
+        default="lexical",
+        help="Search algorithm to use (default: lexical)",
     )
     parser.add_argument(
         "--postgres-host",
@@ -60,5 +70,6 @@ if __name__ == "__main__":
             args.postgres_host,
             args.postgres_port,
             args.postgres_password,
+            args.search_algorithm,
         )
     )

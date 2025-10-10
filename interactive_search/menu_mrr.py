@@ -25,6 +25,7 @@ async def main(
     postgres_port: int,
     postgres_password: str,
     order_size: int = 1,
+    search_algorithm: str = "lexical",
 ):
     """Evaluate search functionality using Mean Reciprocal Rank (MRR) based on menu items."""
     # Start the search market server before running this script
@@ -33,6 +34,7 @@ async def main(
         postgres_host=postgres_host,
         postgres_port=postgres_port,
         postgres_password=postgres_password,
+        search_algorithm=search_algorithm,
     )
     async with search_launcher.start() as _:
         reciprocal_ranks: list[float] = []
@@ -83,6 +85,18 @@ if __name__ == "__main__":
         "--data-dir", help="Path to the dataset directory", required=True
     )
     parser.add_argument(
+        "--order-size",
+        type=int,
+        default=1,
+        help="Number of menu items to include in each search query (default: 1)",
+    )
+    parser.add_argument(
+        "--search-algorithm",
+        type=str,
+        default="lexical",
+        help="Search algorithm to use (default: lexical)",
+    )
+    parser.add_argument(
         "--postgres-host",
         default="localhost",
         help="PostgreSQL host (default: localhost)",
@@ -109,5 +123,7 @@ if __name__ == "__main__":
             args.postgres_host,
             args.postgres_port,
             args.postgres_password,
+            args.order_size,
+            args.search_algorithm,
         )
     )

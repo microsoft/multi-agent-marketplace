@@ -35,12 +35,29 @@ class SearchMarketLauncher:
         postgres_host: str,
         postgres_port: int,
         postgres_password: str,
+        search_algorithm: str = "lexical",
     ):
         """Initialize the launcher with empty lists for agents and tasks."""
         self.business_agents = []
         self.customer_agent = None
         self.tasks = []
         self.marketplace_launcher = None
+
+        # Get the SearchAlgorithm enum value from the string value provided
+        if search_algorithm.lower() == "lexical":
+            self.search_algorithm = SearchAlgorithm.LEXICAL
+        elif search_algorithm.lower() == "optimal":
+            self.search_algorithm = SearchAlgorithm.OPTIMAL
+        elif search_algorithm.lower() == "filtered":
+            self.search_algorithm = SearchAlgorithm.FILTERED
+        elif search_algorithm.lower() == "simple":
+            self.search_algorithm = SearchAlgorithm.SIMPLE
+        elif search_algorithm.lower() == "rnr":
+            self.search_algorithm = SearchAlgorithm.RNR
+        else:
+            raise ValueError(f"Invalid search algorithm: {search_algorithm}")
+
+        self.search_algorithm = search_algorithm
 
         self.business_profiles = []
         self.customer_profiles = []
