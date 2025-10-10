@@ -1,0 +1,11 @@
+id: customer_0001
+name: Susan Young
+request: Could you please find a business that serves both 'Pineapple Jalapeno Agua
+  Fresca' (1) and 'Savory Pumpkin Empanadas' (1) and offers outdoor seating? I intend
+  to place an order for these items, so it's important that the business meets both
+  the menu and amenity requirements. Thank you for your assistance.
+menu_features:
+  Pineapple Jalapeno Agua Fresca: 3.99
+  Savory Pumpkin Empanadas: 9.49
+amenity_features:
+- Outdoor Seating
