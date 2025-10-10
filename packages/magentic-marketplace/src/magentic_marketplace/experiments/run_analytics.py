@@ -12,6 +12,7 @@ from magentic_marketplace.experiments.models import (
     CustomerSummary,
     TransactionSummary,
 )
+from magentic_marketplace.experiments.models.analytics import SuboptimalCustomersSummary
 from magentic_marketplace.marketplace.actions import (
     ActionAdapter,
     Search,
@@ -119,7 +120,11 @@ class MarketplaceAnalytics:
             log = log_row.data
             try:
                 llm_call_log = LLMCallLog.model_validate(log.data)
-                agent_id = (log.metadata or {}).get("agent_id", "unknown")
+                if not log.metadata:
+                    print("LLMCallLog has no metadata, cannot determine agent id!")
+                    continue
+
+                agent_id = log.metadata["agent_id"]
 
                 self.agent_llm_logs[agent_id].append((log_row, llm_call_log))
 
@@ -199,6 +204,7 @@ class MarketplaceAnalytics:
 
             # Process specific message types
             if isinstance(message, OrderProposal):
+                # Track all order proposals
                 self.order_proposals.append(message)
                 # Link to customer if this came from a business
                 if agent_type == "business":
@@ -267,25 +273,31 @@ class MarketplaceAnalytics:
 
         return required_amenities.issubset(available_amenities)
 
-    def get_optimal_business_for_customer(self, customer_agent_id: str):
-        """Get the business that has the optimal (menu-match + amenity match for lowest total price) for the customer, irrespective of any real proposals or not.
+    def calculate_optimal_utility_for_customer(self, customer_agent_id: str):
+        """Calculate a customer's optimal utility.
 
-        Args:
-            customer_agent_id: The customer's id
-
-        Returns:
-            str: The business id or None
-
+        Returns the optimal utility the customer could achieve by buying their
+        desired menu items at the cheapest price offered by a business matching their desired amenities.
         """
-        # (business_id, total_price), sorted ascending by total_price
         menu_matches = self.calculate_menu_matches(customer_agent_id)
-        for business_agent_id, _ in menu_matches:
+
+        cheapest_menu_match_price: float | None = None
+        for business_agent_id, total_price in menu_matches:
             if self.check_amenity_match(customer_agent_id, business_agent_id):
                 # Return the first because they are sorted by total_price
                 # i.e. the first match is the cheapest
-                return business_agent_id
+                cheapest_menu_match_price = total_price
+                break
 
-        return None
+        if cheapest_menu_match_price is None:
+            return 0
+
+        customer = self.customer_agents[customer_agent_id]
+
+        # Desired customer price
+        desired_customer_price = sum(customer.customer.menu_features.values())
+
+        return 2 * desired_customer_price - cheapest_menu_match_price
 
     def calculate_customer_utility(self, customer_agent_id: str) -> tuple[float, bool]:
         """Calculate customer utility where  match_score is only counted once if ANY payment meets the customer's needs.
@@ -373,6 +385,38 @@ class MarketplaceAnalytics:
 
         return dict(business_utilities)
 
+    def get_order_proposals_in_last_llm_call(self, customer_id: str):
+        """Get the order proposals sent to a customer that actually appear in the final LLM call made by that customer.
+
+        Args:
+            customer_id: The customer id
+
+        Returns:
+            set[str]: The OrderProposal ids actually found in the last LLM call.
+
+        """
+        agent_llm_logs = self.agent_llm_logs.get(customer_id, [])
+        if not agent_llm_logs:
+            print(f"Warning: customer {customer_id} has no llm logs.")
+            return set()
+
+        agent_llm_logs = sorted(
+            agent_llm_logs, key=lambda item: item[0].index or 0
+        )  # Sort by index column
+        _, last_llm_call_log = agent_llm_logs[-1]
+
+        all_proposal_ids = [
+            proposal.id for proposal in self.customer_orders.get(customer_id, [])
+        ]
+        if not all_proposal_ids:
+            print(f"Warning: Customer {customer_id} has no proposals")
+        seen_proposal_ids: set[str] = set()
+        for proposal_id in all_proposal_ids:
+            if proposal_id in str(last_llm_call_log.prompt):
+                seen_proposal_ids.add(proposal_id)
+
+        return seen_proposal_ids
+
     def collect_analytics_results(self) -> AnalyticsResults:
         """Collect all analytics results into a structured format."""
         business_utilities = self._calculate_business_utilities()
@@ -414,6 +458,7 @@ class MarketplaceAnalytics:
         # Collect customer summaries
         customer_summaries: list[CustomerSummary] = []
         total_utility = 0.0
+        optimal_marketplace_customer_utility = 0
         customers_who_purchased = 0
         customers_with_needs_met = 0
 
@@ -421,9 +466,16 @@ class MarketplaceAnalytics:
             customer = self.customer_agents[customer_agent_id].customer
             messages_sent = len(self.customer_messages.get(customer_agent_id, []))
             orders_received = len(self.customer_orders.get(customer_agent_id, []))
+            proposals_in_last_llm_call = list(
+                self.get_order_proposals_in_last_llm_call(customer_agent_id)
+            )
             payments_made = len(self.customer_payments.get(customer_agent_id, []))
             searches_made = len(self.customer_searches.get(customer_agent_id, []))
             utility, needs_met = self.calculate_customer_utility(customer_agent_id)
+            optimal_utility = self.calculate_optimal_utility_for_customer(
+                customer_agent_id
+            )
+            utility_gap = optimal_utility - utility
 
             customer_summaries.append(
                 CustomerSummary(
@@ -432,13 +484,17 @@ class MarketplaceAnalytics:
                     messages_sent=messages_sent,
                     searches_made=searches_made,
                     proposals_received=orders_received,
+                    proposals_in_last_llm_call=proposals_in_last_llm_call,
                     payments_made=payments_made,
                     utility=utility,
+                    optimal_utility=optimal_utility,
+                    utility_gap=utility_gap,
                     needs_met=needs_met,
                 )
             )
 
             total_utility += utility
+            optimal_marketplace_customer_utility += optimal_utility
             if payments_made > 0:
                 customers_who_purchased += 1
             if needs_met:
@@ -477,6 +533,85 @@ class MarketplaceAnalytics:
             else 0
         )
 
+        businesses_who_sent_proposals = len(
+            [business for business in business_summaries if business.proposals_sent > 0]
+        )
+
+        customers_who_did_not_see_all_proposals = len(
+            [
+                customer
+                for customer in customer_summaries
+                if customer.proposals_received
+                != len(customer.proposals_in_last_llm_call)
+            ]
+        )
+
+        suboptimal_customers = [
+            customer
+            for customer in customer_summaries
+            if customer.utility < customer.optimal_utility
+        ]
+        # Needs met
+        needs_met = [
+            customer for customer in suboptimal_customers if customer.needs_met
+        ]
+        needs_met_all_proposals = [
+            customer
+            for customer in needs_met
+            if len(customer.proposals_in_last_llm_call) == customer.proposals_received
+        ]
+        needs_met_missing_proposals = [
+            customer
+            for customer in needs_met
+            if len(customer.proposals_in_last_llm_call) != customer.proposals_received
+        ]
+        needs_met_utility_gap = sum([customer.utility_gap for customer in needs_met])
+        needs_met_all_proposals_utility_gap = sum(
+            [customer.utility_gap for customer in needs_met_all_proposals]
+        )
+        needs_met_missing_proposals_utility_gap = sum(
+            [customer.utility_gap for customer in needs_met_missing_proposals]
+        )
+        # Needs not met
+        needs_not_met = [
+            customer for customer in suboptimal_customers if not customer.needs_met
+        ]
+        needs_not_met_all_proposals = [
+            customer
+            for customer in needs_not_met
+            if len(customer.proposals_in_last_llm_call) == customer.proposals_received
+        ]
+        needs_not_met_missing_proposals = [
+            customer
+            for customer in needs_not_met
+            if len(customer.proposals_in_last_llm_call) != customer.proposals_received
+        ]
+        needs_not_met_utility_gap = sum(
+            [customer.utility_gap for customer in needs_not_met]
+        )
+        needs_not_met_all_proposals_utility_gap = sum(
+            [customer.utility_gap for customer in needs_not_met_all_proposals]
+        )
+        needs_not_met_missing_proposals_utility_gap = sum(
+            [customer.utility_gap for customer in needs_not_met_missing_proposals]
+        )
+
+        # Total
+        total_utility_gap = needs_met_utility_gap + needs_not_met_utility_gap
+
+        suboptimal_customers_summary = SuboptimalCustomersSummary(
+            total_suboptimal_customers=len(suboptimal_customers),
+            needs_met=needs_met,
+            needs_met_utility_gap=needs_met_utility_gap,
+            needs_met_all_proposals_utility_gap=needs_met_all_proposals_utility_gap,
+            needs_met_missing_proposals_utility_gap=needs_met_missing_proposals_utility_gap,
+            needs_not_met=needs_not_met,
+            needs_not_met_utility_gap=needs_not_met_utility_gap,
+            needs_not_met_all_proposals_utility_gap=needs_not_met_all_proposals_utility_gap,
+            needs_not_met_missing_proposals_utility_gap=needs_not_met_missing_proposals_utility_gap,
+            total_utility_gap=total_utility_gap,
+        )
+
         return AnalyticsResults(
             total_customers=len(self.customer_agents),
             total_businesses=len(self.business_agents),
@@ -487,15 +622,19 @@ class MarketplaceAnalytics:
             transaction_summary=transaction_summary,
             customer_summaries=customer_summaries,
             business_summaries=business_summaries,
+            businesses_who_sent_proposals=businesses_who_sent_proposals,
+            customers_who_did_not_see_all_proposals=customers_who_did_not_see_all_proposals,
             customers_who_made_purchases=customers_who_purchased,
             customers_with_needs_met=customers_with_needs_met,
             total_marketplace_customer_utility=total_utility,
+            optimal_marketplace_customer_utility=optimal_marketplace_customer_utility,
             average_utility_per_active_customer=avg_utility_per_active_customer,
             purchase_completion_rate=completion_rate,
             llm_providers=list(self.llm_providers),
             llm_models=list(self.llm_models),
             total_llm_calls=sum(map(len, self.agent_llm_logs.values())),
             failed_llm_calls=len(self.failed_llm_logs),
+            suboptimal_customers_summary=suboptimal_customers_summary,
         )
 
     async def generate_report(
@@ -777,6 +916,30 @@ class MarketplaceAnalytics:
         print(f"Pages per query: {pages_per_query:.2f}")
         print(f"Total searches: {total_searches}")
 
+        print(f"\n{MAGENTA_COLOR}PROPOSALS AND UTILITY LOST SUMMARY:{RESET_COLOR}")
+        print("=" * 40)
+        print(
+            f"Businesses who sent proposals: {results.businesses_who_sent_proposals}/{results.total_businesses}"
+        )
+        print(
+            f"Customers who didn't see all proposals: {results.customers_who_did_not_see_all_proposals}/{results.total_customers}"
+        )
+        print("Utility lost due to customers with")
+        print("  needs met and")
+        print(
+            f"    saw all proposals: {results.suboptimal_customers_summary.needs_met_all_proposals_utility_gap:.2f}"
+        )
+        print(
+            f"    missing some proposals: {results.suboptimal_customers_summary.needs_met_missing_proposals_utility_gap:.2f}"
+        )
+        print("  needs not met and")
+        print(
+            f"    saw all proposals: {results.suboptimal_customers_summary.needs_not_met_all_proposals_utility_gap:.2f}"
+        )
+        print(
+            f"    missing some proposals: {results.suboptimal_customers_summary.needs_not_met_missing_proposals_utility_gap:.2f}"
+        )
+
         # Final summary
         print(f"\n{CYAN_COLOR}FINAL SUMMARY:{RESET_COLOR}")
         print("=" * 40)
@@ -789,6 +952,9 @@ class MarketplaceAnalytics:
 
         print(f"\nPurchase completion rate: {results.purchase_completion_rate:.1f}%")
 
+        print(
+            f"Optimal marketplace customer utility: {results.optimal_marketplace_customer_utility:.2f}"
+        )
         print(
             f"Total marketplace customer utility: {results.total_marketplace_customer_utility:.2f}"
         )
