@@ -1,0 +1,10 @@
+id: customer_0027
+name: William Campbell
+request: I'm looking to hire a contractor who can perform Crown Molding Installation
+  (1) and provides a free followup visit. Once you identify a contractor who meets
+  these requirements, please help me confirm and schedule the work as soon as possible.
+  Thank you.
+menu_features:
+  Crown Molding Installation: 435.99
+amenity_features:
+- free followup visit

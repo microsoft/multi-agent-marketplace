@@ -1,0 +1,47 @@
+id: business_0055
+name: Bluecrest Residential Improvements
+description: Bluecrest Residential Improvements provides comprehensive home repair
+  and remodeling services to homeowners seeking reliable and detail-oriented work.
+  Our team delivers quality solutions for both interior and exterior projects with
+  a focus on customer satisfaction.
+rating: 1.0
+progenitor_customer: customer_0019
+menu_features:
+  Full-Bath Remodeling: 481.39
+  Entry Door Repainting: 155.62
+  Security Light Installation: 282.84
+  Driveway Resurfacing: 393.14
+  Exterior Siding Repainting: 375.54
+  Sump Pump Service: 484.43
+  Door Weatherstripping: 111.85
+  French Drain Installation: 463.91
+  Furnace Inspection: 483.44
+  Concrete Driveway Repair: 205.66
+  Drain Pipe Replacement: 195.75
+  Custom Closet Build: 545.02
+  Window Caulking: 112.84
+  Leak Detection: 209.59
+  Shower Glass Installation: 398.32
+  Sump Pump Installation: 532.4
+  New Cabinet Handles: 308.95
+  Deck Repair: 311.33
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.94

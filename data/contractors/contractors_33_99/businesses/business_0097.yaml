@@ -1,0 +1,43 @@
+id: business_0097
+name: Reliant Residential Contractors
+description: Providing comprehensive home improvement and maintenance services for
+  homeowners seeking reliable, skilled craftsmanship. Our team delivers quality work
+  across a variety of residential projects, including interior upgrades, exterior
+  repairs, and landscaping solutions.
+rating: 1.0
+progenitor_customer: customer_0033
+menu_features:
+  Whole House Re-caulking: 354.54
+  Landscaping Service: 142.08
+  Chimney Flashing Repair: 372.77
+  Sump Pump Replacement: 627.37
+  Heat Pump Tune-Up: 341.04
+  Shingle Replacement: 345.04
+  Deck Railing Installation: 372.31
+  Fireplace Cleaning: 253.75
+  Kitchen Sink Plumbing: 306.96
+  Water Heater Installation: 326.51
+  Carpet Laying: 272.65
+  Vanity Setup: 193.13
+  Fence Gate Installation: 370.55
+  Granite Countertop Fabrication: 484.15
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: true
+  responsiveness: true
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: true
+  free followup visit: true
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: true
+  appointment only: false
+min_price_factor: 0.8

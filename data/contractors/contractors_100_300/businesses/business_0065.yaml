@@ -1,0 +1,45 @@
+id: business_0065
+name: Harrison Residential Improvements
+description: Harrison Residential Improvements provides dependable solutions for home
+  renovation, maintenance, and outdoor upgrades. Our team serves local homeowners
+  seeking quality craftsmanship and reliable service for a wide range of interior
+  and exterior projects.
+rating: 1.0
+progenitor_customer: customer_0022
+menu_features:
+  Hardwood Floor Repair: 289.93
+  Insulation Addition: 496.94
+  HVAC Diagnostics: 406.25
+  Shingle Roof Cleaning: 332.38
+  Stone Veneer Application: 265.5
+  Sod Lawn Installation: 572.43
+  Sink Installation: 259.98
+  Driveway Crack Filling: 346.93
+  Sprinkler System Start-Up: 355.41
+  Walkway Brick Paving: 180.77
+  Front Door Painting: 278.88
+  Stone Patio Laying: 487.28
+  Hardwood Refinishing: 397.85
+  Bathroom Remodel: 384.13
+  Small Room Remodeling: 409.07
+  Closet Organization System: 324.89
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: true
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: true
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.71

@@ -1,0 +1,12 @@
+id: customer_0079
+name: Chen Wang
+request: I'm looking to hire a contractor who can provide 1 Smart Thermostat Setup
+  and 1 Fireplace Mantel Installation. The contractor must accept digital payments
+  and be insured. Please help me find someone who meets all these criteria, as I am
+  ready to engage their services and coordinate the scheduling of the work.
+menu_features:
+  Smart Thermostat Setup: 298.99
+  Fireplace Mantel Installation: 453.0
+amenity_features:
+- accepts digital payments
+- insured

@@ -1,0 +1,10 @@
+id: customer_0075
+name: Ethan Evans
+request: 'I''m looking to hire a contractor who can provide the following service:
+  Leaky Faucet Fix (quantity: 1), and who is insured. Please help me find a qualified
+  professional who meets these requirements, as I would like to engage them and arrange
+  a time to have the work completed.'
+menu_features:
+  Leaky Faucet Fix: 277.0
+amenity_features:
+- insured

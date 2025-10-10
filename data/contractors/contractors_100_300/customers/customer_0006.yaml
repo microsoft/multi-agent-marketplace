@@ -1,0 +1,11 @@
+id: customer_0006
+name: Grace Clark
+request: 'I''m looking to hire a contractor who can perform Stone Walkway Installation
+  (quantity: 1) and must offer weekend availability as well as appointment only services.
+  Once a suitable contractor is found who meets all these criteria, I am ready to
+  engage their services and proceed to schedule the work.'
+menu_features:
+  Stone Walkway Installation: 460.99
+amenity_features:
+- weekend availability
+- appointment only

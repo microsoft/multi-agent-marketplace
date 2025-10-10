@@ -1,0 +1,14 @@
+id: customer_0006
+name: Emma Hassan
+request: I'm looking for a contractor who can perform Tile Grouting (1), Furnace Service
+  (1), and Ceramic Tile Flooring (1), and who offers appointment only scheduling as
+  well as live job updates. Once you find a contractor meeting all these requirements,
+  please proceed to engage them and arrange to have the work scheduled and confirmed.
+  Thank you for facilitating the process.
+menu_features:
+  Tile Grouting: 138.49
+  Furnace Service: 478.49
+  Ceramic Tile Flooring: 315.95
+amenity_features:
+- appointment only
+- live job updates

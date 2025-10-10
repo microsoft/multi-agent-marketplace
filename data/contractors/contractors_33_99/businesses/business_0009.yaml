@@ -1,0 +1,44 @@
+id: business_0009
+name: Elmwood Residential Solutions
+description: Elmwood Residential Solutions provides reliable repair, maintenance,
+  and improvement services for homeowners seeking professional care for their property.
+  From interior updates to exterior enhancements, our team is committed to quality
+  workmanship and customer satisfaction.
+rating: 1.0
+progenitor_customer: customer_0003
+menu_features:
+  Ceiling Patch Repair: 242.18
+  Cabinet Handle Replacement: 364.12
+  Roof Vent Installation: 450.06
+  Small Bathroom Plumbing Repair: 138.06
+  Baseboard Repair: 149.81
+  Garage Cabinet Assembly: 252.12
+  Garden Bed Edging: 182.11
+  Shower Door Fitting: 264.49
+  Shower Remodel: 455.74
+  AC Filter Replacement: 301.57
+  Refrigerator Hookup: 289.28
+  Landscape Planting: 186.8
+  Garage Door Weatherproofing: 421.0
+  Concrete Patio Staining: 355.64
+  Roof Leak Patch: 395.24
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: true
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: true
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: true
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.63

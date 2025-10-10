@@ -1,0 +1,13 @@
+id: customer_0002
+name: Alexander Powell
+request: I'm looking for a contractor who can provide Basement Mold Remediation (1)
+  and Wood Flooring Refinishing (1). It's essential that the contractor is insured
+  and accepts digital payments. Once a suitable contractor is identified, I would
+  like to move forward with hiring and scheduling these services at the earliest possible
+  date. Please assist with this request.
+menu_features:
+  Basement Mold Remediation: 376.95
+  Wood Flooring Refinishing: 325.99
+amenity_features:
+- insured
+- accepts digital payments

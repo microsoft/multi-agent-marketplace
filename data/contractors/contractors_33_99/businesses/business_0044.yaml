@@ -1,0 +1,45 @@
+id: business_0044
+name: Midtown Home Solutions
+description: Midtown Home Solutions provides reliable residential improvement and
+  maintenance services for homeowners seeking timely, quality workmanship. Our team
+  specializes in a range of interior and exterior projects to keep your property functioning
+  and looking its best.
+rating: 1.0
+progenitor_customer: customer_0015
+menu_features:
+  AC Filter Replacement: 332.78
+  Sod Lawn Installation: 475.36
+  Light Switch Upgrade: 222.15
+  Ceiling Fan Upgrade: 243.82
+  Hardwood Refinishing: 516.14
+  Built-in Shelving Installation: 436.21
+  Fence Gate Repair: 319.59
+  Stone Pathway Repair: 152.52
+  Electrical Panel Tune-Up: 304.65
+  Sodding Service: 423.56
+  Tile Floor Cleaning: 285.48
+  Stone Paver Walkway: 303.21
+  Stone Pathway Installation: 359.19
+  Garage Shelving Assembly: 267.57
+  Mailbox Replacement: 306.89
+  Weed Control: 140.01
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: true
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: false
+  same day service: true
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.92

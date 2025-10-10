@@ -1,0 +1,42 @@
+id: business_0041
+name: Stonebrook Residential Contracting
+description: Stonebrook Residential Contracting provides comprehensive improvement
+  and repair services for homeowners, specializing in interior upgrades, exterior
+  enhancements, and landscape solutions. Our team focuses on delivering dependable,
+  detail-oriented work to meet the renovation and maintenance needs of local residences.
+rating: 1.0
+progenitor_customer: customer_0014
+menu_features:
+  Sprinkler Head Repair: 248.73
+  Lawn Irrigation Startup: 201.9
+  Wall Rewiring: 325.22
+  Drain Pipe Replacement: 166.03
+  Drywall Installation: 503.0
+  Wall Socket Wiring: 281.79
+  Lighting Fixture Upgrade: 296.04
+  Masonry Brick Restoration: 497.49
+  Granite Countertop Installation: 529.7
+  Lawn Sodding: 167.67
+  Ceramic Tile Setting: 377.18
+  Porch Stair Carpentry: 281.88
+  Flower Bed Planting: 234.75
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: true
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: true
+  flexible hours: true
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.81

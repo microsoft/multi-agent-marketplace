@@ -1,0 +1,10 @@
+id: customer_0029
+name: Linda Kim
+request: I'm looking to hire a contractor who can provide 1 Concrete Walkway and offers
+  appointment only services. Once a suitable contractor is found, I am ready to engage
+  them and arrange a time to have the work done. Please help me connect and confirm
+  the scheduling.
+menu_features:
+  Concrete Walkway: 507.25
+amenity_features:
+- appointment only

@@ -1,0 +1,43 @@
+id: business_0105
+name: Mariner Residential Services
+description: Mariner Residential Services provides homeowners with reliable solutions
+  for interior and exterior repairs, upgrades, and maintenance. We deliver prompt,
+  professional service for a wide range of residential improvement needs.
+rating: 1.0
+progenitor_customer: customer_0035
+menu_features:
+  Bathroom Vanity Cabinetry: 420.31
+  Drywall Hole Repair: 293.34
+  Hardwood Floor Resurfacing: 465.33
+  Mulch Application: 132.7
+  Chimney Repointing: 377.93
+  AC System Inspection: 341.77
+  Sheetrock Installation: 389.43
+  Garage Door Opener Install: 197.9
+  Cabinet Hardware Replacement: 461.84
+  Brick Pathway Restoration: 294.76
+  Leaky Pipe Repair: 190.34
+  Carpet Installation: 390.15
+  Stone Path Installation: 458.07
+  Deck Board Replacement: 423.06
+  Fence Staining: 312.83
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.72

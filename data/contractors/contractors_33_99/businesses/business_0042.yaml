@@ -1,0 +1,42 @@
+id: business_0042
+name: Oakstone Residential Services
+description: Oakstone Residential Services provides professional solutions for homeowners
+  seeking interior improvements and outdoor projects. Our team delivers reliable workmanship
+  tailored to local residential needs.
+rating: 1.0
+progenitor_customer: customer_0014
+menu_features:
+  Furniture Assembly: 205.46
+  Smoke Detector Setup: 255.84
+  Trim Carpentry: 205.28
+  Room Painting: 234.6
+  Drywall Installation: 455.74
+  Custom Closet Build: 471.87
+  Landscape Design: 119.71
+  Mulch Refresh: 311.42
+  Custom Cabinet Hardware Install: 377.39
+  Granite Countertop Installation: 500.94
+  Roof Vent Replacement: 363.17
+  Concrete Path Repair: 213.5
+  Sprinkler Head Repair: 222.52
+  Shrub Removal: 160.61
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: true
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: true
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: true
+  free followup visit: true
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.89

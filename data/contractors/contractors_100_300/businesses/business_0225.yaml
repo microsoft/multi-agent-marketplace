@@ -1,0 +1,41 @@
+id: business_0225
+name: VistaWorks Home Services
+description: VistaWorks Home Services provides reliable residential repair and improvement
+  solutions for local homeowners, specializing in timely, quality workmanship across
+  interior, exterior, and seasonal maintenance needs.
+rating: 1.0
+progenitor_customer: customer_0075
+menu_features:
+  Air Conditioner Service: 333.88
+  Brick Patio Replacement: 536.52
+  Leaky Faucet Fix: 270.28
+  Brick Path Repair: 187.48
+  Tile Installation: 394.84
+  Patio Paver Repair: 329.47
+  Vanity Sink Plumbing: 254.72
+  Mulch Delivery: 301.69
+  Porch Railing Installation: 485.34
+  Concrete Patio Sealing: 426.19
+  Retaining Wall Construction: 355.66
+  Patio Paver Resanding: 246.8
+  Closet Shelving Assembly: 338.28
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: true
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.92

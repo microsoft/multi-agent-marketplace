@@ -1,0 +1,46 @@
+id: business_0025
+name: VistaPoint Home Solutions
+description: VistaPoint Home Solutions provides comprehensive interior and exterior
+  residential improvements for homeowners seeking reliable upgrades and maintenance.
+  Our team delivers quality workmanship across remodeling, repairs, and enhancements
+  to help elevate and maintain your living spaces.
+rating: 1.0
+progenitor_customer: customer_0009
+menu_features:
+  Exterior Siding Repainting: 415.16
+  Front Door Painting: 273.43
+  Garden Bed Construction: 169.35
+  Gutter Replacement: 420.06
+  Laminate Floor Replacement: 417.4
+  Outlet Upgrade: 317.4
+  Outlet Wiring: 215.41
+  Central Air Tuneup: 455.36
+  Grout Cleaning: 303.44
+  Built-in Shelving Installation: 483.69
+  Foundation Crack Repair: 192.85
+  Garden Bed Installation: 106.36
+  Fence Staining: 278.7
+  Accent Wall Painting: 186.2
+  Brick Path Restoration: 464.12
+  Cabinet Door Adjustment: 243.05
+  Toilet Installation: 221.47
+amenity_features:
+  multilingual staff: true
+  warranty: false
+  live job updates: true
+  accepts digital payments: false
+  licensed: true
+  appointment only: false
+  business accepts credit cards: false
+  same day service: false
+  flexible hours: false
+  free estimate: false
+  background checked crew: false
+  insured: false
+  weekend availability: false
+  eco friendly materials: false
+  responsiveness: true
+  post install inspection: true
+  free followup visit: false
+  after hours service: false
+min_price_factor: 0.68

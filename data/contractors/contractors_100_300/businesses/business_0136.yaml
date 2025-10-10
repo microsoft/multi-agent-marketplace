@@ -1,0 +1,42 @@
+id: business_0136
+name: VistaHome Service Group
+description: VistaHome Service Group provides reliable residential improvement and
+  maintenance solutions for homeowners. Our team specializes in a range of interior
+  and exterior projects to help keep your property well-maintained and updated.
+rating: 1.0
+progenitor_customer: customer_0046
+menu_features:
+  Garbage Disposal Replacement: 289.85
+  Duct Cleaning: 381.21
+  Water Heater Replacement: 374.87
+  Closet Shelving Assembly: 407.11
+  Single Room Vinyl Flooring: 328.66
+  Exterior Siding Cleaning: 355.6
+  Laminate Floor Replacement: 577.82
+  Stone Veneer Wall: 585.33
+  Heating System Maintenance: 326.61
+  Shower Base Replacement: 305.15
+  Brick Pathway Installation: 427.17
+  Step Repair: 230.52
+  Walkway Concrete Pour: 402.56
+  Mulch Distribution: 187.27
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: true
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.94

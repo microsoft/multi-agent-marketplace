@@ -1,0 +1,11 @@
+id: customer_0021
+name: Benjamin Walker
+request: I'm looking to hire a contractor who can provide Basic Closet Shelving (1)
+  and guarantees both warranty and same day service. Once a contractor meeting these
+  requirements is found, I would like to proceed with scheduling and confirming the
+  work as specified.
+menu_features:
+  Basic Closet Shelving: 227.0
+amenity_features:
+- warranty
+- same day service

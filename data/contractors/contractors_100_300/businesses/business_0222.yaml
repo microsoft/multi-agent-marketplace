@@ -1,0 +1,43 @@
+id: business_0222
+name: Edgewood Property Improvements
+description: Edgewood Property Improvements delivers a full range of residential maintenance,
+  remodeling, and enhancement services for homeowners seeking dependable workmanship
+  and timely service. Our team specializes in interior upgrades, outdoor projects,
+  and general repairs designed to improve comfort, safety, and curb appeal.
+rating: 1.0
+progenitor_customer: customer_0074
+menu_features:
+  Water Heater Inspection: 227.45
+  Furnace Maintenance: 383.57
+  Shed Assembly: 281.13
+  Chimney Cap Replacement: 418.83
+  Fireplace Refurbishing: 488.6
+  Landscape Design: 153.21
+  Electrical Panel Tune-Up: 259.05
+  Brick Step Restoration: 326.51
+  Smoke Detector Replacement: 299.52
+  Tree Pruning: 418.14
+  Custom Bookcase Build: 523.58
+  AC System Inspection: 320.04
+  Bathroom Remodel: 408.57
+  Air Conditioner Inspection: 514.94
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.61

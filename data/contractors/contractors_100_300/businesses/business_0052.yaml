@@ -1,0 +1,47 @@
+id: business_0052
+name: Grantfield Home Services
+description: Grantfield Home Services helps homeowners maintain and enhance their
+  properties with reliable solutions for interior and exterior repair, upgrades, and
+  cleaning. Our experienced team delivers quality workmanship tailored to everyday
+  residential needs.
+rating: 1.0
+progenitor_customer: customer_0018
+menu_features:
+  Door Frame Repair: 301.37
+  Stucco Wall Restoration: 433.8
+  Basement Drywall Finishing: 474.31
+  Kitchen Faucet Update: 289.47
+  Window Repair: 229.93
+  Garage Floor Epoxy: 480.42
+  Garbage Disposal Replacement: 323.21
+  Solar Panel Cleaning: 424.26
+  Toilet Repair: 171.56
+  Exterior Window Cleaning: 142.32
+  Washer Dryer Hookup: 316.35
+  Driveway Resurfacing: 293.48
+  Door Hardware Upgrade: 217.91
+  Install Base Cabinets: 343.62
+  Concrete Patio Cleaning: 222.18
+  Basic Closet Shelving: 236.64
+  Whole-Home Re-caulking: 433.19
+  Gutter Replacement: 649.46
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: true
+  warranty: false
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.66

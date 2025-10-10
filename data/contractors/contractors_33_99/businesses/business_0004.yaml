@@ -1,0 +1,44 @@
+id: business_0004
+name: Pioneer Property Services
+description: Pioneer Property Services provides reliable residential maintenance and
+  improvement solutions, focusing on exterior repairs, home upgrades, and seasonal
+  care for homeowners. Our team is committed to enhancing the function and appearance
+  of your property with professional workmanship.
+rating: 1.0
+progenitor_customer: customer_0002
+menu_features:
+  Foundation Crack Repair: 209.57
+  Brick Pathway Construction: 291.5
+  Garage Cabinet Assembly: 184.62
+  AC Annual Maintenance: 501.56
+  Stone Patio Construction: 384.43
+  Sump Pump Service: 499.6
+  Full Exterior House Painting: 389.69
+  Concrete Patio Cleaning: 215.66
+  AC Maintenance: 413.08
+  Basement Waterproofing: 498.67
+  Brick Step Replacement: 372.73
+  Brick Chimney Pointing: 358.86
+  Weed Removal: 95.38
+  Mulch Refresh: 215.78
+  Pressure Washing: 159.83
+amenity_features:
+  eco friendly materials: true
+  multilingual staff: false
+  warranty: false
+  live job updates: true
+  responsiveness: false
+  background checked crew: true
+  licensed: true
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.61

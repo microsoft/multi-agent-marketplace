@@ -1,0 +1,15 @@
+id: customer_0060
+name: Emma Thompson
+request: 'Please help me find a contractor who can perform the following services:
+  Hardwood Flooring (1), Asphalt Patching (1), and Ductless AC Installation (1). It''s
+  essential that the contractor has both a background checked crew and is insured.
+  I am ready to move forward with hiring and scheduling the work as soon as you find
+  a suitable provider. Looking forward to your prompt response with the recommended
+  contractor so I can proceed.'
+menu_features:
+  Hardwood Flooring: 415.49
+  Asphalt Patching: 460.99
+  Ductless AC Installation: 400.95
+amenity_features:
+- background checked crew
+- insured

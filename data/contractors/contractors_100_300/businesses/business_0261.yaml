@@ -1,0 +1,44 @@
+id: business_0261
+name: Trellis Point Home Services
+description: Trellis Point Home Services provides professional residential upgrades,
+  repairs, and exterior maintenance for homeowners seeking reliable solutions and
+  quality workmanship. Our team delivers efficient and detail-oriented service across
+  a range of home improvement projects.
+rating: 1.0
+progenitor_customer: customer_0087
+menu_features:
+  Cabinet Handle Replacement: 395.48
+  Garage Door Opener Setup: 536.65
+  Vanity Setup: 234.5
+  Driveway Sealcoating: 583.67
+  Walkway Brick Paving: 155.09
+  Central Heating Repair: 361.63
+  Tree Trimming: 163.51
+  Bathroom Vanity Upgrade: 303.39
+  Smoke Detector Setup: 332.73
+  Lighting Fixture Upgrade: 273.2
+  Bathroom Remodel: 546.07
+  Install Base Cabinets: 432.93
+  Lawn Irrigation Startup: 348.16
+  Cabinet Door Adjustment: 220.38
+  Flat Roof Sealant Application: 402.08
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.72

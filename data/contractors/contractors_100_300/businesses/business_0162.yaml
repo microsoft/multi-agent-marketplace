@@ -1,0 +1,46 @@
+id: business_0162
+name: Prairiewood Home Services
+description: Prairiewood Home Services provides reliable residential maintenance,
+  landscaping, and improvement solutions for homeowners seeking quality work and attentive
+  service. Our team delivers a range of interior and exterior upgrades to enhance
+  comfort, curb appeal, and property value.
+rating: 1.0
+progenitor_customer: customer_0054
+menu_features:
+  Exterior Siding Cleaning: 450.87
+  Flower Bed Redesign: 321.89
+  Stone Fireplace Facade: 461.24
+  Bathroom Fan Installation: 349.06
+  Entry Door Repainting: 154.89
+  Mulch Delivery: 356.35
+  Weed Removal: 93.44
+  Bathtub Recaulking: 249.65
+  Roof Leak Assessment: 285.97
+  Door Refinishing: 230.44
+  Carpet Cleaning: 573.98
+  Custom Closet Installation: 576.98
+  Spring Lawn Cleanup: 248.81
+  Door Hardware Replacement: 261.01
+  Heat Pump Tune-Up: 299.62
+  Patio Paver Resetting: 415.94
+  Garage Epoxy Flooring: 500.23
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.76

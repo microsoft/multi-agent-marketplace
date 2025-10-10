@@ -1,0 +1,43 @@
+id: business_0073
+name: HomeCraft Service Group
+description: HomeCraft Service Group provides reliable repair, maintenance, and improvement
+  solutions for residential properties. Our team is dedicated to helping homeowners
+  enhance and protect their homes with professional, efficient service.
+rating: 1.0
+progenitor_customer: customer_0025
+menu_features:
+  Leak Repair: 183.43
+  Deck Waterproofing: 459.73
+  Concrete Step Pouring: 351.67
+  Patio Paver Laying: 433.41
+  Door Lock Repair: 205.45
+  Patio Paver Resanding: 241.33
+  Kitchen Plumbing Repair: 259.84
+  Exterior Siding Cleaning: 373.45
+  Heat Pump Maintenance: 328.34
+  Closet Organization System: 367.0
+  Bathtub Caulking: 270.63
+  Chimney Flashing Repair: 334.28
+  Outdoor Lighting Setup: 512.23
+  Dimmer Switch Upgrade: 144.07
+  Patio Paver Setup: 402.97
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: true
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.6

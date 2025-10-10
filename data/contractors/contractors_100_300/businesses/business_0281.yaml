@@ -1,0 +1,46 @@
+id: business_0281
+name: Prairie Lane Service Contractors
+description: Prairie Lane Service Contractors provides reliable repair, maintenance,
+  and improvement solutions for homeowners seeking quality work and responsive service.
+  We specialize in a range of residential interior and exterior projects to help keep
+  your home functional and well-maintained.
+rating: 1.0
+progenitor_customer: customer_0094
+menu_features:
+  Baseboard Mold Remediation: 259.94
+  Door Frame Repair: 295.99
+  Brick Tuckpointing: 318.97
+  Radiator Servicing: 439.44
+  Shower Enclosure Replacement: 413.26
+  Small Roof Patch: 104.0
+  Minor Plumbing Repair: 150.63
+  Slate Patio Construction: 589.4
+  Garage Floor Sealing: 291.77
+  Closet System Installation: 503.54
+  Deck Board Replacement: 369.86
+  Patio Repair: 347.56
+  Custom Cabinet Modification: 502.79
+  Bathroom Shower Enclosure: 454.96
+  Garbage Disposal Replacement: 319.43
+  Sprinkler System Inspection: 332.29
+  Backsplash Tile Setting: 236.3
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: true
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: true
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.91

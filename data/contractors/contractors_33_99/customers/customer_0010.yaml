@@ -1,0 +1,11 @@
+id: customer_0010
+name: Mason Clark
+request: I'm looking to hire a contractor who can provide Mailbox Installation (1)
+  and Flower Bed Redesign (1), and also offers live job updates. Please help me find
+  a contractor who meets all these requirements, as I intend to engage their services
+  and confirm a schedule for the work as soon as possible.
+menu_features:
+  Mailbox Installation: 107.99
+  Flower Bed Redesign: 291.25
+amenity_features:
+- live job updates

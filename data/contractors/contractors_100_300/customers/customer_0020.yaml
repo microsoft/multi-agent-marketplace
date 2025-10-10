@@ -1,0 +1,13 @@
+id: customer_0020
+name: Natalie Thompson
+request: I am looking for a contractor who can provide Water Heater Setup (1), Tile
+  Grout Restoration (1), and Carpet Laying (1), and also accepts digital payments.
+  Please find a suitable contractor that meets all these requirements. Once identified,
+  I would like to hire them and arrange to schedule the specified work as soon as
+  possible.
+menu_features:
+  Water Heater Setup: 467.99
+  Tile Grout Restoration: 251.99
+  Carpet Laying: 304.99
+amenity_features:
+- accepts digital payments

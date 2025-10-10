@@ -1,0 +1,45 @@
+id: business_0005
+name: Urban Crest Contracting
+description: Urban Crest Contracting provides reliable residential repair and improvement
+  services, specializing in interior and exterior upgrades for homeowners. Our team
+  is dedicated to delivering efficient, quality workmanship tailored to your property's
+  needs.
+rating: 1.0
+progenitor_customer: customer_0002
+menu_features:
+  Stone Patio Construction: 381.93
+  Backsplash Tile Setting: 291.57
+  Drywall Hole Repair: 279.12
+  Driveway Crack Filling: 408.91
+  Cabinet Hardware Upgrade: 648.69
+  Wall Socket Wiring: 185.58
+  Ceramic Tile Setting: 401.13
+  AC Maintenance: 434.19
+  Outlet Wiring: 251.32
+  Vinyl Siding Patch: 322.14
+  Garden Bed Edging: 165.55
+  Tile Grout Restoration: 245.42
+  Concrete Driveway Repair: 207.1
+  Circuit Breaker Replacement: 237.02
+  Landscape Lighting Setup: 346.5
+  Concrete Sidewalk Pouring: 618.77
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: true
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: true
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: true
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.62

@@ -1,0 +1,43 @@
+id: business_0086
+name: Slateview Residential Contractors
+description: Slateview Residential Contractors provides a wide range of home repair
+  and improvement services for local homeowners. We focus on reliable workmanship
+  in general contracting, exterior maintenance, and interior upgrades to ensure your
+  home stays safe, efficient, and well-maintained.
+rating: 1.0
+progenitor_customer: customer_0029
+menu_features:
+  Air Duct Sealing: 330.92
+  Mulch Application: 182.33
+  Hardwood Flooring: 424.16
+  Shower Re-Caulking: 358.03
+  Concrete Step Pouring: 403.26
+  Outdoor Fence Painting: 458.96
+  Shrub Trimming: 279.08
+  Shower Faucet Upgrade: 248.17
+  Drain Pipe Repair: 165.69
+  Deck Waterproofing: 433.39
+  Deck Resealing: 483.08
+  Garage Door Inspection: 302.66
+  Porch Resurfacing: 392.28
+  Kitchen Faucet Upgrade: 214.74
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: true
+  responsiveness: false
+  background checked crew: false
+  licensed: false
+  same day service: true
+  weekend availability: true
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: true
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: true
+  appointment only: false
+min_price_factor: 0.67

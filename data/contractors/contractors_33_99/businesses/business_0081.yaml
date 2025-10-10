@@ -1,0 +1,44 @@
+id: business_0081
+name: Parkwood Service Contractors
+description: Parkwood Service Contractors provides reliable residential maintenance
+  and improvement solutions for homeowners seeking quality workmanship in both indoor
+  and outdoor projects. We focus on timely completion and careful attention to detail
+  for a range of property upkeep and enhancement needs.
+rating: 1.0
+progenitor_customer: customer_0027
+menu_features:
+  Garden Maintenance: 237.0
+  Concrete Patio Staining: 373.45
+  Mulch Laying: 230.87
+  Exterior Wall Patching: 383.15
+  Sod Laying: 209.15
+  Vanity Installation: 224.94
+  Fireplace Repointing: 391.42
+  Power Washing: 244.71
+  Light Fixture Installation: 167.36
+  Cabinet Handle Replacement: 356.08
+  Wall Sconce Wiring: 265.95
+  Toilet Installation: 203.76
+  Sprinkler System Inspection: 313.59
+  Custom Closet Assembly: 509.98
+  Dryer Vent Cleaning: 278.01
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: true
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: true
+  business accepts credit cards: true
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.92

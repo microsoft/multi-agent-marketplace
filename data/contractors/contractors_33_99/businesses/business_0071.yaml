@@ -1,0 +1,45 @@
+id: business_0071
+name: Craftstone Home Contractors
+description: Craftstone Home Contractors provides reliable repair, installation, and
+  maintenance solutions for homeowners seeking quality improvements. Our team delivers
+  timely service in a range of residential interior and exterior projects, helping
+  keep your property in top condition.
+rating: 1.0
+progenitor_customer: customer_0024
+menu_features:
+  Porch Resurfacing: 269.2
+  Garage Cabinet Assembly: 235.31
+  Mulching: 312.95
+  Porch Railing Repair: 255.55
+  Sink Replacement: 141.13
+  Carpet Patching: 276.61
+  Brick Step Rebuilding: 554.54
+  Mini Split AC Service: 519.42
+  Central Air Conditioning Service: 350.68
+  Fence Gate Repair: 318.06
+  Front Door Lock Change: 199.84
+  Recessed Lighting Install: 209.38
+  Basement Door Framing: 302.33
+  Sprinkler System Repair: 428.6
+  Engineered Wood Floor Installation: 421.37
+  Structural Beam Reinforcement: 399.15
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: true
+  licensed: true
+  same day service: false
+  weekend availability: true
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: true
+  accepts digital payments: false
+  business accepts credit cards: true
+  after hours service: false
+  free estimate: false
+  appointment only: true
+min_price_factor: 0.74

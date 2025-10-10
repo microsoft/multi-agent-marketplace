@@ -1,0 +1,43 @@
+id: business_0085
+name: Stonebridge Residential Services
+description: Stonebridge Residential Services provides reliable solutions for homeowners
+  seeking interior and exterior property improvements, seasonal maintenance, and landscaping.
+  Our team is committed to delivering professional workmanship for a range of projects
+  throughout the local community.
+rating: 1.0
+progenitor_customer: customer_0029
+menu_features:
+  Spring Lawn Cleanup: 244.94
+  Garden Bed Preparation: 137.14
+  Sheetrock Installation: 378.29
+  Power Washing: 299.68
+  Outdoor Fence Painting: 458.97
+  Deck Resealing: 459.12
+  Laminate Floor Replacement: 480.07
+  Garage Door Inspection: 366.28
+  Subfloor Reinforcement: 239.51
+  Flooring Subfloor Repair: 415.03
+  Lawn Sodding: 149.87
+  Custom Closet Installation: 605.29
+  Walkway Construction: 429.74
+  Exterior Door Mounting: 237.62
+amenity_features:
+  eco friendly materials: true
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: true
+  after hours service: false
+  free estimate: true
+  appointment only: false
+min_price_factor: 0.86

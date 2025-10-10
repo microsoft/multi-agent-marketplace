@@ -1,0 +1,41 @@
+id: business_0109
+name: Ashford Residential Contractors
+description: Ashford Residential Contractors provides reliable repair, improvement,
+  and renovation services for homeowners. Our team delivers quality workmanship for
+  a wide range of interior and exterior projects to help maintain and upgrade your
+  home.
+rating: 1.0
+progenitor_customer: customer_0037
+menu_features:
+  Electrical Panel Upgrade: 356.54
+  Room Painting: 244.17
+  Custom Closet Build: 440.17
+  Brick Chimney Pointing: 388.09
+  Custom Cabinet Modification: 408.28
+  Deck Cleaning: 248.57
+  Roof Leak Inspection: 300.72
+  Deck Repair: 181.58
+  Ceiling Fan Replacement: 229.6
+  Washer Dryer Hookup: 373.18
+  Foundation Crack Sealing: 320.86
+  Cabinet Repair: 160.21
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: true
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.72

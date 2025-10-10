@@ -1,0 +1,41 @@
+id: business_0256
+name: Clearline Home Services
+description: Clearline Home Services provides dependable residential contracting for
+  homeowners seeking interior and exterior upgrades, repairs, and custom installations.
+  Our team delivers quality workmanship on a wide range of improvement projects tailored
+  to your home's needs.
+rating: 1.0
+progenitor_customer: customer_0086
+menu_features:
+  Pathway Paver Installation: 217.33
+  Trim Carpentry: 224.93
+  Retaining Wall Installation: 390.26
+  Garage Door Inspection: 371.75
+  Pressure Washing: 182.22
+  Washer Hookup Installation: 323.92
+  Custom Shelf Mounting: 268.46
+  Basement Water Proofing: 474.16
+  Bathroom Fan Installation: 292.33
+  Mailbox Post Replacement: 482.16
+  Custom Closet Assembly: 487.28
+  Patio Cover Installation: 418.42
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: true
+  live job updates: false
+  licensed: false
+  free estimate: true
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.72

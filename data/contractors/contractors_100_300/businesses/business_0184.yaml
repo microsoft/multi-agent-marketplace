@@ -1,0 +1,42 @@
+id: business_0184
+name: Norwood Home Solutions
+description: Norwood Home Solutions provides residential improvement and maintenance
+  services for homeowners seeking quality upgrades and reliable repairs. Our team
+  delivers attentive service for a range of interior and exterior projects, helping
+  you keep your home functional and comfortable.
+rating: 1.0
+progenitor_customer: customer_0062
+menu_features:
+  Appliance Hookup: 166.93
+  Shower Remodel: 395.71
+  Replace Heating Thermostat: 474.59
+  Kitchen Faucet Install: 442.95
+  Garden Bed Planting: 168.95
+  Fixture Replacement: 253.95
+  Carpet Stretching: 299.71
+  Sprinkler System Startup: 444.26
+  Porch Resurfacing: 387.71
+  Drain Pipe Repair: 209.92
+  Basic Tile Flooring Install: 227.96
+  Walk-In Closet Shelving: 460.49
+  Hardwood Floor Screening: 328.63
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: true
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: true
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.64

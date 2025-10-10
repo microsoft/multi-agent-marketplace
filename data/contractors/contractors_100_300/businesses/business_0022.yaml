@@ -1,0 +1,46 @@
+id: business_0022
+name: UrbanCraft Home Services
+description: UrbanCraft Home Services provides reliable residential repairs and improvements
+  for homeowners seeking quality workmanship and attentive service. Our team helps
+  maintain and enhance your home with a range of interior and exterior solutions tailored
+  to your needs.
+rating: 1.0
+progenitor_customer: customer_0008
+menu_features:
+  Door Replacement: 357.88
+  Porch Resurfacing: 301.74
+  Dimmer Switch Installation: 418.51
+  Closet Shelving Installation: 407.47
+  Front Door Painting: 293.58
+  Garage Cabinet Assembly: 293.65
+  Brick Path Repair: 207.34
+  Subfloor Reinforcement: 283.86
+  Tile Floor Cleaning: 192.38
+  Security Camera Wiring: 227.91
+  Patio Paver Resanding: 279.65
+  Wall Sconce Wiring: 257.29
+  Security Light Installation: 302.69
+  Mini-Split Maintenance: 279.88
+  Brick Tuckpointing: 389.71
+  Water Heater Maintenance: 263.38
+  Porch Railing Replacement: 384.26
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.65

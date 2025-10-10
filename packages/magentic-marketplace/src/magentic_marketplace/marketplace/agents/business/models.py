@@ -4,7 +4,23 @@ from typing import Literal
 
 from pydantic import BaseModel, Field
 
-from ...actions import OrderProposal
+from ...actions import OrderProposal, TextMessage
+
+
+class ServiceTextMessageRequest(TextMessage):
+    """Request for sending a text service message."""
+
+    to_customer_id: str = Field(
+        description="The id of the customer this message should be sent to."
+    )
+
+
+class ServiceOrderProposalMessageRequest(OrderProposal):
+    """Request for sending an order proposal message."""
+
+    to_customer_id: str = Field(
+        description="The id of the customer this message should be sent to."
+    )
 
 
 class BusinessAction(BaseModel):
@@ -13,13 +29,9 @@ class BusinessAction(BaseModel):
     action_type: Literal["text", "order_proposal"] = Field(
         description="Type of action to take"
     )
-    message: str = Field(
-        description="A message to send to the customer. Required if action_type is 'text'"
-    )
-    order_proposal: OrderProposal | None = Field(
-        default=None,
-        description="The proposed order to send to the customer. Required if action_type is 'order_proposal'.",
-    )
+
+    text_message: ServiceTextMessageRequest | None = None
+    order_proposal_message: ServiceOrderProposalMessageRequest | None = None
 
 
 class BusinessSummary(BaseModel):

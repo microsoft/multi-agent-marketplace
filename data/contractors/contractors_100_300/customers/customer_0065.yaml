@@ -1,0 +1,10 @@
+id: customer_0065
+name: Carlos Hernandez
+request: 'I am looking to hire a contractor who can provide Basic Plumbing Repair
+  (quantity: 1) and offers flexible hours. Once you identify a suitable contractor
+  who meets all these requirements, please proceed to engage them and help me schedule
+  the service at a convenient time. Kindly confirm when the appointment is set.'
+menu_features:
+  Basic Plumbing Repair: 137.99
+amenity_features:
+- flexible hours

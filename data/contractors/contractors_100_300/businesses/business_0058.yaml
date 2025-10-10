@@ -1,0 +1,43 @@
+id: business_0058
+name: Central Residential Contracting
+description: Central Residential Contracting provides quality repair, installation,
+  and remodeling services for homeowners seeking reliable solutions for interiors,
+  exteriors, and essential home systems. Our team focuses on delivering dependable
+  workmanship tailored to residential clients.
+rating: 1.0
+progenitor_customer: customer_0020
+menu_features:
+  Tile Grout Restoration: 296.66
+  Roof Vent Replacement: 399.12
+  Engineered Wood Floor Installation: 275.2
+  Carpet Laying: 313.72
+  Staircase Refinishing: 275.46
+  Tile Installation: 324.08
+  Small Bathroom Plumbing Repair: 168.46
+  Custom Cabinet Modification: 438.0
+  Concrete Patio Resurfacing: 441.67
+  Water Heater Setup: 481.29
+  Basement Waterproofing: 452.61
+  Tile Backsplash: 445.52
+  Sprinkler System Maintenance: 198.74
+  Masonry Repair: 262.83
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: true
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.63

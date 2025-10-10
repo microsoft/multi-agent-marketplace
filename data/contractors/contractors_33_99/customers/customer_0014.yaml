@@ -1,0 +1,13 @@
+id: customer_0014
+name: Aria Lewis
+request: Please help me find a contractor who can provide Granite Countertop Installation
+  (1), Drywall Installation (1), and Sprinkler Head Repair (1), and also offers a
+  post install inspection. I am ready to hire a contractor who meets all these requirements
+  and would like to proceed with scheduling and confirming the work once such a contractor
+  is located. Thank you for your assistance.
+menu_features:
+  Granite Countertop Installation: 478.37
+  Drywall Installation: 404.95
+  Sprinkler Head Repair: 224.5
+amenity_features:
+- post install inspection

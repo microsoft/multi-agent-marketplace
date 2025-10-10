@@ -1,0 +1,13 @@
+id: customer_0009
+name: Lily Nguyen
+request: 'I''m looking to hire a contractor who can provide the following services:
+  Grout Cleaning (1) and Brick Path Restoration (1). It is essential that the contractor
+  is licensed and offers a post install inspection. Once such a contractor is found,
+  I would like to proceed with engaging them and scheduling these services. Please
+  assist me in finding a suitable professional so we can confirm the work.'
+menu_features:
+  Grout Cleaning: 277.0
+  Brick Path Restoration: 467.5
+amenity_features:
+- post install inspection
+- licensed

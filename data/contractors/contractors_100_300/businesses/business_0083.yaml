@@ -1,0 +1,45 @@
+id: business_0083
+name: Silverpine Contracting
+description: Silverpine Contracting provides reliable residential improvement and
+  maintenance services for homeowners seeking quality upgrades and repairs. Our team
+  delivers dependable solutions for a wide range of interior and exterior home needs.
+rating: 1.0
+progenitor_customer: customer_0028
+menu_features:
+  Basement Remodeling: 534.75
+  Ceiling Fan Upgrade: 306.95
+  Asphalt Driveway Patch: 478.51
+  Vanity Sink Plumbing: 189.77
+  Front Door Painting: 258.88
+  Shower Base Replacement: 426.59
+  Lawn Sprinkler Repair: 311.22
+  Furnace Maintenance: 332.37
+  Vanity Setup: 292.09
+  Shower Glass Installation: 440.11
+  Carpet Replacement: 426.77
+  Yard Debris Removal: 204.6
+  Sprinkler System Start-Up: 509.31
+  Roof Leak Patch: 295.13
+  Outlet Addition: 259.01
+  Toilet Replacement: 111.56
+  Brick Patio Replacement: 493.69
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: true
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.79

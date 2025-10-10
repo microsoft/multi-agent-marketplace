@@ -1,0 +1,13 @@
+id: customer_0022
+name: Harper Lopez
+request: I'm looking to find a licensed contractor who can provide Ceiling Fan Replacement
+  (1), Brick Step Repointing (1), and Door Hardware Replacement (1). Once a suitable
+  contractor is identified, I intend to proceed with hiring and would like to arrange
+  and confirm the scheduling of these services. Please let me know once you have found
+  a qualified professional so we can move forward.
+menu_features:
+  Ceiling Fan Replacement: 239.95
+  Brick Step Repointing: 467.0
+  Door Hardware Replacement: 279.99
+amenity_features:
+- licensed

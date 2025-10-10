@@ -1,0 +1,40 @@
+id: business_0061
+name: Horizon Residential Services
+description: Horizon Residential Services provides reliable solutions for homeowners
+  seeking improvements and repairs in flooring, electrical, plumbing, and outdoor
+  spaces. Our team is dedicated to quality workmanship and responsive service for
+  a variety of residential needs.
+rating: 1.0
+progenitor_customer: customer_0021
+menu_features:
+  Smoke Detector Installation: 96.09
+  Garage Epoxy Flooring: 367.06
+  Laminate Floor Repair: 134.03
+  Ceiling Fan Wiring: 246.52
+  Basic Closet Shelving: 214.53
+  Sod Installation: 292.27
+  Bathtub Reglazing: 264.58
+  Concrete Patio Cleaning: 203.89
+  Kitchen Wall Tile: 225.56
+  Minor Plumbing Repair: 190.47
+  Washer Hookup Installation: 349.64
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: true
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: true
+  same day service: true
+  weekend availability: false
+  post install inspection: true
+  flexible hours: false
+  insured: true
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.66

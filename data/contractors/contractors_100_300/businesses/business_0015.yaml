@@ -1,0 +1,42 @@
+id: business_0015
+name: Evergreen Homecraft Services
+description: Evergreen Homecraft Services provides reliable residential repairs and
+  interior improvements for homeowners seeking quality workmanship and attentive service.
+  From remodeling to routine maintenance, we deliver solutions designed to enhance
+  comfort and durability in your home.
+rating: 1.0
+progenitor_customer: customer_0005
+menu_features:
+  Chimney Cap Installation: 417.56
+  Retaining Wall Patch: 323.96
+  Basement Remodeling: 433.71
+  Front Door Painting: 295.49
+  Stone Fireplace Facade: 456.2
+  Sprinkler System Activation: 164.28
+  Custom Shelf Assembly: 344.73
+  Brick Path Restoration: 455.15
+  Shower Enclosure Replacement: 443.0
+  Water Heater Descaling: 393.39
+  Replace Heating Thermostat: 373.22
+  Toilet Replacement: 161.57
+  Cabinet Refacing: 440.88
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.64

@@ -1,0 +1,42 @@
+id: business_0298
+name: Stonefield Service Contractors
+description: Stonefield Service Contractors provides reliable solutions for residential
+  repairs and improvements, specializing in interior and exterior upgrades for homeowners.
+  Our team delivers professional, detail-oriented service to support a wide range
+  of property maintenance and renovation needs.
+rating: 1.0
+progenitor_customer: customer_0100
+menu_features:
+  Roof Leak Fix: 178.41
+  Vinyl Siding Patch: 354.7
+  Fixture Assembly: 254.3
+  Closet Cabinet Assembly: 356.86
+  Sump Pump Service: 388.28
+  Deck Refinishing: 240.34
+  Basement Window Installation: 413.61
+  Accent Wall Painting: 233.69
+  Exterior Wall Patching: 340.77
+  Pergola Construction: 334.23
+  Garden Bed Edging: 189.3
+  Central Heating Repair: 424.1
+  Wall Socket Wiring: 206.41
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: true
+  appointment only: true
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.75

@@ -1,0 +1,11 @@
+id: customer_0007
+name: Benjamin Lee
+request: I'm looking to engage a contractor who offers Garage Door Adjustment (1)
+  and provides both responsiveness and after hours service. Once such a contractor
+  is identified, I intend to hire them and schedule the work as specified. Please
+  help me find and confirm an appropriate provider.
+menu_features:
+  Garage Door Adjustment: 201.49
+amenity_features:
+- responsiveness
+- after hours service

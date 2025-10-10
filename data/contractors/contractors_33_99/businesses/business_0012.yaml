@@ -1,0 +1,41 @@
+id: business_0012
+name: Lakeshore Residential Contractors
+description: Serving homeowners with reliable interior and exterior upgrades, Lakeshore
+  Residential Contractors delivers a full range of repair and improvement services.
+  We focus on quality workmanship for residential remodeling, maintenance, and property
+  enhancement projects.
+rating: 1.0
+progenitor_customer: customer_0004
+menu_features:
+  Wall Sconce Wiring: 265.09
+  Shower Enclosure Installation: 523.65
+  Shed Roof Re-Shingling: 501.38
+  Bathroom Vanity Fitting: 447.68
+  Furnace Inspection: 427.64
+  Backsplash Tile Setting: 254.03
+  Drain Clearing: 195.24
+  Bathroom Vanity Assembly: 348.13
+  Walkway Resurfacing: 450.72
+  Door Hardware Upgrade: 170.35
+  Landscape Edging: 233.63
+  Basement Water Proofing: 443.68
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: true
+  same day service: false
+  weekend availability: false
+  post install inspection: true
+  flexible hours: true
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.91

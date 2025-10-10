@@ -1,0 +1,13 @@
+id: customer_0092
+name: Robert Johnson
+request: I'm looking to hire a contractor who can provide Granite Countertop Sealing
+  (1), Bathroom Vanity Replacement (1), and Carpet Installation (1), and also offer
+  live job updates. Please help me find a qualified provider who meets all these requirements,
+  as I am ready to engage and schedule the work once such a contractor is identified.
+  Let me know when these arrangements can be confirmed.
+menu_features:
+  Granite Countertop Sealing: 334.95
+  Bathroom Vanity Replacement: 218.5
+  Carpet Installation: 324.95
+amenity_features:
+- live job updates

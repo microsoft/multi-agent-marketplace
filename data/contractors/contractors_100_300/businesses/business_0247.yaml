@@ -1,0 +1,41 @@
+id: business_0247
+name: VistaLane Home Services
+description: VistaLane Home Services provides comprehensive repair, improvement, and
+  upgrade solutions for residential properties, serving homeowners seeking reliable
+  and timely project completion. Our skilled team specializes in a broad range of
+  interior and exterior work to help maintain and enhance your home.
+rating: 1.0
+progenitor_customer: customer_0083
+menu_features:
+  Shed Roof Re-Shingling: 477.56
+  Electrical Switch Installation: 280.49
+  Mulching: 245.96
+  Kitchen Faucet Upgrade: 251.08
+  Stone Veneer Repair: 313.83
+  Light Switch Replacement: 245.75
+  Staircase Carpeting: 317.8
+  Home Network Setup: 232.48
+  Window Trim Replacement: 298.91
+  Kitchen Plumbing Repair: 253.89
+  Built-In Bookshelf Construction: 523.16
+  Roof Leak Fix: 239.78
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.82

@@ -1,0 +1,14 @@
+id: customer_0054
+name: Liam Rodriguez
+request: 'Please help me find a contractor who can provide the following services:
+  Weed Removal (1) and Carpet Cleaning (1), and who is both licensed and accepts credit
+  cards. These requirements are essential. Once you identify a suitable contractor,
+  I would like to move forward with hiring them and arranging a convenient time to
+  complete the work. Please let me know the next steps to confirm and schedule these
+  services.'
+menu_features:
+  Weed Removal: 100.99
+  Carpet Cleaning: 424.5
+amenity_features:
+- licensed
+- business accepts credit cards

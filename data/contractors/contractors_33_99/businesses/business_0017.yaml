@@ -1,0 +1,46 @@
+id: business_0017
+name: Brightline Residential Services
+description: Brightline Residential Services provides trusted maintenance and improvement
+  solutions for homeowners, with a focus on quality workmanship and timely project
+  completion. Our team delivers a wide range of repair, enhancement, and exterior
+  care services to help maintain and upgrade your property.
+rating: 1.0
+progenitor_customer: customer_0006
+menu_features:
+  Walkway Repair: 279.26
+  Porch Step Replacement: 263.12
+  Mulch Installation: 193.3
+  Exterior Window Cleaning: 112.32
+  Fence Staining: 311.32
+  Refrigerator Water Line Install: 236.28
+  Porch Repair: 407.21
+  Furnace Service: 443.0
+  Dimmer Switch Upgrade: 143.82
+  Bathtub Reglazing: 311.03
+  Tile Grouting: 120.7
+  Carpet Patching: 231.02
+  Cabinet Hardware Upgrade: 533.09
+  Kitchen Countertop Installation: 331.91
+  Cabinet Hinges Upgrade: 305.42
+  Garden Maintenance: 170.83
+  Ceramic Tile Flooring: 326.72
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: true
+  responsiveness: false
+  background checked crew: false
+  licensed: false
+  same day service: true
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: true
+min_price_factor: 0.94

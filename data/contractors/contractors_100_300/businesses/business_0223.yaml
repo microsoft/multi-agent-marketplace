@@ -1,0 +1,44 @@
+id: business_0223
+name: Horizon Point Home Maintenance
+description: Horizon Point Home Maintenance specializes in reliable, prompt repairs
+  and upkeep for residential properties. We serve homeowners seeking dependable solutions
+  for both indoor and outdoor home improvement and maintenance needs.
+rating: 1.0
+progenitor_customer: customer_0075
+menu_features:
+  Chimney Cap Replacement: 298.49
+  Refrigerator Hookup: 265.24
+  Gutter Repair: 280.51
+  Toilet Repair: 203.35
+  Sprinkler System Startup: 478.98
+  Central AC Inspection: 382.34
+  Landscape Planting: 267.89
+  Mulch Distribution: 145.38
+  Window Repair: 222.33
+  Leaky Faucet Fix: 311.54
+  Fixture Assembly: 286.48
+  Door Hardware Upgrade: 269.49
+  Door Lock Repair: 158.79
+  Power Washing: 229.21
+  Bathroom Fan Installation: 281.5
+  Cabinet Hardware Replacement: 335.49
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: true
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: true
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.72

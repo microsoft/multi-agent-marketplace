@@ -1,0 +1,40 @@
+id: business_0188
+name: Craftstead Residential Services
+description: Craftstead Residential Services provides a range of reliable repair,
+  maintenance, and improvement solutions for homeowners. Our team focuses on quality
+  workmanship and dependable service to help maintain and enhance your home.
+rating: 1.0
+progenitor_customer: customer_0063
+menu_features:
+  Electrical Panel Tune-Up: 330.67
+  Stone Pathway Installation: 327.25
+  Outlet Replacement: 276.48
+  Flat Roof Sealant Application: 520.61
+  Laminate Floor Installation: 395.93
+  Garage Door Opener Setup: 494.74
+  Roof Shingle Patch: 312.49
+  Furnace Inspection: 383.06
+  Garage Epoxy Flooring: 329.96
+  Circuit Breaker Replacement: 292.6
+  Toilet Repair: 207.88
+  Patio Paver Repair: 340.6
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: true
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: true
+  accepts digital payments: true
+min_price_factor: 0.63

@@ -1,0 +1,41 @@
+id: business_0202
+name: Harrison Park Contracting
+description: Harrison Park Contracting provides residential improvement and maintenance
+  services with a focus on interior updates and outdoor enhancements. We help homeowners
+  create comfortable, functional living spaces through reliable, detail-oriented workmanship.
+rating: 1.0
+progenitor_customer: customer_0068
+menu_features:
+  Entry Door Repainting: 157.09
+  Light Fixture Installation: 184.11
+  Stone Pathway Construction: 333.93
+  Garden Bed Creation: 128.38
+  AC Tune-Up: 298.17
+  Stone Patio Laying: 424.84
+  Shower Enclosure Replacement: 481.9
+  Basement Remodeling: 428.38
+  Concrete Patio Staining: 301.55
+  Sprinkler System Start-Up: 487.0
+  Siding Repair: 558.44
+  Insulation Addition: 457.07
+  Concrete Patio Sealing: 359.83
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.71

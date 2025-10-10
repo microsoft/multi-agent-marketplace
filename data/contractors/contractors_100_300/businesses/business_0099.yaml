@@ -1,0 +1,41 @@
+id: business_0099
+name: Willow Shade Home Services
+description: Willow Shade Home Services provides reliable residential maintenance
+  and improvement solutions tailored for homeowners seeking quality and convenience.
+  Our team specializes in a broad range of interior and exterior projects focused
+  on enhancing and preserving your home.
+rating: 1.0
+progenitor_customer: customer_0033
+menu_features:
+  Concrete Patio Cleaning: 233.56
+  Garbage Disposal Repair: 307.4
+  Garden Bed Construction: 179.21
+  Exterior Door Install: 226.12
+  Shrub Pruning: 259.92
+  Sump Pump Service: 348.2
+  Floorboard Replacement: 281.97
+  Flat Roof Sealant Application: 426.93
+  Custom Closet Assembly: 483.78
+  Carpet Stretching: 450.9
+  Mini Split AC Service: 516.24
+  Sprinkler System Activation: 261.25
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.65

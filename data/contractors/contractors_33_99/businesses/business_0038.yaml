@@ -1,0 +1,46 @@
+id: business_0038
+name: Residential Renewal Contractors
+description: Residential Renewal Contractors provides reliable home improvement and
+  repair services for homeowners seeking quality workmanship and efficient solutions.
+  Our team delivers expertise across interior remodeling, exterior maintenance, and
+  landscaping projects tailored to your property's needs.
+rating: 1.0
+progenitor_customer: customer_0013
+menu_features:
+  Ceiling Patch Repair: 289.84
+  Cabinet Repair: 162.22
+  Recessed Lighting Install: 233.37
+  Garage Cabinet Assembly: 184.58
+  Recessed Light Installation: 268.03
+  Roof Repair: 426.65
+  Garden Bed Landscaping: 191.73
+  Custom Cabinet Assembly: 379.78
+  Lawn Irrigation Startup: 242.92
+  Walk-in Shower Retrofit: 530.18
+  Fence Gate Repair: 335.58
+  Kitchen Backsplash: 321.0
+  Laminate Floor Installation: 358.21
+  Custom Cabinet Modification: 434.49
+  Retaining Wall Installation: 416.3
+  Small Closet Remodeling: 347.57
+  Hardwood Refinishing: 372.62
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: true
+  same day service: true
+  weekend availability: true
+  post install inspection: true
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.87

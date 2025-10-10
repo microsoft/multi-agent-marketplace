@@ -1,0 +1,41 @@
+id: business_0051
+name: Westfield Home Services
+description: Westfield Home Services provides reliable residential maintenance and
+  improvement solutions for homeowners seeking quality workmanship. Our team handles
+  a wide range of interior and exterior projects with a commitment to professional
+  service.
+rating: 1.0
+progenitor_customer: customer_0017
+menu_features:
+  Carpet Installation: 274.15
+  Ceiling Patch Repair: 257.67
+  Gutter Installation: 428.88
+  Bathroom Exhaust Fan Installation: 197.8
+  Garage Shelving Installation: 169.66
+  Custom Bookcase Build: 445.41
+  Door Lock Replacement: 137.67
+  Walkway Resurfacing: 457.72
+  Flagstone Walkway: 447.15
+  Landscape Edging: 278.27
+  Furnace Tune-Up: 388.56
+  Exterior Door Weatherproofing: 179.16
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: false
+  same day service: true
+  weekend availability: false
+  post install inspection: true
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: true
+  free estimate: false
+  appointment only: true
+min_price_factor: 0.7

@@ -1,0 +1,46 @@
+id: business_0108
+name: Unionstone Contracting
+description: Unionstone Contracting serves local homeowners with skilled solutions
+  for interior improvements, exterior enhancements, and essential home maintenance.
+  We focus on reliable, detail-oriented workmanship to keep your property functional
+  and looking its best.
+rating: 1.0
+progenitor_customer: customer_0036
+menu_features:
+  Small Room Flooring: 282.51
+  Heating System Maintenance: 308.36
+  Vanity Plumbing Repair: 240.77
+  Small Brick Patio: 208.5
+  Small Bathroom Plumbing Repair: 158.93
+  Concrete Pathway Pouring: 304.92
+  Shower Faucet Upgrade: 259.47
+  Sprinkler System Maintenance: 216.51
+  Refrigerator Hookup: 278.86
+  Appliance Installation: 171.03
+  Garden Bed Building: 335.32
+  Custom Cabinet Assembly: 340.95
+  Slate Patio Construction: 408.82
+  Basement Water Proofing: 415.62
+  Shower Caulking: 324.35
+  Advanced Electrical Troubleshooting: 273.46
+  Fence Post Setting: 451.3
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: true
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: true
+  background checked crew: true
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.61

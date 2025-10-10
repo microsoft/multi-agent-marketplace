@@ -1,0 +1,42 @@
+id: business_0066
+name: Brickleaf Home Services
+description: Brickleaf Home Services provides a range of residential maintenance and
+  improvement solutions for homeowners seeking dependable workmanship. We deliver
+  professional upgrades and repairs to help keep your property in top condition.
+rating: 1.0
+progenitor_customer: customer_0022
+menu_features:
+  Mini-Split Maintenance: 211.4
+  Cedar Fence Building: 558.43
+  Ceiling Fan Replacement: 261.17
+  Brick Chimney Sealing: 301.78
+  Door Weatherstripping: 104.26
+  Brick Step Repointing: 467.17
+  Basic Plumbing Repair: 136.71
+  Washer Dryer Hookup: 294.76
+  Mulch Distribution: 250.08
+  Faucet Replacement: 130.06
+  Carpet Replacement: 371.55
+  Door Hardware Replacement: 251.96
+  Retaining Wall Masonry: 456.47
+  Thermostat Installation: 148.16
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: true
+  business accepts credit cards: true
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.82

@@ -1,0 +1,42 @@
+id: business_0014
+name: Oakmont Home Solutions
+description: Oakmont Home Solutions provides a range of residential improvement and
+  maintenance services for homeowners seeking quality updates and reliable repairs.
+  Our team is committed to delivering professional craftsmanship across interior and
+  exterior projects.
+rating: 1.0
+progenitor_customer: customer_0005
+menu_features:
+  Bathtub Re-glazing: 495.09
+  Landscape Planting: 238.36
+  Refrigerant Recharge: 373.59
+  Tile Shower Installation: 401.6
+  Built-In Bookshelf Construction: 587.12
+  Patio Paver Setup: 398.68
+  Gutter Replacement: 573.02
+  Fireplace Mantel Installation: 471.67
+  Porch Resurfacing: 327.8
+  Custom Shelving Installation: 352.01
+  Fence Gate Installation: 475.96
+  Outdoor Lighting Setup: 418.9
+  Kitchen Sink Plumbing: 250.91
+amenity_features:
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  accepts digital payments: false
+  licensed: true
+  appointment only: true
+  business accepts credit cards: false
+  same day service: false
+  flexible hours: false
+  free estimate: false
+  background checked crew: true
+  insured: false
+  weekend availability: false
+  eco friendly materials: true
+  responsiveness: false
+  post install inspection: false
+  free followup visit: false
+  after hours service: true
+min_price_factor: 0.85

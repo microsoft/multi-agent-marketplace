@@ -1,0 +1,41 @@
+id: business_0059
+name: Silverwood Residential Improvements
+description: Silverwood Residential Improvements provides professional home upgrade
+  and maintenance services for local homeowners, focusing on quality workmanship and
+  reliable project completion. Our team specializes in interior and exterior enhancements
+  to help you maintain and improve your living space.
+rating: 1.0
+progenitor_customer: customer_0020
+menu_features:
+  Chimney Sweep: 356.51
+  Custom Closet Installation: 491.33
+  Water Heater Servicing: 513.96
+  Shower Base Replacement: 318.03
+  Door Hardware Installation: 222.13
+  Landscape Edging: 247.05
+  Subpanel Installation: 632.61
+  Cabinet Door Refacing: 437.59
+  Bathtub Caulking: 296.11
+  Lighting Fixture Upgrade: 274.07
+  Faucet Installation: 239.39
+  Bathroom Vanity Upgrade: 271.83
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: true
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: true
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.61

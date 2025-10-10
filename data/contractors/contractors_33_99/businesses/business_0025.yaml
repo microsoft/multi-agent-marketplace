@@ -1,0 +1,41 @@
+id: business_0025
+name: Parkland Home Services
+description: Parkland Home Services provides reliable solutions for homeowners seeking
+  professional assistance with maintenance, repair, and improvement projects. Our
+  team is committed to delivering efficient workmanship for a wide range of residential
+  needs.
+rating: 1.0
+progenitor_customer: customer_0009
+menu_features:
+  Garbage Disposal Replacement: 281.68
+  Deck Sealing: 346.64
+  Walkway Concrete Pour: 457.37
+  Chimney Sweep: 417.31
+  Door Lock Replacement: 165.21
+  Washer Hookup Installation: 372.05
+  Drain Clearing: 183.28
+  Sprinkler System Adjustment: 213.68
+  Custom Cabinet Hardware Install: 495.18
+  Light Fixture Upgrade: 214.57
+  Shed Assembly: 221.19
+  Smoke Detector Wiring: 251.42
+amenity_features:
+  eco friendly materials: true
+  multilingual staff: false
+  warranty: true
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: false
+  same day service: true
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: true
+  after hours service: true
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.83

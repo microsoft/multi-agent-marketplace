@@ -1,0 +1,42 @@
+id: business_0215
+name: Stridewell Home Services
+description: Stridewell Home Services serves local homeowners with reliable solutions
+  for interior upgrades, exterior repairs, and landscape improvements. Our team is
+  dedicated to quality workmanship and responsive service for a wide range of residential
+  projects.
+rating: 1.0
+progenitor_customer: customer_0072
+menu_features:
+  Garbage Disposal Installation: 280.22
+  Gutter Cleaning: 179.69
+  Shrub Planting: 113.82
+  Roof Leak Patch: 323.68
+  Luxury Vinyl Plank Installation: 400.17
+  Shower Faucet Upgrade: 276.08
+  Door Hardware Upgrade: 236.08
+  Brick Patio Replacement: 572.52
+  Brick Pathway Construction: 280.22
+  Landscape Edging: 301.87
+  Siding Repair: 581.47
+  Walkway Paver Installation: 312.73
+  Kitchen Remodel Consultation: 471.9
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: true
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.92

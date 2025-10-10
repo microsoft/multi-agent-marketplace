@@ -1,0 +1,44 @@
+id: business_0146
+name: Premier Residential Contractors
+description: Premier Residential Contractors delivers skilled home improvement and
+  maintenance services for homeowners seeking reliable solutions. We specialize in
+  a wide range of interior and exterior projects designed to enhance comfort, appearance,
+  and functionality.
+rating: 1.0
+progenitor_customer: customer_0049
+menu_features:
+  Granite Countertop Fabrication: 455.8
+  Shed Roof Reshingle: 269.45
+  Carpet Stretching: 342.86
+  Water Heater Service: 263.65
+  Bathtub Re-glazing: 619.19
+  Full Bathroom Caulking: 484.72
+  Cedar Fence Building: 404.7
+  Wall Sconce Wiring: 229.61
+  Vanity Plumbing Repair: 203.27
+  Vanity Installation: 222.26
+  AC Unit Tune-Up: 529.68
+  Drywall Installation: 435.66
+  Garage Door Opener Setup: 483.89
+  Sod Installation: 344.76
+  Front Door Painting: 271.43
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: true
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.86

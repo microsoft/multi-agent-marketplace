@@ -1,0 +1,45 @@
+id: business_0277
+name: Redleaf Residential Contracting
+description: Redleaf Residential Contracting provides homeowners with reliable and
+  professional repair, maintenance, and improvement services for interiors, exteriors,
+  and essential home systems. Our team is dedicated to delivering quality workmanship
+  and timely solutions for a wide range of residential needs.
+rating: 1.0
+progenitor_customer: customer_0093
+menu_features:
+  Door Lock Replacement: 155.93
+  Security Light Installation: 300.75
+  Patio Paver Resanding: 214.43
+  Interior Painting: 122.01
+  Small Roof Patch: 159.44
+  Bathroom Vanity Cabinetry: 431.49
+  Fence Staining: 281.43
+  Stone Veneer Application: 241.96
+  Entry Door Repainting: 182.02
+  AC Tune-Up: 376.74
+  Ceramic Tile Flooring: 354.84
+  Furnace Service: 519.82
+  Custom Shelving Installation: 355.37
+  Door Refinishing: 255.65
+  Lock Set Change: 221.69
+  Basic Tile Flooring Install: 227.55
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: true
+  appointment only: true
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.78

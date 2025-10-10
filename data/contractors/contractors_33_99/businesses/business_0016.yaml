@@ -1,0 +1,45 @@
+id: business_0016
+name: Neighborhood Specialty Contractors
+description: Neighborhood Specialty Contractors provides reliable residential repair
+  and improvement services for homeowners seeking quality results. Our skilled team
+  delivers a wide range of solutions in maintenance, updates, and home enhancements
+  with a focus on professionalism and attention to detail.
+rating: 1.0
+progenitor_customer: customer_0006
+menu_features:
+  Shingle Repair: 519.92
+  Circuit Breaker Panel Update: 306.16
+  Ceramic Tile Flooring: 325.42
+  Light Fixture Repair: 230.01
+  Bathroom Sink Plumbing: 241.0
+  Vinyl Plank Flooring: 506.62
+  Light Switch Repair: 190.38
+  Shrub Pruning: 249.26
+  Flooring Installation: 345.17
+  Custom Shelf Mounting: 229.43
+  Central Air Inspection: 428.56
+  Tile Grouting: 156.14
+  Furnace Service: 572.09
+  Brick Step Replacement: 262.71
+  Garage Door Alignment: 423.92
+  Kitchen Remodel Consultation: 485.57
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: true
+  responsiveness: false
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: true
+  post install inspection: true
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: true
+min_price_factor: 0.67

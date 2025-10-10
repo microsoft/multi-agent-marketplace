@@ -1,0 +1,41 @@
+id: business_0028
+name: Sycamore Residential Projects
+description: Sycamore Residential Projects provides tailored improvement and renovation
+  services for homeowners seeking to enhance both the interior and exterior of their
+  properties. We offer professional solutions designed to improve curb appeal, functionality,
+  and overall living spaces.
+rating: 1.0
+progenitor_customer: customer_0010
+menu_features:
+  Exterior Painting: 271.81
+  Cabinet Door Refacing: 377.31
+  Kitchen Wall Tile: 301.56
+  Shower Enclosure Replacement: 297.43
+  Landscape Design: 112.6
+  Porch Railing Replacement: 348.92
+  Mailbox Installation: 118.03
+  Flower Bed Redesign: 281.97
+  Garage Remodeling: 448.47
+  Retaining Wall Masonry: 443.45
+  Brick Pathway Installation: 373.29
+  Exterior Siding Wash: 529.29
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: true
+  responsiveness: false
+  background checked crew: true
+  licensed: false
+  same day service: false
+  weekend availability: true
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: true
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.69

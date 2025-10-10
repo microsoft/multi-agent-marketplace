@@ -1,0 +1,45 @@
+id: business_0016
+name: Residential Repair & Improvement Group
+description: Offering a wide range of interior and exterior residential repair and
+  improvement services, we provide dependable solutions focused on enhancing the comfort,
+  function, and value of your home. Our team serves homeowners seeking quality workmanship
+  and attentive service for projects of all sizes.
+rating: 1.0
+progenitor_customer: customer_0006
+menu_features:
+  Walkway Construction: 577.34
+  Closet Shelving Assembly: 351.23
+  Shower Base Replacement: 312.57
+  Door Weatherstripping: 96.73
+  Wood Floor Refinishing: 350.94
+  Whole House Re-caulking: 401.89
+  Drain Pipe Repair: 218.95
+  Garage Door Weatherproofing: 569.64
+  Sprinkler System Maintenance: 210.47
+  Stone Walkway Installation: 410.63
+  Garage Floor Coating: 375.2
+  Air Conditioner Service: 487.17
+  Baseboard Repair: 168.16
+  Single Room Vinyl Flooring: 364.22
+  Water Heater Repair: 347.25
+  Wood Stair Refinishing: 384.06
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: true
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.93

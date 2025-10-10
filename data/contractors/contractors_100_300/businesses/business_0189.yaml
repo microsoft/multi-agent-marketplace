@@ -1,0 +1,41 @@
+id: business_0189
+name: HomeCare Service Specialists
+description: HomeCare Service Specialists provides reliable residential repairs, light
+  electrical upgrades, and landscaping solutions tailored to homeowners seeking convenient,
+  high-quality service. We focus on enhancing and maintaining the comfort, safety,
+  and curb appeal of your home.
+rating: 1.0
+progenitor_customer: customer_0063
+menu_features:
+  Small Roof Patch: 129.11
+  Planting Flower Beds: 295.79
+  Leaf Removal: 184.43
+  Pergola Construction: 302.9
+  Outlet Replacement: 226.84
+  Door Weatherstripping: 114.53
+  Hedge Trimming: 107.32
+  Outlet Addition: 282.98
+  Smoke Detector Upgrade: 194.85
+  Thermostat Upgrade: 277.37
+  Landscaping Design: 177.26
+  Central Heating Repair: 330.9
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: true
+  appointment only: true
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.79

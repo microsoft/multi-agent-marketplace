@@ -1,0 +1,41 @@
+id: business_0203
+name: Parkland Residential Improvements
+description: Parkland Residential Improvements provides reliable home enhancement,
+  maintenance, and landscaping services for local homeowners. Our team is dedicated
+  to quality workmanship and timely solutions for a wide range of residential needs.
+rating: 1.0
+progenitor_customer: customer_0068
+menu_features:
+  Bathroom Vanity Fitting: 364.54
+  Water Heater Inspection: 219.68
+  Sprinkler System Installation: 374.57
+  Sprinkler System Start-Up: 470.18
+  Drain Unclogging: 148.89
+  Leak Detection: 165.27
+  Lawn Fertilization: 183.71
+  Basement Remodeling: 528.1
+  Concrete Path Repair: 170.67
+  Insulation Addition: 522.97
+  Stone Path Installation: 352.87
+  Stone Patio Laying: 484.71
+  Kitchen Cabinet Repainting: 423.82
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: true
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.63

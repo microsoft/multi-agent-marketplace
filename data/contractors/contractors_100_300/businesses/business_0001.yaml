@@ -1,0 +1,43 @@
+id: business_0001
+name: Summit Home Services
+description: Summit Home Services provides reliable residential improvement and maintenance
+  solutions, assisting homeowners with a range of interior and exterior projects.
+  Our team is dedicated to quality workmanship and customer satisfaction in every
+  service we offer.
+rating: 1.0
+progenitor_customer: customer_0001
+menu_features:
+  Patio Cover Installation: 470.49
+  Asphalt Patch Repair: 383.56
+  Door Weatherstripping: 122.09
+  Central Air Conditioner Tune-Up: 452.45
+  Vanity Plumbing Repair: 212.07
+  Tile Installation: 343.95
+  Patio Paver Laying: 382.09
+  Hardwood Floor Resurfacing: 399.01
+  Bathroom Sink Plumbing: 193.91
+  Mulching: 291.68
+  Bathroom Vanity Assembly: 320.02
+  Concrete Patio Sealing: 371.03
+  Cabinet Handle Replacement: 399.0
+  Concrete Pathway Pouring: 411.28
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: true
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.73

@@ -1,0 +1,44 @@
+id: business_0210
+name: Parkside Service Contractors
+description: Parkside Service Contractors provides reliable residential repairs, general
+  upgrades, and property maintenance for homeowners. Our team delivers efficient service
+  across a broad range of interior and exterior improvement needs.
+rating: 1.0
+progenitor_customer: customer_0070
+menu_features:
+  Hardwood Floor Buffing: 548.78
+  Garage Door Opener Repair: 342.31
+  Fireplace Cleaning: 248.57
+  Outlet Installation: 127.14
+  Shed Assembly: 284.19
+  Pressure Washing: 169.08
+  Front Door Lock Change: 187.59
+  Room Painting: 304.64
+  Radiator Repair: 364.75
+  Sod Laying: 272.18
+  Appliance Installation: 149.65
+  Gutter Replacement: 488.08
+  Air Conditioner Service: 444.07
+  Vanity Plumbing Repair: 243.33
+  Subpanel Upgrade: 496.46
+  Kitchen Faucet Upgrade: 263.46
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.61

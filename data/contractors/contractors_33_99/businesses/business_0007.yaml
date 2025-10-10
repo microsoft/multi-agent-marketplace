@@ -1,0 +1,40 @@
+id: business_0007
+name: Heritage Residential Services
+description: Heritage Residential Services provides reliable improvements and repairs
+  for homeowners, specializing in exterior and interior upgrades, light renovations,
+  and property maintenance with a focus on quality and professionalism.
+rating: 1.0
+progenitor_customer: customer_0003
+menu_features:
+  Full Exterior House Painting: 473.48
+  Landscape Lighting Setup: 426.19
+  Door Lock Repair: 211.56
+  Cabinet Hardware Upgrade: 458.16
+  Brick Patio Replacement: 454.52
+  Concrete Path Repair: 179.53
+  Wall Sconce Wiring: 312.17
+  Basement Stair Carpeting: 268.98
+  Landscape Lighting Installation: 452.55
+  Cabinet Painting: 524.03
+  Staircase Carpeting: 385.51
+  Baseboard Repair: 152.67
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: true
+  responsiveness: false
+  background checked crew: false
+  licensed: false
+  same day service: true
+  weekend availability: false
+  post install inspection: true
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: true
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.7

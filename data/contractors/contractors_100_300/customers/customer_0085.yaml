@@ -1,0 +1,15 @@
+id: customer_0085
+name: Ethan Scott
+request: 'Please help me find a contractor who can provide the following services:
+  Shower Tile Regrouting (1), Sprinkler Head Replacement (1), and Central AC Tuneup
+  (1). It is essential that the contractor is licensed and offers a free followup
+  visit. Once you identify a suitable contractor who meets all these requirements,
+  I am ready to hire them and would like to schedule the work as outlined. Kindly
+  confirm the arrangements once secured.'
+menu_features:
+  Shower Tile Regrouting: 366.0
+  Sprinkler Head Replacement: 203.99
+  Central AC Tuneup: 461.49
+amenity_features:
+- free followup visit
+- licensed

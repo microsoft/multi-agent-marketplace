@@ -1,0 +1,43 @@
+id: business_0039
+name: Fieldstone Residential Contractors
+description: Fieldstone Residential Contractors provides skilled improvements, repairs,
+  and upgrades for homeowners seeking reliable solutions for their interior and exterior
+  needs. We focus on quality craftsmanship and attentive service for a wide range
+  of residential renovation and maintenance projects.
+rating: 1.0
+progenitor_customer: customer_0013
+menu_features:
+  Dimmer Switch Upgrade: 166.67
+  Concrete Driveway Repair: 183.16
+  Fence Gate Repair: 399.66
+  Basement Waterproofing: 421.08
+  Kitchen Remodel Consultation: 508.78
+  Tile Grout Restoration: 256.75
+  Recessed Lighting Install: 196.5
+  Staircase Carpeting: 283.93
+  Door Repair: 127.9
+  Brick Pathway Restoration: 306.97
+  Hardwood Refinishing: 415.12
+  Walkway Concrete Pour: 336.57
+  Engineered Wood Floor Installation: 344.93
+  Furnace Tune-Up: 418.67
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: true
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: true
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: true
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.76

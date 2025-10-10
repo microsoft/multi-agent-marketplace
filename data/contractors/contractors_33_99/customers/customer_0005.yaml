@@ -1,0 +1,11 @@
+id: customer_0005
+name: Liam Moore
+request: I'm looking to hire a contractor who can provide a Weatherproof Electrical
+  Outlet Install (1), and who is insured and offers weekend availability. Once you
+  find a contractor meeting all these requirements, please help me schedule and confirm
+  the work at the earliest opportunity.
+menu_features:
+  Weatherproof Electrical Outlet Install: 135.99
+amenity_features:
+- weekend availability
+- insured

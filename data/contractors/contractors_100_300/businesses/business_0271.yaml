@@ -1,0 +1,45 @@
+id: business_0271
+name: VistaEdge Contracting
+description: VistaEdge Contracting provides reliable residential improvement and property
+  maintenance services for homeowners seeking quality upgrades and repairs. We deliver
+  attentive service across home interiors, exteriors, and yard projects.
+rating: 1.0
+progenitor_customer: customer_0091
+menu_features:
+  Mulch Installation: 181.29
+  Fixture Replacement: 198.09
+  Small Patio Paving: 292.57
+  Radiator Repair: 276.51
+  Landscaping Planting: 403.27
+  Walkway Paver Setting: 365.07
+  Kitchen Cabinet Repainting: 447.99
+  Brick Step Repointing: 473.21
+  Bathtub Replacement: 529.07
+  Brick Patio Installation: 365.12
+  Install New Garage Door Opener: 415.39
+  Small Roof Patch: 134.62
+  Washer Hookup Installation: 444.19
+  Mailbox Replacement: 326.02
+  Ceiling Fan Installation: 265.19
+  Electrical Panel Inspection: 526.86
+  Light Switch Repair: 233.66
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: true
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.85

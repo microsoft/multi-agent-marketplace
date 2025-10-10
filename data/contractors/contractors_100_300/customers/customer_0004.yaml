@@ -1,0 +1,12 @@
+id: customer_0004
+name: Lucas Kowalski
+request: 'Please help me find a contractor who can perform a New Thermostat Setup
+  (quantity: 1) and Fence Gate Repair (quantity: 1), and who provides a background
+  checked crew as well as a warranty. I am ready to hire and would like to move forward
+  with scheduling and confirming the work as soon as possible.'
+menu_features:
+  New Thermostat Setup: 245.95
+  Fence Gate Repair: 345.95
+amenity_features:
+- background checked crew
+- warranty

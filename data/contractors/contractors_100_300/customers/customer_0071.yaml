@@ -1,0 +1,13 @@
+id: customer_0071
+name: Jessica Wilson
+request: I am looking for a contractor who can provide Cabinet Door Refacing (1) and
+  Stone Paver Walkway (1), and must offer responsiveness and flexible hours. My intention
+  is to engage the contractor who meets all these requirements and to proceed with
+  scheduling the specified work. Please help me find such a provider so I can move
+  forward with confirming the services.
+menu_features:
+  Cabinet Door Refacing: 363.99
+  Stone Paver Walkway: 357.0
+amenity_features:
+- responsiveness
+- flexible hours

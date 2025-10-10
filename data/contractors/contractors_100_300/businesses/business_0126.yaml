@@ -1,0 +1,45 @@
+id: business_0126
+name: Willow Lane Contracting
+description: Willow Lane Contracting provides dependable residential improvement and
+  maintenance services for homeowners seeking quality workmanship and timely project
+  completion. Our team specializes in a wide range of home repairs, upgrades, and
+  installations to enhance comfort and value.
+rating: 1.0
+progenitor_customer: customer_0042
+menu_features:
+  Attic Ladder Installation: 307.45
+  Custom Cabinet Build: 490.06
+  Flagstone Walkway: 589.81
+  Wall Rewiring: 393.86
+  Kitchen Cabinet Removal: 369.99
+  Bathroom Vanity Cabinetry: 398.75
+  Bathtub Recaulking: 338.03
+  Brick Step Restoration: 363.18
+  Garage Door Weatherproofing: 404.61
+  Carpet Removal: 302.66
+  Porch Railing Replacement: 433.97
+  Mulch Distribution: 205.97
+  Sprinkler Head Repair: 188.04
+  Drywall Hole Repair: 214.7
+  Fireplace Mantel Installation: 416.43
+  Driveway Patching: 398.52
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.65

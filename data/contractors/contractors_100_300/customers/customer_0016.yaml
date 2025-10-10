@@ -1,0 +1,15 @@
+id: customer_0016
+name: Benjamin Hall
+request: 'I am looking to hire a contractor who can provide the following services:
+  Exterior Siding Wash (1), Smoke Detector Wiring (1), and Laminate Countertop Installation
+  (1). The contractor must accept digital payments and be licensed. Once such a contractor
+  is identified, I would like to proceed with engaging them and scheduling the services.
+  Please assist in finding a suitable provider so we can move forward with confirming
+  the work.'
+menu_features:
+  Exterior Siding Wash: 468.25
+  Smoke Detector Wiring: 286.95
+  Laminate Countertop Installation: 335.99
+amenity_features:
+- accepts digital payments
+- licensed

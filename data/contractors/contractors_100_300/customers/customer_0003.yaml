@@ -1,0 +1,12 @@
+id: customer_0003
+name: James Robinson
+request: I'm looking for a contractor who can provide Chandelier Installation (1)
+  and Water Heater Servicing (1), and must be a business that accepts credit cards.
+  Please locate a suitable contractor who meets all these requirements, as I am ready
+  to hire and schedule these services once confirmed. Let me know when this can be
+  arranged.
+menu_features:
+  Chandelier Installation: 312.0
+  Water Heater Servicing: 410.95
+amenity_features:
+- business accepts credit cards

@@ -1,0 +1,42 @@
+id: business_0029
+name: Oakwood General Contractors
+description: Oakwood General Contractors provides reliable residential improvement
+  and outdoor renovation services for homeowners seeking quality results. Our team
+  addresses a wide range of interior and exterior projects with professional workmanship
+  and attention to detail.
+rating: 1.0
+progenitor_customer: customer_0010
+menu_features:
+  Deck Sanding: 342.89
+  Flower Bed Redesign: 290.99
+  Retaining Wall Masonry: 317.95
+  Mulch Installation: 223.43
+  Basement Remodeling: 471.35
+  Concrete Patio Slab Pour: 518.17
+  Toilet Installation: 229.72
+  Wall Socket Wiring: 209.14
+  Shower Caulking: 330.74
+  Sodding Service: 280.0
+  Subfloor Reinforcement: 230.56
+  Mailbox Installation: 91.15
+  Asphalt Patch Repair: 440.34
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: true
+  responsiveness: true
+  background checked crew: false
+  licensed: true
+  same day service: true
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: true
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.85

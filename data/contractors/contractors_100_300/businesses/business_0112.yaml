@@ -1,0 +1,43 @@
+id: business_0112
+name: Clearpath Home Services
+description: Clearpath Home Services provides professional residential repair and
+  improvement solutions for homeowners seeking reliable and timely support. Our team
+  is dedicated to enhancing and maintaining every aspect of your home with attention
+  to detail and quality workmanship.
+rating: 1.0
+progenitor_customer: customer_0038
+menu_features:
+  Door Hardware Replacement: 312.27
+  Air Conditioner Servicing: 380.98
+  Kitchen Countertop Replacement: 479.17
+  Bathroom Vanity Update: 351.26
+  Kitchen Cabinet Removal: 345.84
+  Roof Shingle Patch: 328.02
+  Deck Board Replacement: 448.17
+  Patio Paver Resetting: 451.93
+  Cabinet Hardware Replacement: 384.52
+  Solar Panel Cleaning: 377.44
+  Washer Dryer Hookup: 386.7
+  Sprinkler System Tuneup: 247.18
+  Refrigerator Water Line Install: 278.81
+  Central Air Conditioning Service: 561.56
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: true
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.89

@@ -1,0 +1,45 @@
+id: business_0130
+name: Peakview Home Services
+description: "Peakview Home Services provides reliable residential repair, improvement,\
+  \ and maintenance solutions tailored to homeowners\u2019 needs. Our team delivers\
+  \ quality workmanship for essential upgrades, installations, and routine care, helping\
+  \ you maintain and enhance your home."
+rating: 1.0
+progenitor_customer: customer_0044
+menu_features:
+  Custom Closet Build: 553.62
+  Fireplace Stonework: 374.39
+  Fence Installation: 470.58
+  Leak Repair: 182.53
+  Central Air Conditioner Tune-Up: 368.42
+  Security Light Installation: 289.77
+  Smoke Detector Replacement: 224.7
+  Sump Pump Replacement: 402.0
+  Sprinkler System Tuneup: 249.15
+  Garage Shelving Installation: 252.13
+  Single Room Vinyl Flooring: 313.44
+  Mulching: 285.71
+  Concrete Step Pouring: 446.81
+  Basement Leak Inspection: 280.36
+  Shower Head Replacement: 371.9
+  Electrical Switch Installation: 309.85
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.81

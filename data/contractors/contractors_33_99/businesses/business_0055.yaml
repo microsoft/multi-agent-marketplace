@@ -1,0 +1,40 @@
+id: business_0055
+name: Crossway Residential Services
+description: Crossway Residential Services provides a range of repair and upgrade
+  solutions for homeowners seeking reliable improvements and maintenance. We focus
+  on delivering timely, professional workmanship for residential interior and exterior
+  projects.
+rating: 1.0
+progenitor_customer: customer_0019
+menu_features:
+  Garage Door Tune-Up: 298.43
+  Roof Vent Installation: 361.98
+  Lock Set Change: 182.56
+  Cabinet Repair: 163.24
+  Bathroom Fan Replacement: 587.24
+  Carpet Stretching: 448.34
+  Bathroom Vanity Cabinet Install: 343.91
+  Heating System Tune-Up: 299.32
+  Custom Cabinet Fabrication: 450.06
+  Ceiling Fan Upgrade: 324.67
+  Bathroom Shower Enclosure: 509.56
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: true
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: true
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: true
+  appointment only: false
+min_price_factor: 0.66

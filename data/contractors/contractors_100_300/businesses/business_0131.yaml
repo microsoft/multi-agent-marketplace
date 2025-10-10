@@ -1,0 +1,41 @@
+id: business_0131
+name: Prairiecrest Contracting
+description: Prairiecrest Contracting provides reliable residential improvement and
+  repair services for homeowners seeking quality workmanship and efficient solutions.
+  Our team specializes in a range of interior upgrades, exterior enhancements, and
+  general home maintenance projects.
+rating: 1.0
+progenitor_customer: customer_0044
+menu_features:
+  Electrical Switch Installation: 218.06
+  Basement Leak Inspection: 320.61
+  Basement Stair Carpeting: 237.47
+  Built-in Shelving Installation: 441.94
+  Walkway Construction: 559.9
+  Deck Railing Installation: 498.57
+  Minor Plumbing Repair: 131.52
+  Door Hardware Installation: 208.8
+  Brick Wall Repointing: 415.57
+  Landscape Design: 132.32
+  Custom Closet Build: 390.18
+  Heat Pump Inspection: 438.18
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.79
