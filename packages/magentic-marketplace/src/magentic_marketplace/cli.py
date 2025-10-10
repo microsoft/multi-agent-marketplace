@@ -93,7 +93,12 @@ def run_analysis_command(args):
     """Handle the analytics subcommand."""
     save_to_json = not args.no_save_json
     asyncio.run(
-        run_analytics(args.database_name, args.db_type, save_to_json=save_to_json)
+        run_analytics(
+            args.database_name,
+            args.db_type,
+            save_to_json=save_to_json,
+            print_results=True,
+        )
     )
 
 
