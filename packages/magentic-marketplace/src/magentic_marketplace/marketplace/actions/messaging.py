@@ -2,7 +2,7 @@
 
 from typing import Annotated, Literal
 
-from pydantic import AwareDatetime, BaseModel, Field
+from pydantic import BaseModel, Field
 from pydantic.type_adapter import TypeAdapter
 
 
@@ -23,23 +23,23 @@ class TextMessage(BaseModel):
 
 
 class OrderProposal(BaseModel):
-    """An order proposal message."""
+    """Order proposal details sent by service agents to customers."""
 
     type: Literal["order_proposal"] = "order_proposal"
     id: str = Field(description="The unique id of this proposal", min_length=1)
     items: list[OrderItem] = Field(
-        description="List of items in the proposal", min_length=1
+        min_length=1,
+        description="Required; the list of OrderItem objects with item_name, quantity, and unit_price",
     )
-    total_price: float = Field(description="Total price for the entire order", ge=0)
+    total_price: float = Field(description="Required; total price for the entire order")
     special_instructions: str | None = Field(
-        default=None, description="Special instructions or notes for the order"
+        default=None, description="Optional; any special requests or notes"
     )
     estimated_delivery: str | None = Field(
-        default=None,
-        description="Estimated delivery time (e.g., '30 minutes', 'Tomorrow at 2pm')",
+        default=None, description="Optional; estimated delivery time"
     )
-    expiry_time: AwareDatetime | None = Field(
-        default=None, description="When this proposal expires. Timezone is required."
+    expiry_time: str | None = Field(
+        default=None, description="Optional; when this proposal expires"
     )
 
 

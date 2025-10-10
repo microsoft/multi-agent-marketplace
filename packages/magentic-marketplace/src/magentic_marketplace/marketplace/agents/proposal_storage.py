@@ -51,6 +51,8 @@ class StoredOrderProposal(BaseModel):
 
     def is_expired(self) -> bool:
         """Check if the proposal has expired."""
+        return False
+        # TODO: Revisit this once we are confident in LLM expiry_time generation.
         if self.proposal.expiry_time is None:
             return False
         return datetime.now(UTC) >= self.proposal.expiry_time
