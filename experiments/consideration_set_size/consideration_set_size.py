@@ -82,7 +82,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
 
 
 async def main(argv: Sequence[str] | None = None) -> int:
-    """Program entry point."""
+    """Parse arguments and run the experiments."""
     args = parse_args(argv)
 
     search_limits = parse_search_limits(args.search_limits)
@@ -128,9 +128,12 @@ async def main(argv: Sequence[str] | None = None) -> int:
                 search_algorithm="lexical",
                 search_bandwidth=search_limit,
                 override=True,
+                export_sqlite=True,
             )
 
-            await run_analytics(experiment_name, db_type="postgres", save_to_json=True)
+            _ = await run_analytics(
+                experiment_name, db_type="postgres", save_to_json=True
+            )
 
             cwd = Path.cwd()
             source = cwd / f"analytics_results_{experiment_name}.json"
