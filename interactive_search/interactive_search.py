@@ -12,6 +12,7 @@ async def main(
     postgres_port: int,
     postgres_password: str,
     search_algorithm: str = "lexical",
+    show_all_searchable_text: bool = False,
 ) -> None:
     """Run a simple interactive search client for the agentic-economics marketplace."""
     search_launcher = SearchMarketLauncher(
@@ -24,7 +25,9 @@ async def main(
 
     async with search_launcher.start() as _:
         # Start interactive search loop
-        await search_launcher.interactive_search()
+        await search_launcher.interactive_search(
+            show_all_searchable_text=show_all_searchable_text
+        )
 
         # Shutdown
         await search_launcher.stop()
@@ -62,6 +65,12 @@ if __name__ == "__main__":
         help="PostgreSQL password (default: postgres)",
     )
 
+    parser.add_argument(
+        "--show-all-searchable-text",
+        action="store_true",
+        help="Show all searchable text for searched businesses for debugging (default: False)",
+    )
+
     args = parser.parse_args()
 
     asyncio.run(
@@ -71,5 +80,6 @@ if __name__ == "__main__":
             args.postgres_port,
             args.postgres_password,
             args.search_algorithm,
+            args.show_all_searchable_text,
         )
     )

@@ -27,7 +27,7 @@ from magentic_marketplace.platform.launcher import MarketplaceLauncher
 
 
 class SearchMarketLauncher:
-    """Class to manage launching the marketplace server with a set of business agents and a single customer agent."""
+    """Class to manage launching the marketplace server for interactive search experiments with a set of business agents and a single customer agent."""
 
     def __init__(
         self,
@@ -133,7 +133,6 @@ class SearchMarketLauncher:
             self.customer_agent = customer_agent
 
             # Create agent launcher and run agents with dependency management
-            # async with AgentLauncher(marketplace_launcher.server_url) as agent_launcher:
             try:
                 # Startup business agents tasks only
                 primary_tasks = [
@@ -193,7 +192,7 @@ class SearchMarketLauncher:
             print(f"Request failed: {e}")
             traceback.print_exc()
 
-    async def interactive_search(self):
+    async def interactive_search(self, show_all_searchable_text: bool = False):
         """Issue search queries interactively from the customer agent."""
         while True:
             query = input("Query (or 'exit' to quit): ")
@@ -220,7 +219,12 @@ class SearchMarketLauncher:
 
                 # Print results
                 for b in businesses_results:
-                    print(f"- {b.business.name}")
+                    if show_all_searchable_text:
+                        print(
+                            f"- {b.business.name}: {b.business.get_searchable_text()}"
+                        )
+                    else:
+                        print(f"- {b.business.name}")
 
             except requests.RequestException as e:
                 print(f"Request failed: {e}")
