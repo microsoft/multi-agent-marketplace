@@ -1,4 +1,4 @@
-"""Command-line interface for magentic-marketplace."""
+no """Command-line interface for magentic-marketplace."""
 
 import argparse
 import asyncio
