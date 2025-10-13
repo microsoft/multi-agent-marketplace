@@ -252,7 +252,7 @@ class ProviderClient(ABC, Generic[TConfig]):
                             "max_tokens": max_tokens,
                             "reasoning_effort": reasoning_effort,
                             **kwargs,
-                        }
+                        },
                     )
 
                     logger.debug(
@@ -286,7 +286,7 @@ class ProviderClient(ABC, Generic[TConfig]):
                             "max_tokens": max_tokens,
                             "reasoning_effort": reasoning_effort,
                             **kwargs,
-                        }
+                        },
                     )
 
                     logger.debug(
