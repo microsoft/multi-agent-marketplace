@@ -23,7 +23,9 @@ DATA_FOLDERS = [
     "business_0001_first",
     "business_0001_second",
     "business_0001_third",
-    "contractors_control",
+    "contractors_first",
+    "contractors_second",
+    "contractors_third",
 ]
 
 
@@ -65,13 +67,13 @@ async def main():
                 await run_marketplace_experiment(
                     data_dir=data_dir,
                     experiment_name=experiment_name,
-                    search_algorithm="lexical",
+                    search_algorithm="simple",
                     search_bandwidth=10,
                     customer_max_steps=100,
                     postgres_host="localhost",
                     postgres_port=5432,
                     postgres_password="postgres",
-                    override=False,
+                    override=True,
                     export_sqlite=True,
                     export_dir=str(export_dir),
                     export_filename=db_filename,
