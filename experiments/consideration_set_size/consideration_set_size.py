@@ -93,6 +93,10 @@ async def main(argv: Sequence[str] | None = None) -> int:
         os.environ["LLM_MODEL"] = args.model
         os.environ["LLM_PROVIDER"] = model_provider
 
+    if model_provider == "gemini":
+        print("Set LLM_MAX_CONCURRENCY to 8 for Gemini models.")
+        os.environ["LLM_MAX_CONCURRENCY"] = "8"
+
     model_clean = sanitize_model_name(args.model)
 
     print("======================================")
