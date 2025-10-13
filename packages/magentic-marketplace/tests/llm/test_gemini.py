@@ -1,7 +1,7 @@
 """Integration tests for Gemini LLM client."""
 
 import os
-from unittest.mock import patch
+from unittest.mock import AsyncMock, patch
 
 import pytest
 from openai.types.chat import ChatCompletionUserMessageParam
@@ -142,3 +142,69 @@ class TestGeminiClient:
 
         assert isinstance(response, str)
         assert "OK" in response
+
+    @pytest.mark.asyncio
+    async def test_temperature_not_sent_when_none(self):
+        """Test that temperature is not sent to API when unset (None)."""
+        import json
+        from unittest.mock import MagicMock
+
+        with patch.dict(os.environ, {"GEMINI_API_KEY": "test-key"}, clear=True):
+            config = GeminiConfig(provider="gemini", api_key="test-key")
+            client = GeminiClient(config)
+
+            # Create a proper response with body attribute
+            mock_response_data = {
+                "candidates": [{
+                    "content": {
+                        "parts": [{"text": "Test response"}],
+                        "role": "model"
+                    },
+                    "finishReason": "STOP"
+                }],
+                "usageMetadata": {
+                    "promptTokenCount": 5,
+                    "candidatesTokenCount": 5,
+                    "totalTokenCount": 10
+                }
+            }
+
+            # Capture the request body/params
+            captured_request_body = {}
+
+            async def mock_async_request(_method, _path, request_dict=None, _content_type=None, **_kwargs):
+                # Capture the request being sent
+                if request_dict:
+                    captured_request_body.update(request_dict)
+
+                # Return a response object with body and headers attributes
+                response = MagicMock()
+                response.body = json.dumps(mock_response_data)
+                response.headers = {"content-type": "application/json"}
+                response.status_code = 200
+                return response
+
+            # Mock the API client's async_request method
+            client.client._api_client.async_request = AsyncMock(side_effect=mock_async_request)
+
+            messages = [
+                ChatCompletionUserMessageParam(
+                    role="user", content="Test message"
+                )
+            ]
+
+            # Call generate without explicitly setting temperature
+            await client.generate(messages, model="gemini-2.5-flash")
+
+            # Verify the async_request was called
+            assert client.client._api_client.async_request.called
+
+            # Check the generation_config in the request
+            if "generationConfig" in captured_request_body:
+                gen_config = captured_request_body["generationConfig"]
+                assert "temperature" not in gen_config, \
+                    f"Temperature should not be in generationConfig when it's None. Config: {gen_config}"
+            # If no generationConfig at all, that's also acceptable
+            # Check top-level as well in case it's structured differently
+            if "temperature" in captured_request_body:
+                raise AssertionError(f"Temperature should not be in request body. Body: {captured_request_body}")

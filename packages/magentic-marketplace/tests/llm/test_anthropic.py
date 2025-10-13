@@ -1,7 +1,7 @@
 """Integration tests for Anthropic LLM client."""
 
 import os
-from unittest.mock import patch
+from unittest.mock import AsyncMock, patch
 
 import pytest
 from openai.types.chat import ChatCompletionUserMessageParam
@@ -146,3 +146,50 @@ class TestAnthropicClient:
         assert isinstance(response, str)
         assert "OK" in response
         assert usage.token_count > 0
+
+    @pytest.mark.asyncio
+    async def test_temperature_not_sent_when_none(self):
+        """Test that temperature is not sent to API when unset (None)."""
+        import anthropic.types
+
+        with patch.dict(os.environ, {"ANTHROPIC_API_KEY": "test-key"}, clear=True):
+            config = AnthropicConfig(provider="anthropic", api_key="test-key")
+            client = AnthropicClient(config)
+
+            # Create a proper Message response
+            mock_message = anthropic.types.Message(
+                id="test-id",
+                type="message",
+                role="assistant",
+                content=[anthropic.types.TextBlock(type="text", text="Test response")],
+                model="claude-sonnet-4-20250514",
+                usage=anthropic.types.Usage(input_tokens=5, output_tokens=5)
+            )
+
+            # Capture the request body
+            captured_request_body = {}
+
+            async def mock_post(_path, *, cast_to=None, body=None, options=None, stream=None, stream_cls=None):
+                # Capture the body being sent
+                if body:
+                    captured_request_body.update(body)
+                return mock_message
+
+            # Mock the client's post method
+            client.client.post = AsyncMock(side_effect=mock_post)
+
+            messages = [
+                ChatCompletionUserMessageParam(
+                    role="user", content="Test message"
+                )
+            ]
+
+            # Call generate without explicitly setting temperature
+            await client.generate(messages, model="claude-sonnet-4-20250514")
+
+            # Verify the post method was called
+            assert client.client.post.called
+
+            # Check that temperature was not included in the request body
+            assert "temperature" not in captured_request_body, \
+                f"Temperature should not be in API request body when it's None. Body: {captured_request_body}"

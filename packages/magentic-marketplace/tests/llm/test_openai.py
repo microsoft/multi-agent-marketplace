@@ -1,7 +1,7 @@
 """Integration tests for OpenAI LLM client."""
 
 import os
-from unittest.mock import patch
+from unittest.mock import AsyncMock, patch
 
 import pytest
 from openai.types.chat import ChatCompletionUserMessageParam
@@ -148,3 +148,66 @@ class TestOpenAIClient:
         assert isinstance(response, str)
         assert "OK" in response
         assert usage.token_count > 0
+
+    @pytest.mark.asyncio
+    async def test_temperature_not_sent_when_none(self):
+        """Test that temperature is not sent to API when unset."""
+        from openai.types.chat import ChatCompletion
+        from openai.types.chat.chat_completion import Choice
+        from openai.types.chat.chat_completion_message import ChatCompletionMessage
+        from openai.types.completion_usage import CompletionUsage
+
+        with patch.dict(os.environ, {"OPENAI_API_KEY": "test-key"}, clear=True):
+            config = OpenAIConfig(api_key="test-key")
+            client = OpenAIClient(config)
+
+            # Create a proper ChatCompletion response
+            mock_completion = ChatCompletion(
+                id="test-id",
+                object="chat.completion",
+                created=1234567890,
+                model="gpt-4o-mini",
+                choices=[
+                    Choice(
+                        index=0,
+                        message=ChatCompletionMessage(
+                            role="assistant",
+                            content="Test response"
+                        ),
+                        finish_reason="stop"
+                    )
+                ],
+                usage=CompletionUsage(
+                    prompt_tokens=5,
+                    completion_tokens=5,
+                    total_tokens=10
+                )
+            )
+
+            # Capture the request body
+            captured_request_body = {}
+
+            async def mock_post(_path, *, cast_to=None, body=None, options=None, stream=None, stream_cls=None):
+                # Capture the body being sent
+                if body:
+                    captured_request_body.update(body)
+                return mock_completion
+
+            # Mock the client's post method
+            client.client.post = AsyncMock(side_effect=mock_post)
+
+            messages = [
+                ChatCompletionUserMessageParam(
+                    role="user", content="Test message"
+                )
+            ]
+
+            # Call generate without explicitly setting temperature
+            await client.generate(messages, model="gpt-4o-mini")
+
+            # Verify the post method was called
+            assert client.client.post.called
+
+            # Check that temperature was not included in the request body
+            assert "temperature" not in captured_request_body, \
+                f"Temperature should not be in API request body when it's None. Body: {captured_request_body}"
