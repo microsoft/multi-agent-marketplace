@@ -66,9 +66,10 @@ class TestTrapiConfig:
             config = TrapiConfig()
         assert config.provider == "trapi"
         assert config.model is None
-        assert config.temperature == 0.0
+        assert config.temperature is None
         assert config.max_tokens == 2000
         assert config.reasoning_effort == "minimal"
+        assert config.max_concurrency == 64
 
 
 @skipif_no_azure_cli

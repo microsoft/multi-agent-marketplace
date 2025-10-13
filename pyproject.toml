@@ -81,4 +81,4 @@ markers = [
     "rnr: tests that require the rnr extra dependencies",
     "postgres: tests that require postgres"
 ]
-
+env_files = ["dev.env"]
