@@ -155,24 +155,28 @@ class TestGeminiClient:
 
             # Create a proper response with body attribute
             mock_response_data = {
-                "candidates": [{
-                    "content": {
-                        "parts": [{"text": "Test response"}],
-                        "role": "model"
-                    },
-                    "finishReason": "STOP"
-                }],
+                "candidates": [
+                    {
+                        "content": {
+                            "parts": [{"text": "Test response"}],
+                            "role": "model",
+                        },
+                        "finishReason": "STOP",
+                    }
+                ],
                 "usageMetadata": {
                     "promptTokenCount": 5,
                     "candidatesTokenCount": 5,
-                    "totalTokenCount": 10
-                }
+                    "totalTokenCount": 10,
+                },
             }
 
             # Capture the request body/params
             captured_request_body = {}
 
-            async def mock_async_request(_method, _path, request_dict=None, _content_type=None, **_kwargs):
+            async def mock_async_request(
+                _method, _path, request_dict=None, _content_type=None, **_kwargs
+            ):
                 # Capture the request being sent
                 if request_dict:
                     captured_request_body.update(request_dict)
@@ -185,12 +189,12 @@ class TestGeminiClient:
                 return response
 
             # Mock the API client's async_request method
-            client.client._api_client.async_request = AsyncMock(side_effect=mock_async_request)
+            client.client._api_client.async_request = AsyncMock(
+                side_effect=mock_async_request
+            )
 
             messages = [
-                ChatCompletionUserMessageParam(
-                    role="user", content="Test message"
-                )
+                ChatCompletionUserMessageParam(role="user", content="Test message")
             ]
 
             # Call generate without explicitly setting temperature
@@ -202,9 +206,12 @@ class TestGeminiClient:
             # Check the generation_config in the request
             if "generationConfig" in captured_request_body:
                 gen_config = captured_request_body["generationConfig"]
-                assert "temperature" not in gen_config, \
+                assert "temperature" not in gen_config, (
                     f"Temperature should not be in generationConfig when it's None. Config: {gen_config}"
+                )
             # If no generationConfig at all, that's also acceptable
             # Check top-level as well in case it's structured differently
             if "temperature" in captured_request_body:
-                raise AssertionError(f"Temperature should not be in request body. Body: {captured_request_body}")
+                raise AssertionError(
+                    f"Temperature should not be in request body. Body: {captured_request_body}"
+                )

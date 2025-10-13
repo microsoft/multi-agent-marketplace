@@ -163,13 +163,21 @@ class TestAnthropicClient:
                 role="assistant",
                 content=[anthropic.types.TextBlock(type="text", text="Test response")],
                 model="claude-sonnet-4-20250514",
-                usage=anthropic.types.Usage(input_tokens=5, output_tokens=5)
+                usage=anthropic.types.Usage(input_tokens=5, output_tokens=5),
             )
 
             # Capture the request body
             captured_request_body = {}
 
-            async def mock_post(_path, *, cast_to=None, body=None, options=None, stream=None, stream_cls=None):
+            async def mock_post(
+                _path,
+                *,
+                cast_to=None,
+                body=None,
+                options=None,
+                stream=None,
+                stream_cls=None,
+            ):
                 # Capture the body being sent
                 if body:
                     captured_request_body.update(body)
@@ -179,9 +187,7 @@ class TestAnthropicClient:
             client.client.post = AsyncMock(side_effect=mock_post)
 
             messages = [
-                ChatCompletionUserMessageParam(
-                    role="user", content="Test message"
-                )
+                ChatCompletionUserMessageParam(role="user", content="Test message")
             ]
 
             # Call generate without explicitly setting temperature
@@ -191,5 +197,6 @@ class TestAnthropicClient:
             assert client.client.post.called
 
             # Check that temperature was not included in the request body
-            assert "temperature" not in captured_request_body, \
+            assert "temperature" not in captured_request_body, (
                 f"Temperature should not be in API request body when it's None. Body: {captured_request_body}"
+            )
