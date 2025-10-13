@@ -51,9 +51,10 @@ class TestGeminiConfig:
             assert config.provider == "gemini"
             assert config.api_key == os.environ["GEMINI_API_KEY"]
             assert config.model is None
-            assert config.temperature == 0
+            assert config.temperature is None
             assert config.max_tokens == 2000
             assert config.reasoning_effort == "minimal"
+            assert config.max_concurrency == 64
 
 
 @pytest.mark.skipif(
