@@ -115,6 +115,18 @@ async def main(argv: Sequence[str] | None = None) -> int:
         for run_number in range(1, args.runs + 1):
             print(f"\nRun {run_number}/{args.runs}\n")
 
+            # Check whether the run has already been completed
+            cwd = Path.cwd()
+            expected_output = cwd / (
+                f"analytics_results_search_limit_{args.model}_{dataset_clean}_"
+                f"limit_{search_limit}_run_{run_number}.json"
+            )
+            if expected_output.exists():
+                print(
+                    f"Run {run_number} with search limit {search_limit} already completed. Skipping."
+                )
+                continue
+
             experiment_name = (
                 f"search_limit_{model_clean}_{dataset_clean}_limit_"
                 f"{search_limit}_run_{run_number}"
@@ -129,13 +141,13 @@ async def main(argv: Sequence[str] | None = None) -> int:
                 search_bandwidth=search_limit,
                 override=True,
                 export_sqlite=True,
+                customer_max_steps=100,
             )
 
             _ = await run_analytics(
                 experiment_name, db_type="postgres", save_to_json=True
             )
 
-            cwd = Path.cwd()
             source = cwd / f"analytics_results_{experiment_name}.json"
             target = cwd / (
                 f"analytics_results_search_limit_{args.model}_{dataset_clean}_"
