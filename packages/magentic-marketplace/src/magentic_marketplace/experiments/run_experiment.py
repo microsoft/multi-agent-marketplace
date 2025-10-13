@@ -13,11 +13,12 @@ from magentic_marketplace.marketplace.protocol.protocol import SimpleMarketplace
 from magentic_marketplace.platform.database import (
     connect_to_postgresql_database,
 )
+from magentic_marketplace.platform.database.converter import convert_postgres_to_sqlite
 from magentic_marketplace.platform.launcher import AgentLauncher, MarketplaceLauncher
 
 
 async def run_marketplace_experiment(
-    data_dir: Path,
+    data_dir: str | Path,
     experiment_name: str | None = None,
     search_algorithm: str = "simple",
     search_bandwidth: int = 10,
@@ -26,9 +27,13 @@ async def run_marketplace_experiment(
     postgres_port: int = 5432,
     postgres_password: str = "postgres",
     override: bool = False,
+    export_sqlite: bool = False,
+    export_dir: str | None = None,
+    export_filename: str | None = None,
 ):
     """Run a marketplace experiment using YAML configuration files."""
     # Load businesses and customers from YAML files
+    data_dir = Path(data_dir)
     businesses_dir = data_dir / "businesses"
     customers_dir = data_dir / "customers"
 
@@ -92,3 +97,27 @@ async def run_marketplace_experiment(
                 )
             except KeyboardInterrupt:
                 logger.warning("Simulation interrupted by user")
+
+        # Convert PostgreSQL database to SQLite (if requested)
+        if export_sqlite:
+            # Determine output path
+            if export_filename is None:
+                export_filename = f"{experiment_name}.db"
+
+            if export_dir is not None:
+                sqlite_path = Path(export_dir) / export_filename
+            else:
+                sqlite_path = Path(export_filename)
+
+            # Check if output file already exists
+            if sqlite_path.exists():
+                raise FileExistsError(
+                    f"Output file already exists: {sqlite_path}. "
+                    "Please remove it or choose a different output path using --export-filename or --export-dir."
+                )
+
+            logger.info(f"Converting database to SQLite: {sqlite_path}")
+            if marketplace_launcher.server:
+                db = marketplace_launcher.server.state.database_controller
+                await convert_postgres_to_sqlite(db, sqlite_path)
+                logger.info(f"Database conversion complete: {sqlite_path}")

@@ -78,6 +78,7 @@ asyncio_default_fixture_loop_scope = "function"
 addopts = "-v --tb=short"
 markers = [
     "skip_ci: mark test to skip in CI environments",
-    "rnr: tests that require the rnr extra dependencies"
+    "rnr: tests that require the rnr extra dependencies",
+    "postgres: tests that require postgres"
 ]
 

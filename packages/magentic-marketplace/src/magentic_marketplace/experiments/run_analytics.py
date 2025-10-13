@@ -434,8 +434,11 @@ class MarketplaceAnalytics:
         )
 
     async def generate_report(
-        self, save_to_json: bool = True, db_name: str = "unknown"
-    ):
+        self,
+        db_name: str = "unknown",
+        save_to_json: bool = True,
+        print_results: bool = True,
+    ) -> AnalyticsResults:
         """Generate comprehensive analytics report."""
         await self.load_data()
         await self.analyze_actions()
@@ -451,7 +454,10 @@ class MarketplaceAnalytics:
             print(f"Analytics results saved to: {output_path}")
 
         # Print report using the collected results
-        self._print_report(analytics_results)
+        if print_results:
+            self._print_report(analytics_results)
+
+        return analytics_results
 
     def _print_report(self, results: AnalyticsResults):
         """Print the analytics report using collected results."""
@@ -727,14 +733,18 @@ class MarketplaceAnalytics:
 
 
 async def run_analytics(
-    db_path_or_schema: str, db_type: str, save_to_json: bool = True
-):
+    db_path_or_schema: str,
+    db_type: str,
+    save_to_json: bool = True,
+    print_results: bool = True,
+) -> AnalyticsResults:
     """Run comprehensive analytics on the database.
 
     Args:
         db_path_or_schema (str): Path to SQLite database file or Postgres schema name.
         db_type (str): Type of database ("sqlite" or "postgres").
         save_to_json (bool): Whether to save results to JSON file.
+        print_results (bool): Whether to print results to console.
 
     """
     if db_type == "sqlite":
@@ -749,7 +759,10 @@ async def run_analytics(
         await db_controller.initialize()
 
         analytics = MarketplaceAnalytics(db_controller)
-        await analytics.generate_report(save_to_json=save_to_json, db_name=db_name)
+        results = await analytics.generate_report(
+            db_name=db_name, save_to_json=save_to_json, print_results=print_results
+        )
+        return results
     elif db_type == "postgres":
         async with connect_to_postgresql_database(
             schema=db_path_or_schema,
@@ -759,9 +772,12 @@ async def run_analytics(
             mode="existing",
         ) as db_controller:
             analytics = MarketplaceAnalytics(db_controller)
-            await analytics.generate_report(
-                save_to_json=save_to_json, db_name=db_path_or_schema
+            results = await analytics.generate_report(
+                db_name=db_path_or_schema,
+                save_to_json=save_to_json,
+                print_results=print_results,
             )
+            return results
     else:
         raise ValueError(
             f"Unsupported database type: {db_type}. Must be 'sqlite' or 'postgres'."

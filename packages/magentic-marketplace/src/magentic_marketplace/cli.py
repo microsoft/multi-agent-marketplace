@@ -8,9 +8,11 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
+from magentic_marketplace.experiments.export_experiment import export_experiment
 from magentic_marketplace.experiments.extract_agent_llm_traces import (
     run_extract_traces,
 )
+from magentic_marketplace.experiments.list_experiments import list_experiments
 from magentic_marketplace.experiments.run_analytics import run_analytics
 from magentic_marketplace.experiments.run_audit import run_audit
 from magentic_marketplace.experiments.run_experiment import run_marketplace_experiment
@@ -80,6 +82,9 @@ def run_experiment_command(args):
             postgres_port=args.postgres_port,
             postgres_password=args.postgres_password,
             override=args.override_db,
+            export_sqlite=args.export,
+            export_dir=args.export_dir,
+            export_filename=args.export_filename,
         )
     )
 
@@ -88,7 +93,12 @@ def run_analysis_command(args):
     """Handle the analytics subcommand."""
     save_to_json = not args.no_save_json
     asyncio.run(
-        run_analytics(args.database_name, args.db_type, save_to_json=save_to_json)
+        run_analytics(
+            args.database_name,
+            args.db_type,
+            save_to_json=save_to_json,
+            print_results=True,
+        )
     )
 
 
@@ -101,6 +111,35 @@ def run_audit_command(args):
     """Handle the audit subcommand."""
     save_to_json = not args.no_save_json
     asyncio.run(run_audit(args.database_name, args.db_type, save_to_json=save_to_json))
+
+
+def list_experiments_command(args):
+    """Handle the list-experiments subcommand."""
+    asyncio.run(
+        list_experiments(
+            host=args.postgres_host,
+            port=args.postgres_port,
+            database=args.postgres_database,
+            user=args.postgres_user,
+            password=args.postgres_password,
+            limit=args.limit,
+        )
+    )
+
+
+def run_export_command(args):
+    """Handle the export subcommand."""
+    asyncio.run(
+        export_experiment(
+            experiment_name=args.experiment_name,
+            output_dir=args.output_dir,
+            output_filename=args.output_filename,
+            postgres_host=args.postgres_host,
+            postgres_port=args.postgres_port,
+            postgres_user=args.postgres_user,
+            postgres_password=args.postgres_password,
+        )
+    )
 
 
 def main():
@@ -192,6 +231,24 @@ def main():
         help="Override the existing database schema if it exists.",
     )
 
+    experiment_parser.add_argument(
+        "--export",
+        action="store_true",
+        help="Export the experiment to SQLite after completion.",
+    )
+
+    experiment_parser.add_argument(
+        "--export-dir",
+        default=None,
+        help="Output directory for SQLite export (default: current directory). Only used with --export.",
+    )
+
+    experiment_parser.add_argument(
+        "--export-filename",
+        default=None,
+        help="Output filename for SQLite export (default: <experiment_name>.db). Only used with --export.",
+    )
+
     # analytics subcommand
     analytics_parser = subparsers.add_parser(
         "analyze", help="Analyze marketplace simulation data"
@@ -255,6 +312,102 @@ def main():
         "--no-save-json",
         action="store_true",
         help="Disable saving audit results to JSON file",
+    )
+
+    # export subcommand
+    export_parser = subparsers.add_parser(
+        "export",
+        help="Export a PostgreSQL experiment to SQLite database file",
+    )
+    export_parser.set_defaults(func=run_export_command)
+
+    export_parser.add_argument(
+        "experiment_name",
+        help="Name of the experiment (PostgreSQL schema name)",
+    )
+
+    export_parser.add_argument(
+        "-o",
+        "--output-dir",
+        help="Output directory for the SQLite database file (default: current directory)",
+        default=None,
+    )
+
+    export_parser.add_argument(
+        "-f",
+        "--output-filename",
+        help="Output filename for the SQLite database (default: <experiment_name>.db)",
+        default=None,
+    )
+
+    export_parser.add_argument(
+        "--postgres-host",
+        default="localhost",
+        help="PostgreSQL host (default: localhost)",
+    )
+
+    export_parser.add_argument(
+        "--postgres-port",
+        type=int,
+        default=5432,
+        help="PostgreSQL port (default: 5432)",
+    )
+
+    export_parser.add_argument(
+        "--postgres-user",
+        default="postgres",
+        help="PostgreSQL user (default: postgres)",
+    )
+
+    export_parser.add_argument(
+        "--postgres-password",
+        default="postgres",
+        help="PostgreSQL password (default: postgres)",
+    )
+
+    # list-experiments subcommand
+    list_experiments_parser = subparsers.add_parser(
+        "list",
+        help="List all marketplace experiments stored in PostgreSQL",
+    )
+    list_experiments_parser.set_defaults(func=list_experiments_command)
+
+    list_experiments_parser.add_argument(
+        "--postgres-host",
+        default="localhost",
+        help="PostgreSQL host (default: localhost)",
+    )
+
+    list_experiments_parser.add_argument(
+        "--postgres-port",
+        type=int,
+        default=5432,
+        help="PostgreSQL port (default: 5432)",
+    )
+
+    list_experiments_parser.add_argument(
+        "--postgres-database",
+        default="marketplace",
+        help="PostgreSQL database name (default: marketplace)",
+    )
+
+    list_experiments_parser.add_argument(
+        "--postgres-user",
+        default="postgres",
+        help="PostgreSQL user (default: postgres)",
+    )
+
+    list_experiments_parser.add_argument(
+        "--postgres-password",
+        default="postgres",
+        help="PostgreSQL password (default: postgres)",
+    )
+
+    list_experiments_parser.add_argument(
+        "--limit",
+        type=int,
+        default=None,
+        help="Maximum number of experiments to display",
     )
 
     # Parse arguments and execute the appropriate function

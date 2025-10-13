@@ -35,7 +35,9 @@ You can configure business and customer agents that transact and then run simula
     magentic-marketplace analyze test_exp
     ```
 
-    See more CLI options with `magentic-marketplace --help`
+    You can also run experiments from python scripts, see [experiments/example.py](experiments/example.py).
+    
+    View more CLI options with `magentic-marketplace --help`.
 
 ## More information
 
