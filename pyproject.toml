@@ -1,11 +1,13 @@
 [dependency-groups]
 dev = [
     "codespell>=2.4.1",
+    "matplotlib>=3.10.7",
+    "pandas>=2.3.3",
     "poethepoet>=0.36.0",
     "pyright>=1.1.403",
     "pytest>=8.4.1",
     "pytest-asyncio>=1.2.0",
-    "ruff>=0.13.0"
+    "ruff>=0.13.0",
 ]
 
 [tool.uv.workspace]
