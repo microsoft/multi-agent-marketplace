@@ -1,0 +1,12 @@
+id: customer_0026
+name: Lisa Payne
+request: 'I''m looking to hire a contractor who is licensed and can handle the following
+  services: Central Air Conditioning Inspection (1), Dryer Vent Cleaning (1), and
+  Appliance Installation (1). Once you find a contractor who meets all these requirements,
+  please let me know so we can proceed with scheduling and confirming the work.'
+menu_features:
+  Central Air Conditioning Inspection: 384.5
+  Dryer Vent Cleaning: 247.37
+  Appliance Installation: 164.95
+amenity_features:
+- licensed

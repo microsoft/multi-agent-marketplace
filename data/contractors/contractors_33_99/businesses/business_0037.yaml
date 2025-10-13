@@ -1,0 +1,42 @@
+id: business_0037
+name: Evergreen Residential Services
+description: Evergreen Residential Services provides dependable home improvement and
+  maintenance solutions for local homeowners. Our team delivers high-quality workmanship
+  on a range of interior and exterior projects to keep your property in excellent
+  condition.
+rating: 1.0
+progenitor_customer: customer_0013
+menu_features:
+  Recessed Lighting Install: 167.31
+  Custom Closet Build: 466.68
+  Fence Gate Repair: 290.09
+  Subpanel Upgrade: 555.89
+  Hardwood Refinishing: 430.82
+  Bathroom Ventilation Fan Install: 249.06
+  Central Air System Tune-Up: 409.94
+  Exterior Door Weatherproofing: 139.74
+  Wall Grouting: 148.65
+  Chimney Cleaning: 451.81
+  Stone Patio Cleaning: 204.44
+  Patio Paver Repair: 310.68
+  Basement Stair Carpeting: 235.4
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: true
+  responsiveness: false
+  background checked crew: false
+  licensed: true
+  same day service: false
+  weekend availability: false
+  post install inspection: true
+  flexible hours: true
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: true
+  appointment only: false
+min_price_factor: 0.85

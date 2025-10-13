@@ -1,0 +1,40 @@
+id: business_0069
+name: Bridgeview General Contractors
+description: Bridgeview General Contractors provides reliable residential improvement
+  and repair services, serving homeowners with a broad range of interior and exterior
+  solutions. Our team is dedicated to quality workmanship and prompt, efficient project
+  completion.
+rating: 1.0
+progenitor_customer: customer_0023
+menu_features:
+  Hardwood Floor Buffing: 436.43
+  Asphalt Patch Repair: 443.08
+  Basic Tile Flooring Install: 203.61
+  Insulation Addition: 467.23
+  Drain Clearing: 203.58
+  Faucet Replacement: 116.89
+  Refrigerant Recharge: 403.0
+  Recessed Lighting Setup: 176.89
+  Backsplash Installation: 308.66
+  Walkway Brick Paving: 150.17
+  Chimney Cap Installation: 468.82
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: false
+  same day service: true
+  weekend availability: false
+  post install inspection: true
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: true
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.75

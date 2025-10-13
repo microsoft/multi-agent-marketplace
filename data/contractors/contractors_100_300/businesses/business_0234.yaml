@@ -1,0 +1,47 @@
+id: business_0234
+name: Ridgemont Home Services
+description: Ridgemont Home Services delivers reliable residential repairs and upgrades
+  for homeowners seeking quality workmanship and timely project completion. Our team
+  specializes in a broad range of home improvement solutions to enhance comfort, function,
+  and value.
+rating: 1.0
+progenitor_customer: customer_0078
+menu_features:
+  Water Heater Replacement: 229.74
+  Full Exterior House Painting: 345.39
+  Wood Floor Refinishing: 376.71
+  Walk-in Shower Retrofit: 463.82
+  Wall Repair: 198.88
+  Leaky Pipe Repair: 157.78
+  Door Installation: 179.99
+  Light Switch Repair: 168.0
+  Toilet Repair: 231.28
+  Ceiling Patch Repair: 278.89
+  Closet Shelving Assembly: 371.92
+  Subpanel Installation: 497.1
+  Custom Cabinet Fabrication: 383.88
+  Leak Repair: 216.13
+  Drywall Patch: 266.29
+  Hardwood Flooring: 448.49
+  Walkway Paver Resetting: 491.17
+  Light Fixture Repair: 276.88
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.72

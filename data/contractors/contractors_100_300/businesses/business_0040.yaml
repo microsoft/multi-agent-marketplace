@@ -1,0 +1,46 @@
+id: business_0040
+name: Buildwell Residential Services
+description: Buildwell Residential Services provides reliable home repairs, maintenance,
+  and improvement solutions for homeowners seeking quality workmanship and prompt
+  service. We specialize in a wide range of residential upgrades, restoration, and
+  property care projects.
+rating: 1.0
+progenitor_customer: customer_0014
+menu_features:
+  Masonry Brick Restoration: 391.32
+  Door Hardware Upgrade: 220.95
+  Flat Roof Sealant Application: 434.13
+  Shower Re-Caulking: 428.43
+  Sprinkler System Repair: 351.01
+  Garage Floor Coating: 372.78
+  Custom Cabinet Fabrication: 487.64
+  Garage Door Motor Replacement: 349.52
+  Basement Water Proofing: 445.66
+  Furnace Inspection: 482.06
+  Stone Veneer Repair: 354.1
+  Fixture Replacement: 244.29
+  Flooring Subfloor Repair: 428.78
+  Water Heater Flush: 299.79
+  Landscape Planting: 225.8
+  New Thermostat Setup: 257.06
+  Garage Floor Sealing: 276.23
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: true
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.63

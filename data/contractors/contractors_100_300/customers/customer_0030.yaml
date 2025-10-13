@@ -1,0 +1,10 @@
+id: customer_0030
+name: Henry Robinson
+request: Please help me find a licensed contractor who can provide Cabinet Painting
+  (1) and Concrete Patio Pouring (1). Once identified, I would like to engage them
+  and arrange to schedule the work as specified above at the earliest convenience.
+menu_features:
+  Cabinet Painting: 435.99
+  Concrete Patio Pouring: 508.99
+amenity_features:
+- licensed

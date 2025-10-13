@@ -1,0 +1,46 @@
+id: business_0179
+name: Allendale Residential Services
+description: Allendale Residential Services provides reliable home maintenance and
+  improvement solutions for local homeowners. Our team is dedicated to delivering
+  quality workmanship across a range of interior and exterior property services.
+rating: 1.0
+progenitor_customer: customer_0060
+menu_features:
+  Basement Waterproofing: 578.06
+  Lawn Fertilization: 155.12
+  Sprinkler System Repair: 425.64
+  Asphalt Patching: 451.01
+  Hardwood Flooring: 352.82
+  Sod Placement: 267.34
+  Shrub Trimming: 321.2
+  Front Door Painting: 262.36
+  Concrete Path Repair: 221.05
+  Air Conditioner Service: 467.87
+  Cabinet Installation: 194.94
+  Garage Door Tune-Up: 268.69
+  Deck Board Replacement: 403.73
+  Kitchen Faucet Install: 330.0
+  Ductless AC Installation: 419.16
+  Garden Bed Landscaping: 169.38
+  Fixture Replacement: 218.42
+  Garage Door Opener Setup: 575.0
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: true
+  eco friendly materials: true
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.76

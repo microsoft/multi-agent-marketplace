@@ -1,0 +1,41 @@
+id: business_0235
+name: Integrity Residential Improvements
+description: Integrity Residential Improvements provides homeowners with reliable
+  solutions for interior and exterior repairs, renovations, and enhancements. Our
+  team delivers quality workmanship focused on residential projects and property maintenance.
+rating: 1.0
+progenitor_customer: customer_0079
+menu_features:
+  Roof Leak Fix: 250.66
+  Fireplace Mantel Installation: 474.26
+  Cabinet Refinishing: 568.66
+  Stucco Wall Restoration: 425.57
+  Stone Veneer Wall: 572.99
+  Window Trim Replacement: 335.35
+  Shower Enclosure Replacement: 420.42
+  Landscape Planting: 217.19
+  Smart Thermostat Setup: 269.17
+  Washer Hose Replacement: 205.96
+  Tile Backsplash: 335.14
+  Shrub Removal: 125.16
+  Exterior Siding Repainting: 336.38
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.62

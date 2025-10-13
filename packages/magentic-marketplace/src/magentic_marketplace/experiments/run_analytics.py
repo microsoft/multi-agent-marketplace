@@ -12,7 +12,12 @@ from magentic_marketplace.experiments.models import (
     CustomerSummary,
     TransactionSummary,
 )
-from magentic_marketplace.marketplace.actions import ActionAdapter, SendMessage
+from magentic_marketplace.marketplace.actions import (
+    ActionAdapter,
+    Search,
+    SearchResponse,
+    SendMessage,
+)
 from magentic_marketplace.marketplace.actions.messaging import (
     Message,
     OrderProposal,
@@ -42,6 +47,7 @@ YELLOW_COLOR = "\033[93m" if sys.stdout.isatty() else ""
 GREEN_COLOR = "\033[92m" if sys.stdout.isatty() else ""
 CYAN_COLOR = "\033[96m" if sys.stdout.isatty() else ""
 BLUE_COLOR = "\033[94m" if sys.stdout.isatty() else ""
+MAGENTA_COLOR = "\033[95m" if sys.stdout.isatty() else ""
 RESET_COLOR = "\033[0m" if sys.stdout.isatty() else ""
 
 
@@ -65,6 +71,11 @@ class MarketplaceAnalytics:
         self.payments: list[Payment] = []
         self.customer_orders: dict[str, list[OrderProposal]] = defaultdict(list)
         self.customer_payments: dict[str, list[Payment]] = defaultdict(list)
+
+        # Search tracking
+        self.customer_searches: dict[str, list[tuple[Search, SearchResponse]]] = (
+            defaultdict(list)
+        )
 
     async def load_data(self):
         """Load and parse agents data from database."""
@@ -108,6 +119,12 @@ class MarketplaceAnalytics:
         # Process based on action type
         if isinstance(action, SendMessage):
             await self._process_send_message(action, action_result, agent_type)
+
+        if isinstance(action, Search):
+            if not action_result.is_error:
+                search_response = SearchResponse.model_validate(action_result.content)
+                self.customer_searches[agent_id].append((action, search_response))
+
         # Note: FetchMessages and Search are only counted, not processed for message content
 
     def _get_agent_type(self, agent_id: str) -> str:
@@ -344,6 +361,7 @@ class MarketplaceAnalytics:
             messages_sent = len(self.customer_messages.get(customer_agent_id, []))
             orders_received = len(self.customer_orders.get(customer_agent_id, []))
             payments_made = len(self.customer_payments.get(customer_agent_id, []))
+            searches_made = len(self.customer_searches.get(customer_agent_id, []))
             utility, needs_met = self.calculate_customer_utility(customer_agent_id)
 
             customer_summaries.append(
@@ -351,6 +369,7 @@ class MarketplaceAnalytics:
                     customer_id=customer_agent_id,
                     customer_name=customer.name,
                     messages_sent=messages_sent,
+                    searches_made=searches_made,
                     proposals_received=orders_received,
                     payments_made=payments_made,
                     utility=utility,
@@ -415,8 +434,11 @@ class MarketplaceAnalytics:
         )
 
     async def generate_report(
-        self, save_to_json: bool = True, db_name: str = "unknown"
-    ):
+        self,
+        db_name: str = "unknown",
+        save_to_json: bool = True,
+        print_results: bool = True,
+    ) -> AnalyticsResults:
         """Generate comprehensive analytics report."""
         await self.load_data()
         await self.analyze_actions()
@@ -432,7 +454,10 @@ class MarketplaceAnalytics:
             print(f"Analytics results saved to: {output_path}")
 
         # Print report using the collected results
-        self._print_report(analytics_results)
+        if print_results:
+            self._print_report(analytics_results)
+
+        return analytics_results
 
     def _print_report(self, results: AnalyticsResults):
         """Print the analytics report using collected results."""
@@ -557,8 +582,25 @@ class MarketplaceAnalytics:
             # Customer activity (from collected results)
             print(
                 f"\nActivity: {customer.messages_sent} messages sent, "
-                f"{customer.proposals_received} proposals received, {customer.payments_made} payments made"
+                f"{customer.proposals_received} proposals received, {customer.payments_made} payments made."
             )
+
+            # Search activity
+            print("\nSearch Activity:")
+            searches = self.customer_searches.get(customer_agent_id, [])
+            if searches:
+                unique_queries = {search.query for search, _ in searches}
+                print("  Queries: ")
+                for search, response in searches:
+                    print(f"   - Query: '{search.query}'")
+                    print(f"     Page: {search.page}")
+                    print(f".    Algorithm: {search.search_algorithm}")
+                    print(
+                        f"     Businesses: {','.join([b.business.name for b in response.businesses])}"
+                    )
+
+                print(f"  Total searches made: {len(searches)}")
+                print(f"  Unique queries tried: {len(unique_queries)}")
 
             # Payment and order details with welfare analysis
             payments = self.customer_payments.get(customer_agent_id, [])
@@ -644,6 +686,30 @@ class MarketplaceAnalytics:
                 f"\nCustomer utility: {customer.utility:.2f} (needs met: {customer.needs_met})"
             )
 
+        # Search aggregate
+        total_searches = sum([len(s) for s in self.customer_searches.values()])
+        searches_per_customer = total_searches / len(self.customer_searches.keys())
+
+        total_queries = []
+        total_pages = []
+        for search_queries in self.customer_searches.values():
+            # Map queries to pages
+            queries_to_pages: dict[str, list] = defaultdict(list)
+            for search, _ in search_queries:
+                queries_to_pages[search.query].append(search.page)
+
+            total_queries.append(len(queries_to_pages.keys()))
+            total_pages.append(sum([len(s) for s in queries_to_pages.values()]))
+
+        pages_per_query = sum(total_pages) / sum(total_queries)
+
+        # Final summary
+        print(f"\n{MAGENTA_COLOR}SEARCH SUMMARY:{RESET_COLOR}")
+        print("=" * 40)
+        print(f"Searches per customer: {searches_per_customer:.2f}")
+        print(f"Pages per query: {pages_per_query:.2f}")
+        print(f"Total searches: {total_searches}")
+
         # Final summary
         print(f"\n{CYAN_COLOR}FINAL SUMMARY:{RESET_COLOR}")
         print("=" * 40)
@@ -667,14 +733,18 @@ class MarketplaceAnalytics:
 
 
 async def run_analytics(
-    db_path_or_schema: str, db_type: str, save_to_json: bool = True
-):
+    db_path_or_schema: str,
+    db_type: str,
+    save_to_json: bool = True,
+    print_results: bool = True,
+) -> AnalyticsResults:
     """Run comprehensive analytics on the database.
 
     Args:
         db_path_or_schema (str): Path to SQLite database file or Postgres schema name.
         db_type (str): Type of database ("sqlite" or "postgres").
         save_to_json (bool): Whether to save results to JSON file.
+        print_results (bool): Whether to print results to console.
 
     """
     if db_type == "sqlite":
@@ -689,7 +759,10 @@ async def run_analytics(
         await db_controller.initialize()
 
         analytics = MarketplaceAnalytics(db_controller)
-        await analytics.generate_report(save_to_json=save_to_json, db_name=db_name)
+        results = await analytics.generate_report(
+            db_name=db_name, save_to_json=save_to_json, print_results=print_results
+        )
+        return results
     elif db_type == "postgres":
         async with connect_to_postgresql_database(
             schema=db_path_or_schema,
@@ -699,9 +772,12 @@ async def run_analytics(
             mode="existing",
         ) as db_controller:
             analytics = MarketplaceAnalytics(db_controller)
-            await analytics.generate_report(
-                save_to_json=save_to_json, db_name=db_path_or_schema
+            results = await analytics.generate_report(
+                db_name=db_path_or_schema,
+                save_to_json=save_to_json,
+                print_results=print_results,
             )
+            return results
     else:
         raise ValueError(
             f"Unsupported database type: {db_type}. Must be 'sqlite' or 'postgres'."

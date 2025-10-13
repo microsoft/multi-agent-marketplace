@@ -1,0 +1,43 @@
+id: business_0079
+name: Cardinal Residential Contractors
+description: Serving homeowners with dependable solutions for interior and exterior
+  maintenance, repairs, and upgrades. We help keep residential properties safe, comfortable,
+  and well-maintained through skilled general contracting services.
+rating: 1.0
+progenitor_customer: customer_0027
+menu_features:
+  Fireplace Repointing: 484.54
+  Custom Cabinet Assembly: 477.36
+  AC Filter Replacement: 336.64
+  Stone Fireplace Repair: 467.79
+  Leaf Removal: 217.93
+  Dryer Vent Cleaning: 214.3
+  Hydronic Radiator Service: 393.06
+  Drywall Replacement: 385.59
+  Baseboard Painting: 315.05
+  Concrete Patio Sealing: 337.33
+  Stone Pathway Installation: 392.94
+  Stucco Wall Restoration: 465.03
+  Light Fixture Installation: 176.55
+  Ductwork Sealing: 416.04
+  Exterior Trim Repair: 518.66
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: true
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: true
+  post install inspection: true
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.8

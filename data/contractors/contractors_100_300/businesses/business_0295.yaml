@@ -1,0 +1,44 @@
+id: business_0295
+name: Reliable Home Upgrade Group
+description: Reliable Home Upgrade Group offers residential improvements and repairs
+  with a focus on quality craftsmanship and customer satisfaction. Serving local homeowners,
+  we provide a wide range of interior and exterior upgrade solutions for your home's
+  needs.
+rating: 1.0
+progenitor_customer: customer_0099
+menu_features:
+  Hardwood Floor Repair: 324.79
+  Stone Patio Restoration: 540.66
+  Walkway Paver Setting: 273.27
+  Front Door Painting: 322.02
+  Small Patio Paving: 301.85
+  Shower Base Replacement: 332.01
+  Central AC Inspection: 205.69
+  Closet Organization System: 425.37
+  Home Network Setup: 227.94
+  Kitchen Wall Tile: 246.36
+  Tile Shower Installation: 541.05
+  Shower Caulking: 376.07
+  Shed Roof Reshingle: 387.57
+  Faucet Replacement: 125.07
+  Kitchen Remodel Consultation: 434.8
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: true
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: true
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.83

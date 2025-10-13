@@ -1,0 +1,41 @@
+id: business_0193
+name: Midtown Residential Improvements
+description: Midtown Residential Improvements provides reliable interior and exterior
+  maintenance, upgrades, and light repairs for homeowners. Our team delivers quality
+  workmanship to enhance living spaces and outdoor areas with professional service
+  and attention to detail.
+rating: 1.0
+progenitor_customer: customer_0065
+menu_features:
+  Room Painting: 249.34
+  Stone Veneer Application: 258.16
+  Mulch Refresh: 254.35
+  Garden Bed Installation: 142.41
+  Landscape Lighting Installation: 582.24
+  Light Switch Upgrade: 288.12
+  Whole House Re-caulking: 458.11
+  Basic Plumbing Repair: 118.93
+  Weatherproof Electrical Outlet Install: 148.16
+  Water Heater Repair: 429.66
+  Baseboard Molding: 227.32
+  Patio Repair: 336.66
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: true
+  appointment only: true
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.85

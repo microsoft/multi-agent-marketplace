@@ -1,0 +1,44 @@
+id: business_0078
+name: Fernwood Residential Improvements
+description: Fernwood Residential Improvements provides comprehensive home services
+  for local homeowners, covering both interior and exterior upgrades and repairs.
+  Our team is dedicated to delivering reliable workmanship for improvement projects
+  that enhance comfort and value.
+rating: 1.0
+progenitor_customer: customer_0026
+menu_features:
+  Stone Patio Restoration: 470.54
+  Fireplace Refacing: 391.86
+  Porch Stair Carpentry: 287.64
+  Kitchen Countertop Replacement: 461.92
+  Handrail Installation: 402.81
+  Central Air Tuneup: 356.7
+  Bathroom Shower Enclosure: 457.85
+  Concrete Patio Resurfacing: 423.51
+  Electric Outlet Update: 258.08
+  Fence Gate Installation: 450.06
+  Brick Chimney Pointing: 403.92
+  Smoke Detector Installation: 105.25
+  Front Door Painting: 298.84
+  Basement Floor Sealing: 398.91
+  Air Duct Sealing: 280.06
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.83

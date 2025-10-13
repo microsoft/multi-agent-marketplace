@@ -1,0 +1,11 @@
+id: customer_0011
+name: Megan Clark
+request: I'm looking to hire a contractor for Walkway Stone Laying (1) who is insured
+  and accepts digital payments. Please help me find someone who meets all these requirements,
+  as I'm ready to move forward with the hiring and would like to schedule the work
+  as soon as possible.
+menu_features:
+  Walkway Stone Laying: 418.5
+amenity_features:
+- insured
+- accepts digital payments

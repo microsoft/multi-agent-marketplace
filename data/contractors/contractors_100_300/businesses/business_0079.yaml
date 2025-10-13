@@ -1,0 +1,42 @@
+id: business_0079
+name: Unionfield Home Services
+description: Unionfield Home Services provides residential repair and improvement
+  solutions for homeowners seeking reliable, high-quality workmanship. Our team delivers
+  expert support for household maintenance, upgrades, and minor renovations.
+rating: 1.0
+progenitor_customer: customer_0027
+menu_features:
+  Smoke Detector Replacement: 225.94
+  Shrub Trimming: 271.39
+  Vanity Plumbing Repair: 270.09
+  Custom Closet Assembly: 400.24
+  Shower Door Fitting: 419.98
+  Bathroom Sink Plumbing: 198.87
+  Custom Closet Installation: 513.96
+  A/C Blower Motor Replacement: 379.27
+  Water Heater Replacement: 357.27
+  HVAC Diagnostics: 573.41
+  Concrete Patio Staining: 319.4
+  Bathroom Exhaust Fan Upgrade: 264.27
+  Cabinet Hardware Replacement: 393.98
+  Crown Molding Installation: 404.08
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.71

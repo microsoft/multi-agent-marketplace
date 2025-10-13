@@ -1,0 +1,42 @@
+id: business_0132
+name: Prime Residential Contracting
+description: Prime Residential Contracting provides professional home improvement
+  and repair services for local homeowners. Our team specializes in interior renovations,
+  exterior upgrades, and property maintenance tailored for your residential needs.
+rating: 1.0
+progenitor_customer: customer_0044
+menu_features:
+  Engineered Wood Floor Installation: 336.4
+  Door Installation: 201.57
+  Sod Laying: 236.74
+  Air Conditioner Tuneup: 205.04
+  Basement Leak Inspection: 308.7
+  Stucco Wall Restoration: 453.59
+  Small Room Remodeling: 412.23
+  Concrete Pathway Pouring: 351.32
+  Refrigerator Hookup: 261.3
+  Concrete Patio Slab Pour: 420.58
+  Granite Countertop Replacement: 443.41
+  Slate Patio Construction: 587.73
+  Electrical Switch Installation: 275.51
+  Roof Leak Fix: 176.29
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: true
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.64

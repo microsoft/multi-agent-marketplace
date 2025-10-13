@@ -1,0 +1,13 @@
+id: customer_0036
+name: Daniel Nguyen
+request: 'I am looking to hire a contractor who can provide Shower Caulking (1) and
+  Garden Bed Building (1), and who offers the following amenities: multilingual staff
+  and after hours service. As soon as you identify a contractor who meets all these
+  requirements, please proceed to engage them and arrange to schedule and confirm
+  the work. Thank you for your assistance.'
+menu_features:
+  Shower Caulking: 302.95
+  Garden Bed Building: 375.0
+amenity_features:
+- multilingual staff
+- after hours service

@@ -1,0 +1,40 @@
+id: business_0018
+name: Wellspring Residential Contractors
+description: Wellspring Residential Contractors provides reliable interior and exterior
+  improvement services for homeowners, focusing on quality workmanship and tailored
+  solutions. We help clients enhance and maintain their living spaces with attention
+  to detail and customer satisfaction.
+rating: 1.0
+progenitor_customer: customer_0006
+menu_features:
+  Vanity Sink Plumbing: 212.21
+  Tile Grout Restoration: 209.26
+  Laminate Floor Installation: 371.26
+  Kitchen Countertop Replacement: 474.49
+  Concrete Patio Slab Pour: 456.24
+  Garage Shelving Installation: 239.27
+  Shower Glass Installation: 518.38
+  Sprinkler System Startup: 492.78
+  Bathroom Vanity Cabinet Install: 324.21
+  Outdoor Fence Painting: 544.52
+  Brick Step Replacement: 337.27
+amenity_features:
+  multilingual staff: false
+  warranty: false
+  live job updates: true
+  accepts digital payments: false
+  licensed: false
+  appointment only: false
+  business accepts credit cards: false
+  same day service: false
+  flexible hours: false
+  free estimate: false
+  background checked crew: true
+  insured: false
+  weekend availability: false
+  eco friendly materials: false
+  responsiveness: true
+  post install inspection: true
+  free followup visit: false
+  after hours service: false
+min_price_factor: 0.62

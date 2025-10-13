@@ -1,0 +1,43 @@
+id: business_0207
+name: Redfern Residential Contracting
+description: Redfern Residential Contracting provides reliable and professional home
+  improvement services for local homeowners, specializing in interior and exterior
+  repairs, upgrades, and renovations. Our team is committed to quality workmanship
+  and attentive service for every project.
+rating: 1.0
+progenitor_customer: customer_0069
+menu_features:
+  Security Light Installation: 285.32
+  Hardwood Refinishing: 418.61
+  Baseboard Painting: 288.69
+  Toilet Repair: 225.46
+  Ceiling Light Installation: 193.89
+  Stone Walkway Restoration: 443.84
+  Custom Closet Shelving: 413.68
+  Fence Post Setting: 411.35
+  Light Fixture Installation: 162.42
+  Luxury Vinyl Plank Installation: 459.5
+  Exterior Siding Cleaning: 425.56
+  Wooden Stair Repair: 254.94
+  Bathroom Shower Enclosure: 497.37
+  Ceiling Fan Mounting: 356.07
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: true
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.78

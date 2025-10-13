@@ -1,0 +1,42 @@
+id: business_0034
+name: Silverfield Home Solutions
+description: Silverfield Home Solutions provides reliable residential remodeling and
+  installation services for homeowners seeking quality workmanship and professional
+  service. Our team specializes in interior updates and home improvement projects
+  tailored to your needs.
+rating: 1.0
+progenitor_customer: customer_0012
+menu_features:
+  Closet Organizer Installation: 461.97
+  Custom Cabinet Assembly: 425.87
+  Radiator Repair: 328.03
+  Washer Dryer Hookup: 310.47
+  Basement Remodeling: 434.51
+  Outdoor Lighting Setup: 476.69
+  Custom Cabinet Build: 537.85
+  Thermostat Installation: 158.8
+  Brick Patio Replacement: 517.69
+  Staircase Refinishing: 371.87
+  Small Room Flooring: 304.1
+  Bathroom Vanity Cabinet Install: 476.41
+  Tile Floor Cleaning: 214.4
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: true
+  live job updates: true
+  responsiveness: true
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: true
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: true
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.91

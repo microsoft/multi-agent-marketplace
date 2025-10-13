@@ -1,0 +1,45 @@
+id: business_0259
+name: Northvale Service Contractors
+description: Northvale Service Contractors provides residential property owners with
+  reliable solutions for interior and exterior home maintenance, improvement, and
+  repairs. Our team is dedicated to delivering quality workmanship across a range
+  of essential household and landscaping services.
+rating: 1.0
+progenitor_customer: customer_0087
+menu_features:
+  Leaky Pipe Repair: 197.41
+  Furnace Inspection: 467.56
+  Stone Path Installation: 455.49
+  Brick Walkway Restoration: 404.56
+  Driveway Sealcoating: 512.57
+  Concrete Step Pouring: 489.63
+  Stone Veneer Application: 253.49
+  Radiator Maintenance: 231.84
+  AC Maintenance: 407.53
+  Sink Installation: 333.34
+  Tree Trimming: 240.19
+  Smoke Detector Setup: 256.66
+  Garage Door Tune-Up: 209.58
+  Hardwood Refinishing: 497.23
+  Custom Closet Shelving: 318.77
+  Lawn Irrigation Startup: 248.05
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.66

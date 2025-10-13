@@ -1,0 +1,44 @@
+id: business_0253
+name: Bluehaven Residential Services
+description: Bluehaven Residential Services provides reliable maintenance, repair,
+  and improvement solutions for homeowners. Our team delivers skilled work across
+  plumbing, electrical, HVAC, cabinetry, and general home upkeep projects.
+rating: 1.0
+progenitor_customer: customer_0085
+menu_features:
+  Cabinet Door Adjustment: 237.52
+  Shower Tile Regrouting: 381.69
+  Foundation Crack Sealing: 408.77
+  Closet Cabinet Assembly: 379.47
+  Vanity Sink Plumbing: 213.0
+  Water Heater Repair: 319.41
+  Bathroom Sink Plumbing: 255.15
+  Brick Repair: 206.38
+  Circuit Breaker Upgrade: 165.38
+  Central AC Tuneup: 454.79
+  Outlet Wiring: 218.32
+  Custom Closet Cabinetry: 502.4
+  Ceiling Fan Repair: 246.35
+  Sprinkler Head Replacement: 176.63
+  Thermostat Replacement: 183.23
+  Attic Ladder Installation: 309.57
+amenity_features:
+  flexible hours: true
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: true
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.81

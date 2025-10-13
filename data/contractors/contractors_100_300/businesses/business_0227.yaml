@@ -1,0 +1,43 @@
+id: business_0227
+name: Unity Residential Contracting
+description: Unity Residential Contracting provides comprehensive repair, improvement,
+  and maintenance services for homeowners seeking high-quality results. Our team specializes
+  in interior and exterior upgrades, delivering reliable solutions for a wide range
+  of residential projects.
+rating: 1.0
+progenitor_customer: customer_0076
+menu_features:
+  Ceramic Tile Setting: 406.74
+  Stucco Wall Restoration: 348.61
+  Furniture Assembly: 249.14
+  Lawn Sprinkler Repair: 220.87
+  Kitchen Countertop Installation: 441.29
+  Kitchen Cabinet Replacement: 489.66
+  Porch Resurfacing: 324.68
+  Radiator Repair: 336.58
+  Circuit Breaker Upgrade: 183.65
+  Mulch Installation: 188.19
+  Home Office Wiring: 330.24
+  Driveway Crack Repair: 281.69
+  Basement Wall Sealing: 407.2
+  Hardwood Floor Buffing: 471.9
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: true
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.73

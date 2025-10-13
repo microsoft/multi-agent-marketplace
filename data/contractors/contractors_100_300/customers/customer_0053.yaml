@@ -1,0 +1,13 @@
+id: customer_0053
+name: Liam King
+request: 'I''m looking for a contractor who can perform the following services: Air
+  Conditioning Tune-Up (1) and Stone Fireplace Repair (1). It''s essential that the
+  contractor also demonstrates responsiveness. Once a suitable contractor is found
+  who meets all these requirements, I would like to move forward with hiring them
+  and scheduling the work as soon as possible. Please assist in making the necessary
+  arrangements.'
+menu_features:
+  Air Conditioning Tune-Up: 258.99
+  Stone Fireplace Repair: 400.99
+amenity_features:
+- responsiveness

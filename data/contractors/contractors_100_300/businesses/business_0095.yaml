@@ -1,0 +1,42 @@
+id: business_0095
+name: Stonefield Residential Contractors
+description: Stonefield Residential Contractors provides dependable home improvement
+  and repair services to local homeowners, specializing in interior upgrades, masonry
+  restoration, and exterior enhancements. Our team is committed to delivering high-quality
+  results for a wide range of residential projects.
+rating: 1.0
+progenitor_customer: customer_0032
+menu_features:
+  Window Trim Replacement: 287.54
+  Window Replacement: 391.96
+  Brick Patio Installation: 421.0
+  Masonry Brick Restoration: 412.56
+  Sodding Service: 322.05
+  Stone Veneer Repair: 432.35
+  Ceiling Fan Wiring: 258.21
+  Hardwood Floor Screening: 407.98
+  Air Conditioner Inspection: 517.34
+  Carpet Replacement: 344.99
+  Cabinet Installation: 197.4
+  Basement Drywall Finishing: 350.12
+  Masonry Tuckpointing: 282.97
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: true
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.68

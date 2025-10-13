@@ -1,0 +1,10 @@
+id: customer_0052
+name: Benjamin Walker
+request: I'm looking to hire a contractor who can perform a Light Fixture Upgrade
+  (1) and offers flexible hours. Please help me find a qualified professional who
+  meets these requirements so I can confirm and schedule the work as soon as possible.
+  Thank you!
+menu_features:
+  Light Fixture Upgrade: 218.99
+amenity_features:
+- flexible hours

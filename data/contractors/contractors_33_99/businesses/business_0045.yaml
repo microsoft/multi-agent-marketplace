@@ -1,0 +1,47 @@
+id: business_0045
+name: Suncrest Home Solutions
+description: Suncrest Home Solutions provides reliable residential contracting services
+  for homeowners seeking quality improvements, repairs, and renovations. Our team
+  specializes in interior and exterior upgrades, helping you maintain and enhance
+  your home with attentive, professional service.
+rating: 1.0
+progenitor_customer: customer_0015
+menu_features:
+  Hardwood Refinishing: 406.23
+  Brick Patio Construction: 373.49
+  Garbage Disposal Installation: 217.44
+  Sod Lawn Installation: 536.83
+  Deck Staining: 304.03
+  Shower Valve Replacement: 320.58
+  Fence Gate Repair: 330.62
+  Door Replacement: 261.9
+  Garden Bed Construction: 184.26
+  Circuit Breaker Panel Update: 228.22
+  Flagstone Walkway: 413.11
+  Custom Closet Installation: 661.2
+  Concrete Patio Sealing: 388.24
+  Wall Grouting: 167.44
+  Tile Backsplash: 324.75
+  Garage Door Spring Repair: 394.49
+  Central Air Conditioning Service: 475.86
+  Basement Remodeling: 550.67
+amenity_features:
+  eco friendly materials: true
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: true
+  post install inspection: false
+  flexible hours: false
+  insured: true
+  free followup visit: false
+  accepts digital payments: true
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.61

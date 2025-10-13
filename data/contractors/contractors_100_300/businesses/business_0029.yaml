@@ -1,0 +1,43 @@
+id: business_0029
+name: Brightfield Home Repair
+description: Brightfield Home Repair provides reliable residential repair and maintenance
+  services, serving homeowners with expertise in both indoor and outdoor projects.
+  We are committed to quality workmanship for household improvements and exterior
+  upgrades.
+rating: 1.0
+progenitor_customer: customer_0010
+menu_features:
+  Patio Repair: 415.71
+  Small Bathroom Plumbing Repair: 141.12
+  Stone Pathway Repair: 128.3
+  Concrete Patio Staining: 356.18
+  Door Hanging: 213.42
+  Heat Pump Maintenance: 460.39
+  Furnace Inspection: 412.97
+  Heat Pump Servicing: 509.3
+  Concrete Step Pouring: 406.09
+  Brick Pathway Construction: 310.89
+  Light Switch Replacement: 232.26
+  Cabinet Refacing: 424.82
+  Cedar Fence Building: 576.31
+  Mailbox Post Setting: 215.89
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: true
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.88

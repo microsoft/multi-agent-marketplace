@@ -1,0 +1,44 @@
+id: business_0263
+name: Oakwood Service Specialists
+description: Oakwood Service Specialists provides a wide range of residential improvement
+  and maintenance solutions for homeowners seeking reliable, professional workmanship.
+  We focus on timely service and quality results for both interior and exterior property
+  enhancements.
+rating: 1.0
+progenitor_customer: customer_0088
+menu_features:
+  Radiator Maintenance: 262.95
+  Security System Setup: 318.23
+  Basement Drywall Finishing: 527.13
+  Faucet Repair: 205.59
+  Sprinkler System Setup: 475.68
+  Fence Repair: 398.38
+  Garden Bed Edging: 139.2
+  Minor Plumbing Repair: 125.48
+  Brick Veneer Installation: 486.88
+  Door Lock Repair: 204.12
+  Landscape Planting: 241.36
+  Gutter Installation: 339.05
+  Mailbox Replacement: 316.7
+  Bathroom Vanity Assembly: 357.62
+  Brick Step Restoration: 371.64
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: true
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.88

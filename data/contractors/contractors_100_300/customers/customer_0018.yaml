@@ -1,0 +1,14 @@
+id: customer_0018
+name: Lucas Clark
+request: 'Please find a contractor who can provide the following services: Kitchen
+  Faucet Update (1), Exterior Window Cleaning (1), and Basic Closet Shelving (1),
+  and that offers the amenities of post install inspection and eco friendly materials.
+  I intend to hire and schedule the work as soon as a suitable contractor is identified.
+  Kindly confirm once you locate a match so we can proceed with scheduling.'
+menu_features:
+  Kitchen Faucet Update: 272.99
+  Exterior Window Cleaning: 116.37
+  Basic Closet Shelving: 227.0
+amenity_features:
+- post install inspection
+- eco friendly materials

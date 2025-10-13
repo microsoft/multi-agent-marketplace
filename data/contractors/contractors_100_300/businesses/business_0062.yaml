@@ -1,0 +1,44 @@
+id: business_0062
+name: Bridgeview Home Contractors
+description: Bridgeview Home Contractors provides reliable residential improvements
+  and general repair services for homeowners seeking professional solutions for interior,
+  exterior, and routine maintenance projects. Our skilled team delivers quality workmanship
+  across a range of home upgrades and property care needs.
+rating: 1.0
+progenitor_customer: customer_0021
+menu_features:
+  Slate Patio Construction: 478.29
+  Bathroom Floor Tiling: 376.46
+  Baseboard Replacement: 372.46
+  Roof Inspection: 212.93
+  Granite Countertop Installation: 375.84
+  Flower Bed Planting: 211.84
+  Mulch Installation: 187.27
+  Minor Plumbing Repair: 111.01
+  Sprinkler Head Replacement: 182.49
+  Concrete Path Repair: 220.86
+  Central AC Tuneup: 407.05
+  Radiator Servicing: 361.95
+  Light Fixture Wiring: 291.27
+  Door Lock Replacement: 160.65
+  Backsplash Installation: 304.96
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.89

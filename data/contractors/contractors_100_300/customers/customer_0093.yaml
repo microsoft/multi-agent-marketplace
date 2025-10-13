@@ -1,0 +1,13 @@
+id: customer_0093
+name: David Smith
+request: Please help me find a contractor who can provide Custom Shelving Installation
+  (1) and Interior Painting (1) and offers after hours service and appointment only.
+  Once such a contractor is identified, I would like to hire them and arrange for
+  the work to be completed as specified. Kindly proceed with scheduling and confirming
+  the work.
+menu_features:
+  Custom Shelving Installation: 355.37
+  Interior Painting: 152.5
+amenity_features:
+- after hours service
+- appointment only

@@ -1,0 +1,47 @@
+id: business_0082
+name: Fairway Residential Improvements
+description: Fairway Residential Improvements provides a range of interior and exterior
+  contracting services for homeowners, specializing in home updates, repairs, and
+  landscaping projects. Our team delivers reliable solutions tailored to enhance comfort,
+  functionality, and curb appeal.
+rating: 1.0
+progenitor_customer: customer_0028
+menu_features:
+  Mulch Delivery: 279.23
+  Shower Head Replacement: 265.01
+  Water Heater Tune-Up: 413.84
+  Door Refinishing: 207.42
+  Granite Countertop Cutting: 428.54
+  Brick Walkway Restoration: 414.44
+  Bathroom Shower Enclosure: 492.05
+  Door Hanging: 287.09
+  Smart Thermostat Setup: 316.89
+  Landscaping Planting: 462.17
+  Deck Repair: 271.89
+  Walkway Paver Resetting: 441.3
+  Light Fixture Repair: 163.93
+  Water Heater Inspection: 186.26
+  Circuit Breaker Upgrade: 176.94
+  Custom Shelf Assembly: 497.85
+  Drywall Installation: 417.94
+  Bathroom Vanity Install: 413.9
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: true
+  same day service: false
+  weekend availability: true
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: true
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.67

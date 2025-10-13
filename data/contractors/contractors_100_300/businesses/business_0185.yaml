@@ -1,0 +1,45 @@
+id: business_0185
+name: Clearstone Residential Contractors
+description: Clearstone Residential Contractors provides reliable home improvement
+  and repair services for homeowners seeking quality results and responsive support.
+  Our team delivers a range of solutions focused on structural enhancements, finish
+  carpentry, and general maintenance projects.
+rating: 1.0
+progenitor_customer: customer_0062
+menu_features:
+  Hardwood Floor Repair: 275.91
+  Attic Ladder Installation: 286.88
+  Structural Beam Reinforcement: 468.15
+  Closet Shelving Installation: 377.38
+  Garage Door Spring Repair: 305.47
+  Mulch Refresh: 170.5
+  Hardwood Floor Screening: 357.89
+  Custom Cabinet Fabrication: 541.16
+  Shower Remodel: 458.74
+  Yard Cleanup: 164.96
+  Bathroom Faucet Upgrade: 243.89
+  Brick Pathway Construction: 281.25
+  Walk-In Closet Shelving: 379.88
+  Window Trim Replacement: 307.14
+  Foundation Crack Repair: 201.9
+  Smoke Detector Installation: 135.87
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: true
+  warranty: false
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.78

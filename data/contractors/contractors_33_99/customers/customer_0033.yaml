@@ -1,0 +1,11 @@
+id: customer_0033
+name: James Anderson
+request: Please help me find a contractor who offers Granite Countertop Fabrication
+  (1) and Water Heater Installation (1), and provides a free estimate. I am ready
+  to hire and would like to confirm scheduling for these services once you locate
+  a suitable contractor.
+menu_features:
+  Granite Countertop Fabrication: 447.49
+  Water Heater Installation: 321.95
+amenity_features:
+- free estimate

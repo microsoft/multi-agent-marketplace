@@ -1,0 +1,42 @@
+id: business_0183
+name: Northgate Home Services
+description: Northgate Home Services provides reliable residential improvements, repairs,
+  and outdoor enhancements. We serve homeowners seeking quality workmanship for a
+  wide range of home and property needs.
+rating: 1.0
+progenitor_customer: customer_0061
+menu_features:
+  Landscaping Design: 159.03
+  Brick Patio Construction: 307.94
+  Washer Dryer Hookup: 386.15
+  Handrail Installation: 389.44
+  Porch Repair: 438.12
+  Custom Cabinet Hanging: 535.57
+  Garage Epoxy Flooring: 426.18
+  A/C Blower Motor Replacement: 430.24
+  AC Filter Replacement: 335.69
+  Yard Debris Removal: 160.23
+  Furnace Maintenance: 378.96
+  Carpet Removal: 318.86
+  Built-in Shelving Installation: 444.36
+  Tile Backsplash: 372.68
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: true
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: true
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.94

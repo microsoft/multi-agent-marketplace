@@ -1,0 +1,47 @@
+id: business_0072
+name: VistaPoint Residential Solutions
+description: VistaPoint Residential Solutions provides reliable improvement and repair
+  services for homeowners, specializing in interior updates, exterior maintenance,
+  and landscaping projects. We are dedicated to delivering quality workmanship for
+  a wide range of residential needs.
+rating: 1.0
+progenitor_customer: customer_0024
+menu_features:
+  Motion Sensor Installation: 246.24
+  Fence Gate Repair: 342.66
+  Landscaping Planting: 372.7
+  Exterior Siding Wash: 470.87
+  Fireplace Inspection: 378.98
+  Fireplace Refurbishing: 485.52
+  Shower Glass Installation: 455.07
+  Chimney Flashing Repair: 366.0
+  Stone Pathway Construction: 340.97
+  Bathtub Recaulking: 364.34
+  Garage Shelving Installation: 172.76
+  Baseboard Molding: 233.89
+  Faucet Repair: 208.3
+  Security Light Installation: 314.5
+  Leaky Faucet Fix: 229.06
+  Recessed Lighting Install: 180.11
+  Central Air System Tune-Up: 477.72
+  Brick Step Rebuilding: 530.86
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: false
+  same day service: true
+  weekend availability: true
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: true
+  business accepts credit cards: true
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.64

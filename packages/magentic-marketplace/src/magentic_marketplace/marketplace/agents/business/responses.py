@@ -7,7 +7,6 @@ from magentic_marketplace.platform.logger import MarketplaceLogger
 
 from ...actions import OrderProposal, TextMessage
 from ...shared.models import Business
-from ..history_storage import HistoryStorage
 from ..proposal_storage import OrderProposalStorage
 from .models import BusinessAction
 from .prompts import PromptsHandler
@@ -20,7 +19,6 @@ class ResponseHandler:
         self,
         business: Business,
         agent_id: str,
-        customer_histories: dict[str, HistoryStorage],
         proposal_storage: OrderProposalStorage,
         logger: MarketplaceLogger,
         generate_struct_fn: Callable[[str, type], Awaitable[tuple[Any, Any]]],
@@ -30,7 +28,6 @@ class ResponseHandler:
         Args:
             business: Business data
             agent_id: Business agent ID
-            customer_histories: Per-customer history storage instances
             proposal_storage: Proposal storage instance
             logger: Logger instance
             generate_struct_fn: Function to generate structured responses with LLM
@@ -38,35 +35,29 @@ class ResponseHandler:
         """
         self.business = business
         self.agent_id = agent_id
-        self.customer_histories = customer_histories
         self.proposal_storage = proposal_storage
         self.logger = logger
         self.generate_struct_fn = generate_struct_fn
-        self.prompts = PromptsHandler(business, customer_histories, logger)
+        self.prompts = PromptsHandler(business, logger)
 
     async def generate_response_to_inquiry(
-        self, customer_id: str, customer_message: str, context: str = ""
+        self, customer_id: str, conversation_history: list[str]
     ) -> TextMessage | OrderProposal:
         """Generate a contextual response using LLM.
 
         Args:
             customer_id: ID of the customer
-            customer_message: The customer's message
+            conversation_history: history of convo
             context: Additional context for the prompt
 
         Returns:
             Response message (text or order proposal) to be sent by caller
 
         """
-        self.logger.info(
-            f"Generating response to customer {customer_id} inquiry.",
-            data={"customer_message": customer_message},
-        )
+        self.logger.info(f"Generating response to customer {customer_id} inquiry.")
 
         # Get prompt from prompts handler
-        prompt = self.prompts.format_response_prompt(
-            customer_id, customer_message, context
-        )
+        prompt = self.prompts.format_response_prompt(conversation_history, customer_id)
 
         try:
             action, _ = await self.generate_struct_fn(prompt, BusinessAction)
@@ -76,8 +67,8 @@ class ResponseHandler:
 
             # Extract the response based on action type
             if action.action_type == "text":
-                if action.message:
-                    response = TextMessage(content=action.message)
+                if action.text_message:
+                    response = TextMessage(content=action.text_message.content)
                     self.logger.info(
                         f"Generated text response to customer {customer_id} inquiry",
                         data=response,
@@ -87,13 +78,13 @@ class ResponseHandler:
                     raise ValueError("Text action must have string content")
 
             elif action.action_type == "order_proposal":
-                if not action.order_proposal:
+                if not action.order_proposal_message:
                     raise ValueError(
                         "Order proposal action must have OrderProposal content"
                     )
 
                 # Generate deterministic proposal ID before returning
-                proposal = action.order_proposal
+                proposal = action.order_proposal_message
                 current_count = self.proposal_storage.customer_proposal_counts.get(
                     customer_id, 0
                 )

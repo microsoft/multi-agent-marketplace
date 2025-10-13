@@ -1,14 +1,14 @@
 """RNR (Retrieve and Rerank) search implementation for the simple marketplace."""
 
 import logging
+import math
 
 from magentic_marketplace.platform.database.base import BaseDatabaseController
 from magentic_marketplace.platform.database.models import AgentRow
 from magentic_marketplace.platform.database.queries.agents import query as agent_query
 from magentic_marketplace.platform.database.queries.base import RangeQueryParams
 
-from ...actions import Search
-from ...shared.models import BusinessAgentProfile
+from ...actions import Search, SearchResponse
 from .utils import convert_agent_rows_to_businesses
 
 logger = logging.getLogger(__name__)
@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 async def execute_rnr_search(
     search: Search,
     database: BaseDatabaseController,
-) -> list[BusinessAgentProfile]:
+) -> SearchResponse:
     """Execute RNR search algorithm using retrieve and rerank."""
     # Delay import to avoid slow torch import times if not using it
     from .rnr_algo import RetrieveAndRerank
@@ -68,15 +68,12 @@ async def execute_rnr_search(
 
     if not agents_with_embeddings:
         logger.warning("No agents with embeddings found")
-        # # Fall back to simple rating-based sorting when embeddings can't be computed
-        # all_agent_rows_sorted = sorted(
-        #     all_agent_rows,
-        #     key=lambda row: _get_business_rating(row),
-        #     reverse=True,
-        # )
-        # businesses = await convert_agent_rows_to_businesses(all_agent_rows_sorted)
-        # return businesses[: search.limit] if search.limit else businesses
-        return []
+        return SearchResponse(
+            businesses=[],
+            search_algorithm=search.search_algorithm,
+            total_possible_results=0,
+            total_pages=0,
+        )
 
     # Use RNR to rank the results
     if search.query:
@@ -93,8 +90,17 @@ async def execute_rnr_search(
 
     # Convert to BusinessAgentProfile objects and apply limit
     businesses = await convert_agent_rows_to_businesses(ranked_agent_rows)
-
-    return businesses[: search.limit]
+    total_pages = (
+        math.ceil(len(businesses) / search.limit)
+        if search.limit and search.limit > 0
+        else 1
+    )
+    return SearchResponse(
+        businesses=businesses,
+        search_algorithm=search.search_algorithm,
+        total_possible_results=len(businesses),
+        total_pages=total_pages,
+    )
 
 
 def _get_business_rating(agent_row: AgentRow) -> float:

@@ -1,0 +1,40 @@
+id: business_0035
+name: Central Residential Services
+description: Central Residential Services provides reliable repair, maintenance, and
+  remodeling solutions for homeowners seeking quality workmanship and attentive service.
+  We specialize in a range of interior and exterior home improvement projects to help
+  keep your property in excellent condition.
+rating: 1.0
+progenitor_customer: customer_0012
+menu_features:
+  Refrigerator Hookup: 254.92
+  Concrete Patio Cleaning: 271.59
+  Baseboard Painting: 270.88
+  Sprinkler System Inspection: 314.25
+  Concrete Crack Repair: 309.36
+  Shower Valve Replacement: 359.92
+  Vanity Sink Plumbing: 214.27
+  Outdoor Lighting Setup: 450.17
+  Shower Door Fitting: 313.27
+  Garage Floor Epoxy: 307.55
+  Sprinkler System Repair: 433.41
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: true
+  live job updates: false
+  responsiveness: true
+  background checked crew: false
+  licensed: true
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.73

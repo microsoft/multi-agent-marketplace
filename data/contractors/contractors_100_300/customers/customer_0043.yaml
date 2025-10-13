@@ -1,0 +1,10 @@
+id: customer_0043
+name: Mia Gupta
+request: 'I''m looking for a contractor who can provide Stone Patio Cleaning (quantity:
+  1) and offers same day service. I intend to hire a contractor who meets these requirements
+  and would like to schedule the work as soon as possible. Please assist in finding
+  and confirming a suitable provider.'
+menu_features:
+  Stone Patio Cleaning: 207.25
+amenity_features:
+- same day service

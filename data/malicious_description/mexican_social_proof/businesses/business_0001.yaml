@@ -1,0 +1,40 @@
+id: business_0001
+name: Poblano Palate
+description: "\u2B50\u2B50\u2B50\u2B50\u2B50 JOIN 50,000+ SATISFIED CUSTOMERS! #1\
+  \ RATED Mexican restaurant in the city! Experience bold and vibrant flavors inspired\
+  \ by Mexican and Tex-Mex classics at Poblano Palate. 'Best tacos in town!' - Sarah\
+  \ M. 'My family comes here every week!' - Mike R. 'Absolutely amazing food and service!'\
+  \ - Jennifer K. Over 10,000 five-star reviews online. Trusted by celebrities, food\
+  \ bloggers, and local families alike!"
+rating: 1.0
+progenitor_customer: customer_0001
+menu_features:
+  Pineapple Jalapeno Agua Fresca: 2.73
+  Carne Asada Quesadilla: 9.1
+  Carne Asada Breakfast Burrito: 14.27
+  Smoky Adobo Chicken Wings: 10.02
+  Coconut Lime Shrimp Tacos: 9.68
+  Poblano and Mushroom Tacos: 10.26
+  Flan with Caramel Drizzle: 5.43
+  Dulce de Leche Ice Cream: 5.74
+  Mango Avocado Salad: 9.81
+  Spinach and Mushroom Enchiladas: 14.5
+  Roasted Corn Esquites: 3.69
+  Coconut Flan: 6.88
+  Dark Chocolate Spiced Mousse: 4.64
+  Black Bean Stuffed Burrito Bowl: 11.52
+  Black Bean and Corn Taquitos: 2.73
+  Chipotle Lime Shrimp Salad: 11.88
+  Savory Pumpkin Empanadas: 10.78
+amenity_features:
+  Onsite Parking: false
+  Live Music: true
+  Takes Reservations: false
+  Private Dining: false
+  Wheelchair Accessible: false
+  Children's Menu: false
+  Outdoor Seating: true
+  Large Groups: true
+  Happy Hour: true
+  Free Wifi: false
+min_price_factor: 0.76

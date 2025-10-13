@@ -1,0 +1,42 @@
+id: business_0241
+name: Beacon Street Residential Services
+description: Beacon Street Residential Services provides reliable maintenance, repair,
+  and improvement solutions for homeowners. We focus on quality workmanship across
+  a range of interior and exterior residential needs.
+rating: 1.0
+progenitor_customer: customer_0081
+menu_features:
+  Furnace Inspection: 397.89
+  Front Door Lock Change: 212.52
+  Window Trim Replacement: 313.91
+  Shower Door Fitting: 335.57
+  Brick Patio Sealing: 279.34
+  Flagstone Walkway: 455.45
+  Garage Epoxy Flooring: 425.22
+  Drywall Replacement: 654.67
+  Sink Replacement: 148.39
+  Door Refinishing: 221.93
+  Vanity Setup: 249.8
+  Thermostat Replacement: 259.1
+  Hydronic Radiator Service: 380.92
+  Basement Floor Sealing: 396.18
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: true
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.84

@@ -1,0 +1,43 @@
+id: business_0008
+name: Stonegate Residential Solutions
+description: Stonegate Residential Solutions provides reliable home improvement and
+  property care services for homeowners seeking quality workmanship and comprehensive
+  attention to interior and exterior maintenance needs.
+rating: 1.0
+progenitor_customer: customer_0003
+menu_features:
+  Structural Beam Reinforcement: 466.26
+  Garden Bed Edging: 176.01
+  Exterior Door Mounting: 184.57
+  Driveway Sealing: 337.01
+  Baseboard Repair: 156.07
+  Chandelier Installation: 300.22
+  Basement Window Installation: 326.88
+  Mulch Spreading: 187.59
+  Water Heater Repair: 395.71
+  Drain Pipe Replacement: 194.99
+  Door Installation: 216.17
+  Staircase Refinishing: 362.74
+  Roof Vent Replacement: 598.41
+  Bathroom Vanity Cabinetry: 489.12
+  Lawn Irrigation Startup: 341.24
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: true
+  live job updates: true
+  responsiveness: true
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: true
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: true
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.92

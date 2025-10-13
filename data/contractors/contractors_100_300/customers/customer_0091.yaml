@@ -1,0 +1,13 @@
+id: customer_0091
+name: Chloe Zhang
+request: 'I''m looking to hire a contractor who can provide the following services:
+  Install New Garage Door Opener (1) and Bathtub Replacement (1). It is essential
+  that the contractor offers both post install inspection and uses eco friendly materials.
+  Please confirm availability with a contractor who meets all these requirements,
+  as I am ready to proceed with scheduling and hiring for the specified work.'
+menu_features:
+  Install New Garage Door Opener: 490.99
+  Bathtub Replacement: 478.99
+amenity_features:
+- post install inspection
+- eco friendly materials

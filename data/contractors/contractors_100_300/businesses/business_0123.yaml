@@ -1,0 +1,45 @@
+id: business_0123
+name: Clearbridge Residential Solutions
+description: Clearbridge Residential Solutions provides reliable repair, maintenance,
+  and improvement services for homeowners. Our experienced team helps keep your home
+  comfortable and up-to-date with efficient interior and exterior solutions.
+rating: 1.0
+progenitor_customer: customer_0041
+menu_features:
+  Bathroom Fan Installation: 394.02
+  Paver Sealing: 209.87
+  Dishwasher Installation: 199.78
+  Walkway Bricklaying: 477.97
+  Central Air Maintenance: 473.21
+  Outlet Repair: 185.76
+  Subfloor Reinforcement: 228.62
+  Central Heating Repair: 497.03
+  New Cabinet Handles: 261.02
+  Drain Pipe Replacement: 187.2
+  Replace Heating Thermostat: 432.8
+  Kitchen Faucet Update: 319.69
+  Mulch Application: 143.42
+  Room Painting: 230.93
+  Concrete Path Repair: 196.88
+  Light Switch Replacement: 232.66
+  Fixture Assembly: 290.79
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.87

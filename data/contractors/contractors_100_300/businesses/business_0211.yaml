@@ -1,0 +1,45 @@
+id: business_0211
+name: Stratford Residential Services
+description: Stratford Residential Services provides professional home improvement,
+  landscaping, and systems troubleshooting for homeowners seeking reliable upgrades
+  and maintenance. Our team specializes in a diverse range of interior and exterior
+  residential projects designed to enhance comfort, function, and curb appeal.
+rating: 1.0
+progenitor_customer: customer_0071
+menu_features:
+  Custom Closet Assembly: 438.89
+  Sod Laying: 250.25
+  Brick Veneer Installation: 367.73
+  Cabinet Door Refacing: 354.54
+  Advanced Electrical Troubleshooting: 212.15
+  Closet Organization System: 291.8
+  Cabinet Handle Replacement: 433.03
+  Light Fixture Repair: 181.13
+  Home Network Setup: 161.3
+  Stone Veneer Wall: 475.81
+  Spring Lawn Cleanup: 289.61
+  Stone Paver Walkway: 317.44
+  Landscape Design: 142.12
+  Sod Installation: 369.15
+  Baseboard Painting: 309.09
+  HVAC Diagnostics: 426.63
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: true
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: true
+  warranty: false
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.76

@@ -1,0 +1,46 @@
+id: business_0064
+name: Foxwood Residential Contractors
+description: Foxwood Residential Contractors provides reliable home improvement, renovation,
+  and maintenance services for homeowners seeking quality results. Our experienced
+  team is dedicated to enhancing both the functionality and appearance of your living
+  spaces.
+rating: 1.0
+progenitor_customer: customer_0022
+menu_features:
+  Garage Shelving Installation: 271.14
+  Driveway Crack Filling: 335.29
+  Stone Patio Laying: 545.89
+  Water Heater Replacement: 398.32
+  Patio Cover Installation: 427.74
+  Mailbox Post Replacement: 453.38
+  Retaining Wall Masonry: 356.09
+  Cabinet Hinges Upgrade: 310.53
+  Basic Electrical Troubleshooting: 243.28
+  Landscape Design: 140.15
+  Sprinkler System Start-Up: 468.09
+  Basement Water Proofing: 479.25
+  Heating System Tune-Up: 273.61
+  Kitchen Countertop Replacement: 516.86
+  Closet Organizer Installation: 539.6
+  Brick Patio Sealing: 263.37
+  Kitchen Cabinet Realignment: 409.1
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: true
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: true
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.8

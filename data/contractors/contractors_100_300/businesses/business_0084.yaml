@@ -1,0 +1,45 @@
+id: business_0084
+name: Birchfield Residential Services
+description: Birchfield Residential Services provides reliable solutions for homeowners
+  seeking expert assistance with interior upgrades, exterior maintenance, and home
+  improvement projects. We deliver professional service designed to enhance comfort
+  and value in residential properties.
+rating: 1.0
+progenitor_customer: customer_0028
+menu_features:
+  Home Network Setup: 254.97
+  Toilet Replacement: 116.39
+  Wood Stair Refinishing: 429.63
+  Radiator Maintenance: 223.76
+  Gutter Repair: 245.8
+  AC Tune-Up: 481.57
+  Porch Railing Repair: 334.54
+  Window Trim Replacement: 323.57
+  Security Camera Wiring: 216.35
+  Baseboard Molding: 182.98
+  Sprinkler System Start-Up: 491.56
+  Garage Shelving Installation: 277.88
+  Basement Remodeling: 432.7
+  Landscape Planting: 223.7
+  Bathroom Faucet Upgrade: 258.98
+  Entry Door Repainting: 190.56
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: true
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.67

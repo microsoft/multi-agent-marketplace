@@ -1,0 +1,44 @@
+id: business_0002
+name: Heritage Residential Contractors
+description: Heritage Residential Contractors provides skilled home improvement and
+  repair services for local homeowners, specializing in interior upgrades and exterior
+  enhancements. Our team is committed to delivering reliable, quality workmanship
+  for a wide range of residential projects.
+rating: 1.0
+progenitor_customer: customer_0001
+menu_features:
+  Mulch Laying: 258.21
+  Patio Paver Laying: 426.37
+  Drywall Hole Patching: 455.15
+  Garbage Disposal Repair: 266.49
+  Laminate Flooring: 277.06
+  Light Switch Upgrade: 267.49
+  Kitchen Cabinet Realignment: 367.84
+  Trim Carpentry: 179.58
+  Stone Pathway Construction: 347.9
+  Drywall Installation: 372.09
+  Smoke Detector Replacement: 223.19
+  Asphalt Patch Repair: 393.53
+  AC Maintenance: 437.36
+  Wood Floor Refinishing: 378.72
+  Chimney Cap Installation: 379.67
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: true
+  insured: false
+  background checked crew: true
+  eco friendly materials: true
+  warranty: true
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.75

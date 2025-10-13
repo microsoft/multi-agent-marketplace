@@ -1,0 +1,46 @@
+id: business_0178
+name: Solidmark Residential Services
+description: Solidmark Residential Services delivers reliable repair, improvement,
+  and maintenance solutions for homeowners seeking quality upgrades and long-term
+  results. Our team specializes in a variety of interior and exterior residential
+  projects with a focus on durability and professional service.
+rating: 1.0
+progenitor_customer: customer_0060
+menu_features:
+  Deck Repair: 319.47
+  Leak Repair: 185.93
+  Hardwood Flooring: 473.11
+  Subpanel Upgrade: 536.8
+  Exterior Door Weatherproofing: 229.28
+  Cabinet Door Adjustment: 221.67
+  Shrub Removal: 125.59
+  Garden Bed Creation: 138.21
+  Asphalt Patching: 418.5
+  Ductless AC Installation: 459.33
+  Small Roof Patch: 144.03
+  Fireplace Refurbishing: 492.77
+  Basement Window Well Cover Installation: 520.91
+  Roof Leak Patch: 391.3
+  Basement Drywall Finishing: 457.08
+  Stone Veneer Repair: 342.29
+  Custom Closet Cabinetry: 518.36
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: true
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.81

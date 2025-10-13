@@ -1,0 +1,42 @@
+id: business_0097
+name: Sterling Residential Projects
+description: Sterling Residential Projects delivers reliable maintenance and improvement
+  services for homeowners, specializing in indoor and outdoor upgrades. Our team is
+  dedicated to enhancing comfort, function, and value in residential properties through
+  attentive and efficient workmanship.
+rating: 1.0
+progenitor_customer: customer_0033
+menu_features:
+  Garden Maintenance: 219.79
+  Bathtub Caulking: 314.86
+  Basement Window Installation: 413.52
+  Bathroom Fan Replacement: 655.54
+  Sodding Service: 344.59
+  Light Fixture Repair: 226.38
+  Custom Closet Shelving: 377.31
+  Custom Cabinet Modification: 546.02
+  Sprinkler System Inspection: 313.36
+  Custom Closet Assembly: 380.59
+  Shingle Roof Cleaning: 429.51
+  Mini Split AC Service: 400.2
+  Refrigerant Recharge: 301.3
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.62

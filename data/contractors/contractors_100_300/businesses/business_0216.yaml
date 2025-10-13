@@ -1,0 +1,41 @@
+id: business_0216
+name: Allied Property Contractors
+description: Allied Property Contractors provides reliable residential improvement
+  and maintenance services for homeowners seeking quality solutions for both indoor
+  and outdoor projects. Our experienced team focuses on timely, professional workmanship
+  across a range of essential home and exterior upgrades.
+rating: 1.0
+progenitor_customer: customer_0072
+menu_features:
+  Sump Pump Installation: 467.04
+  Stone Pathway Installation: 360.84
+  Ceiling Fan Upgrade: 324.77
+  Deck Repair: 325.5
+  Paver Path Installation: 381.17
+  Ceiling Fan Wiring: 240.91
+  Brick Pathway Repair: 329.51
+  Chimney Inspection: 324.38
+  Sprinkler System Adjustment: 283.3
+  Walkway Paver Installation: 301.61
+  Chimney Flashing Repair: 352.17
+  Walkway Paver Setting: 343.02
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.73

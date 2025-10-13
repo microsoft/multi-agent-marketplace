@@ -1,0 +1,47 @@
+id: business_0076
+name: Morningside Residential Contractors
+description: Morningside Residential Contractors provides a comprehensive range of
+  home improvement, interior renovation, and exterior maintenance services for homeowners
+  seeking reliable workmanship and professional results. We focus on delivering timely,
+  high-quality solutions for both upgrades and routine residential projects.
+rating: 1.0
+progenitor_customer: customer_0026
+menu_features:
+  Granite Countertop Cutting: 530.08
+  French Drain Installation: 359.06
+  Brick Patio Construction: 414.45
+  Shower Door Fitting: 282.82
+  Appliance Installation: 196.82
+  Sod Placement: 283.05
+  Tile Shower Installation: 547.62
+  Vanity Sink Plumbing: 220.58
+  Sprinkler System Installation: 475.38
+  Custom Bookcase Build: 540.42
+  Mulching: 241.77
+  Chimney Inspection: 340.07
+  Mailbox Post Replacement: 425.61
+  Central AC Tuneup: 400.22
+  Water Heater Flush: 376.7
+  Dryer Vent Cleaning: 271.27
+  Bathroom Exhaust Fan Upgrade: 293.68
+  Central Air Conditioning Inspection: 362.33
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: true
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: true
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: true
+  appointment only: false
+min_price_factor: 0.73

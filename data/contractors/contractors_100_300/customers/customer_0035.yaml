@@ -1,0 +1,13 @@
+id: customer_0035
+name: Isabella Gomez
+request: I'm looking for a contractor who can perform Chimney Repointing (1), Carpet
+  Installation (1), and Garage Door Opener Install (1), and who also offers live job
+  updates. Once you find a contractor meeting all these requirements, please proceed
+  to engage them and schedule the work for me. I am ready to confirm and move forward
+  as soon as possible.
+menu_features:
+  Chimney Repointing: 405.25
+  Carpet Installation: 324.95
+  Garage Door Opener Install: 241.95
+amenity_features:
+- live job updates

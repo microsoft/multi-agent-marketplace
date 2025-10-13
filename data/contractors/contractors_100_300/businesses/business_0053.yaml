@@ -1,0 +1,46 @@
+id: business_0053
+name: Brightstone Home Services
+description: Brightstone Home Services provides reliable residential improvement and
+  maintenance solutions for homeowners seeking quality upgrades, repairs, and exterior
+  enhancements. Our team is dedicated to completing every project with attention to
+  detail and professional service.
+rating: 1.0
+progenitor_customer: customer_0018
+menu_features:
+  Garage Remodeling: 506.73
+  Built-in Shelving Installation: 423.4
+  Deck Cleaning: 257.86
+  Stone Path Installation: 486.58
+  Brick Patio Construction: 407.58
+  Mulch Laying: 269.22
+  Air Conditioner Service: 484.68
+  Brick Tuckpointing: 406.01
+  Concrete Patio Slab Pour: 422.78
+  Kitchen Faucet Update: 210.09
+  Garbage Disposal Repair: 274.69
+  Window Repair: 263.13
+  Exterior Window Cleaning: 127.43
+  Tile Backsplash: 449.63
+  Stone Patio Construction: 348.93
+  Granite Countertop Cutting: 373.33
+  Basic Closet Shelving: 203.88
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: true
+  after hours service: true
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: true
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.65

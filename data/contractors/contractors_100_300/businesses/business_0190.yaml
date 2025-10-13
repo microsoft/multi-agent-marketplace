@@ -1,0 +1,44 @@
+id: business_0190
+name: Residential Specialty Services Group
+description: Providing reliable interior and exterior repair, maintenance, and upgrades
+  for homeowners seeking quality improvements. We deliver practical solutions for
+  a wide range of residential service needs with a focus on craftsmanship and customer
+  satisfaction.
+rating: 1.0
+progenitor_customer: customer_0064
+menu_features:
+  Stucco Wall Restoration: 516.88
+  Appliance Hookup: 161.2
+  Brick Step Replacement: 312.27
+  Shingle Roof Cleaning: 432.4
+  Driveway Crack Repair: 305.07
+  Grout Cleaning: 267.87
+  Cabinet Handle Replacement: 426.09
+  Carpet Patching: 232.09
+  Flooring Subfloor Repair: 549.28
+  Central Air Conditioning Servicing: 386.78
+  Porch Railing Installation: 367.24
+  Bathroom Exhaust Fan Upgrade: 254.17
+  Sprinkler System Maintenance: 217.69
+  Basement Window Well Cover Installation: 422.2
+  Mulch Refresh: 252.76
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: true
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: true
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.7

@@ -1,0 +1,42 @@
+id: business_0209
+name: Gateway Residential Services
+description: Gateway Residential Services provides reliable solutions for homeowners
+  seeking repairs, restorations, and updates across interior and exterior areas. We
+  deliver prompt, professional service focused on quality workmanship and customer
+  satisfaction.
+rating: 1.0
+progenitor_customer: customer_0070
+menu_features:
+  Garbage Disposal Replacement: 333.94
+  Brick Step Restoration: 357.17
+  Tile Floor Cleaning: 316.5
+  Outlet Installation: 153.67
+  Wooden Stair Repair: 281.58
+  Flower Bed Redesign: 265.49
+  Tile Grouting: 139.47
+  Garage Door Weatherproofing: 549.11
+  Fixture Replacement: 203.91
+  Replace Electrical Outlet: 184.77
+  Electrical Panel Tune-Up: 358.28
+  Landscape Edging: 251.91
+  Custom Cabinet Fabrication: 422.8
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.61

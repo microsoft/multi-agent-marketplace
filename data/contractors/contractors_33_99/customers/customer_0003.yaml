@@ -1,0 +1,10 @@
+id: customer_0003
+name: Liam Nguyen
+request: Please help me find a contractor who can provide Baseboard Repair (1) and
+  offers live job updates. Once a suitable contractor is identified, I would like
+  to hire them and proceed with scheduling the work. Thank you for assisting with
+  this arrangement.
+menu_features:
+  Baseboard Repair: 130.99
+amenity_features:
+- live job updates

@@ -1,0 +1,41 @@
+id: business_0049
+name: Prairie Lane Home Services
+description: Prairie Lane Home Services provides reliable maintenance and improvement
+  solutions for residential homeowners, specializing in both indoor and outdoor projects.
+  Our team is dedicated to delivering quality work to enhance comfort, safety, and
+  curb appeal in the local community.
+rating: 1.0
+progenitor_customer: customer_0017
+menu_features:
+  Deck Repair: 316.59
+  Carpet Installation: 319.22
+  Door Repair: 166.01
+  Water Heater Flush: 448.92
+  Landscaping Design: 119.76
+  Carpet Stretching: 385.53
+  Smoke Detector Installation: 105.83
+  Central Air Tuneup: 534.78
+  Brick Pathway Repair: 269.69
+  Motion Sensor Installation: 255.02
+  Walkway Resurfacing: 419.14
+  Stone Patio Cleaning: 213.59
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: true
+  responsiveness: true
+  background checked crew: true
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: true
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: true
+  appointment only: false
+min_price_factor: 0.6

@@ -1,0 +1,13 @@
+id: customer_0055
+name: Daniel Anderson
+request: I am looking for a contractor who provides Custom Bookcase Build (1), Ceiling
+  Light Installation (1), and Tree Pruning (1) services, and operates by appointment
+  only. Once such a contractor is identified, I would like to hire them and arrange
+  to schedule all of the specified work. Please proceed to connect me so we can confirm
+  the appointment and move forward with the services.
+menu_features:
+  Custom Bookcase Build: 463.99
+  Ceiling Light Installation: 171.25
+  Tree Pruning: 341.95
+amenity_features:
+- appointment only

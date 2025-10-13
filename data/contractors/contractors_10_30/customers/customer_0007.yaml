@@ -1,0 +1,13 @@
+id: customer_0007
+name: Ethan Murphy
+request: 'I am looking to hire a contractor who can perform Kitchen Sink Plumbing
+  (quantity: 1) and Lawn Fertilization (quantity: 1) services. It is essential that
+  the contractor uses eco friendly materials and is insured. Once such a contractor
+  is identified, I would like to proceed with scheduling and confirming the work.
+  Please help me find a qualified contractor who meets all these requirements.'
+menu_features:
+  Kitchen Sink Plumbing: 266.49
+  Lawn Fertilization: 162.25
+amenity_features:
+- eco friendly materials
+- insured

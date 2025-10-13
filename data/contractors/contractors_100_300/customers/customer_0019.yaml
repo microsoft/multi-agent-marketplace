@@ -1,0 +1,13 @@
+id: customer_0019
+name: Chloe Hall
+request: "Please help me find a contractor who can provide New Cabinet Handles (1),\
+  \ Full-Bath Remodeling (1), and Drain Pipe Replacement (1), and that offers a warranty.\
+  \ Once you locate a contractor meeting all these requirements, I\u2019d like to\
+  \ proceed with hiring them and scheduling the work. Thank you for assisting with\
+  \ this."
+menu_features:
+  New Cabinet Handles: 325.99
+  Full-Bath Remodeling: 431.0
+  Drain Pipe Replacement: 182.99
+amenity_features:
+- warranty

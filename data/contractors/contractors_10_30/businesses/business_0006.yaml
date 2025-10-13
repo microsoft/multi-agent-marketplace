@@ -1,0 +1,40 @@
+id: business_0006
+name: Stonegate Residential Services
+description: Stonegate Residential Services provides a range of exterior and interior
+  home maintenance solutions for local homeowners, focusing on quality craftsmanship
+  and reliable service for property improvements and repairs.
+rating: 1.0
+progenitor_customer: customer_0002
+menu_features:
+  Fence Staining: 245.12
+  Patio Paver Laying: 377.96
+  Roof Flashing Replacement: 289.24
+  Walkway Resurfacing: 479.58
+  Garage Floor Epoxy: 386.58
+  Deck Cleaning: 234.66
+  Brick Path Restoration: 380.36
+  Exterior Door Mounting: 210.39
+  Chimney Repointing: 435.39
+  Stone Patio Restoration: 550.27
+  Drywall Patch: 245.12
+  Sump Pump Service: 471.39
+amenity_features:
+  multilingual staff: false
+  warranty: true
+  live job updates: false
+  accepts digital payments: false
+  licensed: false
+  appointment only: false
+  business accepts credit cards: false
+  same day service: false
+  flexible hours: false
+  free estimate: false
+  background checked crew: false
+  insured: false
+  weekend availability: false
+  eco friendly materials: false
+  responsiveness: true
+  post install inspection: true
+  free followup visit: false
+  after hours service: false
+min_price_factor: 0.84

@@ -1,0 +1,43 @@
+id: business_0248
+name: Oakridge Service Specialists
+description: Oakridge Service Specialists provides reliable residential upgrades and
+  maintenance for homeowners seeking quality workmanship and timely service. Our experienced
+  team addresses a wide range of interior and exterior improvement needs to help keep
+  your home safe, comfortable, and looking its best.
+rating: 1.0
+progenitor_customer: customer_0083
+menu_features:
+  Patio Repair: 341.65
+  Kitchen Wall Tile: 171.46
+  Floorboard Replacement: 267.94
+  Sprinkler System Installation: 366.9
+  Built-In Bookshelf Construction: 516.27
+  Heat Pump Maintenance: 350.54
+  Concrete Sidewalk Pouring: 577.37
+  Electrical Switch Installation: 234.42
+  Vanity Plumbing Repair: 214.73
+  Baseboard Molding: 208.9
+  Shower Door Fitting: 351.0
+  Furnace Maintenance: 375.04
+  Wall Rewiring: 419.59
+  Staircase Refinishing: 264.87
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: true
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.81

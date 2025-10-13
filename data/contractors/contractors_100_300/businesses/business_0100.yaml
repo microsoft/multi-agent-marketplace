@@ -1,0 +1,43 @@
+id: business_0100
+name: Briarview Contracting
+description: Briarview Contracting provides reliable residential improvement services,
+  focusing on general repairs, interior upgrades, and exterior enhancements for homeowners.
+  Our experienced team delivers quality workmanship tailored to your home's maintenance
+  and renovation needs.
+rating: 1.0
+progenitor_customer: customer_0034
+menu_features:
+  Ductwork Sealing: 477.46
+  Bathroom Vanity Assembly: 373.87
+  Kitchen Cabinet Repainting: 421.27
+  Window Caulking: 105.74
+  Sod Laying: 278.09
+  Granite Countertop Polishing: 473.56
+  Custom Shelf Assembly: 498.55
+  Electrical Panel Tune-Up: 301.34
+  Fence Repair: 453.95
+  Built-In Shelf Construction: 420.42
+  Retaining Wall Installation: 475.02
+  Shed Roof Replacement: 359.64
+  Sodding Service: 405.51
+  Trim Carpentry: 242.7
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.94

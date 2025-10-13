@@ -1,0 +1,11 @@
+id: customer_0097
+name: Grace Hernandez
+request: I am looking for a contractor who can perform Closet Renovation (1) and Laminate
+  Floor Replacement (1), and offers flexible hours. Once such a contractor is identified,
+  I would like to hire them and arrange to schedule the specified work. Please help
+  me find a suitable professional so we can move forward with confirming the job.
+menu_features:
+  Closet Renovation: 403.5
+  Laminate Floor Replacement: 480.99
+amenity_features:
+- flexible hours

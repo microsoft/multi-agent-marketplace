@@ -1,0 +1,41 @@
+id: business_0173
+name: Parkstone Residential Services
+description: Parkstone Residential Services provides dependable home improvement and
+  outdoor maintenance solutions for local homeowners. We specialize in skilled repair,
+  installation, and remodeling projects to help keep your home functional and attractive.
+rating: 1.0
+progenitor_customer: customer_0058
+menu_features:
+  Garage Door Opener Repair: 280.95
+  Dishwasher Installation: 204.43
+  Stone Pathway Repair: 142.44
+  Power Washing: 266.11
+  Kitchen Sink Plumbing: 256.4
+  Sprinkler System Tuneup: 248.17
+  Garage Door Tune-Up: 192.47
+  Kitchen Wall Tile: 227.55
+  Garage Remodeling: 412.82
+  Cedar Fence Building: 555.91
+  Garden Bed Planting: 152.61
+  Walkway Resurfacing: 442.59
+  Basement Window Well Cover Installation: 543.08
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: true
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: true
+  accepts digital payments: true
+min_price_factor: 0.63

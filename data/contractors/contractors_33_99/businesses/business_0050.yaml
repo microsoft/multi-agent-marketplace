@@ -1,0 +1,41 @@
+id: business_0050
+name: Westmont Home Improvements
+description: Westmont Home Improvements provides a wide range of residential repair,
+  installation, and upgrade services for homeowners seeking quality workmanship and
+  reliable results. Our team is dedicated to enhancing the function and appearance
+  of your property through attentive service and practical solutions.
+rating: 1.0
+progenitor_customer: customer_0017
+menu_features:
+  Foundation Crack Sealing: 290.15
+  Garage Door Inspection: 411.39
+  Cabinet Repair: 107.95
+  Asphalt Driveway Patch: 363.61
+  Cabinet Door Adjustment: 236.92
+  Home Network Setup: 249.36
+  Porch Railing Installation: 404.2
+  Fireplace Refurbishing: 488.42
+  Walkway Stone Laying: 436.7
+  Basement Window Well Cover Installation: 490.89
+  Walkway Resurfacing: 451.26
+  Carpet Installation: 275.2
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: true
+  warranty: false
+  live job updates: false
+  responsiveness: true
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: true
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.7

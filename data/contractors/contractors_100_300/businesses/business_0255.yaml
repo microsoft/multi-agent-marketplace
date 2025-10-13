@@ -1,0 +1,46 @@
+id: business_0255
+name: Northwalk Renovation & Maintenance
+description: Northwalk Renovation & Maintenance provides reliable home improvement
+  and general maintenance services for residential customers, with a focus on interior
+  upgrades, light plumbing, exterior repairs, and seasonal landscaping solutions.
+rating: 1.0
+progenitor_customer: customer_0085
+menu_features:
+  Sprinkler Head Replacement: 184.65
+  Kitchen Backsplash: 354.6
+  Thermostat Installation: 148.47
+  Patio Paver Resetting: 411.86
+  Mini-Split Maintenance: 155.62
+  Sod Placement: 290.77
+  Laminate Flooring: 260.92
+  Small Bathroom Plumbing Repair: 152.16
+  Porch Railing Installation: 350.31
+  Stone Patio Construction: 385.13
+  Brick Patio Sealing: 239.97
+  Bathroom Sink Plumbing: 178.58
+  Garage Door Opener Setup: 526.26
+  Shower Tile Regrouting: 328.72
+  Granite Countertop Fabrication: 446.58
+  Central AC Tuneup: 348.12
+  Shrub Removal: 153.87
+  Bathroom Vanity Cabinetry: 475.97
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: true
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.88

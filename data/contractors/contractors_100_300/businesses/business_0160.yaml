@@ -1,0 +1,44 @@
+id: business_0160
+name: Monarch Residential Services
+description: Monarch Residential Services delivers reliable solutions for homeowners
+  seeking expert property maintenance, interior improvements, and essential home upgrades.
+  Our team is dedicated to quality craftsmanship and responsive service for a wide
+  range of residential projects.
+rating: 1.0
+progenitor_customer: customer_0054
+menu_features:
+  Sprinkler System Installation: 322.34
+  Kitchen Cabinet Repainting: 591.05
+  Carpet Cleaning: 556.45
+  Motion Sensor Installation: 280.78
+  AC System Tune-Up: 376.47
+  Weed Removal: 129.19
+  Backsplash Tile Setting: 249.56
+  Smoke Detector Upgrade: 213.75
+  Carpet Patching: 256.41
+  Circuit Breaker Upgrade: 215.33
+  Shingle Roof Cleaning: 366.62
+  Leaf Removal: 259.94
+  Sprinkler System Tuneup: 266.82
+  Ceramic Tile Setting: 428.75
+  Cabinet Handle Replacement: 416.39
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: true
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.9

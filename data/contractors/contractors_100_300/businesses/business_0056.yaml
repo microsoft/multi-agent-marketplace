@@ -1,0 +1,42 @@
+id: business_0056
+name: Brentwood Residential Contractors
+description: Brentwood Residential Contractors provides reliable home improvement
+  and maintenance services for homeowners, specializing in interior upgrades, exterior
+  repairs, and remodeling. Our team delivers practical solutions with a focus on quality
+  workmanship and customer satisfaction.
+rating: 1.0
+progenitor_customer: customer_0019
+menu_features:
+  New Cabinet Handles: 273.21
+  Fence Post Setting: 339.45
+  Basement Wall Sealing: 412.89
+  Shower Head Replacement: 213.44
+  Concrete Path Repair: 180.0
+  Full-Bath Remodeling: 427.96
+  Foundation Crack Sealing: 308.43
+  Fixture Assembly: 305.93
+  Asphalt Crack Sealing: 350.59
+  Basement Waterproofing: 667.26
+  Hardwood Refinishing: 365.47
+  Thermostat Upgrade: 228.79
+  Drain Pipe Replacement: 188.56
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.61

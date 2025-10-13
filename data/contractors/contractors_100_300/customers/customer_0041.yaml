@@ -1,0 +1,14 @@
+id: customer_0041
+name: Liam Anderson
+request: 'I am seeking a contractor who can provide the following services: New Cabinet
+  Handles (1), Kitchen Faucet Update (1), and Drain Pipe Replacement (1). It is essential
+  that the contractor demonstrates responsiveness as an amenity. Once you identify
+  a contractor who meets all these requirements, I would like to proceed with hiring
+  them and confirming a schedule for the work as specified. Please let me know as
+  soon as this is arranged.'
+menu_features:
+  New Cabinet Handles: 325.99
+  Kitchen Faucet Update: 272.99
+  Drain Pipe Replacement: 182.99
+amenity_features:
+- responsiveness
