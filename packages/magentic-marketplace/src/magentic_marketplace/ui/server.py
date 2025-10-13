@@ -299,7 +299,7 @@ def create_analytics_app(
             return await _load_customers()
         except Exception as e:
             print(f"Error: {e}")
-            return {"error": str(e)}
+            return {"error": "Unable to load customers"}
 
     @app.get("/api/businesses")
     async def get_businesses():
@@ -308,7 +308,7 @@ def create_analytics_app(
             return await _load_businesses()
         except Exception as e:
             print(f"Error: {e}")
-            return {"error": str(e)}
+            return {"error": "Unable to load businesses"}
 
     @app.get("/api/marketplace-data")
     async def get_marketplace_data():
@@ -320,6 +320,8 @@ def create_analytics_app(
             message_threads = _create_message_threads(customers, businesses, messages)
 
             # Calculate analytics
+            if _db_controller is None:
+                raise RuntimeError("Database controller not initialized")
             analytics = MarketplaceAnalytics(_db_controller)
             await analytics.load_data()
             await analytics.analyze_actions()
@@ -371,7 +373,7 @@ def create_analytics_app(
             }
         except Exception as e:
             print(f"Error: {e}")
-            return {"error": str(e)}
+            return {"error": "Unable to load messages"}
 
     @app.get("/api/health")
     def health_check():
