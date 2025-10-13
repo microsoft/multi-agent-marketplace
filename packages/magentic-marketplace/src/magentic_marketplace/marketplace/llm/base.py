@@ -50,6 +50,7 @@ class LLMCallLog(BaseModel):
     prompt: Sequence[AllowedChatCompletionMessageParams] | str
     response: str | dict[str, Any]
     response_format: Any | None
+    api_args: dict[str, Any]
 
 
 class _DummySemaphore(AbstractAsyncContextManager):
@@ -245,6 +246,13 @@ class ProviderClient(ABC, Generic[TConfig]):
                         if isinstance(result[0], BaseModel)
                         else result[0],
                         response_format=response_format_data,
+                        api_args={
+                            "model": model,
+                            "temperature": temperature,
+                            "max_tokens": max_tokens,
+                            "reasoning_effort": reasoning_effort,
+                            **kwargs,
+                        }
                     )
 
                     logger.debug(
@@ -272,6 +280,13 @@ class ProviderClient(ABC, Generic[TConfig]):
                         prompt=messages,
                         response="",
                         response_format=response_format_data,
+                        api_args={
+                            "model": model,
+                            "temperature": temperature,
+                            "max_tokens": max_tokens,
+                            "reasoning_effort": reasoning_effort,
+                            **kwargs,
+                        }
                     )
 
                     logger.debug(
