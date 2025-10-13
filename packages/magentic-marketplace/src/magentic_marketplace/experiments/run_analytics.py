@@ -763,7 +763,7 @@ class MarketplaceAnalytics:
         pages_per_query = sum(total_pages) / sum(total_queries)
 
         # LLM Call summary
-        print(f"\n{MAGENTA_COLOR}LLM CALL SUMMARY:{RESET_COLOR}")
+        print(f"\n{BLUE_COLOR}LLM CALL SUMMARY:{RESET_COLOR}")
         print("=" * 40)
         print(f"LLM providers: {results.llm_providers}")
         print(f"LLM models: {results.llm_models}")
