@@ -35,7 +35,7 @@ def analyze_database(db_path: str) -> list[CustomerChoice]:
     SELECT
         json_extract(data, '$.agent_id') as from_business,
         json_extract(data, '$.request.parameters.to_agent_id') as to_customer,
-        json_extract(data, '$.request.parameters.message.proposals[0].id') as proposal_id,
+        json_extract(data, '$.request.parameters.message.id') as proposal_id,
         created_at
     FROM actions
     WHERE json_extract(data, '$.request.name') = 'SendMessage'
@@ -49,7 +49,7 @@ def analyze_database(db_path: str) -> list[CustomerChoice]:
     cursor.execute("""
     SELECT
         json_extract(data, '$.agent_id') as from_customer,
-        json_extract(data, '$.request.parameters.message.proposal_id') as paid_proposal_id
+        json_extract(data, '$.request.parameters.message.proposal_message_id') as paid_proposal_id
     FROM actions
     WHERE json_extract(data, '$.request.name') = 'SendMessage'
         AND json_extract(data, '$.request.parameters.message.type') = 'payment'
