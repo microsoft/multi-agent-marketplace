@@ -1,10 +1,10 @@
 """Validate the generated customers and businesses."""
 
 import argparse
+import json
 import os
 import random
 import sys
-import json
 
 import numpy as np
 import yaml

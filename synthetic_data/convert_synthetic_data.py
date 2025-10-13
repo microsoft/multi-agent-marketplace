@@ -10,7 +10,6 @@ from pathlib import Path
 from typing import Any
 
 import yaml
-
 from agentic_economics.marketplace.base import BusinessMetadata, CustomerMetadata
 
 
