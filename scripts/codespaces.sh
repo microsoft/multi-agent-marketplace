@@ -38,6 +38,10 @@ else
     echo "Warning: .venv directory not created"
 fi
 
+# Setup env vars
+echo "Generating .env file from template..."
+uv run scripts/generate_env.py sample.env .env
+
 # Setup docker for the database server
 docker compose up -d
 
