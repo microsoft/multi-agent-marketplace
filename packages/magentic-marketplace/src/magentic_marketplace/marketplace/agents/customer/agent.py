@@ -182,13 +182,15 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
             )
 
             self.logger.info(
-                f"Next action: {action.action_type}. Reason: {action.reason}"
+                f"[Step {self.conversation_step}/{self._max_steps or 'inf'}] Action: {action.action_type}. Reason: {action.reason}"
             )
 
             return action
 
         except Exception:
-            self.logger.exception("LLM decision failed")
+            self.logger.exception(
+                f"[Step {self.conversation_step}/{self._max_steps or 'inf'}] LLM decision failed"
+            )
             # Record the event so the LLM can recover next time (hopefully)
             self._event_history.append(f"LLM decision failed: {traceback.format_exc()}")
             return None

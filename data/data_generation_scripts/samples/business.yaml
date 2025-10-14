@@ -1,0 +1,26 @@
+id: business_0001
+name: Business 1
+description: Business 1
+rating: 1.0
+progenitor_customer: customer_0001
+menu_features:
+  Item_22: 1.0
+  Item_21: 1.09
+  Item_24: 0.99
+  Item_25: 0.93
+  Item_00: 0.84
+  Item_01: 0.92
+amenity_features:
+  Free Wifi: false
+  Outdoor Seating: false
+  Takes Reservations: false
+  Children's Menu: true
+  Offers Takeout: false
+  Offers Delivery: true
+  Onsite Parking: true
+  Happy Hour: false
+  Live Music: true
+  Large Groups: false
+  Wheelchair Accessible: false
+  Caters: false
+min_price_factor: 0.8
