@@ -23,6 +23,8 @@ from magentic_marketplace.marketplace.actions.messaging import (
     OrderProposal,
     Payment,
 )
+from magentic_marketplace.marketplace.database.queries.logs import llm_call
+from magentic_marketplace.marketplace.llm.base import LLMCallLog
 from magentic_marketplace.marketplace.shared.models import (
     BusinessAgentProfile,
     CustomerAgentProfile,
@@ -32,7 +34,7 @@ from magentic_marketplace.platform.database import (
     connect_to_postgresql_database,
 )
 from magentic_marketplace.platform.database.base import BaseDatabaseController
-from magentic_marketplace.platform.database.models import ActionRow
+from magentic_marketplace.platform.database.models import ActionRow, LogRow
 from magentic_marketplace.platform.database.sqlite.sqlite import (
     SQLiteDatabaseController,
 )
@@ -77,6 +79,18 @@ class MarketplaceAnalytics:
             defaultdict(list)
         )
 
+        # Track all llm logs keyed by agent
+        self.agent_llm_logs: dict[str, list[tuple[LogRow, LLMCallLog]]] = defaultdict(
+            list
+        )
+
+        # Track all failed LLM calls
+        self.failed_llm_logs: list[tuple[LogRow, LLMCallLog, str]] = []
+
+        # Track LLM providers and models
+        self.llm_providers: set[str] = set()
+        self.llm_models: set[str] = set()
+
     async def load_data(self):
         """Load and parse agents data from database."""
         agents = await self.db.agents.get_all()
@@ -93,6 +107,33 @@ class MarketplaceAnalytics:
                 self.business_agents[agent.id] = agent
             else:
                 raise TypeError(f"Unrecognized agent type: {agent}")
+
+        await self.load_llm_logs()
+
+    async def load_llm_logs(self):
+        """Load all LLM call logs from database and cache them organized by agent."""
+        query = llm_call.all()
+        logs = await self.db.logs.find(query)
+
+        for log_row in logs:
+            log = log_row.data
+            try:
+                llm_call_log = LLMCallLog.model_validate(log.data)
+                agent_id = (log.metadata or {}).get("agent_id", "unknown")
+
+                self.agent_llm_logs[agent_id].append((log_row, llm_call_log))
+
+                # Also track failures separately for quick access
+                if not llm_call_log.success:
+                    self.failed_llm_logs.append((log_row, llm_call_log, agent_id))
+
+                # Track models and providers
+                if llm_call_log.provider:
+                    self.llm_providers.add(llm_call_log.provider)
+                if llm_call_log.model:
+                    self.llm_models.add(llm_call_log.model)
+            except Exception as e:
+                print(f"Warning: Could not parse LLM call log: {e}")
 
     async def analyze_actions(self):
         """Analyze all actions using typed models."""
@@ -225,6 +266,26 @@ class MarketplaceAnalytics:
         }
 
         return required_amenities.issubset(available_amenities)
+
+    def get_optimal_business_for_customer(self, customer_agent_id: str):
+        """Get the business that has the optimal (menu-match + amenity match for lowest total price) for the customer, irrespective of any real proposals or not.
+
+        Args:
+            customer_agent_id: The customer's id
+
+        Returns:
+            str: The business id or None
+
+        """
+        # (business_id, total_price), sorted ascending by total_price
+        menu_matches = self.calculate_menu_matches(customer_agent_id)
+        for business_agent_id, _ in menu_matches:
+            if self.check_amenity_match(customer_agent_id, business_agent_id):
+                # Return the first because they are sorted by total_price
+                # i.e. the first match is the cheapest
+                return business_agent_id
+
+        return None
 
     def calculate_customer_utility(self, customer_agent_id: str) -> tuple[float, bool]:
         """Calculate customer utility where  match_score is only counted once if ANY payment meets the customer's needs.
@@ -431,6 +492,10 @@ class MarketplaceAnalytics:
             total_marketplace_customer_utility=total_utility,
             average_utility_per_active_customer=avg_utility_per_active_customer,
             purchase_completion_rate=completion_rate,
+            llm_providers=list(self.llm_providers),
+            llm_models=list(self.llm_models),
+            total_llm_calls=sum(map(len, self.agent_llm_logs.values())),
+            failed_llm_calls=len(self.failed_llm_logs),
         )
 
     async def generate_report(
@@ -702,6 +767,14 @@ class MarketplaceAnalytics:
             total_pages.append(sum([len(s) for s in queries_to_pages.values()]))
 
         pages_per_query = sum(total_pages) / sum(total_queries)
+
+        # LLM Call summary
+        print(f"\n{BLUE_COLOR}LLM CALL SUMMARY:{RESET_COLOR}")
+        print("=" * 40)
+        print(f"LLM providers: {results.llm_providers}")
+        print(f"LLM models: {results.llm_models}")
+        print(f"Total LLM calls: {results.total_llm_calls}")
+        print(f"Failed LLM calls: {results.failed_llm_calls}")
 
         # Final summary
         print(f"\n{MAGENTA_COLOR}SEARCH SUMMARY:{RESET_COLOR}")
