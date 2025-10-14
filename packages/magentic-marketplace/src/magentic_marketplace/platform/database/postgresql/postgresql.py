@@ -24,6 +24,7 @@ from ..base import (
 )
 from ..models import ActionRow, ActionRowData, AgentRow, LogRow
 from ..queries import AndQuery, JSONQuery, OrQuery, Query, QueryParams, RangeQueryParams
+from .utils import fix_json_for_postgres
 
 SchemaMode = Literal["existing", "override", "create_new"]
 
@@ -303,15 +304,28 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
     async def create(self, item: AgentRow) -> AgentRow:
         """Create a new agent."""
         agent_id = item.id or str(uuid.uuid4())
+        agent_json = json.dumps(item.data.model_dump())
 
         async with self.connection(is_write=True) as conn:
-            row_index = await conn.fetchval(
-                f"INSERT INTO {self._schema}.agents (id, created_at, data, agent_embedding) VALUES ($1, $2, $3, $4) RETURNING row_index",
-                agent_id,
-                item.created_at,
-                json.dumps(item.data.model_dump()),
-                item.agent_embedding,
-            )
+            try:
+                row_index = await conn.fetchval(
+                    self._get_insert_query(),
+                    agent_id,
+                    item.created_at,
+                    agent_json,
+                    item.agent_embedding,
+                )
+            except asyncpg.UntranslatableCharacterError as e:
+                logger.warning(f"Fixing invalid unicode in AGENT insert: {e}")
+                fixed_data = fix_json_for_postgres(item.data.model_dump())
+                agent_json = json.dumps(fixed_data)
+                row_index = await conn.fetchval(
+                    self._get_insert_query(),
+                    agent_id,
+                    item.created_at,
+                    agent_json,
+                    item.agent_embedding,
+                )
 
         return AgentRow(
             id=agent_id,
@@ -320,6 +334,9 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
             agent_embedding=item.agent_embedding,
             index=row_index,
         )
+
+    def _get_insert_query(self) -> str:
+        return f"INSERT INTO {self._schema}.agents (id, created_at, data, agent_embedding) VALUES ($1, $2, $3, $4) RETURNING row_index"
 
     async def get_by_id(self, item_id: str) -> AgentRow | None:
         """Get agent by ID."""
@@ -472,13 +489,24 @@ class PostgreSQLActionController(
         action_json = json.dumps(item.data.model_dump())
 
         async with self.connection(is_write=True) as conn:
-            # The row_index will be automatically set by the DEFAULT nextval()
-            row_index = await conn.fetchval(
-                f"INSERT INTO {self._schema}.actions (id, created_at, data) VALUES ($1, $2, $3) RETURNING row_index",
-                action_id,
-                item.created_at,
-                action_json,
-            )
+            try:
+                # The row_index will be automatically set by the DEFAULT nextval()
+                row_index = await conn.fetchval(
+                    self._get_insert_query(),
+                    action_id,
+                    item.created_at,
+                    action_json,
+                )
+            except asyncpg.UntranslatableCharacterError as e:
+                logger.warning(f"Fixing invalid unicode in ACTION insert: {e}")
+                fixed_data = fix_json_for_postgres(item.data.model_dump())
+                action_json = json.dumps(fixed_data)
+                row_index = await conn.fetchval(
+                    self._get_insert_query(),
+                    action_id,
+                    item.created_at,
+                    action_json,
+                )
 
         return ActionRow(
             id=action_id,
@@ -486,6 +514,9 @@ class PostgreSQLActionController(
             data=item.data,
             index=row_index,
         )
+
+    def _get_insert_query(self) -> str:
+        return f"INSERT INTO {self._schema}.actions (id, created_at, data) VALUES ($1, $2, $3) RETURNING row_index"
 
     async def get_by_id(self, item_id: str) -> ActionRow | None:
         """Get action by ID."""
@@ -610,18 +641,33 @@ class PostgreSQLLogController(LogTableController, _BoundedPostgresConnectionMixI
     async def create(self, item: LogRow) -> LogRow:
         """Create a new log record."""
         log_id = item.id or str(uuid.uuid4())
+        log_json = json.dumps(item.data.model_dump())
 
         async with self.connection(is_write=True) as conn:
-            row_index = await conn.fetchval(
-                f"INSERT INTO {self._schema}.logs (id, created_at, data) VALUES ($1, $2, $3) RETURNING row_index",
-                log_id,
-                item.created_at,
-                json.dumps(item.data.model_dump()),
-            )
+            try:
+                row_index = await conn.fetchval(
+                    self._get_insert_query(),
+                    log_id,
+                    item.created_at,
+                    log_json,
+                )
+            except asyncpg.UntranslatableCharacterError as e:
+                logger.warning(f"Fixing invalid unicode in LOG insert: {e}")
+                fixed_data = fix_json_for_postgres(item.data.model_dump())
+                log_json = json.dumps(fixed_data)
+                row_index = await conn.fetchval(
+                    self._get_insert_query(),
+                    log_id,
+                    item.created_at,
+                    log_json,
+                )
 
         return LogRow(
             id=log_id, created_at=item.created_at, data=item.data, index=row_index
         )
+
+    def _get_insert_query(self) -> str:
+        return f"INSERT INTO {self._schema}.logs (id, created_at, data) VALUES ($1, $2, $3) RETURNING row_index"
 
     async def get_by_id(self, item_id: str) -> LogRow | None:
         """Get log by ID."""
