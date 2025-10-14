@@ -67,15 +67,19 @@ class DatabaseConverter:
         # Sort by index to ensure correct order (should already be sorted, but be explicit)
         agents.sort(key=lambda a: a.index if a.index is not None else 0)
 
-        for agent in agents:
-            # Create new row without the index (SQLite will auto-assign rowid)
-            new_agent = AgentRow(
+        # Prepare rows without the index (SQLite will auto-assign rowid)
+        new_agents = [
+            AgentRow(
                 id=agent.id,
                 created_at=agent.created_at,
                 data=agent.data,
                 agent_embedding=agent.agent_embedding,
             )
-            await target_db.agents.create(new_agent)
+            for agent in agents
+        ]
+
+        # Bulk insert all agents using create_many
+        await target_db.agents.create_many(new_agents)
 
         logger.info(f"Copied {len(agents)} agents")
 
@@ -89,14 +93,18 @@ class DatabaseConverter:
         # Sort by index to ensure correct order
         actions.sort(key=lambda a: a.index if a.index is not None else 0)
 
-        for action in actions:
-            # Create new row without the index (SQLite will auto-assign rowid)
-            new_action = ActionRow(
+        # Prepare rows without the index (SQLite will auto-assign rowid)
+        new_actions = [
+            ActionRow(
                 id=action.id,
                 created_at=action.created_at,
                 data=action.data,
             )
-            await target_db.actions.create(new_action)
+            for action in actions
+        ]
+
+        # Bulk insert all actions using create_many
+        await target_db.actions.create_many(new_actions)
 
         logger.info(f"Copied {len(actions)} actions")
 
@@ -110,14 +118,18 @@ class DatabaseConverter:
         # Sort by index to ensure correct order
         logs.sort(key=lambda log: log.index if log.index is not None else 0)
 
-        for log in logs:
-            # Create new row without the index (SQLite will auto-assign rowid)
-            new_log = LogRow(
+        # Prepare rows without the index (SQLite will auto-assign rowid)
+        new_logs = [
+            LogRow(
                 id=log.id,
                 created_at=log.created_at,
                 data=log.data,
             )
-            await target_db.logs.create(new_log)
+            for log in logs
+        ]
+
+        # Bulk insert all logs using create_many
+        await target_db.logs.create_many(new_logs)
 
         logger.info(f"Copied {len(logs)} logs")
 
