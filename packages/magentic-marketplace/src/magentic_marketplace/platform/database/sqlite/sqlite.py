@@ -352,13 +352,23 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
 
         # If there's a specific limit, we should respect it
         remaining = limit
+        batch_number = 0
+
+        logger.debug(
+            f"Starting batched get_all for agents: batch_size={batch_size}, limit={limit}, offset={offset}"
+        )
 
         while True:
+            batch_number += 1
             # Create batch params
             if remaining is not None:
                 batch_limit = min(batch_size, remaining)
             else:
                 batch_limit = batch_size
+
+            logger.debug(
+                f"Fetching agents batch {batch_number}: offset={offset}, limit={batch_limit}"
+            )
 
             batch_params = RangeQueryParams(
                 limit=batch_limit,
@@ -378,6 +388,10 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
                 async with db.execute(sql, sql_params) as cursor:
                     rows = list(await cursor.fetchall())
 
+            logger.debug(
+                f"Retrieved {len(rows)} agents in batch {batch_number}, total so far: {len(all_results) + len(rows)}"
+            )
+
             if not rows:
                 break
 
@@ -395,14 +409,21 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
 
             # If we got fewer rows than batch_size, we've reached the end
             if len(rows) < batch_size:
+                logger.debug(
+                    f"Batch {batch_number} returned fewer rows than batch_size, stopping"
+                )
                 break
 
             offset += len(rows)
             if remaining is not None:
                 remaining -= len(rows)
                 if remaining <= 0:
+                    logger.debug(f"Reached limit after batch {batch_number}, stopping")
                     break
 
+        logger.debug(
+            f"Completed batched get_all for agents: {batch_number} batches, {len(all_results)} total rows"
+        )
         return all_results
 
     async def find(
