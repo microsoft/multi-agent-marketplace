@@ -3,6 +3,7 @@
 import argparse
 import asyncio
 import logging
+import os
 import sys
 from pathlib import Path
 
@@ -205,21 +206,21 @@ def main():
 
     experiment_parser.add_argument(
         "--postgres-host",
-        default="localhost",
-        help="PostgreSQL host (default: localhost)",
+        default=os.environ.get("POSTGRES_HOST", "localhost"),
+        help="PostgreSQL host (default: POSTGRES_HOST env var or localhost)",
     )
 
     experiment_parser.add_argument(
         "--postgres-port",
         type=int,
-        default=5432,
-        help="PostgreSQL port (default: 5432)",
+        default=int(os.environ.get("POSTGRES_PORT", "5432")),
+        help="PostgreSQL port (default: POSTGRES_PORT env var or 5432)",
     )
 
     experiment_parser.add_argument(
         "--postgres-password",
-        default="postgres",
-        help="PostgreSQL password (default: postgres)",
+        default=os.environ.get("POSTGRES_PASSWORD", "postgres"),
+        help="PostgreSQL password (default: POSTGRES_PASSWORD env var or postgres)",
     )
 
     experiment_parser.add_argument(
@@ -373,27 +374,27 @@ def main():
 
     export_parser.add_argument(
         "--postgres-host",
-        default="localhost",
-        help="PostgreSQL host (default: localhost)",
+        default=os.environ.get("POSTGRES_HOST", "localhost"),
+        help="PostgreSQL host (default: POSTGRES_HOST env var or localhost)",
     )
 
     export_parser.add_argument(
         "--postgres-port",
         type=int,
-        default=5432,
-        help="PostgreSQL port (default: 5432)",
+        default=int(os.environ.get("POSTGRES_PORT", "5432")),
+        help="PostgreSQL port (default: POSTGRES_PORT env var or 5432)",
     )
 
     export_parser.add_argument(
         "--postgres-user",
-        default="postgres",
-        help="PostgreSQL user (default: postgres)",
+        default=os.environ.get("POSTGRES_USER", "postgres"),
+        help="PostgreSQL user (default: POSTGRES_USER env var or postgres)",
     )
 
     export_parser.add_argument(
         "--postgres-password",
-        default="postgres",
-        help="PostgreSQL password (default: postgres)",
+        default=os.environ.get("POSTGRES_PASSWORD", "postgres"),
+        help="PostgreSQL password (default: POSTGRES_PASSWORD env var or postgres)",
     )
 
     # list-experiments subcommand
@@ -405,33 +406,33 @@ def main():
 
     list_experiments_parser.add_argument(
         "--postgres-host",
-        default="localhost",
-        help="PostgreSQL host (default: localhost)",
+        default=os.environ.get("POSTGRES_HOST", "localhost"),
+        help="PostgreSQL host (default: POSTGRES_HOST env var or localhost)",
     )
 
     list_experiments_parser.add_argument(
         "--postgres-port",
         type=int,
-        default=5432,
-        help="PostgreSQL port (default: 5432)",
+        default=int(os.environ.get("POSTGRES_PORT", "5432")),
+        help="PostgreSQL port (default: POSTGRES_PORT env var or 5432)",
     )
 
     list_experiments_parser.add_argument(
         "--postgres-database",
-        default="marketplace",
-        help="PostgreSQL database name (default: marketplace)",
+        default=os.environ.get("POSTGRES_DB", "marketplace"),
+        help="PostgreSQL database name (default: POSTGRES_DB env var or marketplace)",
     )
 
     list_experiments_parser.add_argument(
         "--postgres-user",
-        default="postgres",
-        help="PostgreSQL user (default: postgres)",
+        default=os.environ.get("POSTGRES_USER", "postgres"),
+        help="PostgreSQL user (default: POSTGRES_USER env var or postgres)",
     )
 
     list_experiments_parser.add_argument(
         "--postgres-password",
-        default="postgres",
-        help="PostgreSQL password (default: postgres)",
+        default=os.environ.get("POSTGRES_PASSWORD", "postgres"),
+        help="PostgreSQL password (default: POSTGRES_PASSWORD env var or postgres)",
     )
 
     list_experiments_parser.add_argument(
