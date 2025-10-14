@@ -34,6 +34,15 @@ nav:
   - Home: index.md
   - Installation: installation.md
   - Usage: usage.md
+  - Guide:
+    - Overview: guide/00_tutorial.md
+    - 1. Agents (BaseAgent, CustomerAgent, BusinessAgent): guide/01_agents__baseagent__customeragent__businessagent__.md
+    - 2. Protocol & Actions: guide/02_protocol___actions_.md
+    - 3. Marketplace Server: guide/03_marketplace_server_.md
+    - 4. LLM Abstraction (generate function): guide/04_llm_abstraction___generate__function__.md
+    - 5. Command-Line Interface (CLI) & Experiment Runners: guide/05_command_line_interface__cli____experiment_runners_.md
+    - 6. Launchers (MarketplaceLauncher & AgentLauncher): guide/06_launchers__marketplacelauncher___agentlauncher__.md
+    - 7. Database Controller: guide/07_database_controller_.md
   - Reference: reference/
 
 plugins:
@@ -60,7 +69,11 @@ markdown_extensions:
       anchor_linenums: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
   - admonition
