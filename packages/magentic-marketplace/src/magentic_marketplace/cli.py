@@ -81,6 +81,10 @@ def run_experiment_command(args):
             postgres_host=args.postgres_host,
             postgres_port=args.postgres_port,
             postgres_password=args.postgres_password,
+            db_pool_min_size=args.db_pool_min_size,
+            db_pool_max_size=args.db_pool_max_size,
+            server_host=args.server_host,
+            server_port=args.server_port,
             override=args.override_db,
             export_sqlite=args.export,
             export_dir=args.export_dir,
@@ -216,6 +220,33 @@ def main():
         "--postgres-password",
         default="postgres",
         help="PostgreSQL password (default: postgres)",
+    )
+
+    experiment_parser.add_argument(
+        "--db-pool-min-size",
+        type=int,
+        default=2,
+        help="Minimum connections in PostgreSQL pool (default: 2)",
+    )
+
+    experiment_parser.add_argument(
+        "--db-pool-max-size",
+        type=int,
+        default=10,
+        help="Maximum connections in PostgreSQL pool (default: 10)",
+    )
+
+    experiment_parser.add_argument(
+        "--server-host",
+        default="127.0.0.1",
+        help="FastAPI server host (default: 127.0.0.1)",
+    )
+
+    experiment_parser.add_argument(
+        "--server-port",
+        type=int,
+        default=0,
+        help="FastAPI server port (default: auto-assign)",
     )
 
     experiment_parser.add_argument(

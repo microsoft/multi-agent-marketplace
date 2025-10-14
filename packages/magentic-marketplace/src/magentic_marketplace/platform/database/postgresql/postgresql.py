@@ -844,8 +844,8 @@ async def connect_to_postgresql_database(
     database: str = "marketplace",
     user: str = "postgres",
     password: str | None = None,
-    min_size: int = 50,
-    max_size: int = 50,
+    min_size: int = 2,
+    max_size: int = 10,
     command_timeout: float = 60,
     mode: SchemaMode = "create_new",
 ):

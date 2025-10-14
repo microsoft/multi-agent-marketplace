@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Script to run marketplace experiments using YAML configuration files."""
 
+import socket
 from datetime import datetime
 from pathlib import Path
 
@@ -26,6 +27,10 @@ async def run_marketplace_experiment(
     postgres_host: str = "localhost",
     postgres_port: int = 5432,
     postgres_password: str = "postgres",
+    db_pool_min_size: int = 2,
+    db_pool_max_size: int = 10,
+    server_host: str = "127.0.0.1",
+    server_port: int = 0,
     override: bool = False,
     export_sqlite: bool = False,
     export_dir: str | None = None,
@@ -52,12 +57,23 @@ async def run_marketplace_experiment(
             host=postgres_host,
             port=postgres_port,
             password=postgres_password,
+            min_size=db_pool_min_size,
+            max_size=db_pool_max_size,
             mode="override" if override else "create_new",
         )
+
+    # Auto-assign port if set to 0
+    if server_port == 0:
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.bind((server_host, 0))
+            server_port = s.getsockname()[1]
+        print(f"Auto-assigned server port: {server_port}")
 
     marketplace_launcher = MarketplaceLauncher(
         protocol=SimpleMarketplaceProtocol(),
         database_factory=database_factory,
+        host=server_host,
+        port=server_port,
         server_log_level="warning",
         experiment_name=experiment_name,
     )
