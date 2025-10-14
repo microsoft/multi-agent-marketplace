@@ -274,6 +274,94 @@ class _BoundedSqliteConnectionMixIn:
         async with self._get_connection(is_write=False) as db:
             yield db
 
+    async def _batched_get_all(
+        self,
+        table_name: str,
+        base_sql: str,
+        params: RangeQueryParams | None = None,
+        batch_size: int = 1000,
+    ) -> list[Any]:
+        """Fetch all rows using batching and return raw database rows.
+
+        Args:
+            table_name: Name of the table (for logging)
+            base_sql: Base SQL SELECT query
+            params: Range query parameters for filtering
+            batch_size: Number of rows to fetch per batch (default: 1000)
+
+        Returns:
+            List of all matching raw database rows
+
+        """
+        all_results: list[Any] = []
+
+        params = params or RangeQueryParams()
+
+        # If there's a specific limit, we should respect it
+        remaining = params.limit
+        # Start from params offset
+        batch_offset = params.offset
+
+        # Used only for logging
+        batch_number = 0
+
+        logger.debug(
+            f"Starting batched get_all for {table_name}: batch_size={batch_size}, limit={params.limit}, offset={params.offset}"
+        )
+
+        while True:
+            batch_number += 1
+            # Create batch params
+            if remaining is not None:
+                batch_limit = min(batch_size, remaining)
+            else:
+                batch_limit = batch_size
+
+            logger.debug(
+                f"Fetching {table_name} batch {batch_number}: offset={batch_offset}, limit={batch_limit}"
+            )
+
+            batch_params = params.model_copy(
+                update={"limit": batch_limit, "offset": batch_offset}
+            )
+
+            sql, sql_params = _convert_query_params_to_sql(
+                sql=base_sql,
+                params=batch_params,
+            )
+
+            async with self.connection as db:
+                async with db.execute(sql, sql_params) as cursor:
+                    rows = list(await cursor.fetchall())
+
+            logger.debug(
+                f"Retrieved {len(rows)} {table_name} in batch {batch_number}, total so far: {len(all_results) + len(rows)}"
+            )
+
+            if not rows:
+                break
+
+            all_results.extend(rows)
+
+            # If we got fewer rows than batch_size, we've reached the end
+            if len(rows) < batch_size:
+                logger.debug(
+                    f"Batch {batch_number} returned fewer rows than batch_size, stopping"
+                )
+                break
+
+            batch_offset += len(rows)
+            if remaining is not None:
+                remaining -= len(rows)
+                if remaining <= 0:
+                    logger.debug(f"Reached limit after batch {batch_number}, stopping")
+                    break
+
+        logger.debug(
+            f"Completed batched get_all for {table_name}: {batch_number} batches, {len(all_results)} total rows"
+        )
+        return all_results
+
 
 class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn):
     """SQLite implementation of AgentTableController."""
@@ -346,85 +434,23 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
             List of all matching agent rows
 
         """
-        all_results = []
-        offset = params.offset if params else 0
-        limit = params.limit if params else None
-
-        # If there's a specific limit, we should respect it
-        remaining = limit
-        batch_number = 0
-
-        logger.debug(
-            f"Starting batched get_all for agents: batch_size={batch_size}, limit={limit}, offset={offset}"
+        rows = await self._batched_get_all(
+            table_name="agents",
+            base_sql="SELECT rowid, id, created_at, data, agent_embedding FROM agents",
+            params=params,
+            batch_size=batch_size,
         )
 
-        while True:
-            batch_number += 1
-            # Create batch params
-            if remaining is not None:
-                batch_limit = min(batch_size, remaining)
-            else:
-                batch_limit = batch_size
-
-            logger.debug(
-                f"Fetching agents batch {batch_number}: offset={offset}, limit={batch_limit}"
+        return [
+            AgentRow(
+                id=row[1],
+                created_at=row[2],  # type: ignore  # Pydantic handles datetime string parsing
+                data=AgentProfile.model_validate_json(row[3]),
+                agent_embedding=row[4],  # BLOB data or None
+                index=row[0],
             )
-
-            batch_params = RangeQueryParams(
-                limit=batch_limit,
-                offset=offset,
-                after=params.after if params else None,
-                before=params.before if params else None,
-                after_index=params.after_index if params else None,
-                before_index=params.before_index if params else None,
-            )
-
-            sql, sql_params = _convert_query_params_to_sql(
-                sql="SELECT rowid, id, created_at, data, agent_embedding FROM agents",
-                params=batch_params,
-            )
-
-            async with self.connection as db:
-                async with db.execute(sql, sql_params) as cursor:
-                    rows = list(await cursor.fetchall())
-
-            logger.debug(
-                f"Retrieved {len(rows)} agents in batch {batch_number}, total so far: {len(all_results) + len(rows)}"
-            )
-
-            if not rows:
-                break
-
-            batch_results = [
-                AgentRow(
-                    id=row[1],
-                    created_at=row[2],  # type: ignore  # Pydantic handles datetime string parsing
-                    data=AgentProfile.model_validate_json(row[3]),
-                    agent_embedding=row[4],  # BLOB data or None
-                    index=row[0],
-                )
-                for row in rows
-            ]
-            all_results.extend(batch_results)
-
-            # If we got fewer rows than batch_size, we've reached the end
-            if len(rows) < batch_size:
-                logger.debug(
-                    f"Batch {batch_number} returned fewer rows than batch_size, stopping"
-                )
-                break
-
-            offset += len(rows)
-            if remaining is not None:
-                remaining -= len(rows)
-                if remaining <= 0:
-                    logger.debug(f"Reached limit after batch {batch_number}, stopping")
-                    break
-
-        logger.debug(
-            f"Completed batched get_all for agents: {batch_number} batches, {len(all_results)} total rows"
-        )
-        return all_results
+            for row in rows
+        ]
 
     async def find(
         self, query: Query, params: RangeQueryParams | None = None
@@ -614,63 +640,22 @@ class SQLiteActionController(ActionTableController, _BoundedSqliteConnectionMixI
             List of all matching action rows
 
         """
-        all_results = []
-        offset = params.offset if params else 0
-        limit = params.limit if params else None
+        rows = await self._batched_get_all(
+            table_name="actions",
+            base_sql="SELECT rowid, id, created_at, data FROM actions",
+            params=params,
+            batch_size=batch_size,
+        )
 
-        # If there's a specific limit, we should respect it
-        remaining = limit
-
-        while True:
-            # Create batch params
-            if remaining is not None:
-                batch_limit = min(batch_size, remaining)
-            else:
-                batch_limit = batch_size
-
-            batch_params = RangeQueryParams(
-                limit=batch_limit,
-                offset=offset,
-                after=params.after if params else None,
-                before=params.before if params else None,
-                after_index=params.after_index if params else None,
-                before_index=params.before_index if params else None,
+        return [
+            ActionRow(
+                id=row[1],
+                created_at=row[2],  # type: ignore  # Pydantic handles datetime string parsing
+                data=ActionRowData.model_validate_json(row[3]),
+                index=row[0],
             )
-
-            sql, sql_params = _convert_query_params_to_sql(
-                sql="SELECT rowid, id, created_at, data FROM actions",
-                params=batch_params,
-            )
-
-            async with self.connection as db:
-                async with db.execute(sql, sql_params) as cursor:
-                    rows = list(await cursor.fetchall())
-
-            if not rows:
-                break
-
-            batch_results = [
-                ActionRow(
-                    id=row[1],
-                    created_at=row[2],  # type: ignore  # Pydantic handles datetime string parsing
-                    data=ActionRowData.model_validate_json(row[3]),
-                    index=row[0],
-                )
-                for row in rows
-            ]
-            all_results.extend(batch_results)
-
-            # If we got fewer rows than batch_size, we've reached the end
-            if len(rows) < batch_size:
-                break
-
-            offset += len(rows)
-            if remaining is not None:
-                remaining -= len(rows)
-                if remaining <= 0:
-                    break
-
-        return all_results
+            for row in rows
+        ]
 
     async def update(self, item_id: str, updates: dict[str, Any]) -> ActionRow | None:
         """Update an action."""
@@ -815,63 +800,22 @@ class SQLiteLogController(LogTableController, _BoundedSqliteConnectionMixIn):
             List of all matching log rows
 
         """
-        all_results = []
-        offset = params.offset if params else 0
-        limit = params.limit if params else None
+        rows = await self._batched_get_all(
+            table_name="logs",
+            base_sql="SELECT rowid, id, created_at, data FROM logs",
+            params=params,
+            batch_size=batch_size,
+        )
 
-        # If there's a specific limit, we should respect it
-        remaining = limit
-
-        while True:
-            # Create batch params
-            if remaining is not None:
-                batch_limit = min(batch_size, remaining)
-            else:
-                batch_limit = batch_size
-
-            batch_params = RangeQueryParams(
-                limit=batch_limit,
-                offset=offset,
-                after=params.after if params else None,
-                before=params.before if params else None,
-                after_index=params.after_index if params else None,
-                before_index=params.before_index if params else None,
+        return [
+            LogRow(
+                id=row[1],
+                created_at=row[2],  # type: ignore  # Pydantic handles datetime string parsing
+                data=Log.model_validate_json(row[3]),
+                index=row[0],
             )
-
-            sql, sql_params = _convert_query_params_to_sql(
-                sql="SELECT rowid, id, created_at, data FROM logs",
-                params=batch_params,
-            )
-
-            async with self.connection as db:
-                async with db.execute(sql, sql_params) as cursor:
-                    rows = list(await cursor.fetchall())
-
-            if not rows:
-                break
-
-            batch_results = [
-                LogRow(
-                    id=row[1],
-                    created_at=row[2],  # type: ignore  # Pydantic handles datetime string parsing
-                    data=Log.model_validate_json(row[3]),
-                    index=row[0],
-                )
-                for row in rows
-            ]
-            all_results.extend(batch_results)
-
-            # If we got fewer rows than batch_size, we've reached the end
-            if len(rows) < batch_size:
-                break
-
-            offset += len(rows)
-            if remaining is not None:
-                remaining -= len(rows)
-                if remaining <= 0:
-                    break
-
-        return all_results
+            for row in rows
+        ]
 
     async def update(self, item_id: str, updates: dict[str, Any]) -> LogRow | None:
         """Update a log record."""

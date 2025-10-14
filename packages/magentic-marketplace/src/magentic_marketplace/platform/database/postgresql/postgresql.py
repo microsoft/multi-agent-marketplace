@@ -6,7 +6,7 @@ import logging
 import threading
 import uuid
 from contextlib import asynccontextmanager
-from typing import Any, Literal
+from typing import Any, Literal, cast
 
 import asyncpg
 
@@ -285,7 +285,8 @@ class _BoundedPostgresConnectionMixIn:
             async with asyncio.timeout(self._timeout):
                 async with self._pool.acquire() as conn:
                     _connection_metrics["successful_requests"] += 1
-                    yield conn
+                    # asyncpg type hints don't make it clear, but it is a Connection
+                    yield cast(asyncpg.connection.Connection, conn)
         except TimeoutError as e:
             _connection_metrics["connection_timeouts"] += 1
             logger.warning("Database too busy: timeout acquiring connection from pool")
@@ -294,6 +295,93 @@ class _BoundedPostgresConnectionMixIn:
             _connection_metrics["db_errors"] += 1
             logger.warning(f"Database too busy: PostgreSQL error: {e}")
             raise DatabaseTooBusyError(f"PostgreSQL error: {e}") from e
+
+    async def _batched_get_all(
+        self,
+        table_name: str,
+        base_sql: str,
+        params: RangeQueryParams | None = None,
+        batch_size: int = 1000,
+    ) -> list[Any]:
+        """Fetch all rows using batching and return raw database rows.
+
+        Args:
+            table_name: Name of the table (for logging)
+            base_sql: Base SQL SELECT query
+            params: Range query parameters for filtering
+            batch_size: Number of rows to fetch per batch (default: 1000)
+
+        Returns:
+            List of all matching raw database rows
+
+        """
+        all_results: list[Any] = []
+
+        params = params or RangeQueryParams()
+
+        # If there's a specific limit, we should respect it
+        remaining = params.limit
+        # Start from params offset
+        batch_offset = params.offset
+
+        # Used only for logging
+        batch_number = 0
+
+        logger.debug(
+            f"Starting batched get_all for {table_name}: batch_size={batch_size}, limit={params.limit}, offset={params.offset}"
+        )
+
+        while True:
+            batch_number += 1
+            # Create batch params
+            if remaining is not None:
+                batch_limit = min(batch_size, remaining)
+            else:
+                batch_limit = batch_size
+
+            logger.debug(
+                f"Fetching {table_name} batch {batch_number}: offset={batch_offset}, limit={batch_limit}"
+            )
+
+            batch_params = params.model_copy(
+                update={"limit": batch_limit, "offset": batch_offset}
+            )
+
+            sql, sql_params = _convert_query_params_to_postgres(
+                sql=base_sql,
+                params=batch_params,
+            )
+
+            async with self.connection() as conn:
+                rows = await conn.fetch(sql, *sql_params)
+
+            logger.debug(
+                f"Retrieved {len(rows)} {table_name} in batch {batch_number}, total so far: {len(all_results) + len(rows)}"
+            )
+
+            if not rows:
+                break
+
+            all_results.extend(rows)
+
+            # If we got fewer rows than batch_size, we've reached the end
+            if len(rows) < batch_size:
+                logger.debug(
+                    f"Batch {batch_number} returned fewer rows than batch_size, stopping"
+                )
+                break
+
+            batch_offset += len(rows)
+            if remaining is not None:
+                remaining -= len(rows)
+                if remaining <= 0:
+                    logger.debug(f"Reached limit after batch {batch_number}, stopping")
+                    break
+
+        logger.debug(
+            f"Completed batched get_all for {table_name}: {batch_number} batches, {len(all_results)} total rows"
+        )
+        return all_results
 
 
 class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnectionMixIn):
@@ -354,83 +442,23 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
             List of all matching agent rows
 
         """
-        all_results = []
-        offset = params.offset if params else 0
-        limit = params.limit if params else None
-
-        # If there's a specific limit, we should respect it
-        remaining = limit
-        batch_number = 0
-
-        logger.debug(
-            f"Starting batched get_all for agents: batch_size={batch_size}, limit={limit}, offset={offset}"
+        rows = await self._batched_get_all(
+            table_name="agents",
+            base_sql=f"SELECT row_index, id, created_at, data, agent_embedding FROM {self._schema}.agents",
+            params=params,
+            batch_size=batch_size,
         )
 
-        while True:
-            batch_number += 1
-            # Create batch params
-            if remaining is not None:
-                batch_limit = min(batch_size, remaining)
-            else:
-                batch_limit = batch_size
-
-            logger.debug(
-                f"Fetching agents batch {batch_number}: offset={offset}, limit={batch_limit}"
+        return [
+            AgentRow(
+                id=row["id"],
+                created_at=row["created_at"],
+                data=AgentProfile.model_validate_json(row["data"]),
+                agent_embedding=row["agent_embedding"],
+                index=row["row_index"],
             )
-
-            batch_params = RangeQueryParams(
-                limit=batch_limit,
-                offset=offset,
-                after=params.after if params else None,
-                before=params.before if params else None,
-                after_index=params.after_index if params else None,
-                before_index=params.before_index if params else None,
-            )
-
-            sql, sql_params = _convert_query_params_to_postgres(
-                sql=f"SELECT row_index, id, created_at, data, agent_embedding FROM {self._schema}.agents",
-                params=batch_params,
-            )
-            async with self.connection() as conn:
-                rows = await conn.fetch(sql, *sql_params)
-
-            logger.debug(
-                f"Retrieved {len(rows)} agents in batch {batch_number}, total so far: {len(all_results) + len(rows)}"
-            )
-
-            if not rows:
-                break
-
-            batch_results = [
-                AgentRow(
-                    id=row["id"],
-                    created_at=row["created_at"],
-                    data=AgentProfile.model_validate_json(row["data"]),
-                    agent_embedding=row["agent_embedding"],
-                    index=row["row_index"],
-                )
-                for row in rows
-            ]
-            all_results.extend(batch_results)
-
-            # If we got fewer rows than batch_size, we've reached the end
-            if len(rows) < batch_size:
-                logger.debug(
-                    f"Batch {batch_number} returned fewer rows than batch_size, stopping"
-                )
-                break
-
-            offset += len(rows)
-            if remaining is not None:
-                remaining -= len(rows)
-                if remaining <= 0:
-                    logger.debug(f"Reached limit after batch {batch_number}, stopping")
-                    break
-
-        logger.debug(
-            f"Completed batched get_all for agents: {batch_number} batches, {len(all_results)} total rows"
-        )
-        return all_results
+            for row in rows
+        ]
 
     async def find(
         self, query: Query, params: RangeQueryParams | None = None
@@ -496,7 +524,7 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
         """Count total agents."""
         async with self.connection() as conn:
             result = await conn.fetchval(f"SELECT COUNT(*) FROM {self._schema}.agents")
-            return result
+            return result or 0
 
     async def find_agents_by_id_pattern(self, id_pattern: str) -> list[str]:
         """Find all agent IDs that contain the given ID pattern."""
@@ -589,83 +617,22 @@ class PostgreSQLActionController(
             List of all matching action rows
 
         """
-        all_results = []
-        offset = params.offset if params else 0
-        limit = params.limit if params else None
-
-        # If there's a specific limit, we should respect it
-        remaining = limit
-        batch_number = 0
-
-        logger.debug(
-            f"Starting batched get_all for actions: batch_size={batch_size}, limit={limit}, offset={offset}"
+        rows = await self._batched_get_all(
+            table_name="actions",
+            base_sql=f"SELECT row_index, id, created_at, data FROM {self._schema}.actions",
+            params=params,
+            batch_size=batch_size,
         )
 
-        while True:
-            batch_number += 1
-            # Create batch params
-            if remaining is not None:
-                batch_limit = min(batch_size, remaining)
-            else:
-                batch_limit = batch_size
-
-            logger.debug(
-                f"Fetching actions batch {batch_number}: offset={offset}, limit={batch_limit}"
+        return [
+            ActionRow(
+                id=row["id"],
+                created_at=row["created_at"],
+                data=ActionRowData.model_validate_json(row["data"]),
+                index=row["row_index"],
             )
-
-            batch_params = RangeQueryParams(
-                limit=batch_limit,
-                offset=offset,
-                after=params.after if params else None,
-                before=params.before if params else None,
-                after_index=params.after_index if params else None,
-                before_index=params.before_index if params else None,
-            )
-
-            sql, sql_params = _convert_query_params_to_postgres(
-                sql=f"SELECT row_index, id, created_at, data FROM {self._schema}.actions",
-                params=batch_params,
-            )
-
-            async with self.connection() as conn:
-                rows = await conn.fetch(sql, *sql_params)
-
-            logger.debug(
-                f"Retrieved {len(rows)} actions in batch {batch_number}, total so far: {len(all_results) + len(rows)}"
-            )
-
-            if not rows:
-                break
-
-            batch_results = [
-                ActionRow(
-                    id=row["id"],
-                    created_at=row["created_at"],
-                    data=ActionRowData.model_validate_json(row["data"]),
-                    index=row["row_index"],
-                )
-                for row in rows
-            ]
-            all_results.extend(batch_results)
-
-            # If we got fewer rows than batch_size, we've reached the end
-            if len(rows) < batch_size:
-                logger.debug(
-                    f"Batch {batch_number} returned fewer rows than batch_size, stopping"
-                )
-                break
-
-            offset += len(rows)
-            if remaining is not None:
-                remaining -= len(rows)
-                if remaining <= 0:
-                    logger.debug(f"Reached limit after batch {batch_number}, stopping")
-                    break
-
-        logger.debug(
-            f"Completed batched get_all for actions: {batch_number} batches, {len(all_results)} total rows"
-        )
-        return all_results
+            for row in rows
+        ]
 
     async def update(self, item_id: str, updates: dict[str, Any]) -> ActionRow | None:
         """Update an action."""
@@ -719,7 +686,7 @@ class PostgreSQLActionController(
         """Count total actions."""
         async with self.connection() as conn:
             result = await conn.fetchval(f"SELECT COUNT(*) FROM {self._schema}.actions")
-            return result
+            return result or 0
 
 
 class PostgreSQLLogController(LogTableController, _BoundedPostgresConnectionMixIn):
@@ -796,83 +763,22 @@ class PostgreSQLLogController(LogTableController, _BoundedPostgresConnectionMixI
             List of all matching log rows
 
         """
-        all_results = []
-        offset = params.offset if params else 0
-        limit = params.limit if params else None
-
-        # If there's a specific limit, we should respect it
-        remaining = limit
-        batch_number = 0
-
-        logger.debug(
-            f"Starting batched get_all for logs: batch_size={batch_size}, limit={limit}, offset={offset}"
+        rows = await self._batched_get_all(
+            table_name="logs",
+            base_sql=f"SELECT row_index, id, created_at, data FROM {self._schema}.logs",
+            params=params,
+            batch_size=batch_size,
         )
 
-        while True:
-            batch_number += 1
-            # Create batch params
-            if remaining is not None:
-                batch_limit = min(batch_size, remaining)
-            else:
-                batch_limit = batch_size
-
-            logger.debug(
-                f"Fetching logs batch {batch_number}: offset={offset}, limit={batch_limit}"
+        return [
+            LogRow(
+                id=row["id"],
+                created_at=row["created_at"],
+                data=Log.model_validate_json(row["data"]),
+                index=row["row_index"],
             )
-
-            batch_params = RangeQueryParams(
-                limit=batch_limit,
-                offset=offset,
-                after=params.after if params else None,
-                before=params.before if params else None,
-                after_index=params.after_index if params else None,
-                before_index=params.before_index if params else None,
-            )
-
-            sql, sql_params = _convert_query_params_to_postgres(
-                sql=f"SELECT row_index, id, created_at, data FROM {self._schema}.logs",
-                params=batch_params,
-            )
-
-            async with self.connection() as conn:
-                rows = await conn.fetch(sql, *sql_params)
-
-            logger.debug(
-                f"Retrieved {len(rows)} logs in batch {batch_number}, total so far: {len(all_results) + len(rows)}"
-            )
-
-            if not rows:
-                break
-
-            batch_results = [
-                LogRow(
-                    id=row["id"],
-                    created_at=row["created_at"],
-                    data=Log.model_validate_json(row["data"]),
-                    index=row["row_index"],
-                )
-                for row in rows
-            ]
-            all_results.extend(batch_results)
-
-            # If we got fewer rows than batch_size, we've reached the end
-            if len(rows) < batch_size:
-                logger.debug(
-                    f"Batch {batch_number} returned fewer rows than batch_size, stopping"
-                )
-                break
-
-            offset += len(rows)
-            if remaining is not None:
-                remaining -= len(rows)
-                if remaining <= 0:
-                    logger.debug(f"Reached limit after batch {batch_number}, stopping")
-                    break
-
-        logger.debug(
-            f"Completed batched get_all for logs: {batch_number} batches, {len(all_results)} total rows"
-        )
-        return all_results
+            for row in rows
+        ]
 
     async def update(self, item_id: str, updates: dict[str, Any]) -> LogRow | None:
         """Update a log record."""
@@ -914,7 +820,7 @@ class PostgreSQLLogController(LogTableController, _BoundedPostgresConnectionMixI
         """Count total log records."""
         async with self.connection() as conn:
             result = await conn.fetchval(f"SELECT COUNT(*) FROM {self._schema}.logs")
-            return result
+            return result or 0
 
 
 class PostgreSQLDatabaseController(BaseDatabaseController):
