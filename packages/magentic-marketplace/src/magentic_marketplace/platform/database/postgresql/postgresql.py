@@ -3,6 +3,7 @@
 import asyncio
 import json
 import logging
+import os
 import threading
 import uuid
 from contextlib import asynccontextmanager
@@ -839,13 +840,13 @@ class PostgreSQLDatabaseController(BaseDatabaseController):
 @asynccontextmanager
 async def connect_to_postgresql_database(
     schema: str,
-    host: str = "localhost",
-    port: int = 5432,
-    database: str = "marketplace",
-    user: str = "postgres",
+    host: str | None = None,
+    port: int | None = None,
+    database: str | None = None,
+    user: str | None = None,
     password: str | None = None,
-    min_size: int = 50,
-    max_size: int = 50,
+    min_size: int = 2,
+    max_size: int = 10,
     command_timeout: float = 60,
     mode: SchemaMode = "create_new",
 ):
@@ -853,17 +854,24 @@ async def connect_to_postgresql_database(
 
     Args:
         schema: Database schema (required)
-        host: PostgreSQL server host
-        port: PostgreSQL server port
-        database: Database name
-        user: Database user
-        password: Database password
+        host: PostgreSQL server host (defaults to POSTGRES_HOST env var or localhost)
+        port: PostgreSQL server port (defaults to POSTGRES_PORT env var or 5432)
+        database: Database name (defaults to POSTGRES_DB env var or marketplace)
+        user: Database user (defaults to POSTGRES_USER env var or postgres)
+        password: Database password (defaults to POSTGRES_PASSWORD env var or None)
         min_size: Minimum connections in pool
         max_size: Maximum connections in pool
         command_timeout: Command timeout in seconds
         mode: Schema creation mode (default: 'create_new')
 
     """
+    # Use environment variables as defaults if parameters are not provided
+    host = host or os.environ.get("POSTGRES_HOST", "localhost")
+    port = port or int(os.environ.get("POSTGRES_PORT", "5432"))
+    database = database or os.environ.get("POSTGRES_DB", "marketplace")
+    user = user or os.environ.get("POSTGRES_USER", "postgres")
+    password = password or os.environ.get("POSTGRES_PASSWORD")
+
     pool = await asyncpg.create_pool(
         host=host,
         port=port,
