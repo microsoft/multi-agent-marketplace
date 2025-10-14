@@ -32,6 +32,8 @@ theme:
 
 nav:
   - Home: index.md
+  - Installation: installation.md
+  - Usage: usage.md
   - Reference: reference/
 
 plugins:
