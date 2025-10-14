@@ -1,0 +1,26 @@
+{
+  "pick_any_baseline": {
+    "median": 228.245,
+    "median_ci_lower": 219.77499999999998,
+    "median_ci_upper": 239.70000000000005,
+    "q1": 141.525,
+    "q3": 315.01,
+    "min": -171.89000000000004,
+    "max": 580.5000000000001
+  },
+  "pick_cheapest_baseline": {
+    "constant": 414.50000000000017
+  },
+  "pick_any_with_amenities_baseline": {
+    "median": 685.0450000000001,
+    "median_ci_lower": 683.89,
+    "median_ci_upper": 686.22,
+    "q1": 673.5174999999999,
+    "q3": 696.0600000000001,
+    "min": 639.57,
+    "max": 739.61
+  },
+  "pick_optimal_baseline": {
+    "constant": 762.53
+  }
+}
