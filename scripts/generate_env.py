@@ -83,7 +83,7 @@ def generate_env(template_path: str, output_path: str = ".env") -> None:
     output_file = Path(output_path)
     with open(output_file, "w") as f:
         f.write("\n".join(output_lines))
-        if output_lines and not output_lines[-1] == "":
+        if output_lines and output_lines[-1] != "":
             f.write("\n")
 
     print(f"\n  Generated {output_path} from {template_path}")
