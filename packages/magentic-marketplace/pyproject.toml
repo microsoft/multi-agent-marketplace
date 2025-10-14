@@ -17,6 +17,7 @@ dependencies = [
     "pillow>=11.3.0",
     "asyncpg>=0.30.0",
     "python-dotenv>=1.1.1",
+    "ftfy>=6.0.0",
 ]
 
 [project.scripts]
