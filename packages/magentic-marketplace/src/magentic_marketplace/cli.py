@@ -18,6 +18,10 @@ from magentic_marketplace.experiments.run_analytics import run_analytics
 from magentic_marketplace.experiments.run_audit import run_audit
 from magentic_marketplace.experiments.run_experiment import run_marketplace_experiment
 from magentic_marketplace.experiments.utils import setup_logging
+from magentic_marketplace.ui import run_ui_server
+
+DEFAULT_POSTGRES_PORT = 5432
+DEFAULT_UI_PORT = 5000
 
 
 def run_experiment_command(args):
@@ -147,6 +151,18 @@ def run_export_command(args):
     )
 
 
+def run_ui_command(args):
+    """Handle the UI subcommand to launch the visualizer."""
+    run_ui_server(
+        schema_name=args.schema_name,
+        postgres_host=args.postgres_host,
+        postgres_port=args.postgres_port,
+        postgres_password=args.postgres_password,
+        ui_port=args.ui_port,
+        ui_host=args.ui_host,
+    )
+
+
 def main():
     """Run main CLI."""
     parser = argparse.ArgumentParser(
@@ -213,8 +229,8 @@ def main():
     experiment_parser.add_argument(
         "--postgres-port",
         type=int,
-        default=int(os.environ.get("POSTGRES_PORT", "5432")),
-        help="PostgreSQL port (default: POSTGRES_PORT env var or 5432)",
+        default=int(os.environ.get("POSTGRES_PORT", DEFAULT_POSTGRES_PORT)),
+        help=f"PostgreSQL port (default: POSTGRES_PORT env var or {DEFAULT_POSTGRES_PORT})",
     )
 
     experiment_parser.add_argument(
@@ -440,6 +456,49 @@ def main():
         type=int,
         default=None,
         help="Maximum number of experiments to display",
+    )
+
+    # ui subcommand
+    ui_parser = subparsers.add_parser(
+        "ui", help="Launch interactive visualizer for marketplace data"
+    )
+    ui_parser.set_defaults(func=run_ui_command)
+
+    ui_parser.add_argument(
+        "schema_name",
+        help="PostgreSQL schema name to visualize (same as experiment name)",
+    )
+
+    ui_parser.add_argument(
+        "--postgres-host",
+        default="localhost",
+        help="PostgreSQL host (default: localhost)",
+    )
+
+    ui_parser.add_argument(
+        "--postgres-port",
+        type=int,
+        default=DEFAULT_POSTGRES_PORT,
+        help=f"PostgreSQL port (default: {DEFAULT_POSTGRES_PORT})",
+    )
+
+    ui_parser.add_argument(
+        "--postgres-password",
+        default="postgres",
+        help="PostgreSQL password (default: postgres)",
+    )
+
+    ui_parser.add_argument(
+        "--ui-host",
+        default="localhost",
+        help="UI server host (default: localhost)",
+    )
+
+    ui_parser.add_argument(
+        "--ui-port",
+        type=int,
+        default=DEFAULT_UI_PORT,
+        help=f"Port for ui server(default: {DEFAULT_UI_PORT})",
     )
 
     # Parse arguments and execute the appropriate function

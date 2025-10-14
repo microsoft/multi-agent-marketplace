@@ -223,3 +223,5 @@ __marimo__/
 
 # log files are json so ignore all
 *.json
+
+!.vscode/settings.json
