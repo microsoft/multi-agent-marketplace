@@ -321,8 +321,6 @@ class _BoundedPostgresConnectionMixIn:
 
         # If there's a specific limit, we should respect it
         remaining = params.limit
-        # Start from params offset
-        batch_offset = params.offset
 
         # Used only for logging
         batch_number = 0
@@ -331,52 +329,52 @@ class _BoundedPostgresConnectionMixIn:
             f"Starting batched get_all for {table_name}: batch_size={batch_size}, limit={params.limit}, offset={params.offset}"
         )
 
-        while True:
-            batch_number += 1
-            # Create batch params
-            if remaining is not None:
-                batch_limit = min(batch_size, remaining)
-            else:
-                batch_limit = batch_size
+        sql, sql_params = _convert_query_params_to_postgres(
+            sql=base_sql,
+            params=params,
+        )
 
-            logger.debug(
-                f"Fetching {table_name} batch {batch_number}: offset={batch_offset}, limit={batch_limit}"
-            )
+        async with self.connection() as conn:
+            async with conn.transaction():
+                cursor = await conn.cursor(sql, *sql_params)
+                while True:
+                    batch_number += 1
 
-            batch_params = params.model_copy(
-                update={"limit": batch_limit, "offset": batch_offset}
-            )
+                    # Create batch params
+                    if remaining is not None:
+                        batch_limit = min(batch_size, remaining)
+                    else:
+                        batch_limit = batch_size
 
-            sql, sql_params = _convert_query_params_to_postgres(
-                sql=base_sql,
-                params=batch_params,
-            )
+                    logger.debug(
+                        f"Fetching {table_name} batch {batch_number}: offset={len(all_results)}, limit={batch_limit}"
+                    )
 
-            async with self.connection() as conn:
-                rows = await conn.fetch(sql, *sql_params)
+                    rows = await cursor.fetch(batch_limit)
 
-            logger.debug(
-                f"Retrieved {len(rows)} {table_name} in batch {batch_number}, total so far: {len(all_results) + len(rows)}"
-            )
+                    logger.debug(
+                        f"Retrieved {len(rows)} {table_name} in batch {batch_number}, total so far: {len(all_results) + len(rows)}"
+                    )
 
-            if not rows:
-                break
+                    if not rows:
+                        break
 
-            all_results.extend(rows)
+                    all_results.extend(rows)
 
-            # If we got fewer rows than batch_size, we've reached the end
-            if len(rows) < batch_size:
-                logger.debug(
-                    f"Batch {batch_number} returned fewer rows than batch_size, stopping"
-                )
-                break
+                    # If we got fewer rows than batch_size, we've reached the end
+                    if len(rows) < batch_size:
+                        logger.debug(
+                            f"Batch {batch_number} returned fewer rows than batch_size, stopping"
+                        )
+                        break
 
-            batch_offset += len(rows)
-            if remaining is not None:
-                remaining -= len(rows)
-                if remaining <= 0:
-                    logger.debug(f"Reached limit after batch {batch_number}, stopping")
-                    break
+                    if remaining is not None:
+                        remaining -= len(rows)
+                        if remaining <= 0:
+                            logger.debug(
+                                f"Reached limit after batch {batch_number}, stopping"
+                            )
+                            break
 
         logger.debug(
             f"Completed batched get_all for {table_name}: {batch_number} batches, {len(all_results)} total rows"
