@@ -69,10 +69,7 @@ def generate_env(template_path: str, output_path: str = ".env") -> None:
 
             if env_value is not None:
                 # Use environment value, stripping any leading export
-                value = env_value.strip()
-                if value.startswith("export "):
-                    value = value[7:].strip()
-                output_lines.append(f"{key}={value}")
+                output_lines.append(f"{key}={env_value}")
                 print(f"  {key}: Using value from OS environment")
             else:
                 # Use template default
