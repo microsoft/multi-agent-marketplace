@@ -29,24 +29,24 @@ configs = {
     "mexican": {
         "treatment": "Poblano Palate",
         "title": "Mexican Restaurant Marketing (Malicious)",
-        "strategies": ["malicious_mexican_control", "malicious_mexican_authority", "malicious_mexican_social_proof",
-                      "malicious_mexican_loss_aversion", "malicious_mexican_prompt_injection_basic", "malicious_mexican_prompt_injection_strong"]
+        "strategies": ["mexican_control", "mexican_authority", "mexican_social_proof",
+                      "mexican_loss_aversion", "mexican_prompt_injection_basic", "mexican_prompt_injection_strong"]
     },
     "contractors": {
         "treatment": "Summit Residential Services",
         "title": "Contractors Marketing (Malicious)",
-        "strategies": ["malicious_contractors_control", "malicious_contractors_authority", "malicious_contractors_social_proof",
-                      "malicious_contractors_loss_aversion", "malicious_contractors_prompt_injection_basic", "malicious_contractors_prompt_injection_strong"]
+        "strategies": ["contractors_control", "contractors_authority", "contractors_social_proof",
+                      "contractors_loss_aversion", "contractors_prompt_injection_basic", "contractors_prompt_injection_strong"]
     }
 }
 
 strategy_labels = {
-    "malicious_mexican_control": "Control", "malicious_mexican_authority": "Authority", "malicious_mexican_social_proof": "Social Proof",
-    "malicious_mexican_loss_aversion": "Loss Aversion", "malicious_mexican_prompt_injection_basic": "Prompt Inj.\n(Basic)",
-    "malicious_mexican_prompt_injection_strong": "Prompt Inj.\n(Strong)",
-    "malicious_contractors_control": "Control", "malicious_contractors_authority": "Authority", "malicious_contractors_social_proof": "Social Proof",
-    "malicious_contractors_loss_aversion": "Loss Aversion", "malicious_contractors_prompt_injection_basic": "Prompt Inj.\n(Basic)",
-    "malicious_contractors_prompt_injection_strong": "Prompt Inj.\n(Strong)"
+    "mexican_control": "Control", "mexican_authority": "Authority", "mexican_social_proof": "Social Proof",
+    "mexican_loss_aversion": "Loss Aversion", "mexican_prompt_injection_basic": "Prompt Inj.\n(Basic)",
+    "mexican_prompt_injection_strong": "Prompt Inj.\n(Strong)",
+    "contractors_control": "Control", "contractors_authority": "Authority", "contractors_social_proof": "Social Proof",
+    "contractors_loss_aversion": "Loss Aversion", "contractors_prompt_injection_basic": "Prompt Inj.\n(Basic)",
+    "contractors_prompt_injection_strong": "Prompt Inj.\n(Strong)"
 }
 
 # Plot each experiment type and model
@@ -105,7 +105,7 @@ for exp_type in exp_types_to_plot:
         ax.set_xticks(x)
         ax.set_xticklabels([strategy_labels[s] for s in strategies])
         ax.set_ylabel("Payments")
-        ax.set_ylim(0, 3)  # Fixed y-axis range
+        ax.set_ylim(0, 1)  # Fixed y-axis range (malicious has 1 customer)
         ax.legend(loc="upper left", fontsize=9)
         plt.title(f"{config['title']}: {model}")
         plt.tight_layout()

@@ -26,8 +26,9 @@ from pathlib import Path
 def parse_filename(filename):
     """Parse experiment details from database filename.
 
-    Expected format: condition_model_runX.db
-    Example: contractors_authority_gpt-4.1_run1.db
+    Expected format: malicious_condition_model_runX.db
+    Example: malicious_contractors_authority_gpt-4.1_run1.db
+            malicious_contractors_authority_qwen3_4b_run1.db
 
     Returns: (condition, model, run_id) or None if invalid format
     """
@@ -49,14 +50,31 @@ def parse_filename(filename):
     run_id = parts[1]
     rest = parts[0]
 
-    # Now split rest to get condition and model
-    # Find the last underscore to separate model from condition
-    last_underscore = rest.rfind("_")
-    if last_underscore == -1:
-        return None
+    # Remove "malicious_" prefix if present
+    if rest.startswith("malicious_"):
+        rest = rest[10:]  # len("malicious_") = 10
 
-    condition = rest[:last_underscore]
-    model = rest[last_underscore + 1:]
+    # Known model patterns - check for multi-part model names
+    known_models = ["qwen3_4b", "gpt-4o", "gpt-4.1", "gemini-2.5-flash"]
+
+    model = None
+    condition = None
+
+    for known_model in known_models:
+        # Normalize the comparison (handle both - and _)
+        normalized_known = known_model.replace("-", "_").replace(".", "_")
+        if rest.endswith("_" + normalized_known):
+            model = normalized_known
+            condition = rest[:-len("_" + normalized_known)]
+            break
+
+    # Fallback to old logic if no known model matched
+    if model is None:
+        last_underscore = rest.rfind("_")
+        if last_underscore == -1:
+            return None
+        condition = rest[:last_underscore]
+        model = rest[last_underscore + 1:]
 
     return condition, model, run_id
 

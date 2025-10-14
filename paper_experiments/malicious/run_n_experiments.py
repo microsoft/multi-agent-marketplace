@@ -13,10 +13,21 @@ from magentic_marketplace.experiments.run_experiment import run_marketplace_expe
 NUM_RUNS_PER_FOLDER = 5
 
 # Models to test - add/remove models here
+# MODELS = [
+#     {"provider": "openai", "model": "gpt-4.1"},
+#     {"provider": "openai", "model": "gpt-4o"},
+#     {"provider": "gemini", "model": "gemini-2.5-flash"},
+# ]
+
+# Qwen configuration
 MODELS = [
-    {"provider": "openai", "model": "gpt-4.1"},
-    {"provider": "openai", "model": "gpt-4o"},
-    {"provider": "gemini", "model": "gemini-2.5-flash"},
+    {
+        "provider": "openai",
+        "model": "qwen3-4b",  # Shortened for database compatibility
+        "actual_model": "Qwen/Qwen3-4B-Instruct-2507",  # Actual model name for API
+        "base_url": "http://localhost:8001/v1",
+        "api_key": "dummy",
+    },
 ]
 
 DATA_FOLDERS = [
@@ -49,7 +60,14 @@ async def main():
 
         # Set environment variables for this model
         os.environ["LLM_PROVIDER"] = provider
-        os.environ["LLM_MODEL"] = model
+        # Use actual_model if provided, otherwise use model
+        os.environ["LLM_MODEL"] = model_config.get("actual_model", model)
+
+        # Set base_url and api_key if provided
+        if "base_url" in model_config:
+            os.environ["OPENAI_BASE_URL"] = model_config["base_url"]
+        if "api_key" in model_config:
+            os.environ["OPENAI_API_KEY"] = model_config["api_key"]
 
         print(f"\n{'='*80}")
         print(f"Running experiments with {provider}/{model}")
@@ -58,10 +76,10 @@ async def main():
         for folder_name in DATA_FOLDERS:
             for run_num in range(NUM_RUNS_PER_FOLDER):
                 run_number = run_num + 1
-                clean_model = model.replace("-", "_").replace(".", "_")
+                clean_model = model.replace("-", "_").replace(".", "_").replace("/", "_")
                 experiment_name = f"mal_{folder_name}_{clean_model}_r{run_number}"
                 data_dir = base_dir / folder_name
-                db_filename = f"malicious_{folder_name}_{model}_run{run_number}.db"
+                db_filename = f"malicious_{folder_name}_{clean_model}_run{run_number}.db"
                 db_path = export_dir / db_filename
 
                 if db_path.exists():
