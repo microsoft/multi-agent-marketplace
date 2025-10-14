@@ -46,10 +46,9 @@ class Business(BaseModel):
         """Format the business metadata for ranking.
 
         Args:
-            business (BusinessMetadata): The business metadata to format.
-            index_name (bool): Whether to include the business name in the formatted output.
-            index_menu_prices (bool): Whether to include menu item prices in the formatted output.
-            index_amenities (bool): Whether to include amenities in the formatted output.
+            index_name: Whether to include the business name in the formatted output.
+            index_menu_prices: Whether to include menu item prices in the formatted output.
+            index_amenities: Whether to include amenities in the formatted output.
 
         Returns:
             str: The formatted business metadata.

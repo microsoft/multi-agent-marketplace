@@ -91,7 +91,6 @@ echo 'Type checking completed.'
 # Spell checking
 spell = "codespell -I ../../.codespellignore src/**/*.py src/**/*.md"
 
-
 # GitHub PR comments (shows comments for the active PR)
 pr-comments = { shell = "PR_NUM=$(gh pr view --json number -q .number 2>/dev/null) && gh api repos/microsoft/agentic-economics/pulls/$PR_NUM/comments --jq '.[] | \"File: \" + (.path // \"N/A\") + \"\\nLine: \" + (.line // \"N/A\" | tostring) + \"\\nUser: \" + .user.login + \"\\nComment: \" + .body + \"\\n---\"' || echo 'No PR found for current branch. Make sure you are on a branch with an open PR.'" }
 

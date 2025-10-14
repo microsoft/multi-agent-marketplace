@@ -4,6 +4,7 @@ import asyncio
 import traceback
 
 from magentic_marketplace.platform.shared.models import (
+    ActionExecutionResult,
     BaseAction,
 )
 
@@ -76,14 +77,14 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
         """Access customer data from profile with full type safety."""
         return self.profile.customer
 
-    async def execute_action(self, action: BaseAction):
+    async def execute_action(self, action: BaseAction) -> ActionExecutionResult:
         """Execute an action and record it in event history.
 
         Args:
             action: The action to execute
 
         Returns:
-            Result of the action execution
+            Result of the action execution.
 
         """
         # Execute the action through the parent class

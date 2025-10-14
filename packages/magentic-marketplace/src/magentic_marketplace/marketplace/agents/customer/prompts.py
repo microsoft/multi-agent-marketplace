@@ -30,7 +30,6 @@ class PromptsHandler:
 
         Args:
             customer: Customer object with preferences and request
-            known_business_ids: List of known business IDs
             proposal_storage: Proposal storage instance
             completed_transactions: List of completed transaction IDs
             event_history: Event history for conversation formatting

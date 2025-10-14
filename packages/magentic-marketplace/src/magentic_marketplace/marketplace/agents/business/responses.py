@@ -48,7 +48,6 @@ class ResponseHandler:
         Args:
             customer_id: ID of the customer
             conversation_history: history of convo
-            context: Additional context for the prompt
 
         Returns:
             Response message (text or order proposal) to be sent by caller

@@ -736,7 +736,7 @@ class PostgreSQLDatabaseController(BaseDatabaseController):
         command_timeout: float = 60,
         db_timeout: float = 5,
         mode: SchemaMode = "create_new",
-    ):
+    ) -> "PostgreSQLDatabaseController":
         """Create a new controller for the given schema.
 
         Args:
@@ -753,7 +753,7 @@ class PostgreSQLDatabaseController(BaseDatabaseController):
             mode: schema creation mode
 
         Returns:
-            PostgreSQLDatabaseController instance
+            PostgreSQLDatabaseController instance.
 
         """
         # Create new connection pool and controller

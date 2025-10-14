@@ -6,7 +6,12 @@ from typing import Generic, TypeVar
 
 from ..client import MarketplaceClient
 from ..logger import MarketplaceLogger
-from ..shared.models import AgentProfile, BaseAction
+from ..shared.models import (
+    ActionExecutionResult,
+    ActionProtocolResponse,
+    AgentProfile,
+    BaseAction,
+)
 
 # Generic TypeVar bound to AgentProfile
 TProfile = TypeVar("TProfile", bound=AgentProfile)
@@ -39,7 +44,7 @@ class BaseAgent(Generic[TProfile], ABC):  # noqa: UP046
         """Get the MarketplaceLogger for this client."""
         return self._logger
 
-    async def get_protocol(self):
+    async def get_protocol(self) -> ActionProtocolResponse:
         """Get the marketplace protocol information, e.g. allowed actions.
 
         Returns:
@@ -48,7 +53,7 @@ class BaseAgent(Generic[TProfile], ABC):  # noqa: UP046
         """
         return await self.client.actions.get_protocol()
 
-    async def execute_action(self, action: BaseAction):
+    async def execute_action(self, action: BaseAction) -> ActionExecutionResult:
         """Execute an action through the marketplace.
 
         Arguments:
