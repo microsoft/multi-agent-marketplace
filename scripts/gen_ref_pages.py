@@ -9,6 +9,9 @@ root = Path(__file__).parent.parent
 src = root / "packages" / "magentic-marketplace" / "src"
 
 for path in sorted(src.rglob("*.py")):
+    if "cli.py" in path.name:
+        continue
+
     module_path = path.relative_to(src).with_suffix("")
     doc_path = path.relative_to(src).with_suffix(".md")
     full_doc_path = Path("reference", doc_path)
