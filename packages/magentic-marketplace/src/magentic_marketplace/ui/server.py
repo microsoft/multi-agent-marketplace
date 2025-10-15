@@ -154,8 +154,16 @@ async def _load_messages():
 
 
 def _create_message_threads(customers, businesses, messages):
-    """Create message threads from customers, businesses, and messages."""
+    """Create message threads from customers, businesses, and messages.
+
+    Returns:
+        tuple: (threads_dict, threads_with_payments_set) where:
+            - threads_dict: dict of thread_key -> thread data
+            - threads_with_payments_set: set of thread_keys that have payments
+
+    """
     threads = {}
+    threads_with_payments = set()
     customer_by_agent_id = {c["id"]: c for c in customers}
     business_by_agent_id = {b["id"]: b for b in businesses}
 
@@ -180,6 +188,7 @@ def _create_message_threads(customers, businesses, messages):
                                 },
                                 "messages": [],
                                 "lastMessageTime": message["created_at"],
+                                "utility": 0,  # Default utility
                             }
 
                         # Add search message to each relevant thread
@@ -208,14 +217,17 @@ def _create_message_threads(customers, businesses, messages):
                         "participants": {"customer": customer, "business": business},
                         "messages": [],
                         "lastMessageTime": message["created_at"],
+                        "utility": 0,  # Default utility
                     }
 
                 threads[thread_key]["messages"].append(message)
                 threads[thread_key]["lastMessageTime"] = message["created_at"]
 
-    thread_list = list(threads.values())
-    thread_list.sort(key=lambda x: x["lastMessageTime"], reverse=True)
-    return thread_list
+                # Track threads with payments (customer sending payment to business)
+                if message["type"] == "payment" and from_agent == customer_id:
+                    threads_with_payments.add(thread_key)
+
+    return threads, threads_with_payments
 
 
 def create_analytics_app(
@@ -317,7 +329,9 @@ def create_analytics_app(
             customers = await _load_customers()
             businesses = await _load_businesses()
             messages = await _load_messages()
-            message_threads = _create_message_threads(customers, businesses, messages)
+            threads_dict, threads_with_payments = _create_message_threads(
+                customers, businesses, messages
+            )
 
             # Calculate analytics
             if _db_controller is None:
@@ -326,6 +340,21 @@ def create_analytics_app(
             await analytics.load_data()
             await analytics.analyze_actions()
             analytics_results = analytics.collect_analytics_results()
+
+            for thread_key in threads_with_payments:
+                thread = threads_dict[thread_key]
+                customer_id = thread["participants"]["customer"]["id"]
+                business_id = thread["participants"]["business"]["id"]
+
+                # Calculate utility for this specific conversation
+                conversation_utility = analytics.calculate_conversation_utility(
+                    customer_id, business_id
+                )
+                thread["utility"] = conversation_utility
+
+            # Convert to list and sort by lastMessageTime
+            message_threads = list(threads_dict.values())
+            message_threads.sort(key=lambda x: x["lastMessageTime"], reverse=True)
 
             # Build customer analytics dict
             customer_analytics = {}

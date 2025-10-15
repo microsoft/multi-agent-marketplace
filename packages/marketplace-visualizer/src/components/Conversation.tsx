@@ -2,7 +2,7 @@ import { clsx } from "clsx";
 import { ArrowRight, Clock, CreditCard, MessageSquare, Search, Send } from "lucide-react";
 import React, { useMemo } from "react";
 
-import { MessageThread, OrderProposalContent, PaymentContent } from "../types";
+import { MessageThread } from "../types";
 import { getBusinessAvatar, getCustomerAvatar } from "../utils/avatars";
 import MessageDisplay from "./MessageDisplay";
 
@@ -29,52 +29,16 @@ const Conversation: React.FC<ConversationProps> = ({
       (m) => m.type === "order_proposal" && m.from_agent === thread.participants.business.id,
     ).length;
 
-    // Calculate utility for this conversation
-    let utility = 0;
-    const customerMenuFeatures = thread.participants.customer.menu_features;
-
-    // Get all payments from customer
-    const customerPayments = thread.messages.filter(
-      (m) =>
-        m.type === "payment" &&
-        m.from_agent === thread.participants.customer.id &&
-        typeof m.content === "object" &&
-        m.content !== null,
-    );
-
-    for (const payment of customerPayments) {
-      const paymentContent = payment.content as PaymentContent;
-      // Find corresponding proposal
-      const proposal = thread.messages.find(
-        (m) =>
-          m.type === "order_proposal" &&
-          typeof m.content === "object" &&
-          m.content !== null &&
-          (m.content as OrderProposalContent).id === paymentContent.proposal_message_id,
-      );
-
-      if (proposal && typeof proposal.content === "object" && proposal.content !== null) {
-        const proposalContent = proposal.content as OrderProposalContent;
-        const proposalItems = new Set(proposalContent.items.map((item) => item.item_name));
-        const requestedItems = new Set(Object.keys(customerMenuFeatures));
-
-        // Check if all requested items are in the proposal
-        const allItemsMatch =
-          proposalItems.size === requestedItems.size &&
-          Array.from(requestedItems).every((item) => proposalItems.has(item));
-
-        if (allItemsMatch) {
-          // Match score: 2x the sum of customer's budget for items
-          utility += 2 * Object.values(customerMenuFeatures).reduce((a, b) => a + b, 0);
-        }
-
-        // Subtract payment amount
-        utility -= proposalContent.total_price;
-      }
-    }
+    // Use utility from backend (already calculated per conversation)
+    const utility = thread.utility;
 
     return { payments, proposals, utility };
-  }, [thread.messages, thread.participants]);
+  }, [
+    thread.messages,
+    thread.participants.customer.id,
+    thread.participants.business.id,
+    thread.utility,
+  ]);
 
   const getMessageIcon = (type: string) => {
     switch (type.toLowerCase()) {

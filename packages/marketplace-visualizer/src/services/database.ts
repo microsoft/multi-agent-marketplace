@@ -6,6 +6,9 @@ class DatabaseService {
   private cache: MarketplaceData | null = null;
   private lastFetch: number = 0;
   private cacheDuration: number = 2000; // Cache for 2 seconds
+  private pendingRequest: Promise<
+    Pick<MarketplaceData, "messages" | "messageThreads" | "analytics">
+  > | null = null;
 
   constructor() {
     console.log("Database service initialized - connecting to Python server at", API_BASE_URL);
@@ -66,60 +69,78 @@ class DatabaseService {
       };
     }
 
-    try {
-      console.log("Fetching marketplace data from server...");
-      const response = await this.fetchWithTimeout(`${API_BASE_URL}/marketplace-data`);
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const data = await response.json();
-
-      // Parse message content if it's JSON strings
-      if (data.messageThreads) {
-        data.messageThreads.forEach((thread: { messages: Array<{ content: unknown }> }) => {
-          thread.messages.forEach((message) => {
-            message.content = this.parseMessageContent(message.content);
-          });
-        });
-      }
-
-      // Update cache with new messages/threads/analytics
-      if (this.cache) {
-        this.cache.messages = data.messages;
-        this.cache.messageThreads = data.messageThreads;
-        this.cache.analytics = data.analytics;
-      }
-      this.lastFetch = now;
-
-      console.log("Marketplace data loaded:", {
-        messages: data.messages.length,
-        threads: data.messageThreads.length,
-        analytics: data.analytics ? "included" : "missing",
-      });
-
-      return data;
-    } catch (error) {
-      console.error("Error fetching marketplace data:", error);
-
-      // Return cached data if available, even if expired
-      if (this.cache) {
-        console.log("Using cached data due to error");
-        return {
-          messages: this.cache.messages,
-          messageThreads: this.cache.messageThreads,
-          analytics: this.cache.analytics,
-        };
-      }
-
-      // Return empty data as fallback
-      return {
-        messages: [],
-        messageThreads: [],
-        analytics: undefined,
-      };
+    // If there's already a pending request, return it instead of making a new one
+    if (this.pendingRequest) {
+      return this.pendingRequest;
     }
+
+    // Create a new request
+    this.pendingRequest = (async () => {
+      try {
+        console.log("Fetching marketplace data from server...");
+        const response = await this.fetchWithTimeout(`${API_BASE_URL}/marketplace-data`, 10000);
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        // Parse message content if it's JSON strings
+        if (data.messageThreads) {
+          data.messageThreads.forEach((thread: { messages: Array<{ content: unknown }> }) => {
+            thread.messages.forEach((message) => {
+              message.content = this.parseMessageContent(message.content);
+            });
+          });
+        }
+
+        // Update cache with new messages/threads/analytics
+        if (this.cache) {
+          this.cache.messages = data.messages;
+          this.cache.messageThreads = data.messageThreads;
+          this.cache.analytics = data.analytics;
+        }
+        this.lastFetch = now;
+
+        console.log("Marketplace data loaded:", {
+          messages: data.messages.length,
+          threads: data.messageThreads.length,
+          analytics: data.analytics ? "included" : "missing",
+        });
+
+        return data;
+      } catch (error) {
+        // Handle AbortError silently (it's expected when requests are cancelled)
+        if (error instanceof Error && error.name === "AbortError") {
+          console.log("Request was aborted (likely due to timeout or new request)");
+        } else {
+          console.error("Error fetching marketplace data:", error);
+        }
+
+        // Return cached data if available, even if expired
+        if (this.cache) {
+          console.log("Using cached data due to error");
+          return {
+            messages: this.cache.messages,
+            messageThreads: this.cache.messageThreads,
+            analytics: this.cache.analytics,
+          };
+        }
+
+        // Return empty data as fallback
+        return {
+          messages: [],
+          messageThreads: [],
+          analytics: undefined,
+        };
+      } finally {
+        // Clear pending request when done
+        this.pendingRequest = null;
+      }
+    })();
+
+    return this.pendingRequest;
   }
 
   async getCustomers(): Promise<Customer[]> {
@@ -158,6 +179,7 @@ class DatabaseService {
   clearCache(): void {
     this.cache = null;
     this.lastFetch = 0;
+    this.pendingRequest = null;
   }
 
   // Get cache status
