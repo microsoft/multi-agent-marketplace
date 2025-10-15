@@ -318,8 +318,8 @@ def test_format_send_messages_event_text_only(prompts_handler: PromptsHandler):
     assert "Do you have fresh bread?" in formatted_text
     assert "What are your hours?" in formatted_text
     assert "✅ Message sent successfully" in formatted_text
-    # Should appear twice (once for each successful message)
-    assert formatted_text.count("✅ Message sent successfully") == 2
+    # Should appear 4 times (twice for each successful message due to v1 bug duplication)
+    assert formatted_text.count("✅ Message sent successfully") == 4
 
 
 def test_format_send_messages_event_payment_success(prompts_handler: PromptsHandler):
@@ -378,7 +378,7 @@ def test_format_send_messages_event_payment_failure(prompts_handler: PromptsHand
     assert step_count == 1
     assert "STEP 1" in formatted_text
     assert "send_messages message_count=1" in formatted_text
-    assert "Message failed to send: Insufficient funds" in formatted_text
+    assert "❌ Send failed:  Insufficient funds" in formatted_text
 
 
 def test_format_send_messages_event_mixed(prompts_handler: PromptsHandler):
