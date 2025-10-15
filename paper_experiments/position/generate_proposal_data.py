@@ -108,12 +108,25 @@ def main() -> None:
             rest = parts[0]
 
             # Split by underscore from the right to find model
-            parts2 = rest.rsplit("_", 1)
-            if len(parts2) < 2:
-                continue
+            # Handle multi-part model names like qwen3_4b
+            known_models = ["qwen3_4b", "gpt_4o", "gpt_4_1", "gemini_2_5_flash"]
 
-            model = parts2[1]
-            condition = parts2[0]
+            model = None
+            condition = None
+
+            for known_model in known_models:
+                if rest.endswith("_" + known_model):
+                    model = known_model
+                    condition = rest[:-len("_" + known_model)]
+                    break
+
+            if not model:
+                # Fallback to simple split for unknown models
+                parts2 = rest.rsplit("_", 1)
+                if len(parts2) < 2:
+                    continue
+                model = parts2[1]
+                condition = parts2[0]
 
             db_path = os.path.join(results_dir, filename)
             print(f"Processing {filename}...")

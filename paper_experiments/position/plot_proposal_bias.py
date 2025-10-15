@@ -119,6 +119,7 @@ def create_comparison_plot(df: pd.DataFrame, models: list[str]) -> Path:
             "gpt-4o": "GPT-4o",
             "gpt-4.1": "GPT-4.1",
             "gemini-2.5-flash": "Gemini-2.5-Flash",
+            "qwen3_4b": "Qwen3-4B",
         }.get(model, model)
         ax.set_title(f"{display_name}", fontsize=TITLE_FONT_SIZE)
         ax.set_xticks(x)
@@ -171,4 +172,16 @@ if __name__ == "__main__":
     df = pd.read_csv(file_path)
     models = sorted(df["model"].unique())
     print(f"Found models: {models}")
+
+    # Create comparison plot with all models
     create_proposal_bias_plot_from_csv(file_path, models=models)
+
+    # Additionally create individual plots for each model
+    import shutil
+    for model in models:
+        output_path = Path(f"paper_experiments/position/results/proposal_bias_{model}.png")
+        print(f"\nCreating individual plot for {model}...")
+        create_comparison_plot(df, [model])
+        # Copy the comparison plot to model-specific name (don't rename, so we keep the original)
+        shutil.copy("paper_experiments/position/results/proposal_bias_comparison.png", output_path)
+        print(f"Saved: {output_path}")

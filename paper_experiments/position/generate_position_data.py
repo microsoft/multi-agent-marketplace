@@ -80,12 +80,25 @@ def main():
 
         # rest is now: business_0001_first_gemini-2.5-flash or contractors_first_gemini-2.5-flash
         # Split by underscore from the right to find model
-        parts2 = rest.rsplit("_", 1)
-        if len(parts2) < 2:
-            continue
+        # Handle multi-part model names like qwen3_4b
+        known_models = ["qwen3_4b", "gpt_4o", "gpt_4_1", "gemini_2_5_flash"]
 
-        model = parts2[1]  # gemini-2.5-flash
-        condition_and_position = parts2[0]  # business_0001_first or contractors_first
+        model = None
+        condition_and_position = None
+
+        for known_model in known_models:
+            if rest.endswith("_" + known_model):
+                model = known_model
+                condition_and_position = rest[:-len("_" + known_model)]
+                break
+
+        if not model:
+            # Fallback to simple split for unknown models
+            parts2 = rest.rsplit("_", 1)
+            if len(parts2) < 2:
+                continue
+            model = parts2[1]
+            condition_and_position = parts2[0]
 
         # Extract position (last part)
         position_parts = condition_and_position.rsplit("_", 1)
