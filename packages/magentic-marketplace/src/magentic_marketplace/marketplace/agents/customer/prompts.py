@@ -263,9 +263,7 @@ Choose your action carefully.
             if is_success:
                 send_message_result_lines.append("✅ Message sent successfully")
             else:
-                send_message_result_lines.append(
-                    f"Message failed to send: {error_message}"
-                )
+                send_message_result_lines.append(f"❌ Send failed: {error_message}")
 
         for pay_message, pay_message_result in zip(
             pay_messages, message_results.pay_message_results, strict=True
@@ -283,9 +281,7 @@ Choose your action carefully.
                     "🎉 PAYMENT COMPLETED SUCCESSFULLY! Transaction accepted by platform. The purchase has been finalized."
                 )
             else:
-                send_message_result_lines.append(
-                    f"Message failed to send: {error_message}"
-                )
+                send_message_result_lines.append(f"❌ Send failed:  {error_message}")
 
         lines.append(f"Step {step_number} result: {send_message_result_lines}")
 

@@ -323,7 +323,8 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
                     send_message_results.pay_message_results.append(
                         (
                             False,
-                            f"Error: proposal_to_accept '{proposal_to_accept}' does not match any known proposals.",
+                            # Match v1 formatting
+                            f"Proposal ID {proposal_to_accept} not found in database (Error: invalid_proposal_id)",
                         )
                     )
 
