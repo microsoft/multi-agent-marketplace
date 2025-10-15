@@ -2,7 +2,6 @@
 
 Visualize the results in the marketplace!
 
-
 ## Quick Start
 
 This visualizer runs against a database after an experiment has finished.
