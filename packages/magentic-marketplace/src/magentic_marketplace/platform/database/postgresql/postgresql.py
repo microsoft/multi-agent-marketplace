@@ -284,11 +284,12 @@ class _BoundedPostgresConnectionMixIn:
             _connection_metrics["read_requests"] += 1
 
         try:
-            async with asyncio.timeout(self._timeout):
-                async with self._pool.acquire() as conn:
-                    _connection_metrics["successful_requests"] += 1
-                    # asyncpg type hints don't make it clear, but it is a Connection
-                    yield cast(asyncpg.connection.Connection, conn)
+            conn = await asyncio.wait_for(self._pool.acquire(), self._timeout)
+            try:
+                _connection_metrics["successful_requests"] += 1
+                yield cast(asyncpg.connection.Connection, conn)
+            finally:
+                await self._pool.release(conn)
         except TimeoutError as e:
             _connection_metrics["connection_timeouts"] += 1
             logger.warning("Database too busy: timeout acquiring connection from pool")
