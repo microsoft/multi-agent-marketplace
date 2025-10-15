@@ -348,6 +348,62 @@ class MarketplaceAnalytics:
                     return business_agent_id
         return None
 
+    def calculate_conversation_utility(
+        self, customer_agent_id: str, business_agent_id: str
+    ) -> float:
+        """Calculate utility for a specific customer-business conversation.
+
+        This calculates utility based on payments made by the customer to this specific
+        business. Unlike total customer utility, the match score is counted for each
+        payment in this conversation that meets the customer's needs.
+
+        Args:
+            customer_agent_id: ID of the customer
+            business_agent_id: ID of the business
+
+        Returns:
+            Utility for this specific conversation (can be positive or negative)
+
+        """
+        if customer_agent_id not in self.customer_agents:
+            return 0.0
+
+        customer = self.customer_agents[customer_agent_id].customer
+        all_payments = self.customer_payments.get(customer_agent_id, [])
+        all_proposals = self.customer_orders.get(customer_agent_id, [])
+
+        # Filter payments that went to this specific business
+        total_payments_to_business = 0.0
+        match_score = 0.0
+
+        for payment in all_payments:
+            # Find the corresponding proposal
+            proposal = next(
+                (p for p in all_proposals if p.id == payment.proposal_message_id),
+                None,
+            )
+            if proposal:
+                # Check if this proposal is from the target business
+                proposal_business_id = self._find_business_for_proposal(proposal.id)
+                if proposal_business_id == business_agent_id:
+                    # This payment is to the target business
+                    total_payments_to_business += proposal.total_price
+
+                    # Check if this payment meets customer's needs
+                    proposal_items = {item.item_name for item in proposal.items}
+                    requested_items = set(customer.menu_features.keys())
+
+                    if proposal_items == requested_items:
+                        # Items match - now check amenities
+                        if self.check_amenity_match(
+                            customer_agent_id, business_agent_id
+                        ):
+                            # Items AND amenities match - add match score
+                            match_score = 2 * sum(customer.menu_features.values())
+
+        utility = match_score - total_payments_to_business
+        return round(utility, 2)
+
     def _calculate_business_utilities(self) -> dict[str, float]:
         """Calculate utility (revenue) for each business based on payments received."""
         business_utilities: defaultdict[str, float] = defaultdict(float)
