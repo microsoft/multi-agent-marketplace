@@ -292,10 +292,9 @@ class _BoundedPostgresConnectionMixIn:
             _connection_metrics["connection_timeouts"] += 1
             logger.warning("Database too busy: timeout acquiring connection from pool")
             raise DatabaseTooBusyError("Connection pool timeout") from e
-        except (asyncpg.PostgresError, asyncpg.InterfaceError) as e:
+        except Exception:
             _connection_metrics["db_errors"] += 1
-            logger.warning(f"Database too busy: PostgreSQL error: {e}")
-            raise DatabaseTooBusyError(f"PostgreSQL error: {e}") from e
+            raise
 
 
 class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnectionMixIn):
