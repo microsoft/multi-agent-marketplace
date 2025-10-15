@@ -274,6 +274,92 @@ class _BoundedSqliteConnectionMixIn:
         async with self._get_connection(is_write=False) as db:
             yield db
 
+    async def _batched_get_all(
+        self,
+        table_name: str,
+        base_sql: str,
+        params: RangeQueryParams | None = None,
+        batch_size: int = 1000,
+    ) -> list[Any]:
+        """Fetch all rows using batching and return raw database rows.
+
+        Args:
+            table_name: Name of the table (for logging)
+            base_sql: Base SQL SELECT query
+            params: Range query parameters for filtering
+            batch_size: Number of rows to fetch per batch (default: 1000)
+
+        Returns:
+            List of all matching raw database rows
+
+        """
+        all_results: list[Any] = []
+
+        params = params or RangeQueryParams()
+
+        sql, sql_params = _convert_query_params_to_sql(
+            sql=base_sql,
+            params=params,
+        )
+
+        # If there's a specific limit, we should respect it
+        remaining = params.limit
+        # Start from params offset
+        batch_offset = params.offset
+
+        # Used only for logging
+        batch_number = 0
+
+        logger.debug(
+            f"Starting batched get_all for {table_name}: batch_size={batch_size}, limit={params.limit}, offset={params.offset}"
+        )
+
+        async with self.connection as db:
+            async with db.execute(sql, sql_params) as cursor:
+                while True:
+                    batch_number += 1
+                    # Create batch params
+                    if remaining is not None:
+                        batch_limit = min(batch_size, remaining)
+                    else:
+                        batch_limit = batch_size
+
+                    logger.debug(
+                        f"Fetching {table_name} batch {batch_number}: offset={batch_offset}, limit={batch_limit}"
+                    )
+
+                    rows = list(await cursor.fetchmany(batch_limit))
+
+                    logger.debug(
+                        f"Retrieved {len(rows)} {table_name} in batch {batch_number}, total so far: {len(all_results) + len(rows)}"
+                    )
+
+                    if not rows:
+                        break
+
+                    all_results.extend(rows)
+
+                    # If we got fewer rows than batch_size, we've reached the end
+                    if len(rows) < batch_size:
+                        logger.debug(
+                            f"Batch {batch_number} returned fewer rows than batch_size, stopping"
+                        )
+                        break
+
+                    batch_offset += len(rows)
+                    if remaining is not None:
+                        remaining -= len(rows)
+                        if remaining <= 0:
+                            logger.debug(
+                                f"Reached limit after batch {batch_number}, stopping"
+                            )
+                            break
+
+        logger.debug(
+            f"Completed batched get_all for {table_name}: {batch_number} batches, {len(all_results)} total rows"
+        )
+        return all_results
+
 
 class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn):
     """SQLite implementation of AgentTableController."""
@@ -333,16 +419,25 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
             index=row[0],
         )
 
-    async def get_all(self, params: RangeQueryParams | None = None) -> list[AgentRow]:
-        """Get all agents with pagination."""
-        sql, sql_params = _convert_query_params_to_sql(
-            sql="SELECT rowid, id, created_at, data, agent_embedding FROM agents",
-            params=params,
-        )
+    async def get_all(
+        self, params: RangeQueryParams | None = None, batch_size: int = 1000
+    ) -> list[AgentRow]:
+        """Get all agents with pagination, fetching in batches.
 
-        async with self.connection as db:
-            async with db.execute(sql, sql_params) as cursor:
-                rows = await cursor.fetchall()
+        Args:
+            params: Range query parameters for filtering
+            batch_size: Number of rows to fetch per batch (default: 1000)
+
+        Returns:
+            List of all matching agent rows
+
+        """
+        rows = await self._batched_get_all(
+            table_name="agents",
+            base_sql="SELECT rowid, id, created_at, data, agent_embedding FROM agents",
+            params=params,
+            batch_size=batch_size,
+        )
 
         return [
             AgentRow(
@@ -530,16 +625,25 @@ class SQLiteActionController(ActionTableController, _BoundedSqliteConnectionMixI
             index=row[0],
         )
 
-    async def get_all(self, params: RangeQueryParams | None = None) -> list[ActionRow]:
-        """Get all actions with pagination."""
-        sql, sql_params = _convert_query_params_to_sql(
-            sql="SELECT rowid, id, created_at, data FROM actions",
-            params=params,
-        )
+    async def get_all(
+        self, params: RangeQueryParams | None = None, batch_size: int = 1000
+    ) -> list[ActionRow]:
+        """Get all actions with pagination, fetching in batches.
 
-        async with self.connection as db:
-            async with db.execute(sql, sql_params) as cursor:
-                rows = await cursor.fetchall()
+        Args:
+            params: Range query parameters for filtering
+            batch_size: Number of rows to fetch per batch (default: 1000)
+
+        Returns:
+            List of all matching action rows
+
+        """
+        rows = await self._batched_get_all(
+            table_name="actions",
+            base_sql="SELECT rowid, id, created_at, data FROM actions",
+            params=params,
+            batch_size=batch_size,
+        )
 
         return [
             ActionRow(
@@ -681,16 +785,25 @@ class SQLiteLogController(LogTableController, _BoundedSqliteConnectionMixIn):
             index=row[0],
         )
 
-    async def get_all(self, params: RangeQueryParams | None = None) -> list[LogRow]:
-        """Get all logs with pagination."""
-        sql, sql_params = _convert_query_params_to_sql(
-            sql="SELECT rowid, id, created_at, data FROM logs",
-            params=params,
-        )
+    async def get_all(
+        self, params: RangeQueryParams | None = None, batch_size: int = 1000
+    ) -> list[LogRow]:
+        """Get all logs with pagination, fetching in batches.
 
-        async with self.connection as db:
-            async with db.execute(sql, sql_params) as cursor:
-                rows = await cursor.fetchall()
+        Args:
+            params: Range query parameters for filtering
+            batch_size: Number of rows to fetch per batch (default: 1000)
+
+        Returns:
+            List of all matching log rows
+
+        """
+        rows = await self._batched_get_all(
+            table_name="logs",
+            base_sql="SELECT rowid, id, created_at, data FROM logs",
+            params=params,
+            batch_size=batch_size,
+        )
 
         return [
             LogRow(

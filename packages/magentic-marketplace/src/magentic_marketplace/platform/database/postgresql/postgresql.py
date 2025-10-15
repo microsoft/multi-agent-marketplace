@@ -7,7 +7,7 @@ import os
 import threading
 import uuid
 from contextlib import asynccontextmanager
-from typing import Any, Literal
+from typing import Any, Literal, cast
 
 import asyncpg
 
@@ -287,15 +287,100 @@ class _BoundedPostgresConnectionMixIn:
             async with asyncio.timeout(self._timeout):
                 async with self._pool.acquire() as conn:
                     _connection_metrics["successful_requests"] += 1
-                    yield conn
+                    # asyncpg type hints don't make it clear, but it is a Connection
+                    yield cast(asyncpg.connection.Connection, conn)
         except TimeoutError as e:
             _connection_metrics["connection_timeouts"] += 1
             logger.warning("Database too busy: timeout acquiring connection from pool")
             raise DatabaseTooBusyError("Connection pool timeout") from e
-        except (asyncpg.PostgresError, asyncpg.InterfaceError) as e:
+        except Exception:
             _connection_metrics["db_errors"] += 1
-            logger.warning(f"Database too busy: PostgreSQL error: {e}")
-            raise DatabaseTooBusyError(f"PostgreSQL error: {e}") from e
+            raise
+
+    async def _batched_get_all(
+        self,
+        table_name: str,
+        base_sql: str,
+        params: RangeQueryParams | None = None,
+        batch_size: int = 1000,
+    ) -> list[Any]:
+        """Fetch all rows using batching and return raw database rows.
+
+        Args:
+            table_name: Name of the table (for logging)
+            base_sql: Base SQL SELECT query
+            params: Range query parameters for filtering
+            batch_size: Number of rows to fetch per batch (default: 1000)
+
+        Returns:
+            List of all matching raw database rows
+
+        """
+        all_results: list[Any] = []
+
+        params = params or RangeQueryParams()
+
+        # If there's a specific limit, we should respect it
+        remaining = params.limit
+
+        # Used only for logging
+        batch_number = 0
+
+        logger.debug(
+            f"Starting batched get_all for {table_name}: batch_size={batch_size}, limit={params.limit}, offset={params.offset}"
+        )
+
+        sql, sql_params = _convert_query_params_to_postgres(
+            sql=base_sql,
+            params=params,
+        )
+
+        async with self.connection() as conn:
+            async with conn.transaction():
+                cursor = await conn.cursor(sql, *sql_params)
+                while True:
+                    batch_number += 1
+
+                    # Create batch params
+                    if remaining is not None:
+                        batch_limit = min(batch_size, remaining)
+                    else:
+                        batch_limit = batch_size
+
+                    logger.debug(
+                        f"Fetching {table_name} batch {batch_number}: offset={len(all_results)}, limit={batch_limit}"
+                    )
+
+                    rows = await cursor.fetch(batch_limit)
+
+                    logger.debug(
+                        f"Retrieved {len(rows)} {table_name} in batch {batch_number}, total so far: {len(all_results) + len(rows)}"
+                    )
+
+                    if not rows:
+                        break
+
+                    all_results.extend(rows)
+
+                    # If we got fewer rows than batch_size, we've reached the end
+                    if len(rows) < batch_size:
+                        logger.debug(
+                            f"Batch {batch_number} returned fewer rows than batch_size, stopping"
+                        )
+                        break
+
+                    if remaining is not None:
+                        remaining -= len(rows)
+                        if remaining <= 0:
+                            logger.debug(
+                                f"Reached limit after batch {batch_number}, stopping"
+                            )
+                            break
+
+        logger.debug(
+            f"Completed batched get_all for {table_name}: {batch_number} batches, {len(all_results)} total rows"
+        )
+        return all_results
 
 
 class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnectionMixIn):
@@ -359,14 +444,25 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
             index=row["row_index"],
         )
 
-    async def get_all(self, params: RangeQueryParams | None = None) -> list[AgentRow]:
-        """Get all agents with pagination."""
-        sql, sql_params = _convert_query_params_to_postgres(
-            sql=f"SELECT row_index, id, created_at, data, agent_embedding FROM {self._schema}.agents",
+    async def get_all(
+        self, params: RangeQueryParams | None = None, batch_size: int = 1000
+    ) -> list[AgentRow]:
+        """Get all agents with pagination, fetching in batches.
+
+        Args:
+            params: Range query parameters for filtering
+            batch_size: Number of rows to fetch per batch (default: 1000)
+
+        Returns:
+            List of all matching agent rows
+
+        """
+        rows = await self._batched_get_all(
+            table_name="agents",
+            base_sql=f"SELECT row_index, id, created_at, data, agent_embedding FROM {self._schema}.agents",
             params=params,
+            batch_size=batch_size,
         )
-        async with self.connection() as conn:
-            rows = await conn.fetch(sql, *sql_params)
 
         return [
             AgentRow(
@@ -443,7 +539,7 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
         """Count total agents."""
         async with self.connection() as conn:
             result = await conn.fetchval(f"SELECT COUNT(*) FROM {self._schema}.agents")
-            return result
+            return result or 0
 
     async def find_agents_by_id_pattern(self, id_pattern: str) -> list[str]:
         """Find all agent IDs that contain the given ID pattern."""
@@ -537,15 +633,25 @@ class PostgreSQLActionController(
             index=row["row_index"],
         )
 
-    async def get_all(self, params: RangeQueryParams | None = None) -> list[ActionRow]:
-        """Get all actions with pagination."""
-        sql, sql_params = _convert_query_params_to_postgres(
-            sql=f"SELECT row_index, id, created_at, data FROM {self._schema}.actions",
-            params=params,
-        )
+    async def get_all(
+        self, params: RangeQueryParams | None = None, batch_size: int = 1000
+    ) -> list[ActionRow]:
+        """Get all actions with pagination, fetching in batches.
 
-        async with self.connection() as conn:
-            rows = await conn.fetch(sql, *sql_params)
+        Args:
+            params: Range query parameters for filtering
+            batch_size: Number of rows to fetch per batch (default: 1000)
+
+        Returns:
+            List of all matching action rows
+
+        """
+        rows = await self._batched_get_all(
+            table_name="actions",
+            base_sql=f"SELECT row_index, id, created_at, data FROM {self._schema}.actions",
+            params=params,
+            batch_size=batch_size,
+        )
 
         return [
             ActionRow(
@@ -609,7 +715,7 @@ class PostgreSQLActionController(
         """Count total actions."""
         async with self.connection() as conn:
             result = await conn.fetchval(f"SELECT COUNT(*) FROM {self._schema}.actions")
-            return result
+            return result or 0
 
 
 class PostgreSQLLogController(LogTableController, _BoundedPostgresConnectionMixIn):
@@ -688,15 +794,25 @@ class PostgreSQLLogController(LogTableController, _BoundedPostgresConnectionMixI
             index=row["row_index"],
         )
 
-    async def get_all(self, params: RangeQueryParams | None = None) -> list[LogRow]:
-        """Get all logs with pagination."""
-        sql, sql_params = _convert_query_params_to_postgres(
-            sql=f"SELECT row_index, id, created_at, data FROM {self._schema}.logs",
-            params=params,
-        )
+    async def get_all(
+        self, params: RangeQueryParams | None = None, batch_size: int = 1000
+    ) -> list[LogRow]:
+        """Get all logs with pagination, fetching in batches.
 
-        async with self.connection() as conn:
-            rows = await conn.fetch(sql, *sql_params)
+        Args:
+            params: Range query parameters for filtering
+            batch_size: Number of rows to fetch per batch (default: 1000)
+
+        Returns:
+            List of all matching log rows
+
+        """
+        rows = await self._batched_get_all(
+            table_name="logs",
+            base_sql=f"SELECT row_index, id, created_at, data FROM {self._schema}.logs",
+            params=params,
+            batch_size=batch_size,
+        )
 
         return [
             LogRow(
@@ -748,7 +864,7 @@ class PostgreSQLLogController(LogTableController, _BoundedPostgresConnectionMixI
         """Count total log records."""
         async with self.connection() as conn:
             result = await conn.fetchval(f"SELECT COUNT(*) FROM {self._schema}.logs")
-            return result
+            return result or 0
 
 
 class PostgreSQLDatabaseController(BaseDatabaseController):
