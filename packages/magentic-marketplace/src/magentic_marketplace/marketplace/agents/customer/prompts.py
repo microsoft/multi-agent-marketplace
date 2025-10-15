@@ -213,12 +213,13 @@ Choose your action carefully.
         lines = self._format_step_header(current_step=step_number)
         lines.append("Action: check_messages (checking for responses)")
 
+        formatted_results: list[str] = []
+
         if isinstance(result, FetchMessagesResponse):
             message_count = len(result.messages)
             if message_count == 0:
                 lines.append(f"Step {step_number} result: 📭 No new messages")
             else:
-                formatted_results: list[str] = []
                 # Add received messages to conversation
                 for received_message in result.messages:
                     message_content = received_message.message
@@ -233,6 +234,15 @@ Choose your action carefully.
             )
         else:
             lines.append(f"Step {step_number} result: Failed to fetch messages.")
+
+        # Mimic v1 bug
+        if formatted_results:
+            lines = [
+                "",
+                "",
+                "\n".join(formatted_results),
+                "",
+            ] + lines
 
         return lines
 
@@ -284,6 +294,14 @@ Choose your action carefully.
                 send_message_result_lines.append(f"❌ Send failed:  {error_message}")
 
         lines.append(f"Step {step_number} result: {send_message_result_lines}")
+
+        # Mimic v1 bug
+        lines = [
+            "",
+            "",
+            "\n".join(send_message_result_lines),
+            "",
+        ] + lines
 
         return lines
 
