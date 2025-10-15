@@ -1,15 +1,7 @@
-# Marketplace visualizer
+# Marketplace Visualizer
 
-Visualize the results in the marketplace.
+Visualize the results in the marketplace!
 
-## Install
-
-```bash
-cd marketplace-visualizer
-uv sync
-npm install
-npm run build # build output files
-```
 
 ## Quick Start
 
@@ -32,7 +24,16 @@ magentic-marketplace ui myexperiment123
 
 ## Dev
 
-Launch UI in dev mode
+To make changes you first need to install the frontend code then run the server in dev mode
+
+```bash
+cd marketplace-visualizer
+uv sync
+npm install
+npm run build # builds output files
+```
+
+Then launch UI in dev mode
 
 ```bash
 cd marketplace-visualizer
