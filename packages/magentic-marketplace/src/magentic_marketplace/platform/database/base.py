@@ -124,6 +124,12 @@ class BaseDatabaseController(ABC):
         """Get the log record controller."""
         pass
 
+    @property
+    @abstractmethod
+    def row_index_column(self) -> str:
+        """Get the name of the row index column for this database."""
+        pass
+
     @abstractmethod
     async def execute(self, command: Any) -> Any:
         """Execute an arbitrary database command."""

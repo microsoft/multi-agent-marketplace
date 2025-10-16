@@ -930,6 +930,11 @@ class SQLiteDatabaseController(BaseDatabaseController, _BoundedSqliteConnectionM
         """Get the log controller."""
         return self._logs
 
+    @property
+    def row_index_column(self) -> str:
+        """Get the name of the row index column for this database."""
+        return "rowid"
+
     async def execute(self, command: Any) -> Any:
         """Execute an arbitrary database command."""
         async with self._get_connection(is_write=True) as db:

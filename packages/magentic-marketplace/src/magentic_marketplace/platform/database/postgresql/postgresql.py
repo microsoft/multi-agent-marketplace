@@ -91,6 +91,37 @@ def _stop_metrics_timer():
         _metrics_timer = None
 
 
+def _format_jsonpath(path: str) -> str:
+    """Format a JSONPath for PostgreSQL with quoted keys and explicit cast.
+
+    Converts $.a.b.c to $."a"."b"."c"::jsonpath
+
+    Args:
+        path: JSONPath string (e.g., '$.request.name')
+
+    Returns:
+        Formatted path with quoted keys and ::jsonpath cast
+
+    """
+    # Remove leading $. or $
+    if path.startswith("$."):
+        path = path[2:]
+    elif path.startswith("$"):
+        path = path[1:]
+        if path.startswith("."):
+            path = path[1:]
+
+    if not path:
+        return "'$'::jsonpath"
+
+    # Split by dots and quote each part
+    parts = path.split(".")
+    quoted_parts = [f'"{part}"' for part in parts]
+    formatted_path = "$." + ".".join(quoted_parts)
+
+    return f"'{formatted_path}'::jsonpath"
+
+
 def _convert_query_to_postgres(
     query: Query, sql_params: list[Any] | None = None
 ) -> tuple[str, list[Any]]:
@@ -124,37 +155,38 @@ def _convert_query_to_postgres(
         if not isinstance(q, JSONQuery):
             raise ValueError(f"Expected JSONQuery, got {type(q)}")
 
+        # Format the JSONPath with quoted keys and explicit cast
+        formatted_path = _format_jsonpath(q.path)
+
         # Handle special NULL operators first
         if q.operator in ["IS NULL", "IS NOT NULL"]:
-            return f"jsonb_path_query_first(data, '{q.path}') {q.operator}"
+            return f"jsonb_path_query_first(data, {formatted_path}) {q.operator}"
 
         # Handle value conversion for PostgreSQL
         if q.value is None:
             # For NULL values, we need to adjust the operator
             if q.operator == "=":
-                return f"jsonb_path_query_first(data, '{q.path}') IS NULL"
+                return f"jsonb_path_query_first(data, {formatted_path}) IS NULL"
             elif q.operator == "!=":
-                return f"jsonb_path_query_first(data, '{q.path}') IS NOT NULL"
+                return f"jsonb_path_query_first(data, {formatted_path}) IS NOT NULL"
             else:
                 # For other operators with NULL, use NULL as is
                 params.append(None)
-                return f"jsonb_path_query_first(data, '{q.path}') {q.operator} ${param_offset + len(params)}"
+                return f"jsonb_path_query_first(data, {formatted_path}) {q.operator} ${param_offset + len(params)}"
         else:
-            # For jsonb_path_query_first, we need to wrap string values in JSON quotes
-            if isinstance(q.value, str):
-                params.append(f'"{q.value}"')
-            else:
-                params.append(json.dumps(q.value))
+            # Always extract as text using #>> '{}' for better index usage
+            # This matches the functional index expression pattern
+            params.append(q.value)
             param_idx = param_offset + len(params)
 
-            # Generate SQL using jsonb_path_query_first
+            # Generate SQL using jsonb_path_query_first with text extraction
             if q.operator.upper() == "LIKE":
-                # For LIKE operations, we need to extract as text first
-                # Use the string value without JSON quotes and add wildcards
-                params[-1] = f"%{q.value}%"  # Add wildcards for LIKE
-                return f"jsonb_path_query_first(data, '{q.path}') #>> '{{}}' ILIKE ${param_idx}"
+                # For LIKE operations, add wildcards
+                params[-1] = f"%{q.value}%"
+                return f"jsonb_path_query_first(data, {formatted_path}) #>> '{{}}' ILIKE ${param_idx}"
             else:
-                return f"jsonb_path_query_first(data, '{q.path}') {q.operator} ${param_idx}"
+                # For equality and other comparisons, extract as text
+                return f"jsonb_path_query_first(data, {formatted_path}) #>> '{{}}' {q.operator} ${param_idx}"
 
     sql = build_query(query)
     return sql, params
@@ -249,13 +281,23 @@ CREATE TABLE IF NOT EXISTS {schema}.logs (
     row_index BIGINT GENERATED ALWAYS AS IDENTITY UNIQUE
 );
 
--- Add indexes for better performance
+-- Add indexes for better performance on core columns
+CREATE INDEX IF NOT EXISTS agents_id_idx ON {schema}.agents(id);
 CREATE INDEX IF NOT EXISTS agents_created_at_idx ON {schema}.agents(created_at);
 CREATE INDEX IF NOT EXISTS agents_row_index_idx ON {schema}.agents(row_index);
+
+CREATE INDEX IF NOT EXISTS actions_id_idx ON {schema}.actions(id);
 CREATE INDEX IF NOT EXISTS actions_created_at_idx ON {schema}.actions(created_at);
 CREATE INDEX IF NOT EXISTS actions_row_index_idx ON {schema}.actions(row_index);
+
+CREATE INDEX IF NOT EXISTS logs_id_idx ON {schema}.logs(id);
 CREATE INDEX IF NOT EXISTS logs_created_at_idx ON {schema}.logs(created_at);
 CREATE INDEX IF NOT EXISTS logs_row_index_idx ON {schema}.logs(row_index);
+
+-- Add composite indexes for pagination queries
+CREATE INDEX IF NOT EXISTS agents_pagination_idx ON {schema}.agents(row_index, created_at);
+CREATE INDEX IF NOT EXISTS actions_pagination_idx ON {schema}.actions(row_index, created_at);
+CREATE INDEX IF NOT EXISTS logs_pagination_idx ON {schema}.logs(row_index, created_at);
 
 -- Add GIN indexes for JSONB columns for fast JSON queries
 CREATE INDEX IF NOT EXISTS agents_data_gin_idx ON {schema}.agents USING GIN(data);
@@ -949,6 +991,11 @@ class PostgreSQLDatabaseController(BaseDatabaseController):
     def logs(self) -> LogTableController:
         """Get the log controller."""
         return self._logs
+
+    @property
+    def row_index_column(self) -> str:
+        """Get the name of the row index column for this database."""
+        return "row_index"
 
     async def execute(self, command: Any) -> Any:
         """Execute an arbitrary database command."""
