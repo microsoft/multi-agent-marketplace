@@ -94,6 +94,8 @@ def run_experiment_command(args):
             export_sqlite=args.export,
             export_dir=args.export_dir,
             export_filename=args.export_filename,
+            drop_empty_fetch_messages=args.drop_empty_fetch_messages,
+            drop_all_fetch_messages=args.drop_all_fetch_messages,
         )
     )
 
@@ -295,6 +297,19 @@ def main():
         "--export-filename",
         default=None,
         help="Output filename for SQLite export (default: <experiment_name>.db). Only used with --export.",
+    )
+
+    # Add mutually exclusive group for fetch messages persistence options
+    fetch_messages_group = experiment_parser.add_mutually_exclusive_group()
+    fetch_messages_group.add_argument(
+        "--drop-empty-fetch-messages",
+        action="store_true",
+        help="Don't save empty FetchMessages actions to the database (saves only non-empty fetches).",
+    )
+    fetch_messages_group.add_argument(
+        "--drop-all-fetch-messages",
+        action="store_true",
+        help="Don't save any FetchMessages actions to the database.",
     )
 
     # analytics subcommand
