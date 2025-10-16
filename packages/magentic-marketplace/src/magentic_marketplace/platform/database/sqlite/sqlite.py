@@ -297,6 +297,11 @@ class _BoundedSqliteConnectionMixIn:
 
         params = params or RangeQueryParams()
 
+        sql, sql_params = _convert_query_params_to_sql(
+            sql=base_sql,
+            params=params,
+        )
+
         # If there's a specific limit, we should respect it
         remaining = params.limit
         # Start from params offset
@@ -309,53 +314,46 @@ class _BoundedSqliteConnectionMixIn:
             f"Starting batched get_all for {table_name}: batch_size={batch_size}, limit={params.limit}, offset={params.offset}"
         )
 
-        while True:
-            batch_number += 1
-            # Create batch params
-            if remaining is not None:
-                batch_limit = min(batch_size, remaining)
-            else:
-                batch_limit = batch_size
+        async with self.connection as db:
+            async with db.execute(sql, sql_params) as cursor:
+                while True:
+                    batch_number += 1
+                    # Create batch params
+                    if remaining is not None:
+                        batch_limit = min(batch_size, remaining)
+                    else:
+                        batch_limit = batch_size
 
-            logger.debug(
-                f"Fetching {table_name} batch {batch_number}: offset={batch_offset}, limit={batch_limit}"
-            )
+                    logger.debug(
+                        f"Fetching {table_name} batch {batch_number}: offset={batch_offset}, limit={batch_limit}"
+                    )
 
-            batch_params = params.model_copy(
-                update={"limit": batch_limit, "offset": batch_offset}
-            )
+                    rows = list(await cursor.fetchmany(batch_limit))
 
-            sql, sql_params = _convert_query_params_to_sql(
-                sql=base_sql,
-                params=batch_params,
-            )
+                    logger.debug(
+                        f"Retrieved {len(rows)} {table_name} in batch {batch_number}, total so far: {len(all_results) + len(rows)}"
+                    )
 
-            async with self.connection as db:
-                async with db.execute(sql, sql_params) as cursor:
-                    rows = list(await cursor.fetchall())
+                    if not rows:
+                        break
 
-            logger.debug(
-                f"Retrieved {len(rows)} {table_name} in batch {batch_number}, total so far: {len(all_results) + len(rows)}"
-            )
+                    all_results.extend(rows)
 
-            if not rows:
-                break
+                    # If we got fewer rows than batch_size, we've reached the end
+                    if len(rows) < batch_size:
+                        logger.debug(
+                            f"Batch {batch_number} returned fewer rows than batch_size, stopping"
+                        )
+                        break
 
-            all_results.extend(rows)
-
-            # If we got fewer rows than batch_size, we've reached the end
-            if len(rows) < batch_size:
-                logger.debug(
-                    f"Batch {batch_number} returned fewer rows than batch_size, stopping"
-                )
-                break
-
-            batch_offset += len(rows)
-            if remaining is not None:
-                remaining -= len(rows)
-                if remaining <= 0:
-                    logger.debug(f"Reached limit after batch {batch_number}, stopping")
-                    break
+                    batch_offset += len(rows)
+                    if remaining is not None:
+                        remaining -= len(rows)
+                        if remaining <= 0:
+                            logger.debug(
+                                f"Reached limit after batch {batch_number}, stopping"
+                            )
+                            break
 
         logger.debug(
             f"Completed batched get_all for {table_name}: {batch_number} batches, {len(all_results)} total rows"
