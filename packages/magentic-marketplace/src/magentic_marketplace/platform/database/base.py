@@ -36,15 +36,37 @@ class TableController(ABC, Generic[TableEntryType]):  # noqa: UP046
         pass
 
     @abstractmethod
+    async def create_many(
+        self, items: list[TableEntryType], batch_size: int = 1000
+    ) -> None:
+        """Create multiple items efficiently in batches.
+
+        Args:
+            items: List of items to create
+            batch_size: Number of items to insert per batch (default: 1000)
+
+        """
+        pass
+
+    @abstractmethod
     async def get_by_id(self, item_id: str) -> TableEntryType | None:
         """Retrieve an item by its ID."""
         pass
 
     @abstractmethod
     async def get_all(
-        self, params: RangeQueryParams | None = None
+        self, params: RangeQueryParams | None = None, batch_size: int = 1000
     ) -> list[TableEntryType]:
-        """Retrieve all items with optional pagination."""
+        """Retrieve all items with optional pagination, fetching in batches.
+
+        Args:
+            params: Range query parameters for filtering
+            batch_size: Number of rows to fetch per batch (default: 1000)
+
+        Returns:
+            List of all matching items
+
+        """
         pass
 
     @abstractmethod
