@@ -39,6 +39,9 @@ _connection_metrics = {
     "successful_requests": 0,
 }
 
+# Track unique SQL queries (WHERE clause patterns)
+_sql_query_metrics: dict[str, int] = {}
+
 # Global metrics timer
 _metrics_timer = None
 
@@ -54,8 +57,15 @@ def _dump_metrics_to_file(database_url: str):
             .replace("@", "_at_")
         )
         metrics_file = f"postgresql_metrics_{safe_url}.json"
+
+        # Combine all metrics
+        all_metrics = {
+            "connection_metrics": _connection_metrics,
+            "sql_query_metrics": _sql_query_metrics,
+        }
+
         with open(metrics_file, "w") as f:
-            json.dump(_connection_metrics, f, indent=2)
+            json.dump(all_metrics, f, indent=2)
     except Exception:
         # Silently fail to avoid issues during cleanup
         pass
@@ -189,6 +199,11 @@ def _convert_query_to_postgres(
                 return f"jsonb_path_query_first(data, {formatted_path}) #>> '{{}}' {q.operator} ${param_idx}"
 
     sql = build_query(query)
+
+    # Track unique SQL WHERE clause patterns (without parameter values)
+    # Count how many times each unique WHERE clause pattern is used
+    _sql_query_metrics[sql] = _sql_query_metrics.get(sql, 0) + 1
+
     return sql, params
 
 

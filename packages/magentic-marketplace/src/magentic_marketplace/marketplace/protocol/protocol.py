@@ -71,6 +71,13 @@ CREATE INDEX IF NOT EXISTS actions_request_name_idx
     (jsonb_path_query_first(data, '$."request"."name"'::jsonpath) #>> '{{}}'),
     {row_index_col} DESC
   );
+
+CREATE INDEX IF NOT EXISTS actions_fetch_messages_idx
+  ON {schema}.actions (
+    (jsonb_path_query_first(data, '$."request"."name"'::jsonpath) #>> '{{}}'),
+    (jsonb_path_query_first(data, '$."request"."parameters"."to_agent_id"'::jsonpath) #>> '{{}}'),
+    {row_index_col} DESC
+  );
 """
             await database.execute(index_sql)
 
