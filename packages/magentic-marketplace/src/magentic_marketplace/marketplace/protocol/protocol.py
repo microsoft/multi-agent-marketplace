@@ -35,12 +35,19 @@ class SimpleMarketplaceProtocol(BaseMarketplaceProtocol):
         agent: AgentProfile,
         action: ActionExecutionRequest,
         database: BaseDatabaseController,
-    ) -> ActionExecutionResult:
-        """Execute an action."""
+    ) -> tuple[ActionExecutionResult, bool]:
+        """Execute an action.
+
+        Returns:
+            A tuple of (ActionExecutionResult, bool) where:
+                - ActionExecutionResult contains the action execution result
+                - bool indicates whether the action should be persisted to the database
+
+        """
         parsed_action = ActionAdapter.validate_python(action.parameters)
 
         if isinstance(parsed_action, SendMessage):
-            return await execute_send_message(parsed_action, database)
+            return await execute_send_message(parsed_action, database), True
 
         elif isinstance(parsed_action, FetchMessages):
             return await execute_fetch_messages(parsed_action, agent, database)
@@ -48,6 +55,6 @@ class SimpleMarketplaceProtocol(BaseMarketplaceProtocol):
         elif isinstance(parsed_action, Search):
             return await execute_search(
                 search=parsed_action, agent=agent, database=database
-            )
+            ), True
         else:
             raise ValueError(f"Unknown action type: {parsed_action.type}")

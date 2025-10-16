@@ -19,7 +19,7 @@ async def execute_fetch_messages(
     fetch_messages: FetchMessages,
     agent: AgentProfile,
     database: BaseDatabaseController,
-) -> ActionExecutionResult:
+) -> tuple[ActionExecutionResult, bool]:
     """Execute a fetch messages action.
 
     This function implements the message fetching functionality that was previously
@@ -31,7 +31,9 @@ async def execute_fetch_messages(
         database: Database controller for accessing data
 
     Returns:
-        ActionExecutionResult containing the fetched messages
+        A tuple of (ActionExecutionResult, bool) where:
+            - ActionExecutionResult contains the fetched messages
+            - bool indicates whether messages were fetched (True if messages exist)
 
     """
     messages, has_more = await _fetch_messages_from_database(
@@ -43,7 +45,9 @@ async def execute_fetch_messages(
         has_more=has_more,
     )
 
-    return ActionExecutionResult(content=response.model_dump(mode="json"))
+    return ActionExecutionResult(content=response.model_dump(mode="json")), len(
+        messages
+    ) > 0
 
 
 async def _fetch_messages_from_database(
@@ -99,6 +103,9 @@ async def _fetch_messages_from_database(
     ):
         received_messages = received_messages[: fetch_messages.limit - 1]
         has_more = True
+
+    if len(received_messages) > 0:
+        print(f"Fetched {len(received_messages)} messages")
 
     return received_messages, has_more
 
