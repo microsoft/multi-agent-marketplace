@@ -284,11 +284,12 @@ class _BoundedPostgresConnectionMixIn:
             _connection_metrics["read_requests"] += 1
 
         try:
-            async with asyncio.timeout(self._timeout):
-                async with self._pool.acquire() as conn:
-                    _connection_metrics["successful_requests"] += 1
-                    # asyncpg type hints don't make it clear, but it is a Connection
-                    yield cast(asyncpg.connection.Connection, conn)
+            conn = await asyncio.wait_for(self._pool.acquire(), self._timeout)
+            try:
+                _connection_metrics["successful_requests"] += 1
+                yield cast(asyncpg.connection.Connection, conn)
+            finally:
+                await self._pool.release(conn)
         except TimeoutError as e:
             _connection_metrics["connection_timeouts"] += 1
             logger.warning("Database too busy: timeout acquiring connection from pool")
@@ -422,6 +423,61 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
 
     def _get_insert_query(self) -> str:
         return f"INSERT INTO {self._schema}.agents (id, created_at, data, agent_embedding) VALUES ($1, $2, $3, $4) RETURNING row_index"
+
+    async def create_many(self, items: list[AgentRow], batch_size: int = 1000) -> None:
+        """Create multiple agents efficiently in batches using COPY.
+
+        Args:
+            items: List of agent rows to insert
+            batch_size: Number of items to insert per batch (default: 1000)
+
+        """
+        if not items:
+            return
+
+        total_items = len(items)
+        batch_number = 0
+
+        logger.debug(
+            f"Starting batched create_many for agents: total_items={total_items}, batch_size={batch_size}"
+        )
+
+        # Process in batches
+        for i in range(0, total_items, batch_size):
+            batch_number += 1
+            batch = items[i : i + batch_size]
+            batch_len = len(batch)
+
+            logger.debug(
+                f"Inserting agents batch {batch_number}: {batch_len} items (offset={i})"
+            )
+
+            # Prepare records for COPY
+            records = [
+                (
+                    item.id or str(uuid.uuid4()),
+                    item.created_at,
+                    item.data.model_dump_json(),
+                    item.agent_embedding,
+                )
+                for item in batch
+            ]
+
+            async with self.connection(is_write=True) as conn:
+                await conn.copy_records_to_table(
+                    "agents",
+                    records=records,
+                    columns=["id", "created_at", "data", "agent_embedding"],
+                    schema_name=self._schema,
+                )
+
+            logger.debug(
+                f"Successfully inserted agents batch {batch_number}: {batch_len} items, total so far: {min(i + batch_size, total_items)}"
+            )
+
+        logger.debug(
+            f"Completed batched create_many for agents: {batch_number} batches, {total_items} total items"
+        )
 
     async def get_by_id(self, item_id: str) -> AgentRow | None:
         """Get agent by ID."""
@@ -614,6 +670,60 @@ class PostgreSQLActionController(
     def _get_insert_query(self) -> str:
         return f"INSERT INTO {self._schema}.actions (id, created_at, data) VALUES ($1, $2, $3) RETURNING row_index"
 
+    async def create_many(self, items: list[ActionRow], batch_size: int = 1000) -> None:
+        """Create multiple actions efficiently in batches using COPY.
+
+        Args:
+            items: List of action rows to insert
+            batch_size: Number of items to insert per batch (default: 1000)
+
+        """
+        if not items:
+            return
+
+        total_items = len(items)
+        batch_number = 0
+
+        logger.debug(
+            f"Starting batched create_many for actions: total_items={total_items}, batch_size={batch_size}"
+        )
+
+        # Process in batches
+        for i in range(0, total_items, batch_size):
+            batch_number += 1
+            batch = items[i : i + batch_size]
+            batch_len = len(batch)
+
+            logger.debug(
+                f"Inserting actions batch {batch_number}: {batch_len} items (offset={i})"
+            )
+
+            # Prepare records for COPY
+            records = [
+                (
+                    item.id or str(uuid.uuid4()),
+                    item.created_at,
+                    item.data.model_dump_json(),
+                )
+                for item in batch
+            ]
+
+            async with self.connection(is_write=True) as conn:
+                await conn.copy_records_to_table(
+                    "actions",
+                    records=records,
+                    columns=["id", "created_at", "data"],
+                    schema_name=self._schema,
+                )
+
+            logger.debug(
+                f"Successfully inserted actions batch {batch_number}: {batch_len} items, total so far: {min(i + batch_size, total_items)}"
+            )
+
+        logger.debug(
+            f"Completed batched create_many for actions: {batch_number} batches, {total_items} total items"
+        )
+
     async def get_by_id(self, item_id: str) -> ActionRow | None:
         """Get action by ID."""
         async with self.connection() as conn:
@@ -774,6 +884,60 @@ class PostgreSQLLogController(LogTableController, _BoundedPostgresConnectionMixI
 
     def _get_insert_query(self) -> str:
         return f"INSERT INTO {self._schema}.logs (id, created_at, data) VALUES ($1, $2, $3) RETURNING row_index"
+
+    async def create_many(self, items: list[LogRow], batch_size: int = 1000) -> None:
+        """Create multiple logs efficiently in batches using COPY.
+
+        Args:
+            items: List of log rows to insert
+            batch_size: Number of items to insert per batch (default: 1000)
+
+        """
+        if not items:
+            return
+
+        total_items = len(items)
+        batch_number = 0
+
+        logger.debug(
+            f"Starting batched create_many for logs: total_items={total_items}, batch_size={batch_size}"
+        )
+
+        # Process in batches
+        for i in range(0, total_items, batch_size):
+            batch_number += 1
+            batch = items[i : i + batch_size]
+            batch_len = len(batch)
+
+            logger.debug(
+                f"Inserting logs batch {batch_number}: {batch_len} items (offset={i})"
+            )
+
+            # Prepare records for COPY
+            records = [
+                (
+                    item.id or str(uuid.uuid4()),
+                    item.created_at,
+                    item.data.model_dump_json(),
+                )
+                for item in batch
+            ]
+
+            async with self.connection(is_write=True) as conn:
+                await conn.copy_records_to_table(
+                    "logs",
+                    records=records,
+                    columns=["id", "created_at", "data"],
+                    schema_name=self._schema,
+                )
+
+            logger.debug(
+                f"Successfully inserted logs batch {batch_number}: {batch_len} items, total so far: {min(i + batch_size, total_items)}"
+            )
+
+        logger.debug(
+            f"Completed batched create_many for logs: {batch_number} batches, {total_items} total items"
+        )
 
     async def get_by_id(self, item_id: str) -> LogRow | None:
         """Get log by ID."""
