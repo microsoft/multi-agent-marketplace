@@ -11,6 +11,7 @@ function App() {
   const [data, setData] = useState<MarketplaceData | null>(null);
   const [analytics, setAnalytics] = useState<AnalyticsData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingConversations, setIsLoadingConversations] = useState(true);
   const [lastUpdate, setLastUpdate] = useState<Date>(new Date());
   const [selectedCustomer, setSelectedCustomer] = useState<Customer | null>(null);
   const [selectedBusiness, setSelectedBusiness] = useState<Business | null>(null);
@@ -19,7 +20,7 @@ function App() {
   const loadInitialData = async () => {
     setIsLoading(true);
     try {
-      console.log("Loading initial data (customers & businesses)...");
+      console.log("Loading customers & businesses...");
       const [customers, businesses] = await Promise.all([
         databaseService.getCustomers(),
         databaseService.getBusinesses(),
@@ -31,7 +32,7 @@ function App() {
         messages: [],
         messageThreads: [],
       });
-      console.log("Initial data loaded:", {
+      console.log("Loaded:", {
         customers: customers.length,
         businesses: businesses.length,
       });
@@ -44,8 +45,8 @@ function App() {
 
   // Load messages, threads, and analytics (polled frequently)
   const loadMessages = useCallback(async () => {
+    setIsLoadingConversations(true);
     try {
-      console.log("Loading messages and analytics...");
       const marketplaceData = await databaseService.getMarketplaceData();
       setData((prev) =>
         prev
@@ -64,6 +65,8 @@ function App() {
       setLastUpdate(new Date());
     } catch (error) {
       console.error("Error loading messages:", error);
+    } finally {
+      setIsLoadingConversations(false);
     }
   }, []);
 
@@ -159,13 +162,15 @@ function App() {
               )}
 
               <div className="flex items-center space-x-3 text-xs">
-                <div className="text-gray-600">Last Update: {lastUpdate.toLocaleTimeString()}</div>
                 <button
                   onClick={loadMessages}
-                  disabled={isLoading}
-                  className="flex items-center space-x-1 rounded-md bg-gray-100 px-3 py-1.5 text-xs text-gray-700 transition-colors hover:bg-gray-200 disabled:opacity-50"
+                  disabled={isLoadingConversations}
+                  title={`Last Update: ${lastUpdate.toLocaleTimeString()}`}
+                  className="flex items-center space-x-1 rounded-md bg-gray-100 px-3 py-1.5 text-xs text-gray-700 transition-colors hover:bg-gray-200 disabled:cursor-not-allowed"
                 >
-                  <RefreshCw className={`h-3 w-3 ${isLoading ? "animate-spin" : ""}`} />
+                  <RefreshCw
+                    className={`h-3 w-3 ${isLoadingConversations ? "animate-spin" : ""}`}
+                  />
                   <span>Refresh</span>
                 </button>
               </div>

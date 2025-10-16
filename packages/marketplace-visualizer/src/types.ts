@@ -67,6 +67,7 @@ export interface MessageThread {
   };
   messages: Message[];
   lastMessageTime: string;
+  utility: number;
 }
 
 export interface CustomerAnalytics {
