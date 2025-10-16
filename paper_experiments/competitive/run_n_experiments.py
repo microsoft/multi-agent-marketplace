@@ -28,6 +28,13 @@ MODELS = [
         "base_url": "http://localhost:8001/v1",
         "api_key": "dummy",
     },
+    {
+        "provider": "openai",
+        "model": "qwen3-14b",  # Shortened for database compatibility
+        "actual_model": "Qwen/Qwen3-14B",  # Actual model name for API
+        "base_url": "http://localhost:8001/v1",  # Different port for 14B model
+        "api_key": "dummy",
+    },
 ]
 
 DATA_FOLDERS = [
