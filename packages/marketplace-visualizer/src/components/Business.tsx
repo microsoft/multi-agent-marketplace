@@ -21,9 +21,9 @@ const Business: React.FC<BusinessProps> = ({
   const [isExpanded, setIsExpanded] = useState(false);
 
   const getRatingColor = (rating: number) => {
-    if (rating >= 0.8) return "text-purple-800";
-    if (rating >= 0.6) return "text-purple-400";
-    return "text-purple-200";
+    if (rating >= 0.8) return "text-brand-800";
+    if (rating >= 0.6) return "text-brand-400";
+    return "text-brand-200";
   };
 
   const cleanName = business.name?.replace("agent-", "") || "Unknown Restaurant";
@@ -33,15 +33,15 @@ const Business: React.FC<BusinessProps> = ({
       className={clsx(
         "group relative overflow-hidden rounded-xl transition-all duration-300",
         isSelected
-          ? "border-2 border-purple-400 shadow-lg"
-          : "border border-gray-200 hover:border-purple-200",
+          ? "border-2 border-brand-400 shadow-lg"
+          : "border border-gray-200 hover:border-brand-200",
       )}
     >
       {/* Header with Avatar and Name - Clickable */}
       <div
         className={clsx(
           "flex transform cursor-pointer items-start space-x-3 bg-gradient-to-r p-4 transition-all duration-300 hover:-translate-y-0.5",
-          isSelected ? "from-purple-50 to-purple-100" : "from-gray-50 to-gray-100",
+          isSelected ? "from-brand-50 to-brand-100" : "from-gray-50 to-gray-100",
         )}
         onClick={onClick}
       >
@@ -69,13 +69,13 @@ const Business: React.FC<BusinessProps> = ({
                 e.stopPropagation();
                 setIsExpanded(!isExpanded);
               }}
-              className="ml-2 rounded-lg p-1 transition-colors hover:bg-purple-100"
+              className="ml-2 rounded-lg p-1 transition-colors hover:bg-brand-100"
               aria-label={isExpanded ? "Collapse details" : "Expand details"}
             >
               {isExpanded ? (
-                <ChevronUp className="h-4 w-4 text-purple-600" />
+                <ChevronUp className="h-4 w-4 text-brand-600" />
               ) : (
-                <ChevronDown className="h-4 w-4 text-purple-600" />
+                <ChevronDown className="h-4 w-4 text-brand-600" />
               )}
             </button>
           </div>
@@ -95,20 +95,20 @@ const Business: React.FC<BusinessProps> = ({
           {/* Business Details */}
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-medium text-purple-700">Price Range:</span>
+              <span className="text-xs font-medium text-brand-700">Price Range:</span>
               <span className="text-sm font-semibold text-gray-800">
                 ${business.price_min} - ${business.price_max}
               </span>
             </div>
             {business.description && (
               <div>
-                <span className="text-xs font-medium text-purple-700">About:</span>
+                <span className="text-xs font-medium text-brand-700">About:</span>
                 <p className="mt-1 line-clamp-2 text-xs text-gray-600">{business.description}</p>
               </div>
             )}
             {business.menu_features && Object.keys(business.menu_features).length > 0 && (
               <div>
-                <span className="text-xs font-medium text-purple-700">
+                <span className="text-xs font-medium text-brand-700">
                   Menu Items ({Object.keys(business.menu_features).length}):
                 </span>
                 <div className="mt-1 max-h-24 space-y-0.5 overflow-y-auto text-xs text-gray-600">
@@ -130,14 +130,14 @@ const Business: React.FC<BusinessProps> = ({
             )}
             {business.amenity_features && (
               <div>
-                <span className="text-xs font-medium text-purple-700">Amenities:</span>
+                <span className="text-xs font-medium text-brand-700">Amenities:</span>
                 <div className="mt-1 flex flex-wrap gap-1">
                   {Object.entries(business.amenity_features)
                     .filter(([_, value]) => value === true)
                     .map(([amenity]) => (
                       <span
                         key={amenity}
-                        className="inline-flex items-center rounded-full bg-purple-100 px-2 py-0.5 text-xs text-purple-800"
+                        className="inline-flex items-center rounded-full bg-brand-100 px-2 py-0.5 text-xs text-brand-800"
                       >
                         {amenity}
                       </span>

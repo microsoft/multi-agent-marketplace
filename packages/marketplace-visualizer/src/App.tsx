@@ -121,9 +121,9 @@ function App() {
 
   if (isLoading && !data) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-purple-50 to-gray-100">
+      <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-brand-50 to-gray-100">
         <div className="text-center">
-          <RefreshCw className="mx-auto mb-4 h-12 w-12 animate-spin text-purple-500" />
+          <RefreshCw className="mx-auto mb-4 h-12 w-12 animate-spin text-brand-500" />
           <h2 className="mb-2 text-2xl font-bold text-gray-800">Loading Magentic Marketplace...</h2>
           <p className="text-gray-600">Connecting to the marketplace simulation</p>
         </div>
@@ -132,14 +132,18 @@ function App() {
   }
 
   return (
-    <div className="flex h-screen flex-col bg-gradient-to-br from-fuchsia-50 to-gray-50">
+    <div className="flex h-screen flex-col bg-gradient-to-br from-brand-50 to-gray-50">
       {/* Header */}
-      <header className="flex-shrink-0 border-b border-purple-400 bg-white shadow-md">
+      <header className="flex-shrink-0 border-b border-brand-400 bg-white shadow-md">
         <div className="w-full px-4 py-5">
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center space-x-3">
+              <img src="/logo.svg" alt="Magentic Logo" className="h-8 w-8" />
               <div>
-                <h1 className="bg-gradient-to-r from-purple-600 to-fuchsia-600 bg-clip-text text-xl font-bold text-transparent">
+                <h1
+                  className="bg-clip-text text-xl font-bold text-transparent"
+                  style={{ backgroundImage: "linear-gradient(120deg,  #fb81ff, #922185 30%)" }}
+                >
                   Magentic Marketplace
                 </h1>
               </div>
@@ -149,13 +153,13 @@ function App() {
               {/* Marketplace Summary */}
               {analytics?.marketplace_summary && (
                 <div className="flex items-center gap-2 text-xs">
-                  <div className="rounded-full bg-purple-100 px-3 py-1.5 font-semibold text-purple-700">
+                  <div className="rounded-full bg-brand-100 px-3 py-1.5 font-semibold text-brand-700">
                     Total Utility: ${analytics.marketplace_summary.total_utility.toFixed(2)}
                   </div>
-                  <div className="rounded-full bg-purple-100 px-3 py-1.5 font-semibold text-purple-700">
+                  <div className="rounded-full bg-brand-100 px-3 py-1.5 font-semibold text-brand-700">
                     Payments: {analytics.marketplace_summary.total_payments}
                   </div>
-                  <div className="rounded-full bg-purple-100 px-3 py-1.5 font-semibold text-purple-700">
+                  <div className="rounded-full bg-brand-100 px-3 py-1.5 font-semibold text-brand-700">
                     Proposals: {analytics.marketplace_summary.total_proposals}
                   </div>
                 </div>
