@@ -127,3 +127,7 @@ magentic-marketplace ui my_experiment
 `experiment_name` _(required)_
 
 &nbsp;&nbsp;&nbsp;&nbsp;Experiment name (PostgreSQL schema name).
+
+`--db-type` _(optional)_
+
+&nbsp;&nbsp;&nbsp;&nbsp;Type of database: `sqlite` or `postgres` (default: `postgres`). For postgres, the experiment name is the name of a schema in the database. For sqlite, it is the path to a database file.

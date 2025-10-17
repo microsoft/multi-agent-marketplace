@@ -15,7 +15,10 @@ from ..marketplace.shared.models import (
     CustomerAgentProfile,
     MarketplaceAgentProfileAdapter,
 )
-from ..platform.database import connect_to_postgresql_database
+from ..platform.database import (
+    connect_to_postgresql_database,
+    connect_to_sqlite_database,
+)
 from ..platform.database.base import BaseDatabaseController
 
 # Global database controller (set during lifespan)
@@ -231,7 +234,8 @@ def _create_message_threads(customers, businesses, messages):
 
 
 def create_analytics_app(
-    schema: str,
+    database_name: str,
+    db_type: str = "postgres",
     postgres_host: str = "localhost",
     postgres_port: int = 5432,
     postgres_password: str = "postgres",
@@ -239,10 +243,11 @@ def create_analytics_app(
     """Create FastAPI app for analytics with database connection.
 
     Args:
-        schema: PostgreSQL schema name
-        postgres_host: PostgreSQL host
-        postgres_port: PostgreSQL port
-        postgres_password: PostgreSQL password
+        database_name: PostgreSQL schema name or path to SQLite database file
+        db_type: Type of database ("sqlite" or "postgres")
+        postgres_host: PostgreSQL host (only used if db_type is "postgres")
+        postgres_port: PostgreSQL port (only used if db_type is "postgres")
+        postgres_password: PostgreSQL password (only used if db_type is "postgres")
 
     Returns:
         Configured FastAPI application
@@ -254,23 +259,39 @@ def create_analytics_app(
         """Manage database connection lifecycle."""
         global _db_controller
 
-        print("Connecting to PostgreSQL database...", flush=True)
-        print(f"Host: {postgres_host}:{postgres_port}", flush=True)
-        print(f"Schema: {schema}", flush=True)
+        if db_type == "sqlite":
+            print("Connecting to SQLite database...", flush=True)
+            print(f"Database path: {database_name}", flush=True)
 
-        async with connect_to_postgresql_database(
-            schema=schema,
-            host=postgres_host,
-            port=postgres_port,
-            password=postgres_password,
-            mode="existing",
-        ) as db:
-            _db_controller = db
-            print("Database connection established", flush=True)
-            print("UI API ready", flush=True)
-            yield
+            async with connect_to_sqlite_database(database_path=database_name) as db:
+                _db_controller = db
+                print("Database connection established", flush=True)
+                print("UI API ready", flush=True)
+                yield
 
-        print("Database connection closed", flush=True)
+            print("Database connection closed", flush=True)
+        elif db_type == "postgres":
+            print("Connecting to PostgreSQL database...", flush=True)
+            print(f"Host: {postgres_host}:{postgres_port}", flush=True)
+            print(f"Schema: {database_name}", flush=True)
+
+            async with connect_to_postgresql_database(
+                schema=database_name,
+                host=postgres_host,
+                port=postgres_port,
+                password=postgres_password,
+                mode="existing",
+            ) as db:
+                _db_controller = db
+                print("Database connection established", flush=True)
+                print("UI API ready", flush=True)
+                yield
+
+            print("Database connection closed", flush=True)
+        else:
+            raise ValueError(
+                f"Unsupported database type: {db_type}. Must be 'sqlite' or 'postgres'."
+            )
 
     app = FastAPI(
         title="Marketplace UI API",
@@ -295,7 +316,7 @@ def create_analytics_app(
         return {
             "name": "Marketplace UI API",
             "version": "2.0.0",
-            "database": "PostgreSQL",
+            "database": "SQLite" if db_type == "sqlite" else "PostgreSQL",
             "endpoints": [
                 "/api/customers",
                 "/api/businesses",
@@ -422,7 +443,8 @@ def create_analytics_app(
 
 
 def run_ui_server(
-    schema_name: str,
+    database_name: str,
+    db_type: str = "postgres",
     postgres_host: str = "localhost",
     postgres_port: int = 5432,
     postgres_password: str = "postgres",
@@ -432,10 +454,11 @@ def run_ui_server(
     """Run the UI server.
 
     Args:
-        schema_name: PostgreSQL schema name to visualize
-        postgres_host: PostgreSQL host
-        postgres_port: PostgreSQL port
-        postgres_password: PostgreSQL password
+        database_name: PostgreSQL schema name or path to SQLite database file
+        db_type: Type of database ("sqlite" or "postgres")
+        postgres_host: PostgreSQL host (only used if db_type is "postgres")
+        postgres_port: PostgreSQL port (only used if db_type is "postgres")
+        postgres_password: PostgreSQL password (only used if db_type is "postgres")
         ui_port: Port for UI server
         ui_host: Host for UI server
 
@@ -443,11 +466,15 @@ def run_ui_server(
     import uvicorn
 
     print("Starting Marketplace UI Server...", flush=True)
-    print(f"Schema: {schema_name}", flush=True)
+    if db_type == "sqlite":
+        print(f"Database: {database_name}", flush=True)
+    else:
+        print(f"Schema: {database_name}", flush=True)
     print(f"Server will be available at: http://{ui_host}:{ui_port}", flush=True)
 
     app = create_analytics_app(
-        schema=schema_name,
+        database_name=database_name,
+        db_type=db_type,
         postgres_host=postgres_host,
         postgres_port=postgres_port,
         postgres_password=postgres_password,
