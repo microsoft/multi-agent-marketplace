@@ -55,7 +55,7 @@ def parse_filename(filename):
         rest = rest[10:]  # len("malicious_") = 10
 
     # Known model patterns - check for multi-part model names
-    known_models = ["qwen3_4b", "qwen3_14b", "gpt-4o", "gpt-4.1", "gemini-2.5-flash"]
+    known_models = ["gpt_oss_20b", "qwen3_4b", "qwen3_14b", "gpt-4o", "gpt-4.1", "gemini-2.5-flash"]
 
     model = None
     condition = None

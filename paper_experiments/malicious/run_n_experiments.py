@@ -19,7 +19,7 @@ NUM_RUNS_PER_FOLDER = 5
 #     {"provider": "gemini", "model": "gemini-2.5-flash"},
 # ]
 
-# Qwen configuration
+# Qwen configuration + GPT-OSS-20B
 MODELS = [
     {
         "provider": "openai",
@@ -32,6 +32,13 @@ MODELS = [
         "provider": "openai",
         "model": "qwen3-14b",  # Shortened for database compatibility
         "actual_model": "Qwen/Qwen3-14B",  # Actual model name for API
+        "base_url": "http://localhost:8001/v1",
+        "api_key": "dummy",
+    },
+    {
+        "provider": "openai",
+        "model": "gpt-oss-20b",  # Shortened for database compatibility
+        "actual_model": "openai/gpt-oss-20b",  # Actual model name for API
         "base_url": "http://localhost:8001/v1",
         "api_key": "dummy",
     },

@@ -81,7 +81,7 @@ def main():
         # rest is now: business_0001_first_gemini-2.5-flash or contractors_first_gemini-2.5-flash
         # Split by underscore from the right to find model
         # Handle multi-part model names like qwen3_4b
-        known_models = ["qwen3_4b", "gpt_4o", "gpt_4_1", "gemini_2_5_flash"]
+        known_models = ["gpt_oss_20b", "qwen3_4b", "gpt_4o", "gpt_4_1", "gemini_2_5_flash"]
 
         model = None
         condition_and_position = None
