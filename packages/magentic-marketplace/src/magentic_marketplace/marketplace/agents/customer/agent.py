@@ -253,7 +253,13 @@ class CustomerAgent(BaseSimpleMarketplaceAgent[CustomerAgentProfile]):
                         self.logger.error(
                             f"Failed to send message to {business_id}: {result.content}"
                         )
-                    send_message_results.text_message_results.append((True, "Success!"))
+                        send_message_results.text_message_results.append(
+                            (False, str(result.content))
+                        )
+                    else:
+                        send_message_results.text_message_results.append(
+                            (True, "Success!")
+                        )
                 except Exception:
                     self.logger.exception(f"Failed to send message to {business_id}")
                     send_message_results.text_message_results.append(
