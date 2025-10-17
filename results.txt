@@ -1,0 +1,23 @@
+NO  ---	marketplace_3_9_1760662178556	--- Logs: 0 LLM errors, 0 DB busy, debug: 52, info: 161
+NO  ---	search_limit_gemini25flash_mexican_100_300_limit_10_run_1	--- Logs: 0 LLM errors, 0 DB busy, debug: 2141, error: 1, info: 6152, warning: 9
+NO  ---	search_limit_gemini25flash_mexican_100_300_limit_10_run_2	--- Logs: 0 LLM errors, 0 DB busy, debug: 2051, error: 1, info: 6083, warning: 13
+NO  ---	search_limit_gemini25flash_mexican_100_300_limit_10_run_3	--- Logs: 0 LLM errors, 0 DB busy, debug: 2120, info: 6213, warning: 4
+NO  ---	search_limit_gemini25flash_mexican_100_300_limit_10_run_4	--- Logs: 0 LLM errors, 0 DB busy, debug: 2081, info: 6118, warning: 13
+NO  ---	search_limit_gemini25flash_mexican_100_300_limit_10_run_5	--- Logs: 0 LLM errors, 0 DB busy, debug: 2086, info: 6118, warning: 13
+YES ---	search_limit_gemini25flash_mexican_100_300_limit_25_run_1	--- Logs: 112 LLM errors, 0 DB busy, debug: 3604, error: 112, info: 11720, warning: 13
+YES ---	search_limit_gemini25flash_mexican_100_300_limit_25_run_2	--- Logs: 69 LLM errors, 0 DB busy, debug: 3957, error: 70, info: 12826, warning: 20
+YES ---	search_limit_gemini25flash_mexican_100_300_limit_25_run_3	--- Logs: 50 LLM errors, 0 DB busy, debug: 4022, error: 50, info: 13209, warning: 22
+YES ---	search_limit_gemini25flash_mexican_100_300_limit_25_run_4	--- Logs: 61 LLM errors, 0 DB busy, debug: 3825, error: 63, info: 12427, warning: 22
+YES ---	search_limit_gemini25flash_mexican_100_300_limit_25_run_5	--- Logs: 17 LLM errors, 0 DB busy, debug: 3738, error: 18, info: 12264, warning: 19
+NO  ---	search_limit_gemini25flash_mexican_100_300_limit_3_run_1	--- Logs: 0 LLM errors, 0 DB busy, debug: 1232, error: 7, info: 3015, warning: 3
+NO  ---	search_limit_gemini25flash_mexican_100_300_limit_3_run_2	--- Logs: 0 LLM errors, 0 DB busy, debug: 1241, info: 3079, warning: 6
+NO  ---	search_limit_gemini25flash_mexican_100_300_limit_3_run_3	--- Logs: 0 LLM errors, 0 DB busy, debug: 1303, error: 1, info: 3226, warning: 19
+NO  ---	search_limit_gemini25flash_mexican_100_300_limit_3_run_4	--- Logs: 0 LLM errors, 0 DB busy, debug: 1242, info: 3103, warning: 4
+NO  ---	search_limit_gemini25flash_mexican_100_300_limit_3_run_5	--- Logs: 0 LLM errors, 0 DB busy, debug: 1231, info: 3089, warning: 11
+YES ---	search_limit_gemini25flash_mexican_100_300_limit_50_run_1	--- Logs: 5335 LLM errors, 0 DB busy, debug: 9088, error: 5408, info: 12208, warning: 47
+YES ---	search_limit_gemini25flash_mexican_100_300_limit_50_run_2	--- Logs: 3292 LLM errors, 0 DB busy, debug: 5141, error: 3293, info: 6590, warning: 21
+NO  ---	search_limit_gemini25flash_mexican_100_300_limit_5_run_1	--- Logs: 0 LLM errors, 0 DB busy, debug: 1519, info: 4075, warning: 3
+NO  ---	search_limit_gemini25flash_mexican_100_300_limit_5_run_2	--- Logs: 0 LLM errors, 0 DB busy, debug: 1496, info: 4026, warning: 11
+NO  ---	search_limit_gemini25flash_mexican_100_300_limit_5_run_3	--- Logs: 0 LLM errors, 0 DB busy, debug: 1505, info: 4059, warning: 7
+NO  ---	search_limit_gemini25flash_mexican_100_300_limit_5_run_4	--- Logs: 0 LLM errors, 0 DB busy, debug: 1441, info: 3867, warning: 12
+NO  ---	search_limit_gemini25flash_mexican_100_300_limit_5_run_5	--- Logs: 0 LLM errors, 0 DB busy, debug: 1478, error: 1, info: 3988, warning: 8
