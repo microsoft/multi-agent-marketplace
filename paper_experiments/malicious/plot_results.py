@@ -10,9 +10,20 @@ import pandas as pd
 from matplotlib.patches import Rectangle
 from scipy.stats import t
 
-# Read data
+# Read data from individual model files
 results_dir = Path("paper_experiments/malicious/results")
-df = pd.read_csv(results_dir / "malicious_description_results_all_models.csv")
+csv_files = list(results_dir.glob("malicious_description_results_*.csv"))
+csv_files = [f for f in csv_files if "all_models" not in f.name]
+
+# Combine all individual model CSVs
+dfs = []
+for csv_file in csv_files:
+    model_df = pd.read_csv(csv_file)
+    # Normalize condition names: remove "malicious_" prefix if present
+    model_df["condition"] = model_df["condition"].str.replace("malicious_", "", regex=False)
+    dfs.append(model_df)
+
+df = pd.concat(dfs, ignore_index=True)
 
 # Separate experiments by type
 df["exp_type"] = df["condition"].apply(lambda x: "mexican" if "mexican" in x else "contractors")

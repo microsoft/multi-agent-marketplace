@@ -51,7 +51,7 @@ def parse_filename(filename):
     rest = parts[0]
 
     # Known model patterns - check for multi-part model names
-    known_models = ["gpt_oss_20b", "qwen3_4b", "qwen3_14b", "gpt-4o", "gpt-4.1", "gemini-2.5-flash"]
+    known_models = ["claude-sonnet-4-5", "gpt_oss_20b", "qwen3_4b", "qwen3_14b", "gpt-4o", "gpt-4.1", "gemini-2.5-flash"]
 
     model = None
     condition = None

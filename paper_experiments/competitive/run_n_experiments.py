@@ -13,36 +13,37 @@ from magentic_marketplace.experiments.run_experiment import run_marketplace_expe
 NUM_RUNS_PER_FOLDER = 5
 
 # Models to test - add/remove models here
-# MODELS = [
-#     {"provider": "openai", "model": "gpt-4.1"},
-#     {"provider": "openai", "model": "gpt-4o"},
-#     {"provider": "gemini", "model": "gemini-2.5-flash"},
-# ]
+MODELS = [
+    # {"provider": "openai", "model": "gpt-4.1"},
+    # {"provider": "openai", "model": "gpt-4o"},
+    # {"provider": "gemini", "model": "gemini-2.5-flash"},
+    {"provider": "anthropic", "model": "claude-sonnet-4-5"},
+]
 
 # Qwen configuration + GPT-OSS-20B
-MODELS = [
-    {
-        "provider": "openai",
-        "model": "qwen3-4b",  # Shortened for database compatibility
-        "actual_model": "Qwen/Qwen3-4B-Instruct-2507",  # Actual model name for API
-        "base_url": "http://localhost:8001/v1",
-        "api_key": "dummy",
-    },
-    {
-        "provider": "openai",
-        "model": "qwen3-14b",  # Shortened for database compatibility
-        "actual_model": "Qwen/Qwen3-14B",  # Actual model name for API
-        "base_url": "http://localhost:8001/v1",  # Different port for 14B model
-        "api_key": "dummy",
-    },
-    {
-        "provider": "openai",
-        "model": "gpt-oss-20b",  # Shortened for database compatibility
-        "actual_model": "openai/gpt-oss-20b",  # Actual model name for API
-        "base_url": "http://localhost:8001/v1",
-        "api_key": "dummy",
-    },
-]
+# MODELS = [
+#     {
+#         "provider": "openai",
+#         "model": "qwen3-4b",  # Shortened for database compatibility
+#         "actual_model": "Qwen/Qwen3-4B-Instruct-2507",  # Actual model name for API
+#         "base_url": "http://localhost:8001/v1",
+#         "api_key": "dummy",
+#     },
+#     {
+#         "provider": "openai",
+#         "model": "qwen3-14b",  # Shortened for database compatibility
+#         "actual_model": "Qwen/Qwen3-14B",  # Actual model name for API
+#         "base_url": "http://localhost:8001/v1",  # Different port for 14B model
+#         "api_key": "dummy",
+#     },
+#     {
+#         "provider": "openai",
+#         "model": "gpt-oss-20b",  # Shortened for database compatibility
+#         "actual_model": "openai/gpt-oss-20b",  # Actual model name for API
+#         "base_url": "http://localhost:8001/v1",
+#         "api_key": "dummy",
+#     },
+# ]
 
 DATA_FOLDERS = [
     "contractors_authority",
