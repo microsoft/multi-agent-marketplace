@@ -4,6 +4,7 @@
 import asyncio
 
 import asyncpg
+from magentic_marketplace.marketplace.actions import ActionAdapter, SendMessage
 from magentic_marketplace.platform.database import (
     connect_to_postgresql_database,
 )
@@ -107,38 +108,36 @@ async def get_log_level_counts(schema_name: str) -> dict[str, int]:
         Dictionary mapping log level to count
 
     """
-    try:
-        async with connect_to_postgresql_database(
-            schema=schema_name,
-            host="localhost",
-            port=5432,
-            password="postgres",
-            mode="existing",
-        ) as db_controller:
-            # Get all logs
-            all_logs = await db_controller.logs.get_all()
+    async with connect_to_postgresql_database(
+        schema=schema_name,
+        host="localhost",
+        port=5432,
+        password="postgres",
+        mode="existing",
+    ) as db_controller:
+        # Get all logs
+        all_logs = await db_controller.logs.get_all()
 
-            # Count by level
-            level_counts: dict[str, int] = {}
-            for log_row in all_logs:
-                level = log_row.data.level
-                level_counts[level] = level_counts.get(level, 0) + 1
+        # Count by level
+        level_counts: dict[str, int] = {}
+        for log_row in all_logs:
+            level = log_row.data.level
+            level_counts[level] = level_counts.get(level, 0) + 1
 
-            return level_counts
-
-    except Exception as e:
-        print(f"Error accessing {schema_name}: {e}")
-        return {}
+        return level_counts
 
 
-async def audit_database(schema_name: str) -> tuple[str, bool, int, int]:
+async def audit_database(
+    schema_name: str,
+) -> tuple[str, bool, int, int, int, int, int, int, int]:
     """Audit a single database for LLM decision failed and database busy errors.
 
     Args:
         schema_name: The PostgreSQL schema name (experiment name)
 
     Returns:
-        Tuple of (schema_name, has_errors, llm_error_count, db_busy_count)
+        Tuple of (schema_name, has_errors, llm_error_count, db_busy_count, wrong_customer_id_count,
+                  total_send_messages, text_messages, payment_messages, order_proposal_messages)
     """
     try:
         async with connect_to_postgresql_database(
@@ -162,13 +161,72 @@ async def audit_database(schema_name: str) -> tuple[str, bool, int, int]:
             db_busy_logs = await db_controller.logs.find(db_busy_query)
             db_busy_count = len(db_busy_logs)
 
-            has_errors = llm_error_count > 0 or db_busy_count > 0
+            # Query for wrong customer id logs
+            biz_msg = "Error: Failed to send message to"
+            cust_msg = "Failed to send message to"
+            wrong_customer_id_query = log_queries.message(
+                value=f"%{cust_msg}%", operator="LIKE"
+            )
 
-            return schema_name, has_errors, llm_error_count, db_busy_count
+            wrong_customer_id_logs = await db_controller.logs.find(
+                wrong_customer_id_query
+            )
+            wrong_customer_id_count = len(wrong_customer_id_logs)
+
+            # Query actions table for send message statistics
+            all_actions = await db_controller.actions.get_all()
+
+            total_send_messages = 0
+            text_messages = 0
+            payment_messages = 0
+            order_proposal_messages = 0
+
+            for action_row in all_actions:
+                action_request = action_row.data.request
+                action_result = action_row.data.result
+
+                # Parse action using ActionAdapter like in run_analytics.py
+                try:
+                    action = ActionAdapter.validate_python(action_request.parameters)
+
+                    # Check if this is a SendMessage action
+                    if isinstance(action, SendMessage):
+                        # Only count if the action didn't error
+                        if not action_result.is_error:
+                            total_send_messages += 1
+                            # Get the message type
+                            message = action.message
+                            message_type = message.type
+
+                            if message_type == "text":
+                                text_messages += 1
+                            elif message_type == "pay":
+                                payment_messages += 1
+                            elif message_type == "order_proposal":
+                                order_proposal_messages += 1
+                except Exception:
+                    # Skip actions that can't be parsed
+                    pass
+
+            has_errors = (
+                llm_error_count > 0 or db_busy_count > 0 or wrong_customer_id_count > 0
+            )
+
+            return (
+                schema_name,
+                has_errors,
+                llm_error_count,
+                db_busy_count,
+                wrong_customer_id_count,
+                total_send_messages,
+                text_messages,
+                payment_messages,
+                order_proposal_messages,
+            )
 
     except Exception as e:
         print(f"Error accessing {schema_name}: {e}")
-        return schema_name, False, 0, 0
+        return schema_name, False, 0, 0, 0, 0, 0, 0, 0
 
 
 async def main():
@@ -186,23 +244,30 @@ async def main():
     for schema in schemas:
         level_counts = await get_log_level_counts(schema)
 
-        schema_name, has_errors, llm_error_count, db_busy_count = await audit_database(
-            schema
-        )
+        (
+            schema_name,
+            has_errors,
+            llm_error_count,
+            db_busy_count,
+            wrong_customer_id_count,
+            total_send_messages,
+            text_messages,
+            payment_messages,
+            order_proposal_messages,
+        ) = await audit_database(schema)
 
         status = "YES" if has_errors else "NO "
 
-        # Always show LLM errors and DB busy counts
-        error_str = f"{llm_error_count} LLM errors, {db_busy_count} DB busy"
+        error_str = f"{llm_error_count} LLM errors, {db_busy_count} DB busy, {wrong_customer_id_count} Fake business ID"
 
-        # Build level string
-        if level_counts:
-            level_str = ", ".join(
-                [f"{level}: {count}" for level, count in sorted(level_counts.items())]
-            )
-            print(f"{status} ---\t{schema_name}\t--- Logs: {error_str}, {level_str}")
-        else:
-            print(f"{status} ---\t{schema_name}\t--- Logs: {error_str}")
+        level_str = ", ".join(
+            [f"{level}: {count}" for level, count in sorted(level_counts.items())]
+        )
+
+        messages_str = f"Messages: {total_send_messages} total ({text_messages} text, {payment_messages} pay, {order_proposal_messages} order_proposal)"
+        print(
+            f"{status} - {schema_name} - Logs: {error_str}, {level_str}; {messages_str}"
+        )
 
 
 if __name__ == "__main__":
