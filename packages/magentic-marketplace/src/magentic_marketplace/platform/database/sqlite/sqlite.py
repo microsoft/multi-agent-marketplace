@@ -360,6 +360,54 @@ class _BoundedSqliteConnectionMixIn:
         )
         return all_results
 
+    async def _batched_create_many(
+        self,
+        table_name: str,
+        insert_sql: str,
+        records: list[tuple],
+        batch_size: int = 1000,
+    ) -> None:
+        """Create multiple items efficiently in batches using executemany.
+
+        Args:
+            table_name: Name of the table (for logging)
+            insert_sql: INSERT SQL statement with placeholders
+            records: List of tuples containing values to insert
+            batch_size: Number of items to insert per batch (default: 1000)
+
+        """
+        if not records:
+            return
+
+        total_items = len(records)
+        batch_number = 0
+
+        logger.debug(
+            f"Starting batched create_many for {table_name}: total_items={total_items}, batch_size={batch_size}"
+        )
+
+        # Process in batches
+        for i in range(0, total_items, batch_size):
+            batch_number += 1
+            batch = records[i : i + batch_size]
+            batch_len = len(batch)
+
+            logger.debug(
+                f"Inserting {table_name} batch {batch_number}: {batch_len} items (offset={i})"
+            )
+
+            async with self._get_connection(is_write=True) as db:
+                await db.executemany(insert_sql, batch)
+                await db.commit()
+
+            logger.debug(
+                f"Successfully inserted {table_name} batch {batch_number}: {batch_len} items, total so far: {min(i + batch_size, total_items)}"
+            )
+
+        logger.debug(
+            f"Completed batched create_many for {table_name}: {batch_number} batches, {total_items} total items"
+        )
+
 
 class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn):
     """SQLite implementation of AgentTableController."""
@@ -395,6 +443,32 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
             data=item.data,
             agent_embedding=item.agent_embedding,
             index=row_index,
+        )
+
+    async def create_many(self, items: list[AgentRow], batch_size: int = 1000) -> None:
+        """Create multiple agents efficiently in batches.
+
+        Args:
+            items: List of agent rows to insert
+            batch_size: Number of items to insert per batch (default: 1000)
+
+        """
+        # Prepare records for insertion
+        records = [
+            (
+                item.id or str(uuid.uuid4()),
+                item.created_at.isoformat(),
+                item.data.model_dump_json(),
+                item.agent_embedding,
+            )
+            for item in items
+        ]
+
+        await self._batched_create_many(
+            table_name="agents",
+            insert_sql="INSERT INTO agents (id, created_at, data, agent_embedding) VALUES (?, ?, ?, ?)",
+            records=records,
+            batch_size=batch_size,
         )
 
     async def get_by_id(self, item_id: str) -> AgentRow | None:
@@ -604,6 +678,31 @@ class SQLiteActionController(ActionTableController, _BoundedSqliteConnectionMixI
             index=row_index,
         )
 
+    async def create_many(self, items: list[ActionRow], batch_size: int = 1000) -> None:
+        """Create multiple actions efficiently in batches.
+
+        Args:
+            items: List of action rows to insert
+            batch_size: Number of items to insert per batch (default: 1000)
+
+        """
+        # Prepare records for insertion
+        records = [
+            (
+                item.id or str(uuid.uuid4()),
+                item.created_at.isoformat(),
+                item.data.model_dump_json(),
+            )
+            for item in items
+        ]
+
+        await self._batched_create_many(
+            table_name="actions",
+            insert_sql="INSERT INTO actions (id, created_at, data) VALUES (?, ?, ?)",
+            records=records,
+            batch_size=batch_size,
+        )
+
     async def get_by_id(self, item_id: str) -> ActionRow | None:
         """Get action by ID."""
         async with self.connection as db:
@@ -762,6 +861,31 @@ class SQLiteLogController(LogTableController, _BoundedSqliteConnectionMixIn):
         # Return the created log
         return LogRow(
             id=log_id, created_at=item.created_at, data=item.data, index=row_index
+        )
+
+    async def create_many(self, items: list[LogRow], batch_size: int = 1000) -> None:
+        """Create multiple logs efficiently in batches.
+
+        Args:
+            items: List of log rows to insert
+            batch_size: Number of items to insert per batch (default: 1000)
+
+        """
+        # Prepare records for insertion
+        records = [
+            (
+                item.id or str(uuid.uuid4()),
+                item.created_at.isoformat(),
+                item.data.model_dump_json(),
+            )
+            for item in items
+        ]
+
+        await self._batched_create_many(
+            table_name="logs",
+            insert_sql="INSERT INTO logs (id, created_at, data) VALUES (?, ?, ?)",
+            records=records,
+            batch_size=batch_size,
         )
 
     async def get_by_id(self, item_id: str) -> LogRow | None:

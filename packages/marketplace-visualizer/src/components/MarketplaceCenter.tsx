@@ -87,13 +87,13 @@ const MarketplaceCenter: React.FC<MarketplaceCenterProps> = ({
             {(selectedCustomer || selectedBusiness) && (
               <div className="flex items-center gap-2">
                 {selectedCustomer && (
-                  <div className="flex items-center space-x-1 rounded-full bg-purple-100 px-3 py-1.5 text-xs text-purple-800">
+                  <div className="flex items-center space-x-1 rounded-full bg-brand-100 px-3 py-1.5 text-xs text-brand-800">
                     <span className="font-medium">
                       Customer: {selectedCustomer.name.replace("agent-", "")}
                     </span>
                     <button
                       onClick={onClearCustomer}
-                      className="ml-1 rounded-full p-0.5 transition-colors hover:bg-purple-200"
+                      className="ml-1 rounded-full p-0.5 transition-colors hover:bg-brand-200"
                       aria-label="Clear customer filter"
                     >
                       <X className="h-3 w-3" />
@@ -101,13 +101,13 @@ const MarketplaceCenter: React.FC<MarketplaceCenterProps> = ({
                   </div>
                 )}
                 {selectedBusiness && (
-                  <div className="flex items-center space-x-1 rounded-full bg-purple-100 px-3 py-1.5 text-xs text-purple-800">
+                  <div className="flex items-center space-x-1 rounded-full bg-brand-100 px-3 py-1.5 text-xs text-brand-800">
                     <span className="font-medium">
                       Business: {selectedBusiness.name.replace("agent-", "")}
                     </span>
                     <button
                       onClick={onClearBusiness}
-                      className="ml-1 rounded-full p-0.5 transition-colors hover:bg-purple-200"
+                      className="ml-1 rounded-full p-0.5 transition-colors hover:bg-brand-200"
                       aria-label="Clear business filter"
                     >
                       <X className="h-3 w-3" />
