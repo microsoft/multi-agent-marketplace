@@ -12,6 +12,7 @@ const customTheme = createCssVariablesTheme({
 // https://vitepress.dev/reference/site-config
 export default withMermaid(
   defineConfig({
+    base: "/multi-agent-marketplace/",
     title: "Magentic Marketplace",
     description: "Simulate Agentic Markets and See How They Evolve",
     head: [["link", { rel: "icon", href: "/logo.svg" }]],
