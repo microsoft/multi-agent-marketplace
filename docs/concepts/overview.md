@@ -1,6 +1,6 @@
 # Overview
 
-![Market overview](../images/overview.png)
+![Market overview](/overview.png)
 
 Magentic Marketplace is a virtual marketplace simulation where AI agents autonomously buy and sell goods. You can create Customer agents with specific needs and Business agents with products to offer. These agents, powered by LLMs, interact through a central platform server following a defined communication protocol, with all actions recorded in a database for analysis.
 

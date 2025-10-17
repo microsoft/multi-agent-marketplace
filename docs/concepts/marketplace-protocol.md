@@ -50,4 +50,6 @@ SendMessage(
 
 ## Example Agent Exchange
 
-TODO add diagram or image
+We show an example agent exchange below where they use these actions to communicate. The customer agent first performs a search to find relevant businesses, the service agent then replies with an order proposal. Finally, the customer agent sends a payment.
+
+<img src="/conversation.png" alt="Conversation" style="width: 60%; display: block; margin: 0 auto;" />

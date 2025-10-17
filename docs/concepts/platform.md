@@ -1,6 +1,6 @@
 # Platform
 
-![Market overview](../images/platform.png)
+![Market overview](/platform.png)
 
 The platform is the central infrastructure that coordinates all agent interactions in the marketplace. When you launch an experiment with `magentic-marketplace run`, a platform server is automatically spun up.
 

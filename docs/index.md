@@ -5,9 +5,9 @@ layout: home
 hero:
   name: "Magentic Marketplace"
   # text: "Simulate Agentic Marketplaces and See How They Evolve"
-  tagline: Simulate agentic marketplaces and see how they evolve
+  tagline: Simulation Environment for Agentic Marketplaces
   image:
-    src: /teaser.gif
+    # src: /teaser.gif
     alt: Magentic Marketplace Demo
   actions:
     - theme: brand
@@ -19,9 +19,18 @@ hero:
 
 features:
   - title: AI-Powered Marketplace Agents
-    details: Run marketplace simulations with customer and business agents that search, converse, and make transactions
+    details: |
+      Run customer and business agents that search, converse, and make transactions
+
+      <img src="/convo.gif" alt="Demo" style="width: 100%; margin-top: 1rem; border-radius: 12px;" />
   - title: Flexible Environment
-    details: Our marketplace environment allows you to run experiments with different agents, models, and evaluation datasets
+    details: |
+      Our environment allows you to run experiments with different agents, models, and datasets
+
+      <img src="/run.png" alt="Run" style="width: 100%; margin-top: 1rem; border-radius: 12px;" />
   - title: Marketplace Analytics
-    details: Built-in tools for analyzing agent behavior and calculating market welfare
+    details: |
+      Built-in tools for analyzing agent behavior and calculating market welfare
+
+      <img src="/utils.png" alt="Utils" style="width: 100%; margin-top: 1rem; border-radius: 12px;" />
 ---
