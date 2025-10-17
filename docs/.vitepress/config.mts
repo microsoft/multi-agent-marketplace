@@ -79,5 +79,6 @@ export default withMermaid(
         provider: "local",
       },
     },
+    ignoreDeadLinks: true,
   })
 );
