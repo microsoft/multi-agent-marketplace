@@ -66,7 +66,7 @@ magentic-marketplace analyze my_experiment
 
 `--db-type` _(optional)_
 
-&nbsp;&nbsp;&nbsp;&nbsp;Type of database: `sqlite` or `postgres` (default: `postgres`). For postgres, the experiment name is the name of a schema in the database. For sqllite, it is the path to a database file.
+&nbsp;&nbsp;&nbsp;&nbsp;Type of database: `sqlite` or `postgres` (default: `postgres`). For postgres, the experiment name is the name of a schema in the database. For sqlite, it is the path to a database file.
 
 `--no-save-json` _(optional)_
 
