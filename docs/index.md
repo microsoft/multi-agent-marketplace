@@ -22,15 +22,15 @@ features:
     details: |
       Run customer and business agents that search, converse, and make transactions
 
-      <img src="/convo.gif" alt="Demo" style="width: 100%; margin-top: 1rem; border-radius: 12px;" />
+      <img src="./convo.gif" alt="Demo" style="width: 100%; margin-top: 1rem; border-radius: 12px;" />
   - title: Flexible Environment
     details: |
       Our environment allows you to run experiments with different agents, models, and datasets
 
-      <img src="/run.png" alt="Run" style="width: 100%; margin-top: 1rem; border-radius: 12px;" />
+      <img src="./run.png" alt="Run" style="width: 100%; margin-top: 1rem; border-radius: 12px;" />
   - title: Marketplace Analytics
     details: |
       Built-in tools for analyzing agent behavior and calculating market welfare
 
-      <img src="/utils.png" alt="Utils" style="width: 100%; margin-top: 1rem; border-radius: 12px;" />
+      <img src="./utils.png" alt="Utils" style="width: 100%; margin-top: 1rem; border-radius: 12px;" />
 ---
