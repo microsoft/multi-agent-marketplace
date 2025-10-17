@@ -62,7 +62,7 @@ pyright src --outputjson > /tmp/pyright_output.json 2>/dev/null || true
 echo 'Type checking completed.'
 """
 
-spell = "codespell packages --skip='*/node_modules/*,*/.git/*,*/__pycache__/*,*/.venv/*,*/static/assets/*,*.json' --ignore-words-list='mappin'"
+spell = "codespell packages docs --skip='*/node_modules/*,*/.git/*,*/__pycache__/*,*/.venv/*,*/static/assets/*,*.json,*/.vitepress/*' --ignore-words-list='mappin'"
 
 # Combined quality checks
 check-all = ["format", "lint", "type", "spell"]
