@@ -68,11 +68,11 @@ const Conversation: React.FC<ConversationProps> = ({
     return (
       <div className="flex h-full min-h-0 flex-col space-y-4">
         {/* Thread Header */}
-        <div className="flex-shrink-0 rounded-xl border border-purple-100 bg-gradient-to-r from-purple-50 to-pink-50 p-4">
+        <div className="flex-shrink-0 rounded-xl border border-brand-100 bg-gradient-to-r from-brand-50 to-brand-100 p-4">
           <div className="mb-3 flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-purple-400 to-purple-500 text-lg shadow-sm">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-brand-400 to-brand-500 text-lg shadow-sm">
                   {getCustomerAvatar(customerName)}
                 </div>
                 <div>
@@ -80,7 +80,7 @@ const Conversation: React.FC<ConversationProps> = ({
                   <p className="text-xs text-gray-500">Customer</p>
                 </div>
               </div>
-              <ArrowRight className="h-5 w-5 text-purple-400" />
+              <ArrowRight className="h-5 w-5 text-brand-400" />
               <div className="flex items-center space-x-2">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-gray-300 to-gray-400 font-bold text-white shadow-sm">
                   {getBusinessAvatar(businessName)}
@@ -92,7 +92,7 @@ const Conversation: React.FC<ConversationProps> = ({
               </div>
             </div>
             <div className="text-right">
-              <p className="text-sm font-medium text-purple-600">
+              <p className="text-sm font-medium text-brand-600">
                 {thread.messages.length} messages
               </p>
               <p className="text-xs text-gray-500">
@@ -117,14 +117,14 @@ const Conversation: React.FC<ConversationProps> = ({
                   <div
                     className={clsx(
                       "flex items-center space-x-2 px-3",
-                      isFromCustomer ? "text-purple-600" : "text-gray-600",
+                      isFromCustomer ? "text-brand-600" : "text-gray-600",
                     )}
                   >
                     <div
                       className={clsx(
                         "flex h-6 w-6 items-center justify-center rounded-full text-xs",
                         isFromCustomer
-                          ? "bg-purple-100 text-purple-700"
+                          ? "bg-brand-100 text-brand-700"
                           : "bg-gray-100 text-gray-700",
                       )}
                     >
@@ -145,7 +145,7 @@ const Conversation: React.FC<ConversationProps> = ({
                     className={clsx(
                       "max-w-xs rounded-2xl px-4 py-3 shadow-sm lg:max-w-md",
                       isFromCustomer
-                        ? "ml-9 rounded-bl-md bg-gradient-to-br from-purple-500 to-purple-600 text-white"
+                        ? "ml-9 rounded-bl-md bg-gradient-to-br from-brand-500 to-brand-600 text-white"
                         : "mr-9 rounded-br-md bg-gradient-to-br from-gray-400 to-gray-500 text-white",
                     )}
                   >
@@ -173,8 +173,8 @@ const Conversation: React.FC<ConversationProps> = ({
     <div
       onClick={onClick}
       className={clsx(
-        "group relative rounded-xl bg-gradient-to-r from-purple-50 to-purple-50 p-4",
-        "border border-purple-100 transition-all duration-300 hover:border-purple-200",
+        "group relative rounded-xl bg-gradient-to-r from-brand-50 to-brand-50 p-4",
+        "border border-brand-100 transition-all duration-300 hover:border-brand-200",
         "transform cursor-pointer hover:-translate-y-1 hover:shadow-md",
       )}
     >
@@ -184,14 +184,14 @@ const Conversation: React.FC<ConversationProps> = ({
           <div className="flex items-center gap-2">
             {/* Customer */}
             <div className="flex items-center gap-1.5">
-              <div className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-purple-400 to-purple-500 text-xs shadow-sm">
+              <div className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-brand-400 to-brand-500 text-xs shadow-sm">
                 {getCustomerAvatar(customerName)}
               </div>
               <span className="text-sm font-medium text-gray-800">{customerName}</span>
             </div>
 
             {/* Arrow */}
-            <ArrowRight className="h-4 w-4 text-purple-400" />
+            <ArrowRight className="h-4 w-4 text-brand-400" />
 
             {/* Business */}
             <div className="flex items-center gap-1.5">
@@ -223,8 +223,8 @@ const Conversation: React.FC<ConversationProps> = ({
       </div>
 
       {/* Last Message Preview */}
-      <div className="rounded-lg border border-purple-100 bg-white p-3">
-        <p className="mb-1 text-xs font-medium text-purple-700">Last message:</p>
+      <div className="rounded-lg border border-brand-100 bg-white p-3">
+        <p className="mb-1 text-xs font-medium text-brand-700">Last message:</p>
         <div className="line-clamp-2 text-sm leading-relaxed text-gray-700">
           {typeof lastMessage.content === "string"
             ? lastMessage.content.replace(/"/g, "").substring(0, 100) +
@@ -240,7 +240,7 @@ const Conversation: React.FC<ConversationProps> = ({
       </div>
 
       {/* Hover Effect */}
-      <div className="pointer-events-none absolute inset-0 rounded-xl bg-gradient-to-r from-purple-400/10 to-pink-400/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+      <div className="pointer-events-none absolute inset-0 rounded-xl bg-gradient-to-r from-brand-400/10 to-brand-300/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
     </div>
   );
 };

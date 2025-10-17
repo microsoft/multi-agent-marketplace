@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 :root {
-  /* Food marketplace color palette */
+  /* Marketplace color palette */
 
   --color-red-500: #ef4444;
   --color-red-600: #dc2626;
@@ -18,9 +18,11 @@
   --color-blue-500: #3b82f6;
   --color-blue-600: #2563eb;
 
-  --color-purple-400: #a78bfa;
-  --color-purple-500: #8b5cf6;
-  --color-purple-600: #7c3aed;
+  /* Brand colors */
+  --color-brand-400: #fb81ff;
+  --color-brand-500: #d440d8;
+  --color-brand-600: #c947b9;
+  --color-brand-700: #912084;
 }
 
 * {
@@ -71,19 +73,19 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #a855f7, #9333ea);
+  background: linear-gradient(135deg, #fb81ff, #912084);
   border-radius: 4px;
   transition: background 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #9333ea, #7c3aed);
+  background: linear-gradient(135deg, #d440d8, #7a1b6e);
 }
 
 /* Firefox scrollbar */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #a855f7 #f1f5f9;
+  scrollbar-color: #fb81ff #f1f5f9;
 }
 
 /* Custom utility classes */
@@ -187,7 +189,7 @@ body {
 /* Focus states for accessibility */
 button:focus-visible,
 .panel-item:focus-visible {
-  outline: 2px solid #a855f7;
+  outline: 2px solid #fb81ff;
   outline-offset: 2px;
 }
 
