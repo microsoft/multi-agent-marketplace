@@ -218,8 +218,12 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
+.DS_Store
+
 # ignore files that contain ".local" in the file name
 *.local*
 
 # log files are json so ignore all
 *.json
+
+!.vscode/settings.json

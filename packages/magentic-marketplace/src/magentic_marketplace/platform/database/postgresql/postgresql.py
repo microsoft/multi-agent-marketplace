@@ -3,10 +3,11 @@
 import asyncio
 import json
 import logging
+import os
 import threading
 import uuid
 from contextlib import asynccontextmanager
-from typing import Any, Literal
+from typing import Any, Literal, cast
 
 import asyncpg
 
@@ -23,6 +24,7 @@ from ..base import (
 )
 from ..models import ActionRow, ActionRowData, AgentRow, LogRow
 from ..queries import AndQuery, JSONQuery, OrQuery, Query, QueryParams, RangeQueryParams
+from .utils import fix_json_for_postgres
 
 SchemaMode = Literal["existing", "override", "create_new"]
 
@@ -282,18 +284,104 @@ class _BoundedPostgresConnectionMixIn:
             _connection_metrics["read_requests"] += 1
 
         try:
-            async with asyncio.timeout(self._timeout):
-                async with self._pool.acquire() as conn:
-                    _connection_metrics["successful_requests"] += 1
-                    yield conn
+            conn = await asyncio.wait_for(self._pool.acquire(), self._timeout)
+            try:
+                _connection_metrics["successful_requests"] += 1
+                yield cast(asyncpg.connection.Connection, conn)
+            finally:
+                await self._pool.release(conn)
         except TimeoutError as e:
             _connection_metrics["connection_timeouts"] += 1
             logger.warning("Database too busy: timeout acquiring connection from pool")
             raise DatabaseTooBusyError("Connection pool timeout") from e
-        except (asyncpg.PostgresError, asyncpg.InterfaceError) as e:
+        except Exception:
             _connection_metrics["db_errors"] += 1
-            logger.warning(f"Database too busy: PostgreSQL error: {e}")
-            raise DatabaseTooBusyError(f"PostgreSQL error: {e}") from e
+            raise
+
+    async def _batched_get_all(
+        self,
+        table_name: str,
+        base_sql: str,
+        params: RangeQueryParams | None = None,
+        batch_size: int = 1000,
+    ) -> list[Any]:
+        """Fetch all rows using batching and return raw database rows.
+
+        Args:
+            table_name: Name of the table (for logging)
+            base_sql: Base SQL SELECT query
+            params: Range query parameters for filtering
+            batch_size: Number of rows to fetch per batch (default: 1000)
+
+        Returns:
+            List of all matching raw database rows
+
+        """
+        all_results: list[Any] = []
+
+        params = params or RangeQueryParams()
+
+        # If there's a specific limit, we should respect it
+        remaining = params.limit
+
+        # Used only for logging
+        batch_number = 0
+
+        logger.debug(
+            f"Starting batched get_all for {table_name}: batch_size={batch_size}, limit={params.limit}, offset={params.offset}"
+        )
+
+        sql, sql_params = _convert_query_params_to_postgres(
+            sql=base_sql,
+            params=params,
+        )
+
+        async with self.connection() as conn:
+            async with conn.transaction():
+                cursor = await conn.cursor(sql, *sql_params)
+                while True:
+                    batch_number += 1
+
+                    # Create batch params
+                    if remaining is not None:
+                        batch_limit = min(batch_size, remaining)
+                    else:
+                        batch_limit = batch_size
+
+                    logger.debug(
+                        f"Fetching {table_name} batch {batch_number}: offset={len(all_results)}, limit={batch_limit}"
+                    )
+
+                    rows = await cursor.fetch(batch_limit)
+
+                    logger.debug(
+                        f"Retrieved {len(rows)} {table_name} in batch {batch_number}, total so far: {len(all_results) + len(rows)}"
+                    )
+
+                    if not rows:
+                        break
+
+                    all_results.extend(rows)
+
+                    # If we got fewer rows than batch_size, we've reached the end
+                    if len(rows) < batch_size:
+                        logger.debug(
+                            f"Batch {batch_number} returned fewer rows than batch_size, stopping"
+                        )
+                        break
+
+                    if remaining is not None:
+                        remaining -= len(rows)
+                        if remaining <= 0:
+                            logger.debug(
+                                f"Reached limit after batch {batch_number}, stopping"
+                            )
+                            break
+
+        logger.debug(
+            f"Completed batched get_all for {table_name}: {batch_number} batches, {len(all_results)} total rows"
+        )
+        return all_results
 
 
 class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnectionMixIn):
@@ -302,15 +390,28 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
     async def create(self, item: AgentRow) -> AgentRow:
         """Create a new agent."""
         agent_id = item.id or str(uuid.uuid4())
+        agent_json = json.dumps(item.data.model_dump())
 
         async with self.connection(is_write=True) as conn:
-            row_index = await conn.fetchval(
-                f"INSERT INTO {self._schema}.agents (id, created_at, data, agent_embedding) VALUES ($1, $2, $3, $4) RETURNING row_index",
-                agent_id,
-                item.created_at,
-                json.dumps(item.data.model_dump()),
-                item.agent_embedding,
-            )
+            try:
+                row_index = await conn.fetchval(
+                    self._get_insert_query(),
+                    agent_id,
+                    item.created_at,
+                    agent_json,
+                    item.agent_embedding,
+                )
+            except asyncpg.UntranslatableCharacterError as e:
+                logger.warning(f"Fixing invalid unicode in AGENT insert: {e}")
+                fixed_data = fix_json_for_postgres(item.data.model_dump())
+                agent_json = json.dumps(fixed_data)
+                row_index = await conn.fetchval(
+                    self._get_insert_query(),
+                    agent_id,
+                    item.created_at,
+                    agent_json,
+                    item.agent_embedding,
+                )
 
         return AgentRow(
             id=agent_id,
@@ -318,6 +419,64 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
             data=item.data,
             agent_embedding=item.agent_embedding,
             index=row_index,
+        )
+
+    def _get_insert_query(self) -> str:
+        return f"INSERT INTO {self._schema}.agents (id, created_at, data, agent_embedding) VALUES ($1, $2, $3, $4) RETURNING row_index"
+
+    async def create_many(self, items: list[AgentRow], batch_size: int = 1000) -> None:
+        """Create multiple agents efficiently in batches using COPY.
+
+        Args:
+            items: List of agent rows to insert
+            batch_size: Number of items to insert per batch (default: 1000)
+
+        """
+        if not items:
+            return
+
+        total_items = len(items)
+        batch_number = 0
+
+        logger.debug(
+            f"Starting batched create_many for agents: total_items={total_items}, batch_size={batch_size}"
+        )
+
+        # Process in batches
+        for i in range(0, total_items, batch_size):
+            batch_number += 1
+            batch = items[i : i + batch_size]
+            batch_len = len(batch)
+
+            logger.debug(
+                f"Inserting agents batch {batch_number}: {batch_len} items (offset={i})"
+            )
+
+            # Prepare records for COPY
+            records = [
+                (
+                    item.id or str(uuid.uuid4()),
+                    item.created_at,
+                    item.data.model_dump_json(),
+                    item.agent_embedding,
+                )
+                for item in batch
+            ]
+
+            async with self.connection(is_write=True) as conn:
+                await conn.copy_records_to_table(
+                    "agents",
+                    records=records,
+                    columns=["id", "created_at", "data", "agent_embedding"],
+                    schema_name=self._schema,
+                )
+
+            logger.debug(
+                f"Successfully inserted agents batch {batch_number}: {batch_len} items, total so far: {min(i + batch_size, total_items)}"
+            )
+
+        logger.debug(
+            f"Completed batched create_many for agents: {batch_number} batches, {total_items} total items"
         )
 
     async def get_by_id(self, item_id: str) -> AgentRow | None:
@@ -341,14 +500,25 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
             index=row["row_index"],
         )
 
-    async def get_all(self, params: RangeQueryParams | None = None) -> list[AgentRow]:
-        """Get all agents with pagination."""
-        sql, sql_params = _convert_query_params_to_postgres(
-            sql=f"SELECT row_index, id, created_at, data, agent_embedding FROM {self._schema}.agents",
+    async def get_all(
+        self, params: RangeQueryParams | None = None, batch_size: int = 1000
+    ) -> list[AgentRow]:
+        """Get all agents with pagination, fetching in batches.
+
+        Args:
+            params: Range query parameters for filtering
+            batch_size: Number of rows to fetch per batch (default: 1000)
+
+        Returns:
+            List of all matching agent rows
+
+        """
+        rows = await self._batched_get_all(
+            table_name="agents",
+            base_sql=f"SELECT row_index, id, created_at, data, agent_embedding FROM {self._schema}.agents",
             params=params,
+            batch_size=batch_size,
         )
-        async with self.connection() as conn:
-            rows = await conn.fetch(sql, *sql_params)
 
         return [
             AgentRow(
@@ -425,7 +595,7 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
         """Count total agents."""
         async with self.connection() as conn:
             result = await conn.fetchval(f"SELECT COUNT(*) FROM {self._schema}.agents")
-            return result
+            return result or 0
 
     async def find_agents_by_id_pattern(self, id_pattern: str) -> list[str]:
         """Find all agent IDs that contain the given ID pattern."""
@@ -471,19 +641,87 @@ class PostgreSQLActionController(
         action_json = json.dumps(item.data.model_dump())
 
         async with self.connection(is_write=True) as conn:
-            # The row_index will be automatically set by the DEFAULT nextval()
-            row_index = await conn.fetchval(
-                f"INSERT INTO {self._schema}.actions (id, created_at, data) VALUES ($1, $2, $3) RETURNING row_index",
-                action_id,
-                item.created_at,
-                action_json,
-            )
+            try:
+                # The row_index will be automatically set by the DEFAULT nextval()
+                row_index = await conn.fetchval(
+                    self._get_insert_query(),
+                    action_id,
+                    item.created_at,
+                    action_json,
+                )
+            except asyncpg.UntranslatableCharacterError as e:
+                logger.warning(f"Fixing invalid unicode in ACTION insert: {e}")
+                fixed_data = fix_json_for_postgres(item.data.model_dump())
+                action_json = json.dumps(fixed_data)
+                row_index = await conn.fetchval(
+                    self._get_insert_query(),
+                    action_id,
+                    item.created_at,
+                    action_json,
+                )
 
         return ActionRow(
             id=action_id,
             created_at=item.created_at,
             data=item.data,
             index=row_index,
+        )
+
+    def _get_insert_query(self) -> str:
+        return f"INSERT INTO {self._schema}.actions (id, created_at, data) VALUES ($1, $2, $3) RETURNING row_index"
+
+    async def create_many(self, items: list[ActionRow], batch_size: int = 1000) -> None:
+        """Create multiple actions efficiently in batches using COPY.
+
+        Args:
+            items: List of action rows to insert
+            batch_size: Number of items to insert per batch (default: 1000)
+
+        """
+        if not items:
+            return
+
+        total_items = len(items)
+        batch_number = 0
+
+        logger.debug(
+            f"Starting batched create_many for actions: total_items={total_items}, batch_size={batch_size}"
+        )
+
+        # Process in batches
+        for i in range(0, total_items, batch_size):
+            batch_number += 1
+            batch = items[i : i + batch_size]
+            batch_len = len(batch)
+
+            logger.debug(
+                f"Inserting actions batch {batch_number}: {batch_len} items (offset={i})"
+            )
+
+            # Prepare records for COPY
+            records = [
+                (
+                    item.id or str(uuid.uuid4()),
+                    item.created_at,
+                    item.data.model_dump_json(),
+                )
+                for item in batch
+            ]
+
+            async with self.connection(is_write=True) as conn:
+                await conn.copy_records_to_table(
+                    "actions",
+                    records=records,
+                    columns=["id", "created_at", "data"],
+                    schema_name=self._schema,
+                )
+
+            logger.debug(
+                f"Successfully inserted actions batch {batch_number}: {batch_len} items, total so far: {min(i + batch_size, total_items)}"
+            )
+
+        logger.debug(
+            f"Completed batched create_many for actions: {batch_number} batches, {total_items} total items"
         )
 
     async def get_by_id(self, item_id: str) -> ActionRow | None:
@@ -505,15 +743,25 @@ class PostgreSQLActionController(
             index=row["row_index"],
         )
 
-    async def get_all(self, params: RangeQueryParams | None = None) -> list[ActionRow]:
-        """Get all actions with pagination."""
-        sql, sql_params = _convert_query_params_to_postgres(
-            sql=f"SELECT row_index, id, created_at, data FROM {self._schema}.actions",
-            params=params,
-        )
+    async def get_all(
+        self, params: RangeQueryParams | None = None, batch_size: int = 1000
+    ) -> list[ActionRow]:
+        """Get all actions with pagination, fetching in batches.
 
-        async with self.connection() as conn:
-            rows = await conn.fetch(sql, *sql_params)
+        Args:
+            params: Range query parameters for filtering
+            batch_size: Number of rows to fetch per batch (default: 1000)
+
+        Returns:
+            List of all matching action rows
+
+        """
+        rows = await self._batched_get_all(
+            table_name="actions",
+            base_sql=f"SELECT row_index, id, created_at, data FROM {self._schema}.actions",
+            params=params,
+            batch_size=batch_size,
+        )
 
         return [
             ActionRow(
@@ -577,7 +825,7 @@ class PostgreSQLActionController(
         """Count total actions."""
         async with self.connection() as conn:
             result = await conn.fetchval(f"SELECT COUNT(*) FROM {self._schema}.actions")
-            return result
+            return result or 0
 
 
 class PostgreSQLLogController(LogTableController, _BoundedPostgresConnectionMixIn):
@@ -609,17 +857,86 @@ class PostgreSQLLogController(LogTableController, _BoundedPostgresConnectionMixI
     async def create(self, item: LogRow) -> LogRow:
         """Create a new log record."""
         log_id = item.id or str(uuid.uuid4())
+        log_json = json.dumps(item.data.model_dump())
 
         async with self.connection(is_write=True) as conn:
-            row_index = await conn.fetchval(
-                f"INSERT INTO {self._schema}.logs (id, created_at, data) VALUES ($1, $2, $3) RETURNING row_index",
-                log_id,
-                item.created_at,
-                json.dumps(item.data.model_dump()),
-            )
+            try:
+                row_index = await conn.fetchval(
+                    self._get_insert_query(),
+                    log_id,
+                    item.created_at,
+                    log_json,
+                )
+            except asyncpg.UntranslatableCharacterError as e:
+                logger.warning(f"Fixing invalid unicode in LOG insert: {e}")
+                fixed_data = fix_json_for_postgres(item.data.model_dump())
+                log_json = json.dumps(fixed_data)
+                row_index = await conn.fetchval(
+                    self._get_insert_query(),
+                    log_id,
+                    item.created_at,
+                    log_json,
+                )
 
         return LogRow(
             id=log_id, created_at=item.created_at, data=item.data, index=row_index
+        )
+
+    def _get_insert_query(self) -> str:
+        return f"INSERT INTO {self._schema}.logs (id, created_at, data) VALUES ($1, $2, $3) RETURNING row_index"
+
+    async def create_many(self, items: list[LogRow], batch_size: int = 1000) -> None:
+        """Create multiple logs efficiently in batches using COPY.
+
+        Args:
+            items: List of log rows to insert
+            batch_size: Number of items to insert per batch (default: 1000)
+
+        """
+        if not items:
+            return
+
+        total_items = len(items)
+        batch_number = 0
+
+        logger.debug(
+            f"Starting batched create_many for logs: total_items={total_items}, batch_size={batch_size}"
+        )
+
+        # Process in batches
+        for i in range(0, total_items, batch_size):
+            batch_number += 1
+            batch = items[i : i + batch_size]
+            batch_len = len(batch)
+
+            logger.debug(
+                f"Inserting logs batch {batch_number}: {batch_len} items (offset={i})"
+            )
+
+            # Prepare records for COPY
+            records = [
+                (
+                    item.id or str(uuid.uuid4()),
+                    item.created_at,
+                    item.data.model_dump_json(),
+                )
+                for item in batch
+            ]
+
+            async with self.connection(is_write=True) as conn:
+                await conn.copy_records_to_table(
+                    "logs",
+                    records=records,
+                    columns=["id", "created_at", "data"],
+                    schema_name=self._schema,
+                )
+
+            logger.debug(
+                f"Successfully inserted logs batch {batch_number}: {batch_len} items, total so far: {min(i + batch_size, total_items)}"
+            )
+
+        logger.debug(
+            f"Completed batched create_many for logs: {batch_number} batches, {total_items} total items"
         )
 
     async def get_by_id(self, item_id: str) -> LogRow | None:
@@ -641,15 +958,25 @@ class PostgreSQLLogController(LogTableController, _BoundedPostgresConnectionMixI
             index=row["row_index"],
         )
 
-    async def get_all(self, params: RangeQueryParams | None = None) -> list[LogRow]:
-        """Get all logs with pagination."""
-        sql, sql_params = _convert_query_params_to_postgres(
-            sql=f"SELECT row_index, id, created_at, data FROM {self._schema}.logs",
-            params=params,
-        )
+    async def get_all(
+        self, params: RangeQueryParams | None = None, batch_size: int = 1000
+    ) -> list[LogRow]:
+        """Get all logs with pagination, fetching in batches.
 
-        async with self.connection() as conn:
-            rows = await conn.fetch(sql, *sql_params)
+        Args:
+            params: Range query parameters for filtering
+            batch_size: Number of rows to fetch per batch (default: 1000)
+
+        Returns:
+            List of all matching log rows
+
+        """
+        rows = await self._batched_get_all(
+            table_name="logs",
+            base_sql=f"SELECT row_index, id, created_at, data FROM {self._schema}.logs",
+            params=params,
+            batch_size=batch_size,
+        )
 
         return [
             LogRow(
@@ -701,7 +1028,7 @@ class PostgreSQLLogController(LogTableController, _BoundedPostgresConnectionMixI
         """Count total log records."""
         async with self.connection() as conn:
             result = await conn.fetchval(f"SELECT COUNT(*) FROM {self._schema}.logs")
-            return result
+            return result or 0
 
 
 class PostgreSQLDatabaseController(BaseDatabaseController):
@@ -839,13 +1166,13 @@ class PostgreSQLDatabaseController(BaseDatabaseController):
 @asynccontextmanager
 async def connect_to_postgresql_database(
     schema: str,
-    host: str = "localhost",
-    port: int = 5432,
-    database: str = "marketplace",
-    user: str = "postgres",
+    host: str | None = None,
+    port: int | None = None,
+    database: str | None = None,
+    user: str | None = None,
     password: str | None = None,
-    min_size: int = 50,
-    max_size: int = 50,
+    min_size: int = 2,
+    max_size: int = 10,
     command_timeout: float = 60,
     mode: SchemaMode = "create_new",
 ):
@@ -853,17 +1180,24 @@ async def connect_to_postgresql_database(
 
     Args:
         schema: Database schema (required)
-        host: PostgreSQL server host
-        port: PostgreSQL server port
-        database: Database name
-        user: Database user
-        password: Database password
+        host: PostgreSQL server host (defaults to POSTGRES_HOST env var or localhost)
+        port: PostgreSQL server port (defaults to POSTGRES_PORT env var or 5432)
+        database: Database name (defaults to POSTGRES_DB env var or marketplace)
+        user: Database user (defaults to POSTGRES_USER env var or postgres)
+        password: Database password (defaults to POSTGRES_PASSWORD env var or None)
         min_size: Minimum connections in pool
         max_size: Maximum connections in pool
         command_timeout: Command timeout in seconds
         mode: Schema creation mode (default: 'create_new')
 
     """
+    # Use environment variables as defaults if parameters are not provided
+    host = host or os.environ.get("POSTGRES_HOST", "localhost")
+    port = port or int(os.environ.get("POSTGRES_PORT", "5432"))
+    database = database or os.environ.get("POSTGRES_DB", "marketplace")
+    user = user or os.environ.get("POSTGRES_USER", "postgres")
+    password = password or os.environ.get("POSTGRES_PASSWORD")
+
     pool = await asyncpg.create_pool(
         host=host,
         port=port,
