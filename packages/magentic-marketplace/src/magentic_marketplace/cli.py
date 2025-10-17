@@ -101,12 +101,14 @@ def run_experiment_command(args):
 def run_analysis_command(args):
     """Handle the analytics subcommand."""
     save_to_json = not args.no_save_json
+    fuzzy_distance = getattr(args, "fuzzy_match_distance", 1)
     asyncio.run(
         run_analytics(
             args.database_name,
             args.db_type,
             save_to_json=save_to_json,
             print_results=True,
+            fuzzy_match_distance=fuzzy_distance,
         )
     )
 
@@ -318,6 +320,13 @@ def main():
         "--no-save-json",
         action="store_true",
         help="Disable saving analytics to JSON file",
+    )
+
+    analytics_parser.add_argument(
+        "--fuzzy-match-distance",
+        type=int,
+        default=0,
+        help="Maximum Levenshtein distance for fuzzy item name matching (default: 0)",
     )
 
     # extract-traces subcommand
