@@ -1001,6 +1001,7 @@ class MarketplaceAnalytics:
         print("=" * 40)
         ts = results.transaction_summary
         print(f"Order proposals created: {ts.order_proposals_created}")
+        print(f"Payments made: {ts.payments_made}")
         print(f"Total invalid proposals: {ts.total_invalid_proposals}")
 
         print(f"Invalid proposals purchased: {ts.invalid_proposals_purchased}")
