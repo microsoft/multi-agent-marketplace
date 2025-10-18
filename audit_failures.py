@@ -200,7 +200,7 @@ async def audit_database(
 
                             if message_type == "text":
                                 text_messages += 1
-                            elif message_type == "pay":
+                            elif message_type == "payment":
                                 payment_messages += 1
                             elif message_type == "order_proposal":
                                 order_proposal_messages += 1
