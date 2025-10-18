@@ -101,14 +101,13 @@ def run_experiment_command(args):
 def run_analysis_command(args):
     """Handle the analytics subcommand."""
     save_to_json = not args.no_save_json
-    fuzzy_distance = getattr(args, "fuzzy_match_distance", 1)
     asyncio.run(
         run_analytics(
             args.database_name,
             args.db_type,
             save_to_json=save_to_json,
             print_results=True,
-            fuzzy_match_distance=fuzzy_distance,
+            fuzzy_match_distance=args.fuzzy_match_distance,
         )
     )
 
