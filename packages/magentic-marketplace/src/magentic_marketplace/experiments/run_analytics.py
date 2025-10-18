@@ -676,6 +676,7 @@ class MarketplaceAnalytics:
 
         transaction_summary = TransactionSummary(
             order_proposals_created=len(self.order_proposals),
+            payments_made=len(self.payments),
             invalid_proposals_purchased=len(
                 self.purchased_proposals.intersection(self.invalid_proposals.keys())
             ),
