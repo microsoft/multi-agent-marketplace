@@ -128,9 +128,8 @@ class MarketplaceAnalytics:
         self.invalid_proposals: dict[str, list[OrderProposalError]] = defaultdict(list)
 
         # Track fuzzy matched proposals (distance <= fuzzy_match_distance)
-        self.fuzzy_matched_proposals: dict[
-            str, list[tuple[int, str, str]]
-        ] = {}  # proposal_id -> [(distance, requested, got)]
+        # proposal_id -> (distance, proposed item, matched item on menu)
+        self.fuzzy_matched_proposals: dict[str, list[tuple[int, str, str]]] = {}
 
     async def load_data(self):
         """Load and parse agents data from database."""
