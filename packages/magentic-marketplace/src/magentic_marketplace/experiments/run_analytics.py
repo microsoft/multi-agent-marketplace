@@ -662,6 +662,7 @@ class MarketplaceAnalytics:
             if needs_met:
                 customers_with_needs_met += 1
 
+        # Calculate utility gaps attributable to customers who saw or purchased invalid proposals
         customers_with_invalid_proposals = set()
         total_utility_gap_from_invalid = 0.0
         total_utility_gap_from_purchased_invalid = 0
@@ -674,34 +675,8 @@ class MarketplaceAnalytics:
                 if proposal_id in self.purchased_proposals:
                     total_utility_gap_from_purchased_invalid += utility_gap
 
-        # Calculate transaction summary (after customer loop so invalid proposals are counted)
-        avg_proposal_value = 0
-        if self.order_proposals:
-            avg_proposal_value = sum(p.total_price for p in self.order_proposals) / len(
-                self.order_proposals
-            )
-        avg_paid_order_value = 0
-        paid_order_values: list[float] = []
-        for customer_id, payments in self.customer_payments.items():
-            for payment in payments:
-                proposals_received = self.customer_orders.get(customer_id, [])
-                proposal = next(
-                    (
-                        p
-                        for p in proposals_received
-                        if p.id == payment.proposal_message_id
-                    ),
-                    None,
-                )
-                if proposal:
-                    paid_order_values.append(proposal.total_price)
-        if paid_order_values:
-            avg_paid_order_value = sum(paid_order_values) / len(paid_order_values)
         transaction_summary = TransactionSummary(
             order_proposals_created=len(self.order_proposals),
-            payments_made=len(self.payments),
-            average_proposal_value=avg_proposal_value,
-            average_paid_order_value=avg_paid_order_value,
             invalid_proposals_purchased=len(
                 self.purchased_proposals.intersection(self.invalid_proposals.keys())
             ),
@@ -1026,10 +1001,6 @@ class MarketplaceAnalytics:
         print("=" * 40)
         ts = results.transaction_summary
         print(f"Order proposals created: {ts.order_proposals_created}")
-        print(f"Payments made: {ts.payments_made}")
-        print(f"Average proposal total price: ${(ts.average_proposal_value or 0):.2f}")
-        print(f"Average payment total price: ${(ts.average_paid_order_value or 0):.2f}")
-        print()
         print(f"Total invalid proposals: {ts.total_invalid_proposals}")
 
         print(f"Invalid proposals purchased: {ts.invalid_proposals_purchased}")

@@ -32,11 +32,8 @@ class TransactionSummary(BaseModel):
     """Summary of transaction-related statistics."""
 
     order_proposals_created: int
-    payments_made: int
-    average_proposal_value: float
-    average_paid_order_value: float
-    invalid_proposals_purchased: int
     total_invalid_proposals: int
+    invalid_proposals_purchased: int
     # Total utility gap of all customers who saw an invalid proposal
     total_invalid_proposals_utility_gap: float
     # Total utility gap of all customers who purchased an invalid proposal
