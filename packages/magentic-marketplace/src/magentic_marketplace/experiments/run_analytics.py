@@ -103,9 +103,7 @@ class MarketplaceAnalytics:
         self.payments: list[Payment] = []
         self.customer_orders: dict[str, list[OrderProposal]] = defaultdict(list)
         self.customer_payments: dict[str, list[Payment]] = defaultdict(list)
-        self.purchased_proposals: set[str] = set()
-        # Track which customers received which proposals
-        self.proposal_to_customer: dict[str, str] = {}  # proposal_id -> customer_id
+        self.purchased_proposal_ids: set[str] = set()
 
         # Search tracking
         self.customer_searches: dict[str, list[tuple[Search, SearchResponse]]] = (
@@ -127,9 +125,11 @@ class MarketplaceAnalytics:
         # Track invalid purchased proposals with error details
         self.invalid_proposals: dict[str, list[OrderProposalError]] = defaultdict(list)
 
-        # Track fuzzy matched proposals (distance <= fuzzy_match_distance)
+        # Track fuzzy matching for purchased proposals
         # proposal_id -> (distance, proposed item, matched item on menu)
-        self.fuzzy_matched_proposals: dict[str, list[tuple[int, str, str]]] = {}
+        self.purchased_proposal_fuzzy_matches: dict[
+            str, list[tuple[int, str, str]]
+        ] = {}
 
     async def load_data(self):
         """Load and parse agents data from database."""
@@ -250,13 +250,12 @@ class MarketplaceAnalytics:
                 if agent_type == "business":
                     if action.to_agent_id in self.customer_agents:
                         self.customer_orders[action.to_agent_id].append(message)
-                        self.proposal_to_customer[message.id] = action.to_agent_id
                     else:
                         print("WARNING: order proposal to non-existing customer")
 
             elif isinstance(message, Payment):
                 self.payments.append(message)
-                self.purchased_proposals.add(message.proposal_message_id)
+                self.purchased_proposal_ids.add(message.proposal_message_id)
                 # Link to customer if this is a payment from customer
                 if agent_type == "customer":
                     self.customer_payments[action.from_agent_id].append(message)
@@ -422,14 +421,12 @@ class MarketplaceAnalytics:
                 if requested_items.issubset(proposal_items):
                     # Record fuzzy matches
                     if proposal_item_fuzzy_matches:
-                        self.fuzzy_matched_proposals[proposal.id] = (
+                        self.purchased_proposal_fuzzy_matches[proposal.id] = (
                             proposal_item_fuzzy_matches
                         )
 
                     # Items match (exactly or fuzzily) - now check amenities
-                    if business_agent_id and self.check_amenity_match(
-                        customer_agent_id, business_agent_id
-                    ):
+                    if self.check_amenity_match(customer_agent_id, business_agent_id):
                         # Items AND amenities match - needs are met!
                         needs_met = True
 
@@ -449,23 +446,6 @@ class MarketplaceAnalytics:
                     return business_agent_id
         # Shouldn't happen
         raise RuntimeError(f"No business for proposal {proposal_id}")
-
-    def calculate_customer_utility_gap(self, customer_agent_id: str):
-        """Calculate a customers optimal utility, actual utility, and the difference between them (i.e. the utility gap)."""
-        actual_utility, _ = self.calculate_customer_utility(customer_agent_id)
-        menu_matches = self.calculate_menu_matches(customer_agent_id)
-        if menu_matches:
-            for business_id, price in menu_matches:
-                if self.check_amenity_match(customer_agent_id, business_id):
-                    customer = self.customer_agents[customer_agent_id].customer
-                    match_score = 2 * sum(customer.menu_features.values())
-                    optimal_utility = match_score - price
-                    utility_gap = optimal_utility - actual_utility
-                    return (optimal_utility, actual_utility, utility_gap)
-        # Should not happen
-        raise RuntimeError(
-            f"Customer {customer_agent_id} has no optimal business match!"
-        )
 
     def check_proposal_errors(
         self, proposal: OrderProposal, business_agent_id: str, customer_agent_id: str
@@ -661,28 +641,13 @@ class MarketplaceAnalytics:
             if needs_met:
                 customers_with_needs_met += 1
 
-        # Calculate utility gaps attributable to customers who saw or purchased invalid proposals
-        customers_with_invalid_proposals = set()
-        total_utility_gap_from_invalid = 0.0
-        total_utility_gap_from_purchased_invalid = 0
-        for proposal_id in self.invalid_proposals.keys():
-            customer_id = self.proposal_to_customer.get(proposal_id)
-            if customer_id:
-                customers_with_invalid_proposals.add(customer_id)
-                _, _, utility_gap = self.calculate_customer_utility_gap(customer_id)
-                total_utility_gap_from_invalid += utility_gap
-                if proposal_id in self.purchased_proposals:
-                    total_utility_gap_from_purchased_invalid += utility_gap
-
         transaction_summary = TransactionSummary(
             order_proposals_created=len(self.order_proposals),
             payments_made=len(self.payments),
             invalid_proposals_purchased=len(
-                self.purchased_proposals.intersection(self.invalid_proposals.keys())
+                self.purchased_proposal_ids.intersection(self.invalid_proposals.keys())
             ),
             total_invalid_proposals=len(self.invalid_proposals),
-            total_invalid_proposals_utility_gap=total_utility_gap_from_invalid,
-            total_purchased_invalid_proposals_utility_gap=total_utility_gap_from_purchased_invalid,
         )
 
         # Collect business summaries
@@ -1003,16 +968,7 @@ class MarketplaceAnalytics:
         print(f"Order proposals created: {ts.order_proposals_created}")
         print(f"Payments made: {ts.payments_made}")
         print(f"Total invalid proposals: {ts.total_invalid_proposals}")
-
         print(f"Invalid proposals purchased: {ts.invalid_proposals_purchased}")
-
-        print(
-            f"Total utility gap of customers who saw invalid proposals: ${ts.total_invalid_proposals_utility_gap:.2f}"
-        )
-
-        print(
-            f"Total utility gap of customers who purchased invalid proposal: ${ts.total_purchased_invalid_proposals_utility_gap:.2f}"
-        )
 
         # Aggregate error types across all invalid proposals
         errors_by_type: dict[str, list[OrderProposalError]] = defaultdict(list)
@@ -1074,19 +1030,18 @@ class MarketplaceAnalytics:
             print("  - No errors")
 
         # Fuzzy matched proposals summary
-        if self.fuzzy_matched_proposals:
-            print()
-            print(
-                f"{len(self.fuzzy_matched_proposals)} proposals contained invalid menu items that fuzzy-matched an actual menu item with distance <= {self.fuzzy_match_distance}"
-            )
-            for proposal_id, matches in list(self.fuzzy_matched_proposals.items()):
-                print(f"  Proposal: {proposal_id}")
-                indent = " " * 6
-                for distance, proposed_item, menu_item in matches:
-                    print(f"{indent}Distance: {distance}")
-                    print(f"{indent}  Proposed: {json.dumps(proposed_item)}")
-                    print(f"{indent}  Matched:  {json.dumps(menu_item)}")
-                    print()
+        print()
+        print(
+            f"{len(self.purchased_proposal_fuzzy_matches)} purchased proposals contained invalid menu items that fuzzy-matched an actual menu item with distance <= {self.fuzzy_match_distance}"
+        )
+        for proposal_id, matches in list(self.purchased_proposal_fuzzy_matches.items()):
+            print(f"  Proposal: {proposal_id}")
+            indent = " " * 6
+            for distance, proposed_item, menu_item in matches:
+                print(f"{indent}Distance: {distance}")
+                print(f"{indent}  Proposed: {json.dumps(proposed_item)}")
+                print(f"{indent}  Matched:  {json.dumps(menu_item)}")
+                print()
 
         # LLM Call summary
         print(f"\n{BLUE_COLOR}LLM CALL SUMMARY:{RESET_COLOR}")

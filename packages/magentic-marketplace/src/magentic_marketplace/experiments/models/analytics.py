@@ -35,10 +35,6 @@ class TransactionSummary(BaseModel):
     payments_made: int
     total_invalid_proposals: int
     invalid_proposals_purchased: int
-    # Total utility gap of all customers who saw an invalid proposal
-    total_invalid_proposals_utility_gap: float
-    # Total utility gap of all customers who purchased an invalid proposal
-    total_purchased_invalid_proposals_utility_gap: float
 
 
 class AnalyticsResults(BaseModel):
