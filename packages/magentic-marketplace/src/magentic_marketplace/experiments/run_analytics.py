@@ -610,39 +610,7 @@ class MarketplaceAnalytics:
         """Collect all analytics results into a structured format."""
         business_utilities = self._calculate_business_utilities()
 
-        # Collect customer summaries
-        customer_summaries: list[CustomerSummary] = []
-        total_utility = 0.0
-        customers_who_purchased = 0
-        customers_with_needs_met = 0
-
-        for customer_agent_id in sorted(self.customer_agents.keys()):
-            customer = self.customer_agents[customer_agent_id].customer
-            messages_sent = len(self.customer_messages.get(customer_agent_id, []))
-            orders_received = len(self.customer_orders.get(customer_agent_id, []))
-            payments_made = len(self.customer_payments.get(customer_agent_id, []))
-            searches_made = len(self.customer_searches.get(customer_agent_id, []))
-            utility, needs_met = self.calculate_customer_utility(customer_agent_id)
-
-            customer_summaries.append(
-                CustomerSummary(
-                    customer_id=customer_agent_id,
-                    customer_name=customer.name,
-                    messages_sent=messages_sent,
-                    searches_made=searches_made,
-                    proposals_received=orders_received,
-                    payments_made=payments_made,
-                    utility=utility,
-                    needs_met=needs_met,
-                )
-            )
-
-            total_utility += utility
-            if payments_made > 0:
-                customers_who_purchased += 1
-            if needs_met:
-                customers_with_needs_met += 1
-
+        # Calculate transaction summary
         avg_proposal_value = 0
         if self.order_proposals:
             avg_proposal_value = sum(p.total_price for p in self.order_proposals) / len(
@@ -679,6 +647,39 @@ class MarketplaceAnalytics:
             ),
             total_invalid_proposals=len(self.invalid_proposals),
         )
+
+        # Collect customer summaries
+        customer_summaries: list[CustomerSummary] = []
+        total_utility = 0.0
+        customers_who_purchased = 0
+        customers_with_needs_met = 0
+
+        for customer_agent_id in sorted(self.customer_agents.keys()):
+            customer = self.customer_agents[customer_agent_id].customer
+            messages_sent = len(self.customer_messages.get(customer_agent_id, []))
+            orders_received = len(self.customer_orders.get(customer_agent_id, []))
+            payments_made = len(self.customer_payments.get(customer_agent_id, []))
+            searches_made = len(self.customer_searches.get(customer_agent_id, []))
+            utility, needs_met = self.calculate_customer_utility(customer_agent_id)
+
+            customer_summaries.append(
+                CustomerSummary(
+                    customer_id=customer_agent_id,
+                    customer_name=customer.name,
+                    messages_sent=messages_sent,
+                    searches_made=searches_made,
+                    proposals_received=orders_received,
+                    payments_made=payments_made,
+                    utility=utility,
+                    needs_met=needs_met,
+                )
+            )
+
+            total_utility += utility
+            if payments_made > 0:
+                customers_who_purchased += 1
+            if needs_met:
+                customers_with_needs_met += 1
 
         # Collect business summaries
         business_summaries: list[BusinessSummary] = []
