@@ -410,25 +410,28 @@ class MarketplaceAnalytics:
             if proposal:
                 # Get proposal items that are actually part of the businesses menu (up to fuzzy distance)
                 business_agent_id = self._find_business_for_proposal(proposal.id)
-                proposal_items, proposal_item_fuzzy_matches = (
-                    self.filter_valid_proposal_items(business_agent_id, proposal)
-                )
+                if business_agent_id:
+                    proposal_items, proposal_item_fuzzy_matches = (
+                        self.filter_valid_proposal_items(business_agent_id, proposal)
+                    )
 
-                requested_items = set(customer.menu_features.keys())
-                price_paid = proposal.total_price
-                total_payments += price_paid
+                    requested_items = set(customer.menu_features.keys())
+                    price_paid = proposal.total_price
+                    total_payments += price_paid
 
-                if requested_items.issubset(proposal_items):
-                    # Record fuzzy matches
-                    if proposal_item_fuzzy_matches:
-                        self.purchased_proposal_fuzzy_matches[proposal.id] = (
-                            proposal_item_fuzzy_matches
-                        )
+                    if requested_items.issubset(proposal_items):
+                        # Record fuzzy matches
+                        if proposal_item_fuzzy_matches:
+                            self.purchased_proposal_fuzzy_matches[proposal.id] = (
+                                proposal_item_fuzzy_matches
+                            )
 
-                    # Items match (exactly or fuzzily) - now check amenities
-                    if self.check_amenity_match(customer_agent_id, business_agent_id):
-                        # Items AND amenities match - needs are met!
-                        needs_met = True
+                        # Items match (exactly or fuzzily) - now check amenities
+                        if self.check_amenity_match(
+                            customer_agent_id, business_agent_id
+                        ):
+                            # Items AND amenities match - needs are met!
+                            needs_met = True
 
         # Calculate utility: match_score counted only ONCE if needs were met
         match_score = 0.0
@@ -438,14 +441,13 @@ class MarketplaceAnalytics:
         utility = match_score - total_payments
         return round(utility, 2), needs_met
 
-    def _find_business_for_proposal(self, proposal_id: str) -> str:
+    def _find_business_for_proposal(self, proposal_id: str) -> str | None:
         """Find which business sent a specific proposal."""
         for business_agent_id, messages in self.business_messages.items():
             for msg in messages:
                 if isinstance(msg, OrderProposal) and msg.id == proposal_id:
                     return business_agent_id
-        # Shouldn't happen
-        raise RuntimeError(f"No business for proposal {proposal_id}")
+        return None
 
     def check_proposal_errors(
         self, proposal: OrderProposal, business_agent_id: str, customer_agent_id: str
