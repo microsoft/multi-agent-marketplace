@@ -104,12 +104,8 @@ def _format_jsonpath(path: str) -> str:
 
     """
     # Remove leading $. or $
-    if path.startswith("$."):
-        path = path[2:]
-    elif path.startswith("$"):
-        path = path[1:]
-        if path.startswith("."):
-            path = path[1:]
+    path = path.removeprefix("$.")
+    path = path.removeprefix("$")
 
     if not path:
         return "'$'::jsonpath"
