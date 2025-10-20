@@ -1,4 +1,3 @@
-# pyright: reportUnknownMemberType=none, reportUnknownParameterType=none, reportUnknownVariableType=none, reportMissingParameterType=none, reportUnknownArgumentType=none
 """Create search limit welfare plots from CSV data."""
 
 from argparse import ArgumentParser
