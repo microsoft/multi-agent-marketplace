@@ -22,7 +22,18 @@ def get_customer_message_info(data):
     )
     messages_per_customer = total_messages / len(data.get("customer_summaries"))
 
-    return total_messages, messages_per_customer
+    # searches made
+    total_searches_made = sum(
+        [customer["searches_made"] for customer in data.get("customer_summaries")]
+    )
+    searches_per_customer = total_searches_made / len(data.get("customer_summaries"))
+
+    return (
+        total_messages,
+        messages_per_customer,
+        total_searches_made,
+        searches_per_customer,
+    )
 
 
 def compile_results_csv(input_dir, data_dir):
@@ -47,7 +58,12 @@ def compile_results_csv(input_dir, data_dir):
                 print(f"Filename {filename} does not match expected pattern.")
                 continue
 
-            total_messages, messages_per_customer = get_customer_message_info(data)
+            (
+                total_messages,
+                messages_per_customer,
+                total_searches_made,
+                searches_per_customer,
+            ) = get_customer_message_info(data)
 
             # Get relevant variables from the filename.
             model = parts[0]
@@ -65,6 +81,8 @@ def compile_results_csv(input_dir, data_dir):
                     ),
                     "total_customer_messages": total_messages,
                     "messages_per_customer": messages_per_customer,
+                    "total_searches_made": total_searches_made,
+                    "searches_per_customer": searches_per_customer,
                 }
             )
 
@@ -77,7 +95,7 @@ def compile_results_csv(input_dir, data_dir):
 
             with open(f"output_{dataset}.csv", "w") as f:
                 f.write(
-                    "Model,Dataset,Welfare Type,Limit,Run,Welfare,Welfare Optimal,Total Messages,Messages per Customer\n"
+                    "Model,Dataset,Welfare Type,Limit,Run,Welfare,Welfare Optimal,Total Messages,Messages per Customer, Total Searches, Searches per Customer\n"
                 )
                 for result in results:
                     model = result["model"]
@@ -87,8 +105,10 @@ def compile_results_csv(input_dir, data_dir):
                     customer_utility = result["customer_utility"]
                     total_messages = result["total_customer_messages"]
                     messages_per_customer = result["messages_per_customer"]
+                    total_searches_made = result["total_searches_made"]
+                    searches_per_customer = result["searches_per_customer"]
                     f.write(
-                        f"{model},{dataset},customer,{limit},{run},{customer_utility},{baseline_utility},{total_messages},{messages_per_customer}\n"
+                        f"{model},{dataset},customer,{limit},{run},{customer_utility},{baseline_utility},{total_messages},{messages_per_customer},{total_searches_made},{searches_per_customer}\n"
                     )
 
 
