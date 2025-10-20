@@ -611,13 +611,13 @@ class MarketplaceAnalytics:
         business_utilities = self._calculate_business_utilities()
 
         # Calculate transaction summary
-        avg_proposal_value = 0
+        avg_proposal_value = None
         if self.order_proposals:
             avg_proposal_value = sum(p.total_price for p in self.order_proposals) / len(
                 self.order_proposals
             )
 
-        avg_paid_order_value = 0
+        avg_paid_order_value = None
         if self.payments:
             paid_order_values: list[float] = []
             for customer_id, payments in self.customer_payments.items():

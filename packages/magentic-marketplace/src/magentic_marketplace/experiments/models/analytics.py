@@ -33,8 +33,8 @@ class TransactionSummary(BaseModel):
 
     order_proposals_created: int
     payments_made: int
-    average_proposal_value: float
-    average_paid_order_value: float
+    average_proposal_value: float | None = None
+    average_paid_order_value: float | None = None
     total_invalid_proposals: int
     invalid_proposals_purchased: int
 
