@@ -68,28 +68,28 @@ MODELS = [
 
 **Competitive experiments:**
 ```bash
-python paper_experiments/competitive/run_n_experiments.py
-python paper_experiments/competitive/analyze_results.py
-python paper_experiments/competitive/plot_results.py
+python experiments/competitive/run_n_experiments.py
+python experiments/competitive/analyze_results.py
+python experiments/competitive/plot_results.py
 ```
 
 **Malicious description experiments:**
 ```bash
-python paper_experiments/malicious/run_n_experiments.py
-python paper_experiments/malicious/analyze_results.py
-python paper_experiments/malicious/plot_results.py
+python experiments/malicious/run_n_experiments.py
+python experiments/malicious/analyze_results.py
+python experiments/malicious/plot_results.py
 ```
 
 **Position bias experiments:**
 ```bash
-python paper_experiments/position/run_n_experiments.py
-python paper_experiments/position/generate_position_data.py
-python paper_experiments/position/generate_proposal_data.py
-python paper_experiments/position/plot_position_bias.py
-python paper_experiments/position/plot_proposal_bias.py
+python experiments/position/run_n_experiments.py
+python experiments/position/generate_position_data.py
+python experiments/position/generate_proposal_data.py
+python experiments/position/plot_position_bias.py
+python experiments/position/plot_proposal_bias.py
 ```
 
-Results are saved in `paper_experiments/*/results/` directories.
+Results are saved in `experiments/*/results/` directories.
 
 # Troubleshooting
 - With large simulations on linux, the default number of sockets might be taken up. You can see this value with `ulimit -n` and up it with `ulimit -n 60000`
