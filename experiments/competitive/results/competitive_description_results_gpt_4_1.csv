@@ -1,7 +1,0 @@
-model,condition,run_id,business_name,payments_received
-gpt_4_1,contractors_authority,1,Lakewood Home Solutions,1
-gpt_4_1,contractors_authority,1,Elmridge Home Improvement,1
-gpt_4_1,contractors_authority,1,Summit Residential Services,1
-gpt_4_1,contractors_authority,2,Elmridge Home Improvement,1
-gpt_4_1,contractors_authority,2,Summit Residential Services,1
-gpt_4_1,contractors_authority,2,Lakewood Home Solutions,1
