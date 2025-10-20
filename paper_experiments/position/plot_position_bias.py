@@ -165,21 +165,24 @@ def create_comparison_plot(df: pd.DataFrame, models: list[str]) -> Path:
 
 
 if __name__ == "__main__":
-    file_path = "paper_experiments/position/position_bias_results.csv"
+    file_path = "paper_experiments/position/results/position_bias_results_all_models.csv"
     # Read CSV to get all available models
     df = pd.read_csv(file_path)
     models = sorted(df["model"].unique())
     print(f"Found models: {models}")
 
     # Create comparison plot with all models
-    create_position_bias_plot_from_csv(file_path, models=models)
+    create_comparison_plot(df, models)
 
-    # Additionally create individual plots for each model
-    import shutil
+    # Additionally create individual plots for each model from their model-specific CSVs
     for model in models:
-        output_path = Path(f"paper_experiments/position/results/position_bias_{model}.png")
-        print(f"\nCreating individual plot for {model}...")
-        create_comparison_plot(df, [model])
-        # Copy the comparison plot to model-specific name (don't rename, so we keep the original)
-        shutil.copy("paper_experiments/position/results/position_bias_comparison.png", output_path)
-        print(f"Saved: {output_path}")
+        model_csv = Path(f"paper_experiments/position/results/position_bias_results_{model}.csv")
+        if model_csv.exists():
+            print(f"\nCreating individual plot for {model}...")
+            model_df = pd.read_csv(model_csv)
+            create_comparison_plot(model_df, [model])
+            # Copy to model-specific name
+            import shutil
+            output_path = Path(f"paper_experiments/position/results/position_bias_{model}.png")
+            shutil.copy("paper_experiments/position/results/position_bias_comparison.png", output_path)
+            print(f"Saved: {output_path}")

@@ -109,7 +109,7 @@ def main() -> None:
 
             # Split by underscore from the right to find model
             # Handle multi-part model names like qwen3_4b
-            known_models = ["qwen3_4b", "gpt_4o", "gpt_4_1", "gemini_2_5_flash"]
+            known_models = ["claude_sonnet_4_5", "qwen3_4b", "gpt_4o", "gpt_4_1", "gemini_2_5_flash"]
 
             model = None
             condition = None
@@ -144,34 +144,62 @@ def main() -> None:
 
             print(f"  Found {len(choices)} customer purchases")
 
-    # Write customer proposal choices
-    with open(output_csv, "w", newline="") as f:
-        fieldnames = [
-            "model",
-            "condition",
-            "run_id",
-            "customer_name",
-            "chosen_proposal_rank",
-            "total_proposals_received",
-        ]
+    if not all_choices:
+        print("No data found!")
+        return
+
+    # Group choices by model
+    model_data = {}
+    for choice in all_choices:
+        model = choice["model"]
+        if model not in model_data:
+            model_data[model] = []
+        model_data[model].append(choice)
+
+    fieldnames = [
+        "model",
+        "condition",
+        "run_id",
+        "customer_name",
+        "chosen_proposal_rank",
+        "total_proposals_received",
+    ]
+
+    # Write combined CSV
+    combined_csv = os.path.join(results_dir, "proposal_bias_results_all_models.csv")
+    with open(combined_csv, "w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(all_choices)
 
-    print(f"\nProposal data exported to: {output_csv}")
-    print(f"Total customer purchases: {len(all_choices)}")
+    print(f"\nCombined data exported to: {combined_csv}")
+    print(f"Total rows: {len(all_choices)}\n")
+
+    # Write model-specific CSVs
+    for model, data in model_data.items():
+        model_csv = os.path.join(results_dir, f"proposal_bias_results_{model}.csv")
+        with open(model_csv, "w", newline="") as f:
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(data)
+
+        print(f"Model-specific data: {model_csv}")
+        print(f"  Rows: {len(data)}")
 
     # Show summary statistics
-    rank_counts = {1: 0, 2: 0, 3: 0}
+    total = len(all_choices)
+    print(f"\n=== OVERALL SUMMARY ===")
+    print(f"Total experiments: {len(set((c['model'], c['condition'], c['run_id']) for c in all_choices))}")
+    print(f"Models: {', '.join(sorted(set(c['model'] for c in all_choices)))}")
 
+    rank_counts = {1: 0, 2: 0, 3: 0}
     for choice in all_choices:
         rank = choice["chosen_proposal_rank"]
         if rank in rank_counts:
             rank_counts[rank] += 1
 
-    total = len(all_choices)
     if total > 0:
-        print("\nPROPOSAL RANK SUMMARY:")
+        print("\nPROPOSAL RANK SUMMARY (All Models):")
         print(
             f"1st proposal chosen: {rank_counts[1]} ({rank_counts[1] / total * 100:.1f}%)"
         )

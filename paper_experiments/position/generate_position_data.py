@@ -81,7 +81,7 @@ def main():
         # rest is now: business_0001_first_gemini-2.5-flash or contractors_first_gemini-2.5-flash
         # Split by underscore from the right to find model
         # Handle multi-part model names like qwen3_4b
-        known_models = ["gpt_oss_20b", "qwen3_4b", "gpt_4o", "gpt_4_1", "gemini_2_5_flash"]
+        known_models = ["claude_sonnet_4_5", "gpt_oss_20b", "qwen3_4b", "gpt_4o", "gpt_4_1", "gemini_2_5_flash"]
 
         model = None
         condition_and_position = None
@@ -141,25 +141,48 @@ def main():
                 }
             )
 
-    # Write to CSV
-    csv_file = "paper_experiments/position/position_bias_results.csv"
-    with open(csv_file, "w", newline="") as f:
-        if all_results:
-            fieldnames = [
-                "model",
-                "condition",
-                "position",
-                "run",
-                "winner_id",
-                "winner_name",
-                "restaurant_order",
-            ]
+    if not all_results:
+        print("No data found!")
+        return
+
+    # Group results by model
+    model_data = {}
+    for result in all_results:
+        model = result["model"]
+        if model not in model_data:
+            model_data[model] = []
+        model_data[model].append(result)
+
+    fieldnames = [
+        "model",
+        "condition",
+        "position",
+        "run",
+        "winner_id",
+        "winner_name",
+        "restaurant_order",
+    ]
+
+    # Write combined CSV
+    combined_csv = os.path.join(results_dir, "position_bias_results_all_models.csv")
+    with open(combined_csv, "w", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(all_results)
+
+    print(f"Combined data exported to: {combined_csv}")
+    print(f"Total rows: {len(all_results)}\n")
+
+    # Write model-specific CSVs
+    for model, data in model_data.items():
+        model_csv = os.path.join(results_dir, f"position_bias_results_{model}.csv")
+        with open(model_csv, "w", newline="") as f:
             writer = csv.DictWriter(f, fieldnames=fieldnames)
             writer.writeheader()
-            writer.writerows(all_results)
+            writer.writerows(data)
 
-    print(f"Results saved to {csv_file}")
-    print(f"Total purchases: {len(all_results)}")
+        print(f"Model-specific data: {model_csv}")
+        print(f"  Rows: {len(data)}")
 
     # Generate summary statistics by model
     models = list({r["model"] for r in all_results})
