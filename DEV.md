@@ -41,5 +41,55 @@ Go to [http://localhost:8080/](http://localhost:8080/).
 - Account: admin@example.com
 - Password: admin
 
+# Reproducing Paper Experiments
+
+## Setup
+1. Set up Docker and environment:
+```bash
+docker compose up -d
+cp sample.env .env
+# Add your API keys to .env (OPENAI_API_KEY, ANTHROPIC_API_KEY, GEMINI_API_KEY)
+```
+
+2. Configure models in `run_n_experiments.py` files:
+```python
+# For closed-source models (default):
+MODELS = [
+    {"provider": "openai", "model": "gpt-4.1"},
+    {"provider": "openai", "model": "gpt-4o"},
+    {"provider": "gemini", "model": "gemini-2.5-flash"},
+    {"provider": "anthropic", "model": "claude-sonnet-4-5"},
+]
+
+# For open-source models (comment out above, uncomment qwen models in the file)
+```
+
+## Run Experiments
+
+**Competitive experiments:**
+```bash
+python paper_experiments/competitive/run_n_experiments.py
+python paper_experiments/competitive/analyze_results.py
+python paper_experiments/competitive/plot_results.py
+```
+
+**Malicious description experiments:**
+```bash
+python paper_experiments/malicious/run_n_experiments.py
+python paper_experiments/malicious/analyze_results.py
+python paper_experiments/malicious/plot_results.py
+```
+
+**Position bias experiments:**
+```bash
+python paper_experiments/position/run_n_experiments.py
+python paper_experiments/position/generate_position_data.py
+python paper_experiments/position/generate_proposal_data.py
+python paper_experiments/position/plot_position_bias.py
+python paper_experiments/position/plot_proposal_bias.py
+```
+
+Results are saved in `paper_experiments/*/results/` directories.
+
 # Troubleshooting
 - With large simulations on linux, the default number of sockets might be taken up. You can see this value with `ulimit -n` and up it with `ulimit -n 60000`
