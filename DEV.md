@@ -41,14 +41,14 @@ Go to [http://localhost:8080/](http://localhost:8080/).
 - Account: admin@example.com
 - Password: admin
 
-# Reproducing Paper Experiments
+# Reproducing Malicious and Position Bias Experiments
 
 ## Setup
 1. Set up Docker and environment:
 ```bash
-docker compose up -d
 cp sample.env .env
 # Add your API keys to .env (OPENAI_API_KEY, ANTHROPIC_API_KEY, GEMINI_API_KEY)
+docker compose up -d
 ```
 
 2. Configure models in `run_n_experiments.py` files:
