@@ -27,11 +27,14 @@ def get_payment_data(db_path: str):
             to_agent_id = result[0]
 
             # Get business name from agents table
-            cursor.execute("""
+            cursor.execute(
+                """
                 SELECT json_extract(data, '$.business.name')
                 FROM agents
                 WHERE id = ?
-            """, (to_agent_id,))
+            """,
+                (to_agent_id,),
+            )
 
             business_result = cursor.fetchone()
             conn.close()
@@ -81,7 +84,14 @@ def main():
         # rest is now: business_0001_first_gemini-2.5-flash or contractors_first_gemini-2.5-flash
         # Split by underscore from the right to find model
         # Handle multi-part model names like qwen3_4b
-        known_models = ["claude_sonnet_4_5", "gpt_oss_20b", "qwen3_4b", "gpt_4o", "gpt_4_1", "gemini_2_5_flash"]
+        known_models = [
+            "claude_sonnet_4_5",
+            "gpt_oss_20b",
+            "qwen3_4b",
+            "gpt_4o",
+            "gpt_4_1",
+            "gemini_2_5_flash",
+        ]
 
         model = None
         condition_and_position = None
@@ -89,7 +99,7 @@ def main():
         for known_model in known_models:
             if rest.endswith("_" + known_model):
                 model = known_model
-                condition_and_position = rest[:-len("_" + known_model)]
+                condition_and_position = rest[: -len("_" + known_model)]
                 break
 
         if not model:

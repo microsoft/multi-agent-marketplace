@@ -63,7 +63,9 @@ def analyze_database(db_path: str) -> list[CustomerChoice]:
         total_proposals = len(proposals)
 
         # Find which rank the paid proposal has
-        for rank, (from_business, to_customer, proposal_id, created_at) in enumerate(proposals, start=1):
+        for rank, (_from_business, _to_customer, proposal_id, _created_at) in enumerate(
+            proposals, start=1
+        ):
             if proposal_id == paid_proposal_id:
                 choices.append(
                     CustomerChoice(
@@ -84,7 +86,6 @@ def analyze_database(db_path: str) -> list[CustomerChoice]:
 def main() -> None:
     """Extract customer proposal choice data from all experiment databases."""
     results_dir = "paper_experiments/position/results"
-    output_csv = "paper_experiments/position/customer_proposal_choices.csv"
 
     all_choices: list[CustomerChoice] = []
 
@@ -109,7 +110,13 @@ def main() -> None:
 
             # Split by underscore from the right to find model
             # Handle multi-part model names like qwen3_4b
-            known_models = ["claude_sonnet_4_5", "qwen3_4b", "gpt_4o", "gpt_4_1", "gemini_2_5_flash"]
+            known_models = [
+                "claude_sonnet_4_5",
+                "qwen3_4b",
+                "gpt_4o",
+                "gpt_4_1",
+                "gemini_2_5_flash",
+            ]
 
             model = None
             condition = None
@@ -117,7 +124,7 @@ def main() -> None:
             for known_model in known_models:
                 if rest.endswith("_" + known_model):
                     model = known_model
-                    condition = rest[:-len("_" + known_model)]
+                    condition = rest[: -len("_" + known_model)]
                     break
 
             if not model:
@@ -188,9 +195,11 @@ def main() -> None:
 
     # Show summary statistics
     total = len(all_choices)
-    print(f"\n=== OVERALL SUMMARY ===")
-    print(f"Total experiments: {len(set((c['model'], c['condition'], c['run_id']) for c in all_choices))}")
-    print(f"Models: {', '.join(sorted(set(c['model'] for c in all_choices)))}")
+    print("\n=== OVERALL SUMMARY ===")
+    print(
+        f"Total experiments: {len({(c['model'], c['condition'], c['run_id']) for c in all_choices})}"
+    )
+    print(f"Models: {', '.join(sorted({c['model'] for c in all_choices}))}")
 
     rank_counts = {1: 0, 2: 0, 3: 0}
     for choice in all_choices:

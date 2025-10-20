@@ -13,11 +13,11 @@ Usage:
 
 Example:
     python analyze_results.py paper_experiments/malicious/results
+
 """
 
 import argparse
 import csv
-import json
 import os
 import sqlite3
 from pathlib import Path
@@ -55,7 +55,15 @@ def parse_filename(filename):
         rest = rest[10:]  # len("malicious_") = 10
 
     # Known model patterns - check for multi-part model names
-    known_models = ["claude-sonnet-4-5", "gpt_oss_20b", "qwen3_4b", "qwen3_14b", "gpt-4o", "gpt-4.1", "gemini-2.5-flash"]
+    known_models = [
+        "claude-sonnet-4-5",
+        "gpt_oss_20b",
+        "qwen3_4b",
+        "qwen3_14b",
+        "gpt-4o",
+        "gpt-4.1",
+        "gemini-2.5-flash",
+    ]
 
     model = None
     condition = None
@@ -65,7 +73,7 @@ def parse_filename(filename):
         normalized_known = known_model.replace("-", "_").replace(".", "_")
         if rest.endswith("_" + normalized_known):
             model = normalized_known
-            condition = rest[:-len("_" + normalized_known)]
+            condition = rest[: -len("_" + normalized_known)]
             break
 
     # Fallback to old logic if no known model matched
@@ -74,7 +82,7 @@ def parse_filename(filename):
         if last_underscore == -1:
             return None
         condition = rest[:last_underscore]
-        model = rest[last_underscore + 1:]
+        model = rest[last_underscore + 1 :]
 
     return condition, model, run_id
 
@@ -107,11 +115,14 @@ def get_payment_counts(conn):
         if to_agent_id:
             # Extract business name from agent_id (format: business_XXXX-X)
             # Need to look up the business name from agents table
-            cursor.execute("""
+            cursor.execute(
+                """
                 SELECT json_extract(data, '$.business.name')
                 FROM agents
                 WHERE id = ?
-            """, (to_agent_id,))
+            """,
+                (to_agent_id,),
+            )
             result = cursor.fetchone()
             if result and result[0]:
                 business_name = result[0]
@@ -197,7 +208,13 @@ def main():
     # Write combined CSV
     combined_output = results_dir / "malicious_description_results_all_models.csv"
     with open(combined_output, "w", newline="") as f:
-        fieldnames = ["model", "condition", "run_id", "business_name", "payments_received"]
+        fieldnames = [
+            "model",
+            "condition",
+            "run_id",
+            "business_name",
+            "payments_received",
+        ]
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(csv_data)
@@ -211,7 +228,13 @@ def main():
         model_output = results_dir / f"malicious_description_results_{clean_model}.csv"
 
         with open(model_output, "w", newline="") as f:
-            fieldnames = ["model", "condition", "run_id", "business_name", "payments_received"]
+            fieldnames = [
+                "model",
+                "condition",
+                "run_id",
+                "business_name",
+                "payments_received",
+            ]
             writer = csv.DictWriter(f, fieldnames=fieldnames)
             writer.writeheader()
             writer.writerows(data)
@@ -221,9 +244,11 @@ def main():
 
     # Display summary
     print("\nSUMMARY:")
-    print(f"Total experiments: {len(set((r['model'], r['condition'], r['run_id']) for r in csv_data))}")
-    print(f"Models: {', '.join(sorted(set(r['model'] for r in csv_data)))}")
-    print(f"Conditions: {', '.join(sorted(set(r['condition'] for r in csv_data)))}")
+    print(
+        f"Total experiments: {len({(r['model'], r['condition'], r['run_id']) for r in csv_data})}"
+    )
+    print(f"Models: {', '.join(sorted({r['model'] for r in csv_data}))}")
+    print(f"Conditions: {', '.join(sorted({r['condition'] for r in csv_data}))}")
 
 
 if __name__ == "__main__":

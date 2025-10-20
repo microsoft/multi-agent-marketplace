@@ -158,7 +158,9 @@ def create_comparison_plot(df: pd.DataFrame, models: list[str]) -> Path:
     plt.tight_layout()
 
     # Save comparison plot
-    output_path = Path("paper_experiments/position/results/proposal_bias_comparison.png")
+    output_path = Path(
+        "paper_experiments/position/results/proposal_bias_comparison.png"
+    )
     plt.savefig(output_path, dpi=DPI, bbox_inches="tight")
     print(f"Plot saved as: {output_path}")
     plt.close()
@@ -167,7 +169,9 @@ def create_comparison_plot(df: pd.DataFrame, models: list[str]) -> Path:
 
 
 if __name__ == "__main__":
-    file_path = "paper_experiments/position/results/proposal_bias_results_all_models.csv"
+    file_path = (
+        "paper_experiments/position/results/proposal_bias_results_all_models.csv"
+    )
     # Read CSV to get all available models
     df = pd.read_csv(file_path)
     models = sorted(df["model"].unique())
@@ -178,13 +182,21 @@ if __name__ == "__main__":
 
     # Additionally create individual plots for each model from their model-specific CSVs
     for model in models:
-        model_csv = Path(f"paper_experiments/position/results/proposal_bias_results_{model}.csv")
+        model_csv = Path(
+            f"paper_experiments/position/results/proposal_bias_results_{model}.csv"
+        )
         if model_csv.exists():
             print(f"\nCreating individual plot for {model}...")
             model_df = pd.read_csv(model_csv)
             create_comparison_plot(model_df, [model])
             # Copy to model-specific name
             import shutil
-            output_path = Path(f"paper_experiments/position/results/proposal_bias_{model}.png")
-            shutil.copy("paper_experiments/position/results/proposal_bias_comparison.png", output_path)
+
+            output_path = Path(
+                f"paper_experiments/position/results/proposal_bias_{model}.png"
+            )
+            shutil.copy(
+                "paper_experiments/position/results/proposal_bias_comparison.png",
+                output_path,
+            )
             print(f"Saved: {output_path}")

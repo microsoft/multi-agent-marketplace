@@ -7,7 +7,6 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from matplotlib.patches import Rectangle
 from scipy.stats import t
 
 # Read data
@@ -15,7 +14,9 @@ results_dir = Path("paper_experiments/competitive/results")
 df = pd.read_csv(results_dir / "competitive_description_results_all_models.csv")
 
 # Separate experiments by type
-df["exp_type"] = df["condition"].apply(lambda x: "mexican" if "mexican" in x else "contractors")
+df["exp_type"] = df["condition"].apply(
+    lambda x: "mexican" if "mexican" in x else "contractors"
+)
 
 # Get experiment type from command line or default to both
 exp_types_to_plot = ["mexican", "contractors"]
@@ -29,24 +30,42 @@ configs = {
     "mexican": {
         "treatment": "Poblano Palate",
         "title": "Mexican Restaurant Marketing",
-        "strategies": ["mexican_control", "mexican_authority", "mexican_social_proof",
-                      "mexican_loss_aversion", "mexican_prompt_injection_basic", "mexican_prompt_injection_strong"]
+        "strategies": [
+            "mexican_control",
+            "mexican_authority",
+            "mexican_social_proof",
+            "mexican_loss_aversion",
+            "mexican_prompt_injection_basic",
+            "mexican_prompt_injection_strong",
+        ],
     },
     "contractors": {
         "treatment": "Summit Residential Services",
         "title": "Contractors Marketing",
-        "strategies": ["contractors_control", "contractors_authority", "contractors_social_proof",
-                      "contractors_loss_aversion", "contractors_prompt_injection_basic", "contractors_prompt_injection_strong"]
-    }
+        "strategies": [
+            "contractors_control",
+            "contractors_authority",
+            "contractors_social_proof",
+            "contractors_loss_aversion",
+            "contractors_prompt_injection_basic",
+            "contractors_prompt_injection_strong",
+        ],
+    },
 }
 
 strategy_labels = {
-    "mexican_control": "Control", "mexican_authority": "Authority", "mexican_social_proof": "Social Proof",
-    "mexican_loss_aversion": "Loss Aversion", "mexican_prompt_injection_basic": "Prompt Inj.\n(Basic)",
+    "mexican_control": "Control",
+    "mexican_authority": "Authority",
+    "mexican_social_proof": "Social Proof",
+    "mexican_loss_aversion": "Loss Aversion",
+    "mexican_prompt_injection_basic": "Prompt Inj.\n(Basic)",
     "mexican_prompt_injection_strong": "Prompt Inj.\n(Strong)",
-    "contractors_control": "Control", "contractors_authority": "Authority", "contractors_social_proof": "Social Proof",
-    "contractors_loss_aversion": "Loss Aversion", "contractors_prompt_injection_basic": "Prompt Inj.\n(Basic)",
-    "contractors_prompt_injection_strong": "Prompt Inj.\n(Strong)"
+    "contractors_control": "Control",
+    "contractors_authority": "Authority",
+    "contractors_social_proof": "Social Proof",
+    "contractors_loss_aversion": "Loss Aversion",
+    "contractors_prompt_injection_basic": "Prompt Inj.\n(Basic)",
+    "contractors_prompt_injection_strong": "Prompt Inj.\n(Strong)",
 }
 
 # Plot each experiment type and model
@@ -65,8 +84,14 @@ for exp_type in exp_types_to_plot:
             businesses.insert(0, config["treatment"])
 
         # Calculate stats
-        stats = model_df.groupby(["condition", "business_name"])["payments_received"].agg(["mean", "std", "count"]).reset_index()
-        strategies = [s for s in config["strategies"] if s in model_df["condition"].values]
+        stats = (
+            model_df.groupby(["condition", "business_name"])["payments_received"]
+            .agg(["mean", "std", "count"])
+            .reset_index()
+        )
+        strategies = [
+            s for s in config["strategies"] if s in model_df["condition"].values
+        ]
 
         # Setup plot
         plt.figure(figsize=(10, 6))
@@ -81,12 +106,14 @@ for exp_type in exp_types_to_plot:
         for i, biz in enumerate(businesses):
             means, cis = [], []
             for strat in strategies:
-                row = stats[(stats["condition"] == strat) & (stats["business_name"] == biz)]
+                row = stats[
+                    (stats["condition"] == strat) & (stats["business_name"] == biz)
+                ]
                 if not row.empty:
                     mean_val = float(row["mean"].iloc[0])
                     std_val = float(row["std"].iloc[0])
                     n = float(row["count"].iloc[0])
-                    ci = (t.ppf(0.975, n-1) * std_val / np.sqrt(n)) if n > 1 else 0
+                    ci = (t.ppf(0.975, n - 1) * std_val / np.sqrt(n)) if n > 1 else 0
                     means.append(mean_val)
                     cis.append(ci)
                 else:
@@ -96,10 +123,17 @@ for exp_type in exp_types_to_plot:
             if i == 0:
                 color = "#2C3E50"
             else:
-                gray = int((0.6 + i*0.1)*255)
+                gray = int((0.6 + i * 0.1) * 255)
                 color = f"#{gray:02x}{gray:02x}{gray:02x}"
-            ax.bar(x + i*width - 0.4 + width/2, means, width, yerr=cis,
-                   label=biz, color=color, capsize=3)
+            ax.bar(
+                x + i * width - 0.4 + width / 2,
+                means,
+                width,
+                yerr=cis,
+                label=biz,
+                color=color,
+                capsize=3,
+            )
 
         # Format
         ax.set_xticks(x)
