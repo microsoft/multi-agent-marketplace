@@ -28,13 +28,18 @@ You can configure business and customer agents that transact and then run simula
 2. Run simulations and analyze the outputs
 
     ```bash
-    # Run the experiments
+    # Run an experiment (experiment name is optional)
     magentic-marketplace run data/mexican_3_9 --experiment-name test_exp
 
     # Analyze the results
     magentic-marketplace analyze test_exp
     ```
 
+    You can also run experiments from python scripts, see [experiments/example.py](experiments/example.py).
+    
+    View more CLI options with `magentic-marketplace --help`.
+
 ## More information
+
 
 For more information on dev setup and debugging see [DEV.md](DEV.md).

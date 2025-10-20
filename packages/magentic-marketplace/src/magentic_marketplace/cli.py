@@ -3,6 +3,7 @@ no """Command-line interface for magentic-marketplace."""
 import argparse
 import asyncio
 import logging
+import os
 import sys
 from pathlib import Path
 
@@ -17,6 +18,10 @@ from magentic_marketplace.experiments.run_analytics import run_analytics
 from magentic_marketplace.experiments.run_audit import run_audit
 from magentic_marketplace.experiments.run_experiment import run_marketplace_experiment
 from magentic_marketplace.experiments.utils import setup_logging
+from magentic_marketplace.ui import run_ui_server
+
+DEFAULT_POSTGRES_PORT = 5432
+DEFAULT_UI_PORT = 5000
 
 
 def run_experiment_command(args):
@@ -81,6 +86,10 @@ def run_experiment_command(args):
             postgres_host=args.postgres_host,
             postgres_port=args.postgres_port,
             postgres_password=args.postgres_password,
+            db_pool_min_size=args.db_pool_min_size,
+            db_pool_max_size=args.db_pool_max_size,
+            server_host=args.server_host,
+            server_port=args.server_port,
             override=args.override_db,
             export_sqlite=args.export,
             export_dir=args.export_dir,
@@ -93,7 +102,12 @@ def run_analysis_command(args):
     """Handle the analytics subcommand."""
     save_to_json = not args.no_save_json
     asyncio.run(
-        run_analytics(args.database_name, args.db_type, save_to_json=save_to_json)
+        run_analytics(
+            args.database_name,
+            args.db_type,
+            save_to_json=save_to_json,
+            print_results=True,
+        )
     )
 
 
@@ -134,6 +148,19 @@ def run_export_command(args):
             postgres_user=args.postgres_user,
             postgres_password=args.postgres_password,
         )
+    )
+
+
+def run_ui_command(args):
+    """Handle the UI subcommand to launch the visualizer."""
+    run_ui_server(
+        database_name=args.database_name,
+        db_type=args.db_type,
+        postgres_host=args.postgres_host,
+        postgres_port=args.postgres_port,
+        postgres_password=args.postgres_password,
+        ui_port=args.ui_port,
+        ui_host=args.ui_host,
     )
 
 
@@ -196,21 +223,48 @@ def main():
 
     experiment_parser.add_argument(
         "--postgres-host",
-        default="localhost",
-        help="PostgreSQL host (default: localhost)",
+        default=os.environ.get("POSTGRES_HOST", "localhost"),
+        help="PostgreSQL host (default: POSTGRES_HOST env var or localhost)",
     )
 
     experiment_parser.add_argument(
         "--postgres-port",
         type=int,
-        default=5432,
-        help="PostgreSQL port (default: 5432)",
+        default=int(os.environ.get("POSTGRES_PORT", DEFAULT_POSTGRES_PORT)),
+        help=f"PostgreSQL port (default: POSTGRES_PORT env var or {DEFAULT_POSTGRES_PORT})",
     )
 
     experiment_parser.add_argument(
         "--postgres-password",
-        default="postgres",
-        help="PostgreSQL password (default: postgres)",
+        default=os.environ.get("POSTGRES_PASSWORD", "postgres"),
+        help="PostgreSQL password (default: POSTGRES_PASSWORD env var or postgres)",
+    )
+
+    experiment_parser.add_argument(
+        "--db-pool-min-size",
+        type=int,
+        default=2,
+        help="Minimum connections in PostgreSQL pool (default: 2)",
+    )
+
+    experiment_parser.add_argument(
+        "--db-pool-max-size",
+        type=int,
+        default=10,
+        help="Maximum connections in PostgreSQL pool (default: 10)",
+    )
+
+    experiment_parser.add_argument(
+        "--server-host",
+        default="127.0.0.1",
+        help="FastAPI server host (default: 127.0.0.1)",
+    )
+
+    experiment_parser.add_argument(
+        "--server-port",
+        type=int,
+        default=0,
+        help="FastAPI server port (default: auto-assign)",
     )
 
     experiment_parser.add_argument(
@@ -337,27 +391,27 @@ def main():
 
     export_parser.add_argument(
         "--postgres-host",
-        default="localhost",
-        help="PostgreSQL host (default: localhost)",
+        default=os.environ.get("POSTGRES_HOST", "localhost"),
+        help="PostgreSQL host (default: POSTGRES_HOST env var or localhost)",
     )
 
     export_parser.add_argument(
         "--postgres-port",
         type=int,
-        default=5432,
-        help="PostgreSQL port (default: 5432)",
+        default=int(os.environ.get("POSTGRES_PORT", "5432")),
+        help="PostgreSQL port (default: POSTGRES_PORT env var or 5432)",
     )
 
     export_parser.add_argument(
         "--postgres-user",
-        default="postgres",
-        help="PostgreSQL user (default: postgres)",
+        default=os.environ.get("POSTGRES_USER", "postgres"),
+        help="PostgreSQL user (default: POSTGRES_USER env var or postgres)",
     )
 
     export_parser.add_argument(
         "--postgres-password",
-        default="postgres",
-        help="PostgreSQL password (default: postgres)",
+        default=os.environ.get("POSTGRES_PASSWORD", "postgres"),
+        help="PostgreSQL password (default: POSTGRES_PASSWORD env var or postgres)",
     )
 
     # list-experiments subcommand
@@ -369,33 +423,33 @@ def main():
 
     list_experiments_parser.add_argument(
         "--postgres-host",
-        default="localhost",
-        help="PostgreSQL host (default: localhost)",
+        default=os.environ.get("POSTGRES_HOST", "localhost"),
+        help="PostgreSQL host (default: POSTGRES_HOST env var or localhost)",
     )
 
     list_experiments_parser.add_argument(
         "--postgres-port",
         type=int,
-        default=5432,
-        help="PostgreSQL port (default: 5432)",
+        default=int(os.environ.get("POSTGRES_PORT", "5432")),
+        help="PostgreSQL port (default: POSTGRES_PORT env var or 5432)",
     )
 
     list_experiments_parser.add_argument(
         "--postgres-database",
-        default="marketplace",
-        help="PostgreSQL database name (default: marketplace)",
+        default=os.environ.get("POSTGRES_DB", "marketplace"),
+        help="PostgreSQL database name (default: POSTGRES_DB env var or marketplace)",
     )
 
     list_experiments_parser.add_argument(
         "--postgres-user",
-        default="postgres",
-        help="PostgreSQL user (default: postgres)",
+        default=os.environ.get("POSTGRES_USER", "postgres"),
+        help="PostgreSQL user (default: POSTGRES_USER env var or postgres)",
     )
 
     list_experiments_parser.add_argument(
         "--postgres-password",
-        default="postgres",
-        help="PostgreSQL password (default: postgres)",
+        default=os.environ.get("POSTGRES_PASSWORD", "postgres"),
+        help="PostgreSQL password (default: POSTGRES_PASSWORD env var or postgres)",
     )
 
     list_experiments_parser.add_argument(
@@ -403,6 +457,56 @@ def main():
         type=int,
         default=None,
         help="Maximum number of experiments to display",
+    )
+
+    # ui subcommand
+    ui_parser = subparsers.add_parser(
+        "ui", help="Launch interactive visualizer for marketplace data"
+    )
+    ui_parser.set_defaults(func=run_ui_command)
+
+    ui_parser.add_argument(
+        "database_name",
+        help="Postgres schema name or path to the SQLite database file",
+    )
+
+    ui_parser.add_argument(
+        "--db-type",
+        choices=["sqlite", "postgres"],
+        default="postgres",
+        help="Type of database to use (default: postgres)",
+    )
+
+    ui_parser.add_argument(
+        "--postgres-host",
+        default="localhost",
+        help="PostgreSQL host (default: localhost)",
+    )
+
+    ui_parser.add_argument(
+        "--postgres-port",
+        type=int,
+        default=DEFAULT_POSTGRES_PORT,
+        help=f"PostgreSQL port (default: {DEFAULT_POSTGRES_PORT})",
+    )
+
+    ui_parser.add_argument(
+        "--postgres-password",
+        default="postgres",
+        help="PostgreSQL password (default: postgres)",
+    )
+
+    ui_parser.add_argument(
+        "--ui-host",
+        default="localhost",
+        help="UI server host (default: localhost)",
+    )
+
+    ui_parser.add_argument(
+        "--ui-port",
+        type=int,
+        default=DEFAULT_UI_PORT,
+        help=f"Port for ui server(default: {DEFAULT_UI_PORT})",
     )
 
     # Parse arguments and execute the appropriate function

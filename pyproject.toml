@@ -11,7 +11,7 @@ dev = [
 [tool.uv.workspace]
 members = [
     "packages/magentic-marketplace",
-    "packages/magentic-marketplace-mcp"
+    "packages/magentic-marketplace-mcp",
 ]
 
 
@@ -62,7 +62,7 @@ pyright src --outputjson > /tmp/pyright_output.json 2>/dev/null || true
 echo 'Type checking completed.'
 """
 
-spell = "codespell packages/**/*.py packages/**/*.md"
+spell = "codespell packages docs --skip='*/node_modules/*,*/.git/*,*/__pycache__/*,*/.venv/*,*/static/assets/*,*.json,*/.vitepress/*' --ignore-words-list='mappin'"
 
 # Combined quality checks
 check-all = ["format", "lint", "type", "spell"]
@@ -81,4 +81,4 @@ markers = [
     "rnr: tests that require the rnr extra dependencies",
     "postgres: tests that require postgres"
 ]
-
+env_files = ["dev.env"]
