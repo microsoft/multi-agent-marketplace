@@ -7,7 +7,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import pandas as pd
 
-FIG_SIZE = (5, 3)
+FIG_SIZE = (7, 4.2)
 DPI = 300
 LABEL_FONT_SIZE = 10
 TITLE_FONT_SIZE = 10
@@ -204,7 +204,7 @@ def create_plot_from_csv(csv_file, welfare_type):
         labels,
         loc="upper left",
         bbox_to_anchor=(0.06, 0.88),
-        ncol=4,
+        ncol=len(labels),
         frameon=False,
     )
 

@@ -56,7 +56,7 @@ def compile_results_csv(input_dir):
 
     for dataset, results in all_results.items():
         # Get the optimal welfare value for this dataset
-        dataset_path = os.path.join("../..", "data", dataset, "baseline_utilities.json")
+        dataset_path = os.path.join(data_dir, dataset, "baseline_utilities.json")
         with open(dataset_path) as f:
             baseline_data = json.load(f)
             baseline_utility = baseline_data["pick_optimal_baseline"]["constant"]
@@ -84,8 +84,15 @@ if __name__ == "__main__":
         required=True,
         help="Directory with analytics_results_*.json files.",
     )
+    parser.add_argument(
+        "--data-dir",
+        type=str,
+        required=True,
+        help="Directory with dataset files.",
+    )
     args = parser.parse_args()
 
     input_dir = args.input_dir
+    data_dir = args.data_dir
 
     compile_results_csv(input_dir)
