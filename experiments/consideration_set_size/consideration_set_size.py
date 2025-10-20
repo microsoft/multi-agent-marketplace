@@ -132,9 +132,13 @@ async def main(argv: Sequence[str] | None = None) -> int:
                 continue
 
             experiment_name = (
-                f"search_limit_{model_clean}_{dataset_clean}_limit_"
-                f"{search_limit}_run_{run_number}"
+                f"{model_clean}_{dataset_clean}_limit_{search_limit}_run_{run_number}"
             )
+            if len(experiment_name) > 63:
+                experiment_name = experiment_name[:63]
+                print(
+                    "Warning: Experiment name truncated to 63 characters for database schema compatibility."
+                )
 
             print(f"Experiment Name: {experiment_name}")
 

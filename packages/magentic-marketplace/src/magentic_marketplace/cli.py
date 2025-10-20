@@ -154,7 +154,8 @@ def run_export_command(args):
 def run_ui_command(args):
     """Handle the UI subcommand to launch the visualizer."""
     run_ui_server(
-        schema_name=args.schema_name,
+        database_name=args.database_name,
+        db_type=args.db_type,
         postgres_host=args.postgres_host,
         postgres_port=args.postgres_port,
         postgres_password=args.postgres_password,
@@ -465,8 +466,15 @@ def main():
     ui_parser.set_defaults(func=run_ui_command)
 
     ui_parser.add_argument(
-        "schema_name",
-        help="PostgreSQL schema name to visualize (same as experiment name)",
+        "database_name",
+        help="Postgres schema name or path to the SQLite database file",
+    )
+
+    ui_parser.add_argument(
+        "--db-type",
+        choices=["sqlite", "postgres"],
+        default="postgres",
+        help="Type of database to use (default: postgres)",
     )
 
     ui_parser.add_argument(
