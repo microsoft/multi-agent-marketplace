@@ -23,7 +23,11 @@ if __name__ == "__main__":
         required=True,
         help="The label to use for the plot (e.g., 'Customer Welfare'), enclosed in quotes.",
     )
-
+    parser.add_argument(
+        "--hide-legend",
+        action="store_true",
+        help="Whether to hide the legend in the plot.",
+    )
     args = parser.parse_args()
 
     input_files = args.files_to_plot
@@ -34,4 +38,5 @@ if __name__ == "__main__":
         welfare_type="customer",
         plot_key=plot_key,
         plot_label=args.plot_label,
+        hide_legend=args.hide_legend,
     )

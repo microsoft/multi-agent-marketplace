@@ -8,9 +8,9 @@ from matplotlib import pyplot as plt
 
 FIG_SIZE = (8, 4.2)
 DPI = 300
-LABEL_FONT_SIZE = 10
-TITLE_FONT_SIZE = 10
-TICK_FONT_SIZE = 10
+LABEL_FONT_SIZE = 14
+TITLE_FONT_SIZE = 14
+TICK_FONT_SIZE = 14
 BASELINE_COLOR = "#2C3E50"
 
 MODEL_STYLES = {
@@ -43,14 +43,31 @@ MODEL_STYLES = {
 
 
 def create_search_limit_plots(
-    csv_files, welfare_type="customer", plot_key="Welfare", plot_label=None
+    csv_files,
+    welfare_type="customer",
+    plot_key="Welfare",
+    plot_label=None,
+    hide_legend=False,
 ):
     """Create search limit welfare plots for each dataset."""
     for csv_file in csv_files:
-        create_plot_from_csv(csv_file, welfare_type, plot_key, plot_label)
+        create_plot_from_csv(
+            csv_file,
+            welfare_type,
+            plot_key,
+            plot_label,
+            hide_legend,
+        )
 
 
-def create_plot_from_csv(csv_file, welfare_type, plot_key, plot_label=None):
+def create_plot_from_csv(
+    csv_file,
+    welfare_type,
+    plot_key,
+    plot_label=None,
+    hide_legend=False,
+    transparent_legend=False,
+):
     """Create welfare plot from a single CSV file."""
     # Convert to Path object if needed
     csv_file = Path(csv_file)
@@ -161,13 +178,17 @@ def create_plot_from_csv(csv_file, welfare_type, plot_key, plot_label=None):
     ax.set_xlabel("Search Limit", fontsize=LABEL_FONT_SIZE)
     ax.set_ylabel(f"Mean {plot_label}", fontsize=LABEL_FONT_SIZE)
 
+    # # Center the y-axis label vertically
+    # ax.yaxis.set_label_coords(-0.075, 0.4)
+
     # Set x-axis ticks to align precisely with data values
     ax.set_xticks(limits)
 
     # Add custom labels with space before "5" to prevent overlap with "3"
     tick_labels = [str(limit) if limit != 5 else " 5" for limit in limits]
     ax.set_xticklabels(tick_labels)
-    ax.tick_params(axis="both", which="major", labelsize=TICK_FONT_SIZE)
+
+    ax.tick_params(axis="both", labelsize=TICK_FONT_SIZE)
 
     # Add legend in top left corner, positioned with coordinates
     # Reorder handles and labels to put Optimal first, then models
@@ -184,15 +205,20 @@ def create_plot_from_csv(csv_file, welfare_type, plot_key, plot_label=None):
             lab for i, lab in enumerate(labels) if i != optimal_idx
         ]
 
-    fig.legend(
-        handles,
-        labels,
-        loc="upper left",
-        bbox_to_anchor=(0.0, 0.88),
-        ncol=len(labels),
-        frameon=False,
-        columnspacing=1.5,
-    )
+    if not hide_legend:
+        fig.legend(
+            handles,
+            labels,
+            loc="upper left",
+            bbox_to_anchor=(0.0, 0.98),
+            ncol=3,
+            frameon=True,
+            facecolor="white",
+            edgecolor="white",
+            framealpha=0.15,
+            columnspacing=1.5,
+            fontsize=LABEL_FONT_SIZE,
+        )
 
     # Remove top and right spines to match reference style
     ax.spines["top"].set_visible(False)
