@@ -48,8 +48,8 @@ SendMessage(
 - `amount` (float): Payment amount
 - `proposal_message_id` (str): Reference to the order being paid
 
-## Example Agent Exchange
+## Example
 
-We show an example agent exchange below where they use these actions to communicate. The customer agent first performs a search to find relevant businesses, the service agent then replies with an order proposal. Finally, the customer agent sends a payment.
+As an example, a customer's assistant agent begins by executing a search action to find relevant businesses. It then sends text messages to each business. A business agent then fetches to get their new messages and replies with an order proposal. Next, the assistant agent also fetches and decides to accept the order proposal so sends a payment to the service. Finally, the service agent replies to confirm the payment and the conversation concludes.
 
-<img src="/conversation.png" alt="Conversation" style="width: 60%; display: block; margin: 0 auto;" />
+![Actions](/actions.png)
