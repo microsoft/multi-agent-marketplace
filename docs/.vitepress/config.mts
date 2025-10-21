@@ -25,37 +25,39 @@ export default withMermaid(
 
       nav: [
         { text: "Home", link: "/" },
-        { text: "Getting Started", link: "/getting-started/installation" },
+        { text: "Getting Started", link: "/usage/installation" },
         { text: "Guide", link: "/concepts/overview" },
       ],
 
       sidebar: [
         {
           text: "Introduction",
-          collapsed: false,
-
           items: [
             {
               text: "Quick Start & Install",
-              link: "/getting-started/installation",
+              link: "/usage/installation",
             },
             {
-              text: "Usage",
+              text: "Environment Setup",
+              link: "/usage/env",
+            },
+            {
+              text: "CLI",
+              collapsed: true,
               items: [
-                {
-                  text: "Environment Setup",
-                  link: "/getting-started/usage/env",
-                },
-                { text: "CLI", link: "/getting-started/usage/cli" },
-                { text: "Python API", link: "/getting-started/usage/python" },
+                { text: "Overview", link: "/usage/cli-intro" },
+                { text: "Run", link: "/usage/cli-run" },
+                { text: "Analyze", link: "/usage/cli-analyze" },
+                { text: "Export", link: "/usage/cli-export" },
+                { text: "List", link: "/usage/cli-list" },
+                { text: "UI", link: "/usage/cli-ui" },
               ],
             },
+            { text: "Python API", link: "/usage/python" },
           ],
         },
         {
           text: "Core Concepts",
-          collapsed: false,
-
           items: [
             { text: "Overview", link: "/concepts/overview" },
             { text: "Platform", link: "/concepts/platform" },
