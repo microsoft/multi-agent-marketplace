@@ -8,7 +8,7 @@ _Simulation Environment for Agentic Marketplaces_
 ---
 
 <div align="center">
-<video src="https://github.com/user-attachments/assets/3e5da6c0-42d2-47f5-8b54-23d23a5f6d25" style="max-height: 450px;">
+<video src="docs/public/mm-demo.mp4" style="max-height: 450px;">
 </video>
 </div>
 

@@ -17,13 +17,13 @@ features:
   - title: Simulate Agentic Marketplaces
     link: /getting-started/usage/cli
     details: |
-      Run experiments with customer and business agents that search, converse, and make transactions
+      Run experiments with customer and business agents that search, converse, and make transactions.
       <img src="./run.png" alt="Run command" style="width: 100%; margin-top: 1rem; border-radius: 12px;" />
 
   - title: Understand Marketplace Dynamics
     link: /getting-started/usage/cli
     details: |
-      Analyze agent behavior and market welfare to understand agent biases and malicious behavior
+      Analyze agent behavior and market welfare to understand agent biases and malicious behavior.
       <img src="./analyze.png" alt="analyze command" style="width: 100%; margin-top: 1rem; border-radius: 12px;" />
 ---
 
