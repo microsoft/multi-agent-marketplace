@@ -5,15 +5,23 @@ from argparse import ArgumentParser
 from search_plot_utils import create_search_limit_plots
 
 if __name__ == "__main__":
-    # Take in the files to plot as an argument using argparse
     parser = ArgumentParser(
         description="Create search limit welfare plots from CSV files."
     )
-    parser.add_argument("--files-to-plot", nargs="+", help="List of CSV files to plot.")
+    parser.add_argument(
+        "--files-to-plot", nargs="+", required=True, help="List of CSV files to plot."
+    )
     parser.add_argument(
         "--plot-key",
         type=str,
+        required=True,
         help="The column to plot from the CSV (e.g., Welfare), enclosed in quotes.",
+    )
+    parser.add_argument(
+        "--plot-label",
+        type=str,
+        required=True,
+        help="The label to use for the plot (e.g., 'Customer Welfare'), enclosed in quotes.",
     )
 
     args = parser.parse_args()
@@ -21,4 +29,9 @@ if __name__ == "__main__":
     input_files = args.files_to_plot
     plot_key = args.plot_key
 
-    create_search_limit_plots(input_files, welfare_type="customer", plot_key=plot_key)
+    create_search_limit_plots(
+        input_files,
+        welfare_type="customer",
+        plot_key=plot_key,
+        plot_label=args.plot_label,
+    )

@@ -2,10 +2,11 @@
 
 from pathlib import Path
 
+import matplotlib.colors as mcolors
 import pandas as pd
 from matplotlib import pyplot as plt
 
-FIG_SIZE = (7, 4.2)
+FIG_SIZE = (8, 4.2)
 DPI = 300
 LABEL_FONT_SIZE = 10
 TITLE_FONT_SIZE = 10
@@ -16,7 +17,6 @@ MODEL_STYLES = {
     "gpt-5": {
         "display_name": "GPT-5",
         "color": "#3498DB",
-        # "marker": "o",
         "marker": "p",
     },
     "gpt-4.1": {
@@ -28,7 +28,6 @@ MODEL_STYLES = {
         "display_name": "GPT-4o",
         "color": "#27AE60",
         "marker": "s",
-        # "marker": "o",
     },
     "gemini-2.5-flash": {
         "display_name": "Gemini 2.5 Flash",
@@ -43,19 +42,19 @@ MODEL_STYLES = {
 }
 
 
-def create_search_limit_plots(csv_files, welfare_type="customer", plot_key="Welfare"):
+def create_search_limit_plots(
+    csv_files, welfare_type="customer", plot_key="Welfare", plot_label=None
+):
     """Create search limit welfare plots for each dataset."""
-    # Create a plot for each CSV file
     for csv_file in csv_files:
-        create_plot_from_csv(csv_file, welfare_type, plot_key)
+        create_plot_from_csv(csv_file, welfare_type, plot_key, plot_label)
 
 
-def create_plot_from_csv(csv_file, welfare_type, plot_key):
+def create_plot_from_csv(csv_file, welfare_type, plot_key, plot_label=None):
     """Create welfare plot from a single CSV file."""
     # Convert to Path object if needed
     csv_file = Path(csv_file)
 
-    # Read the CSV data
     df = pd.read_csv(csv_file)
 
     # Filter for the specified welfare type
@@ -98,7 +97,6 @@ def create_plot_from_csv(csv_file, welfare_type, plot_key):
         }
     )
 
-    # Create the plot
     fig, ax = plt.subplots(figsize=FIG_SIZE)
 
     # Get unique models and sort search limits
@@ -124,9 +122,6 @@ def create_plot_from_csv(csv_file, welfare_type, plot_key):
             # Use default styles cyclically for unknown models
             style = default_styles[i % len(default_styles)]
             display_name = model
-
-        # Option 1: Error bars
-        import matplotlib.colors as mcolors
 
         # Make error bars lighter by adjusting alpha in the color
         base_color = mcolors.to_rgba(style["color"])
@@ -164,7 +159,7 @@ def create_plot_from_csv(csv_file, welfare_type, plot_key):
 
     # Styling
     ax.set_xlabel("Search Limit", fontsize=LABEL_FONT_SIZE)
-    ax.set_ylabel(f"Mean {welfare_type.title()} {plot_key}", fontsize=LABEL_FONT_SIZE)
+    ax.set_ylabel(f"Mean {plot_label}", fontsize=LABEL_FONT_SIZE)
 
     # Set x-axis ticks to align precisely with data values
     ax.set_xticks(limits)
@@ -174,7 +169,7 @@ def create_plot_from_csv(csv_file, welfare_type, plot_key):
     ax.set_xticklabels(tick_labels)
     ax.tick_params(axis="both", which="major", labelsize=TICK_FONT_SIZE)
 
-    # Add legend in top right corner, positioned with coordinates
+    # Add legend in top left corner, positioned with coordinates
     # Reorder handles and labels to put Optimal first, then models
     handles, labels = ax.get_legend_handles_labels()
 
@@ -193,9 +188,10 @@ def create_plot_from_csv(csv_file, welfare_type, plot_key):
         handles,
         labels,
         loc="upper left",
-        bbox_to_anchor=(0.06, 0.88),
+        bbox_to_anchor=(0.0, 0.88),
         ncol=len(labels),
         frameon=False,
+        columnspacing=1.5,
     )
 
     # Remove top and right spines to match reference style
@@ -203,7 +199,6 @@ def create_plot_from_csv(csv_file, welfare_type, plot_key):
     ax.spines["right"].set_visible(False)
 
     # Set grid
-    # ax.grid(True, alpha=0.3, linestyle="-", linewidth=0.5)
     ax.set_axisbelow(True)
 
     plt.tight_layout(rect=[0, 0, 1, 0.82])
