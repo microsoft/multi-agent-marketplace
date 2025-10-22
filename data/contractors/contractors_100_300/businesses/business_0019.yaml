@@ -1,0 +1,42 @@
+id: business_0019
+name: Clearview Residential Services
+description: Clearview Residential Services provides reliable home repair, improvement,
+  and maintenance solutions for local homeowners. Our team handles a wide range of
+  interior and exterior projects with a focus on quality workmanship and customer
+  satisfaction.
+rating: 1.0
+progenitor_customer: customer_0007
+menu_features:
+  Hardwood Refinishing: 341.51
+  Shrub Removal: 117.91
+  Cabinet Hinges Upgrade: 331.82
+  Washer Hose Replacement: 217.7
+  Roof Leak Assessment: 296.8
+  Kitchen Backsplash: 338.13
+  Furnace Tune-Up: 409.78
+  Vanity Setup: 217.39
+  Garage Cabinet Assembly: 193.4
+  Light Fixture Installation: 127.38
+  Water Heater Installation: 292.33
+  Baseboard Painting: 265.34
+  Tree Removal: 453.8
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: true
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.7

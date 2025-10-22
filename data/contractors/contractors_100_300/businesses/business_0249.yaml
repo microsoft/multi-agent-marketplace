@@ -1,0 +1,43 @@
+id: business_0249
+name: Horizon Crest Home Services
+description: Serving local homeowners with dependable exterior and interior maintenance,
+  small repairs, and installation projects. We focus on quality workmanship and responsive
+  service for residential property improvement.
+rating: 1.0
+progenitor_customer: customer_0083
+menu_features:
+  Pressure Washing: 172.35
+  Bush Trimming: 125.83
+  Basic Lawn Care: 123.2
+  Gutter Repair: 272.21
+  Electrical Switch Installation: 265.98
+  Shed Assembly: 258.7
+  Stone Walkway Paving: 571.66
+  Stone Veneer Wall: 569.83
+  Landscape Edging: 278.43
+  Weatherproof Electrical Outlet Install: 105.57
+  Bathroom Fan Installation: 370.61
+  Porch Railing Installation: 453.23
+  Washer Hose Replacement: 247.95
+  Furnace Service: 409.94
+  Built-In Bookshelf Construction: 318.34
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: true
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.65

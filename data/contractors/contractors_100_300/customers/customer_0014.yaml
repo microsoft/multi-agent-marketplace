@@ -1,0 +1,12 @@
+id: customer_0014
+name: Maya Wong
+request: 'I''m looking to hire a contractor who can perform the following services:
+  New Thermostat Setup (1) and Shower Re-Caulking (1). It is essential that the contractor
+  has a background checked crew. Once you find a contractor that meets all these requirements,
+  please proceed to schedule and confirm the work for me. Thank you for assisting
+  with this.'
+menu_features:
+  New Thermostat Setup: 245.95
+  Shower Re-Caulking: 393.0
+amenity_features:
+- background checked crew

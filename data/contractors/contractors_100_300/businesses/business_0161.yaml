@@ -1,0 +1,44 @@
+id: business_0161
+name: Oakland Residential Services
+description: Oakland Residential Services provides professional home improvement and
+  maintenance solutions for homeowners seeking reliable and efficient service. Our
+  team specializes in interior updates, exterior upgrades, and general residential
+  repairs to enhance comfort and curb appeal.
+rating: 1.0
+progenitor_customer: customer_0054
+menu_features:
+  Basic Tile Flooring Install: 165.55
+  Window Frame Restoration: 425.69
+  Shingle Roof Cleaning: 415.75
+  Deck Staining: 294.42
+  Security Light Installation: 266.81
+  Thermostat Replacement: 230.53
+  Carpet Cleaning: 420.45
+  Front Door Lock Change: 168.85
+  Sodding Service: 350.5
+  Deck Waterproofing: 441.84
+  Luxury Vinyl Plank Installation: 344.55
+  Porch Railing Installation: 437.89
+  Concrete Patio Staining: 359.65
+  Weed Removal: 106.44
+  Water Heater Flush: 463.33
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: true
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.88

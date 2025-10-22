@@ -1,0 +1,45 @@
+id: business_0246
+name: Oakfield Service Contractors
+description: Oakfield Service Contractors provides reliable residential improvement
+  and maintenance solutions for homeowners seeking quality enhancements and repairs.
+  Our team delivers attentive service for a variety of home projects, interior updates,
+  and exterior features.
+rating: 1.0
+progenitor_customer: customer_0082
+menu_features:
+  Closet Shelving Assembly: 311.43
+  Stucco Wall Restoration: 501.38
+  Stone Walkway Paving: 500.13
+  Built-in Shelving Installation: 429.84
+  Ceiling Patch Repair: 222.11
+  Brick Walkway Installation: 551.2
+  Pergola Construction: 363.0
+  Landscape Lighting Installation: 384.84
+  Garage Organization: 309.45
+  Small Room Remodeling: 421.78
+  Small Wall Demo: 268.1
+  Tile Grout Renewal: 269.26
+  Replace Electrical Outlet: 241.28
+  Closet Organizer Installation: 559.36
+  Exterior Door Install: 247.16
+  Light Switch Replacement: 207.24
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.81

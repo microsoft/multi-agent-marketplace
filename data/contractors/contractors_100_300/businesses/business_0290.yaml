@@ -1,0 +1,46 @@
+id: business_0290
+name: Northview Home Renewal
+description: Serving local homeowners, Northview Home Renewal provides reliable interior
+  and exterior repair, renovation, and maintenance services tailored to meet the needs
+  of residential properties. Our team is committed to quality workmanship and dependable
+  solutions for your home improvement projects.
+rating: 1.0
+progenitor_customer: customer_0097
+menu_features:
+  Carpet Replacement: 334.64
+  Tile Floor Cleaning: 271.25
+  Drywall Hole Repair: 297.91
+  Closet Renovation: 475.46
+  Brick Repair: 193.86
+  Mulch Spreading: 259.31
+  Mulch Delivery: 288.34
+  Cabinet Refinishing: 439.39
+  Deck Refinishing: 345.06
+  Laminate Floor Replacement: 494.66
+  Siding Repair: 335.11
+  A/C Blower Motor Replacement: 339.38
+  Vanity Installation: 210.8
+  Concrete Patio Resurfacing: 509.35
+  Faucet Repair: 194.34
+  Roof Repair: 396.82
+  Faucet Replacement: 98.1
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.91

@@ -1,0 +1,45 @@
+id: business_0238
+name: Riverstone Property Improvement
+description: Riverstone Property Improvement provides dependable residential repair
+  and upgrade services tailored for homeowners seeking quality workmanship and efficient
+  solutions. Our team specializes in interior and exterior improvements to help maintain
+  and enhance the value of your home.
+rating: 1.0
+progenitor_customer: customer_0080
+menu_features:
+  Garage Door Servicing: 376.92
+  Weatherproof Electrical Outlet Install: 124.79
+  Refrigerator Water Line Install: 224.63
+  Sheetrock Installation: 358.5
+  Door Frame Repair: 308.94
+  Exterior Siding Cleaning: 336.88
+  Ceiling Fan Replacement: 255.28
+  Bathtub Reglazing: 344.61
+  Chimney Cap Replacement: 418.66
+  Tile Installation: 323.47
+  Concrete Step Pouring: 434.81
+  Kitchen Backsplash: 429.16
+  AC System Inspection: 376.22
+  Fireplace Repointing: 358.34
+  Door Hanging: 259.24
+  Washer Dryer Hookup: 284.84
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.95

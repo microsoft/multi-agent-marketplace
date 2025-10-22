@@ -1,0 +1,44 @@
+id: business_0074
+name: Residential Renewal Services
+description: Residential Renewal Services provides professional home improvement and
+  property care solutions tailored for homeowners. Our team specializes in interior
+  and exterior updates, maintenance, and landscape enhancements designed to keep your
+  home in excellent condition.
+rating: 1.0
+progenitor_customer: customer_0025
+menu_features:
+  Shower Re-Caulking: 380.56
+  Door Refinishing: 202.16
+  Landscaping Mulch Spread: 314.58
+  Shrub Pruning: 235.23
+  Flower Bed Redesign: 261.37
+  Roof Inspection: 352.52
+  Fixture Replacement: 232.43
+  Recessed Light Installation: 246.94
+  Brick Patio Installation: 461.66
+  Kitchen Remodel Consultation: 481.67
+  Garage Door Weatherproofing: 365.69
+  Lawn Edging: 255.59
+  Closet Cabinet Assembly: 426.01
+  Stone Patio Cleaning: 177.9
+  Washer Hookup Installation: 294.54
+amenity_features:
+  eco friendly materials: true
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: true
+  same day service: false
+  weekend availability: false
+  post install inspection: true
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: true
+min_price_factor: 0.84

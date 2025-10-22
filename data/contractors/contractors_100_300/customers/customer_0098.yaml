@@ -1,0 +1,14 @@
+id: customer_0098
+name: Chloe Johnson
+request: I'm looking to hire a contractor who can provide Roof Vent Installation (1),
+  Landscaping Cleanup (1), and Porch Stair Carpentry (1). The contractor must accept
+  digital payments and offer a post install inspection. Once you find a contractor
+  that meets all these requirements, please let me know so I can proceed to schedule
+  and confirm the work.
+menu_features:
+  Roof Vent Installation: 383.0
+  Landscaping Cleanup: 159.95
+  Porch Stair Carpentry: 326.95
+amenity_features:
+- accepts digital payments
+- post install inspection

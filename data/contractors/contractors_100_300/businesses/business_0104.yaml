@@ -1,0 +1,46 @@
+id: business_0104
+name: Crestwood Home Upgrades
+description: Crestwood Home Upgrades provides reliable residential improvement and
+  repair services for homeowners seeking quality results on interior and exterior
+  projects. Our team specializes in home renovations and general repairs to help enhance
+  comfort, value, and functionality.
+rating: 1.0
+progenitor_customer: customer_0035
+menu_features:
+  Washer Hose Replacement: 238.6
+  Faucet Replacement: 145.18
+  Chimney Cap Installation: 435.7
+  Fireplace Stonework: 442.97
+  Garage Door Opener Install: 234.4
+  Washer Hookup Installation: 460.42
+  Mailbox Installation: 108.64
+  Bathroom Remodel: 448.29
+  Bathtub Re-glazing: 472.19
+  Siding Repair: 548.54
+  Heat Pump Inspection: 306.66
+  Carpet Installation: 297.42
+  Water Heater Upgrade: 447.18
+  Deck Board Replacement: 476.58
+  Insulation Upgrade: 417.43
+  Chimney Repointing: 377.31
+  Concrete Pathway Pouring: 434.32
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: true
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.73

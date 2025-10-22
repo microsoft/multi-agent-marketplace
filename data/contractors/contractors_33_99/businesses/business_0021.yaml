@@ -1,0 +1,41 @@
+id: business_0021
+name: Crescent Residential Services
+description: Crescent Residential Services provides reliable solutions for homeowners
+  seeking interior improvements, exterior maintenance, and general repairs. Our team
+  is committed to delivering quality workmanship and attentive service throughout
+  every project.
+rating: 1.0
+progenitor_customer: customer_0007
+menu_features:
+  Shrub Trimming: 312.19
+  Hardwood Flooring: 279.46
+  Refrigerator Hookup: 288.88
+  Smart Thermostat Setup: 287.3
+  Concrete Pathway Repair: 347.25
+  Stone Pathway Installation: 370.57
+  Garage Door Adjustment: 191.99
+  Gutter Cleaning: 196.28
+  Bathroom Shower Enclosure: 487.12
+  Basic Electrical Troubleshooting: 247.06
+  Garage Door Alignment: 449.65
+  Deck Repair: 257.9
+amenity_features:
+  eco friendly materials: true
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: true
+  post install inspection: false
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: true
+  business accepts credit cards: true
+  after hours service: true
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.92

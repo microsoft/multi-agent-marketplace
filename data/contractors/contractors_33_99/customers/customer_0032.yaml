@@ -1,0 +1,13 @@
+id: customer_0032
+name: Chloe Adams
+request: I am looking for a contractor who can provide Furnace Service (1), Ceramic
+  Tile Flooring (1), and Replace Electrical Outlet (1), and who offers responsiveness
+  as an amenity. Once such a contractor is identified, I intend to hire them and would
+  like to schedule the required work as outlined. Please help me find and confirm
+  a suitable provider for these services.
+menu_features:
+  Furnace Service: 478.49
+  Ceramic Tile Flooring: 315.95
+  Replace Electrical Outlet: 241.99
+amenity_features:
+- responsiveness

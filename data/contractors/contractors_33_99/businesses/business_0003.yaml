@@ -1,0 +1,43 @@
+id: business_0003
+name: Parkview Home Improvement
+description: Parkview Home Improvement provides professional residential repair and
+  renovation services with a focus on quality craftsmanship and reliable project completion.
+  We serve homeowners seeking updates and maintenance for interiors, exteriors, and
+  outdoor spaces.
+rating: 1.0
+progenitor_customer: customer_0001
+menu_features:
+  Bathroom Exhaust Fan Upgrade: 287.91
+  Water Heater Service: 327.64
+  Wood Floor Refinishing: 343.21
+  Shower Remodel: 418.15
+  Full Bathroom Caulking: 451.02
+  Walkway Paver Resetting: 342.21
+  Masonry Brick Restoration: 434.3
+  Custom Cabinet Hanging: 439.85
+  Pergola Construction: 327.51
+  Entry Door Repainting: 183.87
+  Garden Bed Landscaping: 195.63
+  Deck Board Replacement: 416.79
+  Tile Backsplash: 364.65
+  Brick Chimney Pointing: 425.68
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: true
+  responsiveness: false
+  background checked crew: false
+  licensed: true
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: true
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.9

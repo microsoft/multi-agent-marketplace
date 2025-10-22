@@ -1,0 +1,45 @@
+id: business_0064
+name: Silverline Residential Contractors
+description: Silverline Residential Contractors provides reliable repair, installation,
+  and improvement services for homeowners seeking quality workmanship and timely solutions.
+  Our team specializes in a broad range of interior and exterior home projects, delivering
+  professional results for everyday residential needs.
+rating: 1.0
+progenitor_customer: customer_0022
+menu_features:
+  Fencing Repair: 478.74
+  Cabinet Hardware Replacement: 420.76
+  Smoke Detector Wiring: 269.75
+  Roof Repair: 449.32
+  Baseboard Molding: 193.12
+  Door Hardware Replacement: 271.38
+  Basic Electrical Troubleshooting: 240.17
+  Structural Beam Reinforcement: 425.5
+  Brick Step Repointing: 596.45
+  Ceiling Fan Replacement: 189.24
+  Stone Paver Walkway: 336.53
+  Sprinkler System Adjustment: 306.64
+  Chandelier Installation: 329.3
+  Custom Cabinet Build: 438.82
+  Drain Unclogging: 166.58
+  Sprinkler Head Replacement: 187.86
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: true
+  same day service: false
+  weekend availability: false
+  post install inspection: true
+  flexible hours: true
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: true
+  after hours service: false
+  free estimate: true
+  appointment only: false
+min_price_factor: 0.94

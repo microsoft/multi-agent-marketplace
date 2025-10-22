@@ -1,0 +1,40 @@
+id: business_0224
+name: Clearstone Contracting Group
+description: Clearstone Contracting Group provides trusted repair, maintenance, and
+  improvement services for residential properties. Our team is committed to delivering
+  reliable solutions for homeowners seeking quality workmanship and prompt service.
+rating: 1.0
+progenitor_customer: customer_0075
+menu_features:
+  Small Patio Paving: 270.27
+  Garage Door Weatherproofing: 439.56
+  Fence Staining: 236.4
+  Bush Trimming: 156.6
+  Leaky Faucet Fix: 322.37
+  Retaining Wall Construction: 452.78
+  Electric Outlet Update: 246.43
+  Bathroom Vanity Install: 446.22
+  Leak Detection: 192.2
+  Outlet Addition: 267.57
+  Drain Cleaning: 193.64
+  Wall Grouting: 165.0
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.89

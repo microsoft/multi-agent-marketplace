@@ -55,6 +55,12 @@ class AnalyticsResults(BaseModel):
     customer_summaries: list[CustomerSummary]
     business_summaries: list[BusinessSummary]
 
+    # LLM metrics
+    llm_providers: list[str]
+    llm_models: list[str]
+    total_llm_calls: int
+    failed_llm_calls: int
+
     # Final summary metrics
     customers_who_made_purchases: int
     customers_with_needs_met: int

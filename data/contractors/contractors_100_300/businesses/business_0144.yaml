@@ -1,0 +1,47 @@
+id: business_0144
+name: Taylor Residential Services
+description: Taylor Residential Services provides reliable home improvement and maintenance
+  solutions for homeowners throughout the community. Our experienced team handles
+  a wide range of interior and exterior projects, with a focus on professionalism
+  and customer satisfaction.
+rating: 1.0
+progenitor_customer: customer_0048
+menu_features:
+  Garden Bed Preparation: 118.06
+  Security Camera Wiring: 221.1
+  Radiator Maintenance: 218.12
+  Lighting Fixture Upgrade: 379.14
+  Cabinet Installation: 187.66
+  Faucet Installation: 183.86
+  Wallpaper Removal: 255.42
+  Shower Head Replacement: 239.8
+  Flagstone Walkway: 543.42
+  Sump Pump Service: 324.7
+  Outdoor Lighting Installation: 298.04
+  Door Installation: 176.89
+  Cabinet Refinishing: 394.51
+  Granite Countertop Resurfacing: 401.03
+  Concrete Step Pouring: 353.74
+  Stone Fireplace Facade: 412.83
+  Ceiling Fan Installation: 332.62
+  Luxury Vinyl Plank Installation: 320.11
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.88

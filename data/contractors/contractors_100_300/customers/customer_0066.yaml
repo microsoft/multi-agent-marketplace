@@ -1,0 +1,11 @@
+id: customer_0066
+name: Isabella Thomas
+request: I'm looking for a contractor who can perform both Bookshelf Assembly (1)
+  and Deck Sanding (1), and who uses eco friendly materials. Once you identify a suitable
+  contractor meeting these requirements, please proceed to schedule and confirm the
+  work on my behalf. I appreciate your help facilitating this engagement.
+menu_features:
+  Bookshelf Assembly: 220.99
+  Deck Sanding: 328.99
+amenity_features:
+- eco friendly materials

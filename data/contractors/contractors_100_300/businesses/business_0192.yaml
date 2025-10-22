@@ -1,0 +1,41 @@
+id: business_0192
+name: Harrison Lane Home Services
+description: Harrison Lane Home Services provides professional maintenance and improvement
+  solutions for residential properties, specializing in exterior restoration and interior
+  upgrades. We serve homeowners seeking reliable workmanship for a range of structural
+  and functional home needs.
+rating: 1.0
+progenitor_customer: customer_0064
+menu_features:
+  Masonry Brick Restoration: 338.04
+  Sprinkler System Winterization: 457.39
+  Basement Wall Waterproofing: 423.19
+  Air Conditioner Maintenance: 368.67
+  Brick Walkway Installation: 335.94
+  Concrete Pathway Pouring: 311.78
+  Grout Cleaning: 251.62
+  Kitchen Cabinet Repainting: 439.64
+  Sink Installation: 250.92
+  Cabinet Handle Replacement: 387.82
+  Baseboard Molding: 200.5
+  Tile Floor Cleaning: 254.66
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.68

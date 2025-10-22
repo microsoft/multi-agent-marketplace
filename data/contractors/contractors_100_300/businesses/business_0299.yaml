@@ -1,0 +1,43 @@
+id: business_0299
+name: Union Crest Property Services
+description: Union Crest Property Services provides reliable residential contracting
+  and improvement solutions for homeowners, specializing in interior updates and exterior
+  maintenance. Our experienced team is committed to quality workmanship and attention
+  to detail on every project.
+rating: 1.0
+progenitor_customer: customer_0100
+menu_features:
+  Garden Bed Edging: 168.83
+  Brick Step Repointing: 350.42
+  Staircase Carpeting: 406.77
+  Sump Pump Service: 359.21
+  Pergola Construction: 302.37
+  Foundation Crack Repair: 183.34
+  Bathroom Vanity Assembly: 374.77
+  Backsplash Tile Setting: 253.36
+  Ceiling Fan Installation: 257.68
+  Accent Wall Painting: 254.73
+  Pergola Assembly: 435.11
+  Weed Control: 123.51
+  Yard Cleanup: 210.85
+  Baseboard Molding: 240.6
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.89

@@ -1,0 +1,11 @@
+id: customer_0038
+name: Grace Wang
+request: Please help me find a contractor who can provide Central Air Conditioning
+  Service (1), and offers post install inspection as well as uses eco friendly materials.
+  I am ready to hire and would like to schedule the work once a suitable contractor
+  is identified. Kindly proceed to confirm availability and arrange the service.
+menu_features:
+  Central Air Conditioning Service: 472.49
+amenity_features:
+- post install inspection
+- eco friendly materials

@@ -1,0 +1,47 @@
+id: business_0024
+name: Bluewood Residential Contracting
+description: Bluewood Residential Contracting provides reliable home improvement and
+  maintenance services for homeowners, offering expertise in property repairs, upgrades,
+  and outdoor projects. We focus on delivering quality workmanship to keep your home
+  safe, comfortable, and looking its best.
+rating: 1.0
+progenitor_customer: customer_0008
+menu_features:
+  Concrete Patio Pouring: 453.53
+  Drywall Hole Repair: 247.39
+  Floorboard Replacement: 288.45
+  Central Air Tuneup: 406.2
+  Septic Tank Pumping: 420.68
+  Ceiling Fan Replacement: 273.04
+  Hardwood Flooring: 387.77
+  Leaf Removal: 222.96
+  Brick Patio Construction: 322.19
+  Basement Waterproofing: 473.45
+  Sink Installation: 291.9
+  Cedar Fence Building: 485.2
+  HVAC Diagnostics: 355.97
+  Fence Post Setting: 443.98
+  Patio Cover Installation: 474.44
+  Wood Floor Refinishing: 318.65
+  Walkway Stone Laying: 400.37
+  Water Heater Upgrade: 354.83
+amenity_features:
+  multilingual staff: true
+  warranty: false
+  live job updates: false
+  accepts digital payments: false
+  licensed: false
+  appointment only: false
+  business accepts credit cards: false
+  same day service: false
+  flexible hours: false
+  free estimate: false
+  background checked crew: true
+  insured: false
+  weekend availability: false
+  eco friendly materials: false
+  responsiveness: false
+  post install inspection: true
+  free followup visit: false
+  after hours service: false
+min_price_factor: 0.69

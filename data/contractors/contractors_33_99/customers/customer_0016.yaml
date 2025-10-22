@@ -1,0 +1,13 @@
+id: customer_0016
+name: Mia Fernandez
+request: Please help me find a contractor who can provide Carpet Installation (1)
+  and Hardwood Floor Screening (1), and who offers a free estimate and is licensed.
+  Once you have identified a contractor who meets all of these requirements, I would
+  like to move forward with hiring them and arranging the work as specified. I look
+  forward to scheduling the services as soon as possible.
+menu_features:
+  Carpet Installation: 324.95
+  Hardwood Floor Screening: 404.25
+amenity_features:
+- free estimate
+- licensed

@@ -1,0 +1,45 @@
+id: business_0023
+name: Oakland Residential Improvements
+description: Oakland Residential Improvements provides reliable repair, maintenance,
+  and remodeling services for homeowners seeking quality results and professional
+  service. We specialize in a range of interior and exterior home improvements tailored
+  to meet the needs of local residents.
+rating: 1.0
+progenitor_customer: customer_0008
+menu_features:
+  Lawn Sprinkler Repair: 202.0
+  Closet Renovation: 387.41
+  Central Air System Tune-Up: 409.48
+  Sprinkler System Installation: 423.64
+  Washer Hose Replacement: 310.29
+  Roof Leak Fix: 220.24
+  Garage Floor Sealing: 323.81
+  Built-in Shelving Installation: 407.93
+  Brick Veneer Installation: 434.62
+  Outlet Addition: 232.38
+  Small Wall Demo: 273.16
+  Porch Repair: 393.68
+  Closet Cabinet Assembly: 396.97
+  Outdoor Fence Painting: 559.65
+  Floorboard Replacement: 383.86
+  Pathway Paver Installation: 244.58
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: true
+  licensed: false
+  same day service: false
+  weekend availability: true
+  post install inspection: false
+  flexible hours: false
+  insured: true
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: true
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.66

@@ -1,0 +1,46 @@
+id: business_0275
+name: Forgepoint Home Improvements
+description: Forgepoint Home Improvements provides reliable residential renovation
+  and repair services for homeowners seeking quality updates, installations, and maintenance.
+  Our team focuses on interior and exterior upgrades to enhance comfort, functionality,
+  and value in your home.
+rating: 1.0
+progenitor_customer: customer_0092
+menu_features:
+  Exterior Siding Repainting: 400.17
+  Cabinet Hardware Replacement: 386.35
+  Sheetrock Installation: 419.15
+  Electric Outlet Update: 320.0
+  Pergola Assembly: 498.19
+  Structural Beam Reinforcement: 556.47
+  Bathroom Vanity Replacement: 214.84
+  Small Patio Paving: 260.94
+  Deck Railing Installation: 350.91
+  Carpet Removal: 302.73
+  Washer Hookup Installation: 463.75
+  Concrete Pathway Repair: 329.34
+  Granite Countertop Sealing: 323.04
+  Faucet Repair: 162.99
+  Door Lock Replacement: 166.18
+  Carpet Installation: 365.72
+  Custom Cabinet Assembly: 468.82
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: true
+  warranty: false
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.7

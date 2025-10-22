@@ -1,0 +1,40 @@
+id: business_0101
+name: Unity Home Contractors
+description: Unity Home Contractors provides reliable residential services in remodeling,
+  exterior improvements, and property maintenance. We serve homeowners seeking dependable
+  solutions for interior upgrades, outdoor enhancements, and household repairs.
+rating: 1.0
+progenitor_customer: customer_0034
+menu_features:
+  Tile Shower Installation: 414.31
+  Landscaping Design: 147.36
+  Brick Pathway Restoration: 343.93
+  Fixture Assembly: 374.21
+  Asphalt Crack Sealing: 436.83
+  Recessed Light Installation: 265.86
+  Ductwork Sealing: 364.13
+  Chimney Cleaning: 402.72
+  Garage Shelving Assembly: 228.88
+  Brick Chimney Pointing: 477.78
+  Central Air Conditioning Inspection: 394.59
+  Porch Railing Installation: 393.62
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: true
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.77

@@ -1,0 +1,43 @@
+id: business_0133
+name: Elmwood Residential Solutions
+description: Elmwood Residential Solutions provides reliable contracting and handyman
+  services for homeowners, focused on interior remodeling, maintenance, and small-scale
+  improvement projects. Our team delivers quality workmanship designed to enhance
+  and preserve local homes.
+rating: 1.0
+progenitor_customer: customer_0045
+menu_features:
+  Structural Beam Reinforcement: 447.17
+  Tile Grout Restoration: 242.09
+  Fireplace Tuckpointing: 365.42
+  Mulch Distribution: 169.13
+  Small Closet Remodeling: 336.96
+  Central Air Conditioning Maintenance: 351.38
+  Custom Closet Build: 414.76
+  Light Switch Repair: 177.48
+  Brick Pathway Installation: 397.53
+  Garbage Disposal Installation: 247.47
+  Cabinet Refinishing: 378.33
+  Light Fixture Repair: 201.7
+  Water Heater Setup: 428.3
+  Chimney Sweep: 467.12
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.85

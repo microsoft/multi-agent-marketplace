@@ -1,0 +1,11 @@
+id: customer_0073
+name: Mia Hernandez
+request: Please help me find a contractor who can provide 1 Central Air System Tune-Up
+  and offers both a free followup visit and weekend availability. Once you locate
+  a contractor that meets all of these requirements, I am ready to hire them and would
+  like to proceed with scheduling the service.
+menu_features:
+  Central Air System Tune-Up: 420.99
+amenity_features:
+- free followup visit
+- weekend availability

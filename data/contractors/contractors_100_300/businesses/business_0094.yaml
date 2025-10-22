@@ -1,0 +1,47 @@
+id: business_0094
+name: Willowgate Residential Improvements
+description: Willowgate Residential Improvements provides reliable home maintenance
+  and renovation services for homeowners, specializing in interior and exterior upgrades.
+  Our team is committed to delivering quality workmanship and personalized solutions
+  for a wide range of residential projects.
+rating: 1.0
+progenitor_customer: customer_0032
+menu_features:
+  Air Conditioner Service: 388.37
+  Masonry Tuckpointing: 397.41
+  Window Replacement: 350.45
+  Minor Plumbing Repair: 151.26
+  AC Tune-Up: 401.71
+  Landscape Edging: 258.64
+  Flower Bed Redesign: 298.9
+  Ceramic Tile Floor Install: 357.95
+  Granite Countertop Fabrication: 487.12
+  Air Conditioner Inspection: 549.33
+  Backsplash Installation: 314.93
+  Fixture Assembly: 295.94
+  Lighting Fixture Upgrade: 284.04
+  Hardwood Floor Screening: 519.76
+  Roof Inspection: 324.34
+  Closet Organizer Installation: 505.99
+  Shower Glass Installation: 556.24
+  Walkway Resurfacing: 452.91
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.73

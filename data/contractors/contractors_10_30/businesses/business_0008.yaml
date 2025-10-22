@@ -1,0 +1,42 @@
+id: business_0008
+name: Fairview Residential Contractors
+description: Fairview Residential Contractors provides comprehensive home improvement
+  and repair solutions for homeowners seeking reliable, quality workmanship. Our experienced
+  team delivers a range of interior and exterior services to enhance the functionality
+  and appearance of your home.
+rating: 1.0
+progenitor_customer: customer_0003
+menu_features:
+  Brick Chimney Pointing: 338.85
+  Carpet Laying: 314.7
+  Baseboard Repair: 139.42
+  Faucet Replacement: 146.34
+  Vinyl Floor Installation: 189.06
+  Custom Cabinet Fabrication: 334.64
+  Masonry Tuckpointing: 317.69
+  Stone Veneer Wall: 477.9
+  Ceiling Fan Installation: 265.71
+  Sump Pump Service: 363.5
+  Door Hardware Installation: 253.81
+  Sod Laying: 229.92
+  Stone Pathway Construction: 296.99
+amenity_features:
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  accepts digital payments: false
+  licensed: false
+  appointment only: false
+  business accepts credit cards: false
+  same day service: false
+  flexible hours: true
+  free estimate: false
+  background checked crew: false
+  insured: false
+  weekend availability: false
+  eco friendly materials: true
+  responsiveness: false
+  post install inspection: true
+  free followup visit: false
+  after hours service: false
+min_price_factor: 0.76

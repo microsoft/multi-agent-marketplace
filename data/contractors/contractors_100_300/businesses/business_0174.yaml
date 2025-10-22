@@ -1,0 +1,42 @@
+id: business_0174
+name: Timberline Residential Improvements
+description: Timberline Residential Improvements provides reliable contracting and
+  repair services for homeowners seeking quality upgrades and maintenance. Our team
+  specializes in interior and exterior residential projects, with a focus on craftsmanship
+  and attention to detail.
+rating: 1.0
+progenitor_customer: customer_0058
+menu_features:
+  Bathroom Tile Setting: 416.76
+  Chimney Cleaning: 354.43
+  Kitchen Sink Plumbing: 256.53
+  Recessed Light Installation: 236.38
+  Garage Door Opener Repair: 385.87
+  Patio Cover Installation: 252.22
+  Brick Wall Repointing: 471.73
+  Wood Stair Refinishing: 383.52
+  Walk-in Shower Retrofit: 446.85
+  Basement Window Installation: 381.43
+  Concrete Crack Sealing: 286.15
+  Garage Door Inspection: 437.39
+  Baseboard Molding: 214.1
+amenity_features:
+  flexible hours: true
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.77

@@ -1,0 +1,41 @@
+id: business_0032
+name: Greenway Home Maintenance
+description: Greenway Home Maintenance provides comprehensive residential repair and
+  upkeep services for homeowners, focusing on reliable solutions for indoor and outdoor
+  needs. Our team delivers quality work across a range of improvement and maintenance
+  projects to help keep your home comfortable and well-cared for.
+rating: 1.0
+progenitor_customer: customer_0011
+menu_features:
+  Vanity Plumbing Repair: 258.44
+  Driveway Resurfacing: 315.52
+  AC System Inspection: 341.2
+  Leak Detection: 210.53
+  Sprinkler System Activation: 188.19
+  Leak Repair: 167.21
+  Walkway Stone Laying: 407.13
+  Central Air Tuneup: 407.82
+  Concrete Patio Sealing: 349.1
+  Hardwood Floor Sanding: 334.79
+  Landscape Lighting Setup: 433.13
+  Hydronic Radiator Service: 257.99
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: true
+  accepts digital payments: true
+min_price_factor: 0.92

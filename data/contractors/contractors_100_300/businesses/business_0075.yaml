@@ -1,0 +1,40 @@
+id: business_0075
+name: Residential Advantage Services
+description: Residential Advantage Services provides homeowners with reliable solutions
+  for property maintenance, improvements, and repairs. Our team delivers quality service
+  across interior and exterior needs to support the comfort and value of your home.
+rating: 1.0
+progenitor_customer: customer_0025
+menu_features:
+  Garage Shelving Installation: 271.58
+  Outlet Repair: 274.55
+  Landscaping Trimming: 227.22
+  Asphalt Crack Sealing: 399.49
+  Hardwood Floor Buffing: 402.6
+  Outdoor Lighting Setup: 463.47
+  Patio Paver Laying: 442.2
+  Attic Insulation: 384.97
+  Concrete Patio Sealing: 341.88
+  Deck Cleaning: 290.92
+  Garbage Disposal Installation: 232.48
+  Light Switch Repair: 203.21
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.91

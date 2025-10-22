@@ -1,0 +1,45 @@
+id: business_0268
+name: Brightway Residential Services
+description: Brightway Residential Services provides professional home maintenance,
+  interior upgrades, and exterior improvements for local homeowners. Our skilled team
+  is committed to quality work and reliable service for a wide range of household
+  projects.
+rating: 1.0
+progenitor_customer: customer_0090
+menu_features:
+  Shower Enclosure Installation: 483.13
+  Garage Door Maintenance: 179.46
+  Carpet Stretching: 318.0
+  Retaining Wall Masonry: 438.57
+  Drywall Replacement: 573.78
+  Appliance Hookup: 227.94
+  Kitchen Cabinet Repainting: 436.41
+  Sheetrock Installation: 280.28
+  Door Installation: 179.48
+  Ceiling Fan Replacement: 204.91
+  Deck Board Replacement: 471.0
+  Garden Bed Planting: 143.92
+  Weed Control: 110.66
+  Masonry Brick Restoration: 494.28
+  Carpet Replacement: 332.24
+  Shrub Pruning: 242.73
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: true
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.91

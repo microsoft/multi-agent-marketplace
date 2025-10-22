@@ -1,0 +1,44 @@
+id: business_0048
+name: Meridian Home Solutions
+description: Meridian Home Solutions provides reliable residential improvement and
+  repair services, serving homeowners seeking quality upgrades and maintenance for
+  their properties. Our team is dedicated to delivering professional results across
+  a range of interior and exterior projects.
+rating: 1.0
+progenitor_customer: customer_0016
+menu_features:
+  Cabinet Installation: 228.55
+  Closet Renovation: 517.26
+  Hardwood Floor Screening: 383.71
+  Drain Pipe Repair: 214.79
+  Yard Cleanup: 180.76
+  Kitchen Countertop Replacement: 584.61
+  Dimmer Switch Upgrade: 154.98
+  Carpet Installation: 371.77
+  Pressure Washing: 199.19
+  Roof Flashing Replacement: 339.41
+  Mailbox Post Setting: 245.65
+  Carpet Replacement: 337.66
+  Air Conditioner Maintenance: 333.37
+  Bathroom Ventilation Fan Install: 161.69
+  Roof Leak Fix: 204.27
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: true
+  same day service: true
+  weekend availability: false
+  post install inspection: false
+  flexible hours: true
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.91

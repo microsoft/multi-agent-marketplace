@@ -1,0 +1,12 @@
+id: customer_0061
+name: Aria Khan
+request: "I am looking to hire a contractor who can perform the following services:\
+  \ AC Filter Replacement (1) and Porch Repair (1), and who is known for responsiveness.\
+  \ Once you identify a contractor that meets all these requirements, please proceed\
+  \ to engage them and assist in scheduling the work as specified above. I\u2019m\
+  \ ready to confirm and move forward as soon as these criteria are met."
+menu_features:
+  AC Filter Replacement: 315.99
+  Porch Repair: 370.49
+amenity_features:
+- responsiveness

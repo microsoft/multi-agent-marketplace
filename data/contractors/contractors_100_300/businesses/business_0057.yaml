@@ -1,0 +1,44 @@
+id: business_0057
+name: Clayton Residential Improvements
+description: Clayton Residential Improvements provides reliable property enhancement
+  and repair services for homeowners, with a focus on interior updates, exterior upgrades,
+  and landscaping solutions. We deliver quality craftsmanship and comprehensive care
+  for a wide range of residential projects.
+rating: 1.0
+progenitor_customer: customer_0019
+menu_features:
+  Baseboard Painting: 246.27
+  Full-Bath Remodeling: 357.22
+  Custom Cabinet Assembly: 424.48
+  Stone Pathway Construction: 264.91
+  Lawn Aeration: 144.1
+  Pergola Assembly: 442.04
+  Gutter Replacement: 412.12
+  Brick Tuckpointing: 455.56
+  Wood Stair Refinishing: 377.11
+  Chimney Flashing Repair: 302.77
+  New Cabinet Handles: 355.21
+  Drain Pipe Replacement: 169.85
+  Water Heater Replacement: 346.24
+  Lawn Sodding: 210.32
+  Backsplash Installation: 354.84
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.73

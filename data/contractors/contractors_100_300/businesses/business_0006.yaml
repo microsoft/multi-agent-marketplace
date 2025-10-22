@@ -1,0 +1,44 @@
+id: business_0006
+name: Westbrook Home Improvement
+description: Westbrook Home Improvement provides reliable residential renovation and
+  maintenance services tailored to homeowners seeking quality workmanship and efficiency.
+  Our team is dedicated to helping you enhance and maintain your home, inside and
+  out.
+rating: 1.0
+progenitor_customer: customer_0002
+menu_features:
+  AC Maintenance: 345.48
+  Cabinet Refacing: 397.99
+  Appliance Hookup: 222.73
+  Bathroom Shower Enclosure: 411.68
+  Install Base Cabinets: 475.58
+  Basement Mold Remediation: 373.34
+  Ceiling Fan Replacement: 251.88
+  Foundation Crack Sealing: 278.2
+  Electric Outlet Update: 228.88
+  Insulation Upgrade: 463.57
+  Roof Flashing Replacement: 403.16
+  Wood Flooring Refinishing: 328.67
+  Exterior Door Install: 219.9
+  Deck Staining: 297.31
+  Hedge Trimming: 123.66
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.61

@@ -1,0 +1,45 @@
+id: business_0006
+name: Brookside Residential Services
+description: Brookside Residential Services provides reliable maintenance, repair,
+  and improvement solutions for homeowners seeking quality workmanship. We specialize
+  in a range of interior and exterior projects tailored to residential properties.
+rating: 1.0
+progenitor_customer: customer_0002
+menu_features:
+  Door Replacement: 335.46
+  Brick Wall Repointing: 417.18
+  AC Maintenance: 443.6
+  Paver Sealing: 157.33
+  Basement Floor Sealing: 383.44
+  Vanity Plumbing Repair: 231.98
+  Stone Veneer Installation: 346.76
+  Garbage Disposal Replacement: 318.82
+  Full Bathroom Caulking: 335.66
+  Kitchen Cabinet Removal: 308.86
+  Attic Ladder Installation: 262.88
+  Walkway Stone Laying: 364.71
+  Small Brick Patio: 185.8
+  Vinyl Siding Patch: 309.74
+  Exterior Painting: 294.61
+  Drywall Replacement: 522.88
+  Stone Patio Construction: 409.13
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: false
+  post install inspection: false
+  flexible hours: true
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: true
+  free estimate: false
+  appointment only: true
+min_price_factor: 0.76

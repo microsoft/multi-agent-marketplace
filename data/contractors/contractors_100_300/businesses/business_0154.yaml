@@ -1,0 +1,44 @@
+id: business_0154
+name: Highland Residential Services
+description: Highland Residential Services provides homeowners with reliable general
+  repairs and improvements, including interior and exterior upgrades as well as light
+  landscaping solutions. We focus on quality workmanship and responsive service for
+  residential projects of all sizes.
+rating: 1.0
+progenitor_customer: customer_0052
+menu_features:
+  Furnace Inspection: 387.47
+  Garage Floor Coating: 369.81
+  Cedar Fence Building: 472.56
+  Wall Grouting: 203.47
+  Window Trim Replacement: 325.92
+  Small Patio Paving: 304.28
+  Light Fixture Upgrade: 193.36
+  Mulch Installation: 211.48
+  Shingle Replacement: 539.14
+  Deck Railing Installation: 491.5
+  Shed Roof Re-Shingling: 535.77
+  Door Installation: 204.21
+  Shower Head Replacement: 250.5
+  Drywall Patch: 297.09
+  Carpet Stretching: 332.32
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.65

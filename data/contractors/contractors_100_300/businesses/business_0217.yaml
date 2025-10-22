@@ -1,0 +1,43 @@
+id: business_0217
+name: Clearstone Home Services
+description: Clearstone Home Services provides skilled residential repairs and upgrades,
+  specializing in solutions for interior and exterior home improvement. We help homeowners
+  maintain, enhance, and protect their property with reliable, professional workmanship.
+rating: 1.0
+progenitor_customer: customer_0073
+menu_features:
+  Ceiling Fan Upgrade: 246.02
+  Sprinkler System Inspection: 252.2
+  Central Air System Tune-Up: 373.16
+  Security System Setup: 324.08
+  Floorboard Replacement: 366.04
+  Bathtub Recaulking: 266.96
+  Basement Waterproofing: 569.95
+  Light Switch Repair: 238.46
+  French Drain Installation: 405.91
+  Flagstone Walkway: 479.32
+  Light Fixture Installation: 171.9
+  Central Air Tuneup: 477.63
+  Mulch Spreading: 268.21
+  Closet Organizer Installation: 507.26
+  Security Light Installation: 300.17
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: true
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.8

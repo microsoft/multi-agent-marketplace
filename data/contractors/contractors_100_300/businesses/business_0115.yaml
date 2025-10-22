@@ -1,0 +1,40 @@
+id: business_0115
+name: Ridgeway Residential Services
+description: Ridgeway Residential Services provides reliable home improvement and
+  maintenance solutions for local homeowners. We deliver professional craftsmanship
+  for a wide range of interior and exterior projects designed to enhance the comfort,
+  appearance, and functionality of your living space.
+rating: 1.0
+progenitor_customer: customer_0039
+menu_features:
+  Concrete Pathway Pouring: 286.56
+  Brick Veneer Installation: 450.83
+  Walkway Resurfacing: 501.15
+  Ceramic Tile Floor Install: 424.5
+  Spring Lawn Cleanup: 296.12
+  Light Fixture Upgrading: 237.91
+  Garage Door Adjustment: 186.93
+  Furniture Assembly: 222.88
+  Subfloor Reinforcement: 308.64
+  Backsplash Installation: 321.05
+  Solar Panel Cleaning: 461.07
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.89

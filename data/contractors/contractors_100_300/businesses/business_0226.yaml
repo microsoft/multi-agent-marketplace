@@ -1,0 +1,42 @@
+id: business_0226
+name: Briarhill Home Services
+description: Briarhill Home Services provides reliable home improvement and maintenance
+  solutions for homeowners seeking quality upgrades and outdoor enhancements. We focus
+  on delivering well-rounded residential services with a commitment to professionalism
+  and customer satisfaction.
+rating: 1.0
+progenitor_customer: customer_0076
+menu_features:
+  Staircase Carpeting: 353.15
+  Kitchen Countertop Installation: 381.79
+  Garden Bed Design: 129.01
+  Lawn Aeration: 165.28
+  Basic Tile Flooring Install: 202.02
+  Sprinkler System Activation: 234.56
+  Ceiling Fan Installation: 280.5
+  Landscaping Bed Creation: 422.69
+  Garage Shelving Installation: 191.39
+  Mulch Spreading: 232.4
+  Sump Pump Installation: 389.51
+  Air Conditioner Tuneup: 307.83
+  Kitchen Cabinet Replacement: 436.55
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.81

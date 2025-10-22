@@ -1,0 +1,45 @@
+id: business_0205
+name: Stonecrest Residential Services
+description: Stonecrest Residential Services provides reliable home improvement and
+  maintenance solutions for local homeowners, with expertise in both interior and
+  exterior projects. Our team delivers quality service designed to enhance and protect
+  your property.
+rating: 1.0
+progenitor_customer: customer_0069
+menu_features:
+  Brick Pathway Construction: 303.6
+  Garage Floor Sealing: 336.79
+  Ceiling Light Installation: 187.21
+  Asphalt Crack Sealing: 429.6
+  Paver Path Installation: 439.4
+  Heat Pump Inspection: 379.29
+  Furniture Assembly: 265.57
+  Brick Walkway Restoration: 363.79
+  Radiator Maintenance: 248.42
+  Stone Walkway Restoration: 467.62
+  Bathroom Fan Installation: 317.87
+  Basement Stair Carpeting: 272.78
+  Shower Valve Replacement: 350.88
+  Concrete Patio Staining: 398.81
+  Porch Railing Installation: 434.77
+  Ceiling Fan Mounting: 332.12
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.8

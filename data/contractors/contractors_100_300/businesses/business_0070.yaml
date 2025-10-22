@@ -1,0 +1,43 @@
+id: business_0070
+name: Union Square Home Contractors
+description: Union Square Home Contractors offers reliable residential upgrades, repairs,
+  and maintenance for homeowners seeking quality service and attention to detail.
+  Our team is dedicated to improving living spaces through professional home improvement
+  and seasonal upkeep.
+rating: 1.0
+progenitor_customer: customer_0024
+menu_features:
+  Small Room Remodeling: 404.29
+  Bathroom Faucet Upgrade: 263.26
+  Bathroom Fixture Swap: 251.45
+  Concrete Sidewalk Pouring: 548.12
+  Bathroom Vanity Update: 251.76
+  HVAC Spring Tune-Up: 323.93
+  Custom Shelf Assembly: 436.49
+  Attic Insulation: 320.44
+  Leaf Removal: 203.24
+  Bathtub Recaulking: 214.44
+  Light Switch Replacement: 254.74
+  Mulch Refresh: 240.0
+  AC Maintenance: 554.44
+  Cabinet Handle Replacement: 384.47
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.86

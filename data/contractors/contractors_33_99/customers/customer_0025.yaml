@@ -1,0 +1,12 @@
+id: customer_0025
+name: Alexander Powell
+request: 'I''m looking to hire a contractor who offers both Flower Bed Redesign (quantity:
+  1) and Closet Cabinet Assembly (quantity: 1), and operates on an appointment only
+  basis. Once confirmed that these requirements are met, I would like to engage their
+  services and arrange for the work to be scheduled at a mutually convenient time.
+  Please let me know if such a contractor is available so we can proceed with booking.'
+menu_features:
+  Flower Bed Redesign: 291.25
+  Closet Cabinet Assembly: 418.25
+amenity_features:
+- appointment only

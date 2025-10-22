@@ -1,0 +1,41 @@
+id: business_0031
+name: Oakline Residential Services
+description: Oakline Residential Services provides reliable maintenance and improvement
+  solutions for local homeowners, specializing in small-scale repairs, landscaping
+  care, and general property enhancements. We are committed to ensuring your home
+  and outdoor spaces remain functional and attractive year-round.
+rating: 1.0
+progenitor_customer: customer_0011
+menu_features:
+  Weed Control: 107.39
+  Outlet Repair: 251.78
+  Walkway Stone Laying: 384.87
+  Small Brick Patio: 213.03
+  Garden Maintenance: 169.72
+  Stone Veneer Application: 230.28
+  Basement Waterproofing: 430.34
+  Bathroom Fixture Swap: 193.42
+  Thermostat Installation: 152.03
+  Sprinkler System Maintenance: 184.57
+  Garage Door Adjustment: 212.55
+  Light Fixture Repair: 254.71
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: true
+  live job updates: false
+  licensed: false
+  free estimate: true
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.87

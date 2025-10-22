@@ -1,0 +1,42 @@
+id: business_0052
+name: Stonewell Residential Services
+description: Stonewell Residential Services provides dependable home improvement and
+  maintenance solutions for local homeowners. Our team delivers prompt, quality service
+  across a range of interior and exterior projects tailored to residential needs.
+rating: 1.0
+progenitor_customer: customer_0018
+menu_features:
+  Dimmer Switch Upgrade: 133.94
+  Sump Pump Installation: 505.13
+  Landscape Lighting Setup: 509.85
+  Air Conditioning Tune-Up: 295.82
+  Cabinet Refinishing: 367.27
+  Ceramic Tile Floor Install: 380.02
+  Shower Faucet Upgrade: 223.18
+  Garage Door Maintenance: 268.18
+  Walk-In Closet Shelving: 495.47
+  Faucet Repair: 186.12
+  Refrigerator Hookup: 365.13
+  Lawn Aeration: 135.65
+  Door Weatherstripping: 146.41
+  Shrub Pruning: 259.21
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: true
+  responsiveness: false
+  background checked crew: false
+  licensed: true
+  same day service: true
+  weekend availability: false
+  post install inspection: true
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: true
+  business accepts credit cards: false
+  after hours service: true
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.82

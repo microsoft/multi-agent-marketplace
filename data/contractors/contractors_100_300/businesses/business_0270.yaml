@@ -1,0 +1,43 @@
+id: business_0270
+name: Briarstone Residential Contractors
+description: Briarstone Residential Contractors provides reliable home improvement
+  and maintenance services for homeowners seeking professional results and dependable
+  customer care. Our team specializes in property upgrades and home essentials, serving
+  local residential clients with attention to detail and quality workmanship.
+rating: 1.0
+progenitor_customer: customer_0090
+menu_features:
+  Brick Wall Repointing: 441.0
+  Shingle Roof Cleaning: 346.54
+  Engineered Wood Floor Installation: 434.36
+  Smoke Detector Replacement: 195.49
+  Garbage Disposal Installation: 208.55
+  Attic Ladder Installation: 319.22
+  Garden Maintenance: 156.68
+  Flower Bed Redesign: 316.6
+  Ceiling Fan Setup: 170.61
+  Tile Grouting: 160.66
+  Shower Enclosure Installation: 437.91
+  Deck Railing Installation: 465.2
+  Shower Door Fitting: 317.82
+  Bathroom Shower Enclosure: 496.36
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: true
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.74

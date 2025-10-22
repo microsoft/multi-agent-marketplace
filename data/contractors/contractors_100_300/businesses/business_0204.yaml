@@ -1,0 +1,45 @@
+id: business_0204
+name: Willowfield Contracting Group
+description: Willowfield Contracting Group specializes in residential upgrades, repairs,
+  and remodeling, delivering quality solutions for homeowners seeking dependable improvement
+  and maintenance services. Our team is committed to enhancing properties through
+  skilled craftsmanship and dedicated service.
+rating: 1.0
+progenitor_customer: customer_0068
+menu_features:
+  Retaining Wall Installation: 414.88
+  Basement Remodeling: 481.1
+  Sprinkler System Start-Up: 418.69
+  Fixture Replacement: 194.0
+  Refrigerator Hookup: 242.37
+  Landscape Lighting Setup: 511.45
+  Kitchen Faucet Upgrade: 231.09
+  Leaky Pipe Repair: 191.87
+  Stone Veneer Wall: 539.77
+  Chimney Cap Replacement: 394.33
+  Cabinet Hardware Replacement: 494.77
+  Stone Patio Laying: 470.08
+  Roof Repair: 423.6
+  Insulation Upgrade: 358.85
+  Brick Walkway Restoration: 357.34
+  Masonry Brick Restoration: 441.78
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: true
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: true
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.94

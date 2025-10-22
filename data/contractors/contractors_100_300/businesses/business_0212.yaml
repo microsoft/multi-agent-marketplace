@@ -1,0 +1,43 @@
+id: business_0212
+name: Clayton Residential Services Group
+description: Clayton Residential Services Group provides dependable home improvement
+  and repair solutions for homeowners seeking skilled workmanship. We specialize in
+  a range of interior and exterior projects, delivering consistent quality and attention
+  to detail for every job.
+rating: 1.0
+progenitor_customer: customer_0071
+menu_features:
+  Replace Electrical Outlet: 221.78
+  Basic Electrical Troubleshooting: 262.83
+  Ductwork Inspection: 337.65
+  Cabinet Door Refacing: 333.65
+  Hardwood Floor Sanding: 422.36
+  Driveway Resurfacing: 316.06
+  Stone Paver Walkway: 364.2
+  Concrete Pathway Pouring: 406.54
+  Window Frame Restoration: 471.46
+  Custom Shelf Assembly: 316.68
+  Heating System Maintenance: 292.55
+  Light Switch Replacement: 217.17
+  Fireplace Tuckpointing: 313.23
+  Basement Drywall Finishing: 402.77
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: true
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: true
+  accepts digital payments: false
+min_price_factor: 0.62

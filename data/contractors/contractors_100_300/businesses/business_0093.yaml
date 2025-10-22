@@ -1,0 +1,45 @@
+id: business_0093
+name: Hillside Residential Services
+description: Hillside Residential Services provides reliable home improvement and
+  maintenance solutions for homeowners seeking professional attention to interior
+  and exterior projects. Our team delivers quality workmanship across a range of residential
+  repair and installation needs.
+rating: 1.0
+progenitor_customer: customer_0031
+menu_features:
+  Hardwood Floor Repair: 251.57
+  Bathroom Vanity Install: 413.25
+  Shower Head Replacement: 266.42
+  Entry Door Repainting: 155.22
+  Mulch Refresh: 235.47
+  Flooring Installation: 482.61
+  Bathtub Recaulking: 262.69
+  Garage Door Inspection: 453.78
+  Gutter Cleaning: 183.44
+  Attic Insulation: 274.61
+  Closet Cabinet Assembly: 473.66
+  Small Bathroom Plumbing Repair: 159.06
+  Window Caulking: 107.24
+  Garden Bed Construction: 175.16
+  Carpet Removal: 355.34
+  Water Heater Repair: 328.74
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: true
+  insured: false
+  background checked crew: true
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.85

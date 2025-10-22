@@ -23,6 +23,8 @@ from magentic_marketplace.marketplace.actions.messaging import (
     OrderProposal,
     Payment,
 )
+from magentic_marketplace.marketplace.database.queries.logs import llm_call
+from magentic_marketplace.marketplace.llm.base import LLMCallLog
 from magentic_marketplace.marketplace.shared.models import (
     BusinessAgentProfile,
     CustomerAgentProfile,
@@ -32,7 +34,7 @@ from magentic_marketplace.platform.database import (
     connect_to_postgresql_database,
 )
 from magentic_marketplace.platform.database.base import BaseDatabaseController
-from magentic_marketplace.platform.database.models import ActionRow
+from magentic_marketplace.platform.database.models import ActionRow, LogRow
 from magentic_marketplace.platform.database.sqlite.sqlite import (
     SQLiteDatabaseController,
 )
@@ -77,6 +79,18 @@ class MarketplaceAnalytics:
             defaultdict(list)
         )
 
+        # Track all llm logs keyed by agent
+        self.agent_llm_logs: dict[str, list[tuple[LogRow, LLMCallLog]]] = defaultdict(
+            list
+        )
+
+        # Track all failed LLM calls
+        self.failed_llm_logs: list[tuple[LogRow, LLMCallLog, str]] = []
+
+        # Track LLM providers and models
+        self.llm_providers: set[str] = set()
+        self.llm_models: set[str] = set()
+
     async def load_data(self):
         """Load and parse agents data from database."""
         agents = await self.db.agents.get_all()
@@ -93,6 +107,33 @@ class MarketplaceAnalytics:
                 self.business_agents[agent.id] = agent
             else:
                 raise TypeError(f"Unrecognized agent type: {agent}")
+
+        await self.load_llm_logs()
+
+    async def load_llm_logs(self):
+        """Load all LLM call logs from database and cache them organized by agent."""
+        query = llm_call.all()
+        logs = await self.db.logs.find(query)
+
+        for log_row in logs:
+            log = log_row.data
+            try:
+                llm_call_log = LLMCallLog.model_validate(log.data)
+                agent_id = (log.metadata or {}).get("agent_id", "unknown")
+
+                self.agent_llm_logs[agent_id].append((log_row, llm_call_log))
+
+                # Also track failures separately for quick access
+                if not llm_call_log.success:
+                    self.failed_llm_logs.append((log_row, llm_call_log, agent_id))
+
+                # Track models and providers
+                if llm_call_log.provider:
+                    self.llm_providers.add(llm_call_log.provider)
+                if llm_call_log.model:
+                    self.llm_models.add(llm_call_log.model)
+            except Exception as e:
+                print(f"Warning: Could not parse LLM call log: {e}")
 
     async def analyze_actions(self):
         """Analyze all actions using typed models."""
@@ -226,6 +267,26 @@ class MarketplaceAnalytics:
 
         return required_amenities.issubset(available_amenities)
 
+    def get_optimal_business_for_customer(self, customer_agent_id: str):
+        """Get the business that has the optimal (menu-match + amenity match for lowest total price) for the customer, irrespective of any real proposals or not.
+
+        Args:
+            customer_agent_id: The customer's id
+
+        Returns:
+            str: The business id or None
+
+        """
+        # (business_id, total_price), sorted ascending by total_price
+        menu_matches = self.calculate_menu_matches(customer_agent_id)
+        for business_agent_id, _ in menu_matches:
+            if self.check_amenity_match(customer_agent_id, business_agent_id):
+                # Return the first because they are sorted by total_price
+                # i.e. the first match is the cheapest
+                return business_agent_id
+
+        return None
+
     def calculate_customer_utility(self, customer_agent_id: str) -> tuple[float, bool]:
         """Calculate customer utility where  match_score is only counted once if ANY payment meets the customer's needs.
 
@@ -286,6 +347,62 @@ class MarketplaceAnalytics:
                 if isinstance(msg, OrderProposal) and msg.id == proposal_id:
                     return business_agent_id
         return None
+
+    def calculate_conversation_utility(
+        self, customer_agent_id: str, business_agent_id: str
+    ) -> float:
+        """Calculate utility for a specific customer-business conversation.
+
+        This calculates utility based on payments made by the customer to this specific
+        business. Unlike total customer utility, the match score is counted for each
+        payment in this conversation that meets the customer's needs.
+
+        Args:
+            customer_agent_id: ID of the customer
+            business_agent_id: ID of the business
+
+        Returns:
+            Utility for this specific conversation (can be positive or negative)
+
+        """
+        if customer_agent_id not in self.customer_agents:
+            return 0.0
+
+        customer = self.customer_agents[customer_agent_id].customer
+        all_payments = self.customer_payments.get(customer_agent_id, [])
+        all_proposals = self.customer_orders.get(customer_agent_id, [])
+
+        # Filter payments that went to this specific business
+        total_payments_to_business = 0.0
+        match_score = 0.0
+
+        for payment in all_payments:
+            # Find the corresponding proposal
+            proposal = next(
+                (p for p in all_proposals if p.id == payment.proposal_message_id),
+                None,
+            )
+            if proposal:
+                # Check if this proposal is from the target business
+                proposal_business_id = self._find_business_for_proposal(proposal.id)
+                if proposal_business_id == business_agent_id:
+                    # This payment is to the target business
+                    total_payments_to_business += proposal.total_price
+
+                    # Check if this payment meets customer's needs
+                    proposal_items = {item.item_name for item in proposal.items}
+                    requested_items = set(customer.menu_features.keys())
+
+                    if proposal_items == requested_items:
+                        # Items match - now check amenities
+                        if self.check_amenity_match(
+                            customer_agent_id, business_agent_id
+                        ):
+                            # Items AND amenities match - add match score
+                            match_score = 2 * sum(customer.menu_features.values())
+
+        utility = match_score - total_payments_to_business
+        return round(utility, 2)
 
     def _calculate_business_utilities(self) -> dict[str, float]:
         """Calculate utility (revenue) for each business based on payments received."""
@@ -431,11 +548,18 @@ class MarketplaceAnalytics:
             total_marketplace_customer_utility=total_utility,
             average_utility_per_active_customer=avg_utility_per_active_customer,
             purchase_completion_rate=completion_rate,
+            llm_providers=list(self.llm_providers),
+            llm_models=list(self.llm_models),
+            total_llm_calls=sum(map(len, self.agent_llm_logs.values())),
+            failed_llm_calls=len(self.failed_llm_logs),
         )
 
     async def generate_report(
-        self, save_to_json: bool = True, db_name: str = "unknown"
-    ):
+        self,
+        db_name: str = "unknown",
+        save_to_json: bool = True,
+        print_results: bool = True,
+    ) -> AnalyticsResults:
         """Generate comprehensive analytics report."""
         await self.load_data()
         await self.analyze_actions()
@@ -451,7 +575,10 @@ class MarketplaceAnalytics:
             print(f"Analytics results saved to: {output_path}")
 
         # Print report using the collected results
-        self._print_report(analytics_results)
+        if print_results:
+            self._print_report(analytics_results)
+
+        return analytics_results
 
     def _print_report(self, results: AnalyticsResults):
         """Print the analytics report using collected results."""
@@ -697,6 +824,14 @@ class MarketplaceAnalytics:
 
         pages_per_query = sum(total_pages) / sum(total_queries)
 
+        # LLM Call summary
+        print(f"\n{BLUE_COLOR}LLM CALL SUMMARY:{RESET_COLOR}")
+        print("=" * 40)
+        print(f"LLM providers: {results.llm_providers}")
+        print(f"LLM models: {results.llm_models}")
+        print(f"Total LLM calls: {results.total_llm_calls}")
+        print(f"Failed LLM calls: {results.failed_llm_calls}")
+
         # Final summary
         print(f"\n{MAGENTA_COLOR}SEARCH SUMMARY:{RESET_COLOR}")
         print("=" * 40)
@@ -727,14 +862,18 @@ class MarketplaceAnalytics:
 
 
 async def run_analytics(
-    db_path_or_schema: str, db_type: str, save_to_json: bool = True
-):
+    db_path_or_schema: str,
+    db_type: str,
+    save_to_json: bool = True,
+    print_results: bool = True,
+) -> AnalyticsResults:
     """Run comprehensive analytics on the database.
 
     Args:
         db_path_or_schema (str): Path to SQLite database file or Postgres schema name.
         db_type (str): Type of database ("sqlite" or "postgres").
         save_to_json (bool): Whether to save results to JSON file.
+        print_results (bool): Whether to print results to console.
 
     """
     if db_type == "sqlite":
@@ -749,7 +888,10 @@ async def run_analytics(
         await db_controller.initialize()
 
         analytics = MarketplaceAnalytics(db_controller)
-        await analytics.generate_report(save_to_json=save_to_json, db_name=db_name)
+        results = await analytics.generate_report(
+            db_name=db_name, save_to_json=save_to_json, print_results=print_results
+        )
+        return results
     elif db_type == "postgres":
         async with connect_to_postgresql_database(
             schema=db_path_or_schema,
@@ -759,9 +901,12 @@ async def run_analytics(
             mode="existing",
         ) as db_controller:
             analytics = MarketplaceAnalytics(db_controller)
-            await analytics.generate_report(
-                save_to_json=save_to_json, db_name=db_path_or_schema
+            results = await analytics.generate_report(
+                db_name=db_path_or_schema,
+                save_to_json=save_to_json,
+                print_results=print_results,
             )
+            return results
     else:
         raise ValueError(
             f"Unsupported database type: {db_type}. Must be 'sqlite' or 'postgres'."

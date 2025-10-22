@@ -13,7 +13,7 @@ from pydantic import BaseModel, Field
 
 logger = logging.getLogger(__name__)
 
-LLM_PROVIDER = Literal["openai", "trapi", "gemini", "anthropic"]
+LLM_PROVIDER = Literal["openai", "gemini", "anthropic"]
 ALLOWED_LLM_PROVIDERS = get_args(LLM_PROVIDER)
 # Exclude these fields when dumping for concrete client completions
 EXCLUDE_FIELDS = {"provider", "max_concurrency", "base_url"}
@@ -47,6 +47,6 @@ class BaseLLMConfig(BaseModel):
     reasoning_effort: Literal["minimal", "low", "medium", "high"] | int = EnvField(
         "LLM_REASONING_EFFORT", "REASONING_EFFORT", default="minimal"
     )
-    temperature: float = EnvField("LLM_TEMPERATURE", default=0.0)
+    temperature: float | None = EnvField("LLM_TEMPERATURE", default=None)
     max_tokens: int = EnvField("LLM_MAX_TOKENS", default=2000)
     max_concurrency: int = EnvField("LLM_MAX_CONCURRENCY", default=64)

@@ -1,0 +1,46 @@
+id: business_0087
+name: Ironwood Home Services
+description: Ironwood Home Services provides comprehensive residential improvement
+  and maintenance solutions, specializing in indoor upgrades and exterior property
+  care. We serve local homeowners seeking quality craftsmanship and reliable service
+  for a wide range of home and landscape projects.
+rating: 1.0
+progenitor_customer: customer_0029
+menu_features:
+  Hydronic Radiator Service: 370.34
+  Chimney Cleaning: 370.0
+  Stone Walkway Paving: 437.16
+  Deck Resealing: 354.57
+  Lawn Edging: 213.5
+  Garden Bed Installation: 134.21
+  Weed Control: 141.35
+  Walk-In Closet Shelving: 378.49
+  Light Fixture Upgrading: 252.37
+  Stone Fireplace Repair: 436.88
+  Custom Cabinet Fabrication: 545.52
+  Fence Staining: 286.62
+  Concrete Patio Pouring: 550.64
+  Landscape Design: 129.92
+  Concrete Patio Cleaning: 189.52
+  Brick Tuckpointing: 450.01
+  Outdoor Fence Painting: 479.98
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: true
+  same day service: false
+  weekend availability: true
+  post install inspection: true
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: true
+  business accepts credit cards: false
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.69

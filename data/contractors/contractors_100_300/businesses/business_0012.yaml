@@ -1,0 +1,40 @@
+id: business_0012
+name: Brookwood Residential Services
+description: Brookwood Residential Services provides reliable, multi-trade repairs
+  and improvements for local homeowners. Our focus is on delivering quality solutions
+  for interior and exterior home projects with straightforward, professional service.
+rating: 1.0
+progenitor_customer: customer_0004
+menu_features:
+  Fence Gate Repair: 387.72
+  Fence Installation: 480.93
+  Roof Flashing Replacement: 280.93
+  AC System Inspection: 290.42
+  New Thermostat Setup: 204.83
+  Cabinet Door Adjustment: 222.17
+  Garage Floor Epoxy: 302.7
+  Garage Door Adjustment: 205.94
+  Mulch Spreading: 200.18
+  Walkway Concrete Pour: 412.83
+  Dryer Vent Cleaning: 242.33
+  Single Room Vinyl Flooring: 350.53
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: true
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: true
+  free estimate: true
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.91

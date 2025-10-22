@@ -1,0 +1,41 @@
+id: business_0021
+name: Clearbrook Residential Services
+description: Clearbrook Residential Services provides reliable maintenance, improvement,
+  and installation solutions for homeowners seeking quality work done efficiently.
+  We deliver dependable support for a range of household projects, including interior
+  upgrades and exterior care.
+rating: 1.0
+progenitor_customer: customer_0007
+menu_features:
+  Cabinet Hardware Installation: 483.1
+  Smart Thermostat Setup: 337.04
+  Basic Closet Shelving: 256.48
+  Patio Paver Resetting: 444.35
+  Sprinkler System Activation: 235.77
+  Lawn Fertilization: 178.43
+  Wallpaper Removal: 166.33
+  HVAC Diagnostics: 511.49
+  Wall Socket Wiring: 276.92
+  Window Caulking: 142.51
+  Kitchen Sink Plumbing: 241.08
+  Closet Shelving Assembly: 347.01
+amenity_features:
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  accepts digital payments: false
+  licensed: true
+  appointment only: false
+  business accepts credit cards: true
+  same day service: false
+  flexible hours: false
+  free estimate: false
+  background checked crew: true
+  insured: true
+  weekend availability: false
+  eco friendly materials: false
+  responsiveness: false
+  post install inspection: false
+  free followup visit: true
+  after hours service: false
+min_price_factor: 0.75

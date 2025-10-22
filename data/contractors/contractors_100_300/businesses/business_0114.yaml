@@ -1,0 +1,41 @@
+id: business_0114
+name: Civic Home Services
+description: Civic Home Services provides reliable maintenance, repairs, and improvements
+  tailored to local homeowners seeking quality work and attentive service. We handle
+  a wide range of residential projects, from interior updates to exterior upkeep,
+  with a focus on timely completion and lasting results.
+rating: 1.0
+progenitor_customer: customer_0038
+menu_features:
+  Brick Chimney Pointing: 447.23
+  Stone Veneer Repair: 390.39
+  Hardwood Floor Resurfacing: 398.2
+  Garage Shelving Assembly: 212.82
+  Lawn Sodding: 137.62
+  Small Bathroom Plumbing Repair: 145.85
+  Hedge Trimming: 95.88
+  Shingle Roof Cleaning: 482.96
+  Water Heater Inspection: 210.67
+  Door Replacement: 247.19
+  Mailbox Post Setting: 226.61
+  Central Air Conditioning Service: 369.37
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: true
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: true
+  warranty: true
+  responsiveness: false
+  accepts digital payments: false
+min_price_factor: 0.74

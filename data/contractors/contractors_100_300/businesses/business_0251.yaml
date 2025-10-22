@@ -1,0 +1,43 @@
+id: business_0251
+name: Union Square Home Improvements
+description: Union Square Home Improvements provides reliable residential remodeling
+  and property enhancement services for homeowners seeking quality upgrades and renovations.
+  Our team delivers professional solutions for a wide range of interior and exterior
+  home improvement needs.
+rating: 1.0
+progenitor_customer: customer_0084
+menu_features:
+  Shower Remodel: 474.3
+  Home Network Setup: 292.46
+  Bathroom Sink Plumbing: 214.36
+  Subfloor Reinforcement: 245.22
+  Thermostat Upgrade: 245.41
+  Bathroom Vanity Replacement: 229.8
+  Light Switch Repair: 217.52
+  Stone Patio Construction: 381.16
+  Brick Veneer Installation: 442.61
+  A/C Blower Motor Replacement: 429.59
+  Landscaping Design: 122.05
+  Ceiling Fan Upgrade: 295.03
+  Garage Floor Coating: 296.51
+  Walk-In Closet Shelving: 319.74
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: false
+  appointment only: true
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.9

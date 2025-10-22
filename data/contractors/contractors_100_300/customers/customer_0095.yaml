@@ -1,0 +1,12 @@
+id: customer_0095
+name: Isabella Grant
+request: 'Please help me find a contractor who can provide the following services:
+  Smart Thermostat Setup (1) and Garage Door Opener Replacement (1). It''s necessary
+  that they accept digital payments. Once you identify a contractor who meets all
+  these requirements, I would like to hire them and arrange the work accordingly.
+  Let me know when the scheduling is confirmed.'
+menu_features:
+  Smart Thermostat Setup: 298.99
+  Garage Door Opener Replacement: 367.49
+amenity_features:
+- accepts digital payments

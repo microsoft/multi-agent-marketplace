@@ -1,0 +1,11 @@
+id: customer_0017
+name: Nina Gupta
+request: I'm looking for a contractor who can provide Brick Chimney Repair (1) and
+  is both licensed and insured. Once such a contractor is identified, I intend to
+  hire them and would like to schedule the repair work as soon as possible. Please
+  assist me in finding and confirming a suitable provider.
+menu_features:
+  Brick Chimney Repair: 195.95
+amenity_features:
+- licensed
+- insured

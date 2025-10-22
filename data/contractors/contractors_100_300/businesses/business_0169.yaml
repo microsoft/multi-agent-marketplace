@@ -1,0 +1,42 @@
+id: business_0169
+name: Halstead Home Services
+description: Halstead Home Services provides reliable residential maintenance, upgrades,
+  and exterior care for homeowners seeking quality workmanship and prompt service.
+  We help keep your home comfortable, functional, and looking its best with a range
+  of interior and outdoor solutions.
+rating: 1.0
+progenitor_customer: customer_0057
+menu_features:
+  Tile Replacement: 206.96
+  Wall Repair: 196.4
+  Gutter Replacement: 524.92
+  Lawn Mowing: 169.98
+  Outdoor Fence Painting: 452.81
+  Mini-Split Maintenance: 183.14
+  Hardwood Floor Buffing: 428.15
+  Water Heater Tune-Up: 522.84
+  Cabinet Installation: 215.16
+  Furnace Service: 420.85
+  Custom Closet Shelving: 409.46
+  Laminate Floor Installation: 400.22
+  Landscaping Cleanup: 165.4
+amenity_features:
+  flexible hours: false
+  free followup visit: true
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: false
+  post install inspection: false
+  after hours service: true
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: true
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.87

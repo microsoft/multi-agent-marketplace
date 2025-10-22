@@ -1,0 +1,42 @@
+id: business_0013
+name: Overlook Residential Services
+description: Overlook Residential Services provides reliable home improvement and
+  maintenance solutions for homeowners seeking quality updates and care. Our team
+  is dedicated to enhancing comfort and functionality through a range of interior
+  and exterior services.
+rating: 1.0
+progenitor_customer: customer_0005
+menu_features:
+  Attic Insulation: 370.06
+  Hardwood Floor Sanding: 322.88
+  Attic Ladder Installation: 343.6
+  Handrail Installation: 309.97
+  Mailbox Replacement: 386.68
+  Weatherproof Electrical Outlet Install: 120.2
+  Exterior Window Cleaning: 113.58
+  Patio Paver Cleaning: 170.65
+  Thermostat Installation: 170.82
+  Bathroom Exhaust Fan Upgrade: 286.43
+  Stone Walkway Restoration: 393.53
+  Bathroom Vanity Replacement: 284.84
+  Appliance Hookup: 244.57
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: true
+  responsiveness: false
+  background checked crew: false
+  licensed: false
+  same day service: false
+  weekend availability: true
+  post install inspection: false
+  flexible hours: false
+  insured: true
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: false
+  after hours service: true
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.92

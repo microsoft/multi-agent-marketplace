@@ -1,0 +1,46 @@
+id: business_0007
+name: Lakewood Home Solutions
+description: Lakewood Home Solutions provides reliable residential repair and improvement
+  services for homeowners seeking quality upgrades and timely maintenance. We focus
+  on enhancing everyday comfort through expert attention to both interior and exterior
+  projects.
+rating: 1.0
+progenitor_customer: customer_0003
+menu_features:
+  Asphalt Crack Sealing: 385.75
+  Fence Staining: 218.42
+  Outlet Replacement: 251.69
+  Light Fixture Repair: 204.79
+  Step Repair: 189.17
+  Kitchen Faucet Upgrade: 275.2
+  Smoke Detector Replacement: 263.09
+  Carpet Replacement: 426.7
+  Door Hardware Installation: 209.62
+  Stone Veneer Wall: 455.21
+  Faucet Replacement: 112.01
+  Shingle Replacement: 444.55
+  Wall Sconce Wiring: 292.17
+  Cabinet Hardware Upgrade: 470.03
+  AC Filter Replacement: 305.49
+  Fireplace Tuckpointing: 373.08
+  Garage Floor Sealing: 298.17
+amenity_features:
+  multilingual staff: true
+  warranty: false
+  live job updates: true
+  accepts digital payments: false
+  licensed: false
+  appointment only: false
+  business accepts credit cards: false
+  same day service: false
+  flexible hours: true
+  free estimate: false
+  background checked crew: true
+  insured: false
+  weekend availability: false
+  eco friendly materials: true
+  responsiveness: false
+  post install inspection: false
+  free followup visit: false
+  after hours service: false
+min_price_factor: 0.61

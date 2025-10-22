@@ -1,0 +1,41 @@
+id: business_0118
+name: Fairmont Residential Contractors
+description: Fairmont Residential Contractors provides homeowners with reliable, quality-focused
+  solutions for interior and exterior home maintenance and improvements. Our team
+  is dedicated to professional service, helping you care for and enhance your property.
+rating: 1.0
+progenitor_customer: customer_0040
+menu_features:
+  Wall Repair: 181.08
+  Water Heater Flush: 373.19
+  Driveway Sealing: 396.74
+  Heat Pump Tune-Up: 301.37
+  Home Office Wiring: 401.6
+  Appliance Hookup: 216.17
+  Chimney Cleaning: 477.04
+  Baseboard Painting: 184.58
+  Driveway Crack Repair: 290.95
+  Shower Head Replacement: 270.47
+  Garden Bed Planting: 120.91
+  Wall Grouting: 164.99
+  Basement Door Framing: 327.76
+amenity_features:
+  flexible hours: false
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: true
+  live job updates: true
+  licensed: true
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: false
+  accepts digital payments: true
+min_price_factor: 0.85

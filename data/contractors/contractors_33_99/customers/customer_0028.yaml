@@ -1,0 +1,14 @@
+id: customer_0028
+name: Alexander Zhao
+request: 'Please help me find a contractor who can provide the following services:
+  Drywall Installation (1), Water Heater Tune-Up (1), and Brick Walkway Restoration
+  (1). It is essential that the business accepts credit cards. Once a contractor meeting
+  all these requirements is identified, I would like to hire them and proceed to schedule
+  and confirm the work according to the specified scope. Looking forward to moving
+  ahead as soon as possible.'
+menu_features:
+  Drywall Installation: 404.95
+  Water Heater Tune-Up: 417.99
+  Brick Walkway Restoration: 411.99
+amenity_features:
+- business accepts credit cards

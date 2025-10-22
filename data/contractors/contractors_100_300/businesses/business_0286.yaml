@@ -1,0 +1,40 @@
+id: business_0286
+name: Homewise Service Contractors
+description: Homewise Service Contractors provides essential maintenance, installation,
+  and improvement services for residential properties. We help homeowners keep their
+  spaces functional, comfortable, and up to date with expert solutions tailored to
+  everyday needs.
+rating: 1.0
+progenitor_customer: customer_0096
+menu_features:
+  Septic Tank Pumping: 481.02
+  Single Room Vinyl Flooring: 293.81
+  Stone Patio Restoration: 495.77
+  Bathroom Faucet Upgrade: 273.88
+  AC Maintenance: 507.49
+  Basement Water Proofing: 562.76
+  Stone Pathway Installation: 324.45
+  Dryer Vent Cleaning: 279.22
+  AC System Tune-Up: 352.07
+  Recessed Lighting Upgrade: 491.69
+  Security System Setup: 284.91
+amenity_features:
+  flexible hours: true
+  free followup visit: false
+  same day service: false
+  weekend availability: false
+  business accepts credit cards: false
+  multilingual staff: true
+  post install inspection: false
+  after hours service: false
+  appointment only: false
+  live job updates: false
+  licensed: false
+  free estimate: false
+  insured: false
+  background checked crew: false
+  eco friendly materials: false
+  warranty: false
+  responsiveness: true
+  accepts digital payments: true
+min_price_factor: 0.62

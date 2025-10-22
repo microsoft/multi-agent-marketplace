@@ -1,0 +1,41 @@
+id: business_0063
+name: Craftmark Residential Services
+description: Craftmark Residential Services provides dependable home improvement and
+  repair solutions for homeowners seeking quality results and professional workmanship.
+  We deliver a wide range of residential services, with a focus on detail, reliability,
+  and customer satisfaction.
+rating: 1.0
+progenitor_customer: customer_0021
+menu_features:
+  Granite Countertop Polishing: 484.54
+  Garage Door Spring Replacement: 416.45
+  Bathroom Vanity Assembly: 440.51
+  Heat Pump Service: 356.26
+  Concrete Patio Slab Pour: 463.86
+  A/C Blower Motor Replacement: 331.14
+  Hardwood Flooring: 445.92
+  Shower Valve Repair: 212.34
+  Deck Restoration: 514.67
+  Fixture Assembly: 253.25
+  Home Office Wiring: 390.75
+  Basic Closet Shelving: 246.51
+amenity_features:
+  eco friendly materials: false
+  multilingual staff: false
+  warranty: false
+  live job updates: false
+  responsiveness: false
+  background checked crew: false
+  licensed: false
+  same day service: true
+  weekend availability: false
+  post install inspection: true
+  flexible hours: false
+  insured: false
+  free followup visit: false
+  accepts digital payments: false
+  business accepts credit cards: true
+  after hours service: false
+  free estimate: false
+  appointment only: false
+min_price_factor: 0.88
