@@ -15,11 +15,10 @@ from .base import (
 from .clients.anthropic import AnthropicClient, AnthropicConfig
 from .clients.gemini import GeminiClient, GeminiConfig
 from .clients.openai import OpenAIClient, OpenAIConfig
-from .clients.trapi.client import TrapiClient, TrapiConfig
 from .config import EXCLUDE_FIELDS, LLM_PROVIDER
 
 ConcreteLLMConfigs = Annotated[
-    AnthropicConfig | GeminiConfig | OpenAIConfig | TrapiConfig,
+    AnthropicConfig | GeminiConfig | OpenAIConfig,
     Field(discriminator="provider"),
 ]
 ConcreteConfigAdapter: TypeAdapter[ConcreteLLMConfigs] = TypeAdapter(ConcreteLLMConfigs)
@@ -134,8 +133,6 @@ async def generate(
             client = AnthropicClient.from_cache(config)
         case "openai":
             client = OpenAIClient.from_cache(config)
-        case "trapi":
-            client = TrapiClient.from_cache(config)
         case "gemini":
             client = GeminiClient.from_cache(config)
         case _:
@@ -157,4 +154,3 @@ def clear_client_caches() -> None:
     AnthropicClient._client_cache.clear()
     OpenAIClient._client_cache.clear()
     GeminiClient._client_cache.clear()
-    TrapiClient._client_cache.clear()
