@@ -29,6 +29,58 @@ class SimpleMarketplaceProtocol(BaseMarketplaceProtocol):
         """Define available actions in the marketplace."""
         return [SendMessage, FetchMessages, Search]
 
+    async def initialize(self, database: BaseDatabaseController) -> None:
+        """Initialize SimpleMarketplace-specific database indexes.
+
+        Creates functional indexes on frequently queried JSONB paths to improve
+        query performance for SendMessage action parameters.
+
+        Args:
+            database: The database controller instance
+
+        """
+        # Import here to avoid circular dependencies
+        from magentic_marketplace.platform.database.postgresql.postgresql import (
+            PostgreSQLDatabaseController,
+        )
+
+        # Only create indexes for PostgreSQL databases
+        if isinstance(database, PostgreSQLDatabaseController):
+            schema = database._schema
+
+            # Create functional indexes for SendMessage action parameters
+            # These indexes extract the JSON values and allow PostgreSQL to use
+            # index scans instead of sequential scans for filtered queries
+            # Composite indexes include created_at and row_index for efficient sorting
+            row_index_col = database.row_index_column
+            index_sql = f"""
+CREATE INDEX IF NOT EXISTS actions_to_agent_id_idx
+  ON {schema}.actions (
+    (jsonb_path_query_first(data, '$."request"."parameters"."to_agent_id"'::jsonpath) #>> '{{}}'),
+    {row_index_col} DESC
+  );
+
+CREATE INDEX IF NOT EXISTS actions_from_agent_id_idx
+  ON {schema}.actions (
+    (jsonb_path_query_first(data, '$."request"."parameters"."from_agent_id"'::jsonpath) #>> '{{}}'),
+    {row_index_col} DESC
+  );
+
+CREATE INDEX IF NOT EXISTS actions_request_name_idx
+  ON {schema}.actions (
+    (jsonb_path_query_first(data, '$."request"."name"'::jsonpath) #>> '{{}}'),
+    {row_index_col} DESC
+  );
+
+CREATE INDEX IF NOT EXISTS actions_fetch_messages_idx
+  ON {schema}.actions (
+    (jsonb_path_query_first(data, '$."request"."name"'::jsonpath) #>> '{{}}'),
+    (jsonb_path_query_first(data, '$."request"."parameters"."to_agent_id"'::jsonpath) #>> '{{}}'),
+    {row_index_col} DESC
+  );
+"""
+            await database.execute(index_sql)
+
     async def execute_action(
         self,
         *,
