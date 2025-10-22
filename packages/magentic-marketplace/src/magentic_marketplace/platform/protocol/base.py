@@ -31,3 +31,15 @@ class BaseMarketplaceProtocol(ABC):
     ) -> ActionExecutionResult:
         """Execute a specific action with the given name and parameters."""
         ...
+
+    async def initialize(self, database: BaseDatabaseController) -> None:  # noqa: B027
+        """Initialize protocol-specific resources (e.g., database indexes).
+
+        This method is called during server startup after the database is initialized.
+        Override this method to perform protocol-specific setup like creating indexes.
+
+        Args:
+            database: The database controller instance
+
+        """
+        # Default implementation does nothing

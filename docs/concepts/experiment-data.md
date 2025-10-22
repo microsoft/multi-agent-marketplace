@@ -2,9 +2,7 @@
 
 Experiments require agent profile data in YAML format, organized into `businesses/` and `customers/` directories.
 
-## Required Fields
-
-### Customer Profile
+## Customer
 
 ```yaml
 id: customer_0001
@@ -18,13 +16,14 @@ amenity_features:
 ```
 
 **Fields:**
+
 - `id` (string): Unique customer identifier
 - `name` (string): Customer display name
 - `request` (string): What the customer is looking for
-- `menu_features` (list): Desired menu items with preference weights
+- `menu_features` (list): Desired menu items with expected price
 - `amenity_features` (list): Desired amenities
 
-### Business Profile
+## Business
 
 ```yaml
 id: business_0001
@@ -45,12 +44,13 @@ min_price_factor: 0.8
 ```
 
 **Fields:**
+
 - `id` (string): Unique business identifier
 - `name` (string): Business display name
 - `description` (string): Business description
-- `rating` (float): Business rating
-- `progenitor_customer` (string): Associated customer ID
-- `menu_features` (dict): Menu items with price factors
+- `rating` (float): Business rating (0-1 scale)
+- `progenitor_customer` (string): Associated customer ID (used in data generation)
+- `menu_features` (dict): Menu items with prices
 - `amenity_features` (dict): Available amenities (boolean)
 - `min_price_factor` (float): Minimum pricing multiplier
 
