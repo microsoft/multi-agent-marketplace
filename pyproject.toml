@@ -5,14 +5,12 @@ dev = [
     "pyright>=1.1.403",
     "pytest>=8.4.1",
     "pytest-asyncio>=1.2.0",
-    "ruff>=0.13.0"
+    "ruff>=0.13.0",
 ]
+plots = ["matplotlib>=3.10.7", "pandas>=2.3.3"]
 
 [tool.uv.workspace]
-members = [
-    "packages/magentic-marketplace",
-    "packages/magentic-marketplace-mcp",
-]
+members = ["packages/magentic-marketplace", "packages/magentic-marketplace-mcp"]
 
 
 [tool.ruff]
@@ -42,9 +40,9 @@ select = [
     "B",  # flake8-bugbear
     "C4", # flake8-comprehensions
     "UP", # pyupgrade
-    "D", # docstrings
+    "D",  # docstrings
 ]
-ignore = ["E501", "UP046"]  # line too long, generics
+ignore = ["E501", "UP046"] # line too long, generics
 
 [tool.poe.tasks]
 # Formatting tasks
@@ -79,6 +77,6 @@ addopts = "-v --tb=short"
 markers = [
     "skip_ci: mark test to skip in CI environments",
     "rnr: tests that require the rnr extra dependencies",
-    "postgres: tests that require postgres"
+    "postgres: tests that require postgres",
 ]
 env_files = ["dev.env"]
