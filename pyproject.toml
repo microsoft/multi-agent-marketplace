@@ -40,9 +40,9 @@ select = [
     "B",  # flake8-bugbear
     "C4", # flake8-comprehensions
     "UP", # pyupgrade
-    "D", # docstrings
+    "D",  # docstrings
 ]
-ignore = ["E501", "UP046"]  # line too long, generics
+ignore = ["E501", "UP046"] # line too long, generics
 
 [tool.poe.tasks]
 # Formatting tasks
@@ -77,6 +77,6 @@ addopts = "-v --tb=short"
 markers = [
     "skip_ci: mark test to skip in CI environments",
     "rnr: tests that require the rnr extra dependencies",
-    "postgres: tests that require postgres"
+    "postgres: tests that require postgres",
 ]
 env_files = ["dev.env"]
