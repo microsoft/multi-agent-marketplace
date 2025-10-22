@@ -51,6 +51,9 @@ class MarketplaceServer(FastAPI):
             database_cm = self._database_factory()
             database_controller = await database_cm.__aenter__()
 
+            # Initialize protocol-specific resources (e.g., indexes)
+            await self._behavior_protocol.initialize(database_controller)
+
             # Create auth service
             auth_service = AuthService()
 

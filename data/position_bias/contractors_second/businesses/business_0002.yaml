@@ -1,0 +1,42 @@
+id: business_0002
+name: Heritage Home Services
+description: Heritage Home Services provides reliable property maintenance and improvement
+  solutions for homeowners, including interior updates, exterior repairs, and seasonal
+  upkeep. We focus on quality workmanship and attentive service to help you maintain
+  and enhance your residential spaces.
+rating: 1.0
+progenitor_customer: customer_0002
+menu_features:
+  Outdoor Lighting Setup: 419.15
+  Kitchen Countertop Installation: 347.19
+  Door Lock Replacement: 154.45
+  Hardwood Flooring: 383.28
+  Asphalt Crack Sealing: 375.62
+  Garbage Disposal Replacement: 264.59
+  Sprinkler System Inspection: 275.65
+  Garage Door Opener Setup: 569.24
+  Stone Veneer Application: 297.68
+  Sprinkler System Winterization: 544.87
+  Shower Enclosure Installation: 483.45
+  Retaining Wall Installation: 432.31
+  Mulch Delivery: 296.39
+amenity_features:
+  multilingual staff: true
+  warranty: true
+  live job updates: false
+  accepts digital payments: false
+  licensed: false
+  appointment only: false
+  business accepts credit cards: true
+  same day service: false
+  flexible hours: false
+  free estimate: true
+  background checked crew: false
+  insured: false
+  weekend availability: true
+  eco friendly materials: false
+  responsiveness: false
+  post install inspection: false
+  free followup visit: false
+  after hours service: false
+min_price_factor: 0.72
