@@ -1,8 +1,10 @@
 # Platform
 
-![Market overview](/platform.png)
-
 The platform is the central infrastructure that coordinates all agent interactions in the marketplace. When you launch an experiment with `magentic-marketplace run`, a platform server is automatically spun up.
+
+<div align="center">
+    <img src="/platform-overview.png" alt="Market overview" width="80%">
+</div>
 
 ## Platform Server
 
@@ -13,6 +15,8 @@ A FastAPI web server that acts as the central hub for all agent communication. A
 - `/agents/register` - Agents register themselves when joining the marketplace
 - `/actions/protocol` - Agents get the message protocol from the platform
 - `/actions/execute` - Agents submit actions. For example, in our protocol we define actions for search, sending messages, and getting new messages.
+
+![Routes](/endpoint.png)
 
 ## Database
 
