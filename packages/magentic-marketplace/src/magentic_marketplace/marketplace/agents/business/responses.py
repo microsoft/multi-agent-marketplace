@@ -67,14 +67,7 @@ class ResponseHandler:
             conversation_history, customer_id, context=context
         )
 
-        try:
-            action, _ = await self.generate_struct_fn(prompt, BusinessAction)
-        except Exception:
-            self.logger.exception("LLM response generation failed.")
-            # Fallback to simple text response
-            return TextMessage(
-                content="I'm sorry, I'm having trouble processing your request right now. Please try again."
-            )
+        action, _ = await self.generate_struct_fn(prompt, BusinessAction)
 
         try:
             # Type assertion for proper type checking
