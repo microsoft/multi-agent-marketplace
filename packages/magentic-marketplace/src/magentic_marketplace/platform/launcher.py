@@ -137,10 +137,6 @@ class MarketplaceLauncher:
                 pass
 
         print("Server stopped")
-        if self.experiment_name:
-            print(
-                f"\nRun analytics with: magentic-marketplace analyze {self.experiment_name}"
-            )
 
     async def create_logger(self, name: str = __name__) -> MarketplaceLogger:
         """Create a logger connected to the marketplace.
