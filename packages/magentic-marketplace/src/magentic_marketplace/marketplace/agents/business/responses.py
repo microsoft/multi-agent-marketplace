@@ -41,7 +41,12 @@ class ResponseHandler:
         self.prompts = PromptsHandler(business, logger)
 
     async def generate_response_to_inquiry(
-        self, customer_id: str, conversation_history: list[str]
+        self,
+        customer_id: str,
+        conversation_history: list[str],
+        *,
+        context: str | None = None,
+        retries: int = 3,
     ) -> TextMessage | OrderProposal:
         """Generate a contextual response using LLM.
 
@@ -49,6 +54,7 @@ class ResponseHandler:
             customer_id: ID of the customer
             conversation_history: history of convo
             context: Additional context for the prompt
+            retries: Number of retries to try and fix validation errors
 
         Returns:
             Response message (text or order proposal) to be sent by caller
@@ -57,11 +63,13 @@ class ResponseHandler:
         self.logger.info(f"Generating response to customer {customer_id} inquiry.")
 
         # Get prompt from prompts handler
-        prompt = self.prompts.format_response_prompt(conversation_history, customer_id)
+        prompt = self.prompts.format_response_prompt(
+            conversation_history, customer_id, context=context
+        )
+
+        action, _ = await self.generate_struct_fn(prompt, BusinessAction)
 
         try:
-            action, _ = await self.generate_struct_fn(prompt, BusinessAction)
-
             # Type assertion for proper type checking
             assert isinstance(action, BusinessAction)
 
@@ -78,13 +86,33 @@ class ResponseHandler:
                     raise ValueError("Text action must have string content")
 
             elif action.action_type == "order_proposal":
-                if not action.order_proposal_message:
+                proposal = action.order_proposal_message
+                if not proposal:
                     raise ValueError(
                         "Order proposal action must have OrderProposal content"
                     )
 
+                validation_errors: list[str] = []
+                total_price = 0
+                for order_item in proposal.items:
+                    total_price += order_item.unit_price * order_item.quantity
+                    if order_item.item_name not in self.business.menu_features:
+                        validation_errors.append(
+                            f"'{order_item.item_name}' does not match any menu items."
+                        )
+
+                if abs(total_price - proposal.total_price) >= 0.01:
+                    validation_errors.append(
+                        f"proposal's total price {proposal.total_price:.2f} does not match calculated sum(item.unit_price * item.quantity) of {total_price:.2f}."
+                    )
+
+                if validation_errors:
+                    # Build an aggregate error message with list of individual errors
+                    error_msg = "\n- " + "\n- ".join(validation_errors)
+                    error_msg = f"Encountered {len(validation_errors)} errors validating order_proposal_message:{error_msg}"
+                    raise ValueError(error_msg)
+
                 # Generate deterministic proposal ID before returning
-                proposal = action.order_proposal_message
                 current_count = self.proposal_storage.customer_proposal_counts.get(
                     customer_id, 0
                 )
@@ -106,12 +134,36 @@ class ResponseHandler:
             else:
                 raise ValueError(f"Unknown action_type: {action.action_type}")
 
-        except Exception:
-            self.logger.exception("LLM response generation failed")
-            # Fallback to simple text response
-            return TextMessage(
-                content="I'm sorry, I'm having trouble processing your request right now. Please try again."
-            )
+        except Exception as e:
+            if retries > 0:
+                self.logger.warning(
+                    f"Caught errors validating generated BusinessAction. {retries} retries remaining."
+                )
+
+                # Build context about current generation and errors so LLM can recover.
+                new_context = f"You just generated the following BusinessAction:\n```json\n{action.model_dump_json()}\n```"
+                new_context += (
+                    f"\nAnd encountered the following error(s):\n```\n{e}\n```"
+                )
+
+                # If previous context, append it to the context so LLM can see what mistakes it continues to make
+                if context:
+                    new_context += f"\n Previously: {context}"
+
+                context = new_context.strip()
+
+                # Try again with error context and one less retry
+                return await self.generate_response_to_inquiry(
+                    customer_id=customer_id,
+                    conversation_history=conversation_history,
+                    context=context,
+                    retries=retries - 1,
+                )
+            else:
+                self.logger.exception(
+                    "Caught errors validating generated BusinessAction. 0 retries remaining."
+                )
+                raise
 
     def generate_payment_confirmation(
         self, proposal_id: str, total_price: float
