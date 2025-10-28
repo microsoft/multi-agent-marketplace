@@ -137,3 +137,5 @@ async def run_marketplace_experiment(
                 db = marketplace_launcher.server.state.database_controller
                 await convert_postgres_to_sqlite(db, sqlite_path)
                 logger.info(f"Database conversion complete: {sqlite_path}")
+
+        print(f"\nRun analytics with: magentic-marketplace analyze {experiment_name}")
