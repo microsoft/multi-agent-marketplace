@@ -15,7 +15,7 @@ _Simulation Environment for Agentic Marketplaces_
 Magentic Marketplace is a Python SDK for running simulations of agentic markets.
 You can configure business and customer agents that transact and then run simulations that evaluate the market's welfare.
 
-[**Learn more about Magentic Marketplace at our documentation website.**](https://solid-adventure-l155rl6.pages.github.io/)
+[**Learn more about Magentic Marketplace at our documentation website.**](https://microsoft.github.io/multi-agent-marketplace/)
 
 ## Quick Start
 
