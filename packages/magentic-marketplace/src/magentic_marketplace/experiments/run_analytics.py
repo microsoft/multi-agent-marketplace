@@ -43,6 +43,15 @@ from magentic_marketplace.platform.shared.models import (
     ActionExecutionResult,
 )
 
+from .models.analytics import (
+    InvalidBusiness,
+    InvalidCustomer,
+    InvalidMenuItem,
+    InvalidMenuItemPrice,
+    InvalidTotalPrice,
+    OrderProposalError,
+)
+
 # Terminal colors for output formatting
 RED_COLOR = "\033[91m" if sys.stdout.isatty() else ""
 YELLOW_COLOR = "\033[93m" if sys.stdout.isatty() else ""
@@ -53,12 +62,33 @@ MAGENTA_COLOR = "\033[95m" if sys.stdout.isatty() else ""
 RESET_COLOR = "\033[0m" if sys.stdout.isatty() else ""
 
 
+def levenshtein_distance(s1: str, s2: str) -> int:
+    """Calculate Levenshtein distance between two strings."""
+    if len(s1) < len(s2):
+        return levenshtein_distance(s2, s1)
+    if len(s2) == 0:
+        return len(s1)
+    previous_row = range(len(s2) + 1)
+    for i, c1 in enumerate(s1):
+        current_row = [i + 1]
+        for j, c2 in enumerate(s2):
+            insertions = previous_row[j + 1] + 1
+            deletions = current_row[j] + 1
+            substitutions = previous_row[j] + (c1 != c2)
+            current_row.append(min(insertions, deletions, substitutions))
+        previous_row = current_row
+    return previous_row[-1]
+
+
 class MarketplaceAnalytics:
     """Advanced analytics engine for marketplace simulation data using typed models."""
 
-    def __init__(self, db_controller: BaseDatabaseController):
+    def __init__(
+        self, db_controller: BaseDatabaseController, fuzzy_match_distance: int = 0
+    ):
         """Initialize analytics with database controller."""
         self.db = db_controller
+        self.fuzzy_match_distance = fuzzy_match_distance
         self.customer_agents: dict[str, CustomerAgentProfile] = {}
         self.business_agents: dict[str, BusinessAgentProfile] = {}
 
@@ -73,6 +103,7 @@ class MarketplaceAnalytics:
         self.payments: list[Payment] = []
         self.customer_orders: dict[str, list[OrderProposal]] = defaultdict(list)
         self.customer_payments: dict[str, list[Payment]] = defaultdict(list)
+        self.purchased_proposal_ids: set[str] = set()
 
         # Search tracking
         self.customer_searches: dict[str, list[tuple[Search, SearchResponse]]] = (
@@ -90,6 +121,15 @@ class MarketplaceAnalytics:
         # Track LLM providers and models
         self.llm_providers: set[str] = set()
         self.llm_models: set[str] = set()
+
+        # Track invalid purchased proposals with error details
+        self.invalid_proposals: dict[str, list[OrderProposalError]] = defaultdict(list)
+
+        # Track fuzzy matching for purchased proposals
+        # proposal_id -> (distance, proposed item, matched item on menu)
+        self.purchased_proposal_fuzzy_matches: dict[
+            str, list[tuple[int, str, str]]
+        ] = {}
 
     async def load_data(self):
         """Load and parse agents data from database."""
@@ -200,6 +240,12 @@ class MarketplaceAnalytics:
             # Process specific message types
             if isinstance(message, OrderProposal):
                 self.order_proposals.append(message)
+                errors = self.check_proposal_errors(
+                    message, action.from_agent_id, action.to_agent_id
+                )
+                if errors:
+                    self.invalid_proposals[message.id] = errors
+
                 # Link to customer if this came from a business
                 if agent_type == "business":
                     if action.to_agent_id in self.customer_agents:
@@ -209,6 +255,7 @@ class MarketplaceAnalytics:
 
             elif isinstance(message, Payment):
                 self.payments.append(message)
+                self.purchased_proposal_ids.add(message.proposal_message_id)
                 # Link to customer if this is a payment from customer
                 if agent_type == "customer":
                     self.customer_payments[action.from_agent_id].append(message)
@@ -287,6 +334,53 @@ class MarketplaceAnalytics:
 
         return None
 
+    def filter_valid_proposal_items(
+        self, business_agent_id: str, proposal: OrderProposal
+    ):
+        """Return only the proposed items that actually match real menu items (up to self.fuzzy_match_distance)."""
+        business_agent = self.business_agents[business_agent_id]
+        menu_items = set(business_agent.business.menu_features.keys())
+        proposal_items = {item.item_name for item in proposal.items}
+
+        # Start with exact matches
+        matched_items: set[str] = proposal_items.intersection(menu_items)
+
+        fuzzy_matches: list[tuple[int, str, str]] = []
+        if self.fuzzy_match_distance > 0:
+            # Remove exact matches
+            menu_items.difference_update(matched_items)
+            proposal_items.difference_update(matched_items)
+
+            # Calculate all pairwise distances of remaining items
+            fuzzy_distances: list[tuple[int, str, str]] = []
+            for menu_item in menu_items:
+                for proposal_item in proposal_items:
+                    distance = levenshtein_distance(
+                        menu_item.lower(), proposal_item.lower()
+                    )
+                    if distance <= self.fuzzy_match_distance:
+                        fuzzy_distances.append(
+                            (
+                                distance,
+                                menu_item,
+                                proposal_item,
+                            )
+                        )
+
+            # Greedily pick matches
+            for distance, menu_item, proposal_item in sorted(fuzzy_distances):
+                # Make sure these are still available
+                if menu_item in menu_items and proposal_item in proposal_items:
+                    # Add the menu_item to the match list (for exact match with customer requests)
+                    matched_items.add(menu_item)
+                    # Track fuzzy matches for reporting
+                    fuzzy_matches.append((distance, proposal_item, menu_item))
+                    # Remove so we don't double count
+                    menu_items.remove(menu_item)
+                    proposal_items.remove(proposal_item)
+
+        return matched_items, fuzzy_matches
+
     def calculate_customer_utility(self, customer_agent_id: str) -> tuple[float, bool]:
         """Calculate customer utility where  match_score is only counted once if ANY payment meets the customer's needs.
 
@@ -314,23 +408,30 @@ class MarketplaceAnalytics:
                 None,
             )
             if proposal:
-                # Check if proposal matches customer's desired items
-                proposal_items = {item.item_name for item in proposal.items}
-                requested_items = set(customer.menu_features.keys())
-                price_paid = proposal.total_price
-                total_payments += price_paid
-
-                # Find which business sent this proposal to check amenities
+                # Get proposal items that are actually part of the businesses menu (up to fuzzy distance)
                 business_agent_id = self._find_business_for_proposal(proposal.id)
+                if business_agent_id:
+                    proposal_items, proposal_item_fuzzy_matches = (
+                        self.filter_valid_proposal_items(business_agent_id, proposal)
+                    )
 
-                # Check if this payment meets the customer's needs
-                if proposal_items == requested_items:
-                    # Items match - now check amenities
-                    if business_agent_id and self.check_amenity_match(
-                        customer_agent_id, business_agent_id
-                    ):
-                        # Items AND amenities match - needs are met!
-                        needs_met = True
+                    requested_items = set(customer.menu_features.keys())
+                    price_paid = proposal.total_price
+                    total_payments += price_paid
+
+                    if requested_items.issubset(proposal_items):
+                        # Record fuzzy matches
+                        if proposal_item_fuzzy_matches:
+                            self.purchased_proposal_fuzzy_matches[proposal.id] = (
+                                proposal_item_fuzzy_matches
+                            )
+
+                        # Items match (exactly or fuzzily) - now check amenities
+                        if self.check_amenity_match(
+                            customer_agent_id, business_agent_id
+                        ):
+                            # Items AND amenities match - needs are met!
+                            needs_met = True
 
         # Calculate utility: match_score counted only ONCE if needs were met
         match_score = 0.0
@@ -347,6 +448,82 @@ class MarketplaceAnalytics:
                 if isinstance(msg, OrderProposal) and msg.id == proposal_id:
                     return business_agent_id
         return None
+
+    def check_proposal_errors(
+        self, proposal: OrderProposal, business_agent_id: str, customer_agent_id: str
+    ) -> list[OrderProposalError]:
+        """Check if proposal items and prices are valid against business menu."""
+        errors: list[OrderProposalError] = []
+        business_agent = self.business_agents.get(business_agent_id, None)
+        customer_agent = self.customer_agents.get(customer_agent_id, None)
+        if not business_agent:
+            errors.append(
+                InvalidBusiness(
+                    proposal_id=proposal.id,
+                    business_agent_id=business_agent_id,
+                    customer_agent_id=customer_agent_id,
+                )
+            )
+
+        if not customer_agent:
+            errors.append(
+                InvalidCustomer(
+                    proposal_id=proposal.id,
+                    business_agent_id=business_agent_id,
+                    customer_agent_id=customer_agent_id,
+                )
+            )
+        if business_agent:
+            business_menu = business_agent.business.menu_features
+            proposed_total = 0
+            for item in proposal.items:
+                proposed_total += item.unit_price * item.quantity
+                if item.item_name not in business_menu:
+                    # Find closest menu item to calculate distance and track the pair
+                    item_distances = [
+                        (
+                            levenshtein_distance(
+                                item.item_name.lower(), menu_item.lower()
+                            ),
+                            menu_item,
+                        )
+                        for menu_item in business_menu.keys()
+                    ]
+                    closest_distance, closest_menu_item = sorted(item_distances)[0]
+                    errors.append(
+                        InvalidMenuItem(
+                            proposal_id=proposal.id,
+                            business_agent_id=business_agent_id,
+                            customer_agent_id=customer_agent_id,
+                            proposed_menu_item=item.item_name,
+                            closest_menu_item=closest_menu_item,
+                            closest_menu_item_distance=closest_distance,
+                        )
+                    )
+
+                elif abs(item.unit_price - business_menu[item.item_name]) >= 0.01:
+                    errors.append(
+                        InvalidMenuItemPrice(
+                            proposal_id=proposal.id,
+                            business_agent_id=business_agent_id,
+                            customer_agent_id=customer_agent_id,
+                            menu_item=item.item_name,
+                            proposed_price=item.unit_price,
+                            actual_price=business_menu[item.item_name],
+                        )
+                    )
+            if abs(proposal.total_price - proposed_total) >= 0.01:
+                errors.append(
+                    InvalidTotalPrice(
+                        proposal_id=proposal.id,
+                        business_agent_id=business_agent_id,
+                        customer_agent_id=customer_agent_id,
+                        proposed_total_price=proposal.total_price,
+                        calculated_total_price=proposed_total,
+                    )
+                )
+
+        return errors
 
     def calculate_conversation_utility(
         self, customer_agent_id: str, business_agent_id: str
@@ -463,8 +640,12 @@ class MarketplaceAnalytics:
         transaction_summary = TransactionSummary(
             order_proposals_created=len(self.order_proposals),
             payments_made=len(self.payments),
-            average_proposal_value=avg_proposal_value,
             average_paid_order_value=avg_paid_order_value,
+            average_proposal_value=avg_proposal_value,
+            invalid_proposals_purchased=len(
+                self.purchased_proposal_ids.intersection(self.invalid_proposals.keys())
+            ),
+            total_invalid_proposals=len(self.invalid_proposals),
         )
 
         # Collect customer summaries
@@ -613,19 +794,6 @@ class MarketplaceAnalytics:
         )
         for message_type, count in sorted_messages:
             print(f"  {message_type}: {count}")
-        print()
-
-        # Transaction summary
-        print(f"{GREEN_COLOR}TRANSACTION SUMMARY:{RESET_COLOR}")
-        ts = results.transaction_summary
-        print(f"Order proposals created: {ts.order_proposals_created}")
-        print(f"Payments made: {ts.payments_made}")
-
-        if ts.average_proposal_value is not None:
-            print(f"Average proposal value: ${ts.average_proposal_value:.2f}")
-
-        if ts.average_paid_order_value is not None:
-            print(f"Average paid order value: ${ts.average_paid_order_value:.2f}")
         print()
 
         # Customer summary
@@ -824,6 +992,90 @@ class MarketplaceAnalytics:
 
         pages_per_query = sum(total_pages) / sum(total_queries)
 
+        # Transaction summary
+        print(f"\n{GREEN_COLOR}TRANSACTION SUMMARY:{RESET_COLOR}")
+        print("=" * 40)
+        ts = results.transaction_summary
+        print(f"Order proposals created: {ts.order_proposals_created}")
+        print(f"Payments made: {ts.payments_made}")
+        print(f"Average proposal value: ${ts.average_proposal_value:.2f}")
+        print(f"Average paid order value: ${ts.average_paid_order_value:.2f}")
+        print(f"Total invalid proposals: {ts.total_invalid_proposals}")
+        print(f"Invalid proposals purchased: {ts.invalid_proposals_purchased}")
+
+        # Aggregate error types across all invalid proposals
+        errors_by_type: dict[str, list[OrderProposalError]] = defaultdict(list)
+        for errors in self.invalid_proposals.values():
+            for error in errors:
+                errors_by_type[error.type].append(error)
+
+        print()
+
+        print("Error types:")
+        if errors_by_type:
+            # Iterate over error types, most common first
+            for error_type, errors in sorted(
+                errors_by_type.items(), key=lambda item: len(item[1]), reverse=True
+            ):
+                print(f"  - {error_type}: {len(errors)}")
+                # Build a header to explain the following rows
+                header = ""
+                indent = " " * 6
+                if error_type == "invalid_menu_item_price":
+                    header = "Item | Proposed | Actual"
+                elif error_type == "invalid_total_price":
+                    header = "Proposed | Calculated | Delta"
+                elif error_type == "invalid_business":
+                    header = "Business"
+                elif error_type == "invalid_customer":
+                    header = "Customer"
+
+                if header:
+                    divider = "-" * len(header)
+                    print(indent + header)
+                    print(indent + divider)
+
+                # Iterate over each error, with "largest" by sort_key first (e.g. largest levenshtein distance)
+                for error in sorted(errors, key=lambda e: e.sort_key, reverse=True):
+                    if error.type == "invalid_menu_item":
+                        # json.dumps to make the character differences easier to see
+                        print(f"{indent}Distance: {error.closest_menu_item_distance}")
+                        print(
+                            f"{indent}  Proposed: {json.dumps(error.proposed_menu_item)}"
+                        )
+                        print(
+                            f"{indent}  Matched:  {json.dumps(error.closest_menu_item)}"
+                        )
+                        print()
+                    elif error.type == "invalid_menu_item_price":
+                        print(
+                            f"      {error.menu_item} | ${error.proposed_price:.2f} | ${error.actual_price:.2f}"
+                        )
+                    elif error.type == "invalid_total_price":
+                        print(
+                            f"      ${error.proposed_total_price:.2f} | ${error.calculated_total_price:.2f} | ${abs(error.calculated_total_price - error.proposed_total_price):.2f}"
+                        )
+                    elif error.type == "invalid_business":
+                        print(f"      {error.business_agent_id}")
+                    elif error.type == "invalid_customer":
+                        print(f"      {error.customer_agent_id}")
+        else:
+            print("  - No errors")
+
+        # Fuzzy matched proposals summary
+        print()
+        print(
+            f"{len(self.purchased_proposal_fuzzy_matches)} purchased proposals contained invalid menu items that fuzzy-matched an actual menu item with distance <= {self.fuzzy_match_distance}"
+        )
+        for proposal_id, matches in list(self.purchased_proposal_fuzzy_matches.items()):
+            print(f"  Proposal: {proposal_id}")
+            indent = " " * 6
+            for distance, proposed_item, menu_item in matches:
+                print(f"{indent}Distance: {distance}")
+                print(f"{indent}  Proposed: {json.dumps(proposed_item)}")
+                print(f"{indent}  Matched:  {json.dumps(menu_item)}")
+                print()
+
         # LLM Call summary
         print(f"\n{BLUE_COLOR}LLM CALL SUMMARY:{RESET_COLOR}")
         print("=" * 40)
@@ -866,6 +1118,7 @@ async def run_analytics(
     db_type: str,
     save_to_json: bool = True,
     print_results: bool = True,
+    fuzzy_match_distance: int = 0,
 ) -> AnalyticsResults:
     """Run comprehensive analytics on the database.
 
@@ -874,6 +1127,7 @@ async def run_analytics(
         db_type (str): Type of database ("sqlite" or "postgres").
         save_to_json (bool): Whether to save results to JSON file.
         print_results (bool): Whether to print results to console.
+        fuzzy_match_distance (int): Max fuzzy distance to consider a requested item and a proposal item a "match".
 
     """
     if db_type == "sqlite":
@@ -887,7 +1141,9 @@ async def run_analytics(
         db_controller = SQLiteDatabaseController(db_path_or_schema)
         await db_controller.initialize()
 
-        analytics = MarketplaceAnalytics(db_controller)
+        analytics = MarketplaceAnalytics(
+            db_controller, fuzzy_match_distance=fuzzy_match_distance
+        )
         results = await analytics.generate_report(
             db_name=db_name, save_to_json=save_to_json, print_results=print_results
         )
@@ -900,7 +1156,9 @@ async def run_analytics(
             password="postgres",
             mode="existing",
         ) as db_controller:
-            analytics = MarketplaceAnalytics(db_controller)
+            analytics = MarketplaceAnalytics(
+                db_controller, fuzzy_match_distance=fuzzy_match_distance
+            )
             results = await analytics.generate_report(
                 db_name=db_path_or_schema,
                 save_to_json=save_to_json,

@@ -107,6 +107,7 @@ def run_analysis_command(args):
             args.db_type,
             save_to_json=save_to_json,
             print_results=True,
+            fuzzy_match_distance=args.fuzzy_match_distance,
         )
     )
 
@@ -319,6 +320,13 @@ def main():
         "--no-save-json",
         action="store_true",
         help="Disable saving analytics to JSON file",
+    )
+
+    analytics_parser.add_argument(
+        "--fuzzy-match-distance",
+        type=int,
+        default=0,
+        help="Maximum Levenshtein distance for fuzzy item name matching (default: 0)",
     )
 
     # extract-traces subcommand
