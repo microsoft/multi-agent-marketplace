@@ -10,7 +10,7 @@ dev = [
 plots = ["matplotlib>=3.10.7", "pandas>=2.3.3"]
 
 [tool.uv.workspace]
-members = ["packages/magentic-marketplace"]
+members = ["packages/magentic-marketplace", "packages/magentic-marketplace-mcp"]
 
 
 [tool.ruff]
