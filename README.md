@@ -15,7 +15,6 @@ _Simulation Environment for Agentic Marketplaces_
 Magentic Marketplace is a Python SDK for running simulations of agentic markets.
 You can configure business and customer agents that transact and then run simulations that evaluate the market's welfare.
 
-[**Learn more about Magentic Marketplace at our documentation website.**](https://microsoft.github.io/multi-agent-marketplace/)
 
 ## What can you do with this?
 
@@ -63,3 +62,19 @@ You can configure business and customer agents that transact and then run simula
 - [How can I test my LLM?](https://microsoft.github.io/multi-agent-marketplace/usage/env.html)
 - [How can I create a new protocol?]()
 - [How can I access the log and evaluate?](https://microsoft.github.io/multi-agent-marketplace/usage/cli-analyze.html)
+
+[**Checkout the docs.**](https://microsoft.github.io/multi-agent-marketplace/)
+
+## Citation
+
+```
+@misc{bansal-arxiv-2025,
+      title={Magentic Marketplace: An Open-Source Environment for Studying Agentic Markets}, 
+      author={Gagan Bansal and Wenyue Hua and Zezhou Huang and Adam Fourney and Amanda Swearngin and Will Epperson and Tyler Payne and Jake M. Hofman and Brendan Lucier and Chinmay Singh and Markus Mobius and Akshay Nambi and Archana Yadav and Kevin Gao and David M. Rothschild and Aleksandrs Slivkins and Daniel G. Goldstein and Hussein Mozannar and Nicole Immorlica and Maya Murad and Matthew Vogel and Subbarao Kambhampati and Eric Horvitz and Saleema Amershi},
+      year={2025},
+      eprint={2510.25779},
+      archivePrefix={arXiv},
+      primaryClass={cs.MA},
+      url={https://arxiv.org/abs/2510.25779}, 
+}
+```
