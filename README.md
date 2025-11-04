@@ -1,19 +1,12 @@
-<div align="center">
-<img src="docs/public/magentic-marketplace.svg" style="width: 80%" alt="Magentic Marketplace Logo">
+# Magentic Marketplace
 
-_Simulation Environment for Agentic Marketplaces_
-
-</div>
-
----
+**Magentic Marketplace** is a Python framework for simulating AI-powered markets. Configure LLM-based buyer and seller agents, run realistic marketplace simulations, and measure economic outcomes like welfare, fairness, and efficiency.
 
 <div align="center">
+
    <video src="https://github.com/user-attachments/assets/5b897387-d96c-4e7a-9bd2-b6c53eaeabb9" style="max-height: 450px;">
    </video>
 </div>
-
-Magentic Marketplace is a Python SDK for running simulations of agentic markets.
-You can configure business and customer agents that transact and then run simulations that evaluate the market's welfare.
 
 
 ## What can you do with this?
