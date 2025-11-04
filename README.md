@@ -17,6 +17,13 @@ You can configure business and customer agents that transact and then run simula
 
 [**Learn more about Magentic Marketplace at our documentation website.**](https://microsoft.github.io/multi-agent-marketplace/)
 
+## What can you do with this?
+
+- **Evaluate LLM models** - Compare how different models (GPT-4, Claude, Gemini, local models) perform as marketplace agents
+- **Test market designs** - Experiment with different search algorithms, communication protocols, and marketplace rules
+- **Study agent behavior** - Measure welfare outcomes, identify biases, and test resistance to manipulation
+- **Extend to new domains** - Adapt the framework beyond restaurants/contractors to other two-sided markets
+
 ## Quick Start
 
 1. Configure your environment
