@@ -1,5 +1,8 @@
 # Magentic Marketplace
 
+[Documentation](https://microsoft.github.io/multi-agent-marketplace/) | [Paper](https://arxiv.org/abs/2510.25779)
+
+
 **Magentic Marketplace** is a Python framework for simulating AI-powered markets. Configure LLM-based buyer and seller agents, run realistic marketplace simulations, and measure economic outcomes like welfare, fairness, and efficiency.
 
 <div align="center">
@@ -59,6 +62,8 @@
 [**Checkout the docs.**](https://microsoft.github.io/multi-agent-marketplace/)
 
 ## Citation
+
+If you use this work, please cite:
 
 ```
 @misc{bansal-arxiv-2025,
