@@ -14,7 +14,7 @@
 
 ## What can you do with this?
 
-- **Evaluate LLM models** - Compare how different models (GPT-4, Claude, Gemini, local models) perform as marketplace agents
+- **Evaluate LLM models** - Compare how different models (OpenAI, Claude, Gemini, local models) perform as marketplace agents
 - **Test market designs** - Experiment with different search algorithms, communication protocols, and marketplace rules
 - **Study agent behavior** - Measure welfare outcomes, identify biases, and test resistance to manipulation
 - **Extend to new domains** - Adapt the framework beyond restaurants/contractors to other two-sided markets
@@ -58,7 +58,7 @@
 - [How can I test my LLM?](https://microsoft.github.io/multi-agent-marketplace/usage/env.html)
 - [How can I access the log and evaluate?](https://microsoft.github.io/multi-agent-marketplace/usage/cli-analyze.html)
 
-[**Checkout the docs for more info.**](https://microsoft.github.io/multi-agent-marketplace/)
+[**Check out the docs for more info.**](https://microsoft.github.io/multi-agent-marketplace/)
 
 ## Citation
 
