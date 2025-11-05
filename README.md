@@ -56,7 +56,6 @@
 ## FAQ
 
 - [How can I test my LLM?](https://microsoft.github.io/multi-agent-marketplace/usage/env.html)
-- [How can I create a new protocol?]()
 - [How can I access the log and evaluate?](https://microsoft.github.io/multi-agent-marketplace/usage/cli-analyze.html)
 
 [**Checkout the docs for more info.**](https://microsoft.github.io/multi-agent-marketplace/)
