@@ -1,5 +1,6 @@
 """Agent-related routes."""
 
+import uuid
 from datetime import UTC, datetime
 
 from fastapi import APIRouter, HTTPException, Query, Request
@@ -25,7 +26,7 @@ async def register_agent(
 ) -> AgentRegistrationResponse:
     """Register a new agent."""
     db = get_database(fastapi_request)
-    auth_service = get_auth_service(fastapi_request)
+    get_auth_service(fastapi_request)
     id_generation_service = get_idgen_service(fastapi_request)
 
     try:
@@ -34,15 +35,16 @@ async def register_agent(
             request.agent.id, db.agents
         )
 
+        # Generate auth token before creating agent
+        token = str(uuid.uuid4())
+
         db_agent = AgentRow(
             id=request.agent.id,  # Use the generated unique ID or None for database to generate
             created_at=datetime.now(UTC),
             data=request.agent,
+            auth_token=token,  # Include token during creation
         )
         created_db_agent = await db.agents.create(db_agent)
-
-        # Generate auth token for the agent
-        token = await auth_service.generate_token(created_db_agent.id)
 
         # Return the agent with the generated ID and token
         request.agent.id = created_db_agent.id
