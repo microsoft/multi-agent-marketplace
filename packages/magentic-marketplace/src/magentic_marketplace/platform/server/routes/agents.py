@@ -1,8 +1,10 @@
 """Agent-related routes."""
 
+import sqlite3
 import uuid
 from datetime import UTC, datetime
 
+import asyncpg
 from fastapi import APIRouter, HTTPException, Query, Request
 
 from ...database.base import DatabaseTooBusyError
@@ -15,7 +17,7 @@ from ...shared.models import (
     AgentRegistrationRequest,
     AgentRegistrationResponse,
 )
-from ..server import get_auth_service, get_database, get_idgen_service
+from ..server import get_auth_service, get_database
 
 router = APIRouter(prefix="/agents", tags=["agents"])
 
@@ -27,19 +29,13 @@ async def register_agent(
     """Register a new agent."""
     db = get_database(fastapi_request)
     get_auth_service(fastapi_request)
-    id_generation_service = get_idgen_service(fastapi_request)
 
     try:
-        # Generate a unique suffixed ID using the injected service
-        request.agent.id = await id_generation_service.generate_unique_agent_id(
-            request.agent.id, db.agents
-        )
-
         # Generate auth token before creating agent
         token = str(uuid.uuid4())
 
         db_agent = AgentRow(
-            id=request.agent.id,  # Use the generated unique ID or None for database to generate
+            id=request.agent.id,  # Use the provided agent ID
             created_at=datetime.now(UTC),
             data=request.agent,
             auth_token=token,  # Include token during creation
@@ -52,6 +48,11 @@ async def register_agent(
     except DatabaseTooBusyError as e:
         raise HTTPException(
             status_code=429, detail=f"Database too busy: {e.message}"
+        ) from e
+    except (sqlite3.IntegrityError, asyncpg.UniqueViolationError) as e:
+        raise HTTPException(
+            status_code=409,
+            detail=f"Agent with ID '{request.agent.id}' already exists",
         ) from e
 
 
