@@ -604,25 +604,6 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
                 row = await cursor.fetchone()
                 return row[0] if row else 0
 
-    async def find_agents_by_id_pattern(self, id_pattern: str) -> list[str]:
-        """Find all agent IDs that contain the given ID pattern.
-
-        Args:
-            id_pattern: The ID pattern to search for (e.g., "Agent")
-
-        Returns:
-            List of agent IDs that contain the pattern
-
-        """
-        async with self.connection as db:
-            async with db.execute(
-                "SELECT id FROM agents WHERE id LIKE ?",
-                (f"%{id_pattern}%",),
-            ) as cursor:
-                rows = await cursor.fetchall()
-
-        return [row[0] for row in rows]
-
     async def get_agent_by_token(self, token: str) -> AgentRow | None:
         """Get agent by auth token.
 

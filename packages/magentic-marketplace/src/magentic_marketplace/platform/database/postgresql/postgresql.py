@@ -654,15 +654,6 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
             result = await conn.fetchval(f"SELECT COUNT(*) FROM {self._schema}.agents")
             return result or 0
 
-    async def find_agents_by_id_pattern(self, id_pattern: str) -> list[str]:
-        """Find all agent IDs that contain the given ID pattern."""
-        async with self.connection() as conn:
-            rows = await conn.fetch(
-                f"SELECT id FROM {self._schema}.agents WHERE id ILIKE $1",
-                f"%{id_pattern}%",
-            )
-        return [row["id"] for row in rows]
-
     async def get_agent_by_token(self, token: str) -> AgentRow | None:
         """Get agent by auth token.
 
