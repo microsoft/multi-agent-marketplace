@@ -193,7 +193,8 @@ CREATE TABLE IF NOT EXISTS agents (
     id TEXT PRIMARY KEY,
     created_at TEXT NOT NULL,
     data TEXT NOT NULL,
-    agent_embedding BLOB
+    agent_embedding BLOB,
+    auth_token TEXT
 );
 
 CREATE TABLE IF NOT EXISTS actions (
@@ -418,12 +419,13 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
 
         async with self._get_connection(is_write=True) as db:
             await db.execute(
-                "INSERT INTO agents (id, created_at, data, agent_embedding) VALUES (?, ?, ?, ?)",
+                "INSERT INTO agents (id, created_at, data, agent_embedding, auth_token) VALUES (?, ?, ?, ?, ?)",
                 (
                     agent_id,
                     item.created_at.isoformat(),
                     item.data.model_dump_json(),  # Store full agent as JSON
                     item.agent_embedding,  # Store embedding as BLOB
+                    item.auth_token,  # Store auth token
                 ),
             )
             await db.commit()
@@ -442,6 +444,7 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
             created_at=item.created_at,
             data=item.data,
             agent_embedding=item.agent_embedding,
+            auth_token=item.auth_token,
             index=row_index,
         )
 
@@ -460,13 +463,14 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
                 item.created_at.isoformat(),
                 item.data.model_dump_json(),
                 item.agent_embedding,
+                item.auth_token,
             )
             for item in items
         ]
 
         await self._batched_create_many(
             table_name="agents",
-            insert_sql="INSERT INTO agents (id, created_at, data, agent_embedding) VALUES (?, ?, ?, ?)",
+            insert_sql="INSERT INTO agents (id, created_at, data, agent_embedding, auth_token) VALUES (?, ?, ?, ?, ?)",
             records=records,
             batch_size=batch_size,
         )
@@ -475,7 +479,7 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
         """Get agent by ID."""
         async with self.connection as db:
             async with db.execute(
-                "SELECT rowid, id, created_at, data, agent_embedding FROM agents WHERE id = ?",
+                "SELECT rowid, id, created_at, data, agent_embedding, auth_token FROM agents WHERE id = ?",
                 (item_id,),
             ) as cursor:
                 row = await cursor.fetchone()
@@ -490,6 +494,7 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
             created_at=row[2],  # type: ignore  # Pydantic handles datetime string parsing
             data=agent_data,
             agent_embedding=row[4],  # BLOB data or None
+            auth_token=row[5],  # Auth token or None
             index=row[0],
         )
 
@@ -508,7 +513,7 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
         """
         rows = await self._batched_get_all(
             table_name="agents",
-            base_sql="SELECT rowid, id, created_at, data, agent_embedding FROM agents",
+            base_sql="SELECT rowid, id, created_at, data, agent_embedding, auth_token FROM agents",
             params=params,
             batch_size=batch_size,
         )
@@ -519,6 +524,7 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
                 created_at=row[2],  # type: ignore  # Pydantic handles datetime string parsing
                 data=AgentProfile.model_validate_json(row[3]),
                 agent_embedding=row[4],  # BLOB data or None
+                auth_token=row[5],  # Auth token or None
                 index=row[0],
             )
             for row in rows
@@ -529,7 +535,7 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
     ) -> list[AgentRow]:
         """Find agents using JSONQuery objects."""
         sql, sql_params = _convert_query_params_to_sql(
-            sql="SELECT rowid, id, created_at, data, agent_embedding FROM agents",
+            sql="SELECT rowid, id, created_at, data, agent_embedding, auth_token FROM agents",
             query=query,
             params=params,
         )
@@ -544,6 +550,7 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
                 created_at=row[2],  # type: ignore  # Pydantic handles datetime string parsing
                 data=AgentProfile.model_validate_json(row[3]),
                 agent_embedding=row[4],  # BLOB data or None
+                auth_token=row[5],  # Auth token or None
                 index=row[0],
             )
             for row in rows
@@ -561,7 +568,7 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
         sql_params: list[Any] = []
 
         for key, value in updates.items():
-            if key in ["name", "agent_metadata"]:
+            if key in ["name", "agent_metadata", "auth_token"]:
                 set_clauses.append(f"{key} = ?")
                 if key == "agent_metadata":
                     sql_params.append(to_json(value).decode())
@@ -615,6 +622,37 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
                 rows = await cursor.fetchall()
 
         return [row[0] for row in rows]
+
+    async def get_agent_by_token(self, token: str) -> AgentRow | None:
+        """Get agent by auth token.
+
+        Args:
+            token: The auth token to search for
+
+        Returns:
+            AgentRow if found, None otherwise
+
+        """
+        async with self.connection as db:
+            async with db.execute(
+                "SELECT rowid, id, created_at, data, agent_embedding, auth_token FROM agents WHERE auth_token = ?",
+                (token,),
+            ) as cursor:
+                row = await cursor.fetchone()
+
+        if not row:
+            return None
+
+        # Reconstruct agent from JSON
+        agent_data = AgentProfile.model_validate_json(row[3])
+        return AgentRow(
+            id=row[1],
+            created_at=row[2],  # type: ignore  # Pydantic handles datetime string parsing
+            data=agent_data,
+            agent_embedding=row[4],  # BLOB data or None
+            auth_token=row[5],  # Auth token
+            index=row[0],
+        )
 
 
 class SQLiteActionController(ActionTableController, _BoundedSqliteConnectionMixIn):
@@ -1069,6 +1107,23 @@ class SQLiteDatabaseController(BaseDatabaseController, _BoundedSqliteConnectionM
         """Initialize the database tables."""
         async with self._get_connection(is_write=True) as db:
             await db.executescript(CREATE_TABLES_SQL)
+
+            # Migration: Add auth_token column if it doesn't exist
+            async with db.execute("PRAGMA table_info(agents)") as cursor:
+                columns = await cursor.fetchall()
+                column_names = [col[1] for col in columns]
+
+                if "auth_token" not in column_names:
+                    logger.info(
+                        "Running migration: Adding auth_token column to agents table"
+                    )
+                    await db.execute("ALTER TABLE agents ADD COLUMN auth_token TEXT")
+
+            # Create index on auth_token for faster lookups
+            await db.execute(
+                "CREATE INDEX IF NOT EXISTS idx_agents_auth_token ON agents(auth_token)"
+            )
+
             await db.commit()
 
     def __del__(self):

@@ -54,8 +54,8 @@ class MarketplaceServer(FastAPI):
             # Initialize protocol-specific resources (e.g., indexes)
             await self._behavior_protocol.initialize(database_controller)
 
-            # Create auth service
-            auth_service = AuthService()
+            # Create auth service with database controller
+            auth_service = AuthService(database_controller)
 
             # Create ID generation service
             id_generation_service = DatabaseIdGenerationService()
