@@ -1,9 +1,7 @@
 """Agent-related routes."""
 
-import sqlite3
 from datetime import UTC, datetime
 
-import asyncpg
 from fastapi import APIRouter, HTTPException, Query, Request
 
 from ...database.base import DatabaseTooBusyError
@@ -27,7 +25,7 @@ async def register_agent(
 ) -> AgentRegistrationResponse:
     """Register a new agent."""
     db = get_database(fastapi_request)
-    get_auth_service(fastapi_request)
+    auth = get_auth_service(fastapi_request)
 
     try:
         db_agent = AgentRow(
@@ -35,18 +33,23 @@ async def register_agent(
             created_at=datetime.now(UTC),
             data=request.agent,
         )
-        created_db_agent = await db.agents.create(db_agent)
+        exists = await auth.validate_agent_id(request.agent.id)
+        if exists:
+            created_db_agent = await db.agents.update(
+                request.agent.id, db_agent.model_dump(mode="json", exclude={"id"})
+            )
+            if created_db_agent is None:
+                raise HTTPException(
+                    status_code=500, detail="Failed to update existing agent."
+                )
+        else:
+            created_db_agent = await db.agents.create(db_agent)
 
         # Return just the agent ID
         return AgentRegistrationResponse(id=created_db_agent.id)
     except DatabaseTooBusyError as e:
         raise HTTPException(
             status_code=429, detail=f"Database too busy: {e.message}"
-        ) from e
-    except (sqlite3.IntegrityError, asyncpg.UniqueViolationError) as e:
-        raise HTTPException(
-            status_code=409,
-            detail=f"Agent with ID '{request.agent.id}' already exists",
         ) from e
 
 
