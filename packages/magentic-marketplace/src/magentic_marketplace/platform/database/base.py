@@ -99,19 +99,6 @@ class AgentTableController(
 ):
     """Abstract controller for Agent operations."""
 
-    @abstractmethod
-    async def get_agent_by_token(self, token: str) -> AgentRow | None:
-        """Get agent by auth token.
-
-        Args:
-            token: The auth token to search for
-
-        Returns:
-            AgentRow if found, None otherwise
-
-        """
-        pass
-
 
 class ActionTableController(
     TableController[ActionRow],

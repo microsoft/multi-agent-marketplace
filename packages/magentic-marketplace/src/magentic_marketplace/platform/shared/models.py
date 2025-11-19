@@ -125,8 +125,7 @@ class AgentRegistrationRequest(BaseRequest):
 class AgentRegistrationResponse(BaseResponse):
     """Response model for agent registration."""
 
-    agent: SerializeAsAny[AgentProfile]
-    token: str
+    id: str
 
 
 class AgentListResponse(ListResponse):

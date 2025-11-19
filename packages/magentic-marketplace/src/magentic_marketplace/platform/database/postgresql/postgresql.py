@@ -260,7 +260,6 @@ CREATE TABLE IF NOT EXISTS {schema}.agents (
     created_at TIMESTAMPTZ NOT NULL,
     data JSONB NOT NULL,
     agent_embedding BYTEA,
-    auth_token TEXT,
     row_index BIGINT GENERATED ALWAYS AS IDENTITY UNIQUE
 );
 
@@ -282,7 +281,6 @@ CREATE TABLE IF NOT EXISTS {schema}.logs (
 CREATE INDEX IF NOT EXISTS agents_id_idx ON {schema}.agents(id);
 CREATE INDEX IF NOT EXISTS agents_created_at_idx ON {schema}.agents(created_at);
 CREATE INDEX IF NOT EXISTS agents_row_index_idx ON {schema}.agents(row_index);
-CREATE INDEX IF NOT EXISTS agents_auth_token_idx ON {schema}.agents(auth_token);
 
 CREATE INDEX IF NOT EXISTS actions_id_idx ON {schema}.actions(id);
 CREATE INDEX IF NOT EXISTS actions_created_at_idx ON {schema}.actions(created_at);
@@ -440,7 +438,6 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
                     item.created_at,
                     agent_json,
                     item.agent_embedding,
-                    item.auth_token,
                 )
             except asyncpg.UntranslatableCharacterError as e:
                 logger.warning(f"Fixing invalid unicode in AGENT insert: {e}")
@@ -452,7 +449,6 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
                     item.created_at,
                     agent_json,
                     item.agent_embedding,
-                    item.auth_token,
                 )
 
         return AgentRow(
@@ -460,12 +456,11 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
             created_at=item.created_at,
             data=item.data,
             agent_embedding=item.agent_embedding,
-            auth_token=item.auth_token,
             index=row_index,
         )
 
     def _get_insert_query(self) -> str:
-        return f"INSERT INTO {self._schema}.agents (id, created_at, data, agent_embedding, auth_token) VALUES ($1, $2, $3, $4, $5) RETURNING row_index"
+        return f"INSERT INTO {self._schema}.agents (id, created_at, data, agent_embedding) VALUES ($1, $2, $3, $4) RETURNING row_index"
 
     async def create_many(self, items: list[AgentRow], batch_size: int = 1000) -> None:
         """Create multiple agents efficiently in batches using COPY.
@@ -502,7 +497,6 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
                     item.created_at,
                     item.data.model_dump_json(),
                     item.agent_embedding,
-                    item.auth_token,
                 )
                 for item in batch
             ]
@@ -516,7 +510,6 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
                         "created_at",
                         "data",
                         "agent_embedding",
-                        "auth_token",
                     ],
                     schema_name=self._schema,
                 )
@@ -533,7 +526,7 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
         """Get agent by ID."""
         async with self.connection() as conn:
             row = await conn.fetchrow(
-                f"SELECT row_index, id, created_at, data, agent_embedding, auth_token FROM {self._schema}.agents WHERE id = $1",
+                f"SELECT row_index, id, created_at, data, agent_embedding FROM {self._schema}.agents WHERE id = $1",
                 item_id,
             )
 
@@ -547,7 +540,6 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
             created_at=row["created_at"],
             data=agent_data,
             agent_embedding=row["agent_embedding"],
-            auth_token=row["auth_token"],
             index=row["row_index"],
         )
 
@@ -566,7 +558,7 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
         """
         rows = await self._batched_get_all(
             table_name="agents",
-            base_sql=f"SELECT row_index, id, created_at, data, agent_embedding, auth_token FROM {self._schema}.agents",
+            base_sql=f"SELECT row_index, id, created_at, data, agent_embedding FROM {self._schema}.agents",
             params=params,
             batch_size=batch_size,
         )
@@ -577,7 +569,6 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
                 created_at=row["created_at"],
                 data=AgentProfile.model_validate_json(row["data"]),
                 agent_embedding=row["agent_embedding"],
-                auth_token=row["auth_token"],
                 index=row["row_index"],
             )
             for row in rows
@@ -588,7 +579,7 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
     ) -> list[AgentRow]:
         """Find agents using JSONQuery objects."""
         sql, sql_params = _convert_query_params_to_postgres(
-            sql=f"SELECT row_index, id, created_at, data, agent_embedding, auth_token FROM {self._schema}.agents",
+            sql=f"SELECT row_index, id, created_at, data, agent_embedding FROM {self._schema}.agents",
             query=query,
             params=params,
         )
@@ -602,7 +593,6 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
                 created_at=row["created_at"],
                 data=AgentProfile.model_validate_json(row["data"]),
                 agent_embedding=row["agent_embedding"],
-                auth_token=row["auth_token"],
                 index=row["row_index"],
             )
             for row in rows
@@ -624,10 +614,6 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
                 param_idx = len(sql_params) + 1
                 set_clauses.append(f"data = jsonb_set(data, '{{{key}}}', ${param_idx})")
                 sql_params.append(json.dumps(value))
-            elif key == "auth_token":
-                param_idx = len(sql_params) + 1
-                set_clauses.append(f"auth_token = ${param_idx}")
-                sql_params.append(value)
 
         if not set_clauses:
             return existing
@@ -653,36 +639,6 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
         async with self.connection() as conn:
             result = await conn.fetchval(f"SELECT COUNT(*) FROM {self._schema}.agents")
             return result or 0
-
-    async def get_agent_by_token(self, token: str) -> AgentRow | None:
-        """Get agent by auth token.
-
-        Args:
-            token: The auth token to search for
-
-        Returns:
-            AgentRow if found, None otherwise
-
-        """
-        async with self.connection() as conn:
-            row = await conn.fetchrow(
-                f"SELECT row_index, id, created_at, data, agent_embedding, auth_token FROM {self._schema}.agents WHERE auth_token = $1",
-                token,
-            )
-
-        if not row:
-            return None
-
-        # Reconstruct agent from JSON
-        agent_data = AgentProfile.model_validate_json(row["data"])
-        return AgentRow(
-            id=row["id"],
-            created_at=row["created_at"],
-            data=agent_data,
-            agent_embedding=row["agent_embedding"],
-            auth_token=row["auth_token"],
-            index=row["row_index"],
-        )
 
 
 class PostgreSQLActionController(
@@ -1219,8 +1175,6 @@ class PostgreSQLDatabaseController(BaseDatabaseController):
             if mode == "existing":
                 if not exists:
                     raise ValueError(f"Schema '{self._schema}' does not exist")
-                # For existing schemas, check if migration is needed
-                await self._migrate_auth_token_column(conn)
                 return
 
             elif mode == "create_new":
@@ -1239,36 +1193,6 @@ class PostgreSQLDatabaseController(BaseDatabaseController):
 
             # Create tables in the schema (will be skipped if they already exist due to IF NOT EXISTS)
             await conn.execute(create_tables_sql(self._schema))
-
-            # Run migration for existing tables
-            await self._migrate_auth_token_column(conn)
-
-    async def _migrate_auth_token_column(self, conn):
-        """Add auth_token column to agents table if it doesn't exist."""
-        # Check if auth_token column exists
-        column_exists = await conn.fetchval(
-            """
-            SELECT EXISTS(
-                SELECT 1 FROM information_schema.columns
-                WHERE table_schema = $1
-                AND table_name = 'agents'
-                AND column_name = 'auth_token'
-            )
-            """,
-            self._schema,
-        )
-
-        if not column_exists:
-            logger.info(
-                f"Running migration: Adding auth_token column to {self._schema}.agents table"
-            )
-            await conn.execute(
-                f"ALTER TABLE {self._schema}.agents ADD COLUMN auth_token TEXT"
-            )
-            # Create index
-            await conn.execute(
-                f"CREATE INDEX IF NOT EXISTS agents_auth_token_idx ON {self._schema}.agents(auth_token)"
-            )
 
     def __del__(self):
         """Write metrics to file when object is destroyed."""

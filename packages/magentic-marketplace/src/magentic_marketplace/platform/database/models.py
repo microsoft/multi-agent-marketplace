@@ -26,7 +26,6 @@ class Row(BaseModel, Generic[T]):
 class AgentRow(Row[AgentProfile]):
     """Database Agent model that wraps the Agent with DB fields."""
 
-    auth_token: str | None = None
     agent_embedding: bytes | None = None
 
 

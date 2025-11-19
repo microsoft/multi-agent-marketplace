@@ -200,14 +200,12 @@ async def test_agents_with_client(
 
         # Register both agents (this creates them in DB via HTTP)
         customer_response = await customer.client.agents.register(customer.profile)
-        customer._token = customer_response.token  # type: ignore[attr-defined]
-        customer.client.set_token(customer._token)  # type: ignore[attr-defined]
-        customer.profile.id = customer_response.agent.id
+        customer.profile.id = customer_response.id
+        customer.client.set_agent_id(customer.profile.id)
 
         business_response = await business.client.agents.register(business.profile)
-        business._token = business_response.token  # type: ignore[attr-defined]
-        business.client.set_token(business._token)  # type: ignore[attr-defined]
-        business.profile.id = business_response.agent.id
+        business.profile.id = business_response.id
+        business.client.set_agent_id(business.profile.id)
 
         yield {
             "customer": customer,

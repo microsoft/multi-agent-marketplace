@@ -1,7 +1,6 @@
 """Agent-related routes."""
 
 import sqlite3
-import uuid
 from datetime import UTC, datetime
 
 import asyncpg
@@ -31,20 +30,15 @@ async def register_agent(
     get_auth_service(fastapi_request)
 
     try:
-        # Generate auth token before creating agent
-        token = str(uuid.uuid4())
-
         db_agent = AgentRow(
             id=request.agent.id,  # Use the provided agent ID
             created_at=datetime.now(UTC),
             data=request.agent,
-            auth_token=token,  # Include token during creation
         )
         created_db_agent = await db.agents.create(db_agent)
 
-        # Return the agent with the generated ID and token
-        request.agent.id = created_db_agent.id
-        return AgentRegistrationResponse(agent=request.agent, token=token)
+        # Return just the agent ID
+        return AgentRegistrationResponse(id=created_db_agent.id)
     except DatabaseTooBusyError as e:
         raise HTTPException(
             status_code=429, detail=f"Database too busy: {e.message}"
