@@ -14,7 +14,6 @@ from fastapi import FastAPI, Request
 from ..database.base import BaseDatabaseController
 from ..protocol.base import BaseMarketplaceProtocol
 from .auth import AuthService
-from .idgen import DatabaseIdGenerationService
 
 
 class MarketplaceServer(FastAPI):
@@ -57,14 +56,10 @@ class MarketplaceServer(FastAPI):
             # Create auth service with database controller
             auth_service = AuthService(database_controller)
 
-            # Create ID generation service
-            id_generation_service = DatabaseIdGenerationService()
-
             # Store instances and context manager for cleanup
             app.state.database_controller = database_controller
             app.state.behavior_protocol = self._behavior_protocol
             app.state.auth_service = auth_service
-            app.state.id_generation_service = id_generation_service
             app.state._database_cm = database_cm
 
             try:
@@ -215,8 +210,3 @@ def get_protocol(request: Request) -> BaseMarketplaceProtocol:
 def get_auth_service(request: Request) -> AuthService:
     """Get the auth service from app state."""
     return request.app.state.auth_service
-
-
-def get_idgen_service(request: Request) -> DatabaseIdGenerationService:
-    """Get the ID generation service from app state."""
-    return request.app.state.id_generation_service
