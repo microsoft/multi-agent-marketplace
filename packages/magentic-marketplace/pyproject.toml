@@ -18,6 +18,8 @@ dependencies = [
     "asyncpg>=0.30.0",
     "python-dotenv>=1.1.1",
     "ftfy>=6.0.0",
+    "pydantic>=2.11.9",
+    "pyyaml>=6.0.2",
 ]
 
 [project.scripts]
