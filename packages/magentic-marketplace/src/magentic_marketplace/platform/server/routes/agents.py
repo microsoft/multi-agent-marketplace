@@ -36,7 +36,13 @@ async def register_agent(
         exists = await auth.validate_agent_id(request.agent.id)
         if exists:
             created_db_agent = await db.agents.update(
-                request.agent.id, db_agent.model_dump(mode="json", exclude={"id"})
+                request.agent.id,
+                db_agent.model_dump(
+                    mode="json",
+                    exclude={
+                        "id",
+                    },
+                ),
             )
             if created_db_agent is None:
                 raise HTTPException(

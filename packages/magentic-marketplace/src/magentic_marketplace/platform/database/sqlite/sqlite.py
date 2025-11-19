@@ -561,7 +561,14 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
         sql_params: list[Any] = []
 
         for key, value in updates.items():
-            if key in ["name", "agent_metadata", "auth_token"]:
+            if key == "data":
+                # Handle AgentProfile update
+                set_clauses.append("data = ?")
+                if isinstance(value, str):
+                    sql_params.append(value)
+                else:
+                    sql_params.append(to_json(value).decode())
+            elif key in ["name", "agent_metadata"]:
                 set_clauses.append(f"{key} = ?")
                 if key == "agent_metadata":
                     sql_params.append(to_json(value).decode())

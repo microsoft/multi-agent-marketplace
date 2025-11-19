@@ -610,7 +610,15 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
         sql_params = []
 
         for key, value in updates.items():
-            if key in ["name", "agent_metadata"]:
+            if key == "data":
+                # Handle full AgentProfile replacement
+                param_idx = len(sql_params) + 1
+                set_clauses.append(f"data = ${param_idx}::jsonb")
+                if isinstance(value, str):
+                    sql_params.append(value)
+                else:
+                    sql_params.append(json.dumps(value))
+            elif key in ["name", "agent_metadata"]:
                 param_idx = len(sql_params) + 1
                 set_clauses.append(f"data = jsonb_set(data, '{{{key}}}', ${param_idx})")
                 sql_params.append(json.dumps(value))
