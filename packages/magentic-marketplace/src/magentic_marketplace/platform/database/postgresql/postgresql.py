@@ -505,7 +505,12 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
                 await conn.copy_records_to_table(
                     "agents",
                     records=records,
-                    columns=["id", "created_at", "data", "agent_embedding"],
+                    columns=[
+                        "id",
+                        "created_at",
+                        "data",
+                        "agent_embedding",
+                    ],
                     schema_name=self._schema,
                 )
 
@@ -605,7 +610,15 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
         sql_params = []
 
         for key, value in updates.items():
-            if key in ["name", "agent_metadata"]:
+            if key == "data":
+                # Handle full AgentProfile replacement
+                param_idx = len(sql_params) + 1
+                set_clauses.append(f"data = ${param_idx}::jsonb")
+                if isinstance(value, str):
+                    sql_params.append(value)
+                else:
+                    sql_params.append(json.dumps(value))
+            elif key in ["name", "agent_metadata"]:
                 param_idx = len(sql_params) + 1
                 set_clauses.append(f"data = jsonb_set(data, '{{{key}}}', ${param_idx})")
                 sql_params.append(json.dumps(value))
@@ -634,15 +647,6 @@ class PostgreSQLAgentController(AgentTableController, _BoundedPostgresConnection
         async with self.connection() as conn:
             result = await conn.fetchval(f"SELECT COUNT(*) FROM {self._schema}.agents")
             return result or 0
-
-    async def find_agents_by_id_pattern(self, id_pattern: str) -> list[str]:
-        """Find all agent IDs that contain the given ID pattern."""
-        async with self.connection() as conn:
-            rows = await conn.fetch(
-                f"SELECT id FROM {self._schema}.agents WHERE id ILIKE $1",
-                f"%{id_pattern}%",
-            )
-        return [row["id"] for row in rows]
 
 
 class PostgreSQLActionController(

@@ -1,4 +1,4 @@
-"""Base resource class with auth token handling."""
+"""Base resource class with agent ID handling."""
 
 from typing import Any
 
@@ -6,7 +6,7 @@ from ..base import BaseClient
 
 
 class BaseResource:
-    """Base class for API resources with auth token support."""
+    """Base class for API resources with agent ID support."""
 
     def __init__(self, base_client: BaseClient):
         """Initialize resource with base client.
@@ -16,26 +16,26 @@ class BaseResource:
 
         """
         self._base_client = base_client
-        self._auth_token: str | None = None
+        self._agent_id: str | None = None
 
-    def set_token(self, token: str) -> None:
-        """Set the authentication token for requests.
+    def set_agent_id(self, agent_id: str) -> None:
+        """Set the agent ID for requests.
 
         Args:
-            token: The auth token to use
+            agent_id: The agent ID to use
 
         """
-        self._auth_token = token
+        self._agent_id = agent_id
 
     @property
-    def auth_token(self) -> str | None:
-        """Get the current authentication token.
+    def agent_id(self) -> str | None:
+        """Get the current agent ID.
 
         Returns:
-            str | None: The auth token or None if not set
+            str | None: The agent ID or None if not set
 
         """
-        return self._auth_token
+        return self._agent_id
 
     async def request(
         self,
@@ -45,7 +45,7 @@ class BaseResource:
         json_data: dict[str, Any] | None = None,
         headers: dict[str, str] | None = None,
     ) -> dict[str, Any]:
-        """Make an HTTP request with automatic auth token injection.
+        """Make an HTTP request with automatic agent ID injection.
 
         Args:
             method: HTTP method (GET, POST, etc.)
@@ -58,10 +58,10 @@ class BaseResource:
             dict: Parsed JSON response
 
         """
-        # Add auth token to headers if set
+        # Add agent ID to headers if set
         request_headers = headers or {}
-        if self._auth_token:
-            request_headers["Authorization"] = f"Bearer {self._auth_token}"
+        if self._agent_id:
+            request_headers["X-Agent-Id"] = self._agent_id
 
         return await self._base_client.request(
             method, path, params, json_data, request_headers

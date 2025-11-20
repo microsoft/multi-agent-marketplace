@@ -99,19 +99,6 @@ class AgentTableController(
 ):
     """Abstract controller for Agent operations."""
 
-    @abstractmethod
-    async def find_agents_by_id_pattern(self, id_pattern: str) -> list[str]:
-        """Find all agent IDs that contain the given ID pattern.
-
-        Args:
-            id_pattern: The ID pattern to search for (e.g., "Agent")
-
-        Returns:
-            List of agent IDs that contain the pattern
-
-        """
-        pass
-
 
 class ActionTableController(
     TableController[ActionRow],

@@ -21,7 +21,6 @@ class BaseAgent(Generic[TProfile], ABC):  # noqa: UP046
         self._base_url = base_url
         self._client = MarketplaceClient(base_url)
         self._logger = MarketplaceLogger(self.id, self._client)
-        self._token: str | None = None
         self.will_shutdown: bool = False
 
     @property
@@ -99,11 +98,10 @@ class BaseAgent(Generic[TProfile], ABC):  # noqa: UP046
         await self._client.connect()
         try:
             response = await self._client.agents.register(self.profile)
-            self._token = response.token
-            self._client.set_token(self._token)
 
             # Update our profile ID to match the database-generated ID
-            self.profile.id = response.agent.id
+            self.profile.id = response.id
+            self._client.set_agent_id(self.profile.id)
 
             # Call startup hook
             await self.on_started()

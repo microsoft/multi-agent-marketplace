@@ -58,7 +58,7 @@ class MarketplaceClient:
         """Initialize marketplace client with resource modules and cached base client."""
         # Use cached BaseClient instance
         self._base_client = _get_or_create_base_client(base_url, timeout, retry_config)
-        self._auth_token: str | None = None
+        self._agent_id: str | None = None
 
         # Initialize resource modules with base client
         self.agents = AgentsResource(self._base_client)
@@ -87,27 +87,27 @@ class MarketplaceClient:
         """Close the underlying base client (decrements reference count)."""
         await self._base_client.close()
 
-    def set_token(self, token: str) -> None:
-        """Set the authentication token for requests on all resources.
+    def set_agent_id(self, agent_id: str) -> None:
+        """Set the agent ID for requests on all resources.
 
         Args:
-            token: The auth token to use
+            agent_id: The agent ID to use
 
         """
-        self._auth_token = token
-        self.agents.set_token(token)
-        self.actions.set_token(token)
-        self.logs.set_token(token)
+        self._agent_id = agent_id
+        self.agents.set_agent_id(agent_id)
+        self.actions.set_agent_id(agent_id)
+        self.logs.set_agent_id(agent_id)
 
     @property
-    def auth_token(self) -> str | None:
-        """Get the current authentication token from agents resource.
+    def agent_id(self) -> str | None:
+        """Get the current agent ID from agents resource.
 
         Returns:
-            str | None: The auth token or None if not set
+            str | None: The agent ID or None if not set
 
         """
-        return self.agents.auth_token
+        return self.agents.agent_id
 
     async def health_check(self) -> dict[str, Any]:
         """Check server health.

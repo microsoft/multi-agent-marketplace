@@ -14,7 +14,7 @@ from ...shared.models import (
     AgentRegistrationRequest,
     AgentRegistrationResponse,
 )
-from ..server import get_auth_service, get_database, get_idgen_service
+from ..server import get_auth_service, get_database
 
 router = APIRouter(prefix="/agents", tags=["agents"])
 
@@ -25,28 +25,34 @@ async def register_agent(
 ) -> AgentRegistrationResponse:
     """Register a new agent."""
     db = get_database(fastapi_request)
-    auth_service = get_auth_service(fastapi_request)
-    id_generation_service = get_idgen_service(fastapi_request)
+    auth = get_auth_service(fastapi_request)
 
     try:
-        # Generate a unique suffixed ID using the injected service
-        request.agent.id = await id_generation_service.generate_unique_agent_id(
-            request.agent.id, db.agents
-        )
-
         db_agent = AgentRow(
-            id=request.agent.id,  # Use the generated unique ID or None for database to generate
+            id=request.agent.id,  # Use the provided agent ID
             created_at=datetime.now(UTC),
             data=request.agent,
         )
-        created_db_agent = await db.agents.create(db_agent)
+        exists = await auth.validate_agent_id(request.agent.id)
+        if exists:
+            created_db_agent = await db.agents.update(
+                request.agent.id,
+                db_agent.model_dump(
+                    mode="json",
+                    exclude={
+                        "id",
+                    },
+                ),
+            )
+            if created_db_agent is None:
+                raise HTTPException(
+                    status_code=500, detail="Failed to update existing agent."
+                )
+        else:
+            created_db_agent = await db.agents.create(db_agent)
 
-        # Generate auth token for the agent
-        token = await auth_service.generate_token(created_db_agent.id)
-
-        # Return the agent with the generated ID and token
-        request.agent.id = created_db_agent.id
-        return AgentRegistrationResponse(agent=request.agent, token=token)
+        # Return just the agent ID
+        return AgentRegistrationResponse(id=created_db_agent.id)
     except DatabaseTooBusyError as e:
         raise HTTPException(
             status_code=429, detail=f"Database too busy: {e.message}"

@@ -561,7 +561,14 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
         sql_params: list[Any] = []
 
         for key, value in updates.items():
-            if key in ["name", "agent_metadata"]:
+            if key == "data":
+                # Handle AgentProfile update
+                set_clauses.append("data = ?")
+                if isinstance(value, str):
+                    sql_params.append(value)
+                else:
+                    sql_params.append(to_json(value).decode())
+            elif key in ["name", "agent_metadata"]:
                 set_clauses.append(f"{key} = ?")
                 if key == "agent_metadata":
                     sql_params.append(to_json(value).decode())
@@ -596,25 +603,6 @@ class SQLiteAgentController(AgentTableController, _BoundedSqliteConnectionMixIn)
             async with db.execute("SELECT COUNT(*) FROM agents") as cursor:
                 row = await cursor.fetchone()
                 return row[0] if row else 0
-
-    async def find_agents_by_id_pattern(self, id_pattern: str) -> list[str]:
-        """Find all agent IDs that contain the given ID pattern.
-
-        Args:
-            id_pattern: The ID pattern to search for (e.g., "Agent")
-
-        Returns:
-            List of agent IDs that contain the pattern
-
-        """
-        async with self.connection as db:
-            async with db.execute(
-                "SELECT id FROM agents WHERE id LIKE ?",
-                (f"%{id_pattern}%",),
-            ) as cursor:
-                rows = await cursor.fetchall()
-
-        return [row[0] for row in rows]
 
 
 class SQLiteActionController(ActionTableController, _BoundedSqliteConnectionMixIn):
