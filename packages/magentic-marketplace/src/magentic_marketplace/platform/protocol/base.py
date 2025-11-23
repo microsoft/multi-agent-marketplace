@@ -28,8 +28,15 @@ class BaseMarketplaceProtocol(ABC):
         agent: AgentProfile,
         action: ActionExecutionRequest,
         database: BaseDatabaseController,
-    ) -> ActionExecutionResult:
-        """Execute a specific action with the given name and parameters."""
+    ) -> tuple[ActionExecutionResult, bool]:
+        """Execute a specific action with the given name and parameters.
+
+        Returns:
+            A tuple of (ActionExecutionResult, bool) where:
+                - ActionExecutionResult contains the action execution result
+                - bool indicates whether the action should be persisted to the database
+
+        """
         ...
 
     async def initialize(self, database: BaseDatabaseController) -> None:  # noqa: B027

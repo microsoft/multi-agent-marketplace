@@ -10,7 +10,10 @@ from magentic_marketplace.experiments.utils import (
     load_customers_from_yaml,
 )
 from magentic_marketplace.marketplace.agents import BusinessAgent, CustomerAgent
-from magentic_marketplace.marketplace.protocol.protocol import SimpleMarketplaceProtocol
+from magentic_marketplace.marketplace.protocol.protocol import (
+    FetchMessagesPersistence,
+    SimpleMarketplaceProtocol,
+)
 from magentic_marketplace.platform.database import (
     connect_to_postgresql_database,
 )
@@ -35,6 +38,8 @@ async def run_marketplace_experiment(
     export_sqlite: bool = False,
     export_dir: str | None = None,
     export_filename: str | None = None,
+    drop_empty_fetch_messages: bool = False,
+    drop_all_fetch_messages: bool = False,
 ):
     """Run a marketplace experiment using YAML configuration files."""
     # Load businesses and customers from YAML files
@@ -69,8 +74,18 @@ async def run_marketplace_experiment(
             server_port = s.getsockname()[1]
         print(f"Auto-assigned server port: {server_port}")
 
+    # Determine fetch messages persistence mode based on CLI flags
+    if drop_all_fetch_messages:
+        fetch_messages_persistence = FetchMessagesPersistence.NONE
+    elif drop_empty_fetch_messages:
+        fetch_messages_persistence = FetchMessagesPersistence.NON_EMPTY
+    else:
+        fetch_messages_persistence = FetchMessagesPersistence.ALL
+
     marketplace_launcher = MarketplaceLauncher(
-        protocol=SimpleMarketplaceProtocol(),
+        protocol=SimpleMarketplaceProtocol(
+            fetch_messages_persistence=fetch_messages_persistence
+        ),
         database_factory=database_factory,
         host=server_host,
         port=server_port,
