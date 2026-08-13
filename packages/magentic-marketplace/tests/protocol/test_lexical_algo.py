@@ -1,5 +1,7 @@
 """Unit tests for lexical ranking algorithm."""
 
+from itertools import permutations
+
 import pytest
 
 from magentic_marketplace.marketplace.protocol.search.lexical_algo import (
@@ -212,7 +214,7 @@ class TestLexicalRank:
     def test_rank_with_menu_prices(self, sample_businesses: list[BusinessAgentProfile]):
         """Test ranking with menu prices included."""
         # Search for a specific price
-        ranked = lexical_rank("58", sample_businesses, index_menu_prices=True)
+        ranked = lexical_rank("58.0", sample_businesses, index_menu_prices=True)
 
         # Bakery with birthday cake at 58.0 should rank first
         assert ranked[0].id == "bakery_1"
@@ -226,3 +228,35 @@ class TestLexicalRank:
         # Both "Sweet Dreams Bakery" and "Dream Coffee" contain "dream"
         # They should rank higher than "Sushi Paradise"
         assert ranked[2].id == "restaurant_1"
+
+    def test_equal_scores_use_rating_then_id_total_order(
+        self, sample_businesses: list[BusinessAgentProfile]
+    ):
+        """Equal lexical scores do not inherit database or input order."""
+        tied_businesses = [
+            BusinessAgentProfile.from_business(
+                profile.business.model_copy(
+                    update={
+                        "id": business_id,
+                        "rating": rating,
+                        "name": "Same Name",
+                        "description": "Same Description",
+                        "menu_features": {"same item": 1.0},
+                    }
+                )
+            )
+            for profile, business_id, rating in zip(
+                sample_businesses,
+                ("business_c", "business_a", "business_b"),
+                (4.0, 5.0, 5.0),
+                strict=True,
+            )
+        ]
+
+        for ordering in permutations(tied_businesses):
+            ranked = lexical_rank("no overlap", list(ordering))
+            assert [business.id for business in ranked] == [
+                "business_a",
+                "business_b",
+                "business_c",
+            ]

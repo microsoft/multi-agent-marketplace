@@ -1,6 +1,10 @@
 """Integration tests for Lexical Search algorithm."""
 
+from datetime import UTC, datetime
+from itertools import permutations
+from types import SimpleNamespace
 from typing import Any
+from unittest.mock import AsyncMock
 
 import pytest
 
@@ -9,6 +13,14 @@ from magentic_marketplace.marketplace.actions import (
     SearchAlgorithm,
     SearchResponse,
 )
+from magentic_marketplace.marketplace.protocol.search.lexical import (
+    execute_lexical_search,
+)
+from magentic_marketplace.marketplace.shared.models import (
+    Business,
+    BusinessAgentProfile,
+)
+from magentic_marketplace.platform.database.models import AgentRow
 
 
 class TestLexicalSearch:
@@ -152,3 +164,49 @@ class TestLexicalSearch:
         parsed_response = SearchResponse.model_validate(result.content)
         assert len(parsed_response.businesses) == 1
         assert parsed_response.businesses[0].id == business.id
+
+    @pytest.mark.asyncio
+    async def test_no_query_equal_ratings_use_id_total_order(self):
+        """Equal ratings do not inherit concurrent database insertion order."""
+        businesses = [
+            BusinessAgentProfile.from_business(
+                Business(
+                    id=business_id,
+                    name="Same Name",
+                    description="Same Description",
+                    rating=5.0,
+                    progenitor_customer="customer_000",
+                    menu_features={"same item": 1.0},
+                    amenity_features={},
+                    min_price_factor=0.8,
+                )
+            )
+            for business_id in ("business_c", "business_a", "business_b")
+        ]
+        search = Search(
+            query="",
+            search_algorithm=SearchAlgorithm.LEXICAL,
+            limit=50,
+            constraints=None,
+        )
+
+        for ordering in permutations(businesses):
+            rows = [
+                AgentRow(
+                    id=business.id,
+                    created_at=datetime.now(UTC),
+                    data=business,
+                )
+                for business in ordering
+            ]
+            database: Any = SimpleNamespace(
+                agents=SimpleNamespace(find=AsyncMock(return_value=rows))
+            )
+
+            response = await execute_lexical_search(search, database)
+
+            assert [business.id for business in response.businesses] == [
+                "business_a",
+                "business_b",
+                "business_c",
+            ]

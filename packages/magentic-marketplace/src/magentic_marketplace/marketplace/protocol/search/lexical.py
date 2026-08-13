@@ -30,8 +30,7 @@ async def execute_lexical_search(
     # 2. Handle sort in no-query case
     businesses = sorted(
         businesses,
-        key=lambda b: b.business.rating,
-        reverse=True,
+        key=lambda business: (-business.business.rating, business.id),
     )
 
     # Rank by lexical similarity if query provided

@@ -88,9 +88,16 @@ def lexical_rank(
         shingle_score = shingle_overlap_score(query, searchable_text)
         shingle_score_tuples.append((business.id, shingle_score))
 
-    # Sort by shingle score (descending)
+    # Use a total order so equal scores and ratings do not inherit database row order.
+    # Agent rows may be inserted concurrently, making that order nondeterministic across
+    # otherwise identical marketplace runs.
     shingle_score_tuples = sorted(
-        shingle_score_tuples, key=lambda x: x[1], reverse=True
+        shingle_score_tuples,
+        key=lambda item: (
+            -item[1],
+            -results_dict[item[0]].business.rating,
+            item[0],
+        ),
     )
 
     # Return the search results in ranked order
